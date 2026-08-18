@@ -6,3 +6,4 @@
 step 100/8000 | loss 1.2474 | lr 1.01e-05 | 2.92 it/s
 step 200/8000 | loss 1.1509 | lr 2.01e-05 | 2.47 it/s
 step 300/8000 | loss 1.0646 | lr 3.00e-05 | 2.39 it/s
+step 400/8000 | loss 1.1144 | lr 3.00e-05 | 3.05 it/s
