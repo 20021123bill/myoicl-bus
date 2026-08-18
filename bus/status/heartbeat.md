@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T02:34:01+08:00
+# heartbeat 2026-08-19T02:34:44+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 1819 MiB, 24576 MiB, 0 %
-2, 12 MiB, 24576 MiB, 0 %
+2, 3857 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -764,4 +764,15 @@ SMOKE FAILED
 
 ### 280_v3_padfix_train.log
 ```
+=== deploy pad fix (pad time axis, not window axis) ===
+=== smoke ===
+[smoke] built 50 support tokens from 6 windows
+[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
+[smoke] init grad o_proj=3.354e+01 (want >0: path can open)
+[smoke] with o_proj opened, mean|mode C - mode A| = 3.6827e-02 (want >0: context now changes output)
+[smoke] grad to frame context encoder now = 1.095e+01
+[smoke] full-length support -> 96 tokens (>= 50 masked)
+[smoke v3] ALL PASS
+
+=== launch v3 training on GPU2 ===
 ```
