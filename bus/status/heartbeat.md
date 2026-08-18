@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T03:15:11+08:00
+# heartbeat 2026-08-19T03:15:53+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 5736 MiB, 24576 MiB, 21 %
+1, 5736 MiB, 24576 MiB, 73 %
 2, 3825 MiB, 24576 MiB, 0 %
-3, 3181 MiB, 24576 MiB, 8 %
+3, 3181 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -836,6 +836,29 @@ step 300/12000 | loss 1.3745 | lr 9.45e-06 | 2.43 it/s
 
 ### 310_v31_kvsplit.log
 ```
-=== deploy v3.1 (key/value split) ===
-=== smoke (tests kv_split False AND True) ===
+[smoke] built 50 support tokens from 6 windows
+[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
+[smoke] init grad o_proj=3.354e+01 (want >0: path can open)
+[smoke] with o_proj opened, mean|mode C - mode A| = 3.6827e-02 (want >0: context now changes output)
+[smoke] grad to frame context encoder now = 1.095e+01
+[smoke] full-length support -> 96 tokens (>= 50 masked)
+[smoke v3] ALL PASS
+
+===== smoke v3 (kv_split=True) =====
+[smoke] built 50 support tokens from 6 windows
+[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
+[smoke] init grad o_proj=4.382e+01 (want >0: path can open)
+[smoke] with o_proj opened, mean|mode C - mode A| = 3.0983e-02 (want >0: context now changes output)
+[smoke] grad to frame context encoder now = 4.497e+00
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 129, in <module>
+    rc = main(kv_split=False) or main(kv_split=True)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 121, in main
+    print(f"[smoke] full-length support -> {tok_full.shape[1]} tokens "
+AttributeError: 'tuple' object has no attribute 'shape'
+SMOKE FAILED -- not launching
 ```
