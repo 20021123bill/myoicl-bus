@@ -1,0 +1,7 @@
+=== E1 scratch: 8-user eval A/B/C K=256 ===
+[ckpt] /data2/chenyuxiang/runs/myoicl_scratch/best.pt (v1, step 50000)
+[A] user0: CER 65.64
+[A] user1: CER 63.57
+[A] user2: CER 43.79
+[A] user3: CER 54.54
+[A] user4: CER 52.89

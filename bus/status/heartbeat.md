@@ -1,10 +1,10 @@
-# heartbeat 2026-08-18T20:49:30+08:00
+# heartbeat 2026-08-18T20:50:12+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
-2, 2707 MiB, 24576 MiB, 0 %
+2, 2707 MiB, 24576 MiB, 52 %
 3, 2837 MiB, 24576 MiB, 0 %
 ```
 
@@ -15,6 +15,9 @@
 010_archive                              DONE rc=127
 020_d1_gatefix                           DONE rc=127
 030_d2_forcectx                          DONE rc=127
+040_fix_runner                           DONE rc=127
+050_eval_e1_then_d0a                     DONE rc=127
+060_d0b_gate0_forced                     DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -103,4 +106,19 @@ step 400/8000 | loss 1.1144 | lr 3.00e-05 | 3.05 it/s
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
 step 100/8000 | loss 3.1743 | lr 1.01e-05 | 1.18 it/s
 step 200/8000 | loss 2.8405 | lr 2.01e-05 | 1.48 it/s
+```
+
+### 040_fix_runner.log
+```
+runner.sh patched; effective on next restart
+```
+
+### 050_eval_e1_then_d0a.log
+```
+=== E1 scratch: 8-user eval A/B/C K=256 ===
+```
+
+### 060_d0b_gate0_forced.log
+```
+=== D0b: gate_init 0.0, p_synth 0.85 (deadlock control for D2) ===
 ```
