@@ -1,11 +1,11 @@
-# heartbeat 2026-08-18T20:59:09+08:00
+# heartbeat 2026-08-18T20:59:51+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
-2, 2441 MiB, 24576 MiB, 17 %
-3, 2751 MiB, 24576 MiB, 0 %
+2, 2441 MiB, 24576 MiB, 0 %
+3, 2751 MiB, 24576 MiB, 43 %
 ```
 
 ## jobs
@@ -106,6 +106,7 @@ step 400/8000 | loss 1.1144 | lr 3.00e-05 | 3.05 it/s
 [optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
 step 100/8000 | loss 1.0837 | lr 1.01e-05 | 1.07 it/s
+step 200/8000 | loss 1.0618 | lr 2.01e-05 | 1.32 it/s
 ```
 
 ### 030_d2_forcectx.log
