@@ -1,11 +1,11 @@
-# heartbeat 2026-08-18T20:56:24+08:00
+# heartbeat 2026-08-18T20:57:05+08:00
 
 ## gpu
 ```
-0, 2661 MiB, 24576 MiB, 0 %
-1, 2749 MiB, 24576 MiB, 0 %
-2, 2707 MiB, 24576 MiB, 0 %
-3, 2837 MiB, 24576 MiB, 0 %
+0, 16 MiB, 24576 MiB, 1 %
+1, 12 MiB, 24576 MiB, 0 %
+2, 2345 MiB, 24576 MiB, 0 %
+3, 295 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -98,6 +98,15 @@ step 300/8000 | loss 1.0646 | lr 3.00e-05 | 2.39 it/s
 step 400/8000 | loss 1.1144 | lr 3.00e-05 | 3.05 it/s
 ```
 
+### 021_d1_retry.log
+```
+[model] v1 | 6.25M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
+```
+
 ### 030_d2_forcectx.log
 ```
 [model] v1 | 6.25M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
@@ -107,6 +116,15 @@ step 400/8000 | loss 1.1144 | lr 3.00e-05 | 3.05 it/s
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
 step 100/8000 | loss 3.1743 | lr 1.01e-05 | 1.18 it/s
 step 200/8000 | loss 2.8405 | lr 2.01e-05 | 1.48 it/s
+```
+
+### 031_d2_retry.log
+```
+[model] v1 | 6.25M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
 ```
 
 ### 040_fix_runner.log
@@ -141,22 +159,6 @@ step 200/8000 | loss 2.7142 | lr 2.01e-05 | 1.12 it/s
 
 ### 070_diag_relaunch.log
 ```
-2909927 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
-2909928 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
-2910053 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
-2910054 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
-2910179 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
-2910180 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
-2910305 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
-2910306 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
-2910381 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
-2910421 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
-3219850 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
-3220284 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
-3220347 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
-3220410 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
-3220473 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
-3220536 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
 3220599 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
 3223111 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
 3223347 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
@@ -166,4 +168,20 @@ step 200/8000 | loss 2.7142 | lr 2.01e-05 | 1.12 it/s
 3223599 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
 3223662 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
 === kernel OOM kills ===
+[五 5月 15 17:18:48 2026] MCR 0 interpret invoked oom-killer: gfp_mask=0x1100cca(GFP_HIGHUSER_MOVABLE), order=0, oom_score_adj=0
+[五 5月 15 17:18:48 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0-1,global_oom,task_memcg=/user.slice/user-1021.slice/session-963.scope,task=MATLAB,pid=4161674,uid=1021
+[五 5月 15 17:18:48 2026] Out of memory: Killed process 4161674 (MATLAB) total-vm:74669400kB, anon-rss:47197672kB, file-rss:0kB, shmem-rss:0kB, UID:1021 pgtables:95020kB oom_score_adj:0
+[五 5月 15 17:19:17 2026] GTP_0 invoked oom-killer: gfp_mask=0x1100cca(GFP_HIGHUSER_MOVABLE), order=0, oom_score_adj=0
+[五 5月 15 17:19:17 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0-1,global_oom,task_memcg=/user.slice/user-1021.slice/session-963.scope,task=MATLAB,pid=4167877,uid=1021
+[五 5月 15 17:19:17 2026] Out of memory: Killed process 4167877 (MATLAB) total-vm:78782016kB, anon-rss:49186560kB, file-rss:0kB, shmem-rss:0kB, UID:1021 pgtables:99276kB oom_score_adj:0
+[五 5月 15 17:19:25 2026] MCR 0 interpret invoked oom-killer: gfp_mask=0x1100cca(GFP_HIGHUSER_MOVABLE), order=0, oom_score_adj=0
+[五 5月 15 17:19:25 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0-1,global_oom,task_memcg=/user.slice/user-1021.slice/session-963.scope,task=MATLAB,pid=4166554,uid=1021
+[五 5月 15 17:19:25 2026] Out of memory: Killed process 4166554 (MATLAB) total-vm:74016844kB, anon-rss:50961616kB, file-rss:0kB, shmem-rss:0kB, UID:1021 pgtables:101960kB oom_score_adj:0
+[五 5月 15 17:19:36 2026] GTP_1 invoked oom-killer: gfp_mask=0x1100cca(GFP_HIGHUSER_MOVABLE), order=0, oom_score_adj=0
+[五 5月 15 17:19:36 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0-1,global_oom,task_memcg=/user.slice/user-1021.slice/session-963.scope,task=MATLAB,pid=4158571,uid=1021
+[五 5月 15 17:19:36 2026] Out of memory: Killed process 4158571 (MATLAB) total-vm:78520472kB, anon-rss:52567212kB, file-rss:0kB, shmem-rss:0kB, UID:1021 pgtables:106796kB oom_score_adj:0
+=== last lines of the two dead runs ===
+tail: 在无效上下文中使用选项 -- 3
+
+=== killing all training procs, relaunching D1/D2 with num_workers=2 ===
 ```
