@@ -1,9 +1,9 @@
-# heartbeat 2026-08-19T01:54:59+08:00
+# heartbeat 2026-08-19T01:55:41+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 4376 MiB, 24576 MiB, 26 %
+1, 4376 MiB, 24576 MiB, 25 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -623,4 +623,19 @@ step 100/8000 | loss 1.2414 | lr 1.01e-05 | 1.46 it/s
 -rw-r--r-- 1 chenyuxiang chenyuxiang 3695 8月  19 01:51 myoicl/smoke_v3.py
 
 === v3 smoke test (CPU, tiny model) ===
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 91, in <module>
+    sys.exit(main())
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 28, in main
+    model = build_model(cfg, num_classes=V)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 343, in build_model
+    return MyoICLModel(
+  File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 97, in __init__
+    assert d_model == num_bands * official_mlp_features[-1], (
+AssertionError: d_model (64) must equal num_bands * mlp_features[-1] (128)
+SMOKE FAILED -- not launching training. Fix needed.
 ```
