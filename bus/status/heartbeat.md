@@ -1,9 +1,9 @@
-# heartbeat 2026-08-19T04:25:40+08:00
+# heartbeat 2026-08-19T04:26:22+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 3679 MiB, 24576 MiB, 90 %
+1, 3679 MiB, 24576 MiB, 0 %
 2, 3849 MiB, 24576 MiB, 0 %
 3, 2327 MiB, 24576 MiB, 0 %
 ```
@@ -936,21 +936,6 @@ step 400/12000 | loss 1.3018 | lr 1.50e-05 | 3.44 it/s
 
 ### 330_v32_filmonly.log
 ```
-
-===== smoke v3 (kv_split=False, film_only=False) =====
-[smoke] built 50 support tokens from 6 windows
-[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
-[smoke] init grad o_proj=3.354e+01 (want >0: path can open)
-[smoke] with o_proj opened, mean|mode C - mode A| = 3.6827e-02 (want >0: context now changes output)
-[smoke] grad to frame context encoder now = 1.095e+01
-[smoke] full-length support -> 96 tokens (>= 50 masked)
-[smoke v3] ALL PASS
-
-===== smoke v3 (kv_split=True, film_only=False) =====
-[smoke] built 50 support tokens from 6 windows
-[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
-[smoke] init grad o_proj=4.382e+01 (want >0: path can open)
-[smoke] with o_proj opened, mean|mode C - mode A| = 3.0983e-02 (want >0: context now changes output)
 [smoke] grad to frame context encoder now = 4.497e+00
 [smoke] full-length support -> 96 tokens (>= 50 masked)
 [smoke v3] ALL PASS
@@ -961,4 +946,19 @@ step 400/12000 | loss 1.3018 | lr 1.50e-05 | 3.44 it/s
 [smoke v3] ALL PASS
 === wait for GPU3 (frozen hedge to finish) ===
 === launch v3.2 on GPU3 ===
+[model] v1 | 6.01M params total (published backbone 5.29M + ICL module 0.71M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
+[watchdog] armed
+step 100/12000 | loss 1.6424 | lr 3.79e-06 | 2.62 it/s
+step 200/12000 | loss 1.2428 | lr 7.54e-06 | 3.53 it/s
+step 300/12000 | loss 1.3811 | lr 1.13e-05 | 3.35 it/s
+step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
+step 100/12000 | loss 1.6424 | lr 3.79e-06 | 2.62 it/s
+step 200/12000 | loss 1.2428 | lr 7.54e-06 | 3.53 it/s
+step 300/12000 | loss 1.3811 | lr 1.13e-05 | 3.35 it/s
+step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
+--- wait v3.2 step >= 2000 (04:26) ---
 ```
