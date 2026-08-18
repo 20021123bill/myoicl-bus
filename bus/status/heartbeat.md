@@ -1,11 +1,11 @@
-# heartbeat 2026-08-18T21:00:33+08:00
+# heartbeat 2026-08-18T21:01:14+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
-2, 2441 MiB, 24576 MiB, 0 %
-3, 2751 MiB, 24576 MiB, 0 %
+2, 12 MiB, 24576 MiB, 0 %
+3, 2391 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -131,6 +131,15 @@ step 200/8000 | loss 2.8405 | lr 2.01e-05 | 1.48 it/s
 step 100/8000 | loss 3.2712 | lr 1.01e-05 | 0.57 it/s
 ```
 
+### 032_d2_solo.log
+```
+[model] v1 | 6.25M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
+```
+
 ### 040_fix_runner.log
 ```
 runner.sh patched; effective on next restart
@@ -192,7 +201,29 @@ tail: 在无效上下文中使用选项 -- 4
 
 ### 080_stackdump_and_solo.log
 ```
-=== progress of the two retries ===
 
 === where exactly are they stuck? (py-spy) ===
+----- pid 3425974 -----
+State:	S (sleeping)
+Threads:	71
+Permission Denied: Try running again with elevated permissions by going 'sudo env "PATH=$PATH" !!'
+py-spy dump failed for 3425974
+----- pid 3426208 -----
+State:	R (running)
+Threads:	3
+Permission Denied: Try running again with elevated permissions by going 'sudo env "PATH=$PATH" !!'
+py-spy dump failed for 3426208
+----- pid 3426271 -----
+State:	R (running)
+Threads:	3
+Permission Denied: Try running again with elevated permissions by going 'sudo env "PATH=$PATH" !!'
+py-spy dump failed for 3426271
+----- pid 3426829 -----
+State:	R (running)
+Threads:	71
+Permission Denied: Try running again with elevated permissions by going 'sudo env "PATH=$PATH" !!'
+py-spy dump failed for 3426829
+
+=== killing everything, relaunching D2 ALONE with contention fixes ===
+launched D2 solo on GPU3; sleeping 240s to see whether it passes the point where the others died
 ```
