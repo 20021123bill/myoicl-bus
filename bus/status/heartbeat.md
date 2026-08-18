@@ -1,4 +1,4 @@
-# heartbeat 2026-08-18T22:14:24+08:00
+# heartbeat 2026-08-18T22:15:05+08:00
 
 ## gpu
 ```
@@ -273,5 +273,29 @@ step 100/8000 | loss 3.1789 | lr 1.01e-05 | 0.36 it/s
 
 ### 100_io_throughput.log
 ```
-########## actually READING data, not just opening ##########
+    PID USER     %CPU %MEM     ELAPSED COMMAND
+4055697 YuYang   1969  0.0 39-08:52:55 clash-linux-amd
+3506994 chenyux+  437  0.1       08:08 pt_main_thread
+ 840961 wyxuan    9.6  0.0 30-01:47:03 MainThread
+   3516 root      3.7  0.0 113-00:29:51 ToDesk_Service
+ 840349 wyxuan    3.3  0.0 30-01:47:14 sshd
+   2244 message+  1.6  0.0 113-00:30:03 dbus-daemon
+2013687 weiyich+  1.6  0.0 13-06:07:21 codex
+   2380 root      1.5  0.0 113-00:30:03 rustdesk
+ 841212 wyxuan    1.0  0.0 30-01:47:01 codex
+2013249 weiyich+  0.9  0.0 13-06:07:25 node
+ 840606 wyxuan    0.7  0.0 30-01:47:05 MainThread
+--- top IO waiters ---
+  15729 root     D    -                    sync
+2984980 root     D    -                    kworker/22:1+usb_hub_wq
+3083474 root     Ds   -                    mount.exfat
+3252434 root     D    -                    sync
+
+########## our run right now ##########
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
+[watchdog] armed
+step 100/8000 | loss 3.1789 | lr 1.01e-05 | 0.36 it/s
 ```
