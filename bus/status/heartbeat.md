@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T05:38:18+08:00
+# heartbeat 2026-08-19T05:39:00+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 7435 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
-3, 2327 MiB, 24576 MiB, 28 %
+3, 12 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -937,7 +937,6 @@ step 400/12000 | loss 1.3018 | lr 1.50e-05 | 3.44 it/s
 
 ### 330_v32_filmonly.log
 ```
-[model] v1 | 6.01M params total (published backbone 5.29M + ICL module 0.71M) | device=cuda | phase=icl
 [data] train sessions=837 val sessions=192
 [data] episodic users=86 train + 10 meta-val (held out from module training)
 [optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
@@ -962,6 +961,7 @@ step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
 [B] mean over users: 54.42
 [C] mean over users: 55.70
 --- wait v3.2 step >= 12000 (05:04) ---
+=== v3.2 @ step ~12000 : 8 users A/B/C ===
 ```
 
 ### 340_ctxsource_diag.log
