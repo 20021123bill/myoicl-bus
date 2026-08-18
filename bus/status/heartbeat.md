@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T02:48:41+08:00
+# heartbeat 2026-08-19T02:49:23+08:00
 
 ## gpu
 ```
-0, 22719 MiB, 24576 MiB, 0 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 1819 MiB, 24576 MiB, 0 %
 2, 3861 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -710,16 +710,6 @@ SMOKE STILL FAILING -- stopping.
 
 ### 260_v3_smoke3_train.log
 ```
-[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
-[watchdog] armed
-Traceback (most recent call last):
-  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
-    return _run_code(code, main_globals, None,
-  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
-    exec(code, run_globals)
-  File "/data2/chenyuxiang/code/myoicl/myoicl/train_qwerty.py", line 782, in <module>
-    main()
-  File "/data2/chenyuxiang/code/myoicl/myoicl/train_qwerty.py", line 712, in main
     loss, _, _ = episode_forward(model, batch, device, autocast_dtype)
   File "/data2/chenyuxiang/code/myoicl/myoicl/train_qwerty.py", line 165, in episode_forward
     ctx_tokens, ctx_pooled, ctx_affine = model.encode_context(
@@ -735,6 +725,16 @@ RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: 
 === periodic eval by checkpoint step ===
 --- waiting for v3 step >= 2000 (02:22) ---
 === v3 @ step ~2000 : 8 official held-out users, A/B/C, K=128 ===
+[A] mean over users: 54.03
+[B] mean over users: 54.03
+[C] mean over users: 54.57
+[A] gap closed vs personalization ceiling: 3.1%
+[B] gap closed vs personalization ceiling: 3.1%
+[C] gap closed vs personalization ceiling: 1.8%
+=== /tmp/v3_snap.pt  (step 2000) ===
+    cross_pre    |tanh(g)|=0.45023  ||W||=  6.1459  EFFECTIVE=2.76706
+    cross_post   |tanh(g)|=0.42207  ||W||=  4.9640  EFFECTIVE=2.09517
+--- waiting for v3 step >= 5000 (02:49) ---
 ```
 
 ### 270_v3_fullwin_train.log
@@ -764,16 +764,6 @@ SMOKE FAILED
 
 ### 280_v3_padfix_train.log
 ```
-[smoke] grad to frame context encoder now = 1.095e+01
-[smoke] full-length support -> 96 tokens (>= 50 masked)
-[smoke v3] ALL PASS
-
-=== launch v3 training on GPU2 ===
---- first 25 lines ---
-[model] v1 | 6.01M params total (published backbone 5.29M + ICL module 0.71M) | device=cuda | phase=icl
-[data] train sessions=837 val sessions=192
-[data] episodic users=86 train + 10 meta-val (held out from module training)
-[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
 [watchdog] armed
 step 100/12000 | loss 1.7477 | lr 3.79e-06 | 2.08 it/s
@@ -789,4 +779,14 @@ step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
 === periodic eval by checkpoint step ===
 --- waiting for v3 step >= 2000 (02:37) ---
 === v3 @ step ~2000 : 8 official held-out users, A/B/C ===
+[A] mean over users: 54.03
+[B] mean over users: 54.03
+[C] mean over users: 54.57
+[A] gap closed vs personalization ceiling: 3.1%
+[B] gap closed vs personalization ceiling: 3.1%
+[C] gap closed vs personalization ceiling: 1.8%
+=== /tmp/v3_snap.pt  (step 2000) ===
+    cross_pre    |tanh(g)|=0.45023  ||W||=  6.1459  EFFECTIVE=2.76706
+    cross_post   |tanh(g)|=0.42207  ||W||=  4.9640  EFFECTIVE=2.09517
+--- waiting for v3 step >= 5000 (02:49) ---
 ```
