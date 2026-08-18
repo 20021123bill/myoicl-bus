@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T00:27:42+08:00
+# heartbeat 2026-08-19T00:28:37+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 7479 MiB, 24576 MiB, 50 %
 1, 4188 MiB, 24576 MiB, 0 %
 2, 2709 MiB, 24576 MiB, 0 %
 3, 2695 MiB, 24576 MiB, 0 %
@@ -558,7 +558,6 @@ committed
 
 ### 200_d3_from_pretrained_units.log
 ```
-=== waiting for the unit-encoder pretrain to finish ===
 found /data2/chenyuxiang/runs/units_pretrain.pt at 2026年 08月 18日 星期二 23:38:05 CST, size 25152021 bytes
 
 === D3: D1 + pretrained unit encoder, GPU2 ===
@@ -583,6 +582,7 @@ step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
     cross_pre    |tanh(g)|=0.22478  ||W||=  6.2468  EFFECTIVE=1.40417
     cross_post   |tanh(g)|=0.18466  ||W||=  5.1602  EFFECTIVE=0.95287
 --- waiting for D3 checkpoint step >= 5000 (00:00) ---
+=== D3 @ step ~5000 : 8 official held-out users, A/B/C, K=256 ===
 ```
 
 ### 210_encoding_beta_d4.log
