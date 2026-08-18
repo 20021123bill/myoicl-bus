@@ -1,10 +1,10 @@
-# heartbeat 2026-08-18T23:38:55+08:00
+# heartbeat 2026-08-18T23:39:44+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 1819 MiB, 24576 MiB, 0 %
-2, 5040 MiB, 24576 MiB, 0 %
+2, 5138 MiB, 24576 MiB, 28 %
 3, 2695 MiB, 24576 MiB, 0 %
 ```
 
@@ -561,4 +561,14 @@ committed
 found /data2/chenyuxiang/runs/units_pretrain.pt at 2026年 08月 18日 星期二 23:38:05 CST, size 25152021 bytes
 
 === D3: D1 + pretrained unit encoder, GPU2 ===
+--- first 25 lines (look for the [units] line) ---
+[model] v1 | 6.25M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
+[units] loaded 72/72 ctx_encoder tensors from /data2/chenyuxiang/runs/units_pretrain.pt
+[watchdog] armed
+step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
+--- waiting for D3 checkpoint step >= 2000 (23:39) ---
 ```
