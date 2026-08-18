@@ -1,0 +1,92 @@
+# MAIN LINE (v5.2): joint training FROM SCRATCH, backbone + per-unit ICL module.
+#
+# WHY FROM SCRATCH AND NOT A WARM START
+# -------------------------------------
+# A warm start from generic.ckpt does NOT contaminate the 8 official test
+# users -- they are held out of that checkpoint too, so the headline number
+# stays clean either way. What a warm start destroys is the VALIDATION
+# COHORT: every user in emg2qwerty except the 8 test users is inside
+# generic.ckpt's training set, so a warm-started model reports ~17 CER on our
+# meta-val users no matter what the context pathway does. There is nothing
+# left for context to explain on users the initialization already memorized,
+# so the mode-C minus mode-A gain measured there is structurally understated
+# and cannot steer training.
+#
+# Training from scratch makes the 10 meta-val users genuinely unseen. Their
+# CER becomes a real proxy for the 8 test users, which means we can select
+# checkpoints, tune the context schedule, and diagnose failures WITHOUT ever
+# touching the test set. That is worth the extra GPU-hours.
+#
+# It is also the BrainCoDec setting: their decoder is trained with the
+# context mechanism in the loop from the beginning, not bolted onto a model
+# that already converged to a user-agnostic optimum.
+#
+# COST: ~10 h at ~2 it/s. Run it overnight.
+phase: icl
+out_dir: /data2/chenyuxiang/runs/myoicl_scratch
+seed: 1502
+amp: bf16
+
+repo_root: /data2/chenyuxiang/code/emg2qwerty
+user_config: generic
+
+# NO init_backbone_from. Random init. This is the whole point of this config.
+freeze_backbone: false
+
+model:
+  version: 1
+  official_mlp_features: [384]
+  freq_bins: 33
+  num_bands: 2
+  channels_per_band: 16
+  d_model: 768
+  tds_block_channels: [24, 24, 24, 24]
+  tds_kernel_width: 32
+  conditioning: deep
+  ctx_version: 2
+  d_ctx: 128
+  d_bneck: 128
+  film_rank: 32
+  d_omega: 64
+  n_latents: 32
+  unit_sample: 256
+  ctx_heads: 4
+  cross_heads: 8
+  ref_context_size: 32
+  dropout: 0.1
+
+data:
+  window_length: 8000
+  padding: [1800, 200]
+  val_batch_size: 16
+  num_workers: 6
+
+episodes:
+  queries: 24
+  ctx_segments: 30
+  ctx_segments_range: [4, 90]
+  ctx_segment_len: 2000
+  # Mode A gets more weight than in the warm-start config: from random init
+  # the model must first learn to decode at all, and mode A is the only
+  # branch that trains the pure user-agnostic pathway. Mode C still dominates
+  # so the context pathway is load-bearing, not decorative.
+  mode_probs: [0.25, 0.20, 0.55]
+  k_shot_range: [32, 256]
+  k_shot_window: 2000
+  cross_session_ctx: true
+  meta_val_users: 10            # CLEAN: unseen by anything in this run
+  p_synth: 0.15
+  synth_strength: [0.15, 0.45]
+  specaug: true
+
+train:
+  lr: 1.0e-3                    # from scratch, not finetuning
+  weight_decay: 0.01
+  betas: [0.9, 0.98]
+  max_steps: 70000
+  warmup_steps: 2000
+  grad_clip: 1.0
+  log_every: 100
+  val_every: 2500
+  val_batches: 60
+  save_every: 5000

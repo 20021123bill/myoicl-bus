@@ -1,0 +1,74 @@
+# Backbone 2, episodic phase: same published backbone, context pathway now
+# trained with context-type dropout (modes A/B/C). Init from phase-A v2.
+phase: icl
+out_dir: /data2/chenyuxiang/runs/myoicl_qwerty_icl_v2
+seed: 1501
+amp: bf16
+
+repo_root: /data2/chenyuxiang/code/emg2qwerty
+user_config: generic
+init_from: /data2/chenyuxiang/runs/myoicl_qwerty_a_v2/best.pt
+
+model:
+  version: 2
+  size: tiny
+  num_bands: 2
+  channels_per_band: 16
+  feat_dims: [128, 64, 64]
+  feat_kernels: [11, 3, 3]
+  feat_strides: [11, 3, 3]
+  trunk_heads: 16
+  trunk_ff_mult: 4
+  dropout: 0.2
+  mask_time_prob: 0.3
+  mask_time_length: 15
+  d_ctx: 128
+  ctx_layers: 2
+  ctx_heads: 4
+  cross_heads: 8
+  ref_context_size: 32
+
+data:
+  window_length: 8000
+  padding: [1800, 200]
+  val_batch_size: 16
+  num_workers: 6
+
+episodes:
+  queries: 40
+  ctx_segments: 30           # 30 x 1 s = 30 s of unlabeled wear (eval setting)
+  ctx_segments_range: [4, 90]   # randomized during training; see above
+  ctx_segment_len: 2000
+  mode_probs: [0.2, 0.4, 0.4]
+  k_shot_max: 8
+  cross_session_ctx: true
+  p_synth: 0.7
+  # Calibrated synthetic users: strength is sampled per episode from this
+  # range. It supersedes the legacy `synth:` block below. Set from the
+  # measured sweep (`python -m myoicl.diagnose_signal --sweep`) so that the
+  # frozen backbone degrades by about as much as it does on real unseen
+  # users -- measured floor 13.4 CER on training users vs 55.4 on unseen.
+  synth_strength: [0.32, 0.60]   # CALIBRATED 2026-08-16 from the measured sweep:
+                                 #   s=0.40 -> CER 40.7 | s=0.50 -> CER 64.6
+                                 #   target = 55.4 (real unseen-user level) -> s~0.46
+                                 #   this range has median 0.46 and spans CER ~26..75,
+                                 #   i.e. a spread of user difficulties, not one setting.
+  synth:
+    rotation_choices: [-1, 0, 1]
+    gain_log_std: 0.2
+    p_noise: 0.5
+    snr_range: [20.0, 40.0]
+    p_mix: 0.0
+  specaug: false             # raw pipeline; masking happens inside the trunk
+
+train:
+  lr: 3.0e-4
+  weight_decay: 0.1
+  betas: [0.9, 0.98]
+  max_steps: 100000
+  warmup_steps: 2000
+  grad_clip: 0.1
+  log_every: 50
+  val_every: 2000
+  val_batches: 60
+  save_every: 2000

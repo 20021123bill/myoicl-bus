@@ -1,0 +1,12 @@
+runs/
+data/
+paper/
+*.pt
+*.ckpt
+*.hdf5
+*.npz
+*.pdf
+*.tar.gz
+__pycache__/
+*.pyc
+.git-credentials

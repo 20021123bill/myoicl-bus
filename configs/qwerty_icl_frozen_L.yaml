@@ -1,0 +1,91 @@
+# MAINLINE EXPERIMENT (08-16): the officially released emg2qwerty model,
+# FROZEN, plus our meta-trained context modules.
+#
+# Why this is the strongest possible attribution:
+#   * weights   = the released generic.ckpt (our reproduction: 55.39 CER)
+#   * architecture, recipe, data, splits = theirs, untouched
+#   * our context modules are zero-init gated side-paths, so at step 0 the
+#     network computes EXACTLY the published model
+#   * only ~0.5M context parameters ever receive a gradient
+# Therefore every point of improvement is attributable to the added module.
+# No phase-A run is needed for this backbone at all.
+phase: icl
+out_dir: /data2/chenyuxiang/runs/myoicl_frozen_official_L
+seed: 1501
+amp: bf16
+
+repo_root: /data2/chenyuxiang/code/emg2qwerty
+user_config: generic
+
+# Start from the released checkpoint and never update it.
+init_backbone_from: /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt
+freeze_backbone: true
+
+model:
+  version: 1
+  frontend: official          # the published spatial frontend, verbatim
+  official_mlp_features: [384]
+  freq_bins: 33
+  num_bands: 2
+  channels_per_band: 16
+  d_model: 768
+  tds_block_channels: [24, 24, 24, 24]
+  tds_kernel_width: 32
+  conditioning: deep          # ablation alternative: output_only
+  d_ctx: 384            # context encoder is one-time per user -> essentially free at inference
+  d_bneck: 768          # full backbone width: no artificial cap on the injection
+  film_rank: 128
+  ctx_layers: 3
+  ctx_heads: 4
+  cross_heads: 8
+  ref_context_size: 32
+  dropout: 0.1
+
+data:
+  window_length: 8000
+  padding: [1800, 200]
+  val_batch_size: 16
+  num_workers: 6
+
+episodes:
+  queries: 32
+  ctx_segments: 30            # 30 x 1 s = 30 s of unlabeled wear (eval setting)
+  # Randomized context length during training (BrainCoDec's "contextual
+  # extension" stage). Without it, the context-scaling figure would measure
+  # "unseen context length" instead of "information carried by the context".
+  # 4..90 segments = 4 s .. 1.5 min of wear, straddling the 30 s we report.
+  ctx_segments_range: [4, 90]
+  ctx_segment_len: 2000
+  mode_probs: [0.0, 0.5, 0.5]   # frozen backbone: mode A is exact by construction, so only B/C are trained
+  k_shot_max: 8
+  cross_session_ctx: true
+  p_synth: 0.7
+  # Calibrated synthetic users: strength is sampled per episode from this
+  # range. It supersedes the legacy `synth:` block below. Set from the
+  # measured sweep (`python -m myoicl.diagnose_signal --sweep`) so that the
+  # frozen backbone degrades by about as much as it does on real unseen
+  # users -- measured floor 13.4 CER on training users vs 55.4 on unseen.
+  synth_strength: [0.32, 0.60]   # CALIBRATED 2026-08-16 from the measured sweep:
+                                 #   s=0.40 -> CER 40.7 | s=0.50 -> CER 64.6
+                                 #   target = 55.4 (real unseen-user level) -> s~0.46
+                                 #   this range has median 0.46 and spans CER ~26..75,
+                                 #   i.e. a spread of user difficulties, not one setting.
+  synth:
+    rotation_choices: [-1, 0, 1]
+    gain_log_std: 0.2
+    p_noise: 0.5
+    snr_range: [20.0, 40.0]
+    p_mix: 0.0
+  specaug: true
+
+train:
+  lr: 3.0e-4                  # only ~0.5M context params are trained
+  weight_decay: 0.01
+  betas: [0.9, 0.98]
+  max_steps: 60000
+  warmup_steps: 2000
+  grad_clip: 1.0
+  log_every: 50
+  val_every: 1000
+  val_batches: 60
+  save_every: 1000

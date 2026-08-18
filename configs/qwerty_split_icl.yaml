@@ -1,0 +1,73 @@
+# STEP 2b of the split-cohort design -- REAL CROSS-USER FINETUNE
+# (BrainCoDec stage 3). Meta-train the context module on the 50 users the
+# backbone never saw: real cross-user shift, not simulated.
+#
+# Initialised from the synthetic warmup (step 2a) so the module already knows
+# how to read a context set; this stage supplies the distribution it actually
+# has to correct. p_synth stays low: synthetic users are now a regulariser,
+# not the signal. The signal is that the frozen backbone genuinely fails on
+# these 50 people the same way it fails on strangers.
+phase: icl
+out_dir: /data2/chenyuxiang/runs/myoicl_split_icl
+seed: 1501
+amp: bf16
+
+repo_root: /data2/chenyuxiang/code/emg2qwerty
+user_config: generic
+
+init_from: /data2/chenyuxiang/runs/myoicl_split_icl_s1/last.pt
+freeze_backbone: true
+
+user_split:
+  backbone_frac: 0.5     # same split, same seed -> the complementary half
+  seed: 0
+
+model:
+  version: 1
+  official_mlp_features: [384]
+  freq_bins: 33
+  num_bands: 2
+  channels_per_band: 16
+  d_model: 768
+  tds_block_channels: [24, 24, 24, 24]
+  tds_kernel_width: 32
+  conditioning: deep
+  d_ctx: 128
+  d_bneck: 128
+  film_rank: 32
+  ctx_layers: 2
+  ctx_heads: 4
+  cross_heads: 8
+  ref_context_size: 32
+  dropout: 0.1
+
+data:
+  window_length: 8000
+  padding: [1800, 200]
+  val_batch_size: 16
+  num_workers: 6
+
+episodes:
+  queries: 32
+  ctx_segments: 30
+  ctx_segments_range: [4, 90]
+  ctx_segment_len: 2000
+  mode_probs: [0.0, 0.5, 0.5]
+  k_shot_max: 8
+  cross_session_ctx: true
+  meta_val_users: 8
+  p_synth: 0.25          # real shift is now the signal; synthetic only regularizes
+  synth_strength: [0.20, 0.45]
+  specaug: true
+
+train:
+  lr: 3.0e-4
+  weight_decay: 0.01
+  betas: [0.9, 0.98]
+  max_steps: 40000
+  warmup_steps: 1000
+  grad_clip: 1.0
+  log_every: 50
+  val_every: 1000
+  val_batches: 60
+  save_every: 1000

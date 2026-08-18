@@ -1,0 +1,26 @@
+{
+  "train_users_clean": 13.189156259518732,
+  "train_users_synth": 85.4149203688181,
+  "unseen_reference": 55.39,
+  "synthetic_gap": 72.22576410929938,
+  "real_gap": 42.20084374048127,
+  "ratio": 1.7114767788402445,
+  "transform": {
+    "rotation_choices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "gain_log_std": 0.5,
+    "p_noise": 1.0,
+    "snr_range": [
+      10.0,
+      25.0
+    ],
+    "p_mix": 0.5,
+    "mix_sigma_max": 0.6
+  }
+}

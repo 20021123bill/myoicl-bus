@@ -1,0 +1,55 @@
+{
+  "per_user": {
+    "user0": {
+      "CER": 61.50963597430407,
+      "edits": 5745,
+      "target_chars": 9340,
+      "pairs": 2
+    },
+    "user1": {
+      "CER": 59.956686518678936,
+      "edits": 5537,
+      "target_chars": 9235,
+      "pairs": 2
+    },
+    "user2": {
+      "CER": 48.01094506419701,
+      "edits": 4562,
+      "target_chars": 9502,
+      "pairs": 2
+    },
+    "user3": {
+      "CER": 54.70038482682793,
+      "edits": 4975,
+      "target_chars": 9095,
+      "pairs": 2
+    },
+    "user4": {
+      "CER": 58.2367643717337,
+      "edits": 5126,
+      "target_chars": 8802,
+      "pairs": 2
+    },
+    "user5": {
+      "CER": 53.84703196347032,
+      "edits": 4717,
+      "target_chars": 8760,
+      "pairs": 2
+    },
+    "user6": {
+      "CER": 54.66121495327103,
+      "edits": 4679,
+      "target_chars": 8560,
+      "pairs": 2
+    },
+    "user7": {
+      "CER": 52.17011041871652,
+      "edits": 4772,
+      "target_chars": 9147,
+      "pairs": 2
+    }
+  },
+  "mean_user_cer": 55.38659676139994,
+  "mode": "identity",
+  "ctx_seconds": 30.0
+}
