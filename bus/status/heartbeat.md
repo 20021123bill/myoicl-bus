@@ -1,11 +1,11 @@
-# heartbeat 2026-08-18T22:42:04+08:00
+# heartbeat 2026-08-18T22:42:45+08:00
 
 ## gpu
 ```
-0, 7995 MiB, 24576 MiB, 6 %
-1, 12 MiB, 24576 MiB, 1 %
+0, 16 MiB, 24576 MiB, 0 %
+1, 12 MiB, 24576 MiB, 0 %
 2, 2707 MiB, 24576 MiB, 0 %
-3, 2483 MiB, 24576 MiB, 0 %
+3, 2691 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -400,29 +400,29 @@ NOTE: ~/.ssh/ is left alone on purpose -- ssh only reads keys from there,
 
 ### 130_commit_and_eval_d1.log
 ```
- M myoicl/context.py
- M myoicl/gate_report.py
- M myoicl/model.py
- M myoicl/train_qwerty.py
- M runner.sh
-?? bus/jobs/010_archive.sh
-?? bus/jobs/020_d1_gatefix.sh
-?? bus/jobs/030_d2_forcectx.sh
-?? bus/results/130_commit_and_eval_d1.done
-?? bus/results/130_commit_and_eval_d1.log
-?? bus/results/130_commit_and_eval_d1.started
-?? bus/status/heartbeat.md.tmp
-?? myoicl/configs/qwerty_gatefix.yaml
-tree now:
-7
-
-########## 2. D1 state ##########
-[optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
-[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
-[watchdog] armed
-D1 never reached step 100 -> restarting it
-restarted D1 with save_every=1000 so we can evaluate early snapshots
-
-########## 3. wait for the first D1 checkpoint, then evaluate it on the 8 OFFICIAL TEST USERS ##########
-checkpoint found at 2026年 08月 18日 星期二 22:40:26 CST. Evaluating on GPU0.
+[A] user7: CER 52.69
+[A] mean over users: 54.38
+[B] user0: CER 59.19
+[B] user1: CER 61.95
+[B] user2: CER 45.82
+[B] user3: CER 53.32
+[B] user4: CER 57.67
+[B] user5: CER 49.20
+[B] user6: CER 55.23
+[B] user7: CER 52.04
+[B] mean over users: 54.30
+[C] user0: CER 61.94
+[C] user1: CER 61.81
+[C] user2: CER 45.82
+[C] user3: CER 53.45
+[C] user4: CER 55.69
+[C] user5: CER 49.26
+[C] user6: CER 55.51
+[C] user7: CER 52.79
+[C] mean over users: 54.53
+[A] gap closed vs personalization ceiling: 2.3%
+[B] gap closed vs personalization ceiling: 2.5%
+[C] gap closed vs personalization ceiling: 1.9%
+[saved] /data2/chenyuxiang/runs/eval/d1_early_ABC_k256.json
+=== DONE: this is the first real mode-C number on the 8 held-out users ===
 ```
