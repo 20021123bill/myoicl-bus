@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T03:14:29+08:00
+# heartbeat 2026-08-19T03:15:11+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 5736 MiB, 24576 MiB, 0 %
-2, 3825 MiB, 24576 MiB, 75 %
-3, 3181 MiB, 24576 MiB, 0 %
+1, 5736 MiB, 24576 MiB, 21 %
+2, 3825 MiB, 24576 MiB, 0 %
+3, 3181 MiB, 24576 MiB, 8 %
 ```
 
 ## jobs
@@ -42,6 +42,7 @@
 280_v3_padfix_train                      DONE rc=127
 290_v3_cheavy                            DONE rc=127
 300_v3_frozen                            DONE rc=127
+310_v31_kvsplit                          DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -831,4 +832,10 @@ step 100/12000 | loss 1.7924 | lr 3.07e-06 | 2.13 it/s
 step 200/12000 | loss 1.6190 | lr 6.30e-06 | 2.71 it/s
 step 300/12000 | loss 1.3745 | lr 9.45e-06 | 2.43 it/s
 --- wait frozen step >= 6000 (03:07) ---
+```
+
+### 310_v31_kvsplit.log
+```
+=== deploy v3.1 (key/value split) ===
+=== smoke (tests kv_split False AND True) ===
 ```
