@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T04:20:04+08:00
+# heartbeat 2026-08-19T04:20:46+08:00
 
 ## gpu
 ```
-0, 7435 MiB, 24576 MiB, 0 %
-1, 3679 MiB, 24576 MiB, 0 %
-2, 3849 MiB, 24576 MiB, 79 %
-3, 3181 MiB, 24576 MiB, 77 %
+0, 16487 MiB, 24576 MiB, 0 %
+1, 3679 MiB, 24576 MiB, 80 %
+2, 3849 MiB, 24576 MiB, 0 %
+3, 3181 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -905,7 +905,6 @@ SMOKE FAILED -- not launching
 
 ### 320_v31_relaunch.log
 ```
-[smoke] built 50 support tokens from 6 windows
 [smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
 [smoke] init grad o_proj=4.382e+01 (want >0: path can open)
 [smoke] with o_proj opened, mean|mode C - mode A| = 3.0983e-02 (want >0: context now changes output)
@@ -930,6 +929,7 @@ step 200/12000 | loss 1.4696 | lr 7.54e-06 | 2.81 it/s
 step 300/12000 | loss 1.4570 | lr 1.13e-05 | 2.67 it/s
 step 400/12000 | loss 1.3018 | lr 1.50e-05 | 3.44 it/s
 --- wait v3.1 step >= 2000 (04:09) ---
+=== v3.1 @ step ~2000 : 8 users A/B/C ===
 ```
 
 ### 330_v32_filmonly.log
