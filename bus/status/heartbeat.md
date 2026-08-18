@@ -1,11 +1,11 @@
-# heartbeat 2026-08-18T23:07:45+08:00
+# heartbeat 2026-08-18T23:08:27+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 2707 MiB, 24576 MiB, 0 %
-3, 2695 MiB, 24576 MiB, 0 %
+3, 2695 MiB, 24576 MiB, 57 %
 ```
 
 ## jobs
@@ -501,10 +501,29 @@ runner.sh patched (effective on next runner restart)
 
 ### 170_effective_injection.log
 ```
-=== why tanh(g) alone is a misleading readout ===
-The residual is  x + tanh(g) * o_proj(Attn(...)).  tanh(g) and o_proj are
-not separately identifiable: halving the gate and doubling o_proj leaves
-the function unchanged. The gate falling from 0.53 to 0.02 therefore says
 nothing on its own. The identifiable quantity is the product.
 
+--- myoicl_d1_spawn  step 3000
+    cross_pre   tanh(g)=+0.01901  ||W||=  7.1508  ||b||= 1.0978   EFFECTIVE |tanh(g)|*||W|| = 0.13590
+    cross_post  tanh(g)=+0.02816  ||W||=  6.0389  ||b||= 0.6200   EFFECTIVE |tanh(g)|*||W|| = 0.17007
+    film.up     ||W||=  6.1545
+    TOTAL effective cross-attention injection = 0.30598
+--- myoicl_d2_spawn  step 2000
+    cross_pre   tanh(g)=+0.39751  ||W||=  7.0806  ||b||= 1.0337   EFFECTIVE |tanh(g)|*||W|| = 2.81460
+    cross_post  tanh(g)=+0.32762  ||W||=  5.2151  ||b||= 1.1652   EFFECTIVE |tanh(g)|*||W|| = 1.70855
+    film.up     ||W||=  6.5064
+    TOTAL effective cross-attention injection = 4.52315
+--- myoicl_joint  step 20000
+    cross_pre   tanh(g)=-0.00012  ||W||= 15.8597  ||b||= 1.4019   EFFECTIVE |tanh(g)|*||W|| = 0.00191
+    cross_post  tanh(g)=-0.00142  ||W||= 15.7783  ||b||= 1.3316   EFFECTIVE |tanh(g)|*||W|| = 0.02244
+    film.up     ||W||=  2.0835
+    TOTAL effective cross-attention injection = 0.02434
+--- myoicl_scratch  step 70000
+    cross_pre   tanh(g)=-0.00043  ||W||= 22.7253  ||b||= 2.2289   EFFECTIVE |tanh(g)|*||W|| = 0.00984
+    cross_post  tanh(g)=-0.00004  ||W||= 14.4087  ||b||= 1.2476   EFFECTIVE |tanh(g)|*||W|| = 0.00060
+    film.up     ||W||= 18.3706
+    TOTAL effective cross-attention injection = 0.01044
+
+=== patch gate_report.py so every future report prints the product ===
+gate_report.py now prints the effective product
 ```
