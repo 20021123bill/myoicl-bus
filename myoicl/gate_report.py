@@ -59,6 +59,18 @@ def report(path: str) -> None:
             flag = _flag(mx > 1e-2, mx > 1e-4)
             print(f"    {flag}  {k:<40s} |w|mean={m:.3e} max={mx:.3e}")
 
+    # tanh(g) and o_proj trade off exactly: halving one and doubling the other
+    # leaves the function unchanged, so the gate alone is not a readout of how
+    # much context is injected. Report the identifiable product.
+    print("  effective injection  |tanh(g)| * ||o_proj.W||:")
+    for pre in ("cross_pre", "cross_post"):
+        g = sd.get(f"{pre}.gate"); w = sd.get(f"{pre}.o_proj.weight")
+        if g is None or w is None:
+            continue
+        t = abs(float(torch.tanh(g.float().reshape(-1)[0])))
+        n = float(w.float().norm())
+        print(f"    {pre:<12s} |tanh(g)|={t:.5f}  ||W||={n:8.4f}  EFFECTIVE={t * n:.5f}")
+
     _stat(lambda k: k.startswith("film.up."), "FiLM output projection (zero-init):")
     _stat(lambda k: "affine" in k and k.endswith(("weight", "bias"))
           and k.split(".")[-2].isdigit(),
