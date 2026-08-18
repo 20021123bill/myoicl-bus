@@ -1,10 +1,10 @@
-# heartbeat 2026-08-18T22:30:18+08:00
+# heartbeat 2026-08-18T22:31:00+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
-2, 2707 MiB, 24576 MiB, 0 %
+2, 2345 MiB, 24576 MiB, 15 %
 3, 2483 MiB, 24576 MiB, 0 %
 ```
 
@@ -171,6 +171,16 @@ step 200/8000 | loss 2.7280 | lr 2.01e-05 | 0.86 it/s
 ```
 
 ### 035_d1_spawn.log
+```
+[model] v1 | 6.25M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
+[watchdog] armed
+```
+
+### 036_d1_spawn2.log
 ```
 [model] v1 | 6.25M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
 [data] train sessions=837 val sessions=192
@@ -385,7 +395,6 @@ NOTE: ~/.ssh/ is left alone on purpose -- ssh only reads keys from there,
 
 ### 130_commit_and_eval_d1.log
 ```
-########## 1. commit the patched sources so the runner stops rewriting them ##########
  M myoicl/configs/qwerty_forcectx.yaml
  M myoicl/context.py
  M myoicl/gate_report.py
@@ -408,4 +417,7 @@ tree now:
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
 [watchdog] armed
 D1 never reached step 100 -> restarting it
+restarted D1 with save_every=1000 so we can evaluate early snapshots
+
+########## 3. wait for the first D1 checkpoint, then evaluate it on the 8 OFFICIAL TEST USERS ##########
 ```
