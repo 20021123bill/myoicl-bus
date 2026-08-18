@@ -1,9 +1,9 @@
-# heartbeat 2026-08-19T02:21:27+08:00
+# heartbeat 2026-08-19T02:22:09+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 1819 MiB, 24576 MiB, 6 %
+1, 1819 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -708,15 +708,29 @@ SMOKE STILL FAILING -- stopping.
 
 ### 260_v3_smoke3_train.log
 ```
-=== deploy smoke fix (set o_proj nonzero instead of unstable SGD) ===
-=== v3 smoke ===
-[smoke] built 50 support tokens from 6 windows
-[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
-[smoke] init grad o_proj=3.382e+01 (want >0: path can open)
-[smoke] with o_proj opened, mean|mode C - mode A| = 3.7174e-02 (want >0: context now changes output)
-[smoke] grad to frame context encoder now = 1.098e+01
-[smoke] full-length support -> 96 tokens (>= 50 masked)
-[smoke v3] ALL PASS
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
+[watchdog] armed
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/train_qwerty.py", line 782, in <module>
+    main()
+  File "/data2/chenyuxiang/code/myoicl/myoicl/train_qwerty.py", line 712, in main
+    loss, _, _ = episode_forward(model, batch, device, autocast_dtype)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/train_qwerty.py", line 165, in episode_forward
+    ctx_tokens, ctx_pooled, ctx_affine = model.encode_context(
+  File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 234, in encode_context
+    feats, logp, flens = self._support_frames(
+  File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 325, in _support_frames
+    feats = self.tds(feats)                    # (Tf, K, d_model)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
+Traceback (most recent call last):
+RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: (1 x 32). Kernel size can't be greater than actual input size
 
-=== launch v3 training on GPU2 ===
+=== periodic eval by checkpoint step ===
+--- waiting for v3 step >= 2000 (02:22) ---
 ```
