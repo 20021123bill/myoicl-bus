@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T01:01:42+08:00
+# heartbeat 2026-08-19T01:02:33+08:00
 
 ## gpu
 ```
-0, 7995 MiB, 24576 MiB, 0 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 4376 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 2695 MiB, 24576 MiB, 0 %
@@ -558,16 +558,6 @@ committed
 
 ### 200_d3_from_pretrained_units.log
 ```
-step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
---- waiting for D3 checkpoint step >= 2000 (23:39) ---
-=== D3 @ step ~2000 : 8 official held-out users, A/B/C, K=256 ===
-[A] mean over users: 53.98
-[B] mean over users: 54.18
-[C] mean over users: 54.19
-[A] gap closed vs personalization ceiling: 3.2%
-[B] gap closed vs personalization ceiling: 2.7%
-[C] gap closed vs personalization ceiling: 2.7%
-=== /tmp/d3_snap.pt  (step 2000) ===
     cross_pre    |tanh(g)|=0.22478  ||W||=  6.2468  EFFECTIVE=1.40417
     cross_post   |tanh(g)|=0.18466  ||W||=  5.1602  EFFECTIVE=0.95287
 --- waiting for D3 checkpoint step >= 5000 (00:00) ---
@@ -583,6 +573,16 @@ step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
     cross_post   |tanh(g)|=0.00475  ||W||=  7.4897  EFFECTIVE=0.03559
 --- waiting for D3 checkpoint step >= 8000 (00:30) ---
 === D3 @ step ~8000 : 8 official held-out users, A/B/C, K=256 ===
+[A] mean over users: 54.49
+[B] mean over users: 54.77
+[C] mean over users: 54.78
+[A] gap closed vs personalization ceiling: 2.0%
+[B] gap closed vs personalization ceiling: 1.4%
+[C] gap closed vs personalization ceiling: 1.4%
+=== /tmp/d3_snap.pt  (step 8000) ===
+    cross_pre    |tanh(g)|=0.00165  ||W||=  8.4925  EFFECTIVE=0.01399
+    cross_post   |tanh(g)|=0.00059  ||W||=  7.6299  EFFECTIVE=0.00450
+=== D3 evaluation curve complete ===
 ```
 
 ### 210_encoding_beta_d4.log
