@@ -35,3 +35,13 @@ step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
     cross_post   |tanh(g)|=0.00475  ||W||=  7.4897  EFFECTIVE=0.03559
 --- waiting for D3 checkpoint step >= 8000 (00:30) ---
 === D3 @ step ~8000 : 8 official held-out users, A/B/C, K=256 ===
+[A] mean over users: 54.49
+[B] mean over users: 54.77
+[C] mean over users: 54.78
+[A] gap closed vs personalization ceiling: 2.0%
+[B] gap closed vs personalization ceiling: 1.4%
+[C] gap closed vs personalization ceiling: 1.4%
+=== /tmp/d3_snap.pt  (step 8000) ===
+    cross_pre    |tanh(g)|=0.00165  ||W||=  8.4925  EFFECTIVE=0.01399
+    cross_post   |tanh(g)|=0.00059  ||W||=  7.6299  EFFECTIVE=0.00450
+=== D3 evaluation curve complete ===
