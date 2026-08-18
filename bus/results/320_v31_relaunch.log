@@ -36,3 +36,4 @@ step 200/12000 | loss 1.4696 | lr 7.54e-06 | 2.81 it/s
 step 300/12000 | loss 1.4570 | lr 1.13e-05 | 2.67 it/s
 step 400/12000 | loss 1.3018 | lr 1.50e-05 | 3.44 it/s
 --- wait v3.1 step >= 2000 (04:09) ---
+=== v3.1 @ step ~2000 : 8 users A/B/C ===
