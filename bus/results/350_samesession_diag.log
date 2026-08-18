@@ -3,3 +3,6 @@
 
 ############ myoicl_v31_kvsplit (step 12000) ############
 --- CROSS-session (labelled support from OTHER sessions; the default all runs used) ---
+[A] mean over users: 54.75
+[C] mean over users: 55.26
+--- SAME-session (labelled support from the DECODED session itself) ---
