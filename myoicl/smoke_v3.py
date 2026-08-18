@@ -118,7 +118,7 @@ def main(kv_split=False) -> int:
     )
     _tf = tok_full[0] if isinstance(tok_full, tuple) else tok_full
     assert _tf.shape[1] >= Mtok, "length mask increased token count"
-    print(f"[smoke] full-length support -> {tok_full.shape[1]} tokens "
+    print(f"[smoke] full-length support -> {_tf.shape[1]} tokens "
           f"(>= {Mtok} masked)")
 
     print("[smoke v3] ALL PASS")
