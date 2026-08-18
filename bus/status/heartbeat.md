@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T05:40:24+08:00
+# heartbeat 2026-08-19T05:41:06+08:00
 
 ## gpu
 ```
-0, 7437 MiB, 24576 MiB, 0 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -937,10 +937,6 @@ step 400/12000 | loss 1.3018 | lr 1.50e-05 | 3.44 it/s
 
 ### 330_v32_filmonly.log
 ```
-[data] train sessions=837 val sessions=192
-[data] episodic users=86 train + 10 meta-val (held out from module training)
-[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
-[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
 [watchdog] armed
 step 100/12000 | loss 1.6424 | lr 3.79e-06 | 2.62 it/s
 step 200/12000 | loss 1.2428 | lr 7.54e-06 | 3.53 it/s
@@ -962,6 +958,10 @@ step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
 [C] mean over users: 55.70
 --- wait v3.2 step >= 12000 (05:04) ---
 === v3.2 @ step ~12000 : 8 users A/B/C ===
+[A] mean over users: 55.77
+[B] mean over users: 55.77
+[C] mean over users: 57.02
+=== v3.2 complete ===
 ```
 
 ### 340_ctxsource_diag.log
