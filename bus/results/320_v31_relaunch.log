@@ -20,3 +20,4 @@
 [smoke v3] ALL PASS
 === wait for a free GPU (v3-main on GPU2 to finish) ===
 v3-main at step 12000
+=== launch v3.1 on GPU2 ===
