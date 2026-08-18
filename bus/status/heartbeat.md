@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T03:52:11+08:00
+# heartbeat 2026-08-19T03:52:52+08:00
 
 ## gpu
 ```
-0, 21967 MiB, 24576 MiB, 85 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 3679 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 3181 MiB, 24576 MiB, 0 %
@@ -793,13 +793,6 @@ SMOKE FAILED
 
 ### 280_v3_padfix_train.log
 ```
-[C] gap closed vs personalization ceiling: 1.8%
-=== /tmp/v3_snap.pt  (step 2000) ===
-    cross_pre    |tanh(g)|=0.45023  ||W||=  6.1459  EFFECTIVE=2.76706
-    cross_post   |tanh(g)|=0.42207  ||W||=  4.9640  EFFECTIVE=2.09517
---- waiting for v3 step >= 5000 (02:49) ---
-=== v3 @ step ~5000 : 8 official held-out users, A/B/C ===
-[A] mean over users: 54.18
 [B] mean over users: 54.18
 [C] mean over users: 55.22
 [A] gap closed vs personalization ceiling: 2.7%
@@ -818,6 +811,13 @@ SMOKE FAILED
 [C] gap closed vs personalization ceiling: -1.1%
 --- waiting for v3 step >= 12000 (03:33) ---
 === v3 @ step ~12000 : 8 official held-out users, A/B/C ===
+[A] mean over users: 54.16
+[B] mean over users: 54.16
+[C] mean over users: 55.15
+[A] gap closed vs personalization ceiling: 2.8%
+[B] gap closed vs personalization ceiling: 2.8%
+[C] gap closed vs personalization ceiling: 0.5%
+=== v3 curve complete ===
 ```
 
 ### 290_v3_cheavy.log

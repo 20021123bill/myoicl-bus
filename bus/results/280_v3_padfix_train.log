@@ -59,3 +59,10 @@ step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
 [C] gap closed vs personalization ceiling: -1.1%
 --- waiting for v3 step >= 12000 (03:33) ---
 === v3 @ step ~12000 : 8 official held-out users, A/B/C ===
+[A] mean over users: 54.16
+[B] mean over users: 54.16
+[C] mean over users: 55.15
+[A] gap closed vs personalization ceiling: 2.8%
+[B] gap closed vs personalization ceiling: 2.8%
+[C] gap closed vs personalization ceiling: 0.5%
+=== v3 curve complete ===
