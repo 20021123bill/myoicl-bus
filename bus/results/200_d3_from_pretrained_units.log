@@ -12,3 +12,4 @@ found /data2/chenyuxiang/runs/units_pretrain.pt at 2026年 08月 18日 星期二
 [watchdog] armed
 step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
 --- waiting for D3 checkpoint step >= 2000 (23:39) ---
+=== D3 @ step ~2000 : 8 official held-out users, A/B/C, K=256 ===

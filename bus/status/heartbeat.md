@@ -1,11 +1,11 @@
-# heartbeat 2026-08-18T23:57:30+08:00
+# heartbeat 2026-08-18T23:58:24+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 5693 MiB, 24576 MiB, 0 %
 1, 1819 MiB, 24576 MiB, 0 %
-2, 2709 MiB, 24576 MiB, 28 %
-3, 2695 MiB, 24576 MiB, 27 %
+2, 2709 MiB, 24576 MiB, 0 %
+3, 2695 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -571,4 +571,5 @@ found /data2/chenyuxiang/runs/units_pretrain.pt at 2026年 08月 18日 星期二
 [watchdog] armed
 step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
 --- waiting for D3 checkpoint step >= 2000 (23:39) ---
+=== D3 @ step ~2000 : 8 official held-out users, A/B/C, K=256 ===
 ```
