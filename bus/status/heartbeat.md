@@ -1,8 +1,8 @@
-# heartbeat 2026-08-18T23:02:12+08:00
+# heartbeat 2026-08-18T23:02:54+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 7437 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 2707 MiB, 24576 MiB, 0 %
 3, 2693 MiB, 24576 MiB, 0 %
@@ -481,4 +481,5 @@ runner.sh patched (effective on next runner restart)
 ```
 === eval curve driven by the checkpoint's own step field, not by the log ===
 --- waiting for D1 checkpoint to reach step 3000 (23:02) ---
+=== D1 @ step 3000 : 8 official held-out users, modes A/B/C, K=256 ===
 ```
