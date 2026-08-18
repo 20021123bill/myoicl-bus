@@ -1,4 +1,4 @@
-# heartbeat 2026-08-19T02:33:19+08:00
+# heartbeat 2026-08-19T02:34:01+08:00
 
 ## gpu
 ```
@@ -39,6 +39,7 @@
 250_v3_smoke_train                       DONE rc=127
 260_v3_smoke3_train                      DONE rc=127
 270_v3_fullwin_train                     DONE rc=127
+280_v3_padfix_train                      DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -759,4 +760,8 @@ Traceback (most recent call last):
     tok = tok[valid]                                      # (M0, d_ctx)
 IndexError: The shape of the mask [96] at index 0 does not match the shape of the indexed tensor [192, 32] at index 0
 SMOKE FAILED
+```
+
+### 280_v3_padfix_train.log
+```
 ```
