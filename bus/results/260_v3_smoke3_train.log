@@ -57,3 +57,4 @@ RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: 
 [B] gap closed vs personalization ceiling: 2.7%
 [C] gap closed vs personalization ceiling: 0.4%
 --- waiting for v3 step >= 9000 (03:07) ---
+=== v3 @ step ~9000 : 8 official held-out users, A/B/C, K=128 ===

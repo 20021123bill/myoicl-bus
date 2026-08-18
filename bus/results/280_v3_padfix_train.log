@@ -50,3 +50,4 @@ step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
     cross_pre    |tanh(g)|=0.09691  ||W||= 11.4994  EFFECTIVE=1.11445
     cross_post   |tanh(g)|=0.01985  ||W||=  9.1071  EFFECTIVE=0.18075
 --- waiting for v3 step >= 9000 (03:07) ---
+=== v3 @ step ~9000 : 8 official held-out users, A/B/C ===
