@@ -1,0 +1,57 @@
+=== host ===
+cores: 128
+              总计         已用        空闲      共享    缓冲/缓存    可用
+内存：        2015          60         127           5        1827        1938
+交换：           7           0           7
+ 20:56:24 up 112 days,  23:12,  22 users,  load average: 0.02, 0.03, 0.01
+=== gpu ===
+0, 2661 MiB, 24576 MiB, 0 %
+1, 2749 MiB, 24576 MiB, 0 %
+2, 2707 MiB, 24576 MiB, 0 %
+3, 2837 MiB, 24576 MiB, 0 %
+=== live training procs BEFORE ===
+2909246 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
+2909253 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
+2909801 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
+2909837 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
+2909927 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
+2909928 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
+2910053 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
+2910054 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
+2910179 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
+2910180 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
+2910305 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
+2910306 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
+2910381 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
+2910421 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
+3219850 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
+3220284 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
+3220347 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
+3220410 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
+3220473 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
+3220536 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
+3220599 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
+3223111 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
+3223347 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
+3223410 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
+3223473 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
+3223536 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
+3223599 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
+3223662 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
+=== kernel OOM kills ===
+[五 5月 15 17:18:48 2026] MCR 0 interpret invoked oom-killer: gfp_mask=0x1100cca(GFP_HIGHUSER_MOVABLE), order=0, oom_score_adj=0
+[五 5月 15 17:18:48 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0-1,global_oom,task_memcg=/user.slice/user-1021.slice/session-963.scope,task=MATLAB,pid=4161674,uid=1021
+[五 5月 15 17:18:48 2026] Out of memory: Killed process 4161674 (MATLAB) total-vm:74669400kB, anon-rss:47197672kB, file-rss:0kB, shmem-rss:0kB, UID:1021 pgtables:95020kB oom_score_adj:0
+[五 5月 15 17:19:17 2026] GTP_0 invoked oom-killer: gfp_mask=0x1100cca(GFP_HIGHUSER_MOVABLE), order=0, oom_score_adj=0
+[五 5月 15 17:19:17 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0-1,global_oom,task_memcg=/user.slice/user-1021.slice/session-963.scope,task=MATLAB,pid=4167877,uid=1021
+[五 5月 15 17:19:17 2026] Out of memory: Killed process 4167877 (MATLAB) total-vm:78782016kB, anon-rss:49186560kB, file-rss:0kB, shmem-rss:0kB, UID:1021 pgtables:99276kB oom_score_adj:0
+[五 5月 15 17:19:25 2026] MCR 0 interpret invoked oom-killer: gfp_mask=0x1100cca(GFP_HIGHUSER_MOVABLE), order=0, oom_score_adj=0
+[五 5月 15 17:19:25 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0-1,global_oom,task_memcg=/user.slice/user-1021.slice/session-963.scope,task=MATLAB,pid=4166554,uid=1021
+[五 5月 15 17:19:25 2026] Out of memory: Killed process 4166554 (MATLAB) total-vm:74016844kB, anon-rss:50961616kB, file-rss:0kB, shmem-rss:0kB, UID:1021 pgtables:101960kB oom_score_adj:0
+[五 5月 15 17:19:36 2026] GTP_1 invoked oom-killer: gfp_mask=0x1100cca(GFP_HIGHUSER_MOVABLE), order=0, oom_score_adj=0
+[五 5月 15 17:19:36 2026] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0-1,global_oom,task_memcg=/user.slice/user-1021.slice/session-963.scope,task=MATLAB,pid=4158571,uid=1021
+[五 5月 15 17:19:36 2026] Out of memory: Killed process 4158571 (MATLAB) total-vm:78520472kB, anon-rss:52567212kB, file-rss:0kB, shmem-rss:0kB, UID:1021 pgtables:106796kB oom_score_adj:0
+=== last lines of the two dead runs ===
+tail: 在无效上下文中使用选项 -- 3
+
+=== killing all training procs, relaunching D1/D2 with num_workers=2 ===

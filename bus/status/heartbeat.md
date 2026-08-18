@@ -1,8 +1,8 @@
-# heartbeat 2026-08-18T20:55:42+08:00
+# heartbeat 2026-08-18T20:56:24+08:00
 
 ## gpu
 ```
-0, 2661 MiB, 24576 MiB, 47 %
+0, 2661 MiB, 24576 MiB, 0 %
 1, 2749 MiB, 24576 MiB, 0 %
 2, 2707 MiB, 24576 MiB, 0 %
 3, 2837 MiB, 24576 MiB, 0 %
@@ -18,6 +18,7 @@
 040_fix_runner                           DONE rc=127
 050_eval_e1_then_d0a                     DONE rc=127
 060_d0b_gate0_forced                     DONE rc=127
+070_diag_relaunch                        DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -136,4 +137,33 @@ runner.sh patched; effective on next restart
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
 step 100/8000 | loss 3.2248 | lr 1.01e-05 | 0.94 it/s
 step 200/8000 | loss 2.7142 | lr 2.01e-05 | 1.12 it/s
+```
+
+### 070_diag_relaunch.log
+```
+2909927 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
+2909928 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
+2910053 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
+2910054 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
+2910179 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
+2910180 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
+2910305 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
+2910306 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
+2910381 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml
+2910421 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml
+3219850 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
+3220284 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
+3220347 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
+3220410 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
+3220473 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
+3220536 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
+3220599 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myo
+3223111 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
+3223347 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
+3223410 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
+3223473 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
+3223536 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
+3223599 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
+3223662 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set model.gate_init=0.0 --set out_dir=/data2/chenyuxiang/runs/myoi
+=== kernel OOM kills ===
 ```
