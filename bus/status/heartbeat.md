@@ -1,9 +1,9 @@
-# heartbeat 2026-08-19T01:54:17+08:00
+# heartbeat 2026-08-19T01:54:59+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 4376 MiB, 24576 MiB, 33 %
+1, 4376 MiB, 24576 MiB, 26 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -33,6 +33,7 @@
 190_init_units_from                      DONE rc=127
 200_d3_from_pretrained_units             DONE rc=127
 210_encoding_beta_d4                     DONE rc=127
+220_v3_deploy_smoke_train                DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -612,4 +613,14 @@ step 100/8000 | loss 1.2414 | lr 1.01e-05 | 1.46 it/s
     cross_pre    |tanh(g)|=0.00057  ||W||=  8.2775  EFFECTIVE=0.00473
     cross_post   |tanh(g)|=0.00750  ||W||=  7.6652  EFFECTIVE=0.05746
 --- waiting for D4 checkpoint step >= 8000 (01:25) ---
+```
+
+### 220_v3_deploy_smoke_train.log
+```
+=== deploy v3 code ===
+-rw-r--r-- 1 chenyuxiang chenyuxiang 2615 8月  19 01:51 myoicl/configs/qwerty_v3_ctxframe.yaml
+-rw-r--r-- 1 chenyuxiang chenyuxiang 5712 8月  19 01:46 myoicl/ctx_frame.py
+-rw-r--r-- 1 chenyuxiang chenyuxiang 3695 8月  19 01:51 myoicl/smoke_v3.py
+
+=== v3 smoke test (CPU, tiny model) ===
 ```
