@@ -1,9 +1,9 @@
-# heartbeat 2026-08-19T01:56:22+08:00
+# heartbeat 2026-08-19T01:57:04+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
-1, 1819 MiB, 24576 MiB, 0 %
+0, 7437 MiB, 24576 MiB, 21 %
+1, 1819 MiB, 24576 MiB, 4 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -588,7 +588,6 @@ committed
 
 ### 210_encoding_beta_d4.log
 ```
-[watchdog] armed
 step 100/8000 | loss 1.2414 | lr 1.01e-05 | 1.46 it/s
 --- waiting for D4 checkpoint step >= 2000 (00:26) ---
 === D4 @ step ~2000 : 8 official held-out users, A/B/C, K=256 ===
@@ -613,6 +612,7 @@ step 100/8000 | loss 1.2414 | lr 1.01e-05 | 1.46 it/s
     cross_pre    |tanh(g)|=0.00057  ||W||=  8.2775  EFFECTIVE=0.00473
     cross_post   |tanh(g)|=0.00750  ||W||=  7.6652  EFFECTIVE=0.05746
 --- waiting for D4 checkpoint step >= 8000 (01:25) ---
+=== D4 @ step ~8000 : 8 official held-out users, A/B/C, K=256 ===
 ```
 
 ### 220_v3_deploy_smoke_train.log
