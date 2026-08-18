@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T00:49:02+08:00
+# heartbeat 2026-08-19T00:49:51+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 3751 MiB, 24576 MiB, 0 %
 1, 4376 MiB, 24576 MiB, 0 %
 2, 2709 MiB, 24576 MiB, 0 %
 3, 2695 MiB, 24576 MiB, 0 %
@@ -611,4 +611,5 @@ step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
 [watchdog] armed
 step 100/8000 | loss 1.2414 | lr 1.01e-05 | 1.46 it/s
 --- waiting for D4 checkpoint step >= 2000 (00:26) ---
+=== D4 @ step ~2000 : 8 official held-out users, A/B/C, K=256 ===
 ```
