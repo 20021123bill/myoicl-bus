@@ -24,3 +24,4 @@ D1 never reached step 100 -> restarting it
 restarted D1 with save_every=1000 so we can evaluate early snapshots
 
 ########## 3. wait for the first D1 checkpoint, then evaluate it on the 8 OFFICIAL TEST USERS ##########
+checkpoint found at 2026年 08月 18日 星期二 22:40:26 CST. Evaluating on GPU0.
