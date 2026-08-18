@@ -58,6 +58,15 @@ sync_out() {
   git push -q origin "$BRANCH" >/dev/null 2>&1
 }
 
+copy_external_logs() {
+  # Training processes write to /data2/chenyuxiang/runs/joblogs/ which git does
+  # not track. We copy, never the reverse, so a pull cannot roll a live log
+  # back the way it did on 2026-08-18.
+  if [ -d /data2/chenyuxiang/runs/joblogs ]; then
+    cp -f /data2/chenyuxiang/runs/joblogs/*.log bus/results/ 2>/dev/null || true
+  fi
+}
+
 heartbeat() {
   local f=bus/status/heartbeat.md
   {
@@ -118,6 +127,7 @@ while true; do
     echo "[bus] STOP file present -- exiting at $(date -Is)"
     heartbeat; sync_out; exit 0
   fi
+  copy_external_logs
   sync_out
   launch_new_jobs
   heartbeat
