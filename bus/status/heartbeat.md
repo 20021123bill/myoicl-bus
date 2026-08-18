@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T03:07:29+08:00
+# heartbeat 2026-08-19T03:08:11+08:00
 
 ## gpu
 ```
-0, 22719 MiB, 24576 MiB, 0 %
-1, 5734 MiB, 24576 MiB, 87 %
-2, 3825 MiB, 24576 MiB, 77 %
-3, 3181 MiB, 24576 MiB, 63 %
+0, 16 MiB, 24576 MiB, 0 %
+1, 5734 MiB, 24576 MiB, 16 %
+2, 3825 MiB, 24576 MiB, 86 %
+3, 3181 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -712,13 +712,6 @@ SMOKE STILL FAILING -- stopping.
 
 ### 260_v3_smoke3_train.log
 ```
-  File "/data2/chenyuxiang/code/myoicl/myoicl/train_qwerty.py", line 165, in episode_forward
-    ctx_tokens, ctx_pooled, ctx_affine = model.encode_context(
-  File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 234, in encode_context
-    feats, logp, flens = self._support_frames(
-  File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 325, in _support_frames
-    feats = self.tds(feats)                    # (Tf, K, d_model)
-  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
 [optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
 Traceback (most recent call last):
 RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: (1 x 32). Kernel size can't be greater than actual input size
@@ -737,6 +730,13 @@ RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: 
     cross_post   |tanh(g)|=0.42207  ||W||=  4.9640  EFFECTIVE=2.09517
 --- waiting for v3 step >= 5000 (02:49) ---
 === v3 @ step ~5000 : 8 official held-out users, A/B/C, K=128 ===
+[A] mean over users: 54.18
+[B] mean over users: 54.18
+[C] mean over users: 55.22
+[A] gap closed vs personalization ceiling: 2.7%
+[B] gap closed vs personalization ceiling: 2.7%
+[C] gap closed vs personalization ceiling: 0.4%
+--- waiting for v3 step >= 9000 (03:07) ---
 ```
 
 ### 270_v3_fullwin_train.log
@@ -766,16 +766,6 @@ SMOKE FAILED
 
 ### 280_v3_padfix_train.log
 ```
-[watchdog] armed
-step 100/12000 | loss 1.7477 | lr 3.79e-06 | 2.08 it/s
-step 200/12000 | loss 1.5904 | lr 7.54e-06 | 2.08 it/s
-step 300/12000 | loss 1.3996 | lr 1.13e-05 | 2.82 it/s
-step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
-[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
-step 100/12000 | loss 1.7477 | lr 3.79e-06 | 2.08 it/s
-step 200/12000 | loss 1.5904 | lr 7.54e-06 | 2.08 it/s
-step 300/12000 | loss 1.3996 | lr 1.13e-05 | 2.82 it/s
-step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
 
 === periodic eval by checkpoint step ===
 --- waiting for v3 step >= 2000 (02:37) ---
@@ -791,6 +781,16 @@ step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
     cross_post   |tanh(g)|=0.42207  ||W||=  4.9640  EFFECTIVE=2.09517
 --- waiting for v3 step >= 5000 (02:49) ---
 === v3 @ step ~5000 : 8 official held-out users, A/B/C ===
+[A] mean over users: 54.18
+[B] mean over users: 54.18
+[C] mean over users: 55.22
+[A] gap closed vs personalization ceiling: 2.7%
+[B] gap closed vs personalization ceiling: 2.7%
+[C] gap closed vs personalization ceiling: 0.4%
+=== /tmp/v3_snap.pt  (step 5000) ===
+    cross_pre    |tanh(g)|=0.09691  ||W||= 11.4994  EFFECTIVE=1.11445
+    cross_post   |tanh(g)|=0.01985  ||W||=  9.1071  EFFECTIVE=0.18075
+--- waiting for v3 step >= 9000 (03:07) ---
 ```
 
 ### 290_v3_cheavy.log
