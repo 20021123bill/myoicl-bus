@@ -1,4 +1,4 @@
-# heartbeat 2026-08-18T23:01:31+08:00
+# heartbeat 2026-08-18T23:02:12+08:00
 
 ## gpu
 ```
@@ -27,6 +27,7 @@
 130_commit_and_eval_d1                   DONE rc=127
 140_gates_and_later_evals                DONE rc=127
 150_truth_from_ckpt                      DONE rc=127
+160_eval_curve_by_ckpt                   DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -474,4 +475,10 @@ bus/results/034_d2_spawn.log: 2 step lines, last = step 200/8000 | loss 2.7280 |
 
 ########## keep future logs OUT of git's reach ##########
 runner.sh patched (effective on next runner restart)
+```
+
+### 160_eval_curve_by_ckpt.log
+```
+=== eval curve driven by the checkpoint's own step field, not by the log ===
+--- waiting for D1 checkpoint to reach step 3000 (23:02) ---
 ```
