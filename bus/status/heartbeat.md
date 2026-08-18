@@ -1,10 +1,10 @@
-# heartbeat 2026-08-18T22:24:04+08:00
+# heartbeat 2026-08-18T22:24:46+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
-2, 2443 MiB, 24576 MiB, 60 %
+2, 2443 MiB, 24576 MiB, 0 %
 3, 2483 MiB, 24576 MiB, 0 %
 ```
 
@@ -23,6 +23,7 @@
 090_stall_hunt                           DONE rc=127
 100_io_throughput                        DONE rc=127
 110_spawn_fix                            DONE rc=127
+120_clean_home                           DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -165,6 +166,7 @@ step 200/8000 | loss 2.9469 | lr 2.01e-05 | 0.34 it/s
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
 [watchdog] armed
 step 100/8000 | loss 3.3284 | lr 1.01e-05 | 0.82 it/s
+step 200/8000 | loss 2.7280 | lr 2.01e-05 | 0.86 it/s
 ```
 
 ### 035_d1_spawn.log
@@ -330,4 +332,33 @@ patched to spawn
 
 ########## stop the slow workers=0 run, relaunch with spawn ##########
 launched D2 (GPU3) and D1 (GPU2) with spawn workers; watching 6 minutes
+```
+
+### 120_clean_home.log
+```
+removed /tmp/v41
+
+########## $HOME after ##########
+7.0G	/home/chenyuxiang
+0	/home/chenyuxiang/.sudo_as_admin_successful
+4.0K	/home/chenyuxiang/.bash_logout
+4.0K	/home/chenyuxiang/.condarc
+4.0K	/home/chenyuxiang/.profile
+4.0K	/home/chenyuxiang/.wget-hsts
+4.0K	/home/chenyuxiang/.Xauthority
+8.0K	/home/chenyuxiang/.bashrc
+12K	/home/chenyuxiang/.conda
+20K	/home/chenyuxiang/.ssh
+52K	/home/chenyuxiang/.config
+72K	/home/chenyuxiang/.bash_history
+84K	/home/chenyuxiang/.nv
+384K	/home/chenyuxiang/.local
+7.0G	/home/chenyuxiang/.cache
+
+NOTE: ~/.ssh/ is left alone on purpose -- ssh only reads keys from there,
+      and the whole channel to GitHub depends on it. It is a few KB.
+
+########## confirming our real footprint is all under /data2 ##########
+12M	/data2/chenyuxiang/code/myoicl
+920M	/data2/chenyuxiang/runs
 ```

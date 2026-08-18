@@ -1,0 +1,45 @@
+########## what is in $HOME right now ##########
+0	/home/chenyuxiang/.sudo_as_admin_successful
+4.0K	/home/chenyuxiang/.bash_logout
+4.0K	/home/chenyuxiang/.condarc
+4.0K	/home/chenyuxiang/.profile
+4.0K	/home/chenyuxiang/.wget-hsts
+4.0K	/home/chenyuxiang/.Xauthority
+8.0K	/home/chenyuxiang/.bashrc
+12K	/home/chenyuxiang/.conda
+20K	/home/chenyuxiang/bus
+20K	/home/chenyuxiang/.ssh
+52K	/home/chenyuxiang/.config
+72K	/home/chenyuxiang/.bash_history
+84K	/home/chenyuxiang/.nv
+384K	/home/chenyuxiang/.local
+7.0G	/home/chenyuxiang/.cache
+
+########## moving things WE created out of $HOME ##########
+moved ~/bus -> /data2/chenyuxiang/_from_home/
+unset credential.helper
+removed /tmp/v41
+
+########## $HOME after ##########
+7.0G	/home/chenyuxiang
+0	/home/chenyuxiang/.sudo_as_admin_successful
+4.0K	/home/chenyuxiang/.bash_logout
+4.0K	/home/chenyuxiang/.condarc
+4.0K	/home/chenyuxiang/.profile
+4.0K	/home/chenyuxiang/.wget-hsts
+4.0K	/home/chenyuxiang/.Xauthority
+8.0K	/home/chenyuxiang/.bashrc
+12K	/home/chenyuxiang/.conda
+20K	/home/chenyuxiang/.ssh
+52K	/home/chenyuxiang/.config
+72K	/home/chenyuxiang/.bash_history
+84K	/home/chenyuxiang/.nv
+384K	/home/chenyuxiang/.local
+7.0G	/home/chenyuxiang/.cache
+
+NOTE: ~/.ssh/ is left alone on purpose -- ssh only reads keys from there,
+      and the whole channel to GitHub depends on it. It is a few KB.
+
+########## confirming our real footprint is all under /data2 ##########
+12M	/data2/chenyuxiang/code/myoicl
+920M	/data2/chenyuxiang/runs
