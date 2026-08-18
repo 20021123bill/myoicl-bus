@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T04:22:11+08:00
+# heartbeat 2026-08-19T04:22:53+08:00
 
 ## gpu
 ```
-0, 18773 MiB, 24576 MiB, 0 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 3679 MiB, 24576 MiB, 0 %
 2, 3849 MiB, 24576 MiB, 0 %
-3, 3879 MiB, 24576 MiB, 0 %
+3, 12 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -905,12 +905,6 @@ SMOKE FAILED -- not launching
 
 ### 320_v31_relaunch.log
 ```
-[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
-[smoke] init grad o_proj=4.382e+01 (want >0: path can open)
-[smoke] with o_proj opened, mean|mode C - mode A| = 3.0983e-02 (want >0: context now changes output)
-[smoke] grad to frame context encoder now = 4.497e+00
-[smoke] full-length support -> 96 tokens (>= 50 masked)
-[smoke v3] ALL PASS
 === wait for a free GPU (v3-main on GPU2 to finish) ===
 v3-main at step 12000
 === launch v3.1 on GPU2 ===
@@ -930,6 +924,12 @@ step 300/12000 | loss 1.4570 | lr 1.13e-05 | 2.67 it/s
 step 400/12000 | loss 1.3018 | lr 1.50e-05 | 3.44 it/s
 --- wait v3.1 step >= 2000 (04:09) ---
 === v3.1 @ step ~2000 : 8 users A/B/C ===
+[A] mean over users: 54.12
+[B] mean over users: 54.12
+[C] mean over users: 54.23
+    cross_pre    |tanh(g)|=0.58110  ||W||=  7.3030  EFFECTIVE=4.24381
+    cross_post   |tanh(g)|=0.51757  ||W||=  5.7567  EFFECTIVE=2.97949
+--- wait v3.1 step >= 5000 (04:22) ---
 ```
 
 ### 330_v32_filmonly.log

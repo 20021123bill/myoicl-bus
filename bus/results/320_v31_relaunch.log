@@ -37,3 +37,9 @@ step 300/12000 | loss 1.4570 | lr 1.13e-05 | 2.67 it/s
 step 400/12000 | loss 1.3018 | lr 1.50e-05 | 3.44 it/s
 --- wait v3.1 step >= 2000 (04:09) ---
 === v3.1 @ step ~2000 : 8 users A/B/C ===
+[A] mean over users: 54.12
+[B] mean over users: 54.12
+[C] mean over users: 54.23
+    cross_pre    |tanh(g)|=0.58110  ||W||=  7.3030  EFFECTIVE=4.24381
+    cross_post   |tanh(g)|=0.51757  ||W||=  5.7567  EFFECTIVE=2.97949
+--- wait v3.1 step >= 5000 (04:22) ---

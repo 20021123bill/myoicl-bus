@@ -24,3 +24,4 @@
 [smoke] film_only: grad to ctx encoder = 8.990e+00
 [smoke v3] ALL PASS
 === wait for GPU3 (frozen hedge to finish) ===
+=== launch v3.2 on GPU3 ===
