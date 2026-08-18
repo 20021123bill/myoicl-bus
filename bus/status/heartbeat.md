@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T00:00:00+08:00
+# heartbeat 2026-08-19T00:00:47+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 1819 MiB, 24576 MiB, 0 %
-2, 2709 MiB, 24576 MiB, 22 %
+2, 2709 MiB, 24576 MiB, 0 %
 3, 2695 MiB, 24576 MiB, 0 %
 ```
 
@@ -578,4 +578,8 @@ step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
 [A] gap closed vs personalization ceiling: 3.2%
 [B] gap closed vs personalization ceiling: 2.7%
 [C] gap closed vs personalization ceiling: 2.7%
+=== /tmp/d3_snap.pt  (step 2000) ===
+    cross_pre    |tanh(g)|=0.22478  ||W||=  6.2468  EFFECTIVE=1.40417
+    cross_post   |tanh(g)|=0.18466  ||W||=  5.1602  EFFECTIVE=0.95287
+--- waiting for D3 checkpoint step >= 5000 (00:00) ---
 ```
