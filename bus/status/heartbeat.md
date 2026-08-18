@@ -1,10 +1,10 @@
-# heartbeat 2026-08-18T23:34:41+08:00
+# heartbeat 2026-08-18T23:35:33+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 1819 MiB, 24576 MiB, 0 %
-2, 2707 MiB, 24576 MiB, 47 %
+2, 2707 MiB, 24576 MiB, 0 %
 3, 2695 MiB, 24576 MiB, 0 %
 ```
 
@@ -30,6 +30,7 @@
 160_eval_curve_by_ckpt                   DONE rc=127
 170_effective_injection                  DONE rc=127
 180_pretrain_units                       DONE rc=127
+190_init_units_from                      DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -540,4 +541,15 @@ gate_report.py now prints the effective product
 ### 180_pretrain_units.log
 ```
 === stage 0 (synthetic units) + stage 1' (real units), in-context regression ===
+```
+
+### 190_init_units_from.log
+```
+=== add init_units_from: load ONLY the context encoder from a units pretrain ===
+init_units_from added
+
+=== smoke: config parses and the key is read ===
+621:    units_ckpt = cfg.get("init_units_from")
+632:                f"init_units_from={units_ckpt} contains no ctx_encoder.* tensors"
+committed
 ```

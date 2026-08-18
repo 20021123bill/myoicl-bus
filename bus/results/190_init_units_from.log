@@ -1,0 +1,7 @@
+=== add init_units_from: load ONLY the context encoder from a units pretrain ===
+init_units_from added
+
+=== smoke: config parses and the key is read ===
+621:    units_ckpt = cfg.get("init_units_from")
+632:                f"init_units_from={units_ckpt} contains no ctx_encoder.* tensors"
+committed
