@@ -1,0 +1,17 @@
+=== deploy corrected smoke (identity-at-init is CORRECT; test open-after-training) ===
+=== v3 smoke ===
+[smoke] built 50 support tokens from 6 windows
+[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
+[smoke] init grad o_proj=3.382e+01 (want >0: path can open)
+[smoke] after 8 steps mean|mode C - mode A| = nan (want >0: context now changes output)
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 126, in <module>
+    sys.exit(main())
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 100, in main
+    assert diff1 > 1e-6, "context still does nothing after training -- path stuck"
+AssertionError: context still does nothing after training -- path stuck
+SMOKE STILL FAILING -- stopping.

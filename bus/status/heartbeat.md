@@ -1,4 +1,4 @@
-# heartbeat 2026-08-19T02:13:47+08:00
+# heartbeat 2026-08-19T02:14:29+08:00
 
 ## gpu
 ```
@@ -36,6 +36,7 @@
 220_v3_deploy_smoke_train                DONE rc=127
 230_v3_fix_smoke_and_train               DONE rc=127
 240_v3_fix2_smoke_train                  DONE rc=127
+250_v3_smoke_train                       DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -681,4 +682,10 @@ Traceback (most recent call last):
     assert diff > 1e-6, "context does not change the output (gate stuck closed?)"
 AssertionError: context does not change the output (gate stuck closed?)
 SMOKE STILL FAILING -- stopping.
+```
+
+### 250_v3_smoke_train.log
+```
+=== deploy corrected smoke (identity-at-init is CORRECT; test open-after-training) ===
+=== v3 smoke ===
 ```
