@@ -1,11 +1,11 @@
-# heartbeat 2026-08-18T22:39:59+08:00
+# heartbeat 2026-08-18T22:40:41+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 5693 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 2707 MiB, 24576 MiB, 0 %
-3, 2483 MiB, 24576 MiB, 51 %
+3, 2483 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -400,7 +400,6 @@ NOTE: ~/.ssh/ is left alone on purpose -- ssh only reads keys from there,
 
 ### 130_commit_and_eval_d1.log
 ```
- M myoicl/configs/qwerty_forcectx.yaml
  M myoicl/context.py
  M myoicl/gate_report.py
  M myoicl/model.py
@@ -425,4 +424,5 @@ D1 never reached step 100 -> restarting it
 restarted D1 with save_every=1000 so we can evaluate early snapshots
 
 ########## 3. wait for the first D1 checkpoint, then evaluate it on the 8 OFFICIAL TEST USERS ##########
+checkpoint found at 2026年 08月 18日 星期二 22:40:26 CST. Evaluating on GPU0.
 ```
