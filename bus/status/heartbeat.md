@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T03:32:37+08:00
+# heartbeat 2026-08-19T03:33:19+08:00
 
 ## gpu
 ```
-0, 18229 MiB, 24576 MiB, 25 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 5486 MiB, 24576 MiB, 0 %
-2, 3825 MiB, 24576 MiB, 72 %
+2, 3825 MiB, 24576 MiB, 0 %
 3, 3181 MiB, 24576 MiB, 0 %
 ```
 
@@ -714,12 +714,6 @@ SMOKE STILL FAILING -- stopping.
 
 ### 260_v3_smoke3_train.log
 ```
-Traceback (most recent call last):
-RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: (1 x 32). Kernel size can't be greater than actual input size
-
-=== periodic eval by checkpoint step ===
---- waiting for v3 step >= 2000 (02:22) ---
-=== v3 @ step ~2000 : 8 official held-out users, A/B/C, K=128 ===
 [A] mean over users: 54.03
 [B] mean over users: 54.03
 [C] mean over users: 54.57
@@ -739,6 +733,12 @@ RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: 
 [C] gap closed vs personalization ceiling: 0.4%
 --- waiting for v3 step >= 9000 (03:07) ---
 === v3 @ step ~9000 : 8 official held-out users, A/B/C, K=128 ===
+[A] mean over users: 54.12
+[B] mean over users: 54.12
+=== /tmp/v3_snap.pt  (step 9000) ===
+    cross_pre    |tanh(g)|=0.07668  ||W||= 13.7224  EFFECTIVE=1.05230
+    cross_post   |tanh(g)|=0.00869  ||W||= 10.9762  EFFECTIVE=0.09533
+--- waiting for v3 step >= 12000 (03:33) ---
 ```
 
 ### 270_v3_fullwin_train.log
@@ -768,13 +768,6 @@ SMOKE FAILED
 
 ### 280_v3_padfix_train.log
 ```
-=== periodic eval by checkpoint step ===
---- waiting for v3 step >= 2000 (02:37) ---
-=== v3 @ step ~2000 : 8 official held-out users, A/B/C ===
-[A] mean over users: 54.03
-[B] mean over users: 54.03
-[C] mean over users: 54.57
-[A] gap closed vs personalization ceiling: 3.1%
 [B] gap closed vs personalization ceiling: 3.1%
 [C] gap closed vs personalization ceiling: 1.8%
 === /tmp/v3_snap.pt  (step 2000) ===
@@ -793,6 +786,13 @@ SMOKE FAILED
     cross_post   |tanh(g)|=0.01985  ||W||=  9.1071  EFFECTIVE=0.18075
 --- waiting for v3 step >= 9000 (03:07) ---
 === v3 @ step ~9000 : 8 official held-out users, A/B/C ===
+[A] mean over users: 54.12
+[B] mean over users: 54.12
+[C] mean over users: 55.88
+[A] gap closed vs personalization ceiling: 2.9%
+[B] gap closed vs personalization ceiling: 2.9%
+[C] gap closed vs personalization ceiling: -1.1%
+--- waiting for v3 step >= 12000 (03:33) ---
 ```
 
 ### 290_v3_cheavy.log
