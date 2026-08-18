@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T03:31:13+08:00
+# heartbeat 2026-08-19T03:31:55+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
-1, 5486 MiB, 24576 MiB, 7 %
-2, 3825 MiB, 24576 MiB, 0 %
-3, 3181 MiB, 24576 MiB, 71 %
+0, 14853 MiB, 24576 MiB, 99 %
+1, 5486 MiB, 24576 MiB, 0 %
+2, 3825 MiB, 24576 MiB, 70 %
+3, 3181 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -714,7 +714,6 @@ SMOKE STILL FAILING -- stopping.
 
 ### 260_v3_smoke3_train.log
 ```
-[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
 Traceback (most recent call last):
 RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: (1 x 32). Kernel size can't be greater than actual input size
 
@@ -739,6 +738,7 @@ RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: 
 [B] gap closed vs personalization ceiling: 2.7%
 [C] gap closed vs personalization ceiling: 0.4%
 --- waiting for v3 step >= 9000 (03:07) ---
+=== v3 @ step ~9000 : 8 official held-out users, A/B/C, K=128 ===
 ```
 
 ### 270_v3_fullwin_train.log
@@ -768,7 +768,6 @@ SMOKE FAILED
 
 ### 280_v3_padfix_train.log
 ```
-
 === periodic eval by checkpoint step ===
 --- waiting for v3 step >= 2000 (02:37) ---
 === v3 @ step ~2000 : 8 official held-out users, A/B/C ===
@@ -793,6 +792,7 @@ SMOKE FAILED
     cross_pre    |tanh(g)|=0.09691  ||W||= 11.4994  EFFECTIVE=1.11445
     cross_post   |tanh(g)|=0.01985  ||W||=  9.1071  EFFECTIVE=0.18075
 --- waiting for v3 step >= 9000 (03:07) ---
+=== v3 @ step ~9000 : 8 official held-out users, A/B/C ===
 ```
 
 ### 290_v3_cheavy.log
