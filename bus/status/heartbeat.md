@@ -1,4 +1,4 @@
-# heartbeat 2026-08-18T23:26:30+08:00
+# heartbeat 2026-08-18T23:27:12+08:00
 
 ## gpu
 ```
@@ -29,6 +29,7 @@
 150_truth_from_ckpt                      DONE rc=127
 160_eval_curve_by_ckpt                   DONE rc=127
 170_effective_injection                  DONE rc=127
+180_pretrain_units                       DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -534,4 +535,9 @@ nothing on its own. The identifiable quantity is the product.
 
 === patch gate_report.py so every future report prints the product ===
 gate_report.py now prints the effective product
+```
+
+### 180_pretrain_units.log
+```
+=== stage 0 (synthetic units) + stage 1' (real units), in-context regression ===
 ```
