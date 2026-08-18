@@ -160,8 +160,9 @@ def eval_user(
             lab_feats = lab_ids = lab_spec = lab_lens = None
             u_mu = u_sd = u_desc = None
             if mode == "C" and getattr(model, "ctx_version", 1) == 2:
+                _sup2 = [tp] if getattr(args, 'support_from_test', False) else train_paths
                 u_mu, u_sd, u_desc = build_unit_pairs(
-                    train_paths, args.k, args.kshot_window, cs.num_classes
+                    _sup2, args.k, args.kshot_window, cs.num_classes
                 )
                 if u_mu is not None:
                     u_mu = u_mu.to(device)
@@ -173,8 +174,14 @@ def eval_user(
                 # ~1 frame through the TDS trunk). Cap the count: a handful of
                 # full windows already yields hundreds of frame tokens.
                 _k = min(args.k, 12) if _v3 else args.k
+                # DIAGNOSTIC: draw labelled calibration from the SAME session
+                # being decoded (--support-from-test) vs the user's other
+                # sessions (default). If same-session helps but cross-session
+                # hurts, the universal negative is cross-session electrode
+                # staleness, not the method.
+                _sup = [tp] if getattr(args, 'support_from_test', False) else train_paths
                 lab_raw, lab_ids = build_kshot(
-                    train_paths, _k, args.window_length, args.padding
+                    _sup, _k, args.window_length, args.padding
                 )
                 if lab_raw is not None:
                     from emg2qwerty import transforms as T
@@ -259,6 +266,9 @@ def main():
     ap.add_argument("--chunk-seconds", type=float, default=30.0)
     ap.add_argument("--overlap-seconds", type=float, default=5.0)
     ap.add_argument("--bf16", action="store_true")
+    ap.add_argument("--support-from-test", action="store_true",
+                    help="draw labelled calibration from the decoded "
+                         "session itself (same-session diagnostic)")
     ap.add_argument("--out", default="myoicl_qwerty_eval.json")
     args = ap.parse_args()
 
