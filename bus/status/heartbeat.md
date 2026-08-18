@@ -1,10 +1,10 @@
-# heartbeat 2026-08-18T23:49:55+08:00
+# heartbeat 2026-08-18T23:50:46+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 1819 MiB, 24576 MiB, 0 %
-2, 2709 MiB, 24576 MiB, 0 %
+2, 2709 MiB, 24576 MiB, 54 %
 3, 2695 MiB, 24576 MiB, 0 %
 ```
 
@@ -483,7 +483,6 @@ runner.sh patched (effective on next runner restart)
 
 ### 160_eval_curve_by_ckpt.log
 ```
-[A] gap closed vs personalization ceiling: 1.8%
 [B] gap closed vs personalization ceiling: 1.4%
 [C] gap closed vs personalization ceiling: 1.5%
 === /tmp/d1_snap.pt  (step 5000) ===
@@ -508,6 +507,7 @@ runner.sh patched (effective on next runner restart)
     OPEN    film.up.weight                           |w|mean=2.427e-02 max=1.702e-01
   all CLOSED  -> the context pathway never opened. A zero
   some OPEN   -> context does reach the decoder. A zero gain then
+=== eval curve complete ===
 ```
 
 ### 170_effective_injection.log
