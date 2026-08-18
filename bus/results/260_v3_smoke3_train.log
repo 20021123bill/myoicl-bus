@@ -38,3 +38,4 @@ RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: 
 
 === periodic eval by checkpoint step ===
 --- waiting for v3 step >= 2000 (02:22) ---
+=== v3 @ step ~2000 : 8 official held-out users, A/B/C, K=128 ===

@@ -28,3 +28,4 @@ step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
 
 === periodic eval by checkpoint step ===
 --- waiting for v3 step >= 2000 (02:37) ---
+=== v3 @ step ~2000 : 8 official held-out users, A/B/C ===
