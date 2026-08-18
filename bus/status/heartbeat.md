@@ -1,10 +1,10 @@
-# heartbeat 2026-08-18T23:47:28+08:00
+# heartbeat 2026-08-18T23:48:18+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 7437 MiB, 24576 MiB, 0 %
 1, 1819 MiB, 24576 MiB, 0 %
-2, 2709 MiB, 24576 MiB, 0 %
+2, 2709 MiB, 24576 MiB, 52 %
 3, 2695 MiB, 24576 MiB, 0 %
 ```
 
@@ -483,7 +483,6 @@ runner.sh patched (effective on next runner restart)
 
 ### 160_eval_curve_by_ckpt.log
 ```
-[B] gap closed vs personalization ceiling: 2.3%
 [C] gap closed vs personalization ceiling: 1.5%
 === /tmp/d1_snap.pt  (step 3000) ===
     AJAR    cross_post.gate              g=+0.02817  tanh=+0.02816
@@ -508,6 +507,7 @@ runner.sh patched (effective on next runner restart)
   all CLOSED  -> the context pathway never opened. A zero
   some OPEN   -> context does reach the decoder. A zero gain then
 --- waiting for D1 checkpoint to reach step 8000 (23:20) ---
+=== D1 @ step 8000 : 8 official held-out users, modes A/B/C, K=256 ===
 ```
 
 ### 170_effective_injection.log
