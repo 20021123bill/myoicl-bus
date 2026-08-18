@@ -5,3 +5,4 @@
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
 step 100/8000 | loss 1.2474 | lr 1.01e-05 | 2.92 it/s
 step 200/8000 | loss 1.1509 | lr 2.01e-05 | 2.47 it/s
+step 300/8000 | loss 1.0646 | lr 3.00e-05 | 2.39 it/s
