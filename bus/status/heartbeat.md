@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T03:36:06+08:00
+# heartbeat 2026-08-19T03:36:48+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 5486 MiB, 24576 MiB, 0 %
-2, 3825 MiB, 24576 MiB, 0 %
+1, 3679 MiB, 24576 MiB, 0 %
+2, 3825 MiB, 24576 MiB, 7 %
 3, 3181 MiB, 24576 MiB, 0 %
 ```
 
@@ -553,7 +553,31 @@ gate_report.py now prints the effective product
 
 ### 180_pretrain_units.log
 ```
-=== stage 0 (synthetic units) + stage 1' (real units), in-context regression ===
+[stage1'] 8000/12000 | loss 0.0265 | predict-the-mean 0.0370 | skill +28.5%
+[stage1'] 8200/12000 | loss 0.0262 | predict-the-mean 0.0359 | skill +26.9%
+[stage1'] 8400/12000 | loss 0.0296 | predict-the-mean 0.0400 | skill +26.1%
+[stage1'] 8600/12000 | loss 0.0278 | predict-the-mean 0.0381 | skill +27.0%
+[stage1'] 8800/12000 | loss 0.0279 | predict-the-mean 0.0383 | skill +27.0%
+[stage1'] 9000/12000 | loss 0.0274 | predict-the-mean 0.0379 | skill +27.7%
+[stage1'] 9200/12000 | loss 0.0270 | predict-the-mean 0.0388 | skill +30.3%
+[stage1'] 9400/12000 | loss 0.0263 | predict-the-mean 0.0362 | skill +27.4%
+[stage1'] 9600/12000 | loss 0.0263 | predict-the-mean 0.0371 | skill +29.0%
+[stage1'] 9800/12000 | loss 0.0264 | predict-the-mean 0.0377 | skill +29.9%
+[stage1'] 10000/12000 | loss 0.0261 | predict-the-mean 0.0367 | skill +28.9%
+[stage1'] 10200/12000 | loss 0.0254 | predict-the-mean 0.0365 | skill +30.2%
+[stage1'] 10400/12000 | loss 0.0256 | predict-the-mean 0.0361 | skill +29.0%
+[stage1'] 10600/12000 | loss 0.0275 | predict-the-mean 0.0385 | skill +28.7%
+[stage1'] 10800/12000 | loss 0.0252 | predict-the-mean 0.0365 | skill +30.9%
+[stage1'] 11000/12000 | loss 0.0269 | predict-the-mean 0.0387 | skill +30.4%
+[stage1'] 11200/12000 | loss 0.0253 | predict-the-mean 0.0359 | skill +29.5%
+[stage1'] 11400/12000 | loss 0.0263 | predict-the-mean 0.0362 | skill +27.4%
+[stage1'] 11600/12000 | loss 0.0288 | predict-the-mean 0.0393 | skill +26.7%
+[stage1'] 11800/12000 | loss 0.0245 | predict-the-mean 0.0345 | skill +28.9%
+[stage1'] 12000/12000 | loss 0.0274 | predict-the-mean 0.0382 | skill +28.2%
+[saved] /data2/chenyuxiang/runs/units_pretrain.pt
+Next: python -m myoicl.loso --holdout 0 --init-from /data2/chenyuxiang/runs/units_pretrain.pt
+=== done, checkpoint: ===
+-rw-rw-r-- 1 chenyuxiang chenyuxiang 25154965 8月  19 03:36 /data2/chenyuxiang/runs/units_pretrain.pt
 ```
 
 ### 190_init_units_from.log
