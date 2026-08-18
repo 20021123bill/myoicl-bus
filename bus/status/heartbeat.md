@@ -1,10 +1,10 @@
-# heartbeat 2026-08-18T22:45:32+08:00
+# heartbeat 2026-08-18T22:46:14+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
-2, 2707 MiB, 24576 MiB, 0 %
+2, 2707 MiB, 24576 MiB, 2 %
 3, 2691 MiB, 24576 MiB, 0 %
 ```
 
@@ -25,6 +25,7 @@
 110_spawn_fix                            DONE rc=127
 120_clean_home                           DONE rc=127
 130_commit_and_eval_d1                   DONE rc=127
+140_gates_and_later_evals                DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -425,4 +426,9 @@ NOTE: ~/.ssh/ is left alone on purpose -- ssh only reads keys from there,
 [C] gap closed vs personalization ceiling: 1.9%
 [saved] /data2/chenyuxiang/runs/eval/d1_early_ABC_k256.json
 === DONE: this is the first real mode-C number on the 8 held-out users ===
+```
+
+### 140_gates_and_later_evals.log
+```
+########## did the gates OPEN this time? ##########
 ```
