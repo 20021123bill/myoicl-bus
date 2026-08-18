@@ -71,6 +71,7 @@ class EpisodeIterableDataset(IterableDataset):
         k_shot_window: int = 2000,
         num_classes: int = 99,
         emit_labeled_spec: bool = False,
+        emit_ctx_frames: bool = False,
         cross_session_ctx: bool = True,
         p_synth: float = 0.7,
         synth_kwargs: dict | None = None,
@@ -102,6 +103,7 @@ class EpisodeIterableDataset(IterableDataset):
         self.k_shot_window = k_shot_window
         self.num_classes = num_classes
         self.emit_labeled_spec = emit_labeled_spec
+        self.emit_ctx_frames = emit_ctx_frames
         self.cross_session_ctx = cross_session_ctx
         self.p_synth = p_synth
         self.synth_kwargs = synth_kwargs or {}
@@ -318,7 +320,21 @@ class EpisodeIterableDataset(IterableDataset):
                         raw = theta.apply(raw)
                     raws.append(raw)
                     ids.append(lab.to(torch.long))
-                if raws:
+                if raws and self.emit_ctx_frames:
+                    # v3 (frame-level contextual biasing): ship the support
+                    # windows as a padded spectrogram stack + per-window valid
+                    # lengths + label ids. The model featurises them through
+                    # the shared backbone and builds key/value tokens. No
+                    # per-unit statistics are computed.
+                    specs_lab = [logspec(r) for r in raws]   # each (T_i, 2, C, F)
+                    episode["ctx_labeled_lens"] = torch.as_tensor(
+                        [sp.shape[0] for sp in specs_lab], dtype=torch.int32
+                    )
+                    episode["ctx_labeled_spec"] = nn.utils.rnn.pad_sequence(
+                        specs_lab
+                    )
+                    episode["ctx_labeled_ids"] = ids
+                elif raws:
                     from .icl2 import unit_pairs_from_windows
 
                     stack = torch.stack(raws)  # (K, S, 2, C)

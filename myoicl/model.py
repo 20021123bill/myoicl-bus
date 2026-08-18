@@ -71,6 +71,7 @@ class MyoICLModel(nn.Module):
         gate_init: float = 1.0,
         ctx_encoding_beta: bool = False,
         ctx_beta_ridge: float = 1e-2,
+        ctx_max_tokens: int = 512,
     ) -> None:
         super().__init__()
         self.num_bands = num_bands
@@ -111,7 +112,17 @@ class MyoICLModel(nn.Module):
         # the ablation "unit = user (global token) vs unit = electrode-band".
         self.ctx_version = ctx_version
         d_stats = stats_dim(num_bands, channels_per_band, len(self.band_edges))
-        if ctx_version == 2:
+        if ctx_version == 3:
+            # Frame-level contextual biasing (ASR contextual-adapter mechanism).
+            # See ctx_frame.py for why this replaces the per-unit inversion.
+            from .ctx_frame import FrameContextEncoder
+
+            self.ctx_encoder = FrameContextEncoder(
+                d_model=d_model, d_ctx=d_ctx, num_classes=num_classes,
+                max_tokens=ctx_max_tokens, dropout=dropout,
+            )
+            self.use_residual_context = False
+        elif ctx_version == 2:
             from .icl2 import TwoStageContextEncoder
 
             self.ctx_encoder = TwoStageContextEncoder(
@@ -224,6 +235,19 @@ class MyoICLModel(nn.Module):
                 device=ctx_labeled_feats.device,
                 dtype=ctx_labeled_feats.dtype,
             )
+        if self.ctx_version == 3:
+            # Frame-level contextual biasing. Run the labelled support windows
+            # through the shared backbone (no context -> mode A, so cross_pre/
+            # cross_post are identity), producing per-frame features and CTC
+            # posteriors, then turn them into key/value tokens. Requires the
+            # spectrogram stack; if the episode did not emit it, no context.
+            if ctx_labeled_spec is None:
+                return (None, None, None) if return_affine else (None, None)
+            feats, logp, flens = self._support_frames(
+                ctx_labeled_spec, ctx_labeled_lens
+            )
+            tokens, pooled = self.ctx_encoder(feats, logp, flens)
+            return (tokens, pooled, None) if return_affine else (tokens, pooled)
         if self.ctx_version == 2:
             return self.ctx_encoder(ctx_raw, ctx_unit_mu, ctx_unit_sd,
                                     ctx_unit_desc, return_affine=return_affine)
@@ -285,6 +309,26 @@ class MyoICLModel(nn.Module):
         feats = self.cross_post(feats, ctx_tokens)
         return self.log_softmax(self.classifier(feats))
 
+    def _support_frames(self, spec: torch.Tensor, lens: torch.Tensor | None):
+        """Run labelled support windows through the shared backbone with NO
+        context (mode A: cross_pre/cross_post are identity when ctx is None),
+        returning per-frame trunk features (Tf, K, d_model), CTC log-posteriors
+        (Tf, K, V) and the post-TDS valid length per window.
+
+        Gradients flow: the backbone is shared and trainable, so training the
+        context path also trains how support is featurised. This is one extra
+        backbone forward over K short windows per episode.
+        """
+        feats = self.frontend(spec)               # (T, K, d_model)
+        feats = self.tds(feats)                    # (Tf, K, d_model)
+        logp = self.log_softmax(self.classifier(feats))
+        if lens is not None:
+            t_diff = spec.shape[0] - feats.shape[0]
+            flens = (lens.to(feats.device) - t_diff).clamp_min(0)
+        else:
+            flens = None
+        return feats, logp, flens
+
     def backbone_parameters(self):
         mods = [self.frontend, self.tds, self.classifier]
         return [p for m in mods for p in m.parameters()]
@@ -326,6 +370,7 @@ def build_model(cfg: dict, num_classes: int) -> MyoICLModel:
         # current model: no new parameters, state_dict unchanged.
         ctx_encoding_beta=bool(m.get("ctx_encoding_beta", False)),
         ctx_beta_ridge=float(m.get("ctx_beta_ridge", 1e-2)),
+        ctx_max_tokens=int(m.get("ctx_max_tokens", 512)),
         # 1.0 = post-2026-08-18 default (identity comes from zero-init o_proj,
         # not from a shut gate). Set 0.0 to reproduce the deadlock for the
         # ablation row.

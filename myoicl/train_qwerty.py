@@ -358,6 +358,7 @@ def main():
 
     cs = charset_fn()
     _ctx_v2 = int(cfg.get("model", {}).get("ctx_version", 1)) == 2
+    _ctx_v3 = int(cfg.get("model", {}).get("ctx_version", 1)) == 3
     version = int(cfg.get("model", {}).get("version", 1))
     if version == 2:
         from .model_v2 import build_model_v2
@@ -470,10 +471,11 @@ def main():
             # computing them for a v1 run is pure wasted CPU in the workers.
             k_shot_range=(tuple(ecfg["k_shot_range"])
                           if ecfg.get("k_shot_range")
-                          else ((32, 256) if _ctx_v2 else None)),
+                          else ((32, 256) if (_ctx_v2 or _ctx_v3) else None)),
             k_shot_window=int(ecfg.get("k_shot_window", 2000)),
             num_classes=cs.num_classes,
             emit_labeled_spec=bool(ecfg.get("emit_labeled_spec", False)),
+            emit_ctx_frames=_ctx_v3,
             cross_session_ctx=bool(ecfg.get("cross_session_ctx", True)),
             p_synth=float(ecfg.get("p_synth", 0.7)),
             synth_kwargs=ecfg.get("synth", {}),
@@ -521,10 +523,11 @@ def main():
                 k_shot_max=int(_e.get("k_shot_max", 8)),
                 k_shot_range=(tuple(_e["k_shot_range"])
                               if _e.get("k_shot_range")
-                              else ((32, 256) if _ctx_v2 else None)),
+                              else ((32, 256) if (_ctx_v2 or _ctx_v3) else None)),
                 k_shot_window=int(_e.get("k_shot_window", 2000)),
                 num_classes=cs.num_classes,
                 emit_labeled_spec=bool(_e.get("emit_labeled_spec", False)),
+                emit_ctx_frames=_ctx_v3,
                 cross_session_ctx=bool(_e.get("cross_session_ctx", True)),
                 p_synth=float(_e.get("p_synth", 0.7)),
                 synth_kwargs=_e.get("synth", {}),

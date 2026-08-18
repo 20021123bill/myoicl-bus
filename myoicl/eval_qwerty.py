@@ -168,23 +168,29 @@ def eval_user(
                     u_sd = u_sd.to(device)
                     u_desc = u_desc.to(device)
             elif mode == "C":
+                _v3 = getattr(model, "ctx_version", 1) == 3
+                # v3 uses many SHORT support windows (like training's
+                # k_shot_window); v1/v2 use full-length windows.
+                _win = args.kshot_window if _v3 else args.window_length
                 lab_raw, lab_ids = build_kshot(
-                    train_paths, args.k, args.window_length, args.padding
+                    train_paths, args.k, _win, args.padding
                 )
                 if lab_raw is not None:
                     from emg2qwerty import transforms as T
 
                     from .context import segment_statistics
 
-                    lab_feats = segment_statistics(
-                        lab_raw.to(device), sample_rate=model.sample_rate,
-                        band_edges=model.band_edges,
-                    )
+                    if not _v3:
+                        lab_feats = segment_statistics(
+                            lab_raw.to(device), sample_rate=model.sample_rate,
+                            band_edges=model.band_edges,
+                        )
                     lab_ids = [i.to(device) for i in lab_ids]
-                    # Spectrogram view for the residual (prediction-error)
-                    # descriptor: same LogSpectrogram as training episodes.
+                    # Spectrogram view: v3 featurises it through the backbone;
+                    # v1/v2 use it for the residual (prediction-error) token.
                     if (getattr(model, "use_residual_context", False)
-                            or getattr(model, "ctx_version", 1) == 2):
+                            or getattr(model, "ctx_version", 1) == 2
+                            or _v3):
                         logspec = T.LogSpectrogram(n_fft=64, hop_length=16)
                         sp = [logspec(r) for r in lab_raw]
                         lab_lens = torch.as_tensor(
