@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T00:59:10+08:00
+# heartbeat 2026-08-19T01:00:03+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 4376 MiB, 24576 MiB, 0 %
-2, 2709 MiB, 24576 MiB, 0 %
+2, 12 MiB, 24576 MiB, 0 %
 3, 2695 MiB, 24576 MiB, 0 %
 ```
 
@@ -558,7 +558,6 @@ committed
 
 ### 200_d3_from_pretrained_units.log
 ```
-[watchdog] armed
 step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
 --- waiting for D3 checkpoint step >= 2000 (23:39) ---
 === D3 @ step ~2000 : 8 official held-out users, A/B/C, K=256 ===
@@ -583,6 +582,7 @@ step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
     cross_pre    |tanh(g)|=0.00317  ||W||=  8.4206  EFFECTIVE=0.02668
     cross_post   |tanh(g)|=0.00475  ||W||=  7.4897  EFFECTIVE=0.03559
 --- waiting for D3 checkpoint step >= 8000 (00:30) ---
+=== D3 @ step ~8000 : 8 official held-out users, A/B/C, K=256 ===
 ```
 
 ### 210_encoding_beta_d4.log
