@@ -29,3 +29,13 @@ step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
 === periodic eval by checkpoint step ===
 --- waiting for v3 step >= 2000 (02:37) ---
 === v3 @ step ~2000 : 8 official held-out users, A/B/C ===
+[A] mean over users: 54.03
+[B] mean over users: 54.03
+[C] mean over users: 54.57
+[A] gap closed vs personalization ceiling: 3.1%
+[B] gap closed vs personalization ceiling: 3.1%
+[C] gap closed vs personalization ceiling: 1.8%
+=== /tmp/v3_snap.pt  (step 2000) ===
+    cross_pre    |tanh(g)|=0.45023  ||W||=  6.1459  EFFECTIVE=2.76706
+    cross_post   |tanh(g)|=0.42207  ||W||=  4.9640  EFFECTIVE=2.09517
+--- waiting for v3 step >= 5000 (02:49) ---

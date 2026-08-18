@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T02:47:59+08:00
+# heartbeat 2026-08-19T02:48:41+08:00
 
 ## gpu
 ```
-0, 14853 MiB, 24576 MiB, 0 %
+0, 22719 MiB, 24576 MiB, 0 %
 1, 1819 MiB, 24576 MiB, 0 %
 2, 3861 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -444,15 +444,6 @@ NOTE: ~/.ssh/ is left alone on purpose -- ssh only reads keys from there,
 
 ### 140_gates_and_later_evals.log
 ```
-
-########## o_proj magnitude (the parameter that now carries the zero) ##########
-step 1000
-  cross_post.o_proj.bias             |w|mean=9.403e-03  max=4.949e-02
-  cross_post.o_proj.weight           |w|mean=8.436e-03  max=6.101e-02
-  cross_pre.o_proj.bias              |w|mean=1.601e-02  max=7.676e-02
-  cross_pre.o_proj.weight            |w|mean=1.111e-02  max=6.719e-02
-
-########## re-evaluate at later checkpoints ##########
 --- waiting for D1 to pass step 3000 ---
 === D1 @ ~step 3000 : 8 official test users, modes A/B/C, K=256 ===
 [A] mean over users: 54.57
@@ -469,6 +460,15 @@ step 1000
   all CLOSED  -> the context pathway never opened. A zero
   some OPEN   -> context does reach the decoder. A zero gain then
 --- waiting for D1 to pass step 6000 ---
+=== D1 @ ~step 6000 : 8 official test users, modes A/B/C, K=256 ===
+=== /tmp/d1_snap_6000.pt  (step 8000) ===
+    CLOSED  cross_post.gate              g=-0.00345  tanh=-0.00345
+    CLOSED  cross_pre.gate               g=+0.00061  tanh=+0.00061
+    OPEN    film.up.bias                             |w|mean=3.977e-02 max=2.029e-01
+    OPEN    film.up.weight                           |w|mean=2.427e-02 max=1.702e-01
+  all CLOSED  -> the context pathway never opened. A zero
+  some OPEN   -> context does reach the decoder. A zero gain then
+--- waiting for D1 to pass step 8000 ---
 ```
 
 ### 150_truth_from_ckpt.log
