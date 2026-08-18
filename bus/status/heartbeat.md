@@ -1,9 +1,9 @@
-# heartbeat 2026-08-19T02:03:20+08:00
+# heartbeat 2026-08-19T02:04:02+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 1819 MiB, 24576 MiB, 27 %
+1, 1819 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -34,6 +34,7 @@
 200_d3_from_pretrained_units             DONE rc=127
 210_encoding_beta_d4                     DONE rc=127
 220_v3_deploy_smoke_train                DONE rc=127
+230_v3_fix_smoke_and_train               DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -638,4 +639,12 @@ Traceback (most recent call last):
     assert d_model == num_bands * official_mlp_features[-1], (
 AssertionError: d_model (64) must equal num_bands * mlp_features[-1] (128)
 SMOKE FAILED -- not launching training. Fix needed.
+```
+
+### 230_v3_fix_smoke_and_train.log
+```
+=== fix the smoke tiny-config (d_model must equal num_bands*mlp[-1]) ===
+fixed: True
+
+=== v3 smoke test ===
 ```
