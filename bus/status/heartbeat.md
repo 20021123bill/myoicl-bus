@@ -1,10 +1,10 @@
-# heartbeat 2026-08-18T23:59:12+08:00
+# heartbeat 2026-08-19T00:00:00+08:00
 
 ## gpu
 ```
-0, 7995 MiB, 24576 MiB, 0 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 1819 MiB, 24576 MiB, 0 %
-2, 2709 MiB, 24576 MiB, 0 %
+2, 2709 MiB, 24576 MiB, 22 %
 3, 2695 MiB, 24576 MiB, 0 %
 ```
 
@@ -572,4 +572,10 @@ found /data2/chenyuxiang/runs/units_pretrain.pt at 2026年 08月 18日 星期二
 step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
 --- waiting for D3 checkpoint step >= 2000 (23:39) ---
 === D3 @ step ~2000 : 8 official held-out users, A/B/C, K=256 ===
+[A] mean over users: 53.98
+[B] mean over users: 54.18
+[C] mean over users: 54.19
+[A] gap closed vs personalization ceiling: 3.2%
+[B] gap closed vs personalization ceiling: 2.7%
+[C] gap closed vs personalization ceiling: 2.7%
 ```
