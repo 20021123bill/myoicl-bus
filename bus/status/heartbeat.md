@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T04:24:58+08:00
+# heartbeat 2026-08-19T04:25:40+08:00
 
 ## gpu
 ```
-0, 24121 MiB, 24576 MiB, 0 %
-1, 3679 MiB, 24576 MiB, 45 %
-2, 3849 MiB, 24576 MiB, 85 %
-3, 2325 MiB, 24576 MiB, 0 %
+0, 16 MiB, 24576 MiB, 0 %
+1, 3679 MiB, 24576 MiB, 90 %
+2, 3849 MiB, 24576 MiB, 0 %
+3, 2327 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -849,11 +849,6 @@ step 400/20000 | loss 1.4285 | lr 1.50e-05 | 2.48 it/s
 
 ### 300_v3_frozen.log
 ```
-=== v3 hedge: frozen backbone (GPU3) -- isolates joint-training interference ===
-[model] v1 | 6.01M params total (published backbone 5.29M + ICL module 0.71M) | device=cuda | phase=icl
-[data] train sessions=837 val sessions=192
-[data] episodic users=86 train + 10 meta-val (held out from module training)
-[episodes] frozen backbone -> mode-A episodes carry no gradient and are skipped; mode_probs renormalized to [0.0, 0.176, 0.824]
 [optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
 [freeze] backbone 5.29M frozen | context modules 0.71M trainable (11.9% of total)
@@ -873,6 +868,12 @@ step 300/12000 | loss 1.3745 | lr 9.45e-06 | 2.43 it/s
     cross_post   |tanh(g)|=0.32007  ||W||=  7.5508  EFFECTIVE=2.41680
 --- wait frozen step >= 12000 (03:45) ---
 === v3-frozen @ step ~12000 : 8 users A/B/C ===
+[A] mean over users: 55.40
+[B] mean over users: 55.40
+[C] mean over users: 55.51
+    cross_pre    |tanh(g)|=0.12490  ||W||= 14.6937  EFFECTIVE=1.83529
+    cross_post   |tanh(g)|=0.24797  ||W||=  8.4160  EFFECTIVE=2.08692
+=== v3-frozen complete ===
 ```
 
 ### 310_v31_kvsplit.log
