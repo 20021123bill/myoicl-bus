@@ -1,9 +1,9 @@
-# heartbeat 2026-08-19T03:20:04+08:00
+# heartbeat 2026-08-19T03:20:46+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 5486 MiB, 24576 MiB, 10 %
+1, 5486 MiB, 24576 MiB, 0 %
 2, 3825 MiB, 24576 MiB, 0 %
 3, 3181 MiB, 24576 MiB, 0 %
 ```
@@ -43,6 +43,7 @@
 290_v3_cheavy                            DONE rc=127
 300_v3_frozen                            DONE rc=127
 310_v31_kvsplit                          DONE rc=127
+320_v31_relaunch                         DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -861,4 +862,10 @@ Traceback (most recent call last):
     print(f"[smoke] full-length support -> {tok_full.shape[1]} tokens "
 AttributeError: 'tuple' object has no attribute 'shape'
 SMOKE FAILED -- not launching
+```
+
+### 320_v31_relaunch.log
+```
+=== deploy smoke print fix ===
+=== smoke (both kv modes) ===
 ```
