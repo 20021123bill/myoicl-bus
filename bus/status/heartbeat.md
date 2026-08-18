@@ -1,4 +1,4 @@
-# heartbeat 2026-08-18T22:05:24+08:00
+# heartbeat 2026-08-18T22:06:06+08:00
 
 ## gpu
 ```
@@ -20,6 +20,7 @@
 060_d0b_gate0_forced                     DONE rc=127
 070_diag_relaunch                        DONE rc=127
 080_stackdump_and_solo                   DONE rc=127
+090_stall_hunt                           DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -227,4 +228,19 @@ step 100/8000 | loss 3.2712 | lr 1.01e-05 | 0.56 it/s
 1, 12 MiB, 0 %
 2, 12 MiB, 0 %
 3, 2751 MiB, 0 %
+```
+
+### 090_stall_hunt.log
+```
+########## 1. filesystem: how long to open 5 HDF5 sessions? ##########
+5 files found
+     0.00s  2020-08-13-1597354281-keystrokes.hdf5
+     0.00s  2020-08-13-1597355141-keystrokes.hdf5
+     0.00s  2020-08-13-1597357485-keystrokes-71409769.hdf5
+     0.00s  2020-08-13-1597363426-keystrokes-71409769.hdf5
+     0.00s  2020-08-13-1597369024-keystrokes-71409769.hdf5
+exit=0   (124 means it hung -> filesystem is the problem)
+/dev/sdc1        15T   14T  539G   97% /data2
+
+########## 2. what are the stuck processes waiting on? ##########
 ```

@@ -1,0 +1,21 @@
+########## 1. filesystem: how long to open 5 HDF5 sessions? ##########
+5 files found
+     0.00s  2020-08-13-1597354281-keystrokes.hdf5
+     0.00s  2020-08-13-1597355141-keystrokes.hdf5
+     0.00s  2020-08-13-1597357485-keystrokes-71409769.hdf5
+     0.00s  2020-08-13-1597363426-keystrokes-71409769.hdf5
+     0.00s  2020-08-13-1597369024-keystrokes-71409769.hdf5
+exit=0   (124 means it hung -> filesystem is the problem)
+/dev/sdc1        15T   14T  539G   97% /data2
+
+########## 2. what are the stuck processes waiting on? ##########
+--- pid 3432429  state=R (running)  wchan=0  threads=15
+--- pid 3432562  state=S (sleeping)  wchan=do_sys_poll  threads=3
+--- pid 3432625  state=S (sleeping)  wchan=do_sys_poll  threads=3
+(no output above = nothing stuck / already gone)
+
+########## 3. install the stall watchdog ##########
+installed: True
+
+########## 4. kill everything, run D2 alone with num_workers=0 ##########
+launched D2 with num_workers=0 on GPU3; watching for 5 minutes
