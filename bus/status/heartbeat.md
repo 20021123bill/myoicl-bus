@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T03:06:47+08:00
+# heartbeat 2026-08-19T03:07:29+08:00
 
 ## gpu
 ```
-0, 14853 MiB, 24576 MiB, 13 %
-1, 5734 MiB, 24576 MiB, 0 %
-2, 3825 MiB, 24576 MiB, 7 %
-3, 3181 MiB, 24576 MiB, 0 %
+0, 22719 MiB, 24576 MiB, 0 %
+1, 5734 MiB, 24576 MiB, 87 %
+2, 3825 MiB, 24576 MiB, 77 %
+3, 3181 MiB, 24576 MiB, 63 %
 ```
 
 ## jobs
@@ -796,9 +796,39 @@ step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
 ### 290_v3_cheavy.log
 ```
 === v3 hedge: context-heavy + longer (GPU1) ===
+[model] v1 | 6.01M params total (published backbone 5.29M + ICL module 0.71M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 2.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
+[watchdog] armed
+step 100/20000 | loss 1.4790 | lr 3.79e-06 | 2.89 it/s
+step 200/20000 | loss 1.3944 | lr 7.54e-06 | 2.79 it/s
+step 300/20000 | loss 1.5722 | lr 1.13e-05 | 2.25 it/s
+step 400/20000 | loss 1.4285 | lr 1.50e-05 | 2.48 it/s
+step 100/20000 | loss 1.4790 | lr 3.79e-06 | 2.89 it/s
+step 200/20000 | loss 1.3944 | lr 7.54e-06 | 2.79 it/s
+step 300/20000 | loss 1.5722 | lr 1.13e-05 | 2.25 it/s
+step 400/20000 | loss 1.4285 | lr 1.50e-05 | 2.48 it/s
+--- wait cheavy step >= 6000 (03:07) ---
 ```
 
 ### 300_v3_frozen.log
 ```
 === v3 hedge: frozen backbone (GPU3) -- isolates joint-training interference ===
+[model] v1 | 6.01M params total (published backbone 5.29M + ICL module 0.71M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[episodes] frozen backbone -> mode-A episodes carry no gradient and are skipped; mode_probs renormalized to [0.0, 0.176, 0.824]
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
+[freeze] backbone 5.29M frozen | context modules 0.71M trainable (11.9% of total)
+[watchdog] armed
+step 100/12000 | loss 1.7924 | lr 3.07e-06 | 2.13 it/s
+step 200/12000 | loss 1.6190 | lr 6.30e-06 | 2.71 it/s
+step 300/12000 | loss 1.3745 | lr 9.45e-06 | 2.43 it/s
+step 100/12000 | loss 1.7924 | lr 3.07e-06 | 2.13 it/s
+step 200/12000 | loss 1.6190 | lr 6.30e-06 | 2.71 it/s
+step 300/12000 | loss 1.3745 | lr 9.45e-06 | 2.43 it/s
+--- wait frozen step >= 6000 (03:07) ---
 ```
