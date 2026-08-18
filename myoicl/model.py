@@ -73,6 +73,7 @@ class MyoICLModel(nn.Module):
         ctx_beta_ridge: float = 1e-2,
         ctx_max_tokens: int = 512,
         ctx_kv_split: bool = False,
+        ctx_film_only: bool = False,
     ) -> None:
         super().__init__()
         self.num_bands = num_bands
@@ -121,7 +122,7 @@ class MyoICLModel(nn.Module):
             self.ctx_encoder = FrameContextEncoder(
                 d_model=d_model, d_ctx=d_ctx, num_classes=num_classes,
                 max_tokens=ctx_max_tokens, dropout=dropout,
-                kv_split=ctx_kv_split,
+                kv_split=ctx_kv_split, film_only=ctx_film_only,
             )
             self.use_residual_context = False
         elif ctx_version == 2:
@@ -390,6 +391,7 @@ def build_model(cfg: dict, num_classes: int) -> MyoICLModel:
         ctx_beta_ridge=float(m.get("ctx_beta_ridge", 1e-2)),
         ctx_max_tokens=int(m.get("ctx_max_tokens", 512)),
         ctx_kv_split=bool(m.get("ctx_kv_split", False)),
+        ctx_film_only=bool(m.get("ctx_film_only", False)),
         # 1.0 = post-2026-08-18 default (identity comes from zero-init o_proj,
         # not from a shut gate). Set 0.0 to reproduce the deadlock for the
         # ablation row.

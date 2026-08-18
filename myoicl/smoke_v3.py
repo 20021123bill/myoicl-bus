@@ -15,9 +15,9 @@ import torch
 from myoicl.model import build_model
 
 
-def main(kv_split=False) -> int:
+def main(kv_split=False, film_only=False) -> int:
     torch.manual_seed(0)
-    print(f'\n===== smoke v3 (kv_split={kv_split}) =====')
+    print(f'\n===== smoke v3 (kv_split={kv_split}, film_only={film_only}) =====')
     V = 12  # tiny charset incl. blank
     cfg = {"model": {
         "version": 1, "freq_bins": 33, "num_bands": 2, "channels_per_band": 16,
@@ -25,7 +25,7 @@ def main(kv_split=False) -> int:
         "conditioning": "deep", "ctx_version": 3, "d_ctx": 32, "d_bneck": 32,
         "film_rank": 8, "cross_heads": 4, "ref_context_size": 64,
         "ctx_max_tokens": 128, "gate_init": 1.0, "official_mlp_features": [32],
-        "ctx_kv_split": kv_split,
+        "ctx_kv_split": kv_split, "ctx_film_only": film_only,
     }}
     model = build_model(cfg, num_classes=V)
     model.train()
@@ -39,6 +39,34 @@ def main(kv_split=False) -> int:
     K, Ts = 6, 30
     spec = torch.randn(Ts, K, B, C, F)
     lens = torch.tensor([30, 30, 25, 20, 15, 10], dtype=torch.int32)
+
+    if film_only:
+        outA = model(inputs, None, None)
+        tokens, pooled = model.encode_context(
+            None, ctx_labeled_spec=spec, ctx_labeled_lens=lens
+        )
+        assert tokens is None and pooled is not None, "film_only must give (None, pooled)"
+        outC0 = model(inputs, tokens, pooled)
+        assert (outC0 - outA).abs().max().item() < 1e-4, "film not identity at init"
+        # open FiLM.up (zero-init) so conditioning becomes active
+        with torch.no_grad():
+            model.film.up.weight.normal_(0, 0.02); model.film.up.bias.normal_(0, 0.02)
+        model.eval()
+        with torch.no_grad():
+            oA = model(inputs, None, None)
+            _, pl = model.encode_context(None, ctx_labeled_spec=spec, ctx_labeled_lens=lens)
+            oC = model(inputs, None, pl)
+        d = (oC - oA).abs().mean().item()
+        print(f"[smoke] film_only: opened FiLM, mean|C-A|={d:.4e} (want >0)")
+        assert d > 1e-6, "FiLM conditioning does nothing"
+        model.train(); model.zero_grad(set_to_none=True)
+        _, pl = model.encode_context(None, ctx_labeled_spec=spec, ctx_labeled_lens=lens)
+        model(inputs, None, pl).pow(2).mean().backward()
+        g = sum(p.grad.abs().sum().item() for p in model.ctx_encoder.parameters() if p.grad is not None)
+        print(f"[smoke] film_only: grad to ctx encoder = {g:.3e}")
+        assert g > 0, "no gradient to ctx encoder in film_only"
+        print("[smoke v3] ALL PASS")
+        return 0
 
     # --- mode A ---
     outA = model(inputs, None, None)
@@ -126,5 +154,6 @@ def main(kv_split=False) -> int:
 
 
 if __name__ == "__main__":
-    rc = main(kv_split=False) or main(kv_split=True)
+    rc = (main(kv_split=False) or main(kv_split=True)
+          or main(film_only=True))
     sys.exit(rc)

@@ -63,12 +63,21 @@ class FrameContextEncoder(nn.Module):
         max_tokens: int = 512,
         dropout: float = 0.1,
         kv_split: bool = False,
+        film_only: bool = False,
     ) -> None:
         super().__init__()
         self.num_classes = num_classes
         self.blank_id = num_classes - 1
         self.max_tokens = int(max_tokens)
         self.kv_split = bool(kv_split)
+        # film_only: return NO key/value tokens, only a pooled support summary
+        # that drives FiLM (channel-wise gamma/beta). Motivated by 2026-08-19
+        # evidence that full per-frame cross-attention biasing OVERFITS under
+        # joint training and hurts held-out CER (gain worsened to -1.76), while
+        # the EMG cross-session literature (arXiv 2607.27568) finds only
+        # feature-statistic alignment reliably helps. FiLM is exactly a
+        # channel-wise statistic match and cannot inject per-frame harmful bias.
+        self.film_only = bool(film_only)
         self.char_emb = nn.Embedding(num_classes, d_ctx)
         if self.kv_split:
             # v3.1: separate key (signal feature) and value (character) streams.
@@ -137,5 +146,9 @@ class FrameContextEncoder(nn.Module):
         tok = self.tok_proj(torch.cat([feats, soft_char], dim=-1))  # (Tf,K,d_ctx)
         tok = tok + self.mlp(self.norm(tok))
         tokens = _select(tok)                                 # (1, M, d_ctx)
-        pooled = tokens.mean(dim=1)
+        pooled = tokens.mean(dim=1)                           # (1, d_ctx)
+        if self.film_only:
+            # No key/value tokens -> cross-attention stays identity; only the
+            # pooled summary conditions the trunk (channel-wise via FiLM).
+            return None, pooled
         return tokens, pooled
