@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T04:41:02+08:00
+# heartbeat 2026-08-19T04:41:46+08:00
 
 ## gpu
 ```
-0, 24121 MiB, 24576 MiB, 0 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 3583 MiB, 24576 MiB, 0 %
-2, 3849 MiB, 24576 MiB, 0 %
+2, 3849 MiB, 24576 MiB, 66 %
 3, 2327 MiB, 24576 MiB, 0 %
 ```
 
@@ -45,6 +45,7 @@
 310_v31_kvsplit                          DONE rc=127
 320_v31_relaunch                         DONE rc=127
 330_v32_filmonly                         DONE rc=127
+340_ctxsource_diag                       DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -961,4 +962,9 @@ step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
 [B] mean over users: 53.99
 [C] mean over users: 54.52
 --- wait v3.2 step >= 6000 (04:38) ---
+```
+
+### 340_ctxsource_diag.log
+```
+=== waiting for v3.1 checkpoint step >= 9000 ===
 ```
