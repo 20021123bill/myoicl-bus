@@ -1,4 +1,4 @@
-# heartbeat 2026-08-19T02:18:40+08:00
+# heartbeat 2026-08-19T02:19:22+08:00
 
 ## gpu
 ```
@@ -37,6 +37,7 @@
 230_v3_fix_smoke_and_train               DONE rc=127
 240_v3_fix2_smoke_train                  DONE rc=127
 250_v3_smoke_train                       DONE rc=127
+260_v3_smoke3_train                      DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -703,4 +704,10 @@ Traceback (most recent call last):
     assert diff1 > 1e-6, "context still does nothing after training -- path stuck"
 AssertionError: context still does nothing after training -- path stuck
 SMOKE STILL FAILING -- stopping.
+```
+
+### 260_v3_smoke3_train.log
+```
+=== deploy smoke fix (set o_proj nonzero instead of unstable SGD) ===
+=== v3 smoke ===
 ```
