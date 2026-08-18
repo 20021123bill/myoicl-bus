@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T05:48:47+08:00
+# heartbeat 2026-08-19T05:49:29+08:00
 
 ## gpu
 ```
-0, 7437 MiB, 24576 MiB, 91 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -993,4 +993,12 @@ v3.1 checkpoint step 9000
 [A] mean over users: 55.77
 [C] mean over users: 57.03
 --- SAME-session (labelled support from the DECODED session itself) ---
+[A] mean over users: 55.77
+[C] mean over users: 57.46
+
+=== READ ===
+If SAME-session mode-C < mode-A (gain positive) while CROSS-session hurts,
+the universal negative is cross-session electrode staleness, not the method:
+in-context calibration works when calibration and use are the same session.
+=== same-session diagnostic complete ===
 ```
