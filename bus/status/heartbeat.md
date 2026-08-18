@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T04:36:10+08:00
+# heartbeat 2026-08-19T04:36:52+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
-1, 3583 MiB, 24576 MiB, 0 %
-2, 3849 MiB, 24576 MiB, 86 %
-3, 2327 MiB, 24576 MiB, 48 %
+0, 7435 MiB, 24576 MiB, 15 %
+1, 3583 MiB, 24576 MiB, 19 %
+2, 3849 MiB, 24576 MiB, 0 %
+3, 2327 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -936,7 +936,6 @@ step 400/12000 | loss 1.3018 | lr 1.50e-05 | 3.44 it/s
 
 ### 330_v32_filmonly.log
 ```
-[smoke] grad to frame context encoder now = 4.497e+00
 [smoke] full-length support -> 96 tokens (>= 50 masked)
 [smoke v3] ALL PASS
 
@@ -961,4 +960,5 @@ step 200/12000 | loss 1.2428 | lr 7.54e-06 | 3.53 it/s
 step 300/12000 | loss 1.3811 | lr 1.13e-05 | 3.35 it/s
 step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
 --- wait v3.2 step >= 2000 (04:26) ---
+=== v3.2 @ step ~2000 : 8 users A/B/C ===
 ```
