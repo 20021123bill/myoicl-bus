@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T01:25:06+08:00
+# heartbeat 2026-08-19T01:25:48+08:00
 
 ## gpu
 ```
-0, 7995 MiB, 24576 MiB, 15 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 4376 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -587,16 +587,6 @@ committed
 
 ### 210_encoding_beta_d4.log
 ```
-  AST OK   model.py
-
-=== D4 = D3 + ctx_encoding_beta, GPU1 ===
---- first 30 lines ---
-[model] v1 | 6.26M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
-[data] train sessions=837 val sessions=192
-[data] episodic users=86 train + 10 meta-val (held out from module training)
-[optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
-[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 102 context tensors keep their initialization
-[units] loaded 72/72 ctx_encoder tensors from /data2/chenyuxiang/runs/units_pretrain.pt
 [watchdog] armed
 step 100/8000 | loss 1.2414 | lr 1.01e-05 | 1.46 it/s
 --- waiting for D4 checkpoint step >= 2000 (00:26) ---
@@ -612,4 +602,14 @@ step 100/8000 | loss 1.2414 | lr 1.01e-05 | 1.46 it/s
     cross_post   |tanh(g)|=0.18240  ||W||=  5.3596  EFFECTIVE=0.97761
 --- waiting for D4 checkpoint step >= 5000 (00:51) ---
 === D4 @ step ~5000 : 8 official held-out users, A/B/C, K=256 ===
+[A] mean over users: 55.22
+[B] mean over users: 55.60
+[C] mean over users: 55.59
+[A] gap closed vs personalization ceiling: 0.4%
+[B] gap closed vs personalization ceiling: -0.5%
+[C] gap closed vs personalization ceiling: -0.5%
+=== /tmp/d4_snap.pt  (step 5000) ===
+    cross_pre    |tanh(g)|=0.00057  ||W||=  8.2775  EFFECTIVE=0.00473
+    cross_post   |tanh(g)|=0.00750  ||W||=  7.6652  EFFECTIVE=0.05746
+--- waiting for D4 checkpoint step >= 8000 (01:25) ---
 ```
