@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T05:45:17+08:00
+# heartbeat 2026-08-19T05:45:59+08:00
 
 ## gpu
 ```
-0, 24121 MiB, 24576 MiB, 85 %
+0, 7435 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -982,4 +982,7 @@ v3.1 checkpoint step 9000
 
 ############ myoicl_v31_kvsplit (step 12000) ############
 --- CROSS-session (labelled support from OTHER sessions; the default all runs used) ---
+[A] mean over users: 54.75
+[C] mean over users: 55.26
+--- SAME-session (labelled support from the DECODED session itself) ---
 ```
