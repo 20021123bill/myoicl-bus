@@ -1,4 +1,4 @@
-# heartbeat 2026-08-18T22:34:28+08:00
+# heartbeat 2026-08-18T22:35:09+08:00
 
 ## gpu
 ```
@@ -192,6 +192,7 @@ step 100/8000 | loss 1.1744 | lr 1.01e-05 | 1.93 it/s
 step 200/8000 | loss 1.1658 | lr 2.01e-05 | 1.72 it/s
 step 300/8000 | loss 1.0905 | lr 3.00e-05 | 1.86 it/s
 step 400/8000 | loss 0.9526 | lr 3.00e-05 | 2.08 it/s
+step 500/8000 | loss 1.1182 | lr 3.00e-05 | 1.98 it/s
 ```
 
 ### 040_fix_runner.log
