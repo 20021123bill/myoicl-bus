@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T04:22:53+08:00
+# heartbeat 2026-08-19T04:23:35+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 3679 MiB, 24576 MiB, 0 %
+1, 3679 MiB, 24576 MiB, 45 %
 2, 3849 MiB, 24576 MiB, 0 %
-3, 12 MiB, 24576 MiB, 0 %
+3, 1079 MiB, 24576 MiB, 3 %
 ```
 
 ## jobs
@@ -872,6 +872,7 @@ step 300/12000 | loss 1.3745 | lr 9.45e-06 | 2.43 it/s
     cross_pre    |tanh(g)|=0.20556  ||W||= 12.7450  EFFECTIVE=2.61982
     cross_post   |tanh(g)|=0.32007  ||W||=  7.5508  EFFECTIVE=2.41680
 --- wait frozen step >= 12000 (03:45) ---
+=== v3-frozen @ step ~12000 : 8 users A/B/C ===
 ```
 
 ### 310_v31_kvsplit.log
@@ -934,7 +935,6 @@ step 400/12000 | loss 1.3018 | lr 1.50e-05 | 3.44 it/s
 
 ### 330_v32_filmonly.log
 ```
-=== smoke (kv False/True + film_only) ===
 
 ===== smoke v3 (kv_split=False, film_only=False) =====
 [smoke] built 50 support tokens from 6 windows
@@ -959,4 +959,5 @@ step 400/12000 | loss 1.3018 | lr 1.50e-05 | 3.44 it/s
 [smoke] film_only: grad to ctx encoder = 8.990e+00
 [smoke v3] ALL PASS
 === wait for GPU3 (frozen hedge to finish) ===
+=== launch v3.2 on GPU3 ===
 ```

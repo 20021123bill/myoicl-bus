@@ -21,3 +21,4 @@ step 300/12000 | loss 1.3745 | lr 9.45e-06 | 2.43 it/s
     cross_pre    |tanh(g)|=0.20556  ||W||= 12.7450  EFFECTIVE=2.61982
     cross_post   |tanh(g)|=0.32007  ||W||=  7.5508  EFFECTIVE=2.41680
 --- wait frozen step >= 12000 (03:45) ---
+=== v3-frozen @ step ~12000 : 8 users A/B/C ===
