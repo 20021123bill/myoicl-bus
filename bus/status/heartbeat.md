@@ -1,9 +1,9 @@
-# heartbeat 2026-08-19T05:43:53+08:00
+# heartbeat 2026-08-19T05:44:35+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
-1, 12 MiB, 24576 MiB, 1 %
+0, 7435 MiB, 24576 MiB, 0 %
+1, 12 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -978,4 +978,8 @@ v3.1 checkpoint step 9000
 ### 350_samesession_diag.log
 ```
 === kill the stuck/flawed prefix eval (ctx-source only changes unused ctx_raw for v3) ===
+=== deploy correct same-session diagnostic (--support-from-test) ===
+
+############ myoicl_v31_kvsplit (step 12000) ############
+--- CROSS-session (labelled support from OTHER sessions; the default all runs used) ---
 ```
