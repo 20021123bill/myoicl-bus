@@ -1,4 +1,4 @@
-# heartbeat 2026-08-18T22:29:36+08:00
+# heartbeat 2026-08-18T22:30:18+08:00
 
 ## gpu
 ```
@@ -24,6 +24,7 @@
 100_io_throughput                        DONE rc=127
 110_spawn_fix                            DONE rc=127
 120_clean_home                           DONE rc=127
+130_commit_and_eval_d1                   DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -380,4 +381,31 @@ NOTE: ~/.ssh/ is left alone on purpose -- ssh only reads keys from there,
 ########## confirming our real footprint is all under /data2 ##########
 12M	/data2/chenyuxiang/code/myoicl
 920M	/data2/chenyuxiang/runs
+```
+
+### 130_commit_and_eval_d1.log
+```
+########## 1. commit the patched sources so the runner stops rewriting them ##########
+ M myoicl/configs/qwerty_forcectx.yaml
+ M myoicl/context.py
+ M myoicl/gate_report.py
+ M myoicl/model.py
+ M myoicl/train_qwerty.py
+ M runner.sh
+?? bus/jobs/010_archive.sh
+?? bus/jobs/020_d1_gatefix.sh
+?? bus/jobs/030_d2_forcectx.sh
+?? bus/results/130_commit_and_eval_d1.done
+?? bus/results/130_commit_and_eval_d1.log
+?? bus/results/130_commit_and_eval_d1.started
+?? bus/status/heartbeat.md.tmp
+?? myoicl/configs/qwerty_gatefix.yaml
+tree now:
+7
+
+########## 2. D1 state ##########
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
+[watchdog] armed
+D1 never reached step 100 -> restarting it
 ```
