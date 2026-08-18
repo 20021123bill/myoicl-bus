@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T00:48:12+08:00
+# heartbeat 2026-08-19T00:49:02+08:00
 
 ## gpu
 ```
-0, 7995 MiB, 24576 MiB, 0 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 4376 MiB, 24576 MiB, 0 %
 2, 2709 MiB, 24576 MiB, 0 %
 3, 2695 MiB, 24576 MiB, 0 %
@@ -437,20 +437,6 @@ NOTE: ~/.ssh/ is left alone on purpose -- ssh only reads keys from there,
 
 ### 140_gates_and_later_evals.log
 ```
-    OPEN    film.up.bias                             |w|mean=1.742e-02 max=9.376e-02
-    OPEN    film.up.weight                           |w|mean=1.278e-02 max=7.994e-02
-  ctx_encoder: 0.44M params, rms=8.0531e-02
-
-Reading this report:
-  all CLOSED  -> the context pathway never opened. A zero
-                conditioning gain is expected and says nothing
-                about whether context is informative. Fix the
-                incentive (curriculum / p_synth / ctx_lr), not
-                the architecture.
-  some OPEN   -> context does reach the decoder. A zero gain then
-                means the model looked and found nothing useful,
-                which is a real (negative) result about the
-                training signal.
 
 ########## o_proj magnitude (the parameter that now carries the zero) ##########
 step 1000
@@ -462,6 +448,20 @@ step 1000
 ########## re-evaluate at later checkpoints ##########
 --- waiting for D1 to pass step 3000 ---
 === D1 @ ~step 3000 : 8 official test users, modes A/B/C, K=256 ===
+[A] mean over users: 54.57
+[B] mean over users: 54.69
+[C] mean over users: 54.66
+[A] gap closed vs personalization ceiling: 1.9%
+[B] gap closed vs personalization ceiling: 1.6%
+[C] gap closed vs personalization ceiling: 1.7%
+=== /tmp/d1_snap_3000.pt  (step 8000) ===
+    CLOSED  cross_post.gate              g=-0.00345  tanh=-0.00345
+    CLOSED  cross_pre.gate               g=+0.00061  tanh=+0.00061
+    OPEN    film.up.bias                             |w|mean=3.977e-02 max=2.029e-01
+    OPEN    film.up.weight                           |w|mean=2.427e-02 max=1.702e-01
+  all CLOSED  -> the context pathway never opened. A zero
+  some OPEN   -> context does reach the decoder. A zero gain then
+--- waiting for D1 to pass step 6000 ---
 ```
 
 ### 150_truth_from_ckpt.log
