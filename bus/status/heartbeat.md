@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T03:43:05+08:00
+# heartbeat 2026-08-19T03:43:47+08:00
 
 ## gpu
 ```
-0, 7435 MiB, 24576 MiB, 32 %
-1, 3679 MiB, 24576 MiB, 87 %
+0, 18229 MiB, 24576 MiB, 0 %
+1, 3679 MiB, 24576 MiB, 0 %
 2, 3825 MiB, 24576 MiB, 0 %
-3, 3181 MiB, 24576 MiB, 0 %
+3, 3181 MiB, 24576 MiB, 8 %
 ```
 
 ## jobs
@@ -858,6 +858,7 @@ step 100/12000 | loss 1.7924 | lr 3.07e-06 | 2.13 it/s
 step 200/12000 | loss 1.6190 | lr 6.30e-06 | 2.71 it/s
 step 300/12000 | loss 1.3745 | lr 9.45e-06 | 2.43 it/s
 --- wait frozen step >= 6000 (03:07) ---
+=== v3-frozen @ step ~6000 : 8 users A/B/C ===
 ```
 
 ### 310_v31_kvsplit.log
