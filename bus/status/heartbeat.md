@@ -1,4 +1,4 @@
-# heartbeat 2026-08-19T02:09:36+08:00
+# heartbeat 2026-08-19T02:10:18+08:00
 
 ## gpu
 ```
@@ -35,6 +35,7 @@
 210_encoding_beta_d4                     DONE rc=127
 220_v3_deploy_smoke_train                DONE rc=127
 230_v3_fix_smoke_and_train               DONE rc=127
+240_v3_fix2_smoke_train                  DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -660,4 +661,11 @@ Traceback (most recent call last):
     device=ctx_labeled_feats.device,
 AttributeError: 'NoneType' object has no attribute 'device'
 SMOKE STILL FAILING -- stopping.
+```
+
+### 240_v3_fix2_smoke_train.log
+```
+=== deploy v3 fix (encode_context v3 branch moved before stats block) ===
+
+=== v3 smoke test ===
 ```
