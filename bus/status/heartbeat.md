@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T00:45:35+08:00
+# heartbeat 2026-08-19T00:46:30+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 5693 MiB, 24576 MiB, 0 %
 1, 4376 MiB, 24576 MiB, 0 %
-2, 2709 MiB, 24576 MiB, 0 %
+2, 2709 MiB, 24576 MiB, 35 %
 3, 2695 MiB, 24576 MiB, 0 %
 ```
 
@@ -437,7 +437,6 @@ NOTE: ~/.ssh/ is left alone on purpose -- ssh only reads keys from there,
 
 ### 140_gates_and_later_evals.log
 ```
-  FiLM output projection (zero-init):
     OPEN    film.up.bias                             |w|mean=1.742e-02 max=9.376e-02
     OPEN    film.up.weight                           |w|mean=1.278e-02 max=7.994e-02
   ctx_encoder: 0.44M params, rms=8.0531e-02
@@ -462,6 +461,7 @@ step 1000
 
 ########## re-evaluate at later checkpoints ##########
 --- waiting for D1 to pass step 3000 ---
+=== D1 @ ~step 3000 : 8 official test users, modes A/B/C, K=256 ===
 ```
 
 ### 150_truth_from_ckpt.log

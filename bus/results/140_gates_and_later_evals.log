@@ -29,3 +29,4 @@ step 1000
 
 ########## re-evaluate at later checkpoints ##########
 --- waiting for D1 to pass step 3000 ---
+=== D1 @ ~step 3000 : 8 official test users, modes A/B/C, K=256 ===
