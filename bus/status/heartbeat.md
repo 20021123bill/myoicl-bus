@@ -1,11 +1,11 @@
-# heartbeat 2026-08-18T20:59:51+08:00
+# heartbeat 2026-08-18T21:00:33+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 2441 MiB, 24576 MiB, 0 %
-3, 2751 MiB, 24576 MiB, 43 %
+3, 2751 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -19,6 +19,7 @@
 050_eval_e1_then_d0a                     DONE rc=127
 060_d0b_gate0_forced                     DONE rc=127
 070_diag_relaunch                        DONE rc=127
+080_stackdump_and_solo                   DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -127,6 +128,7 @@ step 200/8000 | loss 2.8405 | lr 2.01e-05 | 1.48 it/s
 [data] episodic users=86 train + 10 meta-val (held out from module training)
 [optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
+step 100/8000 | loss 3.2712 | lr 1.01e-05 | 0.57 it/s
 ```
 
 ### 040_fix_runner.log
@@ -186,4 +188,11 @@ tail: 在无效上下文中使用选项 -- 4
               总计         已用        空闲      共享    缓冲/缓存    可用
 内存：        2015          20         172           0        1822        1984
 交换：           7           0           7
+```
+
+### 080_stackdump_and_solo.log
+```
+=== progress of the two retries ===
+
+=== where exactly are they stuck? (py-spy) ===
 ```

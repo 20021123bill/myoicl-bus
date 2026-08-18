@@ -1,0 +1,26 @@
+=== progress of the two retries ===
+
+=== where exactly are they stuck? (py-spy) ===
+----- pid 3425974 -----
+State:	S (sleeping)
+Threads:	71
+Permission Denied: Try running again with elevated permissions by going 'sudo env "PATH=$PATH" !!'
+py-spy dump failed for 3425974
+----- pid 3426208 -----
+State:	R (running)
+Threads:	3
+Permission Denied: Try running again with elevated permissions by going 'sudo env "PATH=$PATH" !!'
+py-spy dump failed for 3426208
+----- pid 3426271 -----
+State:	R (running)
+Threads:	3
+Permission Denied: Try running again with elevated permissions by going 'sudo env "PATH=$PATH" !!'
+py-spy dump failed for 3426271
+----- pid 3426829 -----
+State:	R (running)
+Threads:	71
+Permission Denied: Try running again with elevated permissions by going 'sudo env "PATH=$PATH" !!'
+py-spy dump failed for 3426829
+
+=== killing everything, relaunching D2 ALONE with contention fixes ===
+launched D2 solo on GPU3; sleeping 240s to see whether it passes the point where the others died
