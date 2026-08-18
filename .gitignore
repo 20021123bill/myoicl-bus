@@ -10,3 +10,5 @@ paper/
 __pycache__/
 *.pyc
 .git-credentials
+
+!tools/*.tar.gz
