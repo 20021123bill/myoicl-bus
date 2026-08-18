@@ -1,0 +1,4 @@
+=== waiting for the unit-encoder pretrain to finish ===
+found /data2/chenyuxiang/runs/units_pretrain.pt at 2026年 08月 18日 星期二 23:38:05 CST, size 25152021 bytes
+
+=== D3: D1 + pretrained unit encoder, GPU2 ===

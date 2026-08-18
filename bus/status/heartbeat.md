@@ -1,4 +1,4 @@
-# heartbeat 2026-08-18T23:37:12+08:00
+# heartbeat 2026-08-18T23:38:05+08:00
 
 ## gpu
 ```
@@ -31,6 +31,7 @@
 170_effective_injection                  DONE rc=127
 180_pretrain_units                       DONE rc=127
 190_init_units_from                      DONE rc=127
+200_d3_from_pretrained_units             DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -552,4 +553,12 @@ init_units_from added
 621:    units_ckpt = cfg.get("init_units_from")
 632:                f"init_units_from={units_ckpt} contains no ctx_encoder.* tensors"
 committed
+```
+
+### 200_d3_from_pretrained_units.log
+```
+=== waiting for the unit-encoder pretrain to finish ===
+found /data2/chenyuxiang/runs/units_pretrain.pt at 2026年 08月 18日 星期二 23:38:05 CST, size 25152021 bytes
+
+=== D3: D1 + pretrained unit encoder, GPU2 ===
 ```
