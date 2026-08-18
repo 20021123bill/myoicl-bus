@@ -221,6 +221,21 @@ class MyoICLModel(nn.Module):
         if (ctx_raw is None and ctx_labeled_feats is None
                 and ctx_labeled_spec is None and ctx_unit_mu is None):
             return (None, None, None) if return_affine else (None, None)
+        if self.ctx_version == 3:
+            # Frame-level contextual biasing. Run the labelled support windows
+            # through the shared backbone (no context -> mode A, so cross_pre/
+            # cross_post are identity), producing per-frame features and CTC
+            # posteriors, then turn them into key/value tokens. Requires the
+            # spectrogram stack; if the episode did not emit it, no context.
+            # Placed before the `stats` block below because v3 uses no segment
+            # statistics and that block dereferences ctx_labeled_feats.device.
+            if ctx_labeled_spec is None:
+                return (None, None, None) if return_affine else (None, None)
+            feats, logp, flens = self._support_frames(
+                ctx_labeled_spec, ctx_labeled_lens
+            )
+            tokens, pooled = self.ctx_encoder(feats, logp, flens)
+            return (tokens, pooled, None) if return_affine else (tokens, pooled)
         stats = None
         if ctx_raw is not None:
             stats = segment_statistics(
@@ -235,19 +250,6 @@ class MyoICLModel(nn.Module):
                 device=ctx_labeled_feats.device,
                 dtype=ctx_labeled_feats.dtype,
             )
-        if self.ctx_version == 3:
-            # Frame-level contextual biasing. Run the labelled support windows
-            # through the shared backbone (no context -> mode A, so cross_pre/
-            # cross_post are identity), producing per-frame features and CTC
-            # posteriors, then turn them into key/value tokens. Requires the
-            # spectrogram stack; if the episode did not emit it, no context.
-            if ctx_labeled_spec is None:
-                return (None, None, None) if return_affine else (None, None)
-            feats, logp, flens = self._support_frames(
-                ctx_labeled_spec, ctx_labeled_lens
-            )
-            tokens, pooled = self.ctx_encoder(feats, logp, flens)
-            return (tokens, pooled, None) if return_affine else (tokens, pooled)
         if self.ctx_version == 2:
             return self.ctx_encoder(ctx_raw, ctx_unit_mu, ctx_unit_sd,
                                     ctx_unit_desc, return_affine=return_affine)

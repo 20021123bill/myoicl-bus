@@ -23,7 +23,7 @@ def main() -> int:
         "d_model": 64, "tds_block_channels": [8, 8], "tds_kernel_width": 8,
         "conditioning": "deep", "ctx_version": 3, "d_ctx": 32, "d_bneck": 32,
         "film_rank": 8, "cross_heads": 4, "ref_context_size": 64,
-        "ctx_max_tokens": 128, "gate_init": 1.0, "official_mlp_features": [64],
+        "ctx_max_tokens": 128, "gate_init": 1.0, "official_mlp_features": [32],
     }}
     model = build_model(cfg, num_classes=V)
     model.train()
