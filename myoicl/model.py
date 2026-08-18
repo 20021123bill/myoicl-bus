@@ -329,8 +329,12 @@ class MyoICLModel(nn.Module):
         # to a safe floor; padded frames are excluded by the length mask below.
         min_frames = 4 * (self.tds_kernel_width - 1) + 8
         if spec.shape[0] < min_frames:
+            # Pad the TIME axis (dim 0), not via F.pad (which pads from the last
+            # dim and would silently pad K). spec is (T, K, B, C, F).
             pad = min_frames - spec.shape[0]
-            spec = torch.nn.functional.pad(spec, (0, 0, 0, 0, 0, 0, 0, pad))
+            spec = torch.cat(
+                [spec, spec.new_zeros((pad,) + tuple(spec.shape[1:]))], dim=0
+            )
         feats = self.frontend(spec)               # (T, K, d_model)
         feats = self.tds(feats)                    # (Tf, K, d_model)
         logp = self.log_softmax(self.classifier(feats))
