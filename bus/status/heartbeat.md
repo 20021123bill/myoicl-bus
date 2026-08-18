@@ -1,11 +1,11 @@
-# heartbeat 2026-08-18T22:06:06+08:00
+# heartbeat 2026-08-18T22:06:48+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
-3, 2963 MiB, 24576 MiB, 0 %
+3, 2515 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -142,6 +142,16 @@ step 100/8000 | loss 3.2712 | lr 1.01e-05 | 0.57 it/s
 step 100/8000 | loss 3.2712 | lr 1.01e-05 | 0.56 it/s
 ```
 
+### 033_d2_w0.log
+```
+[model] v1 | 6.25M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
+[watchdog] armed
+```
+
 ### 040_fix_runner.log
 ```
 runner.sh patched; effective on next restart
@@ -243,4 +253,14 @@ exit=0   (124 means it hung -> filesystem is the problem)
 /dev/sdc1        15T   14T  539G   97% /data2
 
 ########## 2. what are the stuck processes waiting on? ##########
+--- pid 3432429  state=R (running)  wchan=0  threads=15
+--- pid 3432562  state=S (sleeping)  wchan=do_sys_poll  threads=3
+--- pid 3432625  state=S (sleeping)  wchan=do_sys_poll  threads=3
+(no output above = nothing stuck / already gone)
+
+########## 3. install the stall watchdog ##########
+installed: True
+
+########## 4. kill everything, run D2 alone with num_workers=0 ##########
+launched D2 with num_workers=0 on GPU3; watching for 5 minutes
 ```
