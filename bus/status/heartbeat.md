@@ -1,10 +1,10 @@
-# heartbeat 2026-08-18T20:50:12+08:00
+# heartbeat 2026-08-18T20:50:53+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
-1, 12 MiB, 24576 MiB, 0 %
-2, 2707 MiB, 24576 MiB, 52 %
+0, 7479 MiB, 24576 MiB, 0 %
+1, 2653 MiB, 24576 MiB, 0 %
+2, 2707 MiB, 24576 MiB, 0 %
 3, 2837 MiB, 24576 MiB, 0 %
 ```
 
@@ -116,9 +116,22 @@ runner.sh patched; effective on next restart
 ### 050_eval_e1_then_d0a.log
 ```
 === E1 scratch: 8-user eval A/B/C K=256 ===
+[ckpt] /data2/chenyuxiang/runs/myoicl_scratch/best.pt (v1, step 50000)
+[A] user0: CER 65.64
+[A] user1: CER 63.57
+[A] user2: CER 43.79
+[A] user3: CER 54.54
+[A] user4: CER 52.89
+[A] user5: CER 42.05
+[A] user6: CER 58.39
 ```
 
 ### 060_d0b_gate0_forced.log
 ```
 === D0b: gate_init 0.0, p_synth 0.85 (deadlock control for D2) ===
+[model] v1 | 6.25M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
 ```
