@@ -4,3 +4,4 @@
 [optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
 step 100/8000 | loss 1.2474 | lr 1.01e-05 | 2.92 it/s
+step 200/8000 | loss 1.1509 | lr 2.01e-05 | 2.47 it/s
