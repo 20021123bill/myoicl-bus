@@ -1,4 +1,4 @@
-# heartbeat 2026-08-19T02:04:02+08:00
+# heartbeat 2026-08-19T02:04:44+08:00
 
 ## gpu
 ```
@@ -647,4 +647,17 @@ SMOKE FAILED -- not launching training. Fix needed.
 fixed: True
 
 === v3 smoke test ===
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 91, in <module>
+    sys.exit(main())
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 47, in main
+    tokens, pooled = model.encode_context(
+  File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 235, in encode_context
+    device=ctx_labeled_feats.device,
+AttributeError: 'NoneType' object has no attribute 'device'
+SMOKE STILL FAILING -- stopping.
 ```
