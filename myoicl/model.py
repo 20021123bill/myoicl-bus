@@ -69,6 +69,8 @@ class MyoICLModel(nn.Module):
         unit_sample: int = 256,
         input_conditioning: bool = False,
         gate_init: float = 1.0,
+        ctx_encoding_beta: bool = False,
+        ctx_beta_ridge: float = 1e-2,
     ) -> None:
         super().__init__()
         self.num_bands = num_bands
@@ -118,6 +120,8 @@ class MyoICLModel(nn.Module):
                 max_units=num_bands * channels_per_band * freq_bins,
                 unit_sample=unit_sample,
                 input_conditioning=input_conditioning,
+                encoding_beta=ctx_encoding_beta,
+                beta_ridge=ctx_beta_ridge,
             )
             # v2 carries the backbone-error signal per unit through omega, so
             # the v1 global residual token is redundant.
@@ -316,6 +320,12 @@ def build_model(cfg: dict, num_classes: int) -> MyoICLModel:
         n_latents=int(m.get("n_latents", 32)),
         unit_sample=int(m.get("unit_sample", 256)),
         input_conditioning=bool(m.get("input_conditioning", False)),
+        # Precompute per-unit ridge coefficients (GATE 0's ENCODING quantity)
+        # from ctx_unit_mu/desc inside the model and feed them to stage 1
+        # through a zero-init matrix projection. False = bit-identical to the
+        # current model: no new parameters, state_dict unchanged.
+        ctx_encoding_beta=bool(m.get("ctx_encoding_beta", False)),
+        ctx_beta_ridge=float(m.get("ctx_beta_ridge", 1e-2)),
         # 1.0 = post-2026-08-18 default (identity comes from zero-init o_proj,
         # not from a shut gate). Set 0.0 to reproduce the deadlock for the
         # ablation row.

@@ -158,6 +158,52 @@ def unit_pairs_from_windows(
     return mu, sd, desc
 
 
+def unit_encoding_beta(
+    mu: torch.Tensor, desc: torch.Tensor, num_classes: int,
+    ridge: float = 1e-2,
+) -> torch.Tensor:
+    """Closed-form per-unit ENCODING coefficients -- the GATE 0 quantity.
+
+    mu (K, J) per-window mean log-power; desc (K, num_classes + 2) whose
+    first num_classes columns are the normalized character histogram H.
+    Returns beta (J, num_classes) solving, for all units j at once,
+
+        mu[:, j] - mean  ~=  (H - mean(H)) @ beta_j       (ridge regression)
+
+    Why compute this here instead of letting stage 1 infer it: GATE 0 put
+    33.5% of cross-user variance in exactly this label->response map (vs 6.6%
+    in gain), but the context stream only carries MARGINAL per-window stats
+    plus an independent histogram; the joint relation had to be solved
+    in-context from K windows that each mix dozens of characters, and the
+    model measurably preferred shutting the path (injection 0.31 -> 0.003).
+    H is shared across units, so ONE (V, V) solve yields every beta_j.
+
+    Both mu and H are column-centered first; otherwise the fit has no
+    intercept and the user's mean power (the GAIN axis, deliberately kept
+    separate) would be absorbed into beta.
+
+    ridge is RELATIVE to mean(diag(Hc^T Hc)), exactly like
+    diagnose_units.fit_encoding, so shrinkage is invariant to K and to the
+    histogram scale. Default 1e-2 = the low end of GATE 0's ridge sweep
+    (0.01-1.0, stable throughout): the least shrinkage the diagnostic
+    verified. The ridge is also REQUIRED, not cosmetic: histogram rows sum
+    to 1, so centered rows sum to 0 (Hc @ 1 = 0) and Hc^T Hc alone is
+    singular.
+    """
+    # Solve in float32 regardless of autocast: bf16 normal equations lose
+    # ~3 significant digits on entries of order (1/40)^2 * K.
+    with torch.autocast(device_type=mu.device.type, enabled=False):
+        H = desc[:, :num_classes].to(torch.float32)              # (K, V)
+        Y = mu.to(torch.float32)                                 # (K, J)
+        Hc = H - H.mean(dim=0, keepdim=True)
+        Yc = Y - Y.mean(dim=0, keepdim=True)
+        G = Hc.t() @ Hc                                          # (V, V)
+        lam = ridge * float(G.diagonal().mean().clamp_min(1e-12))
+        eye = torch.eye(num_classes, device=G.device, dtype=G.dtype)
+        beta = torch.linalg.solve(G + lam * eye, Hc.t() @ Yc)    # (V, J)
+    return beta.t().contiguous()                                 # (J, V)
+
+
 # --------------------------------------------------------------------------
 # Stage 1: per-unit in-context encoder  (context = stimulus/response pairs)
 # --------------------------------------------------------------------------
@@ -194,7 +240,7 @@ class UnitEncoder(nn.Module):
     """
 
     def __init__(self, d_lab: int, d_omega: int = 64, layers: int = 2,
-                 heads: int = 4, dropout: float = 0.1):
+                 heads: int = 4, dropout: float = 0.1, d_beta: int = 0):
         super().__init__()
         d_in = d_lab + 2  # + activation mean, activation std
         self.inp = nn.Sequential(
@@ -207,14 +253,32 @@ class UnitEncoder(nn.Module):
         )
         self.out = nn.LayerNorm(d_omega)
         self.d_omega = d_omega
+        # Optional direct path for precomputed per-unit ENCODING coefficients
+        # (unit_encoding_beta). Zero-initialized on the projection MATRIX, not
+        # on a scalar gate: at t=0 omega is bit-identical to the no-beta
+        # model, yet d(loss)/d(beta_proj.weight) != 0 from step 1 -- the
+        # 2026-08-18 scalar-gate deadlock lesson (LoRA's zero-B pattern).
+        # d_beta = 0 (default) adds no parameters at all, so existing
+        # checkpoints load unchanged.
+        self.beta_proj = None
+        if d_beta > 0:
+            self.beta_proj = nn.Sequential(
+                nn.LayerNorm(d_beta), nn.Linear(d_beta, d_omega),
+            )
+            nn.init.zeros_(self.beta_proj[1].weight)
+            nn.init.zeros_(self.beta_proj[1].bias)
 
-    def forward(self, pairs: torch.Tensor) -> torch.Tensor:
+    def forward(self, pairs: torch.Tensor,
+                beta: torch.Tensor | None = None) -> torch.Tensor:
         J = pairs.shape[0]
         x = self.inp(pairs)                                   # (J, n, d)
         x = torch.cat([self.cls.expand(J, -1, -1), x], dim=1)  # (J, n+1, d)
         for b in self.blocks:
             x = b(x)
-        return self.out(x[:, 0])                               # (J, d_omega)
+        omega = self.out(x[:, 0])                              # (J, d_omega)
+        if beta is not None and self.beta_proj is not None:
+            omega = omega + self.beta_proj(beta.to(omega.dtype))
+        return omega
 
 
 # --------------------------------------------------------------------------
@@ -336,11 +400,15 @@ class TwoStageContextEncoder(nn.Module):
                  n_latents: int = 32, s1_layers: int = 2, s2_layers: int = 2,
                  heads: int = 4, dropout: float = 0.1,
                  max_units: int = 1056, unit_sample: int = 0,
-                 input_conditioning: bool = False):
+                 input_conditioning: bool = False,
+                 encoding_beta: bool = False, beta_ridge: float = 1e-2):
         super().__init__()
         self.num_classes = num_classes
+        self.encoding_beta = encoding_beta
+        self.beta_ridge = beta_ridge
         self.stage1 = UnitEncoder(num_classes + 2, d_omega, s1_layers, heads,
-                                  dropout)
+                                  dropout,
+                                  d_beta=num_classes if encoding_beta else 0)
         self.stage2 = UnitContextDecoder(d_omega, d_ctx, n_latents, s2_layers,
                                          heads, dropout)
         self.d_ctx = d_ctx
@@ -368,7 +436,18 @@ class TwoStageContextEncoder(nn.Module):
             desc.unsqueeze(0).expand(J, -1, -1),                 # (J, K, d_lab)
             mu.t().unsqueeze(-1), sd.t().unsqueeze(-1),          # (J, K, 1) x2
         ], dim=-1)
-        return self.stage1(pairs)
+        beta = None
+        if self.encoding_beta:
+            # Solve the per-unit ridge regression ourselves and hand stage 1
+            # the coefficients (the GATE 0 ENCODING quantity) instead of
+            # asking a set transformer to invert it in-context. mu here is
+            # already restricted to the sampled units, so this is one shared
+            # (V, V) solve either way. Sitting inside build_omega, it runs
+            # for train_qwerty AND eval_qwerty, both of which reach this
+            # point through model.encode_context.
+            beta = unit_encoding_beta(mu, desc, self.num_classes,
+                                      ridge=self.beta_ridge)
+        return self.stage1(pairs, beta=beta)
 
     def forward(self, ctx_raw: torch.Tensor | None,
                 unit_mu: torch.Tensor | None = None,
