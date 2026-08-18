@@ -1,10 +1,10 @@
-# heartbeat 2026-08-18T22:46:14+08:00
+# heartbeat 2026-08-18T22:46:55+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
-2, 2707 MiB, 24576 MiB, 2 %
+2, 2707 MiB, 24576 MiB, 29 %
 3, 2691 MiB, 24576 MiB, 0 %
 ```
 
@@ -430,5 +430,29 @@ NOTE: ~/.ssh/ is left alone on purpose -- ssh only reads keys from there,
 
 ### 140_gates_and_later_evals.log
 ```
-########## did the gates OPEN this time? ##########
+  FiLM output projection (zero-init):
+    OPEN    film.up.bias                             |w|mean=1.742e-02 max=9.376e-02
+    OPEN    film.up.weight                           |w|mean=1.278e-02 max=7.994e-02
+  ctx_encoder: 0.44M params, rms=8.0531e-02
+
+Reading this report:
+  all CLOSED  -> the context pathway never opened. A zero
+                conditioning gain is expected and says nothing
+                about whether context is informative. Fix the
+                incentive (curriculum / p_synth / ctx_lr), not
+                the architecture.
+  some OPEN   -> context does reach the decoder. A zero gain then
+                means the model looked and found nothing useful,
+                which is a real (negative) result about the
+                training signal.
+
+########## o_proj magnitude (the parameter that now carries the zero) ##########
+step 1000
+  cross_post.o_proj.bias             |w|mean=9.403e-03  max=4.949e-02
+  cross_post.o_proj.weight           |w|mean=8.436e-03  max=6.101e-02
+  cross_pre.o_proj.bias              |w|mean=1.601e-02  max=7.676e-02
+  cross_pre.o_proj.weight            |w|mean=1.111e-02  max=6.719e-02
+
+########## re-evaluate at later checkpoints ##########
+--- waiting for D1 to pass step 3000 ---
 ```
