@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T05:06:55+08:00
+# heartbeat 2026-08-19T05:07:37+08:00
 
 ## gpu
 ```
-0, 23577 MiB, 24576 MiB, 0 %
-1, 3887 MiB, 24576 MiB, 42 %
-2, 3849 MiB, 24576 MiB, 19 %
-3, 2327 MiB, 24576 MiB, 51 %
+0, 19853 MiB, 24576 MiB, 16 %
+1, 3887 MiB, 24576 MiB, 0 %
+2, 3849 MiB, 24576 MiB, 0 %
+3, 2327 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -969,4 +969,7 @@ step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
 === waiting for v3.1 checkpoint step >= 9000 ===
 v3.1 checkpoint step 9000
 === v3.1 mode C, --ctx-source cross (8 users, K=12) ===
+[A] mean over users: 54.19
+[C] mean over users: 55.14
+=== v3.1 mode C, --ctx-source prefix (8 users, K=12) ===
 ```
