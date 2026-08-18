@@ -1,11 +1,11 @@
-# heartbeat 2026-08-18T22:53:51+08:00
+# heartbeat 2026-08-18T22:54:33+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 2707 MiB, 24576 MiB, 0 %
-3, 2693 MiB, 24576 MiB, 22 %
+3, 2693 MiB, 24576 MiB, 8 %
 ```
 
 ## jobs
@@ -26,6 +26,7 @@
 120_clean_home                           DONE rc=127
 130_commit_and_eval_d1                   DONE rc=127
 140_gates_and_later_evals                DONE rc=127
+150_truth_from_ckpt                      DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -455,4 +456,9 @@ step 1000
 
 ########## re-evaluate at later checkpoints ##########
 --- waiting for D1 to pass step 3000 ---
+```
+
+### 150_truth_from_ckpt.log
+```
+########## the log is unreliable -- ask the checkpoint and the process ##########
 ```
