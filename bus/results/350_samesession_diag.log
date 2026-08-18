@@ -1,0 +1,5 @@
+=== kill the stuck/flawed prefix eval (ctx-source only changes unused ctx_raw for v3) ===
+=== deploy correct same-session diagnostic (--support-from-test) ===
+
+############ myoicl_v31_kvsplit (step 12000) ############
+--- CROSS-session (labelled support from OTHER sessions; the default all runs used) ---

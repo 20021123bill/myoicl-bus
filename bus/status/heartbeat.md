@@ -1,9 +1,9 @@
-# heartbeat 2026-08-19T05:43:11+08:00
+# heartbeat 2026-08-19T05:43:53+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 12 MiB, 24576 MiB, 0 %
+1, 12 MiB, 24576 MiB, 1 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -46,6 +46,7 @@
 320_v31_relaunch                         DONE rc=127
 330_v32_filmonly                         DONE rc=127
 340_ctxsource_diag                       DONE rc=127
+350_samesession_diag                     DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -972,4 +973,9 @@ v3.1 checkpoint step 9000
 [A] mean over users: 54.19
 [C] mean over users: 55.14
 === v3.1 mode C, --ctx-source prefix (8 users, K=12) ===
+```
+
+### 350_samesession_diag.log
+```
+=== kill the stuck/flawed prefix eval (ctx-source only changes unused ctx_raw for v3) ===
 ```
