@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T02:36:49+08:00
+# heartbeat 2026-08-19T02:37:31+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 1819 MiB, 24576 MiB, 0 %
-2, 3861 MiB, 24576 MiB, 0 %
+2, 3861 MiB, 24576 MiB, 25 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -764,15 +764,29 @@ SMOKE FAILED
 
 ### 280_v3_padfix_train.log
 ```
-=== deploy pad fix (pad time axis, not window axis) ===
-=== smoke ===
-[smoke] built 50 support tokens from 6 windows
-[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
-[smoke] init grad o_proj=3.354e+01 (want >0: path can open)
 [smoke] with o_proj opened, mean|mode C - mode A| = 3.6827e-02 (want >0: context now changes output)
 [smoke] grad to frame context encoder now = 1.095e+01
 [smoke] full-length support -> 96 tokens (>= 50 masked)
 [smoke v3] ALL PASS
 
 === launch v3 training on GPU2 ===
+--- first 25 lines ---
+[model] v1 | 6.01M params total (published backbone 5.29M + ICL module 0.71M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
+[watchdog] armed
+step 100/12000 | loss 1.7477 | lr 3.79e-06 | 2.08 it/s
+step 200/12000 | loss 1.5904 | lr 7.54e-06 | 2.08 it/s
+step 300/12000 | loss 1.3996 | lr 1.13e-05 | 2.82 it/s
+step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
+step 100/12000 | loss 1.7477 | lr 3.79e-06 | 2.08 it/s
+step 200/12000 | loss 1.5904 | lr 7.54e-06 | 2.08 it/s
+step 300/12000 | loss 1.3996 | lr 1.13e-05 | 2.82 it/s
+step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
+
+=== periodic eval by checkpoint step ===
+--- waiting for v3 step >= 2000 (02:37) ---
 ```
