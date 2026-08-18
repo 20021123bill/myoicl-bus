@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T03:50:47+08:00
+# heartbeat 2026-08-19T03:51:29+08:00
 
 ## gpu
 ```
-0, 9427 MiB, 24576 MiB, 0 %
+0, 14853 MiB, 24576 MiB, 0 %
 1, 3679 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 3181 MiB, 24576 MiB, 0 %
@@ -931,6 +931,29 @@ v3-main at step 12000
 
 ### 330_v32_filmonly.log
 ```
-=== deploy v3.2 (FiLM-only constrained conditioning) ===
 === smoke (kv False/True + film_only) ===
+
+===== smoke v3 (kv_split=False, film_only=False) =====
+[smoke] built 50 support tokens from 6 windows
+[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
+[smoke] init grad o_proj=3.354e+01 (want >0: path can open)
+[smoke] with o_proj opened, mean|mode C - mode A| = 3.6827e-02 (want >0: context now changes output)
+[smoke] grad to frame context encoder now = 1.095e+01
+[smoke] full-length support -> 96 tokens (>= 50 masked)
+[smoke v3] ALL PASS
+
+===== smoke v3 (kv_split=True, film_only=False) =====
+[smoke] built 50 support tokens from 6 windows
+[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
+[smoke] init grad o_proj=4.382e+01 (want >0: path can open)
+[smoke] with o_proj opened, mean|mode C - mode A| = 3.0983e-02 (want >0: context now changes output)
+[smoke] grad to frame context encoder now = 4.497e+00
+[smoke] full-length support -> 96 tokens (>= 50 masked)
+[smoke v3] ALL PASS
+
+===== smoke v3 (kv_split=False, film_only=True) =====
+[smoke] film_only: opened FiLM, mean|C-A|=4.5485e-02 (want >0)
+[smoke] film_only: grad to ctx encoder = 8.990e+00
+[smoke v3] ALL PASS
+=== wait for GPU3 (frozen hedge to finish) ===
 ```
