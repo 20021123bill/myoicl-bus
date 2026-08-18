@@ -50,3 +50,4 @@ step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
 [B] mean over users: 54.42
 [C] mean over users: 55.70
 --- wait v3.2 step >= 12000 (05:04) ---
+=== v3.2 @ step ~12000 : 8 users A/B/C ===
