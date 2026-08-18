@@ -30,3 +30,4 @@
   all CLOSED  -> the context pathway never opened. A zero
   some OPEN   -> context does reach the decoder. A zero gain then
 --- waiting for D1 checkpoint to reach step 8000 (23:20) ---
+=== D1 @ step 8000 : 8 official held-out users, modes A/B/C, K=256 ===
