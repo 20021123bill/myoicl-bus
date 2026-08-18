@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T01:57:46+08:00
+# heartbeat 2026-08-19T01:58:28+08:00
 
 ## gpu
 ```
-0, 7995 MiB, 24576 MiB, 0 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 1819 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -588,16 +588,6 @@ committed
 
 ### 210_encoding_beta_d4.log
 ```
-step 100/8000 | loss 1.2414 | lr 1.01e-05 | 1.46 it/s
---- waiting for D4 checkpoint step >= 2000 (00:26) ---
-=== D4 @ step ~2000 : 8 official held-out users, A/B/C, K=256 ===
-[A] mean over users: 53.90
-[B] mean over users: 54.42
-[C] mean over users: 54.42
-[A] gap closed vs personalization ceiling: 3.4%
-[B] gap closed vs personalization ceiling: 2.2%
-[C] gap closed vs personalization ceiling: 2.2%
-=== /tmp/d4_snap.pt  (step 2000) ===
     cross_pre    |tanh(g)|=0.23011  ||W||=  6.3289  EFFECTIVE=1.45636
     cross_post   |tanh(g)|=0.18240  ||W||=  5.3596  EFFECTIVE=0.97761
 --- waiting for D4 checkpoint step >= 5000 (00:51) ---
@@ -613,6 +603,16 @@ step 100/8000 | loss 1.2414 | lr 1.01e-05 | 1.46 it/s
     cross_post   |tanh(g)|=0.00750  ||W||=  7.6652  EFFECTIVE=0.05746
 --- waiting for D4 checkpoint step >= 8000 (01:25) ---
 === D4 @ step ~8000 : 8 official held-out users, A/B/C, K=256 ===
+[A] mean over users: 55.30
+[B] mean over users: 55.27
+[C] mean over users: 55.45
+[A] gap closed vs personalization ceiling: 0.2%
+[B] gap closed vs personalization ceiling: 0.3%
+[C] gap closed vs personalization ceiling: -0.1%
+=== /tmp/d4_snap.pt  (step 8000) ===
+    cross_pre    |tanh(g)|=0.00149  ||W||=  8.4280  EFFECTIVE=0.01255
+    cross_post   |tanh(g)|=0.00158  ||W||=  7.6839  EFFECTIVE=0.01210
+=== D4 curve complete ===
 ```
 
 ### 220_v3_deploy_smoke_train.log
