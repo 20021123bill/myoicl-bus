@@ -1,4 +1,4 @@
-# heartbeat 2026-08-18T22:10:56+08:00
+# heartbeat 2026-08-18T22:11:38+08:00
 
 ## gpu
 ```
@@ -150,6 +150,7 @@ step 100/8000 | loss 3.2712 | lr 1.01e-05 | 0.56 it/s
 [optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
 [watchdog] armed
+step 100/8000 | loss 3.1789 | lr 1.01e-05 | 0.36 it/s
 ```
 
 ### 040_fix_runner.log
@@ -242,15 +243,6 @@ step 100/8000 | loss 3.2712 | lr 1.01e-05 | 0.56 it/s
 
 ### 090_stall_hunt.log
 ```
-########## 1. filesystem: how long to open 5 HDF5 sessions? ##########
-5 files found
-     0.00s  2020-08-13-1597354281-keystrokes.hdf5
-     0.00s  2020-08-13-1597355141-keystrokes.hdf5
-     0.00s  2020-08-13-1597357485-keystrokes-71409769.hdf5
-     0.00s  2020-08-13-1597363426-keystrokes-71409769.hdf5
-     0.00s  2020-08-13-1597369024-keystrokes-71409769.hdf5
-exit=0   (124 means it hung -> filesystem is the problem)
-/dev/sdc1        15T   14T  539G   97% /data2
 
 ########## 2. what are the stuck processes waiting on? ##########
 --- pid 3432429  state=R (running)  wchan=0  threads=15
@@ -263,4 +255,17 @@ installed: True
 
 ########## 4. kill everything, run D2 alone with num_workers=0 ##########
 launched D2 with num_workers=0 on GPU3; watching for 5 minutes
+########## 5. after 5 minutes ##########
+[model] v1 | 6.25M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
+[watchdog] armed
+step 100/8000 | loss 3.1789 | lr 1.01e-05 | 0.36 it/s
+ 22:11:17 up 113 days,  27 min,  21 users, 0.04, 0.02, 0.01
+0, 16 MiB, 0 %
+1, 12 MiB, 0 %
+2, 12 MiB, 0 %
+3, 3037 MiB, 0 %
 ```
