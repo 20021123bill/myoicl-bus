@@ -1,1 +1,16 @@
 === v3 hedge: frozen backbone (GPU3) -- isolates joint-training interference ===
+[model] v1 | 6.01M params total (published backbone 5.29M + ICL module 0.71M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[episodes] frozen backbone -> mode-A episodes carry no gradient and are skipped; mode_probs renormalized to [0.0, 0.176, 0.824]
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
+[freeze] backbone 5.29M frozen | context modules 0.71M trainable (11.9% of total)
+[watchdog] armed
+step 100/12000 | loss 1.7924 | lr 3.07e-06 | 2.13 it/s
+step 200/12000 | loss 1.6190 | lr 6.30e-06 | 2.71 it/s
+step 300/12000 | loss 1.3745 | lr 9.45e-06 | 2.43 it/s
+step 100/12000 | loss 1.7924 | lr 3.07e-06 | 2.13 it/s
+step 200/12000 | loss 1.6190 | lr 6.30e-06 | 2.71 it/s
+step 300/12000 | loss 1.3745 | lr 9.45e-06 | 2.43 it/s
+--- wait frozen step >= 6000 (03:07) ---
