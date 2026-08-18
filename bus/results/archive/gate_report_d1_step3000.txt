@@ -1,0 +1,7 @@
+=== /tmp/d1_snap_3000.pt  (step 8000) ===
+    CLOSED  cross_post.gate              g=-0.00345  tanh=-0.00345
+    CLOSED  cross_pre.gate               g=+0.00061  tanh=+0.00061
+    OPEN    film.up.bias                             |w|mean=3.977e-02 max=2.029e-01
+    OPEN    film.up.weight                           |w|mean=2.427e-02 max=1.702e-01
+  all CLOSED  -> the context pathway never opened. A zero
+  some OPEN   -> context does reach the decoder. A zero gain then
