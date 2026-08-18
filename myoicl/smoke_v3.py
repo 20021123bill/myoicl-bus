@@ -77,16 +77,13 @@ def main() -> int:
     print(f"[smoke] init grad o_proj={g_oproj:.3e} (want >0: path can open)")
     assert g_oproj > 0, "no gradient to o_proj -- injection can never open"
 
-    # --- a few optimizer steps should OPEN the path ---
-    opt = torch.optim.SGD(model.parameters(), lr=0.1)
-    for _ in range(8):
-        opt.zero_grad(set_to_none=True)
-        tk, pl = model.encode_context(
-            None, ctx_labeled_spec=spec, ctx_labeled_lens=lens
-        )
-        loss = model(inputs, tk, pl).pow(2).mean()
-        loss.backward()
-        opt.step()
+    # --- once o_proj is nonzero (as it becomes after step 1), context must
+    #     flow through. Set it directly instead of running an unstable optimizer
+    #     on a tiny random model (lr-0.1 SGD on output^2 diverges to NaN and
+    #     tells us nothing about the architecture). ---
+    with torch.no_grad():
+        for ca in (model.cross_pre, model.cross_post):
+            ca.o_proj.weight.normal_(0, 0.02)
     model.eval()
     with torch.no_grad():
         oA = model(inputs, None, None)
@@ -95,9 +92,9 @@ def main() -> int:
         )
         oC = model(inputs, tk, pl)
     diff1 = (oC - oA).abs().mean().item()
-    print(f"[smoke] after 8 steps mean|mode C - mode A| = {diff1:.4e} "
+    print(f"[smoke] with o_proj opened, mean|mode C - mode A| = {diff1:.4e} "
           f"(want >0: context now changes output)")
-    assert diff1 > 1e-6, "context still does nothing after training -- path stuck"
+    assert diff1 > 1e-6, "context does nothing even with o_proj open -- path broken"
     model.train()
     model.zero_grad(set_to_none=True)
     tk, pl = model.encode_context(
