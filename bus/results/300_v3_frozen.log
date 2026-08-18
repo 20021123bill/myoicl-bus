@@ -22,3 +22,9 @@ step 300/12000 | loss 1.3745 | lr 9.45e-06 | 2.43 it/s
     cross_post   |tanh(g)|=0.32007  ||W||=  7.5508  EFFECTIVE=2.41680
 --- wait frozen step >= 12000 (03:45) ---
 === v3-frozen @ step ~12000 : 8 users A/B/C ===
+[A] mean over users: 55.40
+[B] mean over users: 55.40
+[C] mean over users: 55.51
+    cross_pre    |tanh(g)|=0.12490  ||W||= 14.6937  EFFECTIVE=1.83529
+    cross_post   |tanh(g)|=0.24797  ||W||=  8.4160  EFFECTIVE=2.08692
+=== v3-frozen complete ===
