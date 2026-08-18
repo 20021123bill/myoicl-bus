@@ -1,4 +1,4 @@
-# heartbeat 2026-08-18T21:03:18+08:00
+# heartbeat 2026-08-18T21:03:59+08:00
 
 ## gpu
 ```
@@ -138,6 +138,7 @@ step 100/8000 | loss 3.2712 | lr 1.01e-05 | 0.57 it/s
 [data] episodic users=86 train + 10 meta-val (held out from module training)
 [optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
+step 100/8000 | loss 3.2712 | lr 1.01e-05 | 0.56 it/s
 ```
 
 ### 040_fix_runner.log
