@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T01:23:01+08:00
+# heartbeat 2026-08-19T01:23:43+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 5693 MiB, 24576 MiB, 0 %
 1, 4376 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -587,7 +587,6 @@ committed
 
 ### 210_encoding_beta_d4.log
 ```
-  AST OK   icl2.py
   AST OK   model.py
 
 === D4 = D3 + ctx_encoding_beta, GPU1 ===
@@ -612,4 +611,5 @@ step 100/8000 | loss 1.2414 | lr 1.01e-05 | 1.46 it/s
     cross_pre    |tanh(g)|=0.23011  ||W||=  6.3289  EFFECTIVE=1.45636
     cross_post   |tanh(g)|=0.18240  ||W||=  5.3596  EFFECTIVE=0.97761
 --- waiting for D4 checkpoint step >= 5000 (00:51) ---
+=== D4 @ step ~5000 : 8 official held-out users, A/B/C, K=256 ===
 ```
