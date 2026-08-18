@@ -1,11 +1,11 @@
-# heartbeat 2026-08-18T22:54:33+08:00
+# heartbeat 2026-08-18T22:55:14+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 2707 MiB, 24576 MiB, 0 %
-3, 2693 MiB, 24576 MiB, 8 %
+3, 2693 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -461,4 +461,17 @@ step 1000
 ### 150_truth_from_ckpt.log
 ```
 ########## the log is unreliable -- ask the checkpoint and the process ##########
+D1: checkpoint step=2000  written 5.4 min ago
+D2: no checkpoint yet
+
+--- processes and how much CPU time they have burned ---
+3522548       34:32 00:57:33  166 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_forcectx.yaml --set data.num_workers=4 --set out_dir=/data2/cheny
+3579965       24:08 00:21:31 89.2 python -m myoicl.train_qwerty --config myoicl/configs/qwerty_gatefix.yaml --set data.num_workers=4 --set train.save_every=1000
+
+--- true step numbers straight from the live logs on disk ---
+bus/results/036_d1_spawn2.log: 5 step lines, last = step 500/8000 | loss 1.1182 | lr 3.00e-05 | 1.98 it/s
+bus/results/034_d2_spawn.log: 2 step lines, last = step 200/8000 | loss 2.7280 | lr 2.01e-05 | 0.86 it/s
+
+########## keep future logs OUT of git's reach ##########
+runner.sh patched (effective on next runner restart)
 ```
