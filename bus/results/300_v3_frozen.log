@@ -14,3 +14,4 @@ step 100/12000 | loss 1.7924 | lr 3.07e-06 | 2.13 it/s
 step 200/12000 | loss 1.6190 | lr 6.30e-06 | 2.71 it/s
 step 300/12000 | loss 1.3745 | lr 9.45e-06 | 2.43 it/s
 --- wait frozen step >= 6000 (03:07) ---
+=== v3-frozen @ step ~6000 : 8 users A/B/C ===
