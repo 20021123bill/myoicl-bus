@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T04:06:07+08:00
+# heartbeat 2026-08-19T04:06:49+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 3679 MiB, 24576 MiB, 13 %
-2, 12 MiB, 24576 MiB, 0 %
+1, 3679 MiB, 24576 MiB, 68 %
+2, 3845 MiB, 24576 MiB, 56 %
 3, 3181 MiB, 24576 MiB, 0 %
 ```
 
@@ -927,6 +927,7 @@ SMOKE FAILED -- not launching
 [smoke v3] ALL PASS
 === wait for a free GPU (v3-main on GPU2 to finish) ===
 v3-main at step 12000
+=== launch v3.1 on GPU2 ===
 ```
 
 ### 330_v32_filmonly.log
