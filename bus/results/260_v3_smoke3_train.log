@@ -58,3 +58,9 @@ RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: 
 [C] gap closed vs personalization ceiling: 0.4%
 --- waiting for v3 step >= 9000 (03:07) ---
 === v3 @ step ~9000 : 8 official held-out users, A/B/C, K=128 ===
+[A] mean over users: 54.12
+[B] mean over users: 54.12
+=== /tmp/v3_snap.pt  (step 9000) ===
+    cross_pre    |tanh(g)|=0.07668  ||W||= 13.7224  EFFECTIVE=1.05230
+    cross_post   |tanh(g)|=0.00869  ||W||= 10.9762  EFFECTIVE=0.09533
+--- waiting for v3 step >= 12000 (03:33) ---

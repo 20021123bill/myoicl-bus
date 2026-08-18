@@ -51,3 +51,10 @@ step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
     cross_post   |tanh(g)|=0.01985  ||W||=  9.1071  EFFECTIVE=0.18075
 --- waiting for v3 step >= 9000 (03:07) ---
 === v3 @ step ~9000 : 8 official held-out users, A/B/C ===
+[A] mean over users: 54.12
+[B] mean over users: 54.12
+[C] mean over users: 55.88
+[A] gap closed vs personalization ceiling: 2.9%
+[B] gap closed vs personalization ceiling: 2.9%
+[C] gap closed vs personalization ceiling: -1.1%
+--- waiting for v3 step >= 12000 (03:33) ---
