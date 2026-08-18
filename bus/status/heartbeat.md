@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T03:03:17+08:00
+# heartbeat 2026-08-19T03:04:00+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 1819 MiB, 24576 MiB, 0 %
-2, 3825 MiB, 24576 MiB, 30 %
+2, 3825 MiB, 24576 MiB, 91 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -40,6 +40,8 @@
 260_v3_smoke3_train                      DONE rc=127
 270_v3_fullwin_train                     DONE rc=127
 280_v3_padfix_train                      DONE rc=127
+290_v3_cheavy                            DONE rc=127
+300_v3_frozen                            DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -789,4 +791,14 @@ step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
     cross_pre    |tanh(g)|=0.45023  ||W||=  6.1459  EFFECTIVE=2.76706
     cross_post   |tanh(g)|=0.42207  ||W||=  4.9640  EFFECTIVE=2.09517
 --- waiting for v3 step >= 5000 (02:49) ---
+```
+
+### 290_v3_cheavy.log
+```
+=== v3 hedge: context-heavy + longer (GPU1) ===
+```
+
+### 300_v3_frozen.log
+```
+=== v3 hedge: frozen backbone (GPU3) -- isolates joint-training interference ===
 ```
