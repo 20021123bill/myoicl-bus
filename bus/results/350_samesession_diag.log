@@ -14,3 +14,11 @@
 [A] mean over users: 55.77
 [C] mean over users: 57.03
 --- SAME-session (labelled support from the DECODED session itself) ---
+[A] mean over users: 55.77
+[C] mean over users: 57.46
+
+=== READ ===
+If SAME-session mode-C < mode-A (gain positive) while CROSS-session hurts,
+the universal negative is cross-session electrode staleness, not the method:
+in-context calibration works when calibration and use are the same session.
+=== same-session diagnostic complete ===
