@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T05:05:30+08:00
+# heartbeat 2026-08-19T05:06:12+08:00
 
 ## gpu
 ```
-0, 7435 MiB, 24576 MiB, 0 %
+0, 14853 MiB, 24576 MiB, 0 %
 1, 3887 MiB, 24576 MiB, 0 %
 2, 3849 MiB, 24576 MiB, 0 %
 3, 2327 MiB, 24576 MiB, 0 %
@@ -967,4 +967,6 @@ step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
 ### 340_ctxsource_diag.log
 ```
 === waiting for v3.1 checkpoint step >= 9000 ===
+v3.1 checkpoint step 9000
+=== v3.1 mode C, --ctx-source cross (8 users, K=12) ===
 ```
