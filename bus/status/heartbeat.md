@@ -1,4 +1,4 @@
-# heartbeat 2026-08-19T02:28:26+08:00
+# heartbeat 2026-08-19T02:29:09+08:00
 
 ## gpu
 ```
@@ -38,6 +38,7 @@
 240_v3_fix2_smoke_train                  DONE rc=127
 250_v3_smoke_train                       DONE rc=127
 260_v3_smoke3_train                      DONE rc=127
+270_v3_fullwin_train                     DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -733,4 +734,8 @@ RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: 
 
 === periodic eval by checkpoint step ===
 --- waiting for v3 step >= 2000 (02:22) ---
+```
+
+### 270_v3_fullwin_train.log
+```
 ```
