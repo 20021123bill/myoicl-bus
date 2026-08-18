@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T05:02:00+08:00
+# heartbeat 2026-08-19T05:02:42+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 7435 MiB, 24576 MiB, 7 %
 1, 3887 MiB, 24576 MiB, 0 %
-2, 3849 MiB, 24576 MiB, 0 %
+2, 3849 MiB, 24576 MiB, 46 %
 3, 2327 MiB, 24576 MiB, 0 %
 ```
 
@@ -937,7 +937,6 @@ step 400/12000 | loss 1.3018 | lr 1.50e-05 | 3.44 it/s
 
 ### 330_v32_filmonly.log
 ```
-[smoke] film_only: opened FiLM, mean|C-A|=4.5485e-02 (want >0)
 [smoke] film_only: grad to ctx encoder = 8.990e+00
 [smoke v3] ALL PASS
 === wait for GPU3 (frozen hedge to finish) ===
@@ -962,6 +961,7 @@ step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
 [B] mean over users: 53.99
 [C] mean over users: 54.52
 --- wait v3.2 step >= 6000 (04:38) ---
+=== v3.2 @ step ~6000 : 8 users A/B/C ===
 ```
 
 ### 340_ctxsource_diag.log
