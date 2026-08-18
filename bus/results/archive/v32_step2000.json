@@ -1,0 +1,169 @@
+{
+  "A": {
+    "users": {
+      "user0": {
+        "CER": 58.768736616702355,
+        "edits": 5489,
+        "target_chars": 9340,
+        "pairs": 2
+      },
+      "user1": {
+        "CER": 60.2815376285869,
+        "edits": 5567,
+        "target_chars": 9235,
+        "pairs": 2
+      },
+      "user2": {
+        "CER": 43.60134708482425,
+        "edits": 4143,
+        "target_chars": 9502,
+        "pairs": 2
+      },
+      "user3": {
+        "CER": 53.35898845519516,
+        "edits": 4853,
+        "target_chars": 9095,
+        "pairs": 2
+      },
+      "user4": {
+        "CER": 55.97591456487162,
+        "edits": 4927,
+        "target_chars": 8802,
+        "pairs": 2
+      },
+      "user5": {
+        "CER": 48.538812785388124,
+        "edits": 4252,
+        "target_chars": 8760,
+        "pairs": 2
+      },
+      "user6": {
+        "CER": 57.61682242990654,
+        "edits": 4932,
+        "target_chars": 8560,
+        "pairs": 2
+      },
+      "user7": {
+        "CER": 53.75532961626763,
+        "edits": 4917,
+        "target_chars": 9147,
+        "pairs": 2
+      }
+    },
+    "mean_user_cer": 53.98718614771782,
+    "gap_closed_vs_ft": 3.2
+  },
+  "B": {
+    "users": {
+      "user0": {
+        "CER": 58.768736616702355,
+        "edits": 5489,
+        "target_chars": 9340,
+        "pairs": 2
+      },
+      "user1": {
+        "CER": 60.2815376285869,
+        "edits": 5567,
+        "target_chars": 9235,
+        "pairs": 2
+      },
+      "user2": {
+        "CER": 43.60134708482425,
+        "edits": 4143,
+        "target_chars": 9502,
+        "pairs": 2
+      },
+      "user3": {
+        "CER": 53.35898845519516,
+        "edits": 4853,
+        "target_chars": 9095,
+        "pairs": 2
+      },
+      "user4": {
+        "CER": 55.97591456487162,
+        "edits": 4927,
+        "target_chars": 8802,
+        "pairs": 2
+      },
+      "user5": {
+        "CER": 48.538812785388124,
+        "edits": 4252,
+        "target_chars": 8760,
+        "pairs": 2
+      },
+      "user6": {
+        "CER": 57.61682242990654,
+        "edits": 4932,
+        "target_chars": 8560,
+        "pairs": 2
+      },
+      "user7": {
+        "CER": 53.75532961626763,
+        "edits": 4917,
+        "target_chars": 9147,
+        "pairs": 2
+      }
+    },
+    "mean_user_cer": 53.98718614771782,
+    "gap_closed_vs_ft": 3.2
+  },
+  "C": {
+    "users": {
+      "user0": {
+        "CER": 60.55674518201285,
+        "edits": 5656,
+        "target_chars": 9340,
+        "pairs": 2
+      },
+      "user1": {
+        "CER": 60.80129940443963,
+        "edits": 5615,
+        "target_chars": 9235,
+        "pairs": 2
+      },
+      "user2": {
+        "CER": 44.07493159334877,
+        "edits": 4188,
+        "target_chars": 9502,
+        "pairs": 2
+      },
+      "user3": {
+        "CER": 53.98570643210555,
+        "edits": 4910,
+        "target_chars": 9095,
+        "pairs": 2
+      },
+      "user4": {
+        "CER": 56.41899568279936,
+        "edits": 4966,
+        "target_chars": 8802,
+        "pairs": 2
+      },
+      "user5": {
+        "CER": 48.86986301369863,
+        "edits": 4281,
+        "target_chars": 8760,
+        "pairs": 2
+      },
+      "user6": {
+        "CER": 58.63317757009346,
+        "edits": 5019,
+        "target_chars": 8560,
+        "pairs": 2
+      },
+      "user7": {
+        "CER": 52.826063190116976,
+        "edits": 4832,
+        "target_chars": 9147,
+        "pairs": 2
+      }
+    },
+    "mean_user_cer": 54.520847758576906,
+    "gap_closed_vs_ft": 2.0
+  },
+  "reference": {
+    "generic_published": 55.38,
+    "generic_rerun": 55.39,
+    "personalized_ft_published": 11.28
+  }
+}

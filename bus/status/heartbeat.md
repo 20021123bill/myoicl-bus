@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T04:37:34+08:00
+# heartbeat 2026-08-19T04:38:15+08:00
 
 ## gpu
 ```
-0, 7435 MiB, 24576 MiB, 0 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 3583 MiB, 24576 MiB, 0 %
-2, 3849 MiB, 24576 MiB, 0 %
+2, 3849 MiB, 24576 MiB, 20 %
 3, 2327 MiB, 24576 MiB, 0 %
 ```
 
@@ -936,10 +936,6 @@ step 400/12000 | loss 1.3018 | lr 1.50e-05 | 3.44 it/s
 
 ### 330_v32_filmonly.log
 ```
-[smoke] full-length support -> 96 tokens (>= 50 masked)
-[smoke v3] ALL PASS
-
-===== smoke v3 (kv_split=False, film_only=True) =====
 [smoke] film_only: opened FiLM, mean|C-A|=4.5485e-02 (want >0)
 [smoke] film_only: grad to ctx encoder = 8.990e+00
 [smoke v3] ALL PASS
@@ -961,4 +957,8 @@ step 300/12000 | loss 1.3811 | lr 1.13e-05 | 3.35 it/s
 step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
 --- wait v3.2 step >= 2000 (04:26) ---
 === v3.2 @ step ~2000 : 8 users A/B/C ===
+[A] mean over users: 53.99
+[B] mean over users: 53.99
+[C] mean over users: 54.52
+--- wait v3.2 step >= 6000 (04:38) ---
 ```
