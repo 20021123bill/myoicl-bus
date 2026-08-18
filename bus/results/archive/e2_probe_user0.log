@@ -1,0 +1,8 @@
+[ckpt] /data2/chenyuxiang/runs/myoicl_joint/last.pt (v1, step 20000)
+[A] user0: CER 61.69
+[A] mean over users: 61.69
+[C] user0: CER 61.80
+[C] mean over users: 61.80
+[A] gap closed vs personalization ceiling: -14.3%
+[C] gap closed vs personalization ceiling: -14.5%
+[saved] /tmp/e2_probe_user0.json

@@ -1,4 +1,4 @@
-# heartbeat 2026-08-18T20:25:26+08:00
+# heartbeat 2026-08-18T20:26:07+08:00
 
 ## gpu
 ```
@@ -12,6 +12,9 @@
 ```
 001_apply_v41                            DONE rc=127
 002_apply_v41                            DONE rc=127
+010_archive                              DONE rc=127
+020_d1_gatefix                           DONE rc=127
+030_d2_forcectx                          DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -47,4 +50,17 @@ PATCH FAILED rc=2 -- refusing to queue D1/D2
   YAML OK  qwerty_gatefix.yaml | p_synth=0.15 gate_init=1.0 lr=3e-05/0.001 out=myoicl_d1_gatefix
   YAML OK  qwerty_forcectx.yaml | p_synth=0.85 gate_init=1.0 lr=3e-05/0.001 out=myoicl_d2_forcectx
 v4.1 applied; 010/020/030 queued for the next runner cycle
+```
+
+### 010_archive.log
+```
+=== gate report (pre-v4.1 checkpoints) ===
+```
+
+### 020_d1_gatefix.log
+```
+```
+
+### 030_d2_forcectx.log
+```
 ```

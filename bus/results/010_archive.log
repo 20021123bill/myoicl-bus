@@ -1,0 +1,46 @@
+=== gate report (pre-v4.1 checkpoints) ===
+
+=== /data2/chenyuxiang/runs/myoicl_joint/last.pt  (step 20000) ===
+  cross-attention gates:  g -> tanh(g)
+    CLOSED  cross_post.gate              g=-0.00142  tanh=-0.00142
+    CLOSED  cross_pre.gate               g=-0.00012  tanh=-0.00012
+  FiLM output projection (zero-init):
+    OPEN    film.up.bias                             |w|mean=8.694e-03 max=5.452e-02
+    OPEN    film.up.weight                           |w|mean=7.259e-03 max=4.972e-02
+  ctx_encoder: 0.44M params, rms=7.8443e-02
+
+=== /data2/chenyuxiang/runs/myoicl_scratch/best.pt  (step 50000) ===
+  cross-attention gates:  g -> tanh(g)
+    CLOSED  cross_post.gate              g=-0.00040  tanh=-0.00040
+    CLOSED  cross_pre.gate               g=-0.00347  tanh=-0.00347
+  FiLM output projection (zero-init):
+    OPEN    film.up.bias                             |w|mean=9.495e-02 max=5.481e-01
+    OPEN    film.up.weight                           |w|mean=6.507e-02 max=5.299e-01
+  ctx_encoder: 0.44M params, rms=7.1871e-02
+
+Reading this report:
+  all CLOSED  -> the context pathway never opened. A zero
+                conditioning gain is expected and says nothing
+                about whether context is informative. Fix the
+                incentive (curriculum / p_synth / ctx_lr), not
+                the architecture.
+  some OPEN   -> context does reach the decoder. A zero gain then
+                means the model looked and found nothing useful,
+                which is a real (negative) result about the
+                training signal.
+=== checkpoints on disk ===
+-rw-rw-r-- 1 chenyuxiang chenyuxiang 75167599 8月  18 02:53 /data2/chenyuxiang/runs/myoicl_joint/best.pt
+-rw-rw-r-- 1 chenyuxiang chenyuxiang 75167599 8月  18 03:19 /data2/chenyuxiang/runs/myoicl_joint/last.pt
+-rw-rw-r-- 1 chenyuxiang chenyuxiang 75167535 8月  18 06:16 /data2/chenyuxiang/runs/myoicl_scratch/best.pt
+-rw-rw-r-- 1 chenyuxiang chenyuxiang 75167535 8月  18 08:13 /data2/chenyuxiang/runs/myoicl_scratch/last.pt
+=== archived ===
+总用量 164
+drwxrwxr-x 2 chenyuxiang chenyuxiang  4096 8月  18 20:26 .
+drwxrwxr-x 3 chenyuxiang chenyuxiang  4096 8月  18 20:26 ..
+-rw-rw-r-- 1 chenyuxiang chenyuxiang  3616 8月  18 20:26 e2_ABC_k256.json
+-rw-rw-r-- 1 chenyuxiang chenyuxiang   298 8月  18 20:26 e2_probe_user0.log
+-rw-rw-r-- 1 chenyuxiang chenyuxiang  1514 8月  18 20:26 gate_report.txt
+-rw-rw-r-- 1 chenyuxiang chenyuxiang 24047 8月  18 20:26 joint.log
+-rw-rw-r-- 1 chenyuxiang chenyuxiang 27808 8月  18 20:26 joint_log.csv
+-rw-rw-r-- 1 chenyuxiang chenyuxiang 42932 8月  18 20:26 scratch.log
+-rw-rw-r-- 1 chenyuxiang chenyuxiang 48841 8月  18 20:26 scratch_log.csv
