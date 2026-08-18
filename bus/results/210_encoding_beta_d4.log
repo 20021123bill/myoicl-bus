@@ -44,3 +44,4 @@ step 100/8000 | loss 1.2414 | lr 1.01e-05 | 1.46 it/s
     cross_pre    |tanh(g)|=0.00057  ||W||=  8.2775  EFFECTIVE=0.00473
     cross_post   |tanh(g)|=0.00750  ||W||=  7.6652  EFFECTIVE=0.05746
 --- waiting for D4 checkpoint step >= 8000 (01:25) ---
+=== D4 @ step ~8000 : 8 official held-out users, A/B/C, K=256 ===
