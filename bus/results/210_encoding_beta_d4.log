@@ -23,3 +23,13 @@
 step 100/8000 | loss 1.2414 | lr 1.01e-05 | 1.46 it/s
 --- waiting for D4 checkpoint step >= 2000 (00:26) ---
 === D4 @ step ~2000 : 8 official held-out users, A/B/C, K=256 ===
+[A] mean over users: 53.90
+[B] mean over users: 54.42
+[C] mean over users: 54.42
+[A] gap closed vs personalization ceiling: 3.4%
+[B] gap closed vs personalization ceiling: 2.2%
+[C] gap closed vs personalization ceiling: 2.2%
+=== /tmp/d4_snap.pt  (step 2000) ===
+    cross_pre    |tanh(g)|=0.23011  ||W||=  6.3289  EFFECTIVE=1.45636
+    cross_post   |tanh(g)|=0.18240  ||W||=  5.3596  EFFECTIVE=0.97761
+--- waiting for D4 checkpoint step >= 5000 (00:51) ---

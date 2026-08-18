@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T00:50:41+08:00
+# heartbeat 2026-08-19T00:51:34+08:00
 
 ## gpu
 ```
-0, 7995 MiB, 24576 MiB, 0 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 4376 MiB, 24576 MiB, 0 %
 2, 2709 MiB, 24576 MiB, 0 %
 3, 2695 MiB, 24576 MiB, 0 %
@@ -587,16 +587,6 @@ step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
 
 ### 210_encoding_beta_d4.log
 ```
-=== apply the joint-encoding context patch ===
-=== encoding-beta patch report ===
-  CHANGED  icl2.py:unit_encoding_beta
-  CHANGED  icl2.py:unitencoder-signature
-  CHANGED  icl2.py:unitencoder-beta-branch
-  CHANGED  icl2.py:twostage-init
-  CHANGED  icl2.py:build-omega-beta
-  CHANGED  model.py:model-signature
-  CHANGED  model.py:ctx-encoder-callsite
-  CHANGED  model.py:build-model-config
   AST OK   icl2.py
   AST OK   model.py
 
@@ -612,4 +602,14 @@ step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
 step 100/8000 | loss 1.2414 | lr 1.01e-05 | 1.46 it/s
 --- waiting for D4 checkpoint step >= 2000 (00:26) ---
 === D4 @ step ~2000 : 8 official held-out users, A/B/C, K=256 ===
+[A] mean over users: 53.90
+[B] mean over users: 54.42
+[C] mean over users: 54.42
+[A] gap closed vs personalization ceiling: 3.4%
+[B] gap closed vs personalization ceiling: 2.2%
+[C] gap closed vs personalization ceiling: 2.2%
+=== /tmp/d4_snap.pt  (step 2000) ===
+    cross_pre    |tanh(g)|=0.23011  ||W||=  6.3289  EFFECTIVE=1.45636
+    cross_post   |tanh(g)|=0.18240  ||W||=  5.3596  EFFECTIVE=0.97761
+--- waiting for D4 checkpoint step >= 5000 (00:51) ---
 ```
