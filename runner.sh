@@ -106,11 +106,10 @@ launch_new_jobs() {
     echo "[bus] launching $n at $(date -Is)"
     # Each job gets a clean login-ish shell with conda on PATH. The job script
     # is responsible for `conda activate` and for picking CUDA_VISIBLE_DEVICES.
-    setsid bash "$j" > "bus/results/$n.log" 2>&1 &
+    setsid bash -c 'bash "$0" > "$1" 2>&1; echo $? > "$2"' \
+        "$j" "bus/results/$n.log" "bus/results/$n.done" &
     local pid=$!
     echo "$pid" > "bus/results/$n.started"
-    # Record the exit code when it finishes, without blocking this loop.
-    ( wait "$pid"; echo "$?" > "bus/results/$n.done" ) &
   done
 }
 

@@ -63,6 +63,30 @@ def load_config(path: str, overrides: list[str]) -> dict:
     return cfg
 
 
+_PROG = [0, 0]
+
+
+def _start_stall_watchdog(stall_seconds=150):
+    import faulthandler, threading, time as _t
+    faulthandler.enable()
+    def _w():
+        seen, last = (-1, -1), _t.time()
+        while True:
+            _t.sleep(15)
+            now = (_PROG[0], _PROG[1])
+            if now != seen:
+                seen, last = now, _t.time(); continue
+            if _t.time() - last < stall_seconds: continue
+            ph = 'DATALOADER/batch-fetch' if now[0] == now[1] else 'FWD+BWD+STEP'
+            print('[watchdog] NO PROGRESS %ds  iters=%d steps=%d  stuck in %s'
+                  % (stall_seconds, now[0], now[1], ph), flush=True)
+            faulthandler.dump_traceback()
+            print('[watchdog] end of dump', flush=True)
+            last = _t.time()
+    threading.Thread(target=_w, name='stall-watchdog', daemon=True).start()
+    print('[watchdog] armed', flush=True)
+
+
 def make_scheduler(optimizer, warmup_steps: int, max_steps: int, min_ratio=0.05):
     def fn(step):
         if step < warmup_steps:
@@ -458,9 +482,18 @@ def main():
             output="raw" if raw_mode else "spec",
             seed=seed,
         )
+        # Workers are FORKED by default. The episode dataset opens HDF5
+        # files and libhdf5 is not fork-safe: a handle created in the parent
+        # and inherited by a forked child can wedge both. Measured 2026-08-18:
+        # every run with num_workers>0 stopped advancing after 100-400 steps
+        # with no error, no exit, ~0% CPU and 0% GPU, while num_workers=0 ran
+        # fine (just 8x slower). "spawn" starts each worker as a fresh
+        # interpreter that inherits no file handles.
+        _mpctx = dcfg.get("mp_context", "spawn") if num_workers > 0 else None
         train_loader = DataLoader(
             episode_ds, batch_size=None, num_workers=num_workers,
             pin_memory=True, persistent_workers=num_workers > 0,
+            multiprocessing_context=_mpctx,
         )
         train_iter_factory = lambda: iter(train_loader)  # noqa: E731
 
@@ -526,23 +559,33 @@ def main():
     base_lr = float(tcfg.get("lr", 1e-3))
     ctx_lr = float(tcfg.get("ctx_lr", base_lr))
     ctx_prefixes = ("ctx_encoder.", "film.", "cross_pre.", "cross_post.")
-    ctx_params, bb_params = [], []
+    wd = float(tcfg.get("weight_decay", 0.0))
+    buckets = {("bb", True): [], ("bb", False): [],
+               ("ctx", True): [], ("ctx", False): []}
     for _n, _p in model.named_parameters():
         if not _p.requires_grad:
             continue
-        (ctx_params if _n.startswith(ctx_prefixes) else bb_params).append(_p)
+        which = "ctx" if _n.startswith(ctx_prefixes) else "bb"
+        # Gates are decay-exempt: shrinking a gate toward zero is shrinking it
+        # toward "ignore context", which is the failure we are escaping.
+        decay = not getattr(_p, "_no_weight_decay", False)
+        buckets[(which, decay)].append(_p)
     groups = []
-    if bb_params:
-        groups.append({"params": bb_params, "lr": base_lr})
-    if ctx_params:
-        groups.append({"params": ctx_params, "lr": ctx_lr})
-    print(f"[optim] backbone {sum(p.numel() for p in bb_params) / 1e6:.2f}M "
-          f"@ lr {base_lr:.1e} | context "
-          f"{sum(p.numel() for p in ctx_params) / 1e6:.2f}M @ lr {ctx_lr:.1e}")
+    for (which, decay), ps in buckets.items():
+        if ps:
+            groups.append({"params": ps,
+                           "lr": ctx_lr if which == "ctx" else base_lr,
+                           "weight_decay": wd if decay else 0.0})
+    _n_bb = sum(p.numel() for k, v in buckets.items() if k[0] == "bb" for p in v)
+    _n_ctx = sum(p.numel() for k, v in buckets.items() if k[0] == "ctx" for p in v)
+    _n_nodecay = sum(p.numel() for k, v in buckets.items() if not k[1] for p in v)
+    print(f"[optim] backbone {_n_bb / 1e6:.2f}M @ lr {base_lr:.1e} | "
+          f"context {_n_ctx / 1e6:.2f}M @ lr {ctx_lr:.1e} | "
+          f"{_n_nodecay} params exempt from weight decay")
     optimizer = torch.optim.AdamW(
         groups,
         lr=base_lr,
-        weight_decay=float(tcfg.get("weight_decay", 0.0)),
+        weight_decay=wd,
         betas=tuple(tcfg.get("betas", [0.9, 0.98])),
     )
     scheduler = make_scheduler(
@@ -612,11 +655,13 @@ def main():
         # Keep the released backbone's BatchNorm statistics frozen too,
         # otherwise "frozen weights" would still silently drift.
         backbone_eval_mode(model)
+    _start_stall_watchdog()
     it = train_iter_factory()
     t0 = time.time()
     running = []
     skipped_no_grad = 0
     for step in range(start_step, max_steps):
+        _PROG[0] += 1
         try:
             batch = next(it)
         except StopIteration:
@@ -639,6 +684,7 @@ def main():
             )
         optimizer.step()
         scheduler.step()
+        _PROG[1] += 1
         running.append(float(loss))
 
         if (step + 1) % log_every == 0:

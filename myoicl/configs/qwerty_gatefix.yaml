@@ -1,4 +1,4 @@
-# DIAGNOSTIC (v5.3): can the architecture use context AT ALL?
+# DIAGNOSTIC (v5.3): was the shut gate the WHOLE problem?
 #
 # WHY THIS RUN EXISTS
 # -------------------
@@ -26,8 +26,8 @@
 # It is deliberately SHORT (8000 steps, ~45 min) and validates every 1000
 # steps, because it only has to answer a yes/no question.
 phase: icl
-out_dir: /data2/chenyuxiang/runs/myoicl_d2_forcectx
-seed: 1503
+out_dir: /data2/chenyuxiang/runs/myoicl_d1_gatefix
+seed: 1504
 amp: bf16
 
 repo_root: /data2/chenyuxiang/code/emg2qwerty
@@ -76,14 +76,17 @@ episodes:
   ctx_segment_len: 2000
   # Almost everything is mode C: we are measuring the labelled-context gain,
   # not regularizing for deployment.
-  mode_probs: [0.05, 0.15, 0.80]
+  mode_probs: [0.10, 0.20, 0.70]
   k_shot_range: [32, 256]
   k_shot_window: 2000
   cross_session_ctx: true
   meta_val_users: 10
   # THE DIAGNOSTIC KNOB. 0.15 -> 0.85, and the transform is made strong.
-  p_synth: 0.85
-  synth_strength: [0.35, 0.90]
+  # D1 keeps the REAL difficulty: no synthetic crutch. Paired
+  # with D2 (p_synth 0.85) this isolates "the gate was shut"
+  # from "real cross-user structure is too weak to open it".
+  p_synth: 0.15
+  synth_strength: [0.15, 0.45]
   specaug: true
 
 train:

@@ -68,6 +68,7 @@ class MyoICLModel(nn.Module):
         n_latents: int = 32,
         unit_sample: int = 256,
         input_conditioning: bool = False,
+        gate_init: float = 1.0,
     ) -> None:
         super().__init__()
         self.num_bands = num_bands
@@ -136,7 +137,8 @@ class MyoICLModel(nn.Module):
         self.film = FiLMConditioner(d_model, d_ctx, rank=film_rank)
         self.cross_pre = LogitScaledCrossAttention(
             d_model, d_ctx, n_heads=cross_heads,
-            ref_context_size=ref_context_size, d_bneck=d_bneck
+            ref_context_size=ref_context_size, d_bneck=d_bneck,
+            gate_init=gate_init,
         )
         self.tds = TDSConvEncoder(
             num_features=d_model,
@@ -145,7 +147,8 @@ class MyoICLModel(nn.Module):
         )
         self.cross_post = LogitScaledCrossAttention(
             d_model, d_ctx, n_heads=cross_heads,
-            ref_context_size=ref_context_size, d_bneck=d_bneck
+            ref_context_size=ref_context_size, d_bneck=d_bneck,
+            gate_init=gate_init,
         )
         self.classifier = nn.Linear(d_model, num_classes)
         self.log_softmax = nn.LogSoftmax(dim=-1)
@@ -313,4 +316,8 @@ def build_model(cfg: dict, num_classes: int) -> MyoICLModel:
         n_latents=int(m.get("n_latents", 32)),
         unit_sample=int(m.get("unit_sample", 256)),
         input_conditioning=bool(m.get("input_conditioning", False)),
+        # 1.0 = post-2026-08-18 default (identity comes from zero-init o_proj,
+        # not from a shut gate). Set 0.0 to reproduce the deadlock for the
+        # ablation row.
+        gate_init=float(m.get("gate_init", 1.0)),
     )

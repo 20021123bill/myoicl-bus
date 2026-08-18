@@ -330,6 +330,8 @@ class LogitScaledCrossAttention(nn.Module):
         ref_context_size: int = 32,
         dropout: float = 0.0,
         d_bneck: int | None = None,
+        gate_init: float = 1.0,
+        zero_output: bool = True,
     ) -> None:
         super().__init__()
         # Adapter-style bottleneck: attention runs in d_bneck, not d_model.
@@ -352,7 +354,21 @@ class LogitScaledCrossAttention(nn.Module):
         self.v_proj = nn.Linear(d_ctx, d_bneck)
         self.o_proj = nn.Linear(d_bneck, d_model)
         self.dropout = nn.Dropout(dropout)
-        self.gate = nn.Parameter(torch.zeros(1))
+        # Identity at init lives in the output MATRIX, not in the scalar gate.
+        # With the zero on the scalar, d(loss)/d(anything inside the attention)
+        # is exactly proportional to tanh(g)=0, so the context encoder receives
+        # no gradient until the gate opens -- and the gate's own gradient is
+        # dL/dh dotted with a random attention output, i.e. noise. Measured
+        # 2026-08-18: four gates over two runs all still shut after 20k-50k
+        # steps, while FiLM (which zeroes a matrix) had moved 1-2 orders of
+        # magnitude. Zeroing o_proj keeps the exact identity at t=0 AND gives
+        # o_proj a nonzero gradient immediately. This is the LoRA pattern.
+        if zero_output:
+            nn.init.zeros_(self.o_proj.weight)
+            nn.init.zeros_(self.o_proj.bias)
+        self.gate = nn.Parameter(torch.full((1,), float(gate_init)))
+        # Read by the optimizer to build a no-weight-decay group.
+        self.gate._no_weight_decay = True
 
     def forward(self, x: torch.Tensor, ctx: torch.Tensor | None) -> torch.Tensor:
         """x: (T, N, d_model); ctx: (1, M, d_ctx) shared across the episode."""

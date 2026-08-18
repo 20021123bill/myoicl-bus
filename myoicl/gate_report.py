@@ -24,6 +24,12 @@ import sys
 import torch
 
 
+def _flag(is_open: bool, is_ajar: bool) -> str:
+    """Three states: "not exactly zero" is not the same as "open". A
+    cross-attention residual scaled by 0.003 contributes nothing."""
+    return "OPEN  " if is_open else ("AJAR  " if is_ajar else "CLOSED")
+
+
 def report(path: str) -> None:
     obj = torch.load(path, map_location="cpu")
     sd = obj["model"] if isinstance(obj, dict) and "model" in obj else obj
@@ -36,7 +42,7 @@ def report(path: str) -> None:
         print("  cross-attention gates:  g -> tanh(g)")
         for k, g in sorted(gates.items()):
             t = math.tanh(g)
-            flag = "OPEN " if abs(t) > 1e-3 else "CLOSED"
+            flag = _flag(abs(t) > 0.05, abs(t) > 5e-3)
             print(f"    {flag}  {k:<28s} g={g:+.5f}  tanh={t:+.5f}")
     else:
         print("  (no .gate parameters found)")
@@ -50,7 +56,7 @@ def report(path: str) -> None:
             v = v.float()
             m = float(v.abs().mean())
             mx = float(v.abs().max())
-            flag = "OPEN " if mx > 1e-4 else "CLOSED"
+            flag = _flag(mx > 1e-2, mx > 1e-4)
             print(f"    {flag}  {k:<40s} |w|mean={m:.3e} max={mx:.3e}")
 
     _stat(lambda k: k.startswith("film.up."), "FiLM output projection (zero-init):")
