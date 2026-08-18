@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T03:43:47+08:00
+# heartbeat 2026-08-19T03:44:29+08:00
 
 ## gpu
 ```
-0, 18229 MiB, 24576 MiB, 0 %
+0, 7435 MiB, 24576 MiB, 0 %
 1, 3679 MiB, 24576 MiB, 0 %
-2, 3825 MiB, 24576 MiB, 0 %
+2, 3825 MiB, 24576 MiB, 75 %
 3, 3181 MiB, 24576 MiB, 8 %
 ```
 
@@ -838,6 +838,12 @@ step 300/20000 | loss 1.5722 | lr 1.13e-05 | 2.25 it/s
 step 400/20000 | loss 1.4285 | lr 1.50e-05 | 2.48 it/s
 --- wait cheavy step >= 6000 (03:07) ---
 === v3-cheavy @ step ~6000 : 8 users A/B/C ===
+[A] mean over users: 53.53
+[B] mean over users: 53.53
+[C] mean over users: 54.86
+    cross_pre    |tanh(g)|=0.00042  ||W||= 26.4393  EFFECTIVE=0.01104
+    cross_post   |tanh(g)|=0.00642  ||W||= 20.5838  EFFECTIVE=0.13212
+--- wait cheavy step >= 12000 (03:44) ---
 ```
 
 ### 300_v3_frozen.log
