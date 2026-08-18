@@ -1,4 +1,4 @@
-# heartbeat 2026-08-19T02:19:22+08:00
+# heartbeat 2026-08-19T02:20:04+08:00
 
 ## gpu
 ```
@@ -710,4 +710,13 @@ SMOKE STILL FAILING -- stopping.
 ```
 === deploy smoke fix (set o_proj nonzero instead of unstable SGD) ===
 === v3 smoke ===
+[smoke] built 50 support tokens from 6 windows
+[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
+[smoke] init grad o_proj=3.382e+01 (want >0: path can open)
+[smoke] with o_proj opened, mean|mode C - mode A| = 3.7174e-02 (want >0: context now changes output)
+[smoke] grad to frame context encoder now = 1.098e+01
+[smoke] full-length support -> 96 tokens (>= 50 masked)
+[smoke v3] ALL PASS
+
+=== launch v3 training on GPU2 ===
 ```
