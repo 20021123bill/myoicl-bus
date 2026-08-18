@@ -1,4 +1,4 @@
-# heartbeat 2026-08-18T23:07:03+08:00
+# heartbeat 2026-08-18T23:07:45+08:00
 
 ## gpu
 ```
@@ -28,6 +28,7 @@
 140_gates_and_later_evals                DONE rc=127
 150_truth_from_ckpt                      DONE rc=127
 160_eval_curve_by_ckpt                   DONE rc=127
+170_effective_injection                  DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -496,4 +497,14 @@ runner.sh patched (effective on next runner restart)
   all CLOSED  -> the context pathway never opened. A zero
   some OPEN   -> context does reach the decoder. A zero gain then
 --- waiting for D1 checkpoint to reach step 5000 (23:04) ---
+```
+
+### 170_effective_injection.log
+```
+=== why tanh(g) alone is a misleading readout ===
+The residual is  x + tanh(g) * o_proj(Attn(...)).  tanh(g) and o_proj are
+not separately identifiable: halving the gate and doubling o_proj leaves
+the function unchanged. The gate falling from 0.53 to 0.02 therefore says
+nothing on its own. The identifiable quantity is the product.
+
 ```
