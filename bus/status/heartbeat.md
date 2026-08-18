@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T00:24:03+08:00
+# heartbeat 2026-08-19T00:24:57+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 1819 MiB, 24576 MiB, 0 %
-2, 2709 MiB, 24576 MiB, 0 %
+2, 2709 MiB, 24576 MiB, 77 %
 3, 2695 MiB, 24576 MiB, 0 %
 ```
 
@@ -32,6 +32,7 @@
 180_pretrain_units                       DONE rc=127
 190_init_units_from                      DONE rc=127
 200_d3_from_pretrained_units             DONE rc=127
+210_encoding_beta_d4                     DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -582,4 +583,22 @@ step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
     cross_pre    |tanh(g)|=0.22478  ||W||=  6.2468  EFFECTIVE=1.40417
     cross_post   |tanh(g)|=0.18466  ||W||=  5.1602  EFFECTIVE=0.95287
 --- waiting for D3 checkpoint step >= 5000 (00:00) ---
+```
+
+### 210_encoding_beta_d4.log
+```
+=== apply the joint-encoding context patch ===
+=== encoding-beta patch report ===
+  CHANGED  icl2.py:unit_encoding_beta
+  CHANGED  icl2.py:unitencoder-signature
+  CHANGED  icl2.py:unitencoder-beta-branch
+  CHANGED  icl2.py:twostage-init
+  CHANGED  icl2.py:build-omega-beta
+  CHANGED  model.py:model-signature
+  CHANGED  model.py:ctx-encoder-callsite
+  CHANGED  model.py:build-model-config
+  AST OK   icl2.py
+  AST OK   model.py
+
+=== D4 = D3 + ctx_encoding_beta, GPU1 ===
 ```
