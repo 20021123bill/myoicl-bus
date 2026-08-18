@@ -1,11 +1,11 @@
-# heartbeat 2026-08-18T22:13:42+08:00
+# heartbeat 2026-08-18T22:14:24+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
-3, 3039 MiB, 24576 MiB, 3 %
+3, 3039 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -21,6 +21,7 @@
 070_diag_relaunch                        DONE rc=127
 080_stackdump_and_solo                   DONE rc=127
 090_stall_hunt                           DONE rc=127
+100_io_throughput                        DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -268,4 +269,9 @@ step 100/8000 | loss 3.1789 | lr 1.01e-05 | 0.36 it/s
 1, 12 MiB, 0 %
 2, 12 MiB, 0 %
 3, 3037 MiB, 0 %
+```
+
+### 100_io_throughput.log
+```
+########## actually READING data, not just opening ##########
 ```
