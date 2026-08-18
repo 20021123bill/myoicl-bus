@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T02:46:35+08:00
+# heartbeat 2026-08-19T02:47:17+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 14853 MiB, 24576 MiB, 57 %
 1, 1819 MiB, 24576 MiB, 0 %
-2, 3861 MiB, 24576 MiB, 0 %
+2, 3861 MiB, 24576 MiB, 2 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -710,7 +710,6 @@ SMOKE STILL FAILING -- stopping.
 
 ### 260_v3_smoke3_train.log
 ```
-[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
 [watchdog] armed
 Traceback (most recent call last):
@@ -735,6 +734,7 @@ RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: 
 
 === periodic eval by checkpoint step ===
 --- waiting for v3 step >= 2000 (02:22) ---
+=== v3 @ step ~2000 : 8 official held-out users, A/B/C, K=128 ===
 ```
 
 ### 270_v3_fullwin_train.log
@@ -764,7 +764,6 @@ SMOKE FAILED
 
 ### 280_v3_padfix_train.log
 ```
-[smoke] with o_proj opened, mean|mode C - mode A| = 3.6827e-02 (want >0: context now changes output)
 [smoke] grad to frame context encoder now = 1.095e+01
 [smoke] full-length support -> 96 tokens (>= 50 masked)
 [smoke v3] ALL PASS
@@ -789,4 +788,5 @@ step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
 
 === periodic eval by checkpoint step ===
 --- waiting for v3 step >= 2000 (02:37) ---
+=== v3 @ step ~2000 : 8 official held-out users, A/B/C ===
 ```
