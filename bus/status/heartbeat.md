@@ -1,4 +1,4 @@
-# heartbeat 2026-08-19T00:26:47+08:00
+# heartbeat 2026-08-19T00:27:42+08:00
 
 ## gpu
 ```
@@ -601,4 +601,14 @@ step 100/8000 | loss 1.1694 | lr 1.01e-05 | 1.71 it/s
   AST OK   model.py
 
 === D4 = D3 + ctx_encoding_beta, GPU1 ===
+--- first 30 lines ---
+[model] v1 | 6.26M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 102 context tensors keep their initialization
+[units] loaded 72/72 ctx_encoder tensors from /data2/chenyuxiang/runs/units_pretrain.pt
+[watchdog] armed
+step 100/8000 | loss 1.2414 | lr 1.01e-05 | 1.46 it/s
+--- waiting for D4 checkpoint step >= 2000 (00:26) ---
 ```
