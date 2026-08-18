@@ -1,0 +1,5 @@
+########## patch: fork -> spawn for episode dataloader workers ##########
+patched to spawn
+
+########## stop the slow workers=0 run, relaunch with spawn ##########
+launched D2 (GPU3) and D1 (GPU2) with spawn workers; watching 6 minutes

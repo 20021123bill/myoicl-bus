@@ -1,11 +1,11 @@
-# heartbeat 2026-08-18T22:19:13+08:00
+# heartbeat 2026-08-18T22:19:55+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
-3, 3039 MiB, 24576 MiB, 0 %
+3, 3039 MiB, 24576 MiB, 14 %
 ```
 
 ## jobs
@@ -22,6 +22,7 @@
 080_stackdump_and_solo                   DONE rc=127
 090_stall_hunt                           DONE rc=127
 100_io_throughput                        DONE rc=127
+110_spawn_fix                            DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -299,4 +300,12 @@ step 100/8000 | loss 3.1789 | lr 1.01e-05 | 0.36 it/s
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 98 context tensors keep their initialization
 [watchdog] armed
 step 100/8000 | loss 3.1789 | lr 1.01e-05 | 0.36 it/s
+```
+
+### 110_spawn_fix.log
+```
+########## patch: fork -> spawn for episode dataloader workers ##########
+patched to spawn
+
+########## stop the slow workers=0 run, relaunch with spawn ##########
 ```
