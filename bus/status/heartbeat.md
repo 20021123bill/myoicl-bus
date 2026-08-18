@@ -1,10 +1,10 @@
-# heartbeat 2026-08-18T23:20:14+08:00
+# heartbeat 2026-08-18T23:20:56+08:00
 
 ## gpu
 ```
-0, 7995 MiB, 24576 MiB, 0 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
-2, 2707 MiB, 24576 MiB, 0 %
+2, 2707 MiB, 24576 MiB, 83 %
 3, 2695 MiB, 24576 MiB, 0 %
 ```
 
@@ -480,13 +480,6 @@ runner.sh patched (effective on next runner restart)
 
 ### 160_eval_curve_by_ckpt.log
 ```
-=== eval curve driven by the checkpoint's own step field, not by the log ===
---- waiting for D1 checkpoint to reach step 3000 (23:02) ---
-=== D1 @ step 3000 : 8 official held-out users, modes A/B/C, K=256 ===
-[A] mean over users: 54.51
-[B] mean over users: 54.39
-[C] mean over users: 54.75
-[A] gap closed vs personalization ceiling: 2.0%
 [B] gap closed vs personalization ceiling: 2.3%
 [C] gap closed vs personalization ceiling: 1.5%
 === /tmp/d1_snap.pt  (step 3000) ===
@@ -498,6 +491,20 @@ runner.sh patched (effective on next runner restart)
   some OPEN   -> context does reach the decoder. A zero gain then
 --- waiting for D1 checkpoint to reach step 5000 (23:04) ---
 === D1 @ step 5000 : 8 official held-out users, modes A/B/C, K=256 ===
+[A] mean over users: 54.59
+[B] mean over users: 54.76
+[C] mean over users: 54.73
+[A] gap closed vs personalization ceiling: 1.8%
+[B] gap closed vs personalization ceiling: 1.4%
+[C] gap closed vs personalization ceiling: 1.5%
+=== /tmp/d1_snap.pt  (step 5000) ===
+    CLOSED  cross_post.gate              g=+0.00376  tanh=+0.00376
+    CLOSED  cross_pre.gate               g=+0.00281  tanh=+0.00281
+    OPEN    film.up.bias                             |w|mean=3.866e-02 max=1.895e-01
+    OPEN    film.up.weight                           |w|mean=2.401e-02 max=1.547e-01
+  all CLOSED  -> the context pathway never opened. A zero
+  some OPEN   -> context does reach the decoder. A zero gain then
+--- waiting for D1 checkpoint to reach step 8000 (23:20) ---
 ```
 
 ### 170_effective_injection.log

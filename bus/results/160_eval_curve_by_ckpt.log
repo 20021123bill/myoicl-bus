@@ -16,3 +16,17 @@
   some OPEN   -> context does reach the decoder. A zero gain then
 --- waiting for D1 checkpoint to reach step 5000 (23:04) ---
 === D1 @ step 5000 : 8 official held-out users, modes A/B/C, K=256 ===
+[A] mean over users: 54.59
+[B] mean over users: 54.76
+[C] mean over users: 54.73
+[A] gap closed vs personalization ceiling: 1.8%
+[B] gap closed vs personalization ceiling: 1.4%
+[C] gap closed vs personalization ceiling: 1.5%
+=== /tmp/d1_snap.pt  (step 5000) ===
+    CLOSED  cross_post.gate              g=+0.00376  tanh=+0.00376
+    CLOSED  cross_pre.gate               g=+0.00281  tanh=+0.00281
+    OPEN    film.up.bias                             |w|mean=3.866e-02 max=1.895e-01
+    OPEN    film.up.weight                           |w|mean=2.401e-02 max=1.547e-01
+  all CLOSED  -> the context pathway never opened. A zero
+  some OPEN   -> context does reach the decoder. A zero gain then
+--- waiting for D1 checkpoint to reach step 8000 (23:20) ---
