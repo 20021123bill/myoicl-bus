@@ -55,7 +55,7 @@ episodes:
   ctx_segments_range: [4, 90]
   ctx_segment_len: 2000
   mode_probs: [0.15, 0.15, 0.70]
-  k_shot_range: [32, 128]       # support windows per episode (short, 2000-sample)
+  k_shot_max: 12                # full-length labelled windows per episode
   k_shot_window: 2000
   cross_session_ctx: true
   meta_val_users: 10

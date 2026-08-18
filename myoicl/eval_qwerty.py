@@ -169,11 +169,12 @@ def eval_user(
                     u_desc = u_desc.to(device)
             elif mode == "C":
                 _v3 = getattr(model, "ctx_version", 1) == 3
-                # v3 uses many SHORT support windows (like training's
-                # k_shot_window); v1/v2 use full-length windows.
-                _win = args.kshot_window if _v3 else args.window_length
+                # v3 uses FULL-length labelled windows (short windows shrink to
+                # ~1 frame through the TDS trunk). Cap the count: a handful of
+                # full windows already yields hundreds of frame tokens.
+                _k = min(args.k, 12) if _v3 else args.k
                 lab_raw, lab_ids = build_kshot(
-                    train_paths, args.k, _win, args.padding
+                    train_paths, _k, args.window_length, args.padding
                 )
                 if lab_raw is not None:
                     from emg2qwerty import transforms as T

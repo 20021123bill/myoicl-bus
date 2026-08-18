@@ -155,6 +155,7 @@ class MyoICLModel(nn.Module):
             ref_context_size=ref_context_size, d_bneck=d_bneck,
             gate_init=gate_init,
         )
+        self.tds_kernel_width = tds_kernel_width
         self.tds = TDSConvEncoder(
             num_features=d_model,
             block_channels=tuple(tds_block_channels),
@@ -321,6 +322,15 @@ class MyoICLModel(nn.Module):
         context path also trains how support is featurised. This is one extra
         backbone forward over K short windows per episode.
         """
+        # The TDS trunk is 4 valid convs of width tds_kernel_width, so it
+        # shrinks time by 4*(kw-1) and REQUIRES more frames than that. Short
+        # support windows (or silence-trimmed ones) would otherwise crash the
+        # conv ("kernel size can't be greater than input"). Pad the time axis
+        # to a safe floor; padded frames are excluded by the length mask below.
+        min_frames = 4 * (self.tds_kernel_width - 1) + 8
+        if spec.shape[0] < min_frames:
+            pad = min_frames - spec.shape[0]
+            spec = torch.nn.functional.pad(spec, (0, 0, 0, 0, 0, 0, 0, pad))
         feats = self.frontend(spec)               # (T, K, d_model)
         feats = self.tds(feats)                    # (Tf, K, d_model)
         logp = self.log_softmax(self.classifier(feats))

@@ -469,13 +469,15 @@ def main():
             k_shot_max=int(ecfg.get("k_shot_max", 8)),
             # Only the v2 (per-unit) encoder consumes stage-1 unit pairs;
             # computing them for a v1 run is pure wasted CPU in the workers.
-            k_shot_range=(tuple(ecfg["k_shot_range"])
-                          if ecfg.get("k_shot_range")
-                          else ((32, 256) if (_ctx_v2 or _ctx_v3) else None)),
+            # v3 uses full-length labelled windows (not short k-shot windows):
+            # a 2000-sample window shrinks to ~1 frame through the TDS trunk.
+            k_shot_range=(None if _ctx_v3 else
+                          (tuple(ecfg["k_shot_range"]) if ecfg.get("k_shot_range")
+                           else ((32, 256) if _ctx_v2 else None))),
             k_shot_window=int(ecfg.get("k_shot_window", 2000)),
             num_classes=cs.num_classes,
-            emit_labeled_spec=bool(ecfg.get("emit_labeled_spec", False)),
-            emit_ctx_frames=_ctx_v3,
+            emit_labeled_spec=bool(ecfg.get("emit_labeled_spec", False)) or _ctx_v3,
+            emit_ctx_frames=False,
             cross_session_ctx=bool(ecfg.get("cross_session_ctx", True)),
             p_synth=float(ecfg.get("p_synth", 0.7)),
             synth_kwargs=ecfg.get("synth", {}),
@@ -521,13 +523,13 @@ def main():
                 ctx_segment_len=int(_e.get("ctx_segment_len", 2000)),
                 mode_probs=(0.0, 0.0, 1.0),          # mode C; A/B derived
                 k_shot_max=int(_e.get("k_shot_max", 8)),
-                k_shot_range=(tuple(_e["k_shot_range"])
-                              if _e.get("k_shot_range")
-                              else ((32, 256) if (_ctx_v2 or _ctx_v3) else None)),
+                k_shot_range=(None if _ctx_v3 else
+                              (tuple(_e["k_shot_range"]) if _e.get("k_shot_range")
+                               else ((32, 256) if _ctx_v2 else None))),
                 k_shot_window=int(_e.get("k_shot_window", 2000)),
                 num_classes=cs.num_classes,
-                emit_labeled_spec=bool(_e.get("emit_labeled_spec", False)),
-                emit_ctx_frames=_ctx_v3,
+                emit_labeled_spec=bool(_e.get("emit_labeled_spec", False)) or _ctx_v3,
+                emit_ctx_frames=False,
                 cross_session_ctx=bool(_e.get("cross_session_ctx", True)),
                 p_synth=float(_e.get("p_synth", 0.7)),
                 synth_kwargs=_e.get("synth", {}),
