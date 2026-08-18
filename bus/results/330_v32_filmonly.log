@@ -1,7 +1,7 @@
-=== deploy smoke print fix ===
-=== smoke (both kv modes) ===
+=== deploy v3.2 (FiLM-only constrained conditioning) ===
+=== smoke (kv False/True + film_only) ===
 
-===== smoke v3 (kv_split=False) =====
+===== smoke v3 (kv_split=False, film_only=False) =====
 [smoke] built 50 support tokens from 6 windows
 [smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
 [smoke] init grad o_proj=3.354e+01 (want >0: path can open)
@@ -10,7 +10,7 @@
 [smoke] full-length support -> 96 tokens (>= 50 masked)
 [smoke v3] ALL PASS
 
-===== smoke v3 (kv_split=True) =====
+===== smoke v3 (kv_split=True, film_only=False) =====
 [smoke] built 50 support tokens from 6 windows
 [smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
 [smoke] init grad o_proj=4.382e+01 (want >0: path can open)
@@ -18,5 +18,9 @@
 [smoke] grad to frame context encoder now = 4.497e+00
 [smoke] full-length support -> 96 tokens (>= 50 masked)
 [smoke v3] ALL PASS
-=== wait for a free GPU (v3-main on GPU2 to finish) ===
-v3-main at step 12000
+
+===== smoke v3 (kv_split=False, film_only=True) =====
+[smoke] film_only: opened FiLM, mean|C-A|=4.5485e-02 (want >0)
+[smoke] film_only: grad to ctx encoder = 8.990e+00
+[smoke v3] ALL PASS
+=== wait for GPU3 (frozen hedge to finish) ===

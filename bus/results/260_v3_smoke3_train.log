@@ -64,3 +64,4 @@ RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: 
     cross_pre    |tanh(g)|=0.07668  ||W||= 13.7224  EFFECTIVE=1.05230
     cross_post   |tanh(g)|=0.00869  ||W||= 10.9762  EFFECTIVE=0.09533
 --- waiting for v3 step >= 12000 (03:33) ---
+=== v3 @ step ~12000 : 8 official held-out users, A/B/C, K=128 ===

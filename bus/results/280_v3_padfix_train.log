@@ -58,3 +58,4 @@ step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
 [B] gap closed vs personalization ceiling: 2.9%
 [C] gap closed vs personalization ceiling: -1.1%
 --- waiting for v3 step >= 12000 (03:33) ---
+=== v3 @ step ~12000 : 8 official held-out users, A/B/C ===

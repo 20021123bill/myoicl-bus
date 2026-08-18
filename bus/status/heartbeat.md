@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T03:50:04+08:00
+# heartbeat 2026-08-19T03:50:47+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 9427 MiB, 24576 MiB, 0 %
 1, 3679 MiB, 24576 MiB, 0 %
-2, 3825 MiB, 24576 MiB, 0 %
+2, 12 MiB, 24576 MiB, 0 %
 3, 3181 MiB, 24576 MiB, 0 %
 ```
 
@@ -44,6 +44,7 @@
 300_v3_frozen                            DONE rc=127
 310_v31_kvsplit                          DONE rc=127
 320_v31_relaunch                         DONE rc=127
+330_v32_filmonly                         DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -738,7 +739,6 @@ SMOKE STILL FAILING -- stopping.
 
 ### 260_v3_smoke3_train.log
 ```
-[A] mean over users: 54.03
 [B] mean over users: 54.03
 [C] mean over users: 54.57
 [A] gap closed vs personalization ceiling: 3.1%
@@ -763,6 +763,7 @@ SMOKE STILL FAILING -- stopping.
     cross_pre    |tanh(g)|=0.07668  ||W||= 13.7224  EFFECTIVE=1.05230
     cross_post   |tanh(g)|=0.00869  ||W||= 10.9762  EFFECTIVE=0.09533
 --- waiting for v3 step >= 12000 (03:33) ---
+=== v3 @ step ~12000 : 8 official held-out users, A/B/C, K=128 ===
 ```
 
 ### 270_v3_fullwin_train.log
@@ -792,7 +793,6 @@ SMOKE FAILED
 
 ### 280_v3_padfix_train.log
 ```
-[B] gap closed vs personalization ceiling: 3.1%
 [C] gap closed vs personalization ceiling: 1.8%
 === /tmp/v3_snap.pt  (step 2000) ===
     cross_pre    |tanh(g)|=0.45023  ||W||=  6.1459  EFFECTIVE=2.76706
@@ -817,6 +817,7 @@ SMOKE FAILED
 [B] gap closed vs personalization ceiling: 2.9%
 [C] gap closed vs personalization ceiling: -1.1%
 --- waiting for v3 step >= 12000 (03:33) ---
+=== v3 @ step ~12000 : 8 official held-out users, A/B/C ===
 ```
 
 ### 290_v3_cheavy.log
@@ -925,4 +926,11 @@ SMOKE FAILED -- not launching
 [smoke] full-length support -> 96 tokens (>= 50 masked)
 [smoke v3] ALL PASS
 === wait for a free GPU (v3-main on GPU2 to finish) ===
+v3-main at step 12000
+```
+
+### 330_v32_filmonly.log
+```
+=== deploy v3.2 (FiLM-only constrained conditioning) ===
+=== smoke (kv False/True + film_only) ===
 ```
