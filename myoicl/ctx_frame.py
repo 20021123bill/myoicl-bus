@@ -62,19 +62,30 @@ class FrameContextEncoder(nn.Module):
         num_classes: int,
         max_tokens: int = 512,
         dropout: float = 0.1,
+        kv_split: bool = False,
     ) -> None:
         super().__init__()
         self.num_classes = num_classes
         self.blank_id = num_classes - 1
         self.max_tokens = int(max_tokens)
+        self.kv_split = bool(kv_split)
         self.char_emb = nn.Embedding(num_classes, d_ctx)
-        # token = proj([feature ; soft-char-emb]) -> d_ctx, then a light MLP.
-        self.tok_proj = nn.Linear(d_model + d_ctx, d_ctx)
-        self.norm = nn.LayerNorm(d_ctx)
-        self.mlp = nn.Sequential(
-            nn.Linear(d_ctx, 2 * d_ctx), nn.GELU(),
-            nn.Dropout(dropout), nn.Linear(2 * d_ctx, d_ctx),
-        )
+        if self.kv_split:
+            # v3.1: separate key (signal feature) and value (character) streams.
+            # The query matches support frames by SIGNAL similarity (key) and
+            # retrieves the LABEL (value) -- a learned kernel regression over
+            # the user's own (signal, char) pairs, which the fused single-token
+            # form left the attention to disentangle on its own.
+            self.key_proj = nn.Linear(d_model, d_ctx)
+            self.val_proj = nn.Linear(d_ctx, d_ctx)
+        else:
+            # token = proj([feature ; soft-char-emb]) -> d_ctx, then a light MLP.
+            self.tok_proj = nn.Linear(d_model + d_ctx, d_ctx)
+            self.norm = nn.LayerNorm(d_ctx)
+            self.mlp = nn.Sequential(
+                nn.Linear(d_ctx, 2 * d_ctx), nn.GELU(),
+                nn.Dropout(dropout), nn.Linear(2 * d_ctx, d_ctx),
+            )
 
     def forward(
         self,
@@ -98,30 +109,33 @@ class FrameContextEncoder(nn.Module):
         char_vecs = self.char_emb(char_ids)                  # (V, d_ctx)
         soft_char = post @ char_vecs                         # (Tf, K, d_ctx)
 
-        tok = self.tok_proj(torch.cat([feats, soft_char], dim=-1))  # (Tf,K,d_ctx)
-        tok = tok + self.mlp(self.norm(tok))
-
         # frame validity mask from lengths (padding-safe).
         if lens is not None:
             idx = torch.arange(Tf, device=dev).unsqueeze(1)   # (Tf,1)
             valid = idx < lens.to(dev).clamp_min(0).unsqueeze(0)  # (Tf,K)
         else:
             valid = torch.ones(Tf, K, dtype=torch.bool, device=dev)
-
-        tok = tok.reshape(Tf * K, -1)                         # (Tf*K, d_ctx)
         valid = valid.reshape(-1)                             # (Tf*K,)
-        tok = tok[valid]                                      # (M0, d_ctx)
-        if tok.shape[0] == 0:
+        if int(valid.sum()) == 0:
             return None, None
 
-        # bound the token count so decoder-side cost is independent of how much
-        # calibration was supplied (V2 replaces this stride with a Perceiver
-        # bottleneck). Deterministic stride, not random, so eval is stable.
-        M0 = tok.shape[0]
-        if M0 > self.max_tokens:
-            stride = (M0 + self.max_tokens - 1) // self.max_tokens
-            tok = tok[::stride][: self.max_tokens]
+        # deterministic stride so decoder-side cost is bounded and eval stable.
+        def _select(t):                                        # (Tf,K,d_ctx)->(1,M,d)
+            t = t.reshape(Tf * K, -1)[valid]
+            M0 = t.shape[0]
+            if M0 > self.max_tokens:
+                stride = (M0 + self.max_tokens - 1) // self.max_tokens
+                t = t[::stride][: self.max_tokens]
+            return t.unsqueeze(0)
 
-        tokens = tok.unsqueeze(0)                             # (1, M, d_ctx)
-        pooled = tokens.mean(dim=1)                           # (1, d_ctx)
+        if self.kv_split:
+            key_tok = _select(self.key_proj(feats))           # (1,M,d_ctx) signal
+            val_tok = _select(self.val_proj(soft_char))       # (1,M,d_ctx) label
+            pooled = val_tok.mean(dim=1)
+            return (key_tok, val_tok), pooled
+
+        tok = self.tok_proj(torch.cat([feats, soft_char], dim=-1))  # (Tf,K,d_ctx)
+        tok = tok + self.mlp(self.norm(tok))
+        tokens = _select(tok)                                 # (1, M, d_ctx)
+        pooled = tokens.mean(dim=1)
         return tokens, pooled

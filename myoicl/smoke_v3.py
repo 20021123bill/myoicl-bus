@@ -15,8 +15,9 @@ import torch
 from myoicl.model import build_model
 
 
-def main() -> int:
+def main(kv_split=False) -> int:
     torch.manual_seed(0)
+    print(f'\n===== smoke v3 (kv_split={kv_split}) =====')
     V = 12  # tiny charset incl. blank
     cfg = {"model": {
         "version": 1, "freq_bins": 33, "num_bands": 2, "channels_per_band": 16,
@@ -24,6 +25,7 @@ def main() -> int:
         "conditioning": "deep", "ctx_version": 3, "d_ctx": 32, "d_bneck": 32,
         "film_rank": 8, "cross_heads": 4, "ref_context_size": 64,
         "ctx_max_tokens": 128, "gate_init": 1.0, "official_mlp_features": [32],
+        "ctx_kv_split": kv_split,
     }}
     model = build_model(cfg, num_classes=V)
     model.train()
@@ -47,10 +49,13 @@ def main() -> int:
     tokens, pooled = model.encode_context(
         None, ctx_labeled_spec=spec, ctx_labeled_lens=lens
     )
-    assert tokens is not None and tokens.dim() == 3, "no ctx tokens"
-    assert tokens.shape[0] == 1 and tokens.shape[2] == 32, \
-        f"token shape {tuple(tokens.shape)}"
-    Mtok = tokens.shape[1]
+    assert tokens is not None, "no ctx tokens"
+    _tk = tokens[0] if isinstance(tokens, tuple) else tokens
+    assert _tk.dim() == 3 and _tk.shape[0] == 1 and _tk.shape[2] == 32, \
+        f"token shape {tuple(_tk.shape)}"
+    if isinstance(tokens, tuple):
+        assert tokens[1].shape == _tk.shape, "kv_split key/val shape mismatch"
+    Mtok = _tk.shape[1]
     print(f"[smoke] built {Mtok} support tokens from {K} windows")
 
     # --- mode C at INIT: must be IDENTICAL to mode A ---
@@ -111,7 +116,8 @@ def main() -> int:
         None, ctx_labeled_spec=spec,
         ctx_labeled_lens=torch.full((K,), Ts, dtype=torch.int32),
     )
-    assert tok_full.shape[1] >= Mtok, "length mask increased token count"
+    _tf = tok_full[0] if isinstance(tok_full, tuple) else tok_full
+    assert _tf.shape[1] >= Mtok, "length mask increased token count"
     print(f"[smoke] full-length support -> {tok_full.shape[1]} tokens "
           f"(>= {Mtok} masked)")
 
@@ -120,4 +126,5 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    rc = main(kv_split=False) or main(kv_split=True)
+    sys.exit(rc)

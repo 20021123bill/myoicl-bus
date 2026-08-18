@@ -370,16 +370,27 @@ class LogitScaledCrossAttention(nn.Module):
         # Read by the optimizer to build a no-weight-decay group.
         self.gate._no_weight_decay = True
 
-    def forward(self, x: torch.Tensor, ctx: torch.Tensor | None) -> torch.Tensor:
-        """x: (T, N, d_model); ctx: (1, M, d_ctx) shared across the episode."""
+    def forward(self, x: torch.Tensor, ctx) -> torch.Tensor:
+        """x: (T, N, d_model); ctx: (1, M, d_ctx) shared across the episode.
+
+        ctx may be a (key_ctx, val_ctx) tuple (v3.1 key/value split): keys come
+        from the support SIGNAL feature so the query matches by signal
+        similarity, values from the CHARACTER embedding so it retrieves the
+        label -- the Matching-Networks / contextual-adapter structure. A single
+        tensor (all other versions) uses it for both, unchanged.
+        """
         if ctx is None:
             return x
+        if isinstance(ctx, (tuple, list)):
+            ctx_k, ctx_v = ctx
+        else:
+            ctx_k = ctx_v = ctx
         T, N, D = x.shape
-        M = ctx.shape[1]
+        M = ctx_k.shape[1]
 
         q = self.q_proj(self.q_norm(x))  # (T, N, d_bneck)
-        k = self.k_proj(ctx)  # (1, M, d_bneck)
-        v = self.v_proj(ctx)  # (1, M, d_bneck)
+        k = self.k_proj(ctx_k)  # (1, M, d_bneck)
+        v = self.v_proj(ctx_v)  # (1, M, d_bneck)
 
         q = q.reshape(T * N, self.n_heads, self.d_head).transpose(0, 1)  # (h, TN, dh)
         k = k.reshape(M, self.n_heads, self.d_head).transpose(0, 1)  # (h, M, dh)
