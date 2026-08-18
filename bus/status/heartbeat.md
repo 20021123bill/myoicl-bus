@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T03:05:23+08:00
+# heartbeat 2026-08-19T03:06:05+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 14853 MiB, 24576 MiB, 0 %
 1, 5734 MiB, 24576 MiB, 0 %
 2, 3825 MiB, 24576 MiB, 0 %
-3, 3181 MiB, 24576 MiB, 0 %
+3, 3181 MiB, 24576 MiB, 72 %
 ```
 
 ## jobs
@@ -712,7 +712,6 @@ SMOKE STILL FAILING -- stopping.
 
 ### 260_v3_smoke3_train.log
 ```
-    loss, _, _ = episode_forward(model, batch, device, autocast_dtype)
   File "/data2/chenyuxiang/code/myoicl/myoicl/train_qwerty.py", line 165, in episode_forward
     ctx_tokens, ctx_pooled, ctx_affine = model.encode_context(
   File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 234, in encode_context
@@ -737,6 +736,7 @@ RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: 
     cross_pre    |tanh(g)|=0.45023  ||W||=  6.1459  EFFECTIVE=2.76706
     cross_post   |tanh(g)|=0.42207  ||W||=  4.9640  EFFECTIVE=2.09517
 --- waiting for v3 step >= 5000 (02:49) ---
+=== v3 @ step ~5000 : 8 official held-out users, A/B/C, K=128 ===
 ```
 
 ### 270_v3_fullwin_train.log
@@ -766,7 +766,6 @@ SMOKE FAILED
 
 ### 280_v3_padfix_train.log
 ```
-[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
 [watchdog] armed
 step 100/12000 | loss 1.7477 | lr 3.79e-06 | 2.08 it/s
 step 200/12000 | loss 1.5904 | lr 7.54e-06 | 2.08 it/s
@@ -791,6 +790,7 @@ step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
     cross_pre    |tanh(g)|=0.45023  ||W||=  6.1459  EFFECTIVE=2.76706
     cross_post   |tanh(g)|=0.42207  ||W||=  4.9640  EFFECTIVE=2.09517
 --- waiting for v3 step >= 5000 (02:49) ---
+=== v3 @ step ~5000 : 8 official held-out users, A/B/C ===
 ```
 
 ### 290_v3_cheavy.log
