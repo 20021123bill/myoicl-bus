@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T05:04:06+08:00
+# heartbeat 2026-08-19T05:04:48+08:00
 
 ## gpu
 ```
-0, 7437 MiB, 24576 MiB, 0 %
+0, 16 MiB, 24576 MiB, 0 %
 1, 3887 MiB, 24576 MiB, 0 %
-2, 3849 MiB, 24576 MiB, 0 %
+2, 3849 MiB, 24576 MiB, 12 %
 3, 2327 MiB, 24576 MiB, 0 %
 ```
 
@@ -937,10 +937,6 @@ step 400/12000 | loss 1.3018 | lr 1.50e-05 | 3.44 it/s
 
 ### 330_v32_filmonly.log
 ```
-[smoke] film_only: grad to ctx encoder = 8.990e+00
-[smoke v3] ALL PASS
-=== wait for GPU3 (frozen hedge to finish) ===
-=== launch v3.2 on GPU3 ===
 [model] v1 | 6.01M params total (published backbone 5.29M + ICL module 0.71M) | device=cuda | phase=icl
 [data] train sessions=837 val sessions=192
 [data] episodic users=86 train + 10 meta-val (held out from module training)
@@ -962,6 +958,10 @@ step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
 [C] mean over users: 54.52
 --- wait v3.2 step >= 6000 (04:38) ---
 === v3.2 @ step ~6000 : 8 users A/B/C ===
+[A] mean over users: 54.42
+[B] mean over users: 54.42
+[C] mean over users: 55.70
+--- wait v3.2 step >= 12000 (05:04) ---
 ```
 
 ### 340_ctxsource_diag.log
