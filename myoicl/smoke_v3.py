@@ -53,26 +53,61 @@ def main() -> int:
     Mtok = tokens.shape[1]
     print(f"[smoke] built {Mtok} support tokens from {K} windows")
 
-    # --- mode C ---
-    outC = model(inputs, tokens, pooled)
-    assert outC.shape == outA.shape, "mode C shape mismatch"
-    diff = (outC - outA).abs().mean().item()
-    print(f"[smoke] mean |mode C - mode A| = {diff:.4e}")
-    assert diff > 1e-6, "context does not change the output (gate stuck closed?)"
+    # --- mode C at INIT: must be IDENTICAL to mode A ---
+    # The injection residual is  x + tanh(g)*o_proj(Attn(...)) with o_proj
+    # zero-initialised (the v4.1 matrix-zero fix). So at t=0 the whole context
+    # path is an exact identity: mode C == mode A bit-for-bit. That is the
+    # property we WANT (the pretrained cross-user model is untouched at init).
+    outC0 = model(inputs, tokens, pooled)
+    assert outC0.shape == outA.shape, "mode C shape mismatch"
+    diff0 = (outC0 - outA).abs().max().item()
+    print(f"[smoke] init max|mode C - mode A| = {diff0:.2e} (want ~0: identity)")
+    assert diff0 < 1e-4, "context path is NOT identity at init (unexpected)"
 
-    # --- gradients reach ctx encoder AND cross-attention ---
-    loss = outC.pow(2).mean()
+    # --- gradient must reach o_proj despite the identity forward ---
+    # d(out)/d(o_proj.W) = tanh(g)*Attn(...) != 0, so o_proj learns on step 1.
+    # d(out)/d(Attn internals) = tanh(g)*o_proj.W = 0 at init, so the context
+    # ENCODER gets no gradient until o_proj becomes nonzero -- expected, the
+    # two-phase dynamics we rely on. We check o_proj grad here, encoder grad
+    # after a few steps.
+    loss = outC0.pow(2).mean()
     loss.backward()
+    g_oproj = (model.cross_pre.o_proj.weight.grad.abs().sum().item()
+               + model.cross_post.o_proj.weight.grad.abs().sum().item())
+    print(f"[smoke] init grad o_proj={g_oproj:.3e} (want >0: path can open)")
+    assert g_oproj > 0, "no gradient to o_proj -- injection can never open"
+
+    # --- a few optimizer steps should OPEN the path ---
+    opt = torch.optim.SGD(model.parameters(), lr=0.1)
+    for _ in range(8):
+        opt.zero_grad(set_to_none=True)
+        tk, pl = model.encode_context(
+            None, ctx_labeled_spec=spec, ctx_labeled_lens=lens
+        )
+        loss = model(inputs, tk, pl).pow(2).mean()
+        loss.backward()
+        opt.step()
+    model.eval()
+    with torch.no_grad():
+        oA = model(inputs, None, None)
+        tk, pl = model.encode_context(
+            None, ctx_labeled_spec=spec, ctx_labeled_lens=lens
+        )
+        oC = model(inputs, tk, pl)
+    diff1 = (oC - oA).abs().mean().item()
+    print(f"[smoke] after 8 steps mean|mode C - mode A| = {diff1:.4e} "
+          f"(want >0: context now changes output)")
+    assert diff1 > 1e-6, "context still does nothing after training -- path stuck"
+    model.train()
+    model.zero_grad(set_to_none=True)
+    tk, pl = model.encode_context(
+        None, ctx_labeled_spec=spec, ctx_labeled_lens=lens
+    )
+    model(inputs, tk, pl).pow(2).mean().backward()
     g_enc = sum(p.grad.abs().sum().item()
                 for p in model.ctx_encoder.parameters() if p.grad is not None)
-    g_pre = sum(p.grad.abs().sum().item()
-                for p in model.cross_pre.parameters() if p.grad is not None)
-    g_post = sum(p.grad.abs().sum().item()
-                 for p in model.cross_post.parameters() if p.grad is not None)
-    print(f"[smoke] grad ctx_encoder={g_enc:.3e} cross_pre={g_pre:.3e} "
-          f"cross_post={g_post:.3e}")
-    assert g_enc > 0, "no gradient to frame context encoder"
-    assert g_pre > 0 or g_post > 0, "no gradient to cross-attention injection"
+    print(f"[smoke] grad to frame context encoder now = {g_enc:.3e}")
+    assert g_enc > 0, "context encoder never receives gradient"
 
     # --- padding does not leak: token count respects the shortest support ---
     tok_full, _ = model.encode_context(
