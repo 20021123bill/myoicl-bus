@@ -1,4 +1,4 @@
-# heartbeat 2026-08-19T05:47:23+08:00
+# heartbeat 2026-08-19T05:48:05+08:00
 
 ## gpu
 ```
@@ -990,4 +990,7 @@ v3.1 checkpoint step 9000
 
 ############ myoicl_v32_filmonly (step 12000) ############
 --- CROSS-session (labelled support from OTHER sessions; the default all runs used) ---
+[A] mean over users: 55.77
+[C] mean over users: 57.03
+--- SAME-session (labelled support from the DECODED session itself) ---
 ```
