@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T14:58:19+08:00
+# heartbeat 2026-08-19T14:59:01+08:00
 
 ## gpu
 ```
 0, 2411 MiB, 24576 MiB, 0 %
 1, 3121 MiB, 24576 MiB, 0 %
-2, 2807 MiB, 24576 MiB, 26 %
+2, 2807 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -1075,11 +1075,6 @@ deployed
 
 ### 400_v5_hardsynth.log
 ```
-=== using gain_log_std = 0.5 ===
-
-=== phase 2: write the three V5 configs ===
-[ok] myoicl/configs/qwerty_v5_a0_gain_affine.yaml  p_synth=1.0 synth={'rotation_choices': [0], 'gain_log_std': 0.5, 'p_noise': 0.0, 'p_mix': 0.0} strength=None frozen=True
-[ok] myoicl/configs/qwerty_v5_a1_gain_v31.yaml  p_synth=1.0 synth={'rotation_choices': [0], 'gain_log_std': 0.5, 'p_noise': 0.0, 'p_mix': 0.0} strength=None frozen=True
 [ok] myoicl/configs/qwerty_v5_a2_realistic.yaml  p_synth=1.0 synth=None strength=[0.35, 0.6] frozen=True
 
 === phase 3: launch A0/A1/A2 on GPU0/1/2 ===
@@ -1099,6 +1094,11 @@ launched zero-shot scan on GPU3 pid=2833489
 [a0_gain_affine] [val] step 1000: mode-C CER 46.97 | mode-B CER 55.64 | mode-A CER 69.04 | gain C +22.06 / B +13.39 | loss 2.0425
 [a1_gain_v31] [val] step 2500: mode-C CER 38.06 | mode-B CER 75.39 | mode-A CER 75.39 | gain C +37.33 / B +0.00 | loss 1.3286
 [a2_realistic] 
+[scan] === UNSEEN users (8 official test): 55.39 published ===
+--- 14:58 ---
+[a0_gain_affine] [val] step 1500: mode-C CER 71.44 | mode-B CER 59.87 | mode-A CER 69.22 | gain C -2.22 / B +9.35 | loss 4.4178
+[a1_gain_v31] [val] step 4000: mode-C CER 34.94 | mode-B CER 75.56 | mode-A CER 75.56 | gain C +40.62 / B +0.00 | loss 1.2116
+[a2_realistic] [val] step 500: mode-C CER 66.18 | mode-B CER 68.33 | mode-A CER 79.82 | gain C +13.65 / B +11.49 | loss 2.7225
 [scan] === UNSEEN users (8 official test): 55.39 published ===
 ```
 
@@ -1210,13 +1210,6 @@ SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_202
 
 ### v5_a0_gain_affine.log
 ```
-[model] v1 | 6.26M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
-[data] train sessions=837 val sessions=192
-[data] episodic users=86 train + 10 meta-val (held out from module training)
-[episodes] frozen backbone -> mode-A episodes carry no gradient and are skipped; mode_probs renormalized to [0.0, 0.294, 0.706]
-[optim] backbone 5.29M @ lr 1.0e-03 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
-[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 104 context tensors keep their initialization
-[freeze] backbone 5.29M frozen | context modules 0.96M trainable (15.4% of total)
 [watchdog] armed
 step 100/8000 | loss 3.2626 | lr 1.01e-04 | 1.86 it/s
 step 200/8000 | loss 1.9270 | lr 2.01e-04 | 1.92 it/s
@@ -1235,26 +1228,17 @@ step 1000/8000 | loss 1.5867 | lr 1.00e-03 | 2.05 it/s
 step 1100/8000 | loss 1.3393 | lr 1.00e-03 | 1.62 it/s
 step 1200/8000 | loss 1.2984 | lr 9.98e-04 | 2.05 it/s
 step 1300/8000 | loss 1.2774 | lr 9.96e-04 | 2.16 it/s
+step 1400/8000 | loss 1.3459 | lr 9.92e-04 | 2.15 it/s
+step 1500/8000 | loss 1.3209 | lr 9.88e-04 | 2.12 it/s
+[val] step 1500: mode-C CER 71.44 | mode-B CER 59.87 | mode-A CER 69.22 | gain C -2.22 / B +9.35 | loss 4.4178
+step 1600/8000 | loss 1.3076 | lr 9.83e-04 | 1.65 it/s
+step 1700/8000 | loss 1.2782 | lr 9.77e-04 | 2.06 it/s
+step 1800/8000 | loss 1.2172 | lr 9.70e-04 | 2.22 it/s
+step 1900/8000 | loss 1.4435 | lr 9.62e-04 | 2.20 it/s
 ```
 
 ### v5_a1_gain_v31.log
 ```
-step 700/8000 | loss 1.6238 | lr 2.23e-05 | 4.67 it/s
-step 800/8000 | loss 1.7623 | lr 2.52e-05 | 4.55 it/s
-step 900/8000 | loss 1.6281 | lr 2.85e-05 | 4.62 it/s
-step 1000/8000 | loss 1.8394 | lr 3.00e-05 | 4.69 it/s
-[val] step 1000: mode-C CER 40.50 | mode-B CER 75.37 | mode-A CER 75.37 | gain C +34.86 / B +0.00 | loss 1.4733
-[val] new best CER 40.50 -> saved best.pt
-step 1200/8000 | loss 1.6502 | lr 2.99e-05 | 2.01 it/s
-step 1300/8000 | loss 1.5030 | lr 2.99e-05 | 4.53 it/s
-step 1400/8000 | loss 1.5459 | lr 2.98e-05 | 4.57 it/s
-step 1500/8000 | loss 1.6611 | lr 2.97e-05 | 4.58 it/s
-[val] step 1500: mode-C CER 40.17 | mode-B CER 74.41 | mode-A CER 74.41 | gain C +34.23 / B +0.00 | loss 1.4346
-[val] new best CER 40.17 -> saved best.pt
-step 1700/8000 | loss 1.5474 | lr 2.95e-05 | 2.12 it/s
-step 1800/8000 | loss 1.6278 | lr 2.93e-05 | 4.68 it/s
-step 1900/8000 | loss 1.4972 | lr 2.92e-05 | 4.79 it/s
-step 2000/8000 | loss 1.4630 | lr 2.90e-05 | 4.93 it/s
 [val] step 2000: mode-C CER 40.20 | mode-B CER 76.06 | mode-A CER 76.06 | gain C +35.86 / B +0.00 | loss 1.4218
 step 2300/8000 | loss 1.4769 | lr 2.84e-05 | 1.46 it/s
 step 2400/8000 | loss 1.4996 | lr 2.81e-05 | 4.81 it/s
@@ -1264,6 +1248,22 @@ step 2500/8000 | loss 1.4493 | lr 2.79e-05 | 4.80 it/s
 step 2600/8000 | loss 1.4415 | lr 2.76e-05 | 3.72 it/s
 step 2700/8000 | loss 1.5468 | lr 2.73e-05 | 4.82 it/s
 step 2800/8000 | loss 1.4330 | lr 2.70e-05 | 4.90 it/s
+step 3000/8000 | loss 1.3357 | lr 2.63e-05 | 2.43 it/s
+[val] step 3000: mode-C CER 37.07 | mode-B CER 75.16 | mode-A CER 75.16 | gain C +38.08 / B +0.00 | loss 1.2965
+[val] new best CER 37.07 -> saved best.pt
+step 3100/8000 | loss 1.5474 | lr 2.60e-05 | 3.72 it/s
+step 3300/8000 | loss 1.4212 | lr 2.53e-05 | 2.46 it/s
+step 3400/8000 | loss 1.4289 | lr 2.49e-05 | 4.69 it/s
+step 3500/8000 | loss 1.4570 | lr 2.45e-05 | 4.87 it/s
+[val] step 3500: mode-C CER 36.60 | mode-B CER 74.97 | mode-A CER 74.97 | gain C +38.37 / B +0.00 | loss 1.2618
+[val] new best CER 36.60 -> saved best.pt
+step 3600/8000 | loss 1.5061 | lr 2.40e-05 | 3.65 it/s
+step 3700/8000 | loss 1.3803 | lr 2.36e-05 | 4.94 it/s
+step 3800/8000 | loss 1.3862 | lr 2.32e-05 | 4.93 it/s
+step 4000/8000 | loss 1.3894 | lr 2.23e-05 | 2.47 it/s
+[val] step 4000: mode-C CER 34.94 | mode-B CER 75.56 | mode-A CER 75.56 | gain C +40.62 / B +0.00 | loss 1.2116
+[val] new best CER 34.94 -> saved best.pt
+step 4100/8000 | loss 1.2831 | lr 2.19e-05 | 3.74 it/s
 ```
 
 ### v5_a2_realistic.log
@@ -1281,6 +1281,10 @@ step 200/8000 | loss 3.7268 | lr 2.01e-04 | 0.80 it/s
 step 300/8000 | loss 3.3812 | lr 3.01e-04 | 0.82 it/s
 step 400/8000 | loss 3.2773 | lr 4.01e-04 | 0.92 it/s
 step 500/8000 | loss 3.1125 | lr 5.01e-04 | 0.81 it/s
+[val] step 500: mode-C CER 66.18 | mode-B CER 68.33 | mode-A CER 79.82 | gain C +13.65 / B +11.49 | loss 2.7225
+[val] new best CER 66.18 -> saved best.pt
+step 600/8000 | loss 3.1748 | lr 6.01e-04 | 0.76 it/s
+step 700/8000 | loss 3.1977 | lr 7.01e-04 | 0.77 it/s
 ```
 
 ### v5_zeroshot_scan.log
