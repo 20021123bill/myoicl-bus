@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T01:18:56+08:00
+# heartbeat 2026-08-20T01:19:39+08:00
 
 ## gpu
 ```
-0, 3171 MiB, 24576 MiB, 67 %
+0, 3171 MiB, 24576 MiB, 44 %
 1, 6280 MiB, 24576 MiB, 99 %
-2, 2985 MiB, 24576 MiB, 70 %
-3, 1883 MiB, 24576 MiB, 17 %
+2, 2985 MiB, 24576 MiB, 82 %
+3, 1883 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -2925,10 +2925,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_dev_fold2.log
 ```
-  return F.conv1d(input, weight, bias, self.stride,
-[audit] step 0: mode-A 63.00 | mode-C 100.00 (random prefix) | deployment reference ~43-58
-step 100/12000 | loss 8.1230 | lr 5.00e-05 | 1.74 it/s
-step 200/12000 | loss 4.7799 | lr 1.00e-04 | 1.72 it/s
 step 300/12000 | loss 3.3612 | lr 1.50e-04 | 1.63 it/s
 step 400/12000 | loss 3.1112 | lr 2.00e-04 | 1.54 it/s
 step 500/12000 | loss 2.9615 | lr 2.50e-04 | 1.49 it/s
@@ -2950,6 +2946,10 @@ step 1500/12000 | loss 2.5826 | lr 2.95e-04 | 1.56 it/s
 step 1600/12000 | loss 2.6526 | lr 2.94e-04 | 1.52 it/s
 step 1700/12000 | loss 2.5476 | lr 2.93e-04 | 1.52 it/s
 step 1800/12000 | loss 2.6334 | lr 2.92e-04 | 1.54 it/s
+step 1900/12000 | loss 2.6016 | lr 2.90e-04 | 1.55 it/s
+step 2000/12000 | loss 2.6943 | lr 2.89e-04 | 1.55 it/s
+[val] step 2000: mode-A 58.35 | mode-C 59.76 | gain C -1.41   (REAL novel subjects, fold 2)
+step 2100/12000 | loss 2.5801 | lr 2.87e-04 | 1.53 it/s
 ```
 
 ### teachers_shard0.log
@@ -3031,8 +3031,6 @@ step 1800/12000 | loss 2.6334 | lr 2.92e-04 | 1.54 it/s
 
 ### tf_fold0_full.log
 ```
-[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 step 200/103000 | loss 1.5577 | lr 6.80e-05 | 465 win/s
 step 400/103000 | loss 1.5894 | lr 1.36e-04 | 479 win/s
@@ -3056,6 +3054,8 @@ step 3800/103000 | loss 2.0064 | lr 6.99e-04 | 550 win/s
 step 4000/103000 | loss 2.0120 | lr 6.99e-04 | 551 win/s
 [val] step 4000: 8-test-user CER 48.11 | fold-heldout-user CER 56.85  (their Tiny reference: 35.9)
 [val] new best 48.11 -> best.pt
+step 4200/103000 | loss 1.9860 | lr 6.99e-04 | 551 win/s
+step 4400/103000 | loss 1.9762 | lr 6.99e-04 | 553 win/s
 ```
 
 ### tf_fold0.log
@@ -3089,7 +3089,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-[data] monitor sets: 512 test windows, 512 fold-heldout windows
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [init] continued from /data2/chenyuxiang/runs/tf_fold1/last.pt (step 40000, fold 1); optimizer starts fresh
@@ -3114,6 +3113,7 @@ step 2800/103000 | loss 1.9853 | lr 7.00e-04 | 493 win/s
 step 3000/103000 | loss 1.9775 | lr 7.00e-04 | 485 win/s
 step 3200/103000 | loss 1.9954 | lr 7.00e-04 | 477 win/s
 step 3400/103000 | loss 1.9994 | lr 7.00e-04 | 472 win/s
+step 3600/103000 | loss 1.9824 | lr 7.00e-04 | 464 win/s
 ```
 
 ### tf_fold1.log
@@ -3205,7 +3205,6 @@ step 31000/40000 | loss 1.6554 | lr 1.32e-04 | 620 win/s
 
 ### tf_ref_full.log
 ```
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [init] continued from /data2/chenyuxiang/runs/tf_ref_lr1e3/last.pt (step 40000, fold -1); optimizer starts fresh
 [model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
@@ -3230,6 +3229,7 @@ step 3000/103000 | loss 2.0189 | lr 7.00e-04 | 506 win/s
 step 3200/103000 | loss 2.0054 | lr 7.00e-04 | 496 win/s
 step 3400/103000 | loss 2.0263 | lr 7.00e-04 | 488 win/s
 step 3600/103000 | loss 2.0330 | lr 7.00e-04 | 480 win/s
+step 3800/103000 | loss 2.0308 | lr 6.99e-04 | 475 win/s
 ```
 
 ### tf_ref.log
