@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T19:30:05+08:00
+# heartbeat 2026-08-19T19:30:48+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 69 %
-1, 2985 MiB, 24576 MiB, 61 %
-2, 3169 MiB, 24576 MiB, 0 %
-3, 3169 MiB, 24576 MiB, 83 %
+0, 3173 MiB, 24576 MiB, 0 %
+1, 2985 MiB, 24576 MiB, 2 %
+2, 3169 MiB, 24576 MiB, 36 %
+3, 3169 MiB, 24576 MiB, 68 %
 ```
 
 ## jobs
@@ -2053,9 +2053,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 ### 440_trunk_train.log
 ```
 [tf_fold0] [val] step 8000: 8-test-user CER 83.85 | fold-heldout-user CER 85.22  (their Tiny reference: 35.9)
---- 18:49 ---
-[tf_ref] [val] step 6000: 8-test-user CER 83.37 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[tf_fold0] [val] step 8000: 8-test-user CER 83.85 | fold-heldout-user CER 85.22  (their Tiny reference: 35.9)
 --- 18:54 ---
 [tf_ref] [val] step 6000: 8-test-user CER 83.37 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 8000: 8-test-user CER 83.85 | fold-heldout-user CER 85.22  (their Tiny reference: 35.9)
@@ -2075,6 +2072,9 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 [tf_ref] [val] step 6000: 8-test-user CER 83.37 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 10000: 8-test-user CER 83.05 | fold-heldout-user CER 84.02  (their Tiny reference: 35.9)
 --- 19:24 ---
+[tf_ref] [val] step 6000: 8-test-user CER 83.37 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] [val] step 10000: 8-test-user CER 83.05 | fold-heldout-user CER 84.02  (their Tiny reference: 35.9)
+--- 19:29 ---
 [tf_ref] [val] step 6000: 8-test-user CER 83.37 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 10000: 8-test-user CER 83.05 | fold-heldout-user CER 84.02  (their Tiny reference: 35.9)
 ```
@@ -2299,13 +2299,6 @@ SMOKE OK
 
 ### 480_lr_probe.log
 ```
-[tf_ref_lr1e3] step 13600/40000 | loss 2.1677 | lr 7.87e-04 | 388 win/s
-         [val] step 12000: 8-test-user CER 84.04 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[tf_fold0] step 8800/40000 | loss 2.2531 | lr 9.23e-04 | 338 win/s
-         [val] step 8000: 8-test-user CER 83.85 | fold-heldout-user CER 85.22  (their Tiny reference: 35.9)
---- 19:00 ---
-[tf_ref] step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
-         [val] new best 83.37 -> best.pt
 [tf_ref_lr1e3] step 14200/40000 | loss 2.1500 | lr 7.67e-04 | 384 win/s
          [val] step 14000: 8-test-user CER 85.57 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] step 9400/40000 | loss 2.2328 | lr 9.09e-04 | 337 win/s
@@ -2323,6 +2316,13 @@ SMOKE OK
 [tf_ref_lr1e3] step 15800/40000 | loss 2.1506 | lr 7.08e-04 | 377 win/s
          [val] step 14000: 8-test-user CER 85.57 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] step 11000/40000 | loss 2.1812 | lr 8.68e-04 | 335 win/s
+         [val] new best 83.05 -> best.pt
+--- 19:30 ---
+[tf_ref] step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
+         [val] new best 83.37 -> best.pt
+[tf_ref_lr1e3] step 16400/40000 | loss 2.1412 | lr 6.86e-04 | 373 win/s
+         [val] step 16000: 8-test-user CER 85.05 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 11600/40000 | loss 2.1567 | lr 8.51e-04 | 333 win/s
          [val] new best 83.05 -> best.pt
 ```
 
@@ -2344,13 +2344,6 @@ pid=2942963
 
 ### 490_tf_100hz.log
 ```
-[tf_fold0] step 10000/40000 | loss 2.2215 | lr 8.95e-04 | 336 win/s
-        [val] new best 83.05 -> best.pt
-[tf_ref_lr1e3] step 15000/40000 | loss 2.1852 | lr 7.38e-04 | 380 win/s
-        [val] step 14000: 8-test-user CER 85.57 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
---- 19:13 ---
-[tf_ref] step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
-        [val] new best 83.37 -> best.pt
 [tf_fold0] step 10400/40000 | loss 2.1982 | lr 8.84e-04 | 335 win/s
         [val] new best 83.05 -> best.pt
 [tf_ref_lr1e3] step 15200/40000 | loss 2.1726 | lr 7.31e-04 | 379 win/s
@@ -2368,6 +2361,13 @@ pid=2942963
 [tf_fold0] step 11200/40000 | loss 2.1631 | lr 8.62e-04 | 335 win/s
         [val] new best 83.05 -> best.pt
 [tf_ref_lr1e3] step 16000/40000 | loss 2.1336 | lr 7.01e-04 | 376 win/s
+        [val] step 16000: 8-test-user CER 85.05 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+--- 19:28 ---
+[tf_ref] step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
+        [val] new best 83.37 -> best.pt
+[tf_fold0] step 11600/40000 | loss 2.1567 | lr 8.51e-04 | 333 win/s
+        [val] new best 83.05 -> best.pt
+[tf_ref_lr1e3] step 16400/40000 | loss 2.1412 | lr 6.86e-04 | 373 win/s
         [val] step 16000: 8-test-user CER 85.05 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 ```
 
@@ -2461,15 +2461,6 @@ backbone) -- if it does not, the eval is wrong, not the method.
 ### 510_fold_fleet.log
 ```
         [val] step 14000: 8-test-user CER 85.57 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[tf_fold0] step 10200/40000 | loss 2.2089 | lr 8.89e-04 | 335 win/s
-        [val] new best 83.05 -> best.pt
-[tf_fold1] step 19000/40000 | loss 1.9615 | lr 5.82e-04 | 619 win/s
-        [val] step 18000: 8-test-user CER 84.41 | fold-heldout-user CER 85.11  (their Tiny reference: 35.9)
-[tf_fold2] step 19000/40000 | loss 1.9224 | lr 5.82e-04 | 622 win/s
-        [val] step 18000: 8-test-user CER 82.87 | fold-heldout-user CER 85.63  (their Tiny reference: 35.9)
---- 19:16 ---
-[tf_ref_lr1e3] step 15400/40000 | loss 2.1567 | lr 7.23e-04 | 378 win/s
-        [val] step 14000: 8-test-user CER 85.57 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] step 10600/40000 | loss 2.1792 | lr 8.79e-04 | 335 win/s
         [val] new best 83.05 -> best.pt
 [tf_fold1] step 19600/40000 | loss 1.9564 | lr 5.58e-04 | 619 win/s
@@ -2484,6 +2475,15 @@ backbone) -- if it does not, the eval is wrong, not the method.
 [tf_fold1] step 20400/40000 | loss 1.9503 | lr 5.25e-04 | 619 win/s
         [val] step 20000: 8-test-user CER 83.98 | fold-heldout-user CER 85.29  (their Tiny reference: 35.9)
 [tf_fold2] step 20400/40000 | loss 1.9107 | lr 5.25e-04 | 622 win/s
+        [val] step 20000: 8-test-user CER 84.45 | fold-heldout-user CER 86.80  (their Tiny reference: 35.9)
+--- 19:26 ---
+[tf_ref_lr1e3] step 16200/40000 | loss 2.1394 | lr 6.93e-04 | 375 win/s
+        [val] step 16000: 8-test-user CER 85.05 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 11400/40000 | loss 2.1464 | lr 8.56e-04 | 334 win/s
+        [val] new best 83.05 -> best.pt
+[tf_fold1] step 21200/40000 | loss 1.9206 | lr 4.92e-04 | 619 win/s
+        [val] step 20000: 8-test-user CER 83.98 | fold-heldout-user CER 85.29  (their Tiny reference: 35.9)
+[tf_fold2] step 21200/40000 | loss 1.8812 | lr 4.92e-04 | 622 win/s
         [val] step 20000: 8-test-user CER 84.45 | fold-heldout-user CER 86.80  (their Tiny reference: 35.9)
 ```
 
@@ -2609,6 +2609,8 @@ checkpoint step 10000
 --- 19:23 ---
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  tf_fold0       step  10000 | argmax-blank  99.1% | p(blank) 0.981 | entropy 0.068
+  tf_fold1       step  20000 | argmax-blank  99.2% | p(blank) 0.979 | entropy 0.096
 ```
 
 ### 526_blank_tracker.log
@@ -2845,7 +2847,6 @@ step 11600/40000 | loss 2.1567 | lr 8.51e-04 | 333 win/s
 
 ### tf_fold1.log
 ```
-step 17200/40000 | loss 2.0055 | lr 6.55e-04 | 621 win/s
 step 17400/40000 | loss 2.0168 | lr 6.47e-04 | 620 win/s
 step 17600/40000 | loss 2.0216 | lr 6.39e-04 | 619 win/s
 step 17800/40000 | loss 1.9961 | lr 6.31e-04 | 619 win/s
@@ -2870,11 +2871,11 @@ step 21000/40000 | loss 1.9420 | lr 5.00e-04 | 619 win/s
 step 21200/40000 | loss 1.9206 | lr 4.92e-04 | 619 win/s
 step 21400/40000 | loss 1.9201 | lr 4.83e-04 | 619 win/s
 step 21600/40000 | loss 1.9180 | lr 4.75e-04 | 619 win/s
+step 21800/40000 | loss 1.9180 | lr 4.67e-04 | 619 win/s
 ```
 
 ### tf_fold2.log
 ```
-step 17200/40000 | loss 1.9772 | lr 6.55e-04 | 623 win/s
 step 17400/40000 | loss 1.9724 | lr 6.47e-04 | 623 win/s
 step 17600/40000 | loss 1.9553 | lr 6.39e-04 | 622 win/s
 step 17800/40000 | loss 1.9443 | lr 6.31e-04 | 621 win/s
@@ -2899,6 +2900,7 @@ step 21000/40000 | loss 1.8629 | lr 5.00e-04 | 622 win/s
 step 21200/40000 | loss 1.8812 | lr 4.92e-04 | 622 win/s
 step 21400/40000 | loss 1.8677 | lr 4.83e-04 | 621 win/s
 step 21600/40000 | loss 1.8534 | lr 4.75e-04 | 621 win/s
+step 21800/40000 | loss 1.8368 | lr 4.67e-04 | 621 win/s
 ```
 
 ### tf_ref.log
@@ -2932,7 +2934,6 @@ step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
 
 ### tf_ref_lr1e3.log
 ```
-[val] step 12000: 8-test-user CER 84.04 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 step 12200/40000 | loss 2.2040 | lr 8.33e-04 | 403 win/s
 step 12400/40000 | loss 2.1924 | lr 8.26e-04 | 400 win/s
 step 12600/40000 | loss 2.1736 | lr 8.20e-04 | 397 win/s
@@ -2957,6 +2958,7 @@ step 16000/40000 | loss 2.1336 | lr 7.01e-04 | 376 win/s
 [val] step 16000: 8-test-user CER 85.05 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 step 16200/40000 | loss 2.1394 | lr 6.93e-04 | 375 win/s
 step 16400/40000 | loss 2.1412 | lr 6.86e-04 | 373 win/s
+step 16600/40000 | loss 2.1258 | lr 6.78e-04 | 372 win/s
 ```
 
 ### v31_train.log
