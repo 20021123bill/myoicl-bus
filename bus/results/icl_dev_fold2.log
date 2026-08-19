@@ -155,3 +155,8 @@ step 11500/12000 | loss 2.3917 | lr 1.42e-06 | 1.52 it/s
 [val] step 11500: mode-A 49.54 | mode-C 50.28 | gain C -0.74   (REAL novel subjects, fold 2)
 step 11600/12000 | loss 2.5203 | lr 9.10e-07 | 1.51 it/s
 step 11700/12000 | loss 2.5158 | lr 5.12e-07 | 1.51 it/s
+step 11800/12000 | loss 2.3988 | lr 2.28e-07 | 1.51 it/s
+step 11900/12000 | loss 2.4732 | lr 5.70e-08 | 1.51 it/s
+step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
+[val] step 12000: mode-A 51.03 | mode-C 50.91 | gain C +0.12   (REAL novel subjects, fold 2)
+[done] best mode-C 45.71

@@ -2,3 +2,17 @@ AST OK
 === waiting for a worthwhile icl_dev checkpoint ===
   waiting (12) step 5600/12000 | loss 2.4000 | lr 1.79e-04 | 1.55 it/s
 using GPU3
+[ckpt] /data2/chenyuxiang/runs/icl_dev_fold2/best.pt step 7500
+[cohort] fold 2: 24 real novel users
+  return F.conv1d(input, weight, bias, self.stride,
+k=  4 ( 16s): mode-A  44.91 | mode-C  45.62 | gain  -0.71 (30 episodes)
+k= 12 ( 48s): mode-A  45.30 | mode-C  44.90 | gain  +0.41 (30 episodes)
+k= 23 ( 92s): mode-A  44.16 | mode-C  44.08 | gain  +0.08 (30 episodes)
+k= 45 (180s): mode-A  44.51 | mode-C  44.90 | gain  -0.38 (30 episodes)
+
+K-curve slope of gain: -0.0006 CER per support window
+verdict: positive gain AND positive slope -> the mechanism holds;
+flat gain==0 -> support is ignored; positive gain, zero slope -> 
+a constant bias, not in-context learning.
+[saved] /data2/chenyuxiang/runs/icl_kcurve_fold2.json
+=== 542 done ===
