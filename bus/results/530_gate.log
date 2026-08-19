@@ -3,4 +3,3 @@
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 [tf_fold0] step 10000 | 8-test-user 5s-window CER 53.13 (72176 chars) | fold-heldout 63.10
-[tf_fold1] step 12000 | 8-test-user 5s-window CER 53.57 (72176 chars) | fold-heldout 57.78
