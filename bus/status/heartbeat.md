@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T13:54:26+08:00
+# heartbeat 2026-08-19T13:55:08+08:00
 
 ## gpu
 ```
-0, 4971 MiB, 24576 MiB, 0 %
-1, 4685 MiB, 24576 MiB, 12 %
-2, 3569 MiB, 24576 MiB, 13 %
-3, 3281 MiB, 24576 MiB, 13 %
+0, 16 MiB, 24576 MiB, 0 %
+1, 4685 MiB, 24576 MiB, 13 %
+2, 3981 MiB, 24576 MiB, 8 %
+3, 3657 MiB, 24576 MiB, 13 %
 ```
 
 ## jobs
@@ -1008,7 +1008,31 @@ in-context calibration works when calibration and use are the same session.
 
 ### 360_tokens_only_pilot.log
 ```
-=== tokens-only interface ceiling, users 0-2, unrestricted data ===
+  step  1250/2500 | loss 2.274 | CER  47.96 | gain +0.11
+  step  1500/2500 | loss 2.276 | CER  47.96 | gain +0.11
+  step  1750/2500 | loss 2.285 | CER  47.96 | gain +0.11
+  step  2000/2500 | loss 2.310 | CER  47.96 | gain +0.11
+  step  2250/2500 | loss 2.267 | CER  47.96 | gain +0.11
+  step  2500/2500 | loss 2.275 | CER  47.96 | gain +0.11
+
+==================================================================
+zero-shot (frozen) -- 3-user subset            56.47
+per-user adapter tuning (this probe)           56.40   gain +0.07
+full per-user fine-tuning (published, 8 users)   11.40
+  (published generic, 8 users: 55.39 -- NOT this subset)
+------------------------------------------------------------------
+the conditioning interface reaches 0% of the fine-tuning gap
+(unrestricted: all training sessions + gradients. Mode C gets minutes
+ and one forward pass, so run --limit-seconds 256 for the fair target.)
+==================================================================
+
+=> The INTERFACE is the bottleneck. Even with the user fully
+   known, and without signs of memorisation, conditioning cannot move
+   the frozen backbone far. Widen it: more injection points, larger
+   d_ctx, or per-electrode conditioning before the frontend mixes
+   channels.
+[saved] /data2/chenyuxiang/runs/ceiling_tokens_only.json
+=== pilot complete ===
 ```
 
 ### 370_teacher_fleet.log
