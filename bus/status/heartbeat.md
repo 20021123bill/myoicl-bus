@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T01:03:48+08:00
+# heartbeat 2026-08-20T01:04:31+08:00
 
 ## gpu
 ```
-0, 3171 MiB, 24576 MiB, 67 %
-1, 6280 MiB, 24576 MiB, 100 %
-2, 2985 MiB, 24576 MiB, 89 %
+0, 3171 MiB, 24576 MiB, 34 %
+1, 6280 MiB, 24576 MiB, 98 %
+2, 2985 MiB, 24576 MiB, 64 %
 3, 1883 MiB, 24576 MiB, 0 %
 ```
 
@@ -2930,6 +2930,11 @@ step 100/12000 | loss 8.1230 | lr 5.00e-05 | 1.74 it/s
 step 200/12000 | loss 4.7799 | lr 1.00e-04 | 1.72 it/s
 step 300/12000 | loss 3.3612 | lr 1.50e-04 | 1.63 it/s
 step 400/12000 | loss 3.1112 | lr 2.00e-04 | 1.54 it/s
+step 500/12000 | loss 2.9615 | lr 2.50e-04 | 1.49 it/s
+[val] step 500: mode-A 59.12 | mode-C 75.06 | gain C -15.94   (REAL novel subjects, fold 2)
+[val] new best mode-C 75.06 -> best.pt
+step 600/12000 | loss 2.8246 | lr 3.00e-04 | 1.46 it/s
+step 700/12000 | loss 2.6339 | lr 3.00e-04 | 1.48 it/s
 ```
 
 ### teachers_shard0.log
@@ -3011,8 +3016,6 @@ step 400/12000 | loss 3.1112 | lr 2.00e-04 | 1.54 it/s
 
 ### tf_fold0_full.log
 ```
-  fold 0:  24 users,  213 sessions | e.g. ['11372316', '14312238', '2396581']
-  fold 1:  24 users,  206 sessions | e.g. ['11944098', '1438774', '25847138']
   fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
   fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
 [split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
@@ -3036,6 +3039,8 @@ step 1400/103000 | loss 1.8062 | lr 4.76e-04 | 511 win/s
 step 1600/103000 | loss 1.8399 | lr 5.44e-04 | 516 win/s
 step 1800/103000 | loss 1.9035 | lr 6.12e-04 | 522 win/s
 step 2000/103000 | loss 1.9528 | lr 6.80e-04 | 526 win/s
+step 2200/103000 | loss 1.9883 | lr 7.00e-04 | 530 win/s
+step 2400/103000 | loss 1.9792 | lr 7.00e-04 | 534 win/s
 ```
 
 ### tf_fold0.log
@@ -3069,7 +3074,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-  fold 0:  24 users,  213 sessions | e.g. ['11372316', '14312238', '2396581']
   fold 1:  24 users,  206 sessions | e.g. ['11944098', '1438774', '25847138']
   fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
   fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
@@ -3094,6 +3098,7 @@ step 1400/103000 | loss 1.8191 | lr 4.76e-04 | 591 win/s
 step 1600/103000 | loss 1.9002 | lr 5.44e-04 | 573 win/s
 step 1800/103000 | loss 1.9016 | lr 6.12e-04 | 557 win/s
 step 2000/103000 | loss 1.9603 | lr 6.80e-04 | 539 win/s
+step 2200/103000 | loss 1.9532 | lr 7.00e-04 | 526 win/s
 ```
 
 ### tf_fold1.log
@@ -3207,6 +3212,7 @@ step 1600/103000 | loss 1.9711 | lr 5.44e-04 | 613 win/s
 step 1800/103000 | loss 2.0262 | lr 6.12e-04 | 594 win/s
 step 2000/103000 | loss 2.0533 | lr 6.80e-04 | 575 win/s
 step 2200/103000 | loss 2.0594 | lr 7.00e-04 | 556 win/s
+step 2400/103000 | loss 2.0231 | lr 7.00e-04 | 543 win/s
 ```
 
 ### tf_ref.log
