@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:44:20+08:00
+# heartbeat 2026-08-19T16:45:03+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 69 %
-1, 3169 MiB, 24576 MiB, 76 %
-2, 2985 MiB, 24576 MiB, 64 %
+0, 3173 MiB, 24576 MiB, 46 %
+1, 3169 MiB, 24576 MiB, 38 %
+2, 2985 MiB, 24576 MiB, 83 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2528,8 +2528,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-[split] official test users: 16 sessions (never trained on in either mode)
-[data] 172708 training windows of 4.0s
 [data] monitor sets: 160 test windows, 160 fold-heldout windows
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
@@ -2553,15 +2551,12 @@ step 2200/40000 | loss 3.0763 | lr 3.00e-04 | 593 win/s
 step 2400/40000 | loss 3.0404 | lr 3.00e-04 | 587 win/s
 step 2600/40000 | loss 3.0051 | lr 3.00e-04 | 577 win/s
 step 2800/40000 | loss 2.9634 | lr 3.00e-04 | 573 win/s
+step 3000/40000 | loss 2.9316 | lr 2.99e-04 | 570 win/s
+step 3200/40000 | loss 2.8907 | lr 2.99e-04 | 566 win/s
 ```
 
 ### tf_ref.log
 ```
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
-[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
-[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
-  return F.conv1d(input, weight, bias, self.stride,
 step 200/40000 | loss 84.3919 | lr 3.00e-05 | 617 win/s
 step 400/40000 | loss 5.7650 | lr 6.00e-05 | 670 win/s
 step 600/40000 | loss 3.6732 | lr 9.00e-05 | 686 win/s
@@ -2582,13 +2577,15 @@ step 3000/40000 | loss 2.9066 | lr 2.99e-04 | 708 win/s
 step 3200/40000 | loss 2.8676 | lr 2.99e-04 | 707 win/s
 step 3400/40000 | loss 2.8254 | lr 2.99e-04 | 706 win/s
 step 3600/40000 | loss 2.7944 | lr 2.99e-04 | 706 win/s
+step 3800/40000 | loss 2.7553 | lr 2.98e-04 | 705 win/s
+step 4000/40000 | loss 2.7171 | lr 2.98e-04 | 705 win/s
+[val] step 4000: 8-test-user CER 96.35 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[val] new best 96.35 -> best.pt
+step 4200/40000 | loss 2.6762 | lr 2.98e-04 | 704 win/s
 ```
 
 ### tf_ref_lr1e3.log
 ```
-[split] REFERENCE run: all 96 training users
-[split] official test users: 16 sessions (never trained on in either mode)
-[data] 229266 training windows of 4.0s
 [data] monitor sets: 160 test windows, 0 fold-heldout windows
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
@@ -2611,6 +2608,9 @@ step 2000/40000 | loss 2.9135 | lr 1.00e-03 | 596 win/s
 step 2200/40000 | loss 2.8360 | lr 1.00e-03 | 590 win/s
 step 2400/40000 | loss 2.7516 | lr 1.00e-03 | 584 win/s
 step 2600/40000 | loss 2.6788 | lr 9.99e-04 | 578 win/s
+step 2800/40000 | loss 2.5873 | lr 9.99e-04 | 573 win/s
+step 3000/40000 | loss 2.5095 | lr 9.98e-04 | 571 win/s
+step 3200/40000 | loss 2.4602 | lr 9.98e-04 | 567 win/s
 ```
 
 ### v31_train.log
