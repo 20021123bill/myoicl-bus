@@ -21,3 +21,5 @@ step 800/103000 | loss 1.6865 | lr 2.72e-04 | 490 win/s
 step 1000/103000 | loss 1.7365 | lr 3.40e-04 | 498 win/s
 step 1200/103000 | loss 1.7740 | lr 4.08e-04 | 506 win/s
 step 1400/103000 | loss 1.8062 | lr 4.76e-04 | 511 win/s
+step 1600/103000 | loss 1.8399 | lr 5.44e-04 | 516 win/s
+step 1800/103000 | loss 1.9035 | lr 6.12e-04 | 522 win/s
