@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:20:13+08:00
+# heartbeat 2026-08-19T16:20:56+08:00
 
 ## gpu
 ```
-0, 2987 MiB, 24576 MiB, 91 %
-1, 2983 MiB, 24576 MiB, 69 %
-2, 2983 MiB, 24576 MiB, 0 %
+0, 3171 MiB, 24576 MiB, 63 %
+1, 2983 MiB, 24576 MiB, 58 %
+2, 2983 MiB, 24576 MiB, 74 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -1625,16 +1625,6 @@ deployed
 
 ### 400_v5.log
 ```
-[scan] === UNSEEN users (8 official test): 55.39 published ===
---- 16:03 ---
-[a0_gain_affine] [val] step 6500: mode-C CER 66.73 | mode-B CER 90.14 | mode-A CER 68.57 | gain C +1.83 / B -21.58 | loss 3.9261
-[a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
-    _error_if_any_worker_fails()
-RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
-  ^^ a1_gain_v31 LOOKS BROKEN
-[a2_realistic] [val] step 3500: mode-C CER 75.41 | mode-B CER 76.18 | mode-A CER 79.80 | gain C +4.38 / B +3.62 | loss 3.9540
-[scan] === UNSEEN users (8 official test): 55.39 published ===
---- 16:08 ---
 [a0_gain_affine] [val] step 6500: mode-C CER 66.73 | mode-B CER 90.14 | mode-A CER 68.57 | gain C +1.83 / B -21.58 | loss 3.9261
 [a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
     _error_if_any_worker_fails()
@@ -1650,6 +1640,16 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
   ^^ a1_gain_v31 LOOKS BROKEN
 [a2_realistic] [val] step 4000: mode-C CER 68.16 | mode-B CER 76.63 | mode-A CER 79.45 | gain C +11.29 / B +2.83 | loss 3.2769
 [scan] === UNSEEN users (8 official test): 55.39 published ===
+--- 16:18 ---
+[a0_gain_affine] [val] step 6500: mode-C CER 66.73 | mode-B CER 90.14 | mode-A CER 68.57 | gain C +1.83 / B -21.58 | loss 3.9261
+[a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
+  ^^ a1_gain_v31 LOOKS BROKEN
+[a2_realistic] [val] step 4500: mode-C CER 77.72 | mode-B CER 87.09 | mode-A CER 79.78 | gain C +2.06 / B -7.31 | loss 4.2851
+[scan] === UNSEEN users (8 official test): 55.39 published ===
+all v5 runs ended
+=== 400 done ===
 ```
 
 ### 410_deploy_remix.log
@@ -2046,9 +2046,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 
 ### 440_trunk_train.log
 ```
-=== streaming (12 h) ===
---- 15:39 ---
-[tf_ref] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] step 400/40000 | loss 4.1474 | lr 6.00e-05 | 433 win/s
 --- 15:44 ---
 [tf_ref] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
@@ -2071,6 +2068,9 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 --- 16:14 ---
 [tf_ref] [val] step 6000: 8-test-user CER 90.24 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 4000: 8-test-user CER 93.44 | fold-heldout-user CER 94.28  (their Tiny reference: 35.9)
+--- 16:19 ---
+[tf_ref] 
+[tf_fold0] 
 ```
 
 ### 450_log_relay.log
@@ -2237,6 +2237,10 @@ pid=2942963
 [tf_ref_lr1e3] step 600/40000 | loss 3.4864 | lr 3.00e-04 | 259 win/s
 [tf_fold0] step 3800/40000 | loss 2.9388 | lr 2.98e-04 | 464 win/s
          [val] new best 100.00 -> best.pt
+--- 16:20 ---
+[tf_ref] step 200/40000 | loss 84.3919 | lr 3.00e-05 | 617 win/s
+[tf_ref_lr1e3] no steps yet
+[tf_fold0] no steps yet
 ```
 
 ### 480_tf_lr_probe.log
@@ -2253,6 +2257,32 @@ pid=2942963
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
 
 === compare the two learning rates every 10 min ===
+```
+
+### 490_tf_100hz.log
+```
+=== stop the mis-specified runs ===
+trunk runs stopped
+A2 stopped
+0, 16 MiB
+1, 12 MiB
+2, 12 MiB
+3, 12 MiB
+
+=== deploy the corrected trunk ===
+AST OK
+
+=== sanity: frame rate and sequence length ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+raw (2, 32, 10000) -> emissions (498, 2, 99) = 100 Hz  (target 100 Hz)
+frame rate OK
+
+=== relaunch: ref(3e-4) / fold0(3e-4) / ref(1e-3) ===
+launched tf_ref on GPU0 lr=3e-4 fold=-1 pid=2975197
+launched tf_fold0 on GPU1 lr=3e-4 fold=0 pid=2976588
+launched tf_ref_lr1e3 on GPU2 lr=1e-3 fold=-1 pid=2978025
 ```
 
 ### 490_tf_100hz_relaunch.log
@@ -2447,26 +2477,21 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
+step 200/40000 | loss 84.3919 | lr 3.00e-05 | 617 win/s
 ```
 
 ### tf_ref_lr1e3.log
 ```
 [split] REFERENCE run: all 96 training users
 [split] official test users: 16 sessions (never trained on in either mode)
-[data] 183349 training windows of 5.0s
+[data] 229266 training windows of 4.0s
 [data] monitor sets: 160 test windows, 0 fold-heldout windows
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
-step 200/40000 | loss 13.5320 | lr 1.00e-04 | 192 win/s
-step 400/40000 | loss 3.6036 | lr 2.00e-04 | 229 win/s
-step 600/40000 | loss 3.4864 | lr 3.00e-04 | 259 win/s
-step 800/40000 | loss 3.3823 | lr 4.00e-04 | 277 win/s
-step 1000/40000 | loss 3.2856 | lr 5.00e-04 | 290 win/s
-step 1200/40000 | loss 3.2291 | lr 6.00e-04 | 299 win/s
-step 1400/40000 | loss 3.2029 | lr 7.00e-04 | 306 win/s
 ```
 
 ### v31_train.log
