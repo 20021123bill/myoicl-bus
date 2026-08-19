@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T00:53:41+08:00
+# heartbeat 2026-08-20T00:54:26+08:00
 
 ## gpu
 ```
-0, 2987 MiB, 24576 MiB, 78 %
-1, 6096 MiB, 24576 MiB, 100 %
-2, 2985 MiB, 24576 MiB, 26 %
+0, 2987 MiB, 24576 MiB, 60 %
+1, 6096 MiB, 24576 MiB, 99 %
+2, 2985 MiB, 24576 MiB, 52 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2982,6 +2982,8 @@ AssertionError: cohort/backbone contamination: ['12565339', '18200807', '2591565
 step 200/103000 | loss 1.5577 | lr 6.80e-05 | 465 win/s
 step 400/103000 | loss 1.5894 | lr 1.36e-04 | 479 win/s
 step 600/103000 | loss 1.6305 | lr 2.04e-04 | 483 win/s
+step 800/103000 | loss 1.6865 | lr 2.72e-04 | 490 win/s
+step 1000/103000 | loss 1.7365 | lr 3.40e-04 | 498 win/s
 ```
 
 ### tf_fold0.log
@@ -3035,6 +3037,8 @@ step 200/103000 | loss 1.5741 | lr 6.80e-05 | 576 win/s
 step 400/103000 | loss 1.6060 | lr 1.36e-04 | 618 win/s
 step 600/103000 | loss 1.6411 | lr 2.04e-04 | 640 win/s
 step 800/103000 | loss 1.7096 | lr 2.72e-04 | 647 win/s
+step 1000/103000 | loss 1.7334 | lr 3.40e-04 | 633 win/s
+step 1200/103000 | loss 1.7817 | lr 4.08e-04 | 607 win/s
 ```
 
 ### tf_fold1.log
@@ -3142,6 +3146,8 @@ step 400/103000 | loss 1.6913 | lr 1.36e-04 | 646 win/s
 step 600/103000 | loss 1.7357 | lr 2.04e-04 | 663 win/s
 step 800/103000 | loss 1.7758 | lr 2.72e-04 | 671 win/s
 step 1000/103000 | loss 1.8158 | lr 3.40e-04 | 673 win/s
+step 1200/103000 | loss 1.8450 | lr 4.08e-04 | 658 win/s
+step 1400/103000 | loss 1.9162 | lr 4.76e-04 | 630 win/s
 ```
 
 ### tf_ref.log
