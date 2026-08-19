@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T06:42:32+08:00
+# heartbeat 2026-08-20T06:43:15+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 67 %
-1, 3125 MiB, 24576 MiB, 66 %
-2, 2985 MiB, 24576 MiB, 86 %
-3, 2735 MiB, 24576 MiB, 0 %
+0, 3173 MiB, 24576 MiB, 43 %
+1, 3125 MiB, 24576 MiB, 35 %
+2, 2985 MiB, 24576 MiB, 91 %
+3, 2735 MiB, 24576 MiB, 28 %
 ```
 
 ## jobs
@@ -3124,6 +3124,7 @@ launched icl_frozen_fold2 pid=248766
 step 100/12000 | loss 9.6123 | lr 1.67e-04 | 2.02 it/s
 step 200/12000 | loss 5.8096 | lr 3.33e-04 | 1.66 it/s
 [06:38] [val] new best mode-C 72.48 -> best.pt
+[06:43] [val] new best mode-C 61.12 -> best.pt
 ```
 
 ### d3_train.log
@@ -3296,9 +3297,6 @@ step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
 
 ### icl_frozen_fold2.log
 ```
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
-[trunk] /data2/chenyuxiang/runs/tf_fold2/last.pt step 40000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
-[prefix] FUSED mode: per-token (signal + soft-aligned char)
 [prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
 [prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
 [prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
@@ -3321,6 +3319,9 @@ step 900/12000 | loss 2.9002 | lr 9.98e-04 | 1.61 it/s
 step 1000/12000 | loss 2.8655 | lr 9.97e-04 | 1.65 it/s
 [val] step 1000: mode-A 56.80 | mode-C 61.12 | gain C -4.32   (REAL novel subjects, fold 2)
 [val] new best mode-C 61.12 -> best.pt
+step 1100/12000 | loss 2.9076 | lr 9.95e-04 | 1.61 it/s
+step 1200/12000 | loss 2.9038 | lr 9.93e-04 | 1.63 it/s
+step 1300/12000 | loss 2.9354 | lr 9.91e-04 | 1.61 it/s
 ```
 
 ### icl_fusedb_fold2.log
