@@ -30,3 +30,10 @@ step 1600/8000 | loss 1.3076 | lr 9.83e-04 | 1.65 it/s
 step 1700/8000 | loss 1.2782 | lr 9.77e-04 | 2.06 it/s
 step 1800/8000 | loss 1.2172 | lr 9.70e-04 | 2.22 it/s
 step 1900/8000 | loss 1.4435 | lr 9.62e-04 | 2.20 it/s
+step 2000/8000 | loss 1.2276 | lr 9.53e-04 | 1.91 it/s
+[val] step 2000: mode-C CER 83.29 | mode-B CER 71.19 | mode-A CER 68.50 | gain C -14.78 / B -2.69 | loss 6.6059
+step 2100/8000 | loss 1.3187 | lr 9.43e-04 | 1.68 it/s
+step 2200/8000 | loss 1.2548 | lr 9.33e-04 | 2.04 it/s
+step 2300/8000 | loss 1.2380 | lr 9.21e-04 | 2.12 it/s
+step 2400/8000 | loss 1.2524 | lr 9.09e-04 | 1.95 it/s
+step 2500/8000 | loss 1.2445 | lr 8.96e-04 | 2.01 it/s
