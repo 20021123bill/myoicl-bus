@@ -1,9 +1,9 @@
-# heartbeat 2026-08-20T00:28:36+08:00
+# heartbeat 2026-08-20T00:29:19+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 3169 MiB, 24576 MiB, 74 %
+1, 3169 MiB, 24576 MiB, 92 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -71,6 +71,7 @@
 525_trunk_diag                           DONE rc=127
 526_blank_tracker                        DONE rc=127
 530_gate_5s_eval                         DONE rc=127
+531_gate_final                           DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2665,6 +2666,10 @@ checkpoint step 10000
 reference: paper Tiny 35.9 (4 s windows, same 8 test users)
 verdict guide: <=45 -> reproduction roughly holds, monitor was the artifact; 60-75 -> partial, dig into encoder internals; >80 -> re-implementation genuinely fails, switch to running fairemg itself.
 === 530 done ===
+```
+
+### 531_gate_final.log
+```
 ```
 
 ### d3_train.log
