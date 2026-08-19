@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:25:11+08:00
+# heartbeat 2026-08-19T16:25:54+08:00
 
 ## gpu
 ```
-0, 3171 MiB, 24576 MiB, 83 %
-1, 3167 MiB, 24576 MiB, 84 %
-2, 2983 MiB, 24576 MiB, 55 %
+0, 3171 MiB, 24576 MiB, 78 %
+1, 3167 MiB, 24576 MiB, 69 %
+2, 2983 MiB, 24576 MiB, 78 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2046,9 +2046,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 
 ### 440_trunk_train.log
 ```
-[tf_fold0] step 400/40000 | loss 4.1474 | lr 6.00e-05 | 433 win/s
---- 15:44 ---
-[tf_ref] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] step 1000/40000 | loss 3.4651 | lr 1.50e-04 | 449 win/s
 --- 15:49 ---
 [tf_ref] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
@@ -2071,6 +2068,9 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 --- 16:19 ---
 [tf_ref] 
 [tf_fold0] 
+--- 16:24 ---
+[tf_ref] step 800/40000 | loss 3.4943 | lr 1.20e-04 | 698 win/s
+[tf_fold0] step 800/40000 | loss 3.4897 | lr 1.20e-04 | 683 win/s
 ```
 
 ### 450_log_relay.log
@@ -2261,28 +2261,31 @@ pid=2942963
 
 ### 490_tf_100hz.log
 ```
-=== stop the mis-specified runs ===
-trunk runs stopped
-A2 stopped
-0, 16 MiB
-1, 12 MiB
-2, 12 MiB
-3, 12 MiB
-
-=== deploy the corrected trunk ===
-AST OK
-
-=== sanity: frame rate and sequence length ===
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
-2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
-raw (2, 32, 10000) -> emissions (498, 2, 99) = 100 Hz  (target 100 Hz)
-frame rate OK
-
-=== relaunch: ref(3e-4) / fold0(3e-4) / ref(1e-3) ===
-launched tf_ref on GPU0 lr=3e-4 fold=-1 pid=2975197
-launched tf_fold0 on GPU1 lr=3e-4 fold=0 pid=2976588
 launched tf_ref_lr1e3 on GPU2 lr=1e-3 fold=-1 pid=2978025
+
+--- tf_ref ---
+[split] REFERENCE run: all 96 training users
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 229266 training windows of 4.0s
+[data] monitor sets: 160 test windows, 0 fold-heldout windows
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+--- tf_fold0 ---
+[split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 172708 training windows of 4.0s
+[data] monitor sets: 160 test windows, 160 fold-heldout windows
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+--- tf_ref_lr1e3 ---
+[split] REFERENCE run: all 96 training users
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 229266 training windows of 4.0s
+[data] monitor sets: 160 test windows, 0 fold-heldout windows
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+
+=== stream (14 h) ===
 ```
 
 ### 490_tf_100hz_relaunch.log
@@ -2488,6 +2491,7 @@ step 200/40000 | loss 84.3919 | lr 3.00e-05 | 617 win/s
 step 400/40000 | loss 5.7650 | lr 6.00e-05 | 670 win/s
 step 600/40000 | loss 3.6732 | lr 9.00e-05 | 686 win/s
 step 800/40000 | loss 3.4943 | lr 1.20e-04 | 698 win/s
+step 1000/40000 | loss 3.3686 | lr 1.50e-04 | 703 win/s
 ```
 
 ### tf_ref_lr1e3.log
@@ -2505,6 +2509,7 @@ step 800/40000 | loss 3.4943 | lr 1.20e-04 | 698 win/s
 step 200/40000 | loss 70.1729 | lr 1.00e-04 | 607 win/s
 step 400/40000 | loss 3.7546 | lr 2.00e-04 | 660 win/s
 step 600/40000 | loss 3.4485 | lr 3.00e-04 | 678 win/s
+step 800/40000 | loss 3.3188 | lr 4.00e-04 | 665 win/s
 ```
 
 ### v31_train.log
