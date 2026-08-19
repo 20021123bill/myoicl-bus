@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T01:00:54+08:00
+# heartbeat 2026-08-20T01:01:37+08:00
 
 ## gpu
 ```
-0, 3171 MiB, 24576 MiB, 39 %
-1, 6096 MiB, 24576 MiB, 86 %
-2, 2985 MiB, 24576 MiB, 7 %
-3, 1883 MiB, 24576 MiB, 21 %
+0, 3171 MiB, 24576 MiB, 0 %
+1, 6096 MiB, 24576 MiB, 91 %
+2, 2985 MiB, 24576 MiB, 0 %
+3, 1883 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -74,6 +74,7 @@
 531_gate_final                           DONE rc=127
 540_fullbudget_and_icl_dev               DONE rc=127
 541_icl_dev_relaunch                     DONE rc=127
+542_kcurve_autotrigger                   DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2795,6 +2796,12 @@ step 300/12000 | loss 3.3612 | lr 1.50e-04 | 1.63 it/s
 step 400/12000 | loss 3.1112 | lr 2.00e-04 | 1.54 it/s
 ```
 
+### 542_kcurve_autotrigger.log
+```
+AST OK
+=== waiting for a worthwhile icl_dev checkpoint ===
+```
+
 ### d3_train.log
 ```
 [val] step 6000: mode-C CER 16.99 | mode-B CER 17.13 | mode-A CER 15.88 | gain C -1.11 / B -1.25 | loss 0.6158
@@ -3062,7 +3069,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-96 training users -> 4 folds
   fold 0:  24 users,  213 sessions | e.g. ['11372316', '14312238', '2396581']
   fold 1:  24 users,  206 sessions | e.g. ['11944098', '1438774', '25847138']
   fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
@@ -3087,6 +3093,7 @@ step 1200/103000 | loss 1.7817 | lr 4.08e-04 | 607 win/s
 step 1400/103000 | loss 1.8191 | lr 4.76e-04 | 591 win/s
 step 1600/103000 | loss 1.9002 | lr 5.44e-04 | 573 win/s
 step 1800/103000 | loss 1.9016 | lr 6.12e-04 | 557 win/s
+step 2000/103000 | loss 1.9603 | lr 6.80e-04 | 539 win/s
 ```
 
 ### tf_fold1.log
@@ -3199,6 +3206,7 @@ step 1400/103000 | loss 1.9162 | lr 4.76e-04 | 630 win/s
 step 1600/103000 | loss 1.9711 | lr 5.44e-04 | 613 win/s
 step 1800/103000 | loss 2.0262 | lr 6.12e-04 | 594 win/s
 step 2000/103000 | loss 2.0533 | lr 6.80e-04 | 575 win/s
+step 2200/103000 | loss 2.0594 | lr 7.00e-04 | 556 win/s
 ```
 
 ### tf_ref.log
