@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T00:45:48+08:00
+# heartbeat 2026-08-20T00:46:31+08:00
 
 ## gpu
 ```
-0, 2987 MiB, 24576 MiB, 58 %
+0, 2987 MiB, 24576 MiB, 83 %
 1, 6096 MiB, 24576 MiB, 100 %
-2, 2985 MiB, 24576 MiB, 26 %
+2, 2985 MiB, 24576 MiB, 71 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2959,6 +2959,7 @@ AssertionError: cohort/backbone contamination: ['12565339', '18200807', '2591565
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
+step 200/103000 | loss 1.5577 | lr 6.80e-05 | 465 win/s
 ```
 
 ### tf_fold0.log
@@ -3070,7 +3071,6 @@ step 40000/40000 | loss 1.5024 | lr 0.00e+00 | 618 win/s
 
 ### tf_fold3.log
 ```
-step 24000/40000 | loss 1.8163 | lr 3.77e-04 | 643 win/s
 [val] step 24000: 8-test-user CER 85.90 | fold-heldout-user CER 88.13  (their Tiny reference: 35.9)
 step 24200/40000 | loss 1.8202 | lr 3.69e-04 | 644 win/s
 step 24400/40000 | loss 1.8156 | lr 3.61e-04 | 645 win/s
@@ -3095,6 +3095,7 @@ step 27800/40000 | loss 1.6989 | lr 2.33e-04 | 656 win/s
 step 28000/40000 | loss 1.7024 | lr 2.27e-04 | 657 win/s
 [val] step 28000: 8-test-user CER 88.13 | fold-heldout-user CER 89.33  (their Tiny reference: 35.9)
 step 28200/40000 | loss 1.6984 | lr 2.20e-04 | 657 win/s
+step 28400/40000 | loss 1.6884 | lr 2.13e-04 | 656 win/s
 ```
 
 ### tf_ref_full.log
