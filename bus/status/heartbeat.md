@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:35:49+08:00
+# heartbeat 2026-08-19T17:36:32+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 83 %
-1, 2985 MiB, 24576 MiB, 73 %
-2, 3169 MiB, 24576 MiB, 31 %
-3, 3169 MiB, 24576 MiB, 33 %
+0, 2989 MiB, 24576 MiB, 58 %
+1, 2985 MiB, 24576 MiB, 40 %
+2, 3169 MiB, 24576 MiB, 73 %
+3, 3169 MiB, 24576 MiB, 35 %
 ```
 
 ## jobs
@@ -2487,15 +2487,6 @@ backbone) -- if it does not, the eval is wrong, not the method.
 
 ### 510_fold_fleet_lr1e3.log
 ```
-[tf_ref_lr1e3] step 6800/40000 | loss 2.2851 | lr 9.61e-04 | 485 win/s
-        [val] step 6000: 8-test-user CER 84.01 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[tf_fold0] step 1800/40000 | loss 2.9799 | lr 9.00e-04 | 392 win/s
-[tf_fold1] step 3000/40000 | loss 2.4718 | lr 9.98e-04 | 619 win/s
-        [val] new best 100.00 -> best.pt
-[tf_fold2] step 3000/40000 | loss 2.4417 | lr 9.98e-04 | 626 win/s
-        [val] new best 100.00 -> best.pt
---- 17:25 ---
-[tf_ref_lr1e3] step 7200/40000 | loss 2.2681 | lr 9.55e-04 | 474 win/s
         [val] step 6000: 8-test-user CER 84.01 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] step 2200/40000 | loss 2.8519 | lr 1.00e-03 | 381 win/s
         [val] new best 100.00 -> best.pt
@@ -2511,6 +2502,15 @@ backbone) -- if it does not, the eval is wrong, not the method.
 [tf_fold1] step 4400/40000 | loss 2.3338 | lr 9.90e-04 | 619 win/s
         [val] new best 83.88 -> best.pt
 [tf_fold2] step 4400/40000 | loss 2.3074 | lr 9.90e-04 | 625 win/s
+        [val] new best 84.75 -> best.pt
+--- 17:35 ---
+[tf_ref_lr1e3] step 8000/40000 | loss 2.2761 | lr 9.40e-04 | 456 win/s
+        [val] step 8000: 8-test-user CER 81.87 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 3000/40000 | loss 2.5137 | lr 9.98e-04 | 370 win/s
+        [val] new best 100.00 -> best.pt
+[tf_fold1] step 5200/40000 | loss 2.3280 | lr 9.83e-04 | 620 win/s
+        [val] new best 83.88 -> best.pt
+[tf_fold2] step 5000/40000 | loss 2.2768 | lr 9.85e-04 | 625 win/s
         [val] new best 84.75 -> best.pt
 ```
 
@@ -2756,7 +2756,6 @@ step 3000/40000 | loss 2.5137 | lr 9.98e-04 | 370 win/s
 
 ### tf_fold1.log
 ```
-step 1000/40000 | loss 3.2249 | lr 5.00e-04 | 604 win/s
 step 1200/40000 | loss 3.1724 | lr 6.00e-04 | 608 win/s
 step 1400/40000 | loss 3.1176 | lr 7.00e-04 | 610 win/s
 step 1600/40000 | loss 3.0597 | lr 8.00e-04 | 613 win/s
@@ -2781,6 +2780,7 @@ step 4400/40000 | loss 2.3338 | lr 9.90e-04 | 619 win/s
 step 4600/40000 | loss 2.3316 | lr 9.88e-04 | 620 win/s
 step 4800/40000 | loss 2.3276 | lr 9.87e-04 | 620 win/s
 step 5000/40000 | loss 2.3178 | lr 9.85e-04 | 620 win/s
+step 5200/40000 | loss 2.3280 | lr 9.83e-04 | 620 win/s
 ```
 
 ### tf_fold2.log
