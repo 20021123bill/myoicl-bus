@@ -167,3 +167,15 @@
 [tf_ref] [val] new best 83.37 -> best.pt
 [tf_ref_lr1e3] [val] step 40000: 8-test-user CER 87.14 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 
+--- 01:30 ---
+0, 3173 MiB, 64 %|1, 6280 MiB, 99 %|2, 2985 MiB, 61 %|3, 1883 MiB, 7 %|
+[tf_fold0_full] [val] new best 48.11 -> best.pt
+[tf_fold0] [val] step 40000: 8-test-user CER 87.25 | fold-heldout-user CER 88.14  (their Tiny reference: 35.9)
+[tf_fold1_full] [val] new best 51.33 -> best.pt
+[tf_fold1] [val] step 40000: 8-test-user CER 87.88 | fold-heldout-user CER 88.04  (their Tiny reference: 35.9)
+[tf_fold2] [val] step 40000: 8-test-user CER 87.80 | fold-heldout-user CER 89.26  (their Tiny reference: 35.9)
+[tf_fold3] [val] step 32000: 8-test-user CER 88.16 | fold-heldout-user CER 89.47  (their Tiny reference: 35.9)
+[tf_ref_full] [val] new best 46.84 -> best.pt
+[tf_ref] [val] new best 83.37 -> best.pt
+[tf_ref_lr1e3] [val] step 40000: 8-test-user CER 87.14 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+
