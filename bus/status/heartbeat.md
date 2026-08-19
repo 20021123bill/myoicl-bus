@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:40:51+08:00
+# heartbeat 2026-08-19T17:41:34+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 0 %
-1, 2985 MiB, 24576 MiB, 54 %
-2, 3169 MiB, 24576 MiB, 68 %
-3, 3169 MiB, 24576 MiB, 68 %
+0, 2989 MiB, 24576 MiB, 31 %
+1, 2985 MiB, 24576 MiB, 86 %
+2, 3169 MiB, 24576 MiB, 0 %
+3, 3169 MiB, 24576 MiB, 80 %
 ```
 
 ## jobs
@@ -2488,15 +2488,6 @@ backbone) -- if it does not, the eval is wrong, not the method.
 ### 510_fold_fleet_lr1e3.log
 ```
         [val] step 6000: 8-test-user CER 84.01 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[tf_fold0] step 2200/40000 | loss 2.8519 | lr 1.00e-03 | 381 win/s
-        [val] new best 100.00 -> best.pt
-[tf_fold1] step 3600/40000 | loss 2.3892 | lr 9.96e-04 | 620 win/s
-        [val] new best 100.00 -> best.pt
-[tf_fold2] step 3600/40000 | loss 2.3252 | lr 9.96e-04 | 627 win/s
-        [val] new best 100.00 -> best.pt
---- 17:30 ---
-[tf_ref_lr1e3] step 7600/40000 | loss 2.2791 | lr 9.47e-04 | 464 win/s
-        [val] step 6000: 8-test-user CER 84.01 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] step 2600/40000 | loss 2.6798 | lr 9.99e-04 | 374 win/s
         [val] new best 100.00 -> best.pt
 [tf_fold1] step 4400/40000 | loss 2.3338 | lr 9.90e-04 | 619 win/s
@@ -2511,6 +2502,15 @@ backbone) -- if it does not, the eval is wrong, not the method.
 [tf_fold1] step 5200/40000 | loss 2.3280 | lr 9.83e-04 | 620 win/s
         [val] new best 83.88 -> best.pt
 [tf_fold2] step 5000/40000 | loss 2.2768 | lr 9.85e-04 | 625 win/s
+        [val] new best 84.75 -> best.pt
+--- 17:40 ---
+[tf_ref_lr1e3] step 8400/40000 | loss 2.2479 | lr 9.32e-04 | 448 win/s
+        [val] step 8000: 8-test-user CER 81.87 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 3400/40000 | loss 2.4192 | lr 9.97e-04 | 367 win/s
+        [val] new best 100.00 -> best.pt
+[tf_fold1] step 5800/40000 | loss 2.2955 | lr 9.76e-04 | 620 win/s
+        [val] new best 83.88 -> best.pt
+[tf_fold2] step 5800/40000 | loss 2.2417 | lr 9.76e-04 | 624 win/s
         [val] new best 84.75 -> best.pt
 ```
 
