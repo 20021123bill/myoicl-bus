@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:15:45+08:00
+# heartbeat 2026-08-19T17:16:28+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 26 %
-1, 2985 MiB, 24576 MiB, 50 %
-2, 3169 MiB, 24576 MiB, 45 %
-3, 2985 MiB, 24576 MiB, 79 %
+0, 2989 MiB, 24576 MiB, 43 %
+1, 2985 MiB, 24576 MiB, 53 %
+2, 3169 MiB, 24576 MiB, 0 %
+3, 2985 MiB, 24576 MiB, 45 %
 ```
 
 ## jobs
@@ -2487,14 +2487,6 @@ launched tf_fold2 on GPU3 pid=3044556
 
 ### 510_fold_fleet_lr1e3.log
 ```
-killed 2976858 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
-killed 2976921 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
-0, 16 MiB
-1, 12 MiB
-2, 2985 MiB
-3, 12 MiB
-
-=== launch fold0/1/2 at lr 1e-3 on free GPUs ===
 launched tf_fold0 on GPU0 pid=3041555
 launched tf_fold1 on GPU1 pid=3043152
 launched tf_fold2 on GPU3 pid=3044556
@@ -2512,6 +2504,14 @@ launched tf_fold2 on GPU3 pid=3044556
 [tf_fold0] step 1000/40000 | loss 3.2248 | lr 5.00e-04 | 412 win/s
 [tf_fold1] step 1400/40000 | loss 3.1176 | lr 7.00e-04 | 610 win/s
 [tf_fold2] step 1400/40000 | loss 3.1016 | lr 7.00e-04 | 621 win/s
+--- 17:15 ---
+[tf_ref_lr1e3] step 6400/40000 | loss 2.3045 | lr 9.67e-04 | 496 win/s
+        [val] step 6000: 8-test-user CER 84.01 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 1400/40000 | loss 3.1061 | lr 7.00e-04 | 401 win/s
+[tf_fold1] step 2200/40000 | loss 2.8231 | lr 1.00e-03 | 613 win/s
+        [val] new best 100.00 -> best.pt
+[tf_fold2] step 2200/40000 | loss 2.7923 | lr 1.00e-03 | 623 win/s
+        [val] new best 100.00 -> best.pt
 ```
 
 ### 520_deploy_symbol_icl.log
@@ -2782,7 +2782,6 @@ step 2200/40000 | loss 2.8231 | lr 1.00e-03 | 613 win/s
 
 ### tf_fold2.log
 ```
-  fold 1:  24 users,  206 sessions | e.g. ['11944098', '1438774', '25847138']
   fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
   fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
 [split] fold 2: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
@@ -2807,6 +2806,7 @@ step 1800/40000 | loss 2.9623 | lr 9.00e-04 | 623 win/s
 step 2000/40000 | loss 2.8845 | lr 1.00e-03 | 623 win/s
 [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 [val] new best 100.00 -> best.pt
+step 2200/40000 | loss 2.7923 | lr 1.00e-03 | 623 win/s
 ```
 
 ### tf_ref.log
