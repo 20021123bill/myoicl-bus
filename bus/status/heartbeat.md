@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:33:23+08:00
+# heartbeat 2026-08-19T15:34:05+08:00
 
 ## gpu
 ```
-0, 2411 MiB, 24576 MiB, 0 %
+0, 2411 MiB, 24576 MiB, 18 %
 1, 1369 MiB, 24576 MiB, 42 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 14173 MiB, 24576 MiB, 0 %
+3, 24117 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -1292,6 +1292,7 @@ AST OK
 
 === waiting for GPUs (the v5 ladder is still running) ===
 launched tf_ref on GPU1 pid=2889785  (15:24)
+  (10) no free GPU: 0, 2411 MiB 1, 1369 MiB 2, 2807 MiB 3, 24117 MiB 
 ```
 
 ### teachers_shard0.log
@@ -1373,14 +1374,6 @@ launched tf_ref on GPU1 pid=2889785  (15:24)
 
 ### v5_a0_gain_affine.log
 ```
-step 3300/8000 | loss 1.1628 | lr 7.69e-04 | 2.04 it/s
-step 3400/8000 | loss 1.1175 | lr 7.50e-04 | 1.96 it/s
-step 3500/8000 | loss 1.1439 | lr 7.31e-04 | 2.07 it/s
-[val] step 3500: mode-C CER 55.41 | mode-B CER 72.59 | mode-A CER 68.51 | gain C +13.10 / B -4.08 | loss 2.9306
-step 3600/8000 | loss 1.0781 | lr 7.12e-04 | 1.70 it/s
-step 3700/8000 | loss 1.1304 | lr 6.92e-04 | 1.91 it/s
-step 3800/8000 | loss 1.2274 | lr 6.72e-04 | 1.88 it/s
-step 3900/8000 | loss 1.0508 | lr 6.51e-04 | 1.94 it/s
 step 4000/8000 | loss 1.0279 | lr 6.31e-04 | 1.83 it/s
 [val] step 4000: mode-C CER 82.24 | mode-B CER 70.00 | mode-A CER 69.06 | gain C -13.18 / B -0.94 | loss 6.3395
 step 4100/8000 | loss 1.1107 | lr 6.10e-04 | 1.63 it/s
@@ -1398,6 +1391,14 @@ step 5000/8000 | loss 1.1178 | lr 4.19e-04 | 2.05 it/s
 step 5100/8000 | loss 0.9767 | lr 3.99e-04 | 1.58 it/s
 step 5200/8000 | loss 1.0737 | lr 3.78e-04 | 2.20 it/s
 step 5300/8000 | loss 0.9858 | lr 3.58e-04 | 2.04 it/s
+step 5400/8000 | loss 0.8948 | lr 3.38e-04 | 2.09 it/s
+step 5500/8000 | loss 0.9825 | lr 3.19e-04 | 2.16 it/s
+[val] step 5500: mode-C CER 74.14 | mode-B CER 93.47 | mode-A CER 68.98 | gain C -5.15 / B -24.49 | loss 4.8149
+step 5600/8000 | loss 0.9727 | lr 3.00e-04 | 1.75 it/s
+step 5700/8000 | loss 0.9582 | lr 2.81e-04 | 1.86 it/s
+step 5800/8000 | loss 0.9717 | lr 2.63e-04 | 1.98 it/s
+step 5900/8000 | loss 1.0104 | lr 2.46e-04 | 2.25 it/s
+step 6000/8000 | loss 1.0153 | lr 2.29e-04 | 2.11 it/s
 ```
 
 ### v5_a1_gain_v31.log
@@ -1431,9 +1432,6 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
 
 ### v5_a2_realistic.log
 ```
-step 200/8000 | loss 3.7268 | lr 2.01e-04 | 0.80 it/s
-step 300/8000 | loss 3.3812 | lr 3.01e-04 | 0.82 it/s
-step 400/8000 | loss 3.2773 | lr 4.01e-04 | 0.92 it/s
 step 500/8000 | loss 3.1125 | lr 5.01e-04 | 0.81 it/s
 [val] step 500: mode-C CER 66.18 | mode-B CER 68.33 | mode-A CER 79.82 | gain C +13.65 / B +11.49 | loss 2.7225
 [val] new best CER 66.18 -> saved best.pt
@@ -1456,6 +1454,9 @@ step 1900/8000 | loss 2.8575 | lr 9.62e-04 | 0.80 it/s
 step 2000/8000 | loss 2.7120 | lr 9.53e-04 | 0.79 it/s
 [val] step 2000: mode-C CER 73.79 | mode-B CER 74.83 | mode-A CER 80.42 | gain C +6.64 / B +5.59 | loss 3.9042
 step 2100/8000 | loss 2.8414 | lr 9.43e-04 | 0.72 it/s
+step 2200/8000 | loss 2.8185 | lr 9.33e-04 | 0.87 it/s
+step 2300/8000 | loss 2.7053 | lr 9.21e-04 | 0.84 it/s
+step 2400/8000 | loss 2.7740 | lr 9.09e-04 | 0.87 it/s
 ```
 
 ### v5_zeroshot_scan.log
