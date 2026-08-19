@@ -1,0 +1,21 @@
+=== deploy full-window fix (support windows must survive TDS 124-frame shrink) ===
+=== smoke re-check ===
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 123, in <module>
+    sys.exit(main())
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 47, in main
+    tokens, pooled = model.encode_context(
+  File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 238, in encode_context
+    tokens, pooled = self.ctx_encoder(feats, logp, flens)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/ctx_frame.py", line 113, in forward
+    tok = tok[valid]                                      # (M0, d_ctx)
+IndexError: The shape of the mask [96] at index 0 does not match the shape of the indexed tensor [192, 32] at index 0
+SMOKE FAILED

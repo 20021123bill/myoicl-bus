@@ -1,0 +1,77 @@
+=== deploy smoke fix (set o_proj nonzero instead of unstable SGD) ===
+=== v3 smoke ===
+[smoke] built 50 support tokens from 6 windows
+[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
+[smoke] init grad o_proj=3.382e+01 (want >0: path can open)
+[smoke] with o_proj opened, mean|mode C - mode A| = 3.7174e-02 (want >0: context now changes output)
+[smoke] grad to frame context encoder now = 1.098e+01
+[smoke] full-length support -> 96 tokens (>= 50 masked)
+[smoke v3] ALL PASS
+
+=== launch v3 training on GPU2 ===
+--- first lines ---
+[model] v1 | 6.01M params total (published backbone 5.29M + ICL module 0.71M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
+[watchdog] armed
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/train_qwerty.py", line 782, in <module>
+    main()
+  File "/data2/chenyuxiang/code/myoicl/myoicl/train_qwerty.py", line 712, in main
+    loss, _, _ = episode_forward(model, batch, device, autocast_dtype)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/train_qwerty.py", line 165, in episode_forward
+    ctx_tokens, ctx_pooled, ctx_affine = model.encode_context(
+  File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 234, in encode_context
+    feats, logp, flens = self._support_frames(
+  File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 325, in _support_frames
+    feats = self.tds(feats)                    # (Tf, K, d_model)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
+Traceback (most recent call last):
+RuntimeError: Calculated padded input size per channel: (32 x 29). Kernel size: (1 x 32). Kernel size can't be greater than actual input size
+
+=== periodic eval by checkpoint step ===
+--- waiting for v3 step >= 2000 (02:22) ---
+=== v3 @ step ~2000 : 8 official held-out users, A/B/C, K=128 ===
+[A] mean over users: 54.03
+[B] mean over users: 54.03
+[C] mean over users: 54.57
+[A] gap closed vs personalization ceiling: 3.1%
+[B] gap closed vs personalization ceiling: 3.1%
+[C] gap closed vs personalization ceiling: 1.8%
+=== /tmp/v3_snap.pt  (step 2000) ===
+    cross_pre    |tanh(g)|=0.45023  ||W||=  6.1459  EFFECTIVE=2.76706
+    cross_post   |tanh(g)|=0.42207  ||W||=  4.9640  EFFECTIVE=2.09517
+--- waiting for v3 step >= 5000 (02:49) ---
+=== v3 @ step ~5000 : 8 official held-out users, A/B/C, K=128 ===
+[A] mean over users: 54.18
+[B] mean over users: 54.18
+[C] mean over users: 55.22
+[A] gap closed vs personalization ceiling: 2.7%
+[B] gap closed vs personalization ceiling: 2.7%
+[C] gap closed vs personalization ceiling: 0.4%
+--- waiting for v3 step >= 9000 (03:07) ---
+=== v3 @ step ~9000 : 8 official held-out users, A/B/C, K=128 ===
+[A] mean over users: 54.12
+[B] mean over users: 54.12
+=== /tmp/v3_snap.pt  (step 9000) ===
+    cross_pre    |tanh(g)|=0.07668  ||W||= 13.7224  EFFECTIVE=1.05230
+    cross_post   |tanh(g)|=0.00869  ||W||= 10.9762  EFFECTIVE=0.09533
+--- waiting for v3 step >= 12000 (03:33) ---
+=== v3 @ step ~12000 : 8 official held-out users, A/B/C, K=128 ===
+[A] mean over users: 54.16
+[B] mean over users: 54.16
+[C] mean over users: 55.15
+[A] gap closed vs personalization ceiling: 2.8%
+[B] gap closed vs personalization ceiling: 2.8%
+[C] gap closed vs personalization ceiling: 0.5%
+=== /tmp/v3_snap.pt  (step 12000) ===
+    cross_pre    |tanh(g)|=0.08264  ||W||= 13.8773  EFFECTIVE=1.14687
+    cross_post   |tanh(g)|=0.01047  ||W||= 11.1146  EFFECTIVE=0.11638
+=== v3 curve complete ===

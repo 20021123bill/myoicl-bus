@@ -1,0 +1,140 @@
+[model] v1 | 6.01M params total (published backbone 5.29M + ICL module 0.71M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
+[watchdog] armed
+step 100/12000 | loss 1.7477 | lr 3.79e-06 | 2.08 it/s
+step 200/12000 | loss 1.5904 | lr 7.54e-06 | 2.08 it/s
+step 300/12000 | loss 1.3996 | lr 1.13e-05 | 2.82 it/s
+step 400/12000 | loss 1.3900 | lr 1.50e-05 | 2.95 it/s
+step 500/12000 | loss 1.3500 | lr 1.88e-05 | 2.30 it/s
+step 600/12000 | loss 1.3261 | lr 2.25e-05 | 2.69 it/s
+step 700/12000 | loss 1.1596 | lr 2.63e-05 | 2.82 it/s
+step 800/12000 | loss 1.1157 | lr 3.00e-05 | 3.14 it/s
+step 900/12000 | loss 1.0101 | lr 3.00e-05 | 3.35 it/s
+step 1000/12000 | loss 1.2916 | lr 3.00e-05 | 3.21 it/s
+[val] step 1000: mode-C CER 32.27 | mode-B CER 30.72 | mode-A CER 30.72 | gain C -1.54 / B +0.00 | loss 1.5030
+[val] new best CER 32.27 -> saved best.pt
+step 1100/12000 | loss 1.0617 | lr 2.99e-05 | 2.30 it/s
+step 1200/12000 | loss 1.1994 | lr 2.99e-05 | 2.62 it/s
+step 1300/12000 | loss 1.2457 | lr 2.99e-05 | 2.83 it/s
+step 1400/12000 | loss 1.2121 | lr 2.98e-05 | 3.11 it/s
+step 1500/12000 | loss 1.1848 | lr 2.97e-05 | 2.78 it/s
+step 1600/12000 | loss 1.0620 | lr 2.96e-05 | 3.42 it/s
+step 1700/12000 | loss 1.1587 | lr 2.95e-05 | 2.70 it/s
+step 1800/12000 | loss 1.1148 | lr 2.94e-05 | 2.90 it/s
+step 1900/12000 | loss 1.1766 | lr 2.93e-05 | 2.67 it/s
+step 2000/12000 | loss 0.9058 | lr 2.92e-05 | 3.02 it/s
+[val] step 2000: mode-C CER 32.49 | mode-B CER 29.98 | mode-A CER 29.98 | gain C -2.51 / B +0.00 | loss 1.5340
+step 2100/12000 | loss 1.2204 | lr 2.91e-05 | 1.80 it/s
+step 2200/12000 | loss 1.0020 | lr 2.89e-05 | 2.70 it/s
+step 2300/12000 | loss 1.1253 | lr 2.88e-05 | 2.45 it/s
+step 2400/12000 | loss 1.1614 | lr 2.86e-05 | 2.51 it/s
+step 2500/12000 | loss 1.0323 | lr 2.84e-05 | 3.05 it/s
+step 2600/12000 | loss 1.0868 | lr 2.82e-05 | 2.84 it/s
+step 2700/12000 | loss 1.0685 | lr 2.80e-05 | 2.66 it/s
+step 2800/12000 | loss 0.9731 | lr 2.78e-05 | 2.71 it/s
+step 2900/12000 | loss 1.0567 | lr 2.76e-05 | 2.62 it/s
+step 3000/12000 | loss 0.9980 | lr 2.74e-05 | 2.60 it/s
+[val] step 3000: mode-C CER 35.28 | mode-B CER 33.93 | mode-A CER 33.93 | gain C -1.36 / B +0.00 | loss 1.4716
+step 3100/12000 | loss 1.0880 | lr 2.71e-05 | 2.24 it/s
+step 3200/12000 | loss 1.0520 | lr 2.69e-05 | 2.56 it/s
+step 3300/12000 | loss 1.0010 | lr 2.66e-05 | 3.11 it/s
+step 3400/12000 | loss 0.8808 | lr 2.64e-05 | 3.00 it/s
+step 3500/12000 | loss 0.8849 | lr 2.61e-05 | 2.59 it/s
+step 3600/12000 | loss 1.0197 | lr 2.58e-05 | 2.54 it/s
+step 3700/12000 | loss 0.9646 | lr 2.55e-05 | 2.96 it/s
+step 3800/12000 | loss 0.9847 | lr 2.52e-05 | 3.11 it/s
+step 3900/12000 | loss 0.9980 | lr 2.49e-05 | 2.58 it/s
+step 4000/12000 | loss 0.8437 | lr 2.46e-05 | 2.33 it/s
+[val] step 4000: mode-C CER 34.52 | mode-B CER 32.79 | mode-A CER 32.79 | gain C -1.73 / B +0.00 | loss 1.3352
+step 4100/12000 | loss 0.9163 | lr 2.43e-05 | 2.17 it/s
+step 4200/12000 | loss 0.8409 | lr 2.40e-05 | 3.50 it/s
+step 4300/12000 | loss 0.9260 | lr 2.37e-05 | 2.80 it/s
+step 4400/12000 | loss 0.9293 | lr 2.33e-05 | 3.28 it/s
+step 4500/12000 | loss 0.8803 | lr 2.30e-05 | 3.33 it/s
+step 4600/12000 | loss 0.9507 | lr 2.26e-05 | 2.56 it/s
+step 4700/12000 | loss 0.9116 | lr 2.23e-05 | 2.98 it/s
+step 4800/12000 | loss 1.0373 | lr 2.19e-05 | 2.45 it/s
+step 4900/12000 | loss 0.9630 | lr 2.16e-05 | 2.34 it/s
+step 5000/12000 | loss 0.8741 | lr 2.12e-05 | 2.97 it/s
+[val] step 5000: mode-C CER 34.51 | mode-B CER 33.65 | mode-A CER 33.65 | gain C -0.86 / B +0.00 | loss 1.3788
+step 5100/12000 | loss 0.8755 | lr 2.08e-05 | 2.24 it/s
+step 5200/12000 | loss 0.8727 | lr 2.05e-05 | 2.46 it/s
+step 5300/12000 | loss 0.9214 | lr 2.01e-05 | 2.56 it/s
+step 5400/12000 | loss 0.8816 | lr 1.97e-05 | 2.31 it/s
+step 5500/12000 | loss 0.9409 | lr 1.93e-05 | 2.65 it/s
+step 5600/12000 | loss 0.9450 | lr 1.89e-05 | 2.65 it/s
+step 5700/12000 | loss 1.0045 | lr 1.85e-05 | 2.25 it/s
+step 5800/12000 | loss 0.8925 | lr 1.81e-05 | 3.40 it/s
+step 5900/12000 | loss 0.9592 | lr 1.77e-05 | 2.56 it/s
+step 6000/12000 | loss 0.9473 | lr 1.73e-05 | 2.47 it/s
+[val] step 6000: mode-C CER 37.09 | mode-B CER 32.18 | mode-A CER 32.18 | gain C -4.91 / B +0.00 | loss 1.4574
+step 6100/12000 | loss 0.9666 | lr 1.69e-05 | 1.85 it/s
+step 6200/12000 | loss 0.9243 | lr 1.65e-05 | 2.47 it/s
+step 6300/12000 | loss 0.8988 | lr 1.61e-05 | 3.32 it/s
+step 6400/12000 | loss 0.9377 | lr 1.57e-05 | 2.85 it/s
+step 6500/12000 | loss 0.9686 | lr 1.54e-05 | 2.30 it/s
+step 6600/12000 | loss 0.8769 | lr 1.50e-05 | 2.89 it/s
+step 6700/12000 | loss 0.8586 | lr 1.46e-05 | 2.83 it/s
+step 6800/12000 | loss 0.9714 | lr 1.42e-05 | 2.49 it/s
+step 6900/12000 | loss 0.8769 | lr 1.38e-05 | 2.49 it/s
+step 7000/12000 | loss 0.8226 | lr 1.34e-05 | 3.13 it/s
+[val] step 7000: mode-C CER 36.57 | mode-B CER 35.38 | mode-A CER 35.38 | gain C -1.20 / B +0.00 | loss 1.4841
+step 7100/12000 | loss 0.9315 | lr 1.30e-05 | 2.30 it/s
+step 7200/12000 | loss 0.8145 | lr 1.26e-05 | 2.13 it/s
+step 7300/12000 | loss 0.9304 | lr 1.22e-05 | 2.21 it/s
+step 7400/12000 | loss 0.9500 | lr 1.18e-05 | 3.01 it/s
+step 7500/12000 | loss 0.9539 | lr 1.14e-05 | 2.52 it/s
+step 7600/12000 | loss 0.8952 | lr 1.10e-05 | 2.57 it/s
+step 7700/12000 | loss 0.9839 | lr 1.07e-05 | 2.62 it/s
+step 7800/12000 | loss 0.8679 | lr 1.03e-05 | 3.15 it/s
+step 7900/12000 | loss 0.9899 | lr 9.93e-06 | 2.50 it/s
+step 8000/12000 | loss 0.8497 | lr 9.57e-06 | 2.62 it/s
+[val] step 8000: mode-C CER 32.35 | mode-B CER 31.98 | mode-A CER 31.98 | gain C -0.37 / B +0.00 | loss 1.3160
+step 8100/12000 | loss 0.8493 | lr 9.21e-06 | 2.23 it/s
+step 8200/12000 | loss 0.7294 | lr 8.86e-06 | 2.88 it/s
+step 8300/12000 | loss 0.8753 | lr 8.51e-06 | 2.71 it/s
+step 8400/12000 | loss 0.8573 | lr 8.17e-06 | 2.96 it/s
+step 8500/12000 | loss 0.9045 | lr 7.83e-06 | 3.44 it/s
+step 8600/12000 | loss 0.8346 | lr 7.50e-06 | 2.42 it/s
+step 8700/12000 | loss 0.8499 | lr 7.18e-06 | 2.37 it/s
+step 8800/12000 | loss 0.8883 | lr 6.87e-06 | 2.66 it/s
+step 8900/12000 | loss 1.0299 | lr 6.56e-06 | 2.62 it/s
+step 9000/12000 | loss 0.8226 | lr 6.25e-06 | 3.00 it/s
+[val] step 9000: mode-C CER 34.96 | mode-B CER 30.80 | mode-A CER 30.80 | gain C -4.17 / B +0.00 | loss 1.4135
+step 9100/12000 | loss 0.8456 | lr 5.96e-06 | 2.22 it/s
+step 9200/12000 | loss 0.9778 | lr 5.67e-06 | 2.42 it/s
+step 9300/12000 | loss 0.7984 | lr 5.40e-06 | 2.54 it/s
+step 9400/12000 | loss 0.8255 | lr 5.12e-06 | 2.37 it/s
+step 9500/12000 | loss 0.8323 | lr 4.86e-06 | 2.64 it/s
+step 9600/12000 | loss 0.7898 | lr 4.61e-06 | 2.66 it/s
+step 9700/12000 | loss 0.8804 | lr 4.36e-06 | 2.60 it/s
+step 9800/12000 | loss 0.9089 | lr 4.13e-06 | 2.40 it/s
+step 9900/12000 | loss 0.8130 | lr 3.90e-06 | 2.73 it/s
+step 10000/12000 | loss 0.8304 | lr 3.68e-06 | 2.94 it/s
+[val] step 10000: mode-C CER 33.58 | mode-B CER 30.63 | mode-A CER 30.63 | gain C -2.95 / B +0.00 | loss 1.4330
+step 10100/12000 | loss 0.9134 | lr 3.48e-06 | 2.12 it/s
+step 10200/12000 | loss 0.8418 | lr 3.28e-06 | 2.50 it/s
+step 10300/12000 | loss 0.7353 | lr 3.09e-06 | 2.96 it/s
+step 10400/12000 | loss 0.7646 | lr 2.91e-06 | 2.78 it/s
+step 10500/12000 | loss 0.7716 | lr 2.74e-06 | 3.16 it/s
+step 10600/12000 | loss 0.7741 | lr 2.58e-06 | 3.03 it/s
+step 10700/12000 | loss 0.9399 | lr 2.44e-06 | 2.17 it/s
+step 10800/12000 | loss 0.8227 | lr 2.30e-06 | 2.76 it/s
+step 10900/12000 | loss 0.8376 | lr 2.17e-06 | 2.37 it/s
+step 11000/12000 | loss 0.8211 | lr 2.06e-06 | 2.74 it/s
+[val] step 11000: mode-C CER 34.80 | mode-B CER 32.52 | mode-A CER 32.52 | gain C -2.28 / B +0.00 | loss 1.5546
+step 11100/12000 | loss 0.8214 | lr 1.95e-06 | 2.04 it/s
+step 11200/12000 | loss 0.9133 | lr 1.86e-06 | 2.84 it/s
+step 11300/12000 | loss 0.8776 | lr 1.77e-06 | 2.52 it/s
+step 11400/12000 | loss 0.8180 | lr 1.70e-06 | 2.85 it/s
+step 11500/12000 | loss 0.8323 | lr 1.64e-06 | 2.52 it/s
+step 11600/12000 | loss 0.8830 | lr 1.59e-06 | 2.85 it/s
+step 11700/12000 | loss 0.8403 | lr 1.55e-06 | 2.56 it/s
+step 11800/12000 | loss 0.7491 | lr 1.52e-06 | 3.66 it/s
+step 11900/12000 | loss 0.7959 | lr 1.51e-06 | 2.76 it/s
+step 12000/12000 | loss 0.8709 | lr 1.50e-06 | 2.82 it/s
+[val] step 12000: mode-C CER 35.44 | mode-B CER 31.78 | mode-A CER 31.78 | gain C -3.66 / B +0.00 | loss 1.5502
+[done] {'best_val_cer': 32.26510067114094, 'steps': 12000, 'phase': 'icl'}

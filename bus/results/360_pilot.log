@@ -1,0 +1,42 @@
+=== tokens-only interface ceiling, users 0-2, unrestricted data ===
+[user1] zero-shot 59.90 | tuning 4k free params on 9 sessions
+  step   250/2500 | loss 2.971 | CER  59.94 | gain -0.03
+  step   500/2500 | loss 2.961 | CER  59.94 | gain -0.03
+  step   750/2500 | loss 2.994 | CER  59.94 | gain -0.03
+  step  1000/2500 | loss 3.019 | CER  59.94 | gain -0.03
+  step  1250/2500 | loss 2.984 | CER  59.94 | gain -0.03
+  step  1500/2500 | loss 2.995 | CER  59.94 | gain -0.03
+  step  1750/2500 | loss 2.982 | CER  59.94 | gain -0.03
+  step  2000/2500 | loss 3.001 | CER  59.94 | gain -0.03
+  step  2250/2500 | loss 2.992 | CER  59.94 | gain -0.03
+  step  2500/2500 | loss 2.987 | CER  59.94 | gain -0.03
+[user2] zero-shot 48.06 | tuning 4k free params on 9 sessions
+  step   250/2500 | loss 2.294 | CER  47.96 | gain +0.11
+  step   500/2500 | loss 2.282 | CER  47.96 | gain +0.11
+  step   750/2500 | loss 2.261 | CER  47.96 | gain +0.11
+  step  1000/2500 | loss 2.289 | CER  47.96 | gain +0.11
+  step  1250/2500 | loss 2.274 | CER  47.96 | gain +0.11
+  step  1500/2500 | loss 2.276 | CER  47.96 | gain +0.11
+  step  1750/2500 | loss 2.285 | CER  47.96 | gain +0.11
+  step  2000/2500 | loss 2.310 | CER  47.96 | gain +0.11
+  step  2250/2500 | loss 2.267 | CER  47.96 | gain +0.11
+  step  2500/2500 | loss 2.275 | CER  47.96 | gain +0.11
+
+==================================================================
+zero-shot (frozen) -- 3-user subset            56.47
+per-user adapter tuning (this probe)           56.40   gain +0.07
+full per-user fine-tuning (published, 8 users)   11.40
+  (published generic, 8 users: 55.39 -- NOT this subset)
+------------------------------------------------------------------
+the conditioning interface reaches 0% of the fine-tuning gap
+(unrestricted: all training sessions + gradients. Mode C gets minutes
+ and one forward pass, so run --limit-seconds 256 for the fair target.)
+==================================================================
+
+=> The INTERFACE is the bottleneck. Even with the user fully
+   known, and without signs of memorisation, conditioning cannot move
+   the frozen backbone far. Widen it: more injection points, larger
+   d_ctx, or per-electrode conditioning before the frontend mixes
+   channels.
+[saved] /data2/chenyuxiang/runs/ceiling_tokens_only.json
+=== pilot complete ===

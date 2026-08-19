@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:34:47+08:00
+# heartbeat 2026-08-19T15:35:31+08:00
 
 ## gpu
 ```
-0, 2411 MiB, 24576 MiB, 0 %
-1, 1369 MiB, 24576 MiB, 36 %
+0, 2411 MiB, 24576 MiB, 38 %
+1, 1369 MiB, 24576 MiB, 0 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 12 MiB, 24576 MiB, 0 %
+3, 8790 MiB, 24576 MiB, 23 %
 ```
 
 ## jobs
@@ -59,6 +59,7 @@
 421_eval_v5a2_real_users                 DONE rc=127
 430_deploy_trunk_tf                      DONE rc=127
 440_train_trunk_tf                       DONE rc=127
+450_log_relay                            DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -537,6 +538,35 @@ runner.sh patched (effective on next runner restart)
 === eval curve complete ===
 ```
 
+### 160_eval_curve.log
+```
+[B] gap closed vs personalization ceiling: 1.4%
+[C] gap closed vs personalization ceiling: 1.5%
+=== /tmp/d1_snap.pt  (step 5000) ===
+    CLOSED  cross_post.gate              g=+0.00376  tanh=+0.00376
+    CLOSED  cross_pre.gate               g=+0.00281  tanh=+0.00281
+    OPEN    film.up.bias                             |w|mean=3.866e-02 max=1.895e-01
+    OPEN    film.up.weight                           |w|mean=2.401e-02 max=1.547e-01
+  all CLOSED  -> the context pathway never opened. A zero
+  some OPEN   -> context does reach the decoder. A zero gain then
+--- waiting for D1 checkpoint to reach step 8000 (23:20) ---
+=== D1 @ step 8000 : 8 official held-out users, modes A/B/C, K=256 ===
+[A] mean over users: 54.57
+[B] mean over users: 54.69
+[C] mean over users: 54.66
+[A] gap closed vs personalization ceiling: 1.9%
+[B] gap closed vs personalization ceiling: 1.6%
+[C] gap closed vs personalization ceiling: 1.7%
+=== /tmp/d1_snap.pt  (step 8000) ===
+    CLOSED  cross_post.gate              g=-0.00345  tanh=-0.00345
+    CLOSED  cross_pre.gate               g=+0.00061  tanh=+0.00061
+    OPEN    film.up.bias                             |w|mean=3.977e-02 max=2.029e-01
+    OPEN    film.up.weight                           |w|mean=2.427e-02 max=1.702e-01
+  all CLOSED  -> the context pathway never opened. A zero
+  some OPEN   -> context does reach the decoder. A zero gain then
+=== eval curve complete ===
+```
+
 ### 170_effective_injection.log
 ```
 nothing on its own. The identifiable quantity is the product.
@@ -635,6 +665,64 @@ committed
 === D3 evaluation curve complete ===
 ```
 
+### 200_d3.log
+```
+    cross_pre    |tanh(g)|=0.22478  ||W||=  6.2468  EFFECTIVE=1.40417
+    cross_post   |tanh(g)|=0.18466  ||W||=  5.1602  EFFECTIVE=0.95287
+--- waiting for D3 checkpoint step >= 5000 (00:00) ---
+=== D3 @ step ~5000 : 8 official held-out users, A/B/C, K=256 ===
+[A] mean over users: 54.76
+[B] mean over users: 55.26
+[C] mean over users: 54.95
+[A] gap closed vs personalization ceiling: 1.4%
+[B] gap closed vs personalization ceiling: 0.3%
+[C] gap closed vs personalization ceiling: 1.0%
+=== /tmp/d3_snap.pt  (step 5000) ===
+    cross_pre    |tanh(g)|=0.00317  ||W||=  8.4206  EFFECTIVE=0.02668
+    cross_post   |tanh(g)|=0.00475  ||W||=  7.4897  EFFECTIVE=0.03559
+--- waiting for D3 checkpoint step >= 8000 (00:30) ---
+=== D3 @ step ~8000 : 8 official held-out users, A/B/C, K=256 ===
+[A] mean over users: 54.49
+[B] mean over users: 54.77
+[C] mean over users: 54.78
+[A] gap closed vs personalization ceiling: 2.0%
+[B] gap closed vs personalization ceiling: 1.4%
+[C] gap closed vs personalization ceiling: 1.4%
+=== /tmp/d3_snap.pt  (step 8000) ===
+    cross_pre    |tanh(g)|=0.00165  ||W||=  8.4925  EFFECTIVE=0.01399
+    cross_post   |tanh(g)|=0.00059  ||W||=  7.6299  EFFECTIVE=0.00450
+=== D3 evaluation curve complete ===
+```
+
+### 210_d4.log
+```
+    cross_pre    |tanh(g)|=0.23011  ||W||=  6.3289  EFFECTIVE=1.45636
+    cross_post   |tanh(g)|=0.18240  ||W||=  5.3596  EFFECTIVE=0.97761
+--- waiting for D4 checkpoint step >= 5000 (00:51) ---
+=== D4 @ step ~5000 : 8 official held-out users, A/B/C, K=256 ===
+[A] mean over users: 55.22
+[B] mean over users: 55.60
+[C] mean over users: 55.59
+[A] gap closed vs personalization ceiling: 0.4%
+[B] gap closed vs personalization ceiling: -0.5%
+[C] gap closed vs personalization ceiling: -0.5%
+=== /tmp/d4_snap.pt  (step 5000) ===
+    cross_pre    |tanh(g)|=0.00057  ||W||=  8.2775  EFFECTIVE=0.00473
+    cross_post   |tanh(g)|=0.00750  ||W||=  7.6652  EFFECTIVE=0.05746
+--- waiting for D4 checkpoint step >= 8000 (01:25) ---
+=== D4 @ step ~8000 : 8 official held-out users, A/B/C, K=256 ===
+[A] mean over users: 55.30
+[B] mean over users: 55.27
+[C] mean over users: 55.45
+[A] gap closed vs personalization ceiling: 0.2%
+[B] gap closed vs personalization ceiling: 0.3%
+[C] gap closed vs personalization ceiling: -0.1%
+=== /tmp/d4_snap.pt  (step 8000) ===
+    cross_pre    |tanh(g)|=0.00149  ||W||=  8.4280  EFFECTIVE=0.01255
+    cross_post   |tanh(g)|=0.00158  ||W||=  7.6839  EFFECTIVE=0.01210
+=== D4 curve complete ===
+```
+
 ### 210_encoding_beta_d4.log
 ```
     cross_pre    |tanh(g)|=0.23011  ||W||=  6.3289  EFFECTIVE=1.45636
@@ -689,7 +777,53 @@ AssertionError: d_model (64) must equal num_bands * mlp_features[-1] (128)
 SMOKE FAILED -- not launching training. Fix needed.
 ```
 
+### 220_v3.log
+```
+=== deploy v3 code ===
+-rw-r--r-- 1 chenyuxiang chenyuxiang 2615 8月  19 01:51 myoicl/configs/qwerty_v3_ctxframe.yaml
+-rw-r--r-- 1 chenyuxiang chenyuxiang 5712 8月  19 01:46 myoicl/ctx_frame.py
+-rw-r--r-- 1 chenyuxiang chenyuxiang 3695 8月  19 01:51 myoicl/smoke_v3.py
+
+=== v3 smoke test (CPU, tiny model) ===
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 91, in <module>
+    sys.exit(main())
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 28, in main
+    model = build_model(cfg, num_classes=V)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 343, in build_model
+    return MyoICLModel(
+  File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 97, in __init__
+    assert d_model == num_bands * official_mlp_features[-1], (
+AssertionError: d_model (64) must equal num_bands * mlp_features[-1] (128)
+SMOKE FAILED -- not launching training. Fix needed.
+```
+
 ### 230_v3_fix_smoke_and_train.log
+```
+=== fix the smoke tiny-config (d_model must equal num_bands*mlp[-1]) ===
+fixed: True
+
+=== v3 smoke test ===
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 91, in <module>
+    sys.exit(main())
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 47, in main
+    tokens, pooled = model.encode_context(
+  File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 235, in encode_context
+    device=ctx_labeled_feats.device,
+AttributeError: 'NoneType' object has no attribute 'device'
+SMOKE STILL FAILING -- stopping.
+```
+
+### 230_v3.log
 ```
 === fix the smoke tiny-config (d_model must equal num_bands*mlp[-1]) ===
 fixed: True
@@ -730,6 +864,47 @@ AssertionError: context does not change the output (gate stuck closed?)
 SMOKE STILL FAILING -- stopping.
 ```
 
+### 240_v3.log
+```
+=== deploy v3 fix (encode_context v3 branch moved before stats block) ===
+
+=== v3 smoke test ===
+[smoke] built 50 support tokens from 6 windows
+[smoke] mean |mode C - mode A| = 0.0000e+00
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 91, in <module>
+    sys.exit(main())
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 61, in main
+    assert diff > 1e-6, "context does not change the output (gate stuck closed?)"
+AssertionError: context does not change the output (gate stuck closed?)
+SMOKE STILL FAILING -- stopping.
+```
+
+### 250_v3.log
+```
+=== deploy corrected smoke (identity-at-init is CORRECT; test open-after-training) ===
+=== v3 smoke ===
+[smoke] built 50 support tokens from 6 windows
+[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
+[smoke] init grad o_proj=3.382e+01 (want >0: path can open)
+[smoke] after 8 steps mean|mode C - mode A| = nan (want >0: context now changes output)
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 126, in <module>
+    sys.exit(main())
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 100, in main
+    assert diff1 > 1e-6, "context still does nothing after training -- path stuck"
+AssertionError: context still does nothing after training -- path stuck
+SMOKE STILL FAILING -- stopping.
+```
+
 ### 250_v3_smoke_train.log
 ```
 === deploy corrected smoke (identity-at-init is CORRECT; test open-after-training) ===
@@ -749,6 +924,35 @@ Traceback (most recent call last):
     assert diff1 > 1e-6, "context still does nothing after training -- path stuck"
 AssertionError: context still does nothing after training -- path stuck
 SMOKE STILL FAILING -- stopping.
+```
+
+### 260_v3.log
+```
+[A] mean over users: 54.18
+[B] mean over users: 54.18
+[C] mean over users: 55.22
+[A] gap closed vs personalization ceiling: 2.7%
+[B] gap closed vs personalization ceiling: 2.7%
+[C] gap closed vs personalization ceiling: 0.4%
+--- waiting for v3 step >= 9000 (03:07) ---
+=== v3 @ step ~9000 : 8 official held-out users, A/B/C, K=128 ===
+[A] mean over users: 54.12
+[B] mean over users: 54.12
+=== /tmp/v3_snap.pt  (step 9000) ===
+    cross_pre    |tanh(g)|=0.07668  ||W||= 13.7224  EFFECTIVE=1.05230
+    cross_post   |tanh(g)|=0.00869  ||W||= 10.9762  EFFECTIVE=0.09533
+--- waiting for v3 step >= 12000 (03:33) ---
+=== v3 @ step ~12000 : 8 official held-out users, A/B/C, K=128 ===
+[A] mean over users: 54.16
+[B] mean over users: 54.16
+[C] mean over users: 55.15
+[A] gap closed vs personalization ceiling: 2.8%
+[B] gap closed vs personalization ceiling: 2.8%
+[C] gap closed vs personalization ceiling: 0.5%
+=== /tmp/v3_snap.pt  (step 12000) ===
+    cross_pre    |tanh(g)|=0.08264  ||W||= 13.8773  EFFECTIVE=1.14687
+    cross_post   |tanh(g)|=0.01047  ||W||= 11.1146  EFFECTIVE=0.11638
+=== v3 curve complete ===
 ```
 
 ### 260_v3_smoke3_train.log
@@ -803,6 +1007,60 @@ Traceback (most recent call last):
     tok = tok[valid]                                      # (M0, d_ctx)
 IndexError: The shape of the mask [96] at index 0 does not match the shape of the indexed tensor [192, 32] at index 0
 SMOKE FAILED
+```
+
+### 270_v3.log
+```
+=== deploy full-window fix (support windows must survive TDS 124-frame shrink) ===
+=== smoke re-check ===
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 123, in <module>
+    sys.exit(main())
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 47, in main
+    tokens, pooled = model.encode_context(
+  File "/data2/chenyuxiang/code/myoicl/myoicl/model.py", line 238, in encode_context
+    tokens, pooled = self.ctx_encoder(feats, logp, flens)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/ctx_frame.py", line 113, in forward
+    tok = tok[valid]                                      # (M0, d_ctx)
+IndexError: The shape of the mask [96] at index 0 does not match the shape of the indexed tensor [192, 32] at index 0
+SMOKE FAILED
+```
+
+### 280_v3.log
+```
+[B] mean over users: 54.18
+[C] mean over users: 55.22
+[A] gap closed vs personalization ceiling: 2.7%
+[B] gap closed vs personalization ceiling: 2.7%
+[C] gap closed vs personalization ceiling: 0.4%
+=== /tmp/v3_snap.pt  (step 5000) ===
+    cross_pre    |tanh(g)|=0.09691  ||W||= 11.4994  EFFECTIVE=1.11445
+    cross_post   |tanh(g)|=0.01985  ||W||=  9.1071  EFFECTIVE=0.18075
+--- waiting for v3 step >= 9000 (03:07) ---
+=== v3 @ step ~9000 : 8 official held-out users, A/B/C ===
+[A] mean over users: 54.12
+[B] mean over users: 54.12
+[C] mean over users: 55.88
+[A] gap closed vs personalization ceiling: 2.9%
+[B] gap closed vs personalization ceiling: 2.9%
+[C] gap closed vs personalization ceiling: -1.1%
+--- waiting for v3 step >= 12000 (03:33) ---
+=== v3 @ step ~12000 : 8 official held-out users, A/B/C ===
+[A] mean over users: 54.16
+[B] mean over users: 54.16
+[C] mean over users: 55.15
+[A] gap closed vs personalization ceiling: 2.8%
+[B] gap closed vs personalization ceiling: 2.8%
+[C] gap closed vs personalization ceiling: 0.5%
+=== v3 curve complete ===
 ```
 
 ### 280_v3_padfix_train.log
@@ -861,7 +1119,65 @@ step 400/20000 | loss 1.4285 | lr 1.50e-05 | 2.48 it/s
 --- wait cheavy step >= 12000 (03:44) ---
 ```
 
+### 290_v3cheavy.log
+```
+step 200/20000 | loss 1.3944 | lr 7.54e-06 | 2.79 it/s
+step 300/20000 | loss 1.5722 | lr 1.13e-05 | 2.25 it/s
+step 400/20000 | loss 1.4285 | lr 1.50e-05 | 2.48 it/s
+--- wait cheavy step >= 6000 (03:07) ---
+=== v3-cheavy @ step ~6000 : 8 users A/B/C ===
+[A] mean over users: 53.53
+[B] mean over users: 53.53
+[C] mean over users: 54.86
+    cross_pre    |tanh(g)|=0.00042  ||W||= 26.4393  EFFECTIVE=0.01104
+    cross_post   |tanh(g)|=0.00642  ||W||= 20.5838  EFFECTIVE=0.13212
+--- wait cheavy step >= 12000 (03:44) ---
+=== v3-cheavy @ step ~12000 : 8 users A/B/C ===
+[A] mean over users: 54.62
+[B] mean over users: 54.62
+[C] mean over users: 55.57
+    cross_pre    |tanh(g)|=0.00189  ||W||= 30.9359  EFFECTIVE=0.05857
+    cross_post   |tanh(g)|=0.00023  ||W||= 22.8550  EFFECTIVE=0.00533
+--- wait cheavy step >= 20000 (04:21) ---
+=== v3-cheavy @ step ~20000 : 8 users A/B/C ===
+[A] mean over users: 54.38
+[B] mean over users: 54.38
+[C] mean over users: 55.93
+    cross_pre    |tanh(g)|=0.00122  ||W||= 31.0374  EFFECTIVE=0.03788
+    cross_post   |tanh(g)|=0.00030  ||W||= 22.6137  EFFECTIVE=0.00681
+=== v3-cheavy complete ===
+```
+
 ### 300_v3_frozen.log
+```
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
+[freeze] backbone 5.29M frozen | context modules 0.71M trainable (11.9% of total)
+[watchdog] armed
+step 100/12000 | loss 1.7924 | lr 3.07e-06 | 2.13 it/s
+step 200/12000 | loss 1.6190 | lr 6.30e-06 | 2.71 it/s
+step 300/12000 | loss 1.3745 | lr 9.45e-06 | 2.43 it/s
+step 100/12000 | loss 1.7924 | lr 3.07e-06 | 2.13 it/s
+step 200/12000 | loss 1.6190 | lr 6.30e-06 | 2.71 it/s
+step 300/12000 | loss 1.3745 | lr 9.45e-06 | 2.43 it/s
+--- wait frozen step >= 6000 (03:07) ---
+=== v3-frozen @ step ~6000 : 8 users A/B/C ===
+[A] mean over users: 55.40
+[B] mean over users: 55.40
+[C] mean over users: 55.56
+    cross_pre    |tanh(g)|=0.20556  ||W||= 12.7450  EFFECTIVE=2.61982
+    cross_post   |tanh(g)|=0.32007  ||W||=  7.5508  EFFECTIVE=2.41680
+--- wait frozen step >= 12000 (03:45) ---
+=== v3-frozen @ step ~12000 : 8 users A/B/C ===
+[A] mean over users: 55.40
+[B] mean over users: 55.40
+[C] mean over users: 55.51
+    cross_pre    |tanh(g)|=0.12490  ||W||= 14.6937  EFFECTIVE=1.83529
+    cross_post   |tanh(g)|=0.24797  ||W||=  8.4160  EFFECTIVE=2.08692
+=== v3-frozen complete ===
+```
+
+### 300_v3frozen.log
 ```
 [optim] backbone 5.29M @ lr 3.0e-05 | context 0.71M @ lr 1.0e-03 | 2 params exempt from weight decay
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 35 context tensors keep their initialization
@@ -917,6 +1233,64 @@ Traceback (most recent call last):
     print(f"[smoke] full-length support -> {tok_full.shape[1]} tokens "
 AttributeError: 'tuple' object has no attribute 'shape'
 SMOKE FAILED -- not launching
+```
+
+### 310_v31.log
+```
+[smoke] built 50 support tokens from 6 windows
+[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
+[smoke] init grad o_proj=3.354e+01 (want >0: path can open)
+[smoke] with o_proj opened, mean|mode C - mode A| = 3.6827e-02 (want >0: context now changes output)
+[smoke] grad to frame context encoder now = 1.095e+01
+[smoke] full-length support -> 96 tokens (>= 50 masked)
+[smoke v3] ALL PASS
+
+===== smoke v3 (kv_split=True) =====
+[smoke] built 50 support tokens from 6 windows
+[smoke] init max|mode C - mode A| = 0.00e+00 (want ~0: identity)
+[smoke] init grad o_proj=4.382e+01 (want >0: path can open)
+[smoke] with o_proj opened, mean|mode C - mode A| = 3.0983e-02 (want >0: context now changes output)
+[smoke] grad to frame context encoder now = 4.497e+00
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 129, in <module>
+    rc = main(kv_split=False) or main(kv_split=True)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/smoke_v3.py", line 121, in main
+    print(f"[smoke] full-length support -> {tok_full.shape[1]} tokens "
+AttributeError: 'tuple' object has no attribute 'shape'
+SMOKE FAILED -- not launching
+```
+
+### 320_v31.log
+```
+[C] mean over users: 54.23
+    cross_pre    |tanh(g)|=0.58110  ||W||=  7.3030  EFFECTIVE=4.24381
+    cross_post   |tanh(g)|=0.51757  ||W||=  5.7567  EFFECTIVE=2.97949
+--- wait v3.1 step >= 5000 (04:22) ---
+=== v3.1 @ step ~5000 : 8 users A/B/C ===
+[A] mean over users: 54.75
+[B] mean over users: 54.75
+[C] mean over users: 55.19
+    cross_pre    |tanh(g)|=0.25701  ||W||= 12.1291  EFFECTIVE=3.11728
+    cross_post   |tanh(g)|=0.05475  ||W||=  9.1036  EFFECTIVE=0.49842
+--- wait v3.1 step >= 9000 (04:41) ---
+=== v3.1 @ step ~9000 : 8 users A/B/C ===
+[A] mean over users: 54.19
+[B] mean over users: 54.19
+[C] mean over users: 55.17
+    cross_pre    |tanh(g)|=0.21586  ||W||= 14.3054  EFFECTIVE=3.08797
+    cross_post   |tanh(g)|=0.02816  ||W||= 11.2462  EFFECTIVE=0.31670
+--- wait v3.1 step >= 12000 (05:08) ---
+=== v3.1 @ step ~12000 : 8 users A/B/C ===
+[A] mean over users: 54.75
+[B] mean over users: 54.75
+[C] mean over users: 55.28
+    cross_pre    |tanh(g)|=0.22290  ||W||= 14.4714  EFFECTIVE=3.22571
+    cross_post   |tanh(g)|=0.02937  ||W||= 11.3556  EFFECTIVE=0.33355
+=== v3.1 complete ===
 ```
 
 ### 320_v31_relaunch.log
@@ -977,6 +1351,35 @@ step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
 === v3.2 complete ===
 ```
 
+### 330_v32.log
+```
+[watchdog] armed
+step 100/12000 | loss 1.6424 | lr 3.79e-06 | 2.62 it/s
+step 200/12000 | loss 1.2428 | lr 7.54e-06 | 3.53 it/s
+step 300/12000 | loss 1.3811 | lr 1.13e-05 | 3.35 it/s
+step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
+step 100/12000 | loss 1.6424 | lr 3.79e-06 | 2.62 it/s
+step 200/12000 | loss 1.2428 | lr 7.54e-06 | 3.53 it/s
+step 300/12000 | loss 1.3811 | lr 1.13e-05 | 3.35 it/s
+step 400/12000 | loss 1.3833 | lr 1.50e-05 | 2.74 it/s
+--- wait v3.2 step >= 2000 (04:26) ---
+=== v3.2 @ step ~2000 : 8 users A/B/C ===
+[A] mean over users: 53.99
+[B] mean over users: 53.99
+[C] mean over users: 54.52
+--- wait v3.2 step >= 6000 (04:38) ---
+=== v3.2 @ step ~6000 : 8 users A/B/C ===
+[A] mean over users: 54.42
+[B] mean over users: 54.42
+[C] mean over users: 55.70
+--- wait v3.2 step >= 12000 (05:04) ---
+=== v3.2 @ step ~12000 : 8 users A/B/C ===
+[A] mean over users: 55.77
+[B] mean over users: 55.77
+[C] mean over users: 57.02
+=== v3.2 complete ===
+```
+
 ### 340_ctxsource_diag.log
 ```
 === waiting for v3.1 checkpoint step >= 9000 ===
@@ -985,6 +1388,20 @@ v3.1 checkpoint step 9000
 [A] mean over users: 54.19
 [C] mean over users: 55.14
 === v3.1 mode C, --ctx-source prefix (8 users, K=12) ===
+```
+
+### 340_diag.log
+```
+=== waiting for v3.1 checkpoint step >= 9000 ===
+v3.1 checkpoint step 9000
+=== v3.1 mode C, --ctx-source cross (8 users, K=12) ===
+[A] mean over users: 54.19
+[C] mean over users: 55.14
+=== v3.1 mode C, --ctx-source prefix (8 users, K=12) ===
+[A] mean over users: 54.19
+=== ctx-source diagnostic complete ===
+READ: if mode-C prefix << mode-C cross (and < mode-A), calibration works
+      SAME-session and the universal negative is cross-session staleness.
 ```
 
 ### 350_samesession_diag.log
@@ -1013,6 +1430,63 @@ If SAME-session mode-C < mode-A (gain positive) while CROSS-session hurts,
 the universal negative is cross-session electrode staleness, not the method:
 in-context calibration works when calibration and use are the same session.
 === same-session diagnostic complete ===
+```
+
+### 350_samesession.log
+```
+=== kill the stuck/flawed prefix eval (ctx-source only changes unused ctx_raw for v3) ===
+=== deploy correct same-session diagnostic (--support-from-test) ===
+
+############ myoicl_v31_kvsplit (step 12000) ############
+--- CROSS-session (labelled support from OTHER sessions; the default all runs used) ---
+[A] mean over users: 54.75
+[C] mean over users: 55.26
+--- SAME-session (labelled support from the DECODED session itself) ---
+[A] mean over users: 54.75
+[C] mean over users: 55.13
+
+############ myoicl_v32_filmonly (step 12000) ############
+--- CROSS-session (labelled support from OTHER sessions; the default all runs used) ---
+[A] mean over users: 55.77
+[C] mean over users: 57.03
+--- SAME-session (labelled support from the DECODED session itself) ---
+[A] mean over users: 55.77
+[C] mean over users: 57.46
+
+=== READ ===
+If SAME-session mode-C < mode-A (gain positive) while CROSS-session hurts,
+the universal negative is cross-session electrode staleness, not the method:
+in-context calibration works when calibration and use are the same session.
+=== same-session diagnostic complete ===
+```
+
+### 360_pilot.log
+```
+  step  1250/2500 | loss 2.274 | CER  47.96 | gain +0.11
+  step  1500/2500 | loss 2.276 | CER  47.96 | gain +0.11
+  step  1750/2500 | loss 2.285 | CER  47.96 | gain +0.11
+  step  2000/2500 | loss 2.310 | CER  47.96 | gain +0.11
+  step  2250/2500 | loss 2.267 | CER  47.96 | gain +0.11
+  step  2500/2500 | loss 2.275 | CER  47.96 | gain +0.11
+
+==================================================================
+zero-shot (frozen) -- 3-user subset            56.47
+per-user adapter tuning (this probe)           56.40   gain +0.07
+full per-user fine-tuning (published, 8 users)   11.40
+  (published generic, 8 users: 55.39 -- NOT this subset)
+------------------------------------------------------------------
+the conditioning interface reaches 0% of the fine-tuning gap
+(unrestricted: all training sessions + gradients. Mode C gets minutes
+ and one forward pass, so run --limit-seconds 256 for the fair target.)
+==================================================================
+
+=> The INTERFACE is the bottleneck. Even with the user fully
+   known, and without signs of memorisation, conditioning cannot move
+   the frozen backbone far. Widen it: more injection points, larger
+   d_ctx, or per-electrode conditioning before the frontend mixes
+   channels.
+[saved] /data2/chenyuxiang/runs/ceiling_tokens_only.json
+=== pilot complete ===
 ```
 
 ### 360_tokens_only_pilot.log
@@ -1073,7 +1547,43 @@ the conditioning interface reaches 0% of the fine-tuning gap
 === teacher fleet job complete: 33 teachers ===
 ```
 
+### 370_teachers.log
+```
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[1/24] 11944098: zero-shot 3.47 -> best 3.38 (gain +0.09)
+--- shard 2 ---
+[teachers] 24/96 training users in this shard | tokens_only=False | steps=1800
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[1/24] 12565339: zero-shot 2.46 -> best 2.33 (gain +0.14)
+--- shard 3 ---
+[teachers] 24/96 training users in this shard | tokens_only=False | steps=1800
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+=== progress reporter: copy shard logs + count artifacts every 10 min ===
+[fleet] 13:59 teachers done: 10/96
+[fleet] 14:09 teachers done: 16/96
+[fleet] 14:19 teachers done: 21/96
+[fleet] 14:29 teachers done: 28/96
+[fleet] 14:39 teachers done: 33/96
+[fleet] 14:49 teachers done: 33/96
+[fleet] all shard processes ended
+=== teacher fleet job complete: 33 teachers ===
+```
+
 ### 380_deploy_distill.log
+```
+=== deploy distill.py (code only; training starts when teachers exist) ===
+AST OK
+deployed
+```
+
+### 380_distill_deploy.log
 ```
 === deploy distill.py (code only; training starts when teachers exist) ===
 AST OK
@@ -1109,7 +1619,65 @@ deployed
 [scan] === UNSEEN users (8 official test): 55.39 published ===
 ```
 
+### 400_v5.log
+```
+[scan] === UNSEEN users (8 official test): 55.39 published ===
+--- 15:23 ---
+[a0_gain_affine] [val] step 4500: mode-C CER 79.88 | mode-B CER 88.66 | mode-A CER 68.78 | gain C -11.10 / B -19.88 | loss 6.8433
+[a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
+  ^^ a1_gain_v31 LOOKS BROKEN
+[a2_realistic] [val] step 1500: mode-C CER 84.82 | mode-B CER 70.83 | mode-A CER 79.68 | gain C -5.13 / B +8.86 | loss 4.7072
+[scan] === UNSEEN users (8 official test): 55.39 published ===
+--- 15:28 ---
+[a0_gain_affine] [val] step 5000: mode-C CER 65.36 | mode-B CER 79.88 | mode-A CER 69.15 | gain C +3.79 / B -10.73 | loss 3.8628
+[a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
+  ^^ a1_gain_v31 LOOKS BROKEN
+[a2_realistic] [val] step 2000: mode-C CER 73.79 | mode-B CER 74.83 | mode-A CER 80.42 | gain C +6.64 / B +5.59 | loss 3.9042
+[scan] === UNSEEN users (8 official test): 55.39 published ===
+--- 15:33 ---
+[a0_gain_affine] [val] step 5500: mode-C CER 74.14 | mode-B CER 93.47 | mode-A CER 68.98 | gain C -5.15 / B -24.49 | loss 4.8149
+[a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
+  ^^ a1_gain_v31 LOOKS BROKEN
+[a2_realistic] [val] step 2000: mode-C CER 73.79 | mode-B CER 74.83 | mode-A CER 80.42 | gain C +6.64 / B +5.59 | loss 3.9042
+[scan] === UNSEEN users (8 official test): 55.39 published ===
+```
+
 ### 410_deploy_remix.log
+```
+    return forward_call(*args, **kwargs)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/tds.py", line 89, in forward
+    return self.tds_conv_blocks(inputs)  # (T, N, num_features)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/container.py", line 217, in forward
+    input = module(input)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/tds.py", line 37, in forward
+    x = self.conv2d(x)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 460, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 456, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Calculated padded input size per channel: (32 x 9). Kernel size: (1 x 32). Kernel size can't be greater than actual input size
+SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_20260819_144953
+```
+
+### 410_remix.log
 ```
     return forward_call(*args, **kwargs)
   File "/data2/chenyuxiang/code/myoicl/myoicl/tds.py", line 89, in forward
@@ -1167,7 +1735,62 @@ RuntimeError: Calculated padded input size per channel: (32 x 9). Kernel size: (
 SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_20260819_152415
 ```
 
+### 411_remix.log
+```
+    return forward_call(*args, **kwargs)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/tds.py", line 89, in forward
+    return self.tds_conv_blocks(inputs)  # (T, N, num_features)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/container.py", line 217, in forward
+    input = module(input)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/tds.py", line 37, in forward
+    x = self.conv2d(x)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 460, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 456, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Calculated padded input size per channel: (32 x 9). Kernel size: (1 x 32). Kernel size can't be greater than actual input size
+SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_20260819_152415
+```
+
 ### 412_deploy_remix_v2.log
+```
+=== backup before overwriting shared modules ===
+rollback copy: /data2/chenyuxiang/runs/backup_myoicl_20260819_152746
+=== extract ===
+AST OK
+
+=== regression: the NO-remix path must be untouched ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+no-remix model OK | trainable 6.23M -> frozen leaves 0.93M context params
+
+=== smoke: the remix head itself (CPU) ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[build] remix params 217.6k
+  [ok ] remix is identity at init  max|M-I| = 0.00e+00
+  [ok ] logits unchanged at init  max|da| = 0.00e+00
+  [FAIL] every remix parameter gets gradient  dead: ['s_ref', 'logit_scale', 'mlp.0.weight', 'mlp.0.bias']
+  [ok ] assign head recovers a known channel roll  accuracy 100%  (roll=5)
+  [ok ] freeze_backbone leaves remix trainable
+
+SMOKE FAILED: ['every remix parameter gets gradient']
+SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_20260819_152746
+```
+
+### 412_remix.log
 ```
 === backup before overwriting shared modules ===
 rollback copy: /data2/chenyuxiang/runs/backup_myoicl_20260819_152746
@@ -1222,6 +1845,64 @@ SMOKE OK -- remix head is identity at init, gradient-connected, identifiable, an
 === 413 done: remix head deployed and verified, nothing launched ===
 ```
 
+### 413_remix.log
+```
+=== backup before overwriting shared modules ===
+rollback copy: /data2/chenyuxiang/runs/backup_myoicl_20260819_153159
+=== extract ===
+AST OK
+
+=== regression: the NO-remix path must be untouched ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+no-remix model OK | trainable 6.23M -> frozen leaves 0.93M context params
+
+=== smoke: the remix head itself (CPU) ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[build] remix params 217.6k
+  [ok ] remix is identity at init  max|M-I| = 0.00e+00
+  [ok ] logits unchanged at init  max|da| = 0.00e+00
+        (zero-grad at step 0: ['s_ref', 'mlp.0.weight', 'mlp.0.bias'] -- expected for parameters upstream of a zero output matrix)
+  [ok ] every remix parameter gets gradient after one step
+  [ok ] assign head recovers a known channel roll  accuracy 100%  (roll=5)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  [ok ] freeze_backbone leaves remix trainable
+
+SMOKE OK -- remix head is identity at init, gradient-connected, identifiable, and survives freezing.
+=== 413 done: remix head deployed and verified, nothing launched ===
+```
+
+### 420_eval_real.log
+```
+[C] user0: CER 63.25
+[C] user1: CER 60.19
+[C] user2: CER 50.12
+[C] user3: CER 57.74
+[C] user4: CER 61.51
+[C] user5: CER 55.07
+[C] user6: CER 54.08
+[C] user7: CER 52.54
+[C] mean over users: 56.81
+[A] gap closed vs personalization ceiling: -0.0%
+[B] gap closed vs personalization ceiling: -0.0%
+[C] gap closed vs personalization ceiling: -3.2%
+[saved] /data2/chenyuxiang/runs/v5a1_real_k45.json
+
+=== K-CURVE SUMMARY (8 official test users) ===
+   k  secs   mode A   mode B   mode C   gain C   gain B
+   4    16    55.40    55.40    56.82    -1.43    +0.00
+  12    48    55.40    55.40    56.81    -1.42    +0.00
+  23    92    55.40    55.40    56.81    -1.42    +0.00
+  45   180    55.40    55.40    56.81    -1.42    +0.00
+
+reference: published zero-shot 55.39 | published per-user finetune 11.28
+mode A should sit at ~55.39 (frozen backbone). If it does not, the
+eval is wrong and no mode-C number here means anything.
+=== 420 done ===
+```
+
 ### 420_eval_v5a1_real_users.log
 ```
 [B] user1: CER 59.90
@@ -1251,12 +1932,52 @@ SMOKE OK -- remix head is identity at init, gradient-connected, identifiable, an
 ############ k=45 windows (~180s of the user's own labelled data) ############
 ```
 
+### 421_eval_a2_real.log
+```
+=== wait for job 420 to release GPU3 ===
+=== evaluating /data2/chenyuxiang/runs/v5_a2/best.pt  (14:54) ===
+
+############ k=12 windows (~48s of the user's own labelled data) ############
+```
+
 ### 421_eval_v5a2_real_users.log
 ```
 === wait for job 420 to release GPU3 ===
+=== evaluating /data2/chenyuxiang/runs/v5_a2/best.pt  (14:54) ===
+
+############ k=12 windows (~48s of the user's own labelled data) ############
 ```
 
 ### 430_deploy_trunk_tf.log
+```
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+tiny   ours    2.12M | paper    2.2M -> OK (paper cross-user CER 35.9)
+        2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+small  ours    4.99M | paper    5.4M -> OK (paper cross-user CER 35.2)
+        4.99M total  (featurizer 0.08M  encoder 4.74M  decoder 0.03M)
+large  ours  103.06M | paper  109.0M -> OK (paper cross-user CER 30.5)
+        103.06M total  (featurizer 0.08M  encoder 100.77M  decoder 0.10M)
+
+=== end-to-end CPU smoke: 5 real training steps ===
+fold 0: train 624 sessions | heldout 213 sessions, 24 users
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  step 0: raw (4, 32, 11994) -> emissions (121, 4, 99) | frame lens [121, 120, 120, 121]
+           loss 19.8256  grad-sum 2.047e+04
+  step 1: raw (4, 32, 11963) -> emissions (120, 4, 99) | frame lens [120, 120, 120, 120]
+           loss 18.7519  grad-sum 1.718e+04
+  step 2: raw (4, 32, 11982) -> emissions (121, 4, 99) | frame lens [121, 120, 120, 120]
+           loss 124.2906  grad-sum 2.955e+05
+  step 3: raw (4, 32, 11998) -> emissions (121, 4, 99) | frame lens [120, 121, 120, 121]
+           loss 27.9070  grad-sum 5.973e+04
+  step 4: raw (4, 32, 11992) -> emissions (121, 4, 99) | frame lens [120, 121, 120, 120]
+           loss 14.3142  grad-sum 2.479e+04
+  prefix hook OK: 37 prefix tokens leave emissions at (121, 4, 99)
+SMOKE OK
+=== 430 done: trunk deployed and verified, nothing launched ===
+```
+
+### 430_trunk_tf.log
 ```
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 tiny   ours    2.12M | paper    2.2M -> OK (paper cross-user CER 35.9)
@@ -1296,6 +2017,92 @@ launched tf_ref on GPU1 pid=2889785  (15:24)
 launched tf_fold0 on GPU3 pid=2905364  (15:34)
 
 === streaming (12 h) ===
+```
+
+### 440_trunk_train.log
+```
+=== redeploy train_trunk (cached eval sets) ===
+AST OK
+
+=== waiting for GPUs (the v5 ladder is still running) ===
+launched tf_ref on GPU1 pid=2889785  (15:24)
+  (10) no free GPU: 0, 2411 MiB 1, 1369 MiB 2, 2807 MiB 3, 24117 MiB 
+launched tf_fold0 on GPU3 pid=2905364  (15:34)
+
+=== streaming (12 h) ===
+```
+
+### 450_log_relay.log
+```
+=== log relay started 2026-08-19T15:35:31+08:00 ===
+--- 15:35 ---
+0, 2411 MiB, 32 %|1, 1369 MiB, 0 %|2, 2807 MiB, 0 %|3, 8790 MiB, 4 %|
+[tf_fold0] 
+[tf_ref] step 1800/40000 | loss 3.2358 | lr 2.70e-04 | 763 win/s
+
+```
+
+### 450_relay.log
+```
+=== log relay started 2026-08-19T15:35:31+08:00 ===
+```
+
+### d3_train.log
+```
+[val] step 6000: mode-C CER 16.99 | mode-B CER 17.13 | mode-A CER 15.88 | gain C -1.11 / B -1.25 | loss 0.6158
+[val] new best CER 16.99 -> saved best.pt
+step 6100/8000 | loss 0.7332 | lr 5.57e-06 | 1.31 it/s
+step 6200/8000 | loss 0.7158 | lr 5.17e-06 | 1.59 it/s
+step 6300/8000 | loss 0.7820 | lr 4.79e-06 | 1.46 it/s
+step 6400/8000 | loss 0.8463 | lr 4.43e-06 | 1.37 it/s
+step 6500/8000 | loss 0.7911 | lr 4.09e-06 | 1.64 it/s
+step 6600/8000 | loss 0.7385 | lr 3.76e-06 | 1.35 it/s
+step 6700/8000 | loss 0.7720 | lr 3.46e-06 | 1.79 it/s
+step 6800/8000 | loss 0.7467 | lr 3.17e-06 | 1.83 it/s
+step 6900/8000 | loss 0.8087 | lr 2.91e-06 | 1.36 it/s
+step 7000/8000 | loss 0.8092 | lr 2.67e-06 | 1.51 it/s
+[val] step 7000: mode-C CER 18.15 | mode-B CER 17.99 | mode-A CER 17.00 | gain C -1.15 / B -0.99 | loss 0.6675
+step 7100/8000 | loss 0.6643 | lr 2.45e-06 | 1.06 it/s
+step 7200/8000 | loss 0.7738 | lr 2.25e-06 | 1.70 it/s
+step 7300/8000 | loss 0.8446 | lr 2.08e-06 | 1.43 it/s
+step 7400/8000 | loss 0.7710 | lr 1.92e-06 | 1.90 it/s
+step 7500/8000 | loss 0.7543 | lr 1.80e-06 | 1.74 it/s
+step 7600/8000 | loss 0.6453 | lr 1.69e-06 | 1.97 it/s
+step 7700/8000 | loss 0.7902 | lr 1.61e-06 | 1.54 it/s
+step 7800/8000 | loss 0.7631 | lr 1.55e-06 | 1.52 it/s
+step 7900/8000 | loss 0.6770 | lr 1.51e-06 | 2.07 it/s
+step 8000/8000 | loss 0.6493 | lr 1.50e-06 | 1.57 it/s
+[val] step 8000: mode-C CER 17.75 | mode-B CER 17.92 | mode-A CER 16.52 | gain C -1.23 / B -1.40 | loss 0.6252
+[done] {'best_val_cer': 16.994242604725034, 'steps': 8000, 'phase': 'icl'}
+```
+
+### d4_train.log
+```
+step 6000/8000 | loss 0.8322 | lr 5.99e-06 | 1.56 it/s
+[val] step 6000: mode-C CER 22.86 | mode-B CER 23.30 | mode-A CER 21.93 | gain C -0.93 / B -1.37 | loss 0.8716
+step 6100/8000 | loss 0.7596 | lr 5.57e-06 | 1.39 it/s
+step 6200/8000 | loss 0.8698 | lr 5.17e-06 | 1.61 it/s
+step 6300/8000 | loss 0.7703 | lr 4.79e-06 | 1.17 it/s
+step 6400/8000 | loss 0.8198 | lr 4.43e-06 | 1.65 it/s
+step 6500/8000 | loss 0.7323 | lr 4.09e-06 | 1.54 it/s
+step 6600/8000 | loss 0.7832 | lr 3.76e-06 | 1.72 it/s
+step 6700/8000 | loss 0.8318 | lr 3.46e-06 | 1.37 it/s
+step 6800/8000 | loss 0.6850 | lr 3.17e-06 | 1.87 it/s
+step 6900/8000 | loss 0.8138 | lr 2.91e-06 | 1.84 it/s
+step 7000/8000 | loss 0.8756 | lr 2.67e-06 | 1.56 it/s
+[val] step 7000: mode-C CER 23.30 | mode-B CER 23.00 | mode-A CER 21.92 | gain C -1.38 / B -1.08 | loss 0.8791
+step 7100/8000 | loss 0.7476 | lr 2.45e-06 | 1.34 it/s
+step 7200/8000 | loss 0.7326 | lr 2.25e-06 | 1.57 it/s
+step 7300/8000 | loss 0.8353 | lr 2.08e-06 | 1.44 it/s
+step 7400/8000 | loss 0.7968 | lr 1.92e-06 | 1.48 it/s
+step 7500/8000 | loss 0.8512 | lr 1.80e-06 | 1.58 it/s
+step 7600/8000 | loss 0.8434 | lr 1.69e-06 | 1.50 it/s
+step 7700/8000 | loss 0.7596 | lr 1.61e-06 | 1.73 it/s
+step 7800/8000 | loss 0.7662 | lr 1.55e-06 | 1.81 it/s
+step 7900/8000 | loss 0.7791 | lr 1.51e-06 | 1.68 it/s
+step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
+[val] step 8000: mode-C CER 22.69 | mode-B CER 22.56 | mode-A CER 21.59 | gain C -1.10 / B -0.97 | loss 0.8491
+[done] {'best_val_cer': 21.223643276875215, 'steps': 8000, 'phase': 'icl'}
 ```
 
 ### teachers_shard0.log
@@ -1375,11 +2182,192 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 [6/24] 41222064: zero-shot 6.19 -> best 6.19 (gain +0.00)
 ```
 
+### tf_fold0.log
+```
+96 training users -> 4 folds
+  fold 0:  24 users,  213 sessions | e.g. ['11372316', '14312238', '2396581']
+  fold 1:  24 users,  206 sessions | e.g. ['11944098', '1438774', '25847138']
+  fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
+  fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
+[split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 138115 training windows of 5.0s
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+```
+
+### tf_ref.log
+```
+[split] REFERENCE run: all 96 training users
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 183349 training windows of 5.0s
+[data] monitor sets: 160 test windows, 0 fold-heldout windows
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+step 200/40000 | loss 15.9860 | lr 3.00e-05 | 619 win/s
+step 400/40000 | loss 4.1166 | lr 6.00e-05 | 685 win/s
+step 600/40000 | loss 3.6306 | lr 9.00e-05 | 714 win/s
+step 800/40000 | loss 3.5240 | lr 1.20e-04 | 729 win/s
+step 1000/40000 | loss 3.4617 | lr 1.50e-04 | 740 win/s
+step 1200/40000 | loss 3.4053 | lr 1.80e-04 | 747 win/s
+step 1400/40000 | loss 3.3407 | lr 2.10e-04 | 751 win/s
+step 1600/40000 | loss 3.2931 | lr 2.40e-04 | 757 win/s
+step 1800/40000 | loss 3.2358 | lr 2.70e-04 | 763 win/s
+```
+
+### v31_train.log
+```
+step 10000/12000 | loss 0.9480 | lr 3.68e-06 | 2.79 it/s
+[val] step 10000: mode-C CER 33.73 | mode-B CER 31.82 | mode-A CER 31.82 | gain C -1.91 / B +0.00 | loss 1.4693
+step 10100/12000 | loss 0.9386 | lr 3.48e-06 | 2.14 it/s
+step 10200/12000 | loss 0.9384 | lr 3.28e-06 | 3.28 it/s
+step 10300/12000 | loss 0.9083 | lr 3.09e-06 | 2.60 it/s
+step 10400/12000 | loss 0.8921 | lr 2.91e-06 | 2.58 it/s
+step 10500/12000 | loss 0.8510 | lr 2.74e-06 | 2.77 it/s
+step 10600/12000 | loss 0.7796 | lr 2.58e-06 | 2.80 it/s
+step 10700/12000 | loss 1.0353 | lr 2.44e-06 | 2.90 it/s
+step 10800/12000 | loss 0.8474 | lr 2.30e-06 | 3.38 it/s
+step 10900/12000 | loss 0.8653 | lr 2.17e-06 | 3.08 it/s
+step 11000/12000 | loss 0.8874 | lr 2.06e-06 | 2.82 it/s
+[val] step 11000: mode-C CER 35.43 | mode-B CER 33.23 | mode-A CER 33.23 | gain C -2.20 / B +0.00 | loss 1.4557
+step 11100/12000 | loss 0.8655 | lr 1.95e-06 | 2.23 it/s
+step 11200/12000 | loss 0.9035 | lr 1.86e-06 | 3.17 it/s
+step 11300/12000 | loss 0.9123 | lr 1.77e-06 | 2.66 it/s
+step 11400/12000 | loss 0.8933 | lr 1.70e-06 | 2.78 it/s
+step 11500/12000 | loss 0.9338 | lr 1.64e-06 | 2.84 it/s
+step 11600/12000 | loss 1.0009 | lr 1.59e-06 | 2.45 it/s
+step 11700/12000 | loss 0.8615 | lr 1.55e-06 | 2.99 it/s
+step 11800/12000 | loss 0.9282 | lr 1.52e-06 | 2.44 it/s
+step 11900/12000 | loss 0.9326 | lr 1.51e-06 | 3.41 it/s
+step 12000/12000 | loss 0.9137 | lr 1.50e-06 | 2.45 it/s
+[val] step 12000: mode-C CER 37.66 | mode-B CER 35.96 | mode-A CER 35.96 | gain C -1.69 / B +0.00 | loss 1.6246
+[done] {'best_val_cer': 30.502512562814072, 'steps': 12000, 'phase': 'icl'}
+```
+
+### v32_train.log
+```
+step 10000/12000 | loss 0.8909 | lr 3.68e-06 | 2.90 it/s
+[val] step 10000: mode-C CER 34.42 | mode-B CER 32.40 | mode-A CER 32.40 | gain C -2.01 / B +0.00 | loss 1.3946
+step 10100/12000 | loss 0.9366 | lr 3.48e-06 | 2.58 it/s
+step 10200/12000 | loss 0.9141 | lr 3.28e-06 | 3.34 it/s
+step 10300/12000 | loss 0.8504 | lr 3.09e-06 | 4.25 it/s
+step 10400/12000 | loss 0.9384 | lr 2.91e-06 | 2.83 it/s
+step 10500/12000 | loss 0.9138 | lr 2.74e-06 | 3.42 it/s
+step 10600/12000 | loss 0.8927 | lr 2.58e-06 | 2.57 it/s
+step 10700/12000 | loss 0.8417 | lr 2.44e-06 | 3.13 it/s
+step 10800/12000 | loss 0.8098 | lr 2.30e-06 | 3.19 it/s
+step 10900/12000 | loss 0.9133 | lr 2.17e-06 | 3.24 it/s
+step 11000/12000 | loss 0.8975 | lr 2.06e-06 | 2.58 it/s
+[val] step 11000: mode-C CER 33.49 | mode-B CER 32.11 | mode-A CER 32.11 | gain C -1.38 / B +0.00 | loss 1.3431
+step 11100/12000 | loss 0.7570 | lr 1.95e-06 | 2.70 it/s
+step 11200/12000 | loss 0.8814 | lr 1.86e-06 | 3.44 it/s
+step 11300/12000 | loss 0.9319 | lr 1.77e-06 | 3.08 it/s
+step 11400/12000 | loss 0.7985 | lr 1.70e-06 | 2.64 it/s
+step 11500/12000 | loss 0.8458 | lr 1.64e-06 | 2.93 it/s
+step 11600/12000 | loss 0.8877 | lr 1.59e-06 | 2.75 it/s
+step 11700/12000 | loss 0.8411 | lr 1.55e-06 | 3.85 it/s
+step 11800/12000 | loss 0.8725 | lr 1.52e-06 | 2.91 it/s
+step 11900/12000 | loss 0.8097 | lr 1.51e-06 | 3.35 it/s
+step 12000/12000 | loss 0.8766 | lr 1.50e-06 | 2.84 it/s
+[val] step 12000: mode-C CER 33.23 | mode-B CER 32.19 | mode-A CER 32.19 | gain C -1.04 / B +0.00 | loss 1.4201
+[done] {'best_val_cer': 31.115951742627345, 'steps': 12000, 'phase': 'icl'}
+```
+
+### v3cheavy_train.log
+```
+step 18000/20000 | loss 0.9970 | lr 2.26e-06 | 2.77 it/s
+[val] step 18000: mode-C CER 33.26 | mode-B CER 32.21 | mode-A CER 32.21 | gain C -1.04 / B +0.00 | loss 1.3658
+step 18100/20000 | loss 0.7447 | lr 2.18e-06 | 2.29 it/s
+step 18200/20000 | loss 0.7545 | lr 2.11e-06 | 3.05 it/s
+step 18300/20000 | loss 0.7470 | lr 2.05e-06 | 2.48 it/s
+step 18400/20000 | loss 0.8692 | lr 1.99e-06 | 2.29 it/s
+step 18500/20000 | loss 0.8494 | lr 1.93e-06 | 2.65 it/s
+step 18600/20000 | loss 0.7993 | lr 1.87e-06 | 2.29 it/s
+step 18700/20000 | loss 0.7395 | lr 1.82e-06 | 2.94 it/s
+step 18800/20000 | loss 0.8032 | lr 1.77e-06 | 2.18 it/s
+step 18900/20000 | loss 0.7287 | lr 1.73e-06 | 2.45 it/s
+step 19000/20000 | loss 0.7887 | lr 1.69e-06 | 2.26 it/s
+[val] step 19000: mode-C CER 33.67 | mode-B CER 32.66 | mode-A CER 32.66 | gain C -1.00 / B +0.00 | loss 1.2447
+step 19100/20000 | loss 0.7689 | lr 1.65e-06 | 1.82 it/s
+step 19200/20000 | loss 0.8580 | lr 1.62e-06 | 2.00 it/s
+step 19300/20000 | loss 0.8121 | lr 1.59e-06 | 1.97 it/s
+step 19400/20000 | loss 0.7951 | lr 1.57e-06 | 2.22 it/s
+step 19500/20000 | loss 0.7390 | lr 1.55e-06 | 1.64 it/s
+step 19600/20000 | loss 0.8635 | lr 1.53e-06 | 1.41 it/s
+step 19700/20000 | loss 0.8335 | lr 1.52e-06 | 1.92 it/s
+step 19800/20000 | loss 0.7441 | lr 1.51e-06 | 2.49 it/s
+step 19900/20000 | loss 0.8352 | lr 1.50e-06 | 2.38 it/s
+step 20000/20000 | loss 0.7826 | lr 1.50e-06 | 2.35 it/s
+[val] step 20000: mode-C CER 33.17 | mode-B CER 32.30 | mode-A CER 32.30 | gain C -0.87 / B +0.00 | loss 1.3076
+[done] {'best_val_cer': 32.86171467070911, 'steps': 20000, 'phase': 'icl'}
+```
+
+### v3frozen_train.log
+```
+step 9800/12000 | loss 1.0111 | lr 9.72e-06 | 2.65 it/s
+step 9900/12000 | loss 0.9020 | lr 9.42e-06 | 2.65 it/s
+step 10000/12000 | loss 0.9523 | lr 9.13e-06 | 2.58 it/s
+[val] step 10000: mode-C CER 20.66 | mode-B CER 28.85 | mode-A CER 28.85 | gain C +8.19 / B +0.00 | loss 0.6736
+[val] new best CER 20.66 -> saved best.pt
+step 10100/12000 | loss 0.8520 | lr 8.84e-06 | 2.18 it/s
+step 10200/12000 | loss 0.9866 | lr 8.53e-06 | 2.66 it/s
+step 10300/12000 | loss 0.8900 | lr 8.25e-06 | 2.39 it/s
+step 10400/12000 | loss 0.7142 | lr 8.00e-06 | 3.11 it/s
+step 10500/12000 | loss 0.9485 | lr 7.71e-06 | 2.48 it/s
+step 10700/12000 | loss 0.9365 | lr 7.18e-06 | 1.27 it/s
+step 10800/12000 | loss 0.9937 | lr 6.90e-06 | 2.52 it/s
+step 11000/12000 | loss 1.0081 | lr 6.39e-06 | 1.15 it/s
+[val] step 11000: mode-C CER 21.93 | mode-B CER 29.27 | mode-A CER 29.27 | gain C +7.34 / B +0.00 | loss 0.6969
+step 11100/12000 | loss 1.0204 | lr 6.14e-06 | 2.09 it/s
+step 11200/12000 | loss 0.8443 | lr 5.91e-06 | 2.54 it/s
+step 11300/12000 | loss 0.9902 | lr 5.66e-06 | 2.77 it/s
+step 11500/12000 | loss 0.8968 | lr 5.20e-06 | 1.43 it/s
+step 11600/12000 | loss 0.8179 | lr 4.98e-06 | 2.81 it/s
+step 11700/12000 | loss 0.9536 | lr 4.77e-06 | 2.35 it/s
+step 11800/12000 | loss 0.9043 | lr 4.56e-06 | 2.55 it/s
+step 11900/12000 | loss 0.8902 | lr 4.35e-06 | 2.46 it/s
+step 12000/12000 | loss 0.8650 | lr 4.17e-06 | 2.47 it/s
+[val] step 12000: mode-C CER 21.98 | mode-B CER 28.65 | mode-A CER 28.65 | gain C +6.67 / B +0.00 | loss 0.7356
+[done] {'best_val_cer': 20.662382600098862, 'steps': 12000, 'phase': 'icl'}
+```
+
+### v3_train.log
+```
+step 10000/12000 | loss 0.8304 | lr 3.68e-06 | 2.94 it/s
+[val] step 10000: mode-C CER 33.58 | mode-B CER 30.63 | mode-A CER 30.63 | gain C -2.95 / B +0.00 | loss 1.4330
+step 10100/12000 | loss 0.9134 | lr 3.48e-06 | 2.12 it/s
+step 10200/12000 | loss 0.8418 | lr 3.28e-06 | 2.50 it/s
+step 10300/12000 | loss 0.7353 | lr 3.09e-06 | 2.96 it/s
+step 10400/12000 | loss 0.7646 | lr 2.91e-06 | 2.78 it/s
+step 10500/12000 | loss 0.7716 | lr 2.74e-06 | 3.16 it/s
+step 10600/12000 | loss 0.7741 | lr 2.58e-06 | 3.03 it/s
+step 10700/12000 | loss 0.9399 | lr 2.44e-06 | 2.17 it/s
+step 10800/12000 | loss 0.8227 | lr 2.30e-06 | 2.76 it/s
+step 10900/12000 | loss 0.8376 | lr 2.17e-06 | 2.37 it/s
+step 11000/12000 | loss 0.8211 | lr 2.06e-06 | 2.74 it/s
+[val] step 11000: mode-C CER 34.80 | mode-B CER 32.52 | mode-A CER 32.52 | gain C -2.28 / B +0.00 | loss 1.5546
+step 11100/12000 | loss 0.8214 | lr 1.95e-06 | 2.04 it/s
+step 11200/12000 | loss 0.9133 | lr 1.86e-06 | 2.84 it/s
+step 11300/12000 | loss 0.8776 | lr 1.77e-06 | 2.52 it/s
+step 11400/12000 | loss 0.8180 | lr 1.70e-06 | 2.85 it/s
+step 11500/12000 | loss 0.8323 | lr 1.64e-06 | 2.52 it/s
+step 11600/12000 | loss 0.8830 | lr 1.59e-06 | 2.85 it/s
+step 11700/12000 | loss 0.8403 | lr 1.55e-06 | 2.56 it/s
+step 11800/12000 | loss 0.7491 | lr 1.52e-06 | 3.66 it/s
+step 11900/12000 | loss 0.7959 | lr 1.51e-06 | 2.76 it/s
+step 12000/12000 | loss 0.8709 | lr 1.50e-06 | 2.82 it/s
+[val] step 12000: mode-C CER 35.44 | mode-B CER 31.78 | mode-A CER 31.78 | gain C -3.66 / B +0.00 | loss 1.5502
+[done] {'best_val_cer': 32.26510067114094, 'steps': 12000, 'phase': 'icl'}
+```
+
 ### v5_a0_gain_affine.log
 ```
-step 4000/8000 | loss 1.0279 | lr 6.31e-04 | 1.83 it/s
-[val] step 4000: mode-C CER 82.24 | mode-B CER 70.00 | mode-A CER 69.06 | gain C -13.18 / B -0.94 | loss 6.3395
-step 4100/8000 | loss 1.1107 | lr 6.10e-04 | 1.63 it/s
 step 4200/8000 | loss 1.0300 | lr 5.89e-04 | 1.86 it/s
 step 4300/8000 | loss 1.0184 | lr 5.68e-04 | 2.06 it/s
 step 4400/8000 | loss 1.1252 | lr 5.46e-04 | 2.02 it/s
@@ -1402,6 +2390,9 @@ step 5700/8000 | loss 0.9582 | lr 2.81e-04 | 1.86 it/s
 step 5800/8000 | loss 0.9717 | lr 2.63e-04 | 1.98 it/s
 step 5900/8000 | loss 1.0104 | lr 2.46e-04 | 2.25 it/s
 step 6000/8000 | loss 1.0153 | lr 2.29e-04 | 2.11 it/s
+[val] step 6000: mode-C CER 67.36 | mode-B CER 91.27 | mode-A CER 67.90 | gain C +0.54 / B -23.37 | loss 4.0452
+step 6100/8000 | loss 0.9951 | lr 2.12e-04 | 1.76 it/s
+step 6200/8000 | loss 1.0118 | lr 1.97e-04 | 2.11 it/s
 ```
 
 ### v5_a1_gain_v31.log
@@ -1435,8 +2426,6 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
 
 ### v5_a2_realistic.log
 ```
-step 500/8000 | loss 3.1125 | lr 5.01e-04 | 0.81 it/s
-[val] step 500: mode-C CER 66.18 | mode-B CER 68.33 | mode-A CER 79.82 | gain C +13.65 / B +11.49 | loss 2.7225
 [val] new best CER 66.18 -> saved best.pt
 step 600/8000 | loss 3.1748 | lr 6.01e-04 | 0.76 it/s
 step 700/8000 | loss 3.1977 | lr 7.01e-04 | 0.77 it/s
@@ -1460,6 +2449,8 @@ step 2100/8000 | loss 2.8414 | lr 9.43e-04 | 0.72 it/s
 step 2200/8000 | loss 2.8185 | lr 9.33e-04 | 0.87 it/s
 step 2300/8000 | loss 2.7053 | lr 9.21e-04 | 0.84 it/s
 step 2400/8000 | loss 2.7740 | lr 9.09e-04 | 0.87 it/s
+step 2500/8000 | loss 2.7018 | lr 8.96e-04 | 0.84 it/s
+[val] step 2500: mode-C CER 86.37 | mode-B CER 72.80 | mode-A CER 80.42 | gain C -5.95 / B +7.62 | loss 6.0189
 ```
 
 ### v5_zeroshot_scan.log
