@@ -89,3 +89,13 @@
 [87/96] 93203007: held-out-session CER 5.60 (8 sessions)
 [88/96] 94305460: held-out-session CER 3.59 (9 sessions)
 [89/96] 9456349: held-out-session CER 7.59 (7 sessions)
+[90/96] 94998811: held-out-session CER 4.05 (10 sessions)
+[91/96] 95396398: held-out-session CER 3.24 (9 sessions)
+[92/96] 97165588: held-out-session CER 9.34 (5 sessions)
+[93/96] 97336339: held-out-session CER 12.43 (10 sessions)
+[94/96] 97890030: held-out-session CER 9.45 (10 sessions)
+[95/96] 97946571: held-out-session CER 10.07 (10 sessions)
+[96/96] 99192446: held-out-session CER 2.17 (10 sessions)
+
+=== SEEN users (n=96): median 8.11 p10 3.32 p90 15.67 ===
+=== UNSEEN users (8 official test): 55.39 published ===

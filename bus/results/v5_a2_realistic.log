@@ -8,3 +8,6 @@
 [watchdog] armed
 step 100/8000 | loss 4.9355 | lr 1.01e-04 | 0.80 it/s
 step 200/8000 | loss 3.7268 | lr 2.01e-04 | 0.80 it/s
+step 300/8000 | loss 3.3812 | lr 3.01e-04 | 0.82 it/s
+step 400/8000 | loss 3.2773 | lr 4.01e-04 | 0.92 it/s
+step 500/8000 | loss 3.1125 | lr 5.01e-04 | 0.81 it/s
