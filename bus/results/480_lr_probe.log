@@ -70,3 +70,10 @@ pid=2942963
          [val] step 8000: 8-test-user CER 81.87 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] step 3400/40000 | loss 2.4192 | lr 9.97e-04 | 367 win/s
          [val] new best 100.00 -> best.pt
+--- 17:50 ---
+[tf_ref] step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
+         [val] new best 83.37 -> best.pt
+[tf_ref_lr1e3] step 9200/40000 | loss 2.2594 | lr 9.14e-04 | 438 win/s
+         [val] step 8000: 8-test-user CER 81.87 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 4200/40000 | loss 2.3602 | lr 9.92e-04 | 363 win/s
+         [val] new best 83.52 -> best.pt

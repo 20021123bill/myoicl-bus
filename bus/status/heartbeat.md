@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:49:28+08:00
+# heartbeat 2026-08-19T17:50:12+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 40 %
-1, 2985 MiB, 24576 MiB, 90 %
-2, 3169 MiB, 24576 MiB, 74 %
-3, 3169 MiB, 24576 MiB, 48 %
+0, 2989 MiB, 24576 MiB, 0 %
+1, 2985 MiB, 24576 MiB, 70 %
+2, 3169 MiB, 24576 MiB, 9 %
+3, 3169 MiB, 24576 MiB, 66 %
 ```
 
 ## jobs
@@ -2727,10 +2727,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
-[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
-  return F.conv1d(input, weight, bias, self.stride,
 step 200/40000 | loss 43.9787 | lr 1.00e-04 | 428 win/s
 step 400/40000 | loss 3.6596 | lr 2.00e-04 | 427 win/s
 step 600/40000 | loss 3.4617 | lr 3.00e-04 | 425 win/s
@@ -2752,13 +2748,14 @@ step 3200/40000 | loss 2.4514 | lr 9.98e-04 | 368 win/s
 step 3400/40000 | loss 2.4192 | lr 9.97e-04 | 367 win/s
 step 3600/40000 | loss 2.3868 | lr 9.96e-04 | 365 win/s
 step 3800/40000 | loss 2.3799 | lr 9.94e-04 | 364 win/s
+step 4000/40000 | loss 2.3651 | lr 9.93e-04 | 364 win/s
+[val] step 4000: 8-test-user CER 83.52 | fold-heldout-user CER 85.53  (their Tiny reference: 35.9)
+[val] new best 83.52 -> best.pt
+step 4200/40000 | loss 2.3602 | lr 9.92e-04 | 363 win/s
 ```
 
 ### tf_fold1.log
 ```
-step 2400/40000 | loss 2.7362 | lr 1.00e-03 | 615 win/s
-step 2600/40000 | loss 2.6490 | lr 9.99e-04 | 616 win/s
-step 2800/40000 | loss 2.5403 | lr 9.99e-04 | 618 win/s
 step 3000/40000 | loss 2.4718 | lr 9.98e-04 | 619 win/s
 step 3200/40000 | loss 2.4377 | lr 9.98e-04 | 620 win/s
 step 3400/40000 | loss 2.4191 | lr 9.97e-04 | 620 win/s
@@ -2781,13 +2778,13 @@ step 6000/40000 | loss 2.2844 | lr 9.73e-04 | 620 win/s
 step 6200/40000 | loss 2.2830 | lr 9.70e-04 | 619 win/s
 step 6400/40000 | loss 2.2668 | lr 9.67e-04 | 618 win/s
 step 6600/40000 | loss 2.2631 | lr 9.64e-04 | 619 win/s
+step 6800/40000 | loss 2.2677 | lr 9.61e-04 | 619 win/s
+step 7000/40000 | loss 2.2649 | lr 9.58e-04 | 619 win/s
+step 7200/40000 | loss 2.2554 | lr 9.55e-04 | 619 win/s
 ```
 
 ### tf_fold2.log
 ```
-step 2600/40000 | loss 2.6118 | lr 9.99e-04 | 625 win/s
-step 2800/40000 | loss 2.5361 | lr 9.99e-04 | 626 win/s
-step 3000/40000 | loss 2.4417 | lr 9.98e-04 | 626 win/s
 step 3200/40000 | loss 2.3872 | lr 9.98e-04 | 626 win/s
 step 3400/40000 | loss 2.3519 | lr 9.97e-04 | 626 win/s
 step 3600/40000 | loss 2.3252 | lr 9.96e-04 | 627 win/s
@@ -2810,6 +2807,9 @@ step 6000/40000 | loss 2.2307 | lr 9.73e-04 | 624 win/s
 step 6200/40000 | loss 2.2442 | lr 9.70e-04 | 623 win/s
 step 6400/40000 | loss 2.2213 | lr 9.67e-04 | 623 win/s
 step 6600/40000 | loss 2.2058 | lr 9.64e-04 | 623 win/s
+step 6800/40000 | loss 2.2107 | lr 9.61e-04 | 623 win/s
+step 7000/40000 | loss 2.2146 | lr 9.58e-04 | 623 win/s
+step 7200/40000 | loss 2.2147 | lr 9.55e-04 | 623 win/s
 ```
 
 ### tf_ref.log
@@ -2843,8 +2843,6 @@ step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
 
 ### tf_ref_lr1e3.log
 ```
-step 4400/40000 | loss 2.3658 | lr 9.90e-04 | 542 win/s
-step 4600/40000 | loss 2.3704 | lr 9.88e-04 | 536 win/s
 step 4800/40000 | loss 2.3765 | lr 9.87e-04 | 533 win/s
 step 5000/40000 | loss 2.3614 | lr 9.85e-04 | 536 win/s
 step 5200/40000 | loss 2.3498 | lr 9.83e-04 | 531 win/s
@@ -2868,6 +2866,8 @@ step 8200/40000 | loss 2.2681 | lr 9.36e-04 | 452 win/s
 step 8400/40000 | loss 2.2479 | lr 9.32e-04 | 448 win/s
 step 8600/40000 | loss 2.2633 | lr 9.27e-04 | 445 win/s
 step 8800/40000 | loss 2.2647 | lr 9.23e-04 | 442 win/s
+step 9000/40000 | loss 2.2774 | lr 9.19e-04 | 440 win/s
+step 9200/40000 | loss 2.2594 | lr 9.14e-04 | 438 win/s
 ```
 
 ### v31_train.log
