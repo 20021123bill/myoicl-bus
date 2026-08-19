@@ -37,3 +37,5 @@ CHOSEN 0.5
 
 === phase 3: launch A0/A1/A2 on GPU0/1/2 ===
 launched v5_a0_gain_affine on GPU0 pid=2830660
+launched v5_a1_gain_v31 on GPU1 pid=2831392
+launched v5_a2_realistic on GPU2 pid=2832409

@@ -1,9 +1,9 @@
-# heartbeat 2026-08-19T14:42:11+08:00
+# heartbeat 2026-08-19T14:42:53+08:00
 
 ## gpu
 ```
-0, 741 MiB, 24576 MiB, 0 %
-1, 12 MiB, 24576 MiB, 0 %
+0, 2205 MiB, 24576 MiB, 0 %
+1, 295 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -1074,24 +1074,31 @@ deployed
 
 ### 400_v5_hardsynth.log
 ```
-=== phase 0: freeze the teacher-headroom diagnostic, stop the fleet ===
-33 /data2/chenyuxiang/runs/teacher_headroom.txt
-teacher fleet stopped
-0, 16 MiB, 0 %
-1, 12 MiB, 0 %
-2, 12 MiB, 0 %
-3, 12 MiB, 0 %
-
-=== phase 1: calibrate the gain-only synthetic subject (GPU0, ~15 min) ===
---- gain_log_std 0.5 ---
-  (a) training users, NO synthetic shift      : CER  14.21
-  (b) training users, synthetic shift applied : CER  64.59
-  ratio = 1.22  (GOOD: comparable)
---- gain_log_std 0.7 ---
-  (a) training users, NO synthetic shift      : CER  13.01
   (b) training users, synthetic shift applied : CER  84.08
   ratio = 1.68  (MISCALIBRATED: use --sweep)
 --- gain_log_std 0.9 ---
+  (a) training users, NO synthetic shift      : CER  13.72
+  (b) training users, synthetic shift applied : CER  93.16
+  ratio = 1.91  (MISCALIBRATED: use --sweep)
+--- gain_log_std 1.2 ---
+  (a) training users, NO synthetic shift      : CER  13.64
+  (b) training users, synthetic shift applied : CER  97.82
+  ratio = 2.02  (MISCALIBRATED: use --sweep)
+  sigma 0.7: CER 84.08 (|d-55.4| 28.69)
+  sigma 1.2: CER 97.82 (|d-55.4| 42.43)
+  sigma 0.9: CER 93.16 (|d-55.4| 37.77)
+  sigma 0.5: CER 64.59 (|d-55.4| 9.20)
+CHOSEN 0.5
+=== using gain_log_std = 0.5 ===
+
+=== phase 2: write the three V5 configs ===
+[ok] myoicl/configs/qwerty_v5_a0_gain_affine.yaml  p_synth=1.0 synth={'rotation_choices': [0], 'gain_log_std': 0.5, 'p_noise': 0.0, 'p_mix': 0.0} strength=None frozen=True
+[ok] myoicl/configs/qwerty_v5_a1_gain_v31.yaml  p_synth=1.0 synth={'rotation_choices': [0], 'gain_log_std': 0.5, 'p_noise': 0.0, 'p_mix': 0.0} strength=None frozen=True
+[ok] myoicl/configs/qwerty_v5_a2_realistic.yaml  p_synth=1.0 synth=None strength=[0.35, 0.6] frozen=True
+
+=== phase 3: launch A0/A1/A2 on GPU0/1/2 ===
+launched v5_a0_gain_affine on GPU0 pid=2830660
+launched v5_a1_gain_v31 on GPU1 pid=2831392
 ```
 
 ### teachers_shard0.log
