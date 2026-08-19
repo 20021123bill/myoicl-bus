@@ -1,0 +1,4 @@
+[ckpt] /data2/chenyuxiang/runs/v5_a2/best.pt (v1, step 500)
+[A] user0: CER 61.45
+[A] user1: CER 59.90
+[A] user2: CER 48.06

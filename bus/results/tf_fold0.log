@@ -34,3 +34,6 @@ step 3200/40000 | loss 2.8907 | lr 2.99e-04 | 566 win/s
 step 3400/40000 | loss 2.8472 | lr 2.99e-04 | 563 win/s
 step 3600/40000 | loss 2.8100 | lr 2.99e-04 | 561 win/s
 step 3800/40000 | loss 2.7759 | lr 2.98e-04 | 557 win/s
+step 4000/40000 | loss 2.7398 | lr 2.98e-04 | 554 win/s
+[val] step 4000: 8-test-user CER 99.61 | fold-heldout-user CER 99.85  (their Tiny reference: 35.9)
+[val] new best 99.61 -> best.pt

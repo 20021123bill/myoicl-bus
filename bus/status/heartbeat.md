@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T16:49:18+08:00
+# heartbeat 2026-08-19T16:50:01+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 57 %
-1, 3169 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 0 %
-3, 9505 MiB, 24576 MiB, 10 %
+0, 3173 MiB, 24576 MiB, 58 %
+1, 3169 MiB, 24576 MiB, 42 %
+2, 2985 MiB, 24576 MiB, 93 %
+3, 12 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -2407,6 +2407,13 @@ pid=2942963
 === evaluating /data2/chenyuxiang/runs/v5_a2/best.pt sequentially on GPU3 ===
 
 ############ k=12 (~48s) -- started 16:47 ############
+rc=0  finished 16:49
+[A] mean over users: 55.40
+[C] mean over users: 60.54
+[A] gap closed vs personalization ceiling: -0.0%
+[C] gap closed vs personalization ceiling: -11.7%
+
+############ k=45 (~180s) -- started 16:49 ############
 ```
 
 ### d3_train.log
@@ -2546,8 +2553,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
@@ -2571,13 +2576,12 @@ step 2800/40000 | loss 2.9634 | lr 3.00e-04 | 573 win/s
 step 3000/40000 | loss 2.9316 | lr 2.99e-04 | 570 win/s
 step 3200/40000 | loss 2.8907 | lr 2.99e-04 | 566 win/s
 step 3400/40000 | loss 2.8472 | lr 2.99e-04 | 563 win/s
+step 3600/40000 | loss 2.8100 | lr 2.99e-04 | 561 win/s
+step 3800/40000 | loss 2.7759 | lr 2.98e-04 | 557 win/s
 ```
 
 ### tf_ref.log
 ```
-step 400/40000 | loss 5.7650 | lr 6.00e-05 | 670 win/s
-step 600/40000 | loss 3.6732 | lr 9.00e-05 | 686 win/s
-step 800/40000 | loss 3.4943 | lr 1.20e-04 | 698 win/s
 step 1000/40000 | loss 3.3686 | lr 1.50e-04 | 703 win/s
 step 1200/40000 | loss 3.2873 | lr 1.80e-04 | 706 win/s
 step 1400/40000 | loss 3.2406 | lr 2.10e-04 | 709 win/s
@@ -2600,13 +2604,13 @@ step 4000/40000 | loss 2.7171 | lr 2.98e-04 | 705 win/s
 [val] new best 96.35 -> best.pt
 step 4200/40000 | loss 2.6762 | lr 2.98e-04 | 704 win/s
 step 4400/40000 | loss 2.6429 | lr 2.97e-04 | 703 win/s
+step 4600/40000 | loss 2.5931 | lr 2.97e-04 | 702 win/s
+step 4800/40000 | loss 2.5449 | lr 2.96e-04 | 702 win/s
+step 5000/40000 | loss 2.5132 | lr 2.95e-04 | 701 win/s
 ```
 
 ### tf_ref_lr1e3.log
 ```
-[data] monitor sets: 160 test windows, 0 fold-heldout windows
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
@@ -2629,6 +2633,9 @@ step 2600/40000 | loss 2.6788 | lr 9.99e-04 | 578 win/s
 step 2800/40000 | loss 2.5873 | lr 9.99e-04 | 573 win/s
 step 3000/40000 | loss 2.5095 | lr 9.98e-04 | 571 win/s
 step 3200/40000 | loss 2.4602 | lr 9.98e-04 | 567 win/s
+step 3400/40000 | loss 2.4238 | lr 9.97e-04 | 564 win/s
+step 3600/40000 | loss 2.4140 | lr 9.96e-04 | 562 win/s
+step 3800/40000 | loss 2.3929 | lr 9.94e-04 | 560 win/s
 ```
 
 ### v31_train.log

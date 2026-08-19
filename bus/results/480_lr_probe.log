@@ -31,3 +31,10 @@ pid=2942963
          [val] new best 100.00 -> best.pt
 [tf_fold0] step 2800/40000 | loss 2.9634 | lr 3.00e-04 | 573 win/s
          [val] new best 100.00 -> best.pt
+--- 16:50 ---
+[tf_ref] step 5000/40000 | loss 2.5132 | lr 2.95e-04 | 701 win/s
+         [val] new best 96.35 -> best.pt
+[tf_ref_lr1e3] step 3800/40000 | loss 2.3929 | lr 9.94e-04 | 560 win/s
+         [val] new best 100.00 -> best.pt
+[tf_fold0] step 4000/40000 | loss 2.7398 | lr 2.98e-04 | 554 win/s
+         [val] new best 99.61 -> best.pt

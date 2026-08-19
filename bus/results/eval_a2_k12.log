@@ -1,0 +1,22 @@
+[ckpt] /data2/chenyuxiang/runs/v5_a2/best.pt (v1, step 500)
+[A] user0: CER 61.45
+[A] user1: CER 59.90
+[A] user2: CER 48.06
+[A] user3: CER 54.69
+[A] user4: CER 58.28
+[A] user5: CER 53.90
+[A] user6: CER 54.63
+[A] user7: CER 52.25
+[A] mean over users: 55.40
+[C] user0: CER 63.22
+[C] user1: CER 68.07
+[C] user2: CER 53.68
+[C] user3: CER 64.79
+[C] user4: CER 63.14
+[C] user5: CER 57.49
+[C] user6: CER 59.19
+[C] user7: CER 54.70
+[C] mean over users: 60.54
+[A] gap closed vs personalization ceiling: -0.0%
+[C] gap closed vs personalization ceiling: -11.7%
+[saved] /data2/chenyuxiang/runs/v5a2_real_k12.json
