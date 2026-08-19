@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:23:03+08:00
+# heartbeat 2026-08-19T16:23:46+08:00
 
 ## gpu
 ```
-0, 3171 MiB, 24576 MiB, 93 %
-1, 2983 MiB, 24576 MiB, 29 %
-2, 2983 MiB, 24576 MiB, 49 %
+0, 3171 MiB, 24576 MiB, 70 %
+1, 2983 MiB, 24576 MiB, 61 %
+2, 2983 MiB, 24576 MiB, 67 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2287,28 +2287,31 @@ launched tf_ref_lr1e3 on GPU2 lr=1e-3 fold=-1 pid=2978025
 
 ### 490_tf_100hz_relaunch.log
 ```
-=== stop the mis-specified runs ===
-trunk runs stopped
-A2 stopped
-0, 16 MiB
-1, 12 MiB
-2, 12 MiB
-3, 12 MiB
-
-=== deploy the corrected trunk ===
-AST OK
-
-=== sanity: frame rate and sequence length ===
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
-2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
-raw (2, 32, 10000) -> emissions (498, 2, 99) = 100 Hz  (target 100 Hz)
-frame rate OK
-
-=== relaunch: ref(3e-4) / fold0(3e-4) / ref(1e-3) ===
-launched tf_ref on GPU0 lr=3e-4 fold=-1 pid=2975197
-launched tf_fold0 on GPU1 lr=3e-4 fold=0 pid=2976588
 launched tf_ref_lr1e3 on GPU2 lr=1e-3 fold=-1 pid=2978025
+
+--- tf_ref ---
+[split] REFERENCE run: all 96 training users
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 229266 training windows of 4.0s
+[data] monitor sets: 160 test windows, 0 fold-heldout windows
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+--- tf_fold0 ---
+[split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 172708 training windows of 4.0s
+[data] monitor sets: 160 test windows, 160 fold-heldout windows
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+--- tf_ref_lr1e3 ---
+[split] REFERENCE run: all 96 training users
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 229266 training windows of 4.0s
+[data] monitor sets: 160 test windows, 0 fold-heldout windows
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+
+=== stream (14 h) ===
 ```
 
 ### d3_train.log
