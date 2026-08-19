@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T03:22:54+08:00
+# heartbeat 2026-08-20T03:23:37+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 35 %
-1, 3125 MiB, 24576 MiB, 86 %
-2, 2985 MiB, 24576 MiB, 49 %
-3, 1817 MiB, 24576 MiB, 21 %
+0, 3173 MiB, 24576 MiB, 80 %
+1, 3125 MiB, 24576 MiB, 79 %
+2, 2985 MiB, 24576 MiB, 67 %
+3, 1817 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -2997,9 +2997,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_dev2_fold2.log
 ```
-[trunk] /data2/chenyuxiang/runs/tf_fold2/last.pt step 40000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
-[init] warm-started enc+trunk from /data2/chenyuxiang/runs/icl_dev_fold2/best.pt (step 7500)
-[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
 [prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
 [prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
 [prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
@@ -3022,6 +3019,9 @@ step 1000/12000 | loss 2.7937 | lr 1.99e-04 | 1.69 it/s
 [val] step 1000: mode-A 47.98 | mode-C 49.42 | gain C -1.44   (REAL novel subjects, fold 2)
 [val] new best mode-C 49.42 -> best.pt
 step 1100/12000 | loss 2.7829 | lr 1.99e-04 | 1.69 it/s
+step 1200/12000 | loss 2.8438 | lr 1.99e-04 | 1.69 it/s
+step 1300/12000 | loss 2.8581 | lr 1.98e-04 | 1.68 it/s
+step 1400/12000 | loss 2.7787 | lr 1.98e-04 | 1.69 it/s
 ```
 
 ### icl_dev_fold2.log
