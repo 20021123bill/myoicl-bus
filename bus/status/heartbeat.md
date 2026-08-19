@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T05:37:09+08:00
+# heartbeat 2026-08-20T05:37:52+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 37 %
-1, 3125 MiB, 24576 MiB, 62 %
-2, 2985 MiB, 24576 MiB, 83 %
+0, 3173 MiB, 24576 MiB, 64 %
+1, 3125 MiB, 24576 MiB, 63 %
+2, 2985 MiB, 24576 MiB, 65 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2992,6 +2992,18 @@ launched icl_fused_fold2 pid=146692
 patch verified (fused x8)
 AST OK
 launched icl_fused_fold2 pid=146692
+[cohort] fold 2: 24 users the backbone has never seen, 213 sessions
+[trunk] /data2/chenyuxiang/runs/tf_fold2/last.pt step 40000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+[prefix] FUSED mode: per-token (signal + soft-aligned char)
+[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
+[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
+[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
+[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
+[symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
+  return F.conv1d(input, weight, bias, self.stride,
+[audit] step 0: mode-A 62.63 | mode-C 100.00 (random prefix) | deployment reference ~43-58
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
 ```
 
 ### d3_train.log
