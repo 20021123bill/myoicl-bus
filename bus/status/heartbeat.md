@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T14:48:28+08:00
+# heartbeat 2026-08-19T14:49:10+08:00
 
 ## gpu
 ```
-0, 2411 MiB, 24576 MiB, 19 %
-1, 3121 MiB, 24576 MiB, 43 %
-2, 2615 MiB, 24576 MiB, 62 %
-3, 12441 MiB, 24576 MiB, 0 %
+0, 2411 MiB, 24576 MiB, 0 %
+1, 3121 MiB, 24576 MiB, 0 %
+2, 2615 MiB, 24576 MiB, 0 %
+3, 12 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -1074,11 +1074,6 @@ deployed
 
 ### 400_v5_hardsynth.log
 ```
-  ratio = 1.91  (MISCALIBRATED: use --sweep)
---- gain_log_std 1.2 ---
-  (a) training users, NO synthetic shift      : CER  13.64
-  (b) training users, synthetic shift applied : CER  97.82
-  ratio = 2.02  (MISCALIBRATED: use --sweep)
   sigma 0.7: CER 84.08 (|d-55.4| 28.69)
   sigma 1.2: CER 97.82 (|d-55.4| 42.43)
   sigma 0.9: CER 93.16 (|d-55.4| 37.77)
@@ -1099,6 +1094,11 @@ launched v5_a2_realistic on GPU2 pid=2832409
 launched zero-shot scan on GPU3 pid=2833489
 
 === phase 4: stream progress (12 h) ===
+--- 14:48 ---
+[a0_gain_affine] [val] step 500: mode-C CER 70.64 | mode-B CER 41.67 | mode-A CER 68.22 | gain C -2.42 / B +26.55 | loss 3.8753
+[a1_gain_v31] [val] step 1000: mode-C CER 40.50 | mode-B CER 75.37 | mode-A CER 75.37 | gain C +34.86 / B +0.00 | loss 1.4733
+[a2_realistic] 
+[scan] [89/96] 9456349: held-out-session CER 7.59 (7 sessions)
 ```
 
 ### teachers_shard0.log
@@ -1176,4 +1176,97 @@ launched zero-shot scan on GPU3 pid=2833489
 [4/24] 33259248: zero-shot 5.65 -> best 5.43 (gain +0.23)
 [5/24] 3537794: zero-shot 9.42 -> best 9.42 (gain +0.00)
 [6/24] 41222064: zero-shot 6.19 -> best 6.19 (gain +0.00)
+```
+
+### v5_a0_gain_affine.log
+```
+[model] v1 | 6.26M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[episodes] frozen backbone -> mode-A episodes carry no gradient and are skipped; mode_probs renormalized to [0.0, 0.294, 0.706]
+[optim] backbone 5.29M @ lr 1.0e-03 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 104 context tensors keep their initialization
+[freeze] backbone 5.29M frozen | context modules 0.96M trainable (15.4% of total)
+[watchdog] armed
+step 100/8000 | loss 3.2626 | lr 1.01e-04 | 1.86 it/s
+step 200/8000 | loss 1.9270 | lr 2.01e-04 | 1.92 it/s
+step 300/8000 | loss 1.8282 | lr 3.01e-04 | 2.05 it/s
+step 400/8000 | loss 1.5304 | lr 4.01e-04 | 2.10 it/s
+step 500/8000 | loss 1.5080 | lr 5.01e-04 | 2.12 it/s
+[val] step 500: mode-C CER 70.64 | mode-B CER 41.67 | mode-A CER 68.22 | gain C -2.42 / B +26.55 | loss 3.8753
+[val] new best CER 70.64 -> saved best.pt
+step 600/8000 | loss 1.6368 | lr 6.01e-04 | 1.65 it/s
+step 700/8000 | loss 1.5064 | lr 7.01e-04 | 2.07 it/s
+```
+
+### v5_a1_gain_v31.log
+```
+[model] v1 | 5.94M params total (published backbone 5.29M + ICL module 0.65M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[episodes] frozen backbone -> mode-A episodes carry no gradient and are skipped; mode_probs renormalized to [0.0, 0.176, 0.824]
+[optim] backbone 5.29M @ lr 3.0e-05 | context 0.65M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 31 context tensors keep their initialization
+[freeze] backbone 5.29M frozen | context modules 0.65M trainable (10.9% of total)
+[watchdog] armed
+step 100/8000 | loss 3.5556 | lr 3.11e-06 | 3.97 it/s
+step 200/8000 | loss 2.4392 | lr 6.37e-06 | 4.54 it/s
+step 300/8000 | loss 2.1647 | lr 9.56e-06 | 4.54 it/s
+step 400/8000 | loss 2.0004 | lr 1.29e-05 | 4.46 it/s
+step 500/8000 | loss 1.7653 | lr 1.58e-05 | 4.44 it/s
+[val] step 500: mode-C CER 48.25 | mode-B CER 74.69 | mode-A CER 74.69 | gain C +26.44 / B +0.00 | loss 1.9355
+[val] new best CER 48.25 -> saved best.pt
+step 600/8000 | loss 1.7426 | lr 1.90e-05 | 3.57 it/s
+step 700/8000 | loss 1.6238 | lr 2.23e-05 | 4.67 it/s
+step 800/8000 | loss 1.7623 | lr 2.52e-05 | 4.55 it/s
+step 900/8000 | loss 1.6281 | lr 2.85e-05 | 4.62 it/s
+step 1000/8000 | loss 1.8394 | lr 3.00e-05 | 4.69 it/s
+[val] step 1000: mode-C CER 40.50 | mode-B CER 75.37 | mode-A CER 75.37 | gain C +34.86 / B +0.00 | loss 1.4733
+[val] new best CER 40.50 -> saved best.pt
+step 1200/8000 | loss 1.6502 | lr 2.99e-05 | 2.01 it/s
+step 1300/8000 | loss 1.5030 | lr 2.99e-05 | 4.53 it/s
+step 1400/8000 | loss 1.5459 | lr 2.98e-05 | 4.57 it/s
+```
+
+### v5_a2_realistic.log
+```
+[model] v1 | 6.26M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[episodes] frozen backbone -> mode-A episodes carry no gradient and are skipped; mode_probs renormalized to [0.0, 0.294, 0.706]
+[optim] backbone 5.29M @ lr 1.0e-03 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 104 context tensors keep their initialization
+[freeze] backbone 5.29M frozen | context modules 0.96M trainable (15.4% of total)
+[watchdog] armed
+step 100/8000 | loss 4.9355 | lr 1.01e-04 | 0.80 it/s
+step 200/8000 | loss 3.7268 | lr 2.01e-04 | 0.80 it/s
+```
+
+### v5_zeroshot_scan.log
+```
+[65/96] 72389321: held-out-session CER 9.17 (7 sessions)
+[66/96] 74403863: held-out-session CER 6.89 (10 sessions)
+[67/96] 76521819: held-out-session CER 23.23 (7 sessions)
+[68/96] 76574170: held-out-session CER 17.53 (10 sessions)
+[69/96] 7746087: held-out-session CER 8.05 (7 sessions)
+[70/96] 80214583: held-out-session CER 33.82 (2 sessions)
+[71/96] 80587505: held-out-session CER 8.72 (10 sessions)
+[72/96] 80745050: held-out-session CER 5.60 (4 sessions)
+[73/96] 80815303: held-out-session CER 5.21 (10 sessions)
+[74/96] 81522433: held-out-session CER 6.55 (10 sessions)
+[75/96] 81695116: held-out-session CER 4.22 (6 sessions)
+[76/96] 83774284: held-out-session CER 5.94 (10 sessions)
+[77/96] 84958031: held-out-session CER 5.49 (6 sessions)
+[78/96] 85881224: held-out-session CER 11.32 (10 sessions)
+[79/96] 86629437: held-out-session CER 5.70 (10 sessions)
+[80/96] 87998384: held-out-session CER 10.21 (7 sessions)
+[81/96] 89335547: held-out-session CER 6.72 (16 sessions)
+[82/96] 89415164: held-out-session CER 10.43 (9 sessions)
+[83/96] 90443344: held-out-session CER 11.99 (8 sessions)
+[84/96] 92249581: held-out-session CER 6.20 (10 sessions)
+[85/96] 92418081: held-out-session CER 9.78 (10 sessions)
+[86/96] 92903591: held-out-session CER 7.70 (10 sessions)
+[87/96] 93203007: held-out-session CER 5.60 (8 sessions)
+[88/96] 94305460: held-out-session CER 3.59 (9 sessions)
+[89/96] 9456349: held-out-session CER 7.59 (7 sessions)
 ```
