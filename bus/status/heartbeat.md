@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T00:44:22+08:00
+# heartbeat 2026-08-20T00:45:05+08:00
 
 ## gpu
 ```
-0, 2987 MiB, 24576 MiB, 42 %
-1, 3436 MiB, 24576 MiB, 88 %
-2, 12 MiB, 24576 MiB, 0 %
+0, 2987 MiB, 24576 MiB, 69 %
+1, 6096 MiB, 24576 MiB, 100 %
+2, 2985 MiB, 24576 MiB, 42 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2711,6 +2711,7 @@ AST OK
 === track 1: full-budget trunks on GPU 0/1/2 ===
 launched tf_ref_full on GPU0 (continue from tf_ref_lr1e3) pid=3824858
 launched tf_fold0_full on GPU1 (continue from tf_fold0) pid=3826044
+launched tf_fold1_full on GPU2 (continue from tf_fold1) pid=3827383
 ```
 
 ### d3_train.log
@@ -2900,6 +2901,26 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 [6/24] 41222064: zero-shot 6.19 -> best 6.19 (gain +0.00)
 ```
 
+### tf_fold0_full.log
+```
+96 training users -> 4 folds
+  fold 0:  24 users,  213 sessions | e.g. ['11372316', '14312238', '2396581']
+  fold 1:  24 users,  206 sessions | e.g. ['11944098', '1438774', '25847138']
+  fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
+  fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
+[split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 172708 training windows of 4.0s
+[data] monitor sets: 512 test windows, 512 fold-heldout windows
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[init] continued from /data2/chenyuxiang/runs/tf_fold0/last.pt (step 40000, fold 0); optimizer starts fresh
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+```
+
 ### tf_fold0.log
 ```
 step 36000/40000 | loss 1.5666 | lr 2.71e-05 | 379 win/s
@@ -2927,6 +2948,26 @@ step 39800/40000 | loss 1.5497 | lr 6.83e-08 | 397 win/s
 step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 [val] step 40000: 8-test-user CER 87.25 | fold-heldout-user CER 88.14  (their Tiny reference: 35.9)
 [done] best 8-test-user CER 83.05
+```
+
+### tf_fold1_full.log
+```
+96 training users -> 4 folds
+  fold 0:  24 users,  213 sessions | e.g. ['11372316', '14312238', '2396581']
+  fold 1:  24 users,  206 sessions | e.g. ['11944098', '1438774', '25847138']
+  fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
+  fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
+[split] fold 1: train on 72 users (631 sessions); HELD OUT 24 users (206 sessions)
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 174323 training windows of 4.0s
+[data] monitor sets: 512 test windows, 512 fold-heldout windows
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[init] continued from /data2/chenyuxiang/runs/tf_fold1/last.pt (step 40000, fold 1); optimizer starts fresh
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
 ```
 
 ### tf_fold1.log
@@ -2989,10 +3030,6 @@ step 40000/40000 | loss 1.5024 | lr 0.00e+00 | 618 win/s
 
 ### tf_fold3.log
 ```
-step 23200/40000 | loss 1.8514 | lr 4.10e-04 | 640 win/s
-step 23400/40000 | loss 1.8474 | lr 4.01e-04 | 641 win/s
-step 23600/40000 | loss 1.8360 | lr 3.93e-04 | 642 win/s
-step 23800/40000 | loss 1.8163 | lr 3.85e-04 | 643 win/s
 step 24000/40000 | loss 1.8163 | lr 3.77e-04 | 643 win/s
 [val] step 24000: 8-test-user CER 85.90 | fold-heldout-user CER 88.13  (their Tiny reference: 35.9)
 step 24200/40000 | loss 1.8202 | lr 3.69e-04 | 644 win/s
@@ -3014,6 +3051,25 @@ step 27000/40000 | loss 1.7311 | lr 2.62e-04 | 654 win/s
 step 27200/40000 | loss 1.7212 | lr 2.55e-04 | 654 win/s
 step 27400/40000 | loss 1.7178 | lr 2.48e-04 | 655 win/s
 step 27600/40000 | loss 1.7096 | lr 2.41e-04 | 656 win/s
+step 27800/40000 | loss 1.6989 | lr 2.33e-04 | 656 win/s
+step 28000/40000 | loss 1.7024 | lr 2.27e-04 | 657 win/s
+[val] step 28000: 8-test-user CER 88.13 | fold-heldout-user CER 89.33  (their Tiny reference: 35.9)
+step 28200/40000 | loss 1.6984 | lr 2.20e-04 | 657 win/s
+```
+
+### tf_ref_full.log
+```
+[split] REFERENCE run: all 96 training users
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 229266 training windows of 4.0s
+[data] monitor sets: 512 test windows, 0 fold-heldout windows
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[init] continued from /data2/chenyuxiang/runs/tf_ref_lr1e3/last.pt (step 40000, fold -1); optimizer starts fresh
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
 ```
 
 ### tf_ref.log
