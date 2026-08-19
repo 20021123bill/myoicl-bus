@@ -1,3 +1,4 @@
 AST OK
 === waiting for a worthwhile icl_dev checkpoint ===
   waiting (12) step 5600/12000 | loss 2.4000 | lr 1.79e-04 | 1.55 it/s
+using GPU3

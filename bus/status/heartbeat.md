@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T03:07:49+08:00
+# heartbeat 2026-08-20T03:08:33+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 87 %
-1, 6280 MiB, 24576 MiB, 99 %
-2, 2985 MiB, 24576 MiB, 52 %
-3, 2099 MiB, 24576 MiB, 0 %
+0, 3173 MiB, 24576 MiB, 57 %
+1, 6280 MiB, 24576 MiB, 100 %
+2, 2985 MiB, 24576 MiB, 37 %
+3, 527 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -2827,6 +2827,9 @@ AST OK
 ```
 AST OK
 === wait for phase 1 to finish (or die) ===
+phase-1 best gain: 0.37
+=== phase 2: symbol-tuning emphasis, warm-started from /data2/chenyuxiang/runs/icl_dev_fold2/best.pt ===
+phase 2 pid=4079332
 ```
 
 ### 543_phase2.log
