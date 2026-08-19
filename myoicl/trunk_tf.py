@@ -215,9 +215,14 @@ class CausalTransformerTrunk(nn.Module):
             P = prefix.shape[1]
             h = torch.cat([prefix.to(h.dtype), h], dim=1)
         T = h.shape[1]
+        # Pass BOTH the explicit causal mask and is_causal=True: the flag lets
+        # torch take the fused SDPA path instead of materialising a
+        # (batch, heads, T, T) score tensor. That matters a lot here -- with 3
+        # minutes of labelled support prepended, T is ~2-5k, and the
+        # materialised path would need tens of GB.
         mask = torch.triu(torch.ones(T, T, dtype=torch.bool, device=h.device),
                           diagonal=1)
-        h = self.encoder(h, mask=mask)
+        h = self.encoder(h, mask=mask, is_causal=True)
         h = self.final_drop(self.final_norm(h))
         if P:
             h = h[:, P:]                     # CTC scores the query only
