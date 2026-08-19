@@ -78,3 +78,5 @@ step 5100/12000 | loss 2.3966 | lr 1.99e-04 | 1.56 it/s
 step 5200/12000 | loss 2.5168 | lr 1.95e-04 | 1.56 it/s
 step 5300/12000 | loss 2.4880 | lr 1.91e-04 | 1.56 it/s
 step 5400/12000 | loss 2.4253 | lr 1.87e-04 | 1.55 it/s
+step 5500/12000 | loss 2.5163 | lr 1.83e-04 | 1.55 it/s
+[val] step 5500: mode-A 53.06 | mode-C 52.86 | gain C +0.19   (REAL novel subjects, fold 2)
