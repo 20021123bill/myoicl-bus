@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T18:29:42+08:00
+# heartbeat 2026-08-19T18:30:25+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 69 %
+0, 3173 MiB, 24576 MiB, 0 %
 1, 2985 MiB, 24576 MiB, 88 %
-2, 3169 MiB, 24576 MiB, 87 %
-3, 3169 MiB, 24576 MiB, 42 %
+2, 3169 MiB, 24576 MiB, 0 %
+3, 3169 MiB, 24576 MiB, 60 %
 ```
 
 ## jobs
@@ -2601,6 +2601,7 @@ checkpoint step 10000
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
   tf_fold0       step   6000 | argmax-blank  99.3% | p(blank) 0.982 | entropy 0.072
+  tf_fold1       step  12000 | argmax-blank  99.3% | p(blank) 0.978 | entropy 0.100
 ```
 
 ### d3_train.log
@@ -2792,7 +2793,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-step 2800/40000 | loss 2.6051 | lr 9.99e-04 | 372 win/s
 step 3000/40000 | loss 2.5137 | lr 9.98e-04 | 370 win/s
 step 3200/40000 | loss 2.4514 | lr 9.98e-04 | 368 win/s
 step 3400/40000 | loss 2.4192 | lr 9.97e-04 | 367 win/s
@@ -2817,13 +2817,11 @@ step 6400/40000 | loss 2.2611 | lr 9.67e-04 | 353 win/s
 step 6600/40000 | loss 2.2801 | lr 9.64e-04 | 353 win/s
 step 6800/40000 | loss 2.2708 | lr 9.61e-04 | 352 win/s
 step 7000/40000 | loss 2.2724 | lr 9.58e-04 | 351 win/s
+step 7200/40000 | loss 2.2532 | lr 9.55e-04 | 349 win/s
 ```
 
 ### tf_fold1.log
 ```
-step 8200/40000 | loss 2.2148 | lr 9.36e-04 | 620 win/s
-step 8400/40000 | loss 2.2055 | lr 9.32e-04 | 619 win/s
-step 8600/40000 | loss 2.2024 | lr 9.27e-04 | 619 win/s
 step 8800/40000 | loss 2.1811 | lr 9.23e-04 | 619 win/s
 step 9000/40000 | loss 2.1653 | lr 9.19e-04 | 619 win/s
 step 9200/40000 | loss 2.1571 | lr 9.14e-04 | 619 win/s
@@ -2846,13 +2844,13 @@ step 12000/40000 | loss 2.1227 | lr 8.39e-04 | 621 win/s
 [val] new best 83.72 -> best.pt
 step 12200/40000 | loss 2.1448 | lr 8.33e-04 | 621 win/s
 step 12400/40000 | loss 2.1522 | lr 8.26e-04 | 621 win/s
+step 12600/40000 | loss 2.1374 | lr 8.20e-04 | 621 win/s
+step 12800/40000 | loss 2.1139 | lr 8.14e-04 | 621 win/s
+step 13000/40000 | loss 2.1218 | lr 8.07e-04 | 621 win/s
 ```
 
 ### tf_fold2.log
 ```
-[val] step 8000: 8-test-user CER 84.90 | fold-heldout-user CER 87.25  (their Tiny reference: 35.9)
-step 8200/40000 | loss 2.1545 | lr 9.36e-04 | 623 win/s
-step 8400/40000 | loss 2.1771 | lr 9.32e-04 | 623 win/s
 step 8600/40000 | loss 2.1476 | lr 9.27e-04 | 623 win/s
 step 8800/40000 | loss 2.1604 | lr 9.23e-04 | 623 win/s
 step 9000/40000 | loss 2.1716 | lr 9.19e-04 | 623 win/s
@@ -2875,6 +2873,9 @@ step 12000/40000 | loss 2.0986 | lr 8.39e-04 | 625 win/s
 [val] step 12000: 8-test-user CER 83.57 | fold-heldout-user CER 85.62  (their Tiny reference: 35.9)
 step 12200/40000 | loss 2.0776 | lr 8.33e-04 | 624 win/s
 step 12400/40000 | loss 2.0788 | lr 8.26e-04 | 624 win/s
+step 12600/40000 | loss 2.0736 | lr 8.20e-04 | 624 win/s
+step 12800/40000 | loss 2.0699 | lr 8.14e-04 | 624 win/s
+step 13000/40000 | loss 2.0792 | lr 8.07e-04 | 624 win/s
 ```
 
 ### tf_ref.log
@@ -2908,9 +2909,6 @@ step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
 
 ### tf_ref_lr1e3.log
 ```
-step 7400/40000 | loss 2.2626 | lr 9.51e-04 | 469 win/s
-step 7600/40000 | loss 2.2791 | lr 9.47e-04 | 464 win/s
-step 7800/40000 | loss 2.2951 | lr 9.44e-04 | 460 win/s
 step 8000/40000 | loss 2.2761 | lr 9.40e-04 | 456 win/s
 [val] step 8000: 8-test-user CER 81.87 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 step 8200/40000 | loss 2.2681 | lr 9.36e-04 | 452 win/s
@@ -2933,6 +2931,9 @@ step 11200/40000 | loss 2.2409 | lr 8.62e-04 | 414 win/s
 step 11400/40000 | loss 2.2166 | lr 8.56e-04 | 412 win/s
 step 11600/40000 | loss 2.2235 | lr 8.51e-04 | 410 win/s
 step 11800/40000 | loss 2.1866 | lr 8.45e-04 | 409 win/s
+step 12000/40000 | loss 2.2100 | lr 8.39e-04 | 406 win/s
+[val] step 12000: 8-test-user CER 84.04 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+step 12200/40000 | loss 2.2040 | lr 8.33e-04 | 403 win/s
 ```
 
 ### v31_train.log
