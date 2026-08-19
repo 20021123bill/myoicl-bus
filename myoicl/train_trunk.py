@@ -36,23 +36,46 @@ from torch import nn
 from torch.utils.data import DataLoader
 
 
-def _cer_windows(model, pairs, cs, device, bf16, max_windows=160,
-                 window_length=60000, seed=0):
-    """Greedy CER over fixed windows drawn from `pairs`. Not the official
-    full-session decode -- a cheap, consistent training-time monitor. Final
-    numbers come from the full-session evaluator."""
-    from emg2qwerty.data import LabelData
+def build_eval_set(pairs, max_sessions=24, window_length=60000, seed=0):
+    """One fixed evaluation window set, built ONCE.
 
-    from .episodes import build_windowed_dataset, windowed_collate
-    from .metrics import CERAccumulator, greedy_ctc_decode
+    Rebuilding a ConcatDataset over 200+ sessions at every eval would reopen
+    every HDF5 file and dominate the step budget, so the monitor uses a fixed
+    subsample: at most one session per user, at most `max_sessions` of them.
+    Fixed across evals so the curve is comparable step to step; the final
+    paper numbers come from the full-session evaluator, not from this."""
+    from .episodes import build_windowed_dataset
 
-    ds = build_windowed_dataset(pairs, train=False, window_length=window_length,
+    seen, sub = set(), []
+    for u, path in pairs:
+        if u in seen:
+            continue
+        seen.add(u)
+        sub.append((u, path))
+        if len(sub) >= max_sessions:
+            break
+    if not sub:
+        return None
+    ds = build_windowed_dataset(sub, train=False, window_length=window_length,
                                 padding=(1800, 200), raw=True)
     if len(ds) == 0:
-        return float("nan")
+        return None
     rng = np.random.default_rng(seed)
-    idx = rng.permutation(len(ds))[:max_windows]
-    dl = DataLoader([ds[int(i)] for i in idx], batch_size=4, shuffle=False,
+    idx = rng.permutation(len(ds))[:160]
+    return [ds[int(i)] for i in idx]
+
+
+def _cer_windows(model, samples, cs, device, bf16):
+    """Greedy CER over a prebuilt window list. Not the official full-session
+    decode -- a cheap, consistent training-time monitor."""
+    from emg2qwerty.data import LabelData
+
+    from .episodes import windowed_collate
+    from .metrics import CERAccumulator, greedy_ctc_decode
+
+    if not samples:
+        return float("nan")
+    dl = DataLoader(samples, batch_size=4, shuffle=False,
                     collate_fn=windowed_collate)
     acc = CERAccumulator()
     model.eval()
@@ -142,6 +165,11 @@ def main():
                     num_workers=args.num_workers, collate_fn=windowed_collate,
                     persistent_workers=args.num_workers > 0, pin_memory=True)
 
+    eval_test = build_eval_set(test_pairs)
+    eval_held = build_eval_set(held_pairs) if held_pairs else None
+    print(f"[data] monitor sets: {len(eval_test or [])} test windows, "
+          f"{len(eval_held or [])} fold-heldout windows")
+
     model = build_trunk({"model": {"tf_size": args.size}},
                         num_classes=cs.num_classes).to(device)
     print(f"[model] {args.size}: {param_report(model)}")
@@ -201,9 +229,9 @@ def main():
                   flush=True)
             run = []
         if step % args.eval_every == 0 or step == args.max_steps:
-            cer_test = _cer_windows(model, test_pairs, cs, device, args.bf16)
-            cer_held = (_cer_windows(model, held_pairs, cs, device, args.bf16)
-                        if held_pairs else float("nan"))
+            cer_test = _cer_windows(model, eval_test, cs, device, args.bf16)
+            cer_held = (_cer_windows(model, eval_held, cs, device, args.bf16)
+                        if eval_held else float("nan"))
             print(f"[val] step {step}: 8-test-user CER {cer_test:.2f} | "
                   f"fold-heldout-user CER {cer_held:.2f}  "
                   f"(their Tiny reference: 35.9)", flush=True)
