@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:34:24+08:00
+# heartbeat 2026-08-19T16:35:07+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 65 %
-1, 3169 MiB, 24576 MiB, 71 %
-2, 2985 MiB, 24576 MiB, 49 %
+0, 3173 MiB, 24576 MiB, 84 %
+1, 3169 MiB, 24576 MiB, 37 %
+2, 2985 MiB, 24576 MiB, 54 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2463,8 +2463,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-96 training users -> 4 folds
-  fold 0:  24 users,  213 sessions | e.g. ['11372316', '14312238', '2396581']
   fold 1:  24 users,  206 sessions | e.g. ['11944098', '1438774', '25847138']
   fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
   fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
@@ -2486,6 +2484,10 @@ step 1000/40000 | loss 3.3800 | lr 1.50e-04 | 672 win/s
 step 1200/40000 | loss 3.3008 | lr 1.80e-04 | 653 win/s
 step 1400/40000 | loss 3.2304 | lr 2.10e-04 | 640 win/s
 step 1600/40000 | loss 3.1930 | lr 2.40e-04 | 623 win/s
+step 1800/40000 | loss 3.1578 | lr 2.70e-04 | 614 win/s
+step 2000/40000 | loss 3.1303 | lr 3.00e-04 | 604 win/s
+[val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
+[val] new best 100.00 -> best.pt
 ```
 
 ### tf_ref.log
@@ -2509,6 +2511,12 @@ step 1200/40000 | loss 3.2873 | lr 1.80e-04 | 706 win/s
 step 1400/40000 | loss 3.2406 | lr 2.10e-04 | 709 win/s
 step 1600/40000 | loss 3.1925 | lr 2.40e-04 | 711 win/s
 step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
+step 2000/40000 | loss 3.1196 | lr 3.00e-04 | 713 win/s
+[val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[val] new best 100.00 -> best.pt
+step 2200/40000 | loss 3.0739 | lr 3.00e-04 | 711 win/s
+step 2400/40000 | loss 3.0256 | lr 3.00e-04 | 711 win/s
+step 2600/40000 | loss 2.9942 | lr 3.00e-04 | 709 win/s
 ```
 
 ### tf_ref_lr1e3.log
@@ -2530,6 +2538,11 @@ step 800/40000 | loss 3.3188 | lr 4.00e-04 | 665 win/s
 step 1000/40000 | loss 3.2271 | lr 5.00e-04 | 647 win/s
 step 1200/40000 | loss 3.1712 | lr 6.00e-04 | 636 win/s
 step 1400/40000 | loss 3.1287 | lr 7.00e-04 | 625 win/s
+step 1600/40000 | loss 3.0640 | lr 8.00e-04 | 612 win/s
+step 1800/40000 | loss 3.0091 | lr 9.00e-04 | 604 win/s
+step 2000/40000 | loss 2.9135 | lr 1.00e-03 | 596 win/s
+[val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[val] new best 100.00 -> best.pt
 ```
 
 ### v31_train.log

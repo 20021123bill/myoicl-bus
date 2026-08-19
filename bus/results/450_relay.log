@@ -15,3 +15,9 @@
 [tf_ref] [val] new best 94.53 -> best.pt
 [tf_ref_lr1e3] 
 
+--- 16:30 ---
+0, 3171 MiB, 69 %|1, 3167 MiB, 68 %|2, 2983 MiB, 86 %|3, 12 MiB, 0 %|
+[tf_fold0] step 1600/40000 | loss 3.1930 | lr 2.40e-04 | 623 win/s
+[tf_ref] step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
+[tf_ref_lr1e3] step 1400/40000 | loss 3.1287 | lr 7.00e-04 | 625 win/s
+
