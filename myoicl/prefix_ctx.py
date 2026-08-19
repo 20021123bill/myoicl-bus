@@ -141,7 +141,11 @@ class PrefixContextEncoder(nn.Module):
         char_vecs = None
         if self.fused and logp is not None:
             V = logp.shape[-1]
-            post = logp.float().exp()
+            # clone before the in-place blank-zeroing: post is ExpBackward's
+            # output and in training the gradient flows through it (this
+            # exact clone exists in ctx_frame.py for the same reason; job 550
+            # crashed at loss.backward() because it was dropped here).
+            post = logp.float().exp().clone()
             post[..., self.num_classes - 1] = 0.0          # drop blank
             post = post / post.sum(-1, keepdim=True).clamp_min(1e-6)
             char_vecs = self.char_emb(torch.arange(V, device=dev))  # (V, d)
