@@ -97,3 +97,6 @@ step 14000/40000 | loss 2.0744 | lr 7.73e-04 | 623 win/s
 step 14200/40000 | loss 2.0607 | lr 7.67e-04 | 623 win/s
 step 14400/40000 | loss 2.0389 | lr 7.59e-04 | 623 win/s
 step 14600/40000 | loss 2.0507 | lr 7.52e-04 | 624 win/s
+step 14800/40000 | loss 2.0103 | lr 7.45e-04 | 624 win/s
+step 15000/40000 | loss 2.0102 | lr 7.38e-04 | 624 win/s
+step 15200/40000 | loss 2.0283 | lr 7.31e-04 | 624 win/s
