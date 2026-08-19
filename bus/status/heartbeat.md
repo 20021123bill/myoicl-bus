@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:35:07+08:00
+# heartbeat 2026-08-19T16:35:49+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 84 %
-1, 3169 MiB, 24576 MiB, 37 %
-2, 2985 MiB, 24576 MiB, 54 %
+0, 3173 MiB, 24576 MiB, 76 %
+1, 3169 MiB, 24576 MiB, 63 %
+2, 2985 MiB, 24576 MiB, 77 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2046,9 +2046,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 
 ### 440_trunk_train.log
 ```
-[tf_fold0] step 1600/40000 | loss 3.3047 | lr 2.40e-04 | 463 win/s
---- 15:54 ---
-[tf_ref] [val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 --- 15:59 ---
 [tf_ref] [val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
@@ -2071,6 +2068,9 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 --- 16:29 ---
 [tf_ref] step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
 [tf_fold0] step 1400/40000 | loss 3.2304 | lr 2.10e-04 | 640 win/s
+--- 16:34 ---
+[tf_ref] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 ```
 
 ### 450_log_relay.log
@@ -2118,6 +2118,12 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 [tf_fold0] [val] new best 100.00 -> best.pt
 [tf_ref] [val] new best 94.53 -> best.pt
 [tf_ref_lr1e3] 
+
+--- 16:30 ---
+0, 3171 MiB, 69 %|1, 3167 MiB, 68 %|2, 2983 MiB, 86 %|3, 12 MiB, 0 %|
+[tf_fold0] step 1600/40000 | loss 3.1930 | lr 2.40e-04 | 623 win/s
+[tf_ref] step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
+[tf_ref_lr1e3] step 1400/40000 | loss 3.1287 | lr 7.00e-04 | 625 win/s
 
 ```
 
@@ -2270,11 +2276,6 @@ pid=2942963
 
 ### 490_tf_100hz.log
 ```
-[split] official test users: 16 sessions (never trained on in either mode)
-[data] 229266 training windows of 4.0s
-[data] monitor sets: 160 test windows, 0 fold-heldout windows
-[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
-[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 --- tf_fold0 ---
 [split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
 [split] official test users: 16 sessions (never trained on in either mode)
@@ -2295,6 +2296,11 @@ pid=2942963
 [tf_ref] step 1600/40000 | loss 3.1925 | lr 2.40e-04 | 711 win/s
 [tf_fold0] step 1200/40000 | loss 3.3008 | lr 1.80e-04 | 653 win/s
 [tf_ref_lr1e3] step 1200/40000 | loss 3.1712 | lr 6.00e-04 | 636 win/s
+--- 16:33 ---
+[tf_ref] step 2400/40000 | loss 3.0256 | lr 3.00e-04 | 711 win/s
+        [val] new best 100.00 -> best.pt
+[tf_fold0] step 2000/40000 | loss 3.1303 | lr 3.00e-04 | 604 win/s
+[tf_ref_lr1e3] step 1800/40000 | loss 3.0091 | lr 9.00e-04 | 604 win/s
 ```
 
 ### 490_tf_100hz_relaunch.log
@@ -2463,7 +2469,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-  fold 1:  24 users,  206 sessions | e.g. ['11944098', '1438774', '25847138']
   fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
   fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
 [split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
@@ -2488,6 +2493,7 @@ step 1800/40000 | loss 3.1578 | lr 2.70e-04 | 614 win/s
 step 2000/40000 | loss 3.1303 | lr 3.00e-04 | 604 win/s
 [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 [val] new best 100.00 -> best.pt
+step 2200/40000 | loss 3.0763 | lr 3.00e-04 | 593 win/s
 ```
 
 ### tf_ref.log
