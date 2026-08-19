@@ -20,3 +20,7 @@ pid=2942963
 [tf_ref] step 200/40000 | loss 84.3919 | lr 3.00e-05 | 617 win/s
 [tf_ref_lr1e3] no steps yet
 [tf_fold0] no steps yet
+--- 16:30 ---
+[tf_ref] step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
+[tf_ref_lr1e3] step 1400/40000 | loss 3.1287 | lr 7.00e-04 | 625 win/s
+[tf_fold0] step 1400/40000 | loss 3.2304 | lr 2.10e-04 | 640 win/s

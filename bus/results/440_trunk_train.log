@@ -37,3 +37,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 --- 16:24 ---
 [tf_ref] step 800/40000 | loss 3.4943 | lr 1.20e-04 | 698 win/s
 [tf_fold0] step 800/40000 | loss 3.4897 | lr 1.20e-04 | 683 win/s
+--- 16:29 ---
+[tf_ref] step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
+[tf_fold0] step 1400/40000 | loss 3.2304 | lr 2.10e-04 | 640 win/s
