@@ -187,3 +187,5 @@ step 31800/103000 | loss 1.6884 | lr 5.60e-04 | 607 win/s
 step 32000/103000 | loss 1.6773 | lr 5.59e-04 | 607 win/s
 [val] step 32000: 8-test-user CER 48.63 | fold-heldout-user CER 56.23  (their Tiny reference: 35.9)
 step 32200/103000 | loss 1.7150 | lr 5.57e-04 | 607 win/s
+step 32400/103000 | loss 1.6829 | lr 5.55e-04 | 608 win/s
+step 32600/103000 | loss 1.6770 | lr 5.53e-04 | 608 win/s
