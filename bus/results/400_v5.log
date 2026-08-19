@@ -156,3 +156,11 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
   ^^ a1_gain_v31 LOOKS BROKEN
 [a2_realistic] [val] step 3500: mode-C CER 75.41 | mode-B CER 76.18 | mode-A CER 79.80 | gain C +4.38 / B +3.62 | loss 3.9540
 [scan] === UNSEEN users (8 official test): 55.39 published ===
+--- 16:08 ---
+[a0_gain_affine] [val] step 6500: mode-C CER 66.73 | mode-B CER 90.14 | mode-A CER 68.57 | gain C +1.83 / B -21.58 | loss 3.9261
+[a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
+  ^^ a1_gain_v31 LOOKS BROKEN
+[a2_realistic] [val] step 4000: mode-C CER 68.16 | mode-B CER 76.63 | mode-A CER 79.45 | gain C +11.29 / B +2.83 | loss 3.2769
+[scan] === UNSEEN users (8 official test): 55.39 published ===
