@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:19:31+08:00
+# heartbeat 2026-08-19T16:20:13+08:00
 
 ## gpu
 ```
-0, 2987 MiB, 24576 MiB, 71 %
-1, 2983 MiB, 24576 MiB, 3 %
-2, 12 MiB, 24576 MiB, 0 %
+0, 2987 MiB, 24576 MiB, 91 %
+1, 2983 MiB, 24576 MiB, 69 %
+2, 2983 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2278,6 +2278,7 @@ frame rate OK
 === relaunch: ref(3e-4) / fold0(3e-4) / ref(1e-3) ===
 launched tf_ref on GPU0 lr=3e-4 fold=-1 pid=2975197
 launched tf_fold0 on GPU1 lr=3e-4 fold=0 pid=2976588
+launched tf_ref_lr1e3 on GPU2 lr=1e-3 fold=-1 pid=2978025
 ```
 
 ### d3_train.log
@@ -2417,60 +2418,35 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-step 400/40000 | loss 4.1474 | lr 6.00e-05 | 433 win/s
-step 600/40000 | loss 3.6532 | lr 9.00e-05 | 435 win/s
-step 800/40000 | loss 3.5339 | lr 1.20e-04 | 445 win/s
-step 1000/40000 | loss 3.4651 | lr 1.50e-04 | 449 win/s
-step 1200/40000 | loss 3.4378 | lr 1.80e-04 | 453 win/s
-step 1400/40000 | loss 3.3565 | lr 2.10e-04 | 458 win/s
-step 1600/40000 | loss 3.3047 | lr 2.40e-04 | 463 win/s
-step 1800/40000 | loss 3.2487 | lr 2.70e-04 | 462 win/s
-step 2000/40000 | loss 3.2194 | lr 3.00e-04 | 466 win/s
-[val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
-[val] new best 100.00 -> best.pt
-step 2200/40000 | loss 3.1720 | lr 3.00e-04 | 465 win/s
-step 2400/40000 | loss 3.1504 | lr 3.00e-04 | 468 win/s
-step 2600/40000 | loss 3.1161 | lr 3.00e-04 | 469 win/s
-step 2800/40000 | loss 3.0868 | lr 3.00e-04 | 465 win/s
-step 3000/40000 | loss 3.0572 | lr 2.99e-04 | 461 win/s
-step 3200/40000 | loss 3.0273 | lr 2.99e-04 | 458 win/s
-step 3400/40000 | loss 2.9952 | lr 2.99e-04 | 461 win/s
-step 3600/40000 | loss 2.9728 | lr 2.99e-04 | 463 win/s
-step 3800/40000 | loss 2.9388 | lr 2.98e-04 | 464 win/s
-step 4000/40000 | loss 2.9077 | lr 2.98e-04 | 466 win/s
-[val] step 4000: 8-test-user CER 93.44 | fold-heldout-user CER 94.28  (their Tiny reference: 35.9)
-[val] new best 93.44 -> best.pt
-step 4200/40000 | loss 2.8745 | lr 2.98e-04 | 465 win/s
-step 4400/40000 | loss 2.8548 | lr 2.97e-04 | 466 win/s
+96 training users -> 4 folds
+  fold 0:  24 users,  213 sessions | e.g. ['11372316', '14312238', '2396581']
+  fold 1:  24 users,  206 sessions | e.g. ['11944098', '1438774', '25847138']
+  fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
+  fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
+[split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 172708 training windows of 4.0s
+[data] monitor sets: 160 test windows, 160 fold-heldout windows
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
 ```
 
 ### tf_ref.log
 ```
-step 2200/40000 | loss 3.1655 | lr 3.00e-04 | 702 win/s
-step 2400/40000 | loss 3.1317 | lr 3.00e-04 | 664 win/s
-step 2600/40000 | loss 3.1030 | lr 3.00e-04 | 643 win/s
-step 2800/40000 | loss 3.0774 | lr 3.00e-04 | 627 win/s
-step 3000/40000 | loss 3.0469 | lr 2.99e-04 | 613 win/s
-step 3200/40000 | loss 3.0115 | lr 2.99e-04 | 603 win/s
-step 3400/40000 | loss 2.9829 | lr 2.99e-04 | 593 win/s
-step 3600/40000 | loss 2.9581 | lr 2.99e-04 | 586 win/s
-step 3800/40000 | loss 2.9303 | lr 2.98e-04 | 580 win/s
-step 4000/40000 | loss 2.9071 | lr 2.98e-04 | 578 win/s
-[val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[val] new best 94.53 -> best.pt
-step 4200/40000 | loss 2.8733 | lr 2.98e-04 | 573 win/s
-step 4400/40000 | loss 2.8545 | lr 2.97e-04 | 568 win/s
-step 4600/40000 | loss 2.8270 | lr 2.97e-04 | 562 win/s
-step 4800/40000 | loss 2.7896 | lr 2.96e-04 | 555 win/s
-step 5000/40000 | loss 2.7656 | lr 2.95e-04 | 547 win/s
-step 5200/40000 | loss 2.7427 | lr 2.95e-04 | 542 win/s
-step 5400/40000 | loss 2.7165 | lr 2.94e-04 | 540 win/s
-step 5600/40000 | loss 2.6972 | lr 2.93e-04 | 538 win/s
-step 5800/40000 | loss 2.6697 | lr 2.93e-04 | 537 win/s
-step 6000/40000 | loss 2.6498 | lr 2.92e-04 | 536 win/s
-[val] step 6000: 8-test-user CER 90.24 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[val] new best 90.24 -> best.pt
-step 6200/40000 | loss 2.6230 | lr 2.91e-04 | 534 win/s
+[split] REFERENCE run: all 96 training users
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 229266 training windows of 4.0s
+[data] monitor sets: 160 test windows, 0 fold-heldout windows
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
 ```
 
 ### tf_ref_lr1e3.log
@@ -2489,6 +2465,8 @@ step 400/40000 | loss 3.6036 | lr 2.00e-04 | 229 win/s
 step 600/40000 | loss 3.4864 | lr 3.00e-04 | 259 win/s
 step 800/40000 | loss 3.3823 | lr 4.00e-04 | 277 win/s
 step 1000/40000 | loss 3.2856 | lr 5.00e-04 | 290 win/s
+step 1200/40000 | loss 3.2291 | lr 6.00e-04 | 299 win/s
+step 1400/40000 | loss 3.2029 | lr 7.00e-04 | 306 win/s
 ```
 
 ### v31_train.log
