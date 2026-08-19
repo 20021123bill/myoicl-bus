@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:27:46+08:00
+# heartbeat 2026-08-19T15:28:28+08:00
 
 ## gpu
 ```
-0, 2411 MiB, 24576 MiB, 0 %
-1, 1369 MiB, 24576 MiB, 36 %
+0, 2411 MiB, 24576 MiB, 49 %
+1, 1369 MiB, 24576 MiB, 12 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 7431 MiB, 24576 MiB, 0 %
+3, 7433 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -1173,6 +1173,22 @@ rollback copy: /data2/chenyuxiang/runs/backup_myoicl_20260819_152746
 AST OK
 
 === regression: the NO-remix path must be untouched ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+no-remix model OK | trainable 6.23M -> frozen leaves 0.93M context params
+
+=== smoke: the remix head itself (CPU) ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[build] remix params 217.6k
+  [ok ] remix is identity at init  max|M-I| = 0.00e+00
+  [ok ] logits unchanged at init  max|da| = 0.00e+00
+  [FAIL] every remix parameter gets gradient  dead: ['s_ref', 'logit_scale', 'mlp.0.weight', 'mlp.0.bias']
+  [ok ] assign head recovers a known channel roll  accuracy 100%  (roll=5)
+  [ok ] freeze_backbone leaves remix trainable
+
+SMOKE FAILED: ['every remix parameter gets gradient']
+SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_20260819_152746
 ```
 
 ### 420_eval_v5a1_real_users.log
