@@ -27,3 +27,4 @@ phase 2 pid=4079332
 [04:58] [val] step 10000: mode-A 50.11 | mode-C 50.08 | gain C +0.02   (REAL novel subjects, fold 2)
 [05:03] [val] step 10500: mode-A 49.27 | mode-C 49.71 | gain C -0.44   (REAL novel subjects, fold 2)
 [05:08] [val] step 11000: mode-A 51.72 | mode-C 51.37 | gain C +0.35   (REAL novel subjects, fold 2)
+[05:13] [val] step 11500: mode-A 46.72 | mode-C 47.36 | gain C -0.64   (REAL novel subjects, fold 2)
