@@ -80,3 +80,5 @@ step 11200/40000 | loss 2.1631 | lr 8.62e-04 | 335 win/s
 step 11400/40000 | loss 2.1464 | lr 8.56e-04 | 334 win/s
 step 11600/40000 | loss 2.1567 | lr 8.51e-04 | 333 win/s
 step 11800/40000 | loss 2.1643 | lr 8.45e-04 | 332 win/s
+step 12000/40000 | loss 2.1422 | lr 8.39e-04 | 331 win/s
+[val] step 12000: 8-test-user CER 84.62 | fold-heldout-user CER 85.89  (their Tiny reference: 35.9)
