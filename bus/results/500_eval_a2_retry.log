@@ -1,0 +1,13 @@
+=== was anything OOM-killed? ===
+(no OOM evidence readable, or dmesg not permitted)
+              总计         已用        空闲      共享    缓冲/缓存    可用
+内存：        2015          72         115           2        1827        1929
+
+0, 3173 MiB, 62 %
+1, 3169 MiB, 94 %
+2, 2985 MiB, 70 %
+3, 12 MiB, 0 %
+
+=== evaluating /data2/chenyuxiang/runs/v5_a2/best.pt sequentially on GPU3 ===
+
+############ k=12 (~48s) -- started 16:47 ############

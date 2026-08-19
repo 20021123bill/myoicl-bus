@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:47:10+08:00
+# heartbeat 2026-08-19T16:47:53+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 79 %
-1, 3169 MiB, 24576 MiB, 49 %
-2, 2985 MiB, 24576 MiB, 77 %
+0, 3173 MiB, 24576 MiB, 44 %
+1, 3169 MiB, 24576 MiB, 94 %
+2, 2985 MiB, 24576 MiB, 70 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -65,6 +65,7 @@
 471_prefix_stride_fix                    DONE rc=127
 480_tf_lr_probe                          DONE rc=127
 490_tf_100hz_relaunch                    DONE rc=127
+500_eval_a2_retry                        DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2389,6 +2390,23 @@ pid=2942963
         [val] new best 100.00 -> best.pt
 [tf_ref_lr1e3] step 2400/40000 | loss 2.7516 | lr 1.00e-03 | 584 win/s
         [val] new best 100.00 -> best.pt
+```
+
+### 500_eval_a2_retry.log
+```
+=== was anything OOM-killed? ===
+(no OOM evidence readable, or dmesg not permitted)
+              总计         已用        空闲      共享    缓冲/缓存    可用
+内存：        2015          72         115           2        1827        1929
+
+0, 3173 MiB, 62 %
+1, 3169 MiB, 94 %
+2, 2985 MiB, 70 %
+3, 12 MiB, 0 %
+
+=== evaluating /data2/chenyuxiang/runs/v5_a2/best.pt sequentially on GPU3 ===
+
+############ k=12 (~48s) -- started 16:47 ############
 ```
 
 ### d3_train.log
