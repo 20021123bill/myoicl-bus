@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T05:18:27+08:00
+# heartbeat 2026-08-20T05:19:11+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 31 %
-1, 3125 MiB, 24576 MiB, 68 %
-2, 2985 MiB, 24576 MiB, 0 %
-3, 891 MiB, 24576 MiB, 17 %
+0, 3173 MiB, 24576 MiB, 76 %
+1, 3125 MiB, 24576 MiB, 52 %
+2, 2985 MiB, 24576 MiB, 64 %
+3, 12 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -2941,6 +2941,15 @@ flat gain==0 -> support is ignored; positive gain, zero slope ->
 [saved] /data2/chenyuxiang/runs/final_perm_probe.json
 
 === identity K-curve on last.pt (deployment) ===
+[ckpt] /data2/chenyuxiang/runs/icl_dev2_fold2/last.pt step 12000
+k=  4 ( 16s): mode-A  42.82 | mode-C  42.80 | gain  +0.02 (30 episodes)
+k= 12 ( 48s): mode-A  42.66 | mode-C  42.73 | gain  -0.08 (30 episodes)
+k= 23 ( 92s): mode-A  43.12 | mode-C  44.03 | gain  -0.90 (30 episodes)
+k= 45 (180s): mode-A  43.32 | mode-C  43.48 | gain  -0.16 (30 episodes)
+K-curve slope of gain: -0.0054 CER per support window
+verdict: positive gain AND positive slope -> the mechanism holds;
+flat gain==0 -> support is ignored; positive gain, zero slope -> 
+=== 545 done ===
 ```
 
 ### d3_train.log
