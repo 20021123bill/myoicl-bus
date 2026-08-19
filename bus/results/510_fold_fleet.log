@@ -402,3 +402,12 @@ launched tf_fold2 on GPU3 pid=3044556
         [val] step 32000: 8-test-user CER 87.51 | fold-heldout-user CER 87.80  (their Tiny reference: 35.9)
 [tf_fold2] step 32000/40000 | loss 1.5925 | lr 1.05e-04 | 619 win/s
         [val] step 32000: 8-test-user CER 86.58 | fold-heldout-user CER 88.43  (their Tiny reference: 35.9)
+--- 20:46 ---
+[tf_ref_lr1e3] step 21800/40000 | loss 1.9839 | lr 4.67e-04 | 351 win/s
+        [val] step 20000: 8-test-user CER 84.32 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 17000/40000 | loss 2.0342 | lr 6.62e-04 | 322 win/s
+        [val] step 16000: 8-test-user CER 84.97 | fold-heldout-user CER 85.79  (their Tiny reference: 35.9)
+[tf_fold1] step 32600/40000 | loss 1.6426 | lr 9.07e-05 | 618 win/s
+        [val] step 32000: 8-test-user CER 87.51 | fold-heldout-user CER 87.80  (their Tiny reference: 35.9)
+[tf_fold2] step 32600/40000 | loss 1.5767 | lr 9.07e-05 | 619 win/s
+        [val] step 32000: 8-test-user CER 86.58 | fold-heldout-user CER 88.43  (their Tiny reference: 35.9)
