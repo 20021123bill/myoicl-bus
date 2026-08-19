@@ -19,3 +19,4 @@ phase 2 pid=4079332
 [04:18] [val] step 6500: mode-A 46.04 | mode-C 45.61 | gain C +0.43   (REAL novel subjects, fold 2)
 [04:23] [val] step 6500: mode-A 46.04 | mode-C 45.61 | gain C +0.43   (REAL novel subjects, fold 2)
 [04:28] [val] step 7000: mode-A 48.94 | mode-C 48.79 | gain C +0.15   (REAL novel subjects, fold 2)
+[04:33] [val] step 7500: mode-A 49.76 | mode-C 49.56 | gain C +0.20   (REAL novel subjects, fold 2)
