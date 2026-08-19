@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T05:42:10+08:00
+# heartbeat 2026-08-20T05:42:54+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 0 %
-1, 3125 MiB, 24576 MiB, 70 %
-2, 2985 MiB, 24576 MiB, 48 %
+0, 3173 MiB, 24576 MiB, 63 %
+1, 3125 MiB, 24576 MiB, 69 %
+2, 2985 MiB, 24576 MiB, 71 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3016,6 +3016,9 @@ launched icl_fused_fold2 pid=146692
 [audit] step 0: mode-A 62.63 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 Traceback (most recent call last):
   File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+[05:42] Traceback (most recent call last):
+fused run ended
+=== 550 done ===
 ```
 
 ### d3_train.log
