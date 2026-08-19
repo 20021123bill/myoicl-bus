@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:10:44+08:00
+# heartbeat 2026-08-19T17:11:27+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 60 %
-1, 2985 MiB, 24576 MiB, 51 %
-2, 3169 MiB, 24576 MiB, 0 %
-3, 2983 MiB, 24576 MiB, 70 %
+0, 2989 MiB, 24576 MiB, 82 %
+1, 2985 MiB, 24576 MiB, 83 %
+2, 3169 MiB, 24576 MiB, 59 %
+3, 2983 MiB, 24576 MiB, 87 %
 ```
 
 ## jobs
@@ -2484,9 +2484,6 @@ launched tf_fold2 on GPU3 pid=3044556
 
 ### 510_fold_fleet_lr1e3.log
 ```
-=== stop tf_ref (3e-4) and tf_fold0 (3e-4) ===
-killed 2976588 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
-killed 2976795 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
 killed 2976858 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
 killed 2976921 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
 0, 16 MiB
@@ -2506,6 +2503,12 @@ launched tf_fold2 on GPU3 pid=3044556
 [tf_fold0] step 600/40000 | loss 3.4617 | lr 3.00e-04 | 425 win/s
 [tf_fold1] step 800/40000 | loss 3.3023 | lr 4.00e-04 | 597 win/s
 [tf_fold2] step 600/40000 | loss 3.3959 | lr 3.00e-04 | 610 win/s
+--- 17:10 ---
+[tf_ref_lr1e3] step 6000/40000 | loss 2.3262 | lr 9.73e-04 | 509 win/s
+        [val] step 6000: 8-test-user CER 84.01 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 1000/40000 | loss 3.2248 | lr 5.00e-04 | 412 win/s
+[tf_fold1] step 1400/40000 | loss 3.1176 | lr 7.00e-04 | 610 win/s
+[tf_fold2] step 1400/40000 | loss 3.1016 | lr 7.00e-04 | 621 win/s
 ```
 
 ### 520_deploy_symbol_icl.log
