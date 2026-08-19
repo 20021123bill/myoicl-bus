@@ -58,7 +58,8 @@ def main():
     trunk.load_state_dict(ck["trunk"]); trunk.eval()
     enc = PrefixContextEncoder(trunk.d_model, cs.num_classes,
                                sig_stride=int(ta.get("sig_stride", 8)),
-                               max_prefix=int(ta.get("max_prefix", 4096))
+                               max_prefix=int(ta.get("max_prefix", 4096)),
+                               fused=bool(ta.get("fused_prefix", False))
                                ).to(dev)
     enc.load_state_dict(ck["enc"]); enc.eval()
     print(f"[ckpt] {args.ckpt} step {ck['step']}")

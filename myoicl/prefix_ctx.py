@@ -71,6 +71,7 @@ class PrefixContextEncoder(nn.Module):
         sig_stride: int = 8,
         max_prefix: int = 4096,
         dropout: float = 0.1,
+        fused: bool = False,
     ) -> None:
         super().__init__()
         self.d_model = int(d_model)
@@ -83,6 +84,19 @@ class PrefixContextEncoder(nn.Module):
         # from a query frame, and the prefix would read as more query.
         self.seg = nn.Embedding(3, d_model)          # 0 sig, 1 label, 2 sep
         self.sig_proj = nn.Linear(d_model, d_model)
+        # fused mode (2026-08-20, the overnight diagnosis): the bag-to-bag
+        # prefix ([all sig | SEP | all chars]) leaves the WITHIN-window
+        # gesture->character correspondence latent, so attention would have to
+        # solve the CTC alignment problem unsupervised before it could do any
+        # induction -- and measurably it never did (perm-probe -1.98/-3.04 at
+        # end of phase 2). Fused mode binds the pair INSIDE each token:
+        #     token_t = sig_proj(feat_t) + val_proj(softchar_t) + seg
+        # where softchar_t is the trunk's OWN CTC posterior at frame t, blank
+        # excluded and renormalised -- v3's ctx_frame soft alignment, reborn
+        # in prefix form. The (x, y) binding induction needs is then explicit.
+        self.fused = bool(fused)
+        if self.fused:
+            self.val_proj = nn.Linear(d_model, d_model)
         self.drop = nn.Dropout(dropout)
         self.norm = nn.LayerNorm(d_model)
         nn.init.normal_(self.char_emb.weight, std=0.02)
@@ -110,6 +124,10 @@ class PrefixContextEncoder(nn.Module):
 
         with torch.no_grad() if not self.training else _null():
             feats = trunk.encode(support_raw)              # (K, T, d)
+            logp = None
+            if self.fused:
+                # full forward for CTC posteriors -- the soft alignment
+                logp = trunk(support_raw).transpose(0, 1)  # (K, T, V)
         if support_lens is not None:
             flens = trunk.output_length(support_lens.to(dev))
         else:
@@ -120,10 +138,21 @@ class PrefixContextEncoder(nn.Module):
         lab_e = self.seg(torch.tensor(1, device=dev))
         sep_e = self.seg(torch.tensor(2, device=dev)).view(1, -1)
 
+        char_vecs = None
+        if self.fused and logp is not None:
+            V = logp.shape[-1]
+            post = logp.float().exp()
+            post[..., self.num_classes - 1] = 0.0          # drop blank
+            post = post / post.sum(-1, keepdim=True).clamp_min(1e-6)
+            char_vecs = self.char_emb(torch.arange(V, device=dev))  # (V, d)
+
         blocks = []
         for k in range(K):
             n = int(flens[k].clamp_min(1))
             s = self.sig_proj(feats[k, :n:self.sig_stride]) + sig_e
+            if self.fused and char_vecs is not None:
+                soft = post[k, :n:self.sig_stride] @ char_vecs   # (M, d)
+                s = s + self.val_proj(soft.to(s.dtype))
             ids = torch.as_tensor(support_ids[k], device=dev).reshape(-1).long()
             ids = ids.clamp(0, self.num_classes - 1)
             c = self.char_emb(ids) + lab_e if ids.numel() else \

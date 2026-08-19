@@ -213,6 +213,11 @@ def main():
     ap.add_argument("--n-query", type=int, default=8)
     ap.add_argument("--sig-stride", type=int, default=8)
     ap.add_argument("--max-prefix", type=int, default=4096)
+    ap.add_argument("--fused-prefix", action="store_true",
+                    help="bind (signal, soft-aligned char) inside each prefix "
+                         "token via the trunk's own CTC posteriors -- the fix "
+                         "for the 2026-08-20 diagnosis (bag-to-bag prefixes "
+                         "leave the within-window correspondence latent)")
     ap.add_argument("--p-synth", type=float, default=0.5,
                     help="fraction of episodes that ALSO get a synthetic "
                          "subject transform. 0 = real novel subjects only.")
@@ -305,7 +310,10 @@ def main():
 
     enc = PrefixContextEncoder(trunk.d_model, cs.num_classes,
                                sig_stride=args.sig_stride,
-                               max_prefix=args.max_prefix).to(dev)
+                               max_prefix=args.max_prefix,
+                               fused=args.fused_prefix).to(dev)
+    if args.fused_prefix:
+        print("[prefix] FUSED mode: per-token (signal + soft-aligned char)")
     if args.init_enc_from:
         prev = torch.load(args.init_enc_from, map_location="cpu")
         enc.load_state_dict(prev["enc"])
