@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:04:17+08:00
+# heartbeat 2026-08-19T17:04:59+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 76 %
-1, 2985 MiB, 24576 MiB, 75 %
-2, 2985 MiB, 24576 MiB, 23 %
-3, 2983 MiB, 24576 MiB, 65 %
+0, 2989 MiB, 24576 MiB, 69 %
+1, 2985 MiB, 24576 MiB, 93 %
+2, 2985 MiB, 24576 MiB, 93 %
+3, 2983 MiB, 24576 MiB, 37 %
 ```
 
 ## jobs
@@ -2708,6 +2708,8 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
+step 200/40000 | loss 43.9787 | lr 1.00e-04 | 428 win/s
+step 400/40000 | loss 3.6596 | lr 2.00e-04 | 427 win/s
 ```
 
 ### tf_fold1.log
@@ -2727,6 +2729,9 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
+step 200/40000 | loss 43.6187 | lr 1.00e-04 | 541 win/s
+step 400/40000 | loss 3.6463 | lr 2.00e-04 | 571 win/s
+step 600/40000 | loss 3.4346 | lr 3.00e-04 | 590 win/s
 ```
 
 ### tf_fold2.log
@@ -2746,6 +2751,9 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
+step 200/40000 | loss 50.8030 | lr 1.00e-04 | 562 win/s
+step 400/40000 | loss 3.6495 | lr 2.00e-04 | 597 win/s
+step 600/40000 | loss 3.3959 | lr 3.00e-04 | 610 win/s
 ```
 
 ### tf_ref.log
@@ -2779,8 +2787,6 @@ step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
 
 ### tf_ref_lr1e3.log
 ```
-step 1000/40000 | loss 3.2271 | lr 5.00e-04 | 647 win/s
-step 1200/40000 | loss 3.1712 | lr 6.00e-04 | 636 win/s
 step 1400/40000 | loss 3.1287 | lr 7.00e-04 | 625 win/s
 step 1600/40000 | loss 3.0640 | lr 8.00e-04 | 612 win/s
 step 1800/40000 | loss 3.0091 | lr 9.00e-04 | 604 win/s
@@ -2804,6 +2810,8 @@ step 4400/40000 | loss 2.3658 | lr 9.90e-04 | 542 win/s
 step 4600/40000 | loss 2.3704 | lr 9.88e-04 | 536 win/s
 step 4800/40000 | loss 2.3765 | lr 9.87e-04 | 533 win/s
 step 5000/40000 | loss 2.3614 | lr 9.85e-04 | 536 win/s
+step 5200/40000 | loss 2.3498 | lr 9.83e-04 | 531 win/s
+step 5400/40000 | loss 2.3413 | lr 9.80e-04 | 526 win/s
 ```
 
 ### v31_train.log
