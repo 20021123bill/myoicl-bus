@@ -61,3 +61,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 --- 17:04 ---
 [tf_ref] [val] step 6000: 8-test-user CER 83.37 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] step 400/40000 | loss 3.6596 | lr 2.00e-04 | 427 win/s
+--- 17:09 ---
+[tf_ref] [val] step 6000: 8-test-user CER 83.37 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 1000/40000 | loss 3.2248 | lr 5.00e-04 | 412 win/s
