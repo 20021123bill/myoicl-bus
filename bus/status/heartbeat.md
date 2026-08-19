@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:40:04+08:00
+# heartbeat 2026-08-19T16:40:47+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 77 %
-1, 3169 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 72 %
+0, 3173 MiB, 24576 MiB, 62 %
+1, 3169 MiB, 24576 MiB, 60 %
+2, 2985 MiB, 24576 MiB, 68 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2048,9 +2048,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 ### 440_trunk_train.log
 ```
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
---- 15:59 ---
-[tf_ref] [val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 --- 16:04 ---
 [tf_ref] [val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
@@ -2070,6 +2067,9 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 [tf_ref] step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
 [tf_fold0] step 1400/40000 | loss 3.2304 | lr 2.10e-04 | 640 win/s
 --- 16:34 ---
+[tf_ref] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
+--- 16:39 ---
 [tf_ref] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 ```
@@ -2230,6 +2230,35 @@ SMOKE OK
 === 470 done: prefix ICL trainer deployed, waiting on tf_fold0 ===
 ```
 
+### 471_prefix_icl.log
+```
+=== prefix length budget ===
+encoder params 29.8k
+  {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
+  {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
+  {'k_windows': 18, 'seconds': 72, 'tokens_uncapped': 1710, 'tokens': 1710, 'capped': False}
+  {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
+  {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
+
+=== contamination guard must FIRE on a reference backbone ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[trunk] /data2/chenyuxiang/runs/tf_ref/last.pt step 2000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+[FATAL] backbone was trained with --fold -1 but the cohort is fold 0: it has SEEN these users, so the episodes would contain no adaptation headroom
+(expected: [FATAL] backbone was trained with --fold -1 ...)
+
+=== CPU smoke: one real episode end to end ===
+cohort 24 multi-session users of 24
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+episode user 89335547: support (11960, 6, 2, 16) query (11898, 2, 2, 16)
+prefix (1, 615, 128)  (615 tokens from 6 windows)
+mode A (593, 2, 99) vs mode C (593, 2, 99) | max|dlogit| 3.309
+ctc loss 235.4557 | prefix-encoder grad-sum 2.731e+04
+SMOKE OK
+=== 471 done: prefix ICL trainer deployed, waiting on tf_fold0 ===
+```
+
 ### 471_prefix_stride_fix.log
 ```
 === prefix length budget ===
@@ -2261,13 +2290,6 @@ SMOKE OK
 
 ### 480_lr_probe.log
 ```
-pid=2942963
-[split] REFERENCE run: all 96 training users
-[split] official test users: 16 sessions (never trained on in either mode)
-[data] 183349 training windows of 5.0s
-[data] monitor sets: 160 test windows, 0 fold-heldout windows
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
 
@@ -2286,6 +2308,13 @@ pid=2942963
 [tf_ref] step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
 [tf_ref_lr1e3] step 1400/40000 | loss 3.1287 | lr 7.00e-04 | 625 win/s
 [tf_fold0] step 1400/40000 | loss 3.2304 | lr 2.10e-04 | 640 win/s
+--- 16:40 ---
+[tf_ref] step 3400/40000 | loss 2.8254 | lr 2.99e-04 | 706 win/s
+         [val] new best 100.00 -> best.pt
+[tf_ref_lr1e3] step 2600/40000 | loss 2.6788 | lr 9.99e-04 | 578 win/s
+         [val] new best 100.00 -> best.pt
+[tf_fold0] step 2800/40000 | loss 2.9634 | lr 3.00e-04 | 573 win/s
+         [val] new best 100.00 -> best.pt
 ```
 
 ### 480_tf_lr_probe.log
@@ -2306,13 +2335,6 @@ pid=2942963
 
 ### 490_tf_100hz.log
 ```
---- tf_fold0 ---
-[split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
-[split] official test users: 16 sessions (never trained on in either mode)
-[data] 172708 training windows of 4.0s
-[data] monitor sets: 160 test windows, 160 fold-heldout windows
-[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
-[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 --- tf_ref_lr1e3 ---
 [split] REFERENCE run: all 96 training users
 [split] official test users: 16 sessions (never trained on in either mode)
@@ -2331,6 +2353,13 @@ pid=2942963
         [val] new best 100.00 -> best.pt
 [tf_fold0] step 2000/40000 | loss 3.1303 | lr 3.00e-04 | 604 win/s
 [tf_ref_lr1e3] step 1800/40000 | loss 3.0091 | lr 9.00e-04 | 604 win/s
+--- 16:38 ---
+[tf_ref] step 3200/40000 | loss 2.8676 | lr 2.99e-04 | 707 win/s
+        [val] new best 100.00 -> best.pt
+[tf_fold0] step 2400/40000 | loss 3.0404 | lr 3.00e-04 | 587 win/s
+        [val] new best 100.00 -> best.pt
+[tf_ref_lr1e3] step 2400/40000 | loss 2.7516 | lr 1.00e-03 | 584 win/s
+        [val] new best 100.00 -> best.pt
 ```
 
 ### 490_tf_100hz_relaunch.log
@@ -2499,7 +2528,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-[split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
 [split] official test users: 16 sessions (never trained on in either mode)
 [data] 172708 training windows of 4.0s
 [data] monitor sets: 160 test windows, 160 fold-heldout windows
@@ -2524,11 +2552,11 @@ step 2000/40000 | loss 3.1303 | lr 3.00e-04 | 604 win/s
 step 2200/40000 | loss 3.0763 | lr 3.00e-04 | 593 win/s
 step 2400/40000 | loss 3.0404 | lr 3.00e-04 | 587 win/s
 step 2600/40000 | loss 3.0051 | lr 3.00e-04 | 577 win/s
+step 2800/40000 | loss 2.9634 | lr 3.00e-04 | 573 win/s
 ```
 
 ### tf_ref.log
 ```
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
@@ -2553,6 +2581,7 @@ step 2800/40000 | loss 2.9508 | lr 3.00e-04 | 709 win/s
 step 3000/40000 | loss 2.9066 | lr 2.99e-04 | 708 win/s
 step 3200/40000 | loss 2.8676 | lr 2.99e-04 | 707 win/s
 step 3400/40000 | loss 2.8254 | lr 2.99e-04 | 706 win/s
+step 3600/40000 | loss 2.7944 | lr 2.99e-04 | 706 win/s
 ```
 
 ### tf_ref_lr1e3.log
