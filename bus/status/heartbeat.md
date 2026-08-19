@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:57:31+08:00
+# heartbeat 2026-08-19T15:58:13+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 1369 MiB, 24576 MiB, 11 %
+1, 1369 MiB, 24576 MiB, 0 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 1369 MiB, 24576 MiB, 14 %
+3, 1369 MiB, 24576 MiB, 2 %
 ```
 
 ## jobs
@@ -62,6 +62,7 @@
 450_log_relay                            DONE rc=127
 460_free_capacity                        DONE rc=127
 470_deploy_prefix_icl                    DONE rc=127
+480_tf_lr_probe                          DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2197,6 +2198,12 @@ ctc loss 25.3645 | prefix-encoder grad-sum 2.186e+03
 SMOKE OK
 修改尚未加入提交（使用 "git add" 和/或 "git commit -a"）
 === 470 done: prefix ICL trainer deployed, waiting on tf_fold0 ===
+```
+
+### 480_tf_lr_probe.log
+```
+=== launching tf_ref_lr1e3 on GPU0 at 15:58 ===
+pid=2942963
 ```
 
 ### d3_train.log
