@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:50:24+08:00
+# heartbeat 2026-08-19T15:51:07+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 1369 MiB, 24576 MiB, 21 %
+1, 1369 MiB, 24576 MiB, 0 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 1369 MiB, 24576 MiB, 12 %
+3, 1369 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -1624,14 +1624,6 @@ deployed
 ### 400_v5.log
 ```
 [scan] === UNSEEN users (8 official test): 55.39 published ===
---- 15:33 ---
-[a0_gain_affine] [val] step 5500: mode-C CER 74.14 | mode-B CER 93.47 | mode-A CER 68.98 | gain C -5.15 / B -24.49 | loss 4.8149
-[a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
-    _error_if_any_worker_fails()
-RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
-  ^^ a1_gain_v31 LOOKS BROKEN
-[a2_realistic] [val] step 2000: mode-C CER 73.79 | mode-B CER 74.83 | mode-A CER 80.42 | gain C +6.64 / B +5.59 | loss 3.9042
-[scan] === UNSEEN users (8 official test): 55.39 published ===
 --- 15:38 ---
 [a0_gain_affine] [val] step 6000: mode-C CER 67.36 | mode-B CER 91.27 | mode-A CER 67.90 | gain C +0.54 / B -23.37 | loss 4.0452
 [a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
@@ -1647,6 +1639,14 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
 RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
   ^^ a1_gain_v31 LOOKS BROKEN
 [a2_realistic] [val] step 2500: mode-C CER 86.37 | mode-B CER 72.80 | mode-A CER 80.42 | gain C -5.95 / B +7.62 | loss 6.0189
+[scan] === UNSEEN users (8 official test): 55.39 published ===
+--- 15:48 ---
+[a0_gain_affine] [val] step 6500: mode-C CER 66.73 | mode-B CER 90.14 | mode-A CER 68.57 | gain C +1.83 / B -21.58 | loss 3.9261
+[a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
+  ^^ a1_gain_v31 LOOKS BROKEN
+[a2_realistic] [val] step 3000: mode-C CER 96.69 | mode-B CER 85.01 | mode-A CER 79.77 | gain C -16.91 / B -5.23 | loss 9.8119
 [scan] === UNSEEN users (8 official test): 55.39 published ===
 ```
 
@@ -2059,6 +2059,9 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 --- 15:44 ---
 [tf_ref] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] step 1000/40000 | loss 3.4651 | lr 1.50e-04 | 449 win/s
+--- 15:49 ---
+[tf_ref] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 1600/40000 | loss 3.3047 | lr 2.40e-04 | 463 win/s
 ```
 
 ### 450_log_relay.log
@@ -2136,6 +2139,35 @@ A0 stopped
 ```
 
 ### 470_deploy_prefix_icl.log
+```
+encoder params 29.8k
+  {'k_windows': 4, 'seconds': 20, 'tokens_uncapped': 372, 'tokens': 372, 'capped': False}
+  {'k_windows': 12, 'seconds': 60, 'tokens_uncapped': 1116, 'tokens': 1116, 'capped': False}
+  {'k_windows': 18, 'seconds': 90, 'tokens_uncapped': 1674, 'tokens': 1674, 'capped': False}
+  {'k_windows': 23, 'seconds': 115, 'tokens_uncapped': 2139, 'tokens': 2139, 'capped': False}
+  {'k_windows': 45, 'seconds': 225, 'tokens_uncapped': 4185, 'tokens': 4096, 'capped': True}
+
+=== contamination guard must FIRE on a reference backbone ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[trunk] /data2/chenyuxiang/runs/tf_ref/last.pt step 2000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+[FATAL] backbone was trained with --fold -1 but the cohort is fold 0: it has SEEN these users, so the episodes would contain no adaptation headroom
+(expected: [FATAL] backbone was trained with --fold -1 ...)
+
+=== CPU smoke: one real episode end to end ===
+cohort 24 multi-session users of 24
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+episode user 89335547: support (11999, 6, 2, 16) query (11961, 2, 2, 16)
+prefix (1, 527, 128)  (527 tokens from 6 windows)
+mode A (120, 2, 99) vs mode C (120, 2, 99) | max|dlogit| 3.448
+ctc loss 25.3645 | prefix-encoder grad-sum 2.186e+03
+SMOKE OK
+修改尚未加入提交（使用 "git add" 和/或 "git commit -a"）
+=== 470 done: prefix ICL trainer deployed, waiting on tf_fold0 ===
+```
+
+### 470_prefix_icl.log
 ```
 encoder params 29.8k
   {'k_windows': 4, 'seconds': 20, 'tokens_uncapped': 372, 'tokens': 372, 'capped': False}
@@ -2558,7 +2590,6 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
 
 ### v5_a2_realistic.log
 ```
-step 1100/8000 | loss 3.1185 | lr 1.00e-03 | 0.71 it/s
 step 1200/8000 | loss 2.9824 | lr 9.98e-04 | 0.87 it/s
 step 1300/8000 | loss 2.9539 | lr 9.96e-04 | 0.96 it/s
 step 1400/8000 | loss 2.8587 | lr 9.92e-04 | 0.79 it/s
@@ -2583,6 +2614,7 @@ step 2900/8000 | loss 2.7604 | lr 8.38e-04 | 0.80 it/s
 step 3000/8000 | loss 2.7032 | lr 8.21e-04 | 0.77 it/s
 [val] step 3000: mode-C CER 96.69 | mode-B CER 85.01 | mode-A CER 79.77 | gain C -16.91 / B -5.23 | loss 9.8119
 step 3100/8000 | loss 2.7093 | lr 8.04e-04 | 0.62 it/s
+step 3200/8000 | loss 2.6670 | lr 7.87e-04 | 0.82 it/s
 ```
 
 ### v5_zeroshot_scan.log
