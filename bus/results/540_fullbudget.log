@@ -133,3 +133,12 @@ Traceback (most recent call last):
         [val] new best 51.33 -> best.pt
 [icl_dev_fold2] step 4500/12000 | loss 2.5639 | lr 2.21e-04 | 1.56 it/s
         [val] step 4500: mode-A 55.46 | mode-C 55.64 | gain C -0.18   (REAL novel subjects, fold 2)
+--- 01:49 ---
+[tf_ref_full] step 6400/103000 | loss 2.0108 | lr 6.97e-04 | 429 win/s
+        [val] new best 46.84 -> best.pt
+[tf_fold0_full] step 8600/103000 | loss 1.9035 | lr 6.93e-04 | 568 win/s
+        [val] new best 47.55 -> best.pt
+[tf_fold1_full] step 6200/103000 | loss 1.9514 | lr 6.97e-04 | 422 win/s
+        [val] new best 51.33 -> best.pt
+[icl_dev_fold2] step 5000/12000 | loss 2.4961 | lr 2.03e-04 | 1.57 it/s
+        [val] step 5000: mode-A 56.02 | mode-C 56.35 | gain C -0.32   (REAL novel subjects, fold 2)
