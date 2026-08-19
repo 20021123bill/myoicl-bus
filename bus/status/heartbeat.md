@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:45:03+08:00
+# heartbeat 2026-08-19T16:45:45+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 46 %
-1, 3169 MiB, 24576 MiB, 38 %
-2, 2985 MiB, 24576 MiB, 83 %
+0, 3173 MiB, 24576 MiB, 64 %
+1, 3169 MiB, 24576 MiB, 77 %
+2, 2985 MiB, 24576 MiB, 68 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2048,9 +2048,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 ### 440_trunk_train.log
 ```
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
---- 16:04 ---
-[tf_ref] [val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 --- 16:09 ---
 [tf_ref] [val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
@@ -2071,6 +2068,9 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 --- 16:39 ---
 [tf_ref] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
+--- 16:44 ---
+[tf_ref] [val] step 4000: 8-test-user CER 96.35 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 ```
 
@@ -2335,13 +2335,6 @@ pid=2942963
 
 ### 490_tf_100hz.log
 ```
---- tf_ref_lr1e3 ---
-[split] REFERENCE run: all 96 training users
-[split] official test users: 16 sessions (never trained on in either mode)
-[data] 229266 training windows of 4.0s
-[data] monitor sets: 160 test windows, 0 fold-heldout windows
-[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
-[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 
 === stream (14 h) ===
 --- 16:28 ---
@@ -2359,6 +2352,13 @@ pid=2942963
 [tf_fold0] step 2400/40000 | loss 3.0404 | lr 3.00e-04 | 587 win/s
         [val] new best 100.00 -> best.pt
 [tf_ref_lr1e3] step 2400/40000 | loss 2.7516 | lr 1.00e-03 | 584 win/s
+        [val] new best 100.00 -> best.pt
+--- 16:43 ---
+[tf_ref] step 4000/40000 | loss 2.7171 | lr 2.98e-04 | 705 win/s
+        [val] new best 96.35 -> best.pt
+[tf_fold0] step 3200/40000 | loss 2.8907 | lr 2.99e-04 | 566 win/s
+        [val] new best 100.00 -> best.pt
+[tf_ref_lr1e3] step 3000/40000 | loss 2.5095 | lr 9.98e-04 | 571 win/s
         [val] new best 100.00 -> best.pt
 ```
 
@@ -2528,7 +2528,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-[data] monitor sets: 160 test windows, 160 fold-heldout windows
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
@@ -2553,11 +2552,11 @@ step 2600/40000 | loss 3.0051 | lr 3.00e-04 | 577 win/s
 step 2800/40000 | loss 2.9634 | lr 3.00e-04 | 573 win/s
 step 3000/40000 | loss 2.9316 | lr 2.99e-04 | 570 win/s
 step 3200/40000 | loss 2.8907 | lr 2.99e-04 | 566 win/s
+step 3400/40000 | loss 2.8472 | lr 2.99e-04 | 563 win/s
 ```
 
 ### tf_ref.log
 ```
-step 200/40000 | loss 84.3919 | lr 3.00e-05 | 617 win/s
 step 400/40000 | loss 5.7650 | lr 6.00e-05 | 670 win/s
 step 600/40000 | loss 3.6732 | lr 9.00e-05 | 686 win/s
 step 800/40000 | loss 3.4943 | lr 1.20e-04 | 698 win/s
@@ -2582,6 +2581,7 @@ step 4000/40000 | loss 2.7171 | lr 2.98e-04 | 705 win/s
 [val] step 4000: 8-test-user CER 96.35 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [val] new best 96.35 -> best.pt
 step 4200/40000 | loss 2.6762 | lr 2.98e-04 | 704 win/s
+step 4400/40000 | loss 2.6429 | lr 2.97e-04 | 703 win/s
 ```
 
 ### tf_ref_lr1e3.log
