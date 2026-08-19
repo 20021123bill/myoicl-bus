@@ -34,3 +34,4 @@ step 400/12000 | loss 3.1112 | lr 2.00e-04 | 1.54 it/s
 [02:35] [val] step 8500: mode-A 56.27 | mode-C 56.49 | gain C -0.22   (REAL novel subjects, fold 2)
 [02:40] [val] step 9000: mode-A 52.14 | mode-C 51.76 | gain C +0.37   (REAL novel subjects, fold 2)
 [02:45] [val] step 9500: mode-A 52.50 | mode-C 52.50 | gain C +0.00   (REAL novel subjects, fold 2)
+[02:50] [val] step 10000: mode-A 48.03 | mode-C 48.01 | gain C +0.02   (REAL novel subjects, fold 2)
