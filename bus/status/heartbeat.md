@@ -1,9 +1,9 @@
-# heartbeat 2026-08-20T00:42:57+08:00
+# heartbeat 2026-08-20T00:43:40+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 3169 MiB, 24576 MiB, 87 %
+1, 3169 MiB, 24576 MiB, 32 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -72,6 +72,7 @@
 526_blank_tracker                        DONE rc=127
 530_gate_5s_eval                         DONE rc=127
 531_gate_final                           DONE rc=127
+540_fullbudget_and_icl_dev               DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2695,6 +2696,20 @@ verdict guide: <=45 -> reproduction roughly holds, monitor was the artifact; 60-
 reference: paper Tiny 35.9 | verdict: <=45 in-class (train longer to
 close the rest); 45-60 partial; >80 re-implementation bug -> run fairemg
 === 531 done ===
+```
+
+### 540_fullbudget_and_icl_dev.log
+```
+=== deploy (fixed 10000-window monitor + step-0 audit) ===
+AST OK
+=== archive the 40k trunks (superseded for reporting, kept for ablation) ===
+0, 16 MiB
+1, 3169 MiB
+2, 12 MiB
+3, 12 MiB
+
+=== track 1: full-budget trunks on GPU 0/1/2 ===
+launched tf_ref_full on GPU0 (continue from tf_ref_lr1e3) pid=3824858
 ```
 
 ### d3_train.log
