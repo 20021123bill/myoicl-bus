@@ -107,3 +107,7 @@ step 7500/12000 | loss 2.4772 | lr 1.01e-04 | 1.53 it/s
 [val] new best mode-C 45.71 -> best.pt
 step 7600/12000 | loss 2.4190 | lr 9.74e-05 | 1.52 it/s
 step 7700/12000 | loss 2.4247 | lr 9.36e-05 | 1.52 it/s
+step 7800/12000 | loss 2.3772 | lr 8.97e-05 | 1.52 it/s
+step 7900/12000 | loss 2.4718 | lr 8.60e-05 | 1.52 it/s
+step 8000/12000 | loss 2.4135 | lr 8.23e-05 | 1.53 it/s
+[val] step 8000: mode-A 54.18 | mode-C 54.37 | gain C -0.19   (REAL novel subjects, fold 2)
