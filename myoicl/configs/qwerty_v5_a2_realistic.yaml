@@ -1,0 +1,132 @@
+# qwerty_joint.yaml + PER-UNIT INPUT CONDITIONING.
+#
+# Cross-user variability enters AT THE ELECTRODE: band rotation, limb
+# circumference and skin impedance decide which muscle projects onto which
+# channel in which frequency band. The published frontend's
+# MultiBandRotationInvariantMLP mixes all 16 channels and 33 bins into 384
+# features immediately -- so conditioning after it acts only once the very
+# structure that varies has already been scrambled.
+#
+# This arm renormalizes each (band, electrode, frequency) unit of the
+# log-spectrogram BEFORE the frontend, with gamma/beta produced from the same
+# omega_j stage 1 infers. It closes the loop: stage 1 estimates how this
+# user's electrode responds, and this maps that electrode back toward the
+# canonical space the decoder was trained on.
+#
+# Only possible once the backbone is unfrozen: it changes the frontend's input
+# distribution, which is incompatible with reproducing the released model
+# bit-for-bit. The head is zero-initialized (gamma = 1, beta = 0), so step 0
+# is still exactly the released model.
+#
+# Everything else is identical to qwerty_joint.yaml -- this is a controlled
+# A/B on WHERE the conditioning acts.
+#
+# MAIN LINE (v3.3): joint training of backbone + per-unit ICL module.
+#
+# WHY THIS REPLACES THE FROZEN-BACKBONE MAIN LINE
+# -----------------------------------------------
+# The interface ceiling probe settled it. Optimizing the conditioning tensor
+# and injection layers DIRECTLY on a user's own labelled data -- all of it,
+# with gradients, no inference problem at all -- reaches only 35.9 CER on a
+# frozen released checkpoint (and that is a lower bound; it had not
+# converged). Mode C is a strictly weaker version of that probe: less data,
+# no gradients. So freezing caps us around 36 no matter how good the
+# meta-learning is. The cap is a property of the CHOICE TO FREEZE, not of
+# in-context learning.
+#
+# Joint training also removes the structural cause of our earlier +0.33 null:
+# the released checkpoint was trained WITHOUT context, so it already settled
+# into the best user-agnostic compromise, and a bolt-on module can only
+# correct the residue. When one set of weights must serve ~90 genuinely
+# different users AT THE SAME TIME, it cannot fit them all, and the training
+# loss itself pushes user-specific variance onto the context pathway. That is
+# how BrainCoDec's decoder is trained too -- from scratch, with the context
+# mechanism in the loop.
+#
+# Third benefit: the backbone is ours, so meta-training is no longer confined
+# to the 8 official test users. The module sees ~90 real users instead of 7,
+# and the LOSO restriction disappears.
+#
+# ATTRIBUTION, WITHOUT THE FROZEN TRICK
+# ------------------------------------
+# We lose "bit-for-bit identical to the published model at t=0". The
+# replacement is an ordinary matched control, which is what architecture
+# papers do anyway: qwerty_joint_nocontext.yaml is this file with the context
+# module removed and nothing else changed -- same init, same data, same
+# schedule, same steps. Both are evaluated on the 8 official test users.
+#
+# COST: ~8 h. Run it overnight.
+phase: icl
+out_dir: /data2/chenyuxiang/runs/v5_a2
+seed: 5103
+amp: bf16
+
+repo_root: /data2/chenyuxiang/code/emg2qwerty
+user_config: generic
+
+# Start from the released weights rather than from scratch: it is 6-7 h
+# cheaper and the final evaluation is on the 8 official test users, which no
+# training set here contains, so the number stays clean. If the joint run
+# underdelivers, the from-scratch variant is the follow-up -- starting from a
+# user-agnostic optimum may keep the model in that basin.
+init_backbone_from: /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt
+freeze_backbone: true
+
+model:
+  version: 1
+  official_mlp_features: [384]
+  freq_bins: 33
+  num_bands: 2
+  channels_per_band: 16
+  d_model: 768
+  tds_block_channels: [24, 24, 24, 24]
+  tds_kernel_width: 32
+  conditioning: deep
+  ctx_version: 2                # per-unit two-stage ICL
+  d_ctx: 128
+  d_bneck: 128
+  film_rank: 32
+  d_omega: 64
+  n_latents: 32
+  unit_sample: 256
+  input_conditioning: true   # <-- 唯一改动
+  ctx_heads: 4
+  cross_heads: 8
+  ref_context_size: 32
+  dropout: 0.1
+
+data:
+  window_length: 8000
+  padding: [1800, 200]
+  val_batch_size: 16
+  num_workers: 4
+
+episodes:
+  queries: 24                   # 32 -> 24 to keep the step rate usable
+  ctx_segments: 30
+  ctx_segments_range: [4, 90]
+  ctx_segment_len: 2000
+  # mode A now CARRIES GRADIENT (the backbone is trainable), so it is worth
+  # spending budget on: it is what keeps the model usable with no context and
+  # gives a same-weights no-context number to report alongside mode C.
+  mode_probs: [0.15, 0.25, 0.60]
+  k_shot_range: [32, 256]
+  k_shot_window: 2000
+  cross_session_ctx: true
+  meta_val_users: 10            # held out from module AND backbone training
+  p_synth: 1.0
+  synth_strength: [0.35, 0.60]
+  specaug: true
+
+train:
+  lr: 1.0e-3
+  ctx_lr: 1.0e-3
+  weight_decay: 0.01
+  betas: [0.9, 0.98]
+  max_steps: 8000
+  warmup_steps: 1000
+  grad_clip: 1.0
+  log_every: 100
+  val_every: 500
+  val_batches: 60
+  save_every: 500
