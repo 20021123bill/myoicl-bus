@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T14:39:23+08:00
+# heartbeat 2026-08-19T14:40:05+08:00
 
 ## gpu
 ```
-0, 3155 MiB, 24576 MiB, 13 %
+0, 4293 MiB, 24576 MiB, 13 %
 1, 5375 MiB, 24576 MiB, 13 %
-2, 3929 MiB, 24576 MiB, 10 %
-3, 6673 MiB, 24576 MiB, 0 %
+2, 3929 MiB, 24576 MiB, 13 %
+3, 6673 MiB, 24576 MiB, 13 %
 ```
 
 ## jobs
@@ -1037,7 +1037,6 @@ the conditioning interface reaches 0% of the fine-tuning gap
 
 ### 370_teacher_fleet.log
 ```
---- shard 1 ---
 [teachers] 24/96 training users in this shard | tokens_only=False | steps=1800
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
@@ -1062,6 +1061,7 @@ the conditioning interface reaches 0% of the fine-tuning gap
 [fleet] 14:09 teachers done: 16/96
 [fleet] 14:19 teachers done: 21/96
 [fleet] 14:29 teachers done: 28/96
+[fleet] 14:39 teachers done: 33/96
 ```
 
 ### 380_deploy_distill.log
@@ -1088,6 +1088,7 @@ deployed
 [6/24] 3734552: zero-shot 7.73 -> best 7.73 (gain +0.00)
 [7/24] 41556660: zero-shot 8.94 -> best 8.86 (gain +0.08)
 [8/24] 45200932: zero-shot 10.45 -> best 10.09 (gain +0.37)
+[9/24] 47919028: zero-shot 9.51 -> best 9.51 (gain +0.00)
 ```
 
 ### teachers_shard1.log
@@ -1107,6 +1108,7 @@ deployed
 [6/24] 37398304: zero-shot 4.08 -> best 3.99 (gain +0.09)
 [7/24] 4162929: zero-shot 13.13 -> best 13.13 (gain +0.00)
 [8/24] 45828573: zero-shot 4.48 -> best 4.48 (gain +0.00)
+[9/24] 5344357: zero-shot 11.42 -> best 11.42 (gain +0.00)
 ```
 
 ### teachers_shard2.log
@@ -1126,6 +1128,7 @@ deployed
 [6/24] 39024419: zero-shot 5.07 -> best 4.94 (gain +0.13)
 [7/24] 42383274: zero-shot 10.77 -> best 10.65 (gain +0.12)
 [8/24] 46697259: zero-shot 3.11 -> best 2.96 (gain +0.15)
+[9/24] 53845929: zero-shot 10.71 -> best 10.68 (gain +0.02)
 ```
 
 ### teachers_shard3.log
@@ -1141,4 +1144,6 @@ deployed
 [2/24] 20676876: zero-shot 9.28 -> best 9.22 (gain +0.06)
 [3/24] 26940776: zero-shot 10.05 -> best 10.05 (gain +0.00)
 [4/24] 33259248: zero-shot 5.65 -> best 5.43 (gain +0.23)
+[5/24] 3537794: zero-shot 9.42 -> best 9.42 (gain +0.00)
+[6/24] 41222064: zero-shot 6.19 -> best 6.19 (gain +0.00)
 ```
