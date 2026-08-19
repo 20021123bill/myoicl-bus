@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T01:23:58+08:00
+# heartbeat 2026-08-20T01:24:41+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 43 %
-1, 6280 MiB, 24576 MiB, 100 %
-2, 2985 MiB, 24576 MiB, 42 %
-3, 1883 MiB, 24576 MiB, 21 %
+0, 3173 MiB, 24576 MiB, 46 %
+1, 6280 MiB, 24576 MiB, 96 %
+2, 2985 MiB, 24576 MiB, 14 %
+3, 1883 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -2926,10 +2926,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_dev_fold2.log
 ```
-step 500/12000 | loss 2.9615 | lr 2.50e-04 | 1.49 it/s
-[val] step 500: mode-A 59.12 | mode-C 75.06 | gain C -15.94   (REAL novel subjects, fold 2)
-[val] new best mode-C 75.06 -> best.pt
-step 600/12000 | loss 2.8246 | lr 3.00e-04 | 1.46 it/s
 step 700/12000 | loss 2.6339 | lr 3.00e-04 | 1.48 it/s
 step 800/12000 | loss 2.7212 | lr 3.00e-04 | 1.49 it/s
 step 900/12000 | loss 2.7704 | lr 2.99e-04 | 1.50 it/s
@@ -2951,6 +2947,10 @@ step 2000/12000 | loss 2.6943 | lr 2.89e-04 | 1.55 it/s
 step 2100/12000 | loss 2.5801 | lr 2.87e-04 | 1.53 it/s
 step 2200/12000 | loss 2.5468 | lr 2.86e-04 | 1.54 it/s
 step 2300/12000 | loss 2.5356 | lr 2.84e-04 | 1.54 it/s
+step 2400/12000 | loss 2.5188 | lr 2.82e-04 | 1.55 it/s
+step 2500/12000 | loss 2.5864 | lr 2.80e-04 | 1.56 it/s
+[val] step 2500: mode-A 58.83 | mode-C 59.59 | gain C -0.76   (REAL novel subjects, fold 2)
+step 2600/12000 | loss 2.5148 | lr 2.78e-04 | 1.54 it/s
 ```
 
 ### teachers_shard0.log
@@ -3032,9 +3032,6 @@ step 2300/12000 | loss 2.5356 | lr 2.84e-04 | 1.54 it/s
 
 ### tf_fold0_full.log
 ```
-step 200/103000 | loss 1.5577 | lr 6.80e-05 | 465 win/s
-step 400/103000 | loss 1.5894 | lr 1.36e-04 | 479 win/s
-step 600/103000 | loss 1.6305 | lr 2.04e-04 | 483 win/s
 step 800/103000 | loss 1.6865 | lr 2.72e-04 | 490 win/s
 step 1000/103000 | loss 1.7365 | lr 3.40e-04 | 498 win/s
 step 1200/103000 | loss 1.7740 | lr 4.08e-04 | 506 win/s
@@ -3057,6 +3054,9 @@ step 4000/103000 | loss 2.0120 | lr 6.99e-04 | 551 win/s
 step 4200/103000 | loss 1.9860 | lr 6.99e-04 | 551 win/s
 step 4400/103000 | loss 1.9762 | lr 6.99e-04 | 553 win/s
 step 4600/103000 | loss 1.9621 | lr 6.99e-04 | 554 win/s
+step 4800/103000 | loss 1.9575 | lr 6.99e-04 | 555 win/s
+step 5000/103000 | loss 1.9961 | lr 6.99e-04 | 556 win/s
+step 5200/103000 | loss 1.9579 | lr 6.98e-04 | 557 win/s
 ```
 
 ### tf_fold0.log
@@ -3090,9 +3090,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
-[init] continued from /data2/chenyuxiang/runs/tf_fold1/last.pt (step 40000, fold 1); optimizer starts fresh
-[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
@@ -3115,6 +3112,9 @@ step 3200/103000 | loss 1.9954 | lr 7.00e-04 | 477 win/s
 step 3400/103000 | loss 1.9994 | lr 7.00e-04 | 472 win/s
 step 3600/103000 | loss 1.9824 | lr 7.00e-04 | 464 win/s
 step 3800/103000 | loss 1.9604 | lr 6.99e-04 | 460 win/s
+step 4000/103000 | loss 1.9437 | lr 6.99e-04 | 456 win/s
+[val] step 4000: 8-test-user CER 51.33 | fold-heldout-user CER 57.28  (their Tiny reference: 35.9)
+[val] new best 51.33 -> best.pt
 ```
 
 ### tf_fold1.log
@@ -3206,7 +3206,6 @@ step 31400/40000 | loss 1.6392 | lr 1.21e-04 | 614 win/s
 
 ### tf_ref_full.log
 ```
-[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 step 200/103000 | loss 1.6695 | lr 6.80e-05 | 604 win/s
@@ -3231,6 +3230,7 @@ step 3800/103000 | loss 2.0308 | lr 6.99e-04 | 475 win/s
 step 4000/103000 | loss 2.0321 | lr 6.99e-04 | 470 win/s
 [val] step 4000: 8-test-user CER 46.84 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [val] new best 46.84 -> best.pt
+step 4200/103000 | loss 2.0293 | lr 6.99e-04 | 464 win/s
 ```
 
 ### tf_ref.log
