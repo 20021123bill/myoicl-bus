@@ -24,6 +24,13 @@ def main():
     ap.add_argument("--n-folds", type=int, default=4)
     ap.add_argument("--k-values", type=int, nargs="+", default=[4, 12, 23, 45])
     ap.add_argument("--episodes", type=int, default=30)
+    ap.add_argument("--permute-k", type=int, default=0,
+                    help=">0: apply an episode-wide derangement of this many "
+                         "letters to support chars AND query targets. On "
+                         "permuted letters mode A is structurally wrong, so "
+                         "gain = Ap - Cp reads out whether the induction "
+                         "mechanism EXISTS, independent of identity-task "
+                         "headroom.")
     ap.add_argument("--n-query", type=int, default=8)
     ap.add_argument("--seed", type=int, default=12345)
     ap.add_argument("--out", default="/data2/chenyuxiang/runs/icl_kcurve.json")
@@ -36,7 +43,9 @@ def main():
     from .folds import split_for_fold
     from .metrics import CERAccumulator, greedy_ctc_decode
     from .prefix_ctx import PrefixContextEncoder
-    from .train_prefix_icl import UserEpisodes, _ids_from_targets, _to_raw
+    from .train_prefix_icl import (UserEpisodes, _apply_symbol_map,
+                                   _ids_from_targets, _to_raw, letter_ids,
+                                   sample_symbol_map)
     from .trunk_tf import build_trunk
 
     cs = charset_fn()
@@ -60,6 +69,11 @@ def main():
     # Fixed episode set PER K, drawn with the same seed so the k values are
     # compared on identical (user, session, query) draws -- only the amount of
     # support changes. That is what makes the K-curve a curve and not noise.
+    LETTERS = letter_ids(cs) if args.permute_k > 0 else []
+    prng = np.random.default_rng(777)
+    if args.permute_k:
+        print(f"[permuted probe] derangement of {args.permute_k} letters per "
+              f"episode -- mode A cannot know the mapping")
     results = {}
     for k in args.k_values:
         ep = UserEpisodes(held, seed=args.seed)      # reset draws per k
@@ -71,6 +85,12 @@ def main():
             except RuntimeError:
                 continue
             used += 1
+            if args.permute_k > 0:
+                m = sample_symbol_map(prng, LETTERS, args.permute_k,
+                                      cs.num_classes)
+                sb, qb = dict(sb), dict(qb)
+                _apply_symbol_map(sb, m)
+                _apply_symbol_map(qb, m)
             raw_q = _to_raw(qb["inputs"]).float().to(dev)
             ids = _ids_from_targets(sb["targets"], sb["target_lengths"])
             with torch.no_grad(), torch.autocast(
