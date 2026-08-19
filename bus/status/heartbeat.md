@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:02:50+08:00
+# heartbeat 2026-08-19T17:03:34+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 65 %
-1, 2985 MiB, 24576 MiB, 71 %
-2, 2985 MiB, 24576 MiB, 91 %
-3, 2983 MiB, 24576 MiB, 57 %
+0, 2989 MiB, 24576 MiB, 0 %
+1, 2985 MiB, 24576 MiB, 46 %
+2, 2985 MiB, 24576 MiB, 0 %
+3, 2983 MiB, 24576 MiB, 71 %
 ```
 
 ## jobs
@@ -67,6 +67,7 @@
 490_tf_100hz_relaunch                    DONE rc=127
 500_eval_a2_retry                        DONE rc=127
 510_fold_fleet_lr1e3                     DONE rc=127
+520_deploy_symbol_icl                    DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2489,6 +2490,14 @@ launched tf_fold1 on GPU1 pid=3043152
 launched tf_fold2 on GPU3 pid=3044556
 
 === stream (14 h); launch fold3 when a slot frees ===
+```
+
+### 520_deploy_symbol_icl.log
+```
+=== extract ===
+AST OK
+
+=== smoke: the symbol map itself ===
 ```
 
 ### d3_train.log
