@@ -504,3 +504,10 @@ launched tf_ref_lr1e3 on GPU2 lr=1e-3 fold=-1 pid=2978025
         [val] step 22000: 8-test-user CER 85.04 | fold-heldout-user CER 86.39  (their Tiny reference: 35.9)
 [tf_ref_lr1e3] step 27800/40000 | loss 1.8320 | lr 2.33e-04 | 351 win/s
         [val] step 26000: 8-test-user CER 86.55 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+--- 22:03 ---
+[tf_ref] step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
+        [val] new best 83.37 -> best.pt
+[tf_fold0] step 23600/40000 | loss 1.8790 | lr 3.93e-04 | 331 win/s
+        [val] step 22000: 8-test-user CER 85.04 | fold-heldout-user CER 86.39  (their Tiny reference: 35.9)
+[tf_ref_lr1e3] step 28400/40000 | loss 1.8177 | lr 2.13e-04 | 353 win/s
+        [val] step 28000: 8-test-user CER 86.61 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
