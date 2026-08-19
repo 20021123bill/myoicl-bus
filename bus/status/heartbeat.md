@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T14:53:23+08:00
+# heartbeat 2026-08-19T14:54:05+08:00
 
 ## gpu
 ```
 0, 2411 MiB, 24576 MiB, 0 %
 1, 3121 MiB, 24576 MiB, 0 %
-2, 2615 MiB, 24576 MiB, 26 %
+2, 2807 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -1075,11 +1075,6 @@ deployed
 
 ### 400_v5_hardsynth.log
 ```
-  sigma 0.7: CER 84.08 (|d-55.4| 28.69)
-  sigma 1.2: CER 97.82 (|d-55.4| 42.43)
-  sigma 0.9: CER 93.16 (|d-55.4| 37.77)
-  sigma 0.5: CER 64.59 (|d-55.4| 9.20)
-CHOSEN 0.5
 === using gain_log_std = 0.5 ===
 
 === phase 2: write the three V5 configs ===
@@ -1100,6 +1095,11 @@ launched zero-shot scan on GPU3 pid=2833489
 [a1_gain_v31] [val] step 1000: mode-C CER 40.50 | mode-B CER 75.37 | mode-A CER 75.37 | gain C +34.86 / B +0.00 | loss 1.4733
 [a2_realistic] 
 [scan] [89/96] 9456349: held-out-session CER 7.59 (7 sessions)
+--- 14:53 ---
+[a0_gain_affine] [val] step 1000: mode-C CER 46.97 | mode-B CER 55.64 | mode-A CER 69.04 | gain C +22.06 / B +13.39 | loss 2.0425
+[a1_gain_v31] [val] step 2500: mode-C CER 38.06 | mode-B CER 75.39 | mode-A CER 75.39 | gain C +37.33 / B +0.00 | loss 1.3286
+[a2_realistic] 
+[scan] === UNSEEN users (8 official test): 55.39 published ===
 ```
 
 ### 410_deploy_remix.log
@@ -1227,26 +1227,18 @@ step 500/8000 | loss 1.5080 | lr 5.01e-04 | 2.12 it/s
 [val] new best CER 70.64 -> saved best.pt
 step 600/8000 | loss 1.6368 | lr 6.01e-04 | 1.65 it/s
 step 700/8000 | loss 1.5064 | lr 7.01e-04 | 2.07 it/s
+step 800/8000 | loss 1.5377 | lr 8.01e-04 | 2.16 it/s
+step 900/8000 | loss 1.4997 | lr 9.01e-04 | 2.11 it/s
+step 1000/8000 | loss 1.5867 | lr 1.00e-03 | 2.05 it/s
+[val] step 1000: mode-C CER 46.97 | mode-B CER 55.64 | mode-A CER 69.04 | gain C +22.06 / B +13.39 | loss 2.0425
+[val] new best CER 46.97 -> saved best.pt
+step 1100/8000 | loss 1.3393 | lr 1.00e-03 | 1.62 it/s
+step 1200/8000 | loss 1.2984 | lr 9.98e-04 | 2.05 it/s
+step 1300/8000 | loss 1.2774 | lr 9.96e-04 | 2.16 it/s
 ```
 
 ### v5_a1_gain_v31.log
 ```
-[model] v1 | 5.94M params total (published backbone 5.29M + ICL module 0.65M) | device=cuda | phase=icl
-[data] train sessions=837 val sessions=192
-[data] episodic users=86 train + 10 meta-val (held out from module training)
-[episodes] frozen backbone -> mode-A episodes carry no gradient and are skipped; mode_probs renormalized to [0.0, 0.176, 0.824]
-[optim] backbone 5.29M @ lr 3.0e-05 | context 0.65M @ lr 1.0e-03 | 2 params exempt from weight decay
-[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 31 context tensors keep their initialization
-[freeze] backbone 5.29M frozen | context modules 0.65M trainable (10.9% of total)
-[watchdog] armed
-step 100/8000 | loss 3.5556 | lr 3.11e-06 | 3.97 it/s
-step 200/8000 | loss 2.4392 | lr 6.37e-06 | 4.54 it/s
-step 300/8000 | loss 2.1647 | lr 9.56e-06 | 4.54 it/s
-step 400/8000 | loss 2.0004 | lr 1.29e-05 | 4.46 it/s
-step 500/8000 | loss 1.7653 | lr 1.58e-05 | 4.44 it/s
-[val] step 500: mode-C CER 48.25 | mode-B CER 74.69 | mode-A CER 74.69 | gain C +26.44 / B +0.00 | loss 1.9355
-[val] new best CER 48.25 -> saved best.pt
-step 600/8000 | loss 1.7426 | lr 1.90e-05 | 3.57 it/s
 step 700/8000 | loss 1.6238 | lr 2.23e-05 | 4.67 it/s
 step 800/8000 | loss 1.7623 | lr 2.52e-05 | 4.55 it/s
 step 900/8000 | loss 1.6281 | lr 2.85e-05 | 4.62 it/s
@@ -1256,6 +1248,22 @@ step 1000/8000 | loss 1.8394 | lr 3.00e-05 | 4.69 it/s
 step 1200/8000 | loss 1.6502 | lr 2.99e-05 | 2.01 it/s
 step 1300/8000 | loss 1.5030 | lr 2.99e-05 | 4.53 it/s
 step 1400/8000 | loss 1.5459 | lr 2.98e-05 | 4.57 it/s
+step 1500/8000 | loss 1.6611 | lr 2.97e-05 | 4.58 it/s
+[val] step 1500: mode-C CER 40.17 | mode-B CER 74.41 | mode-A CER 74.41 | gain C +34.23 / B +0.00 | loss 1.4346
+[val] new best CER 40.17 -> saved best.pt
+step 1700/8000 | loss 1.5474 | lr 2.95e-05 | 2.12 it/s
+step 1800/8000 | loss 1.6278 | lr 2.93e-05 | 4.68 it/s
+step 1900/8000 | loss 1.4972 | lr 2.92e-05 | 4.79 it/s
+step 2000/8000 | loss 1.4630 | lr 2.90e-05 | 4.93 it/s
+[val] step 2000: mode-C CER 40.20 | mode-B CER 76.06 | mode-A CER 76.06 | gain C +35.86 / B +0.00 | loss 1.4218
+step 2300/8000 | loss 1.4769 | lr 2.84e-05 | 1.46 it/s
+step 2400/8000 | loss 1.4996 | lr 2.81e-05 | 4.81 it/s
+step 2500/8000 | loss 1.4493 | lr 2.79e-05 | 4.80 it/s
+[val] step 2500: mode-C CER 38.06 | mode-B CER 75.39 | mode-A CER 75.39 | gain C +37.33 / B +0.00 | loss 1.3286
+[val] new best CER 38.06 -> saved best.pt
+step 2600/8000 | loss 1.4415 | lr 2.76e-05 | 3.72 it/s
+step 2700/8000 | loss 1.5468 | lr 2.73e-05 | 4.82 it/s
+step 2800/8000 | loss 1.4330 | lr 2.70e-05 | 4.90 it/s
 ```
 
 ### v5_a2_realistic.log
@@ -1270,20 +1278,13 @@ step 1400/8000 | loss 1.5459 | lr 2.98e-05 | 4.57 it/s
 [watchdog] armed
 step 100/8000 | loss 4.9355 | lr 1.01e-04 | 0.80 it/s
 step 200/8000 | loss 3.7268 | lr 2.01e-04 | 0.80 it/s
+step 300/8000 | loss 3.3812 | lr 3.01e-04 | 0.82 it/s
+step 400/8000 | loss 3.2773 | lr 4.01e-04 | 0.92 it/s
+step 500/8000 | loss 3.1125 | lr 5.01e-04 | 0.81 it/s
 ```
 
 ### v5_zeroshot_scan.log
 ```
-[65/96] 72389321: held-out-session CER 9.17 (7 sessions)
-[66/96] 74403863: held-out-session CER 6.89 (10 sessions)
-[67/96] 76521819: held-out-session CER 23.23 (7 sessions)
-[68/96] 76574170: held-out-session CER 17.53 (10 sessions)
-[69/96] 7746087: held-out-session CER 8.05 (7 sessions)
-[70/96] 80214583: held-out-session CER 33.82 (2 sessions)
-[71/96] 80587505: held-out-session CER 8.72 (10 sessions)
-[72/96] 80745050: held-out-session CER 5.60 (4 sessions)
-[73/96] 80815303: held-out-session CER 5.21 (10 sessions)
-[74/96] 81522433: held-out-session CER 6.55 (10 sessions)
 [75/96] 81695116: held-out-session CER 4.22 (6 sessions)
 [76/96] 83774284: held-out-session CER 5.94 (10 sessions)
 [77/96] 84958031: held-out-session CER 5.49 (6 sessions)
@@ -1299,4 +1300,14 @@ step 200/8000 | loss 3.7268 | lr 2.01e-04 | 0.80 it/s
 [87/96] 93203007: held-out-session CER 5.60 (8 sessions)
 [88/96] 94305460: held-out-session CER 3.59 (9 sessions)
 [89/96] 9456349: held-out-session CER 7.59 (7 sessions)
+[90/96] 94998811: held-out-session CER 4.05 (10 sessions)
+[91/96] 95396398: held-out-session CER 3.24 (9 sessions)
+[92/96] 97165588: held-out-session CER 9.34 (5 sessions)
+[93/96] 97336339: held-out-session CER 12.43 (10 sessions)
+[94/96] 97890030: held-out-session CER 9.45 (10 sessions)
+[95/96] 97946571: held-out-session CER 10.07 (10 sessions)
+[96/96] 99192446: held-out-session CER 2.17 (10 sessions)
+
+=== SEEN users (n=96): median 8.11 p10 3.32 p90 15.67 ===
+=== UNSEEN users (8 official test): 55.39 published ===
 ```
