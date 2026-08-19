@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T16:50:01+08:00
+# heartbeat 2026-08-19T16:50:44+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 58 %
-1, 3169 MiB, 24576 MiB, 42 %
-2, 2985 MiB, 24576 MiB, 93 %
-3, 12 MiB, 24576 MiB, 0 %
+0, 3173 MiB, 24576 MiB, 69 %
+1, 3169 MiB, 24576 MiB, 60 %
+2, 2985 MiB, 24576 MiB, 52 %
+3, 7433 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -2049,9 +2049,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 ### 440_trunk_train.log
 ```
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
---- 16:09 ---
-[tf_ref] [val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 --- 16:14 ---
 [tf_ref] [val] step 6000: 8-test-user CER 90.24 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 4000: 8-test-user CER 93.44 | fold-heldout-user CER 94.28  (their Tiny reference: 35.9)
@@ -2071,6 +2068,9 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 [tf_ref] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 --- 16:44 ---
+[tf_ref] [val] step 4000: 8-test-user CER 96.35 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
+--- 16:49 ---
 [tf_ref] [val] step 4000: 8-test-user CER 96.35 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 ```
@@ -2291,13 +2291,6 @@ SMOKE OK
 
 ### 480_lr_probe.log
 ```
-[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
-
-=== compare the two learning rates every 10 min ===
---- 16:10 ---
-[tf_ref] step 5600/40000 | loss 2.6972 | lr 2.93e-04 | 538 win/s
-         [val] new best 94.53 -> best.pt
 [tf_ref_lr1e3] step 600/40000 | loss 3.4864 | lr 3.00e-04 | 259 win/s
 [tf_fold0] step 3800/40000 | loss 2.9388 | lr 2.98e-04 | 464 win/s
          [val] new best 100.00 -> best.pt
@@ -2316,6 +2309,13 @@ SMOKE OK
          [val] new best 100.00 -> best.pt
 [tf_fold0] step 2800/40000 | loss 2.9634 | lr 3.00e-04 | 573 win/s
          [val] new best 100.00 -> best.pt
+--- 16:50 ---
+[tf_ref] step 5000/40000 | loss 2.5132 | lr 2.95e-04 | 701 win/s
+         [val] new best 96.35 -> best.pt
+[tf_ref_lr1e3] step 3800/40000 | loss 2.3929 | lr 9.94e-04 | 560 win/s
+         [val] new best 100.00 -> best.pt
+[tf_fold0] step 4000/40000 | loss 2.7398 | lr 2.98e-04 | 554 win/s
+         [val] new best 99.61 -> best.pt
 ```
 
 ### 480_tf_lr_probe.log
@@ -2336,13 +2336,6 @@ pid=2942963
 
 ### 490_tf_100hz.log
 ```
-
-=== stream (14 h) ===
---- 16:28 ---
-[tf_ref] step 1600/40000 | loss 3.1925 | lr 2.40e-04 | 711 win/s
-[tf_fold0] step 1200/40000 | loss 3.3008 | lr 1.80e-04 | 653 win/s
-[tf_ref_lr1e3] step 1200/40000 | loss 3.1712 | lr 6.00e-04 | 636 win/s
---- 16:33 ---
 [tf_ref] step 2400/40000 | loss 3.0256 | lr 3.00e-04 | 711 win/s
         [val] new best 100.00 -> best.pt
 [tf_fold0] step 2000/40000 | loss 3.1303 | lr 3.00e-04 | 604 win/s
@@ -2360,6 +2353,13 @@ pid=2942963
 [tf_fold0] step 3200/40000 | loss 2.8907 | lr 2.99e-04 | 566 win/s
         [val] new best 100.00 -> best.pt
 [tf_ref_lr1e3] step 3000/40000 | loss 2.5095 | lr 9.98e-04 | 571 win/s
+        [val] new best 100.00 -> best.pt
+--- 16:48 ---
+[tf_ref] step 4800/40000 | loss 2.5449 | lr 2.96e-04 | 702 win/s
+        [val] new best 96.35 -> best.pt
+[tf_fold0] step 3800/40000 | loss 2.7759 | lr 2.98e-04 | 557 win/s
+        [val] new best 100.00 -> best.pt
+[tf_ref_lr1e3] step 3600/40000 | loss 2.4140 | lr 9.96e-04 | 562 win/s
         [val] new best 100.00 -> best.pt
 ```
 
@@ -2390,6 +2390,30 @@ pid=2942963
         [val] new best 100.00 -> best.pt
 [tf_ref_lr1e3] step 2400/40000 | loss 2.7516 | lr 1.00e-03 | 584 win/s
         [val] new best 100.00 -> best.pt
+```
+
+### 500_eval_a2.log
+```
+=== was anything OOM-killed? ===
+(no OOM evidence readable, or dmesg not permitted)
+              总计         已用        空闲      共享    缓冲/缓存    可用
+内存：        2015          72         115           2        1827        1929
+
+0, 3173 MiB, 62 %
+1, 3169 MiB, 94 %
+2, 2985 MiB, 70 %
+3, 12 MiB, 0 %
+
+=== evaluating /data2/chenyuxiang/runs/v5_a2/best.pt sequentially on GPU3 ===
+
+############ k=12 (~48s) -- started 16:47 ############
+rc=0  finished 16:49
+[A] mean over users: 55.40
+[C] mean over users: 60.54
+[A] gap closed vs personalization ceiling: -0.0%
+[C] gap closed vs personalization ceiling: -11.7%
+
+############ k=45 (~180s) -- started 16:49 ############
 ```
 
 ### 500_eval_a2_retry.log
@@ -2474,6 +2498,40 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 [done] {'best_val_cer': 21.223643276875215, 'steps': 8000, 'phase': 'icl'}
 ```
 
+### eval_a2_k12.log
+```
+[ckpt] /data2/chenyuxiang/runs/v5_a2/best.pt (v1, step 500)
+[A] user0: CER 61.45
+[A] user1: CER 59.90
+[A] user2: CER 48.06
+[A] user3: CER 54.69
+[A] user4: CER 58.28
+[A] user5: CER 53.90
+[A] user6: CER 54.63
+[A] user7: CER 52.25
+[A] mean over users: 55.40
+[C] user0: CER 63.22
+[C] user1: CER 68.07
+[C] user2: CER 53.68
+[C] user3: CER 64.79
+[C] user4: CER 63.14
+[C] user5: CER 57.49
+[C] user6: CER 59.19
+[C] user7: CER 54.70
+[C] mean over users: 60.54
+[A] gap closed vs personalization ceiling: -0.0%
+[C] gap closed vs personalization ceiling: -11.7%
+[saved] /data2/chenyuxiang/runs/v5a2_real_k12.json
+```
+
+### eval_a2_k45.log
+```
+[ckpt] /data2/chenyuxiang/runs/v5_a2/best.pt (v1, step 500)
+[A] user0: CER 61.45
+[A] user1: CER 59.90
+[A] user2: CER 48.06
+```
+
 ### teachers_shard0.log
 ```
 [teachers] 24/96 training users in this shard | tokens_only=False | steps=1800
@@ -2553,9 +2611,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
-[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 step 200/40000 | loss 104.1468 | lr 3.00e-05 | 639 win/s
 step 400/40000 | loss 5.1708 | lr 6.00e-05 | 671 win/s
@@ -2578,11 +2633,13 @@ step 3200/40000 | loss 2.8907 | lr 2.99e-04 | 566 win/s
 step 3400/40000 | loss 2.8472 | lr 2.99e-04 | 563 win/s
 step 3600/40000 | loss 2.8100 | lr 2.99e-04 | 561 win/s
 step 3800/40000 | loss 2.7759 | lr 2.98e-04 | 557 win/s
+step 4000/40000 | loss 2.7398 | lr 2.98e-04 | 554 win/s
+[val] step 4000: 8-test-user CER 99.61 | fold-heldout-user CER 99.85  (their Tiny reference: 35.9)
+[val] new best 99.61 -> best.pt
 ```
 
 ### tf_ref.log
 ```
-step 1000/40000 | loss 3.3686 | lr 1.50e-04 | 703 win/s
 step 1200/40000 | loss 3.2873 | lr 1.80e-04 | 706 win/s
 step 1400/40000 | loss 3.2406 | lr 2.10e-04 | 709 win/s
 step 1600/40000 | loss 3.1925 | lr 2.40e-04 | 711 win/s
@@ -2607,6 +2664,7 @@ step 4400/40000 | loss 2.6429 | lr 2.97e-04 | 703 win/s
 step 4600/40000 | loss 2.5931 | lr 2.97e-04 | 702 win/s
 step 4800/40000 | loss 2.5449 | lr 2.96e-04 | 702 win/s
 step 5000/40000 | loss 2.5132 | lr 2.95e-04 | 701 win/s
+step 5200/40000 | loss 2.4724 | lr 2.95e-04 | 701 win/s
 ```
 
 ### tf_ref_lr1e3.log
