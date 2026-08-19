@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T05:13:25+08:00
+# heartbeat 2026-08-20T05:14:09+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 0 %
-1, 3125 MiB, 24576 MiB, 52 %
-2, 2985 MiB, 24576 MiB, 42 %
+0, 3173 MiB, 24576 MiB, 32 %
+1, 3125 MiB, 24576 MiB, 77 %
+2, 2985 MiB, 24576 MiB, 31 %
 3, 2099 MiB, 24576 MiB, 0 %
 ```
 
@@ -3038,10 +3038,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_dev2_fold2.log
 ```
-step 9300/12000 | loss 2.6814 | lr 2.64e-05 | 1.56 it/s
-step 9400/12000 | loss 2.7955 | lr 2.46e-05 | 1.56 it/s
-step 9500/12000 | loss 2.7557 | lr 2.28e-05 | 1.55 it/s
-[val] step 9500: mode-A 52.04 | mode-C 51.66 | gain C +0.38   (REAL novel subjects, fold 2)
 step 9600/12000 | loss 2.7263 | lr 2.11e-05 | 1.55 it/s
 step 9700/12000 | loss 2.6947 | lr 1.94e-05 | 1.55 it/s
 step 9800/12000 | loss 2.5690 | lr 1.78e-05 | 1.55 it/s
@@ -3063,6 +3059,10 @@ step 11000/12000 | loss 2.8109 | lr 3.77e-06 | 1.55 it/s
 step 11100/12000 | loss 2.6803 | lr 3.06e-06 | 1.55 it/s
 step 11200/12000 | loss 2.6824 | lr 2.42e-06 | 1.55 it/s
 step 11300/12000 | loss 2.6078 | lr 1.85e-06 | 1.55 it/s
+step 11400/12000 | loss 2.7676 | lr 1.36e-06 | 1.55 it/s
+step 11500/12000 | loss 2.6999 | lr 9.48e-07 | 1.55 it/s
+[val] step 11500: mode-A 46.72 | mode-C 47.36 | gain C -0.64   (REAL novel subjects, fold 2)
+step 11600/12000 | loss 2.7648 | lr 6.07e-07 | 1.55 it/s
 ```
 
 ### icl_dev_fold2.log
