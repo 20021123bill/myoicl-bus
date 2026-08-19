@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T06:03:46+08:00
+# heartbeat 2026-08-20T06:04:29+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 76 %
-1, 3125 MiB, 24576 MiB, 83 %
-2, 2985 MiB, 24576 MiB, 53 %
-3, 2927 MiB, 24576 MiB, 33 %
+0, 3173 MiB, 24576 MiB, 0 %
+1, 3125 MiB, 24576 MiB, 87 %
+2, 2985 MiB, 24576 MiB, 1 %
+3, 2927 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -3066,6 +3066,7 @@ step 100/12000 | loss 8.1298 | lr 5.00e-05 | 1.62 it/s
 step 200/12000 | loss 5.2564 | lr 1.00e-04 | 1.60 it/s
 [05:54] [val] new best mode-C 75.59 -> best.pt
 [05:59] [val] new best mode-C 58.20 -> best.pt
+[06:04] [val] step 1500: mode-A 57.10 | mode-C 58.68 | gain C -1.58   (REAL novel subjects, fold 2)
 ```
 
 ### d3_train.log
@@ -3238,9 +3239,6 @@ step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
 
 ### icl_fusedb_fold2.log
 ```
-[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
-[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
-[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
 [prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
 [symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
@@ -3263,6 +3261,9 @@ step 1000/12000 | loss 2.7191 | lr 2.99e-04 | 1.43 it/s
 step 1100/12000 | loss 2.6566 | lr 2.99e-04 | 1.41 it/s
 step 1200/12000 | loss 2.7880 | lr 2.98e-04 | 1.42 it/s
 step 1300/12000 | loss 2.6549 | lr 2.97e-04 | 1.44 it/s
+step 1400/12000 | loss 2.6886 | lr 2.96e-04 | 1.45 it/s
+step 1500/12000 | loss 2.5372 | lr 2.95e-04 | 1.46 it/s
+[val] step 1500: mode-A 57.10 | mode-C 58.68 | gain C -1.58   (REAL novel subjects, fold 2)
 ```
 
 ### icl_fused_fold2.log
@@ -3373,8 +3374,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### tf_fold0_full.log
 ```
-step 42000/103000 | loss 1.6263 | lr 4.63e-04 | 623 win/s
-step 42200/103000 | loss 1.6011 | lr 4.61e-04 | 623 win/s
 step 42400/103000 | loss 1.6128 | lr 4.59e-04 | 623 win/s
 step 42600/103000 | loss 1.6178 | lr 4.56e-04 | 623 win/s
 step 42800/103000 | loss 1.6087 | lr 4.54e-04 | 623 win/s
@@ -3398,6 +3397,8 @@ step 46000/103000 | loss 1.5741 | lr 4.21e-04 | 627 win/s
 step 46200/103000 | loss 1.5673 | lr 4.19e-04 | 627 win/s
 step 46400/103000 | loss 1.5666 | lr 4.16e-04 | 628 win/s
 step 46600/103000 | loss 1.5712 | lr 4.14e-04 | 628 win/s
+step 46800/103000 | loss 1.5792 | lr 4.12e-04 | 628 win/s
+step 47000/103000 | loss 1.5761 | lr 4.10e-04 | 628 win/s
 ```
 
 ### tf_fold0.log
@@ -3431,7 +3432,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-step 29000/103000 | loss 1.7380 | lr 5.84e-04 | 445 win/s
 step 29200/103000 | loss 1.7396 | lr 5.82e-04 | 445 win/s
 step 29400/103000 | loss 1.7400 | lr 5.81e-04 | 445 win/s
 step 29600/103000 | loss 1.7409 | lr 5.79e-04 | 446 win/s
@@ -3456,6 +3456,7 @@ step 32800/103000 | loss 1.7218 | lr 5.52e-04 | 451 win/s
 step 33000/103000 | loss 1.7263 | lr 5.50e-04 | 451 win/s
 step 33200/103000 | loss 1.7091 | lr 5.48e-04 | 451 win/s
 step 33400/103000 | loss 1.6927 | lr 5.46e-04 | 451 win/s
+step 33600/103000 | loss 1.7044 | lr 5.44e-04 | 451 win/s
 ```
 
 ### tf_fold1.log
@@ -3547,9 +3548,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-step 27000/103000 | loss 1.8604 | lr 6.00e-04 | 417 win/s
-step 27200/103000 | loss 1.8502 | lr 5.98e-04 | 417 win/s
-step 27400/103000 | loss 1.8323 | lr 5.97e-04 | 418 win/s
 step 27600/103000 | loss 1.8291 | lr 5.95e-04 | 418 win/s
 step 27800/103000 | loss 1.8342 | lr 5.94e-04 | 419 win/s
 step 28000/103000 | loss 1.8322 | lr 5.92e-04 | 419 win/s
@@ -3572,6 +3570,9 @@ step 31000/103000 | loss 1.7722 | lr 5.67e-04 | 426 win/s
 step 31200/103000 | loss 1.7899 | lr 5.66e-04 | 426 win/s
 step 31400/103000 | loss 1.7821 | lr 5.64e-04 | 427 win/s
 step 31600/103000 | loss 1.7856 | lr 5.62e-04 | 427 win/s
+step 31800/103000 | loss 1.7672 | lr 5.60e-04 | 427 win/s
+step 32000/103000 | loss 1.7773 | lr 5.59e-04 | 427 win/s
+[val] step 32000: 8-test-user CER 46.63 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 ```
 
 ### tf_ref.log
