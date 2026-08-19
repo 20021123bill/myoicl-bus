@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T15:05:20+08:00
+# heartbeat 2026-08-19T15:06:02+08:00
 
 ## gpu
 ```
-0, 2411 MiB, 24576 MiB, 16 %
+0, 2411 MiB, 24576 MiB, 19 %
 1, 4237 MiB, 24576 MiB, 0 %
 2, 2807 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -1134,11 +1134,31 @@ SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_202
 
 ### 430_deploy_trunk_tf.log
 ```
-=== backup + extract ===
-rollback copy: /data2/chenyuxiang/runs/backup_myoicl_20260819_150520
-AST OK
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+tiny   ours    2.12M | paper    2.2M -> OK (paper cross-user CER 35.9)
+        2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+small  ours    4.99M | paper    5.4M -> OK (paper cross-user CER 35.2)
+        4.99M total  (featurizer 0.08M  encoder 4.74M  decoder 0.03M)
+large  ours  103.06M | paper  109.0M -> OK (paper cross-user CER 30.5)
+        103.06M total  (featurizer 0.08M  encoder 100.77M  decoder 0.10M)
 
-=== fold split (deterministic) ===
+=== end-to-end CPU smoke: 5 real training steps ===
+fold 0: train 624 sessions | heldout 213 sessions, 24 users
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  step 0: raw (4, 32, 11994) -> emissions (121, 4, 99) | frame lens [121, 120, 120, 121]
+           loss 19.8256  grad-sum 2.047e+04
+  step 1: raw (4, 32, 11963) -> emissions (120, 4, 99) | frame lens [120, 120, 120, 120]
+           loss 18.7519  grad-sum 1.718e+04
+  step 2: raw (4, 32, 11982) -> emissions (121, 4, 99) | frame lens [121, 120, 120, 120]
+           loss 124.2906  grad-sum 2.955e+05
+  step 3: raw (4, 32, 11998) -> emissions (121, 4, 99) | frame lens [120, 121, 120, 121]
+           loss 27.9070  grad-sum 5.973e+04
+  step 4: raw (4, 32, 11992) -> emissions (121, 4, 99) | frame lens [120, 121, 120, 120]
+           loss 14.3142  grad-sum 2.479e+04
+  prefix hook OK: 37 prefix tokens leave emissions at (121, 4, 99)
+SMOKE OK
+=== 430 done: trunk deployed and verified, nothing launched ===
 ```
 
 ### teachers_shard0.log
