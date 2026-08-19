@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T22:01:01+08:00
+# heartbeat 2026-08-19T22:01:44+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 62 %
-1, 2985 MiB, 24576 MiB, 66 %
-2, 3169 MiB, 24576 MiB, 83 %
+0, 3173 MiB, 24576 MiB, 45 %
+1, 2985 MiB, 24576 MiB, 48 %
+2, 3169 MiB, 24576 MiB, 71 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2822,7 +2822,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-step 18800/40000 | loss 1.9794 | lr 5.90e-04 | 322 win/s
 step 19000/40000 | loss 1.9852 | lr 5.82e-04 | 321 win/s
 step 19200/40000 | loss 1.9790 | lr 5.74e-04 | 321 win/s
 step 19400/40000 | loss 1.9936 | lr 5.66e-04 | 321 win/s
@@ -2847,6 +2846,7 @@ step 22600/40000 | loss 1.8840 | lr 4.34e-04 | 328 win/s
 step 22800/40000 | loss 1.8873 | lr 4.26e-04 | 329 win/s
 step 23000/40000 | loss 1.8887 | lr 4.18e-04 | 329 win/s
 step 23200/40000 | loss 1.8630 | lr 4.10e-04 | 330 win/s
+step 23400/40000 | loss 1.8704 | lr 4.01e-04 | 331 win/s
 ```
 
 ### tf_fold1.log
@@ -2909,7 +2909,6 @@ step 40000/40000 | loss 1.5024 | lr 0.00e+00 | 618 win/s
 
 ### tf_fold3.log
 ```
-[data] 172088 training windows of 4.0s
 [data] monitor sets: 160 test windows, 160 fold-heldout windows
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
@@ -2934,6 +2933,7 @@ step 2400/40000 | loss 2.7229 | lr 1.00e-03 | 690 win/s
 step 2600/40000 | loss 2.6421 | lr 9.99e-04 | 691 win/s
 step 2800/40000 | loss 2.5435 | lr 9.99e-04 | 691 win/s
 step 3000/40000 | loss 2.4646 | lr 9.98e-04 | 692 win/s
+step 3200/40000 | loss 2.4172 | lr 9.98e-04 | 692 win/s
 ```
 
 ### tf_ref.log
