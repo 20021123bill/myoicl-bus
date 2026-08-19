@@ -143,3 +143,7 @@ step 10500/12000 | loss 2.7084 | lr 8.42e-06 | 1.55 it/s
 step 10600/12000 | loss 2.7067 | lr 7.35e-06 | 1.55 it/s
 step 10700/12000 | loss 2.6953 | lr 6.35e-06 | 1.55 it/s
 step 10800/12000 | loss 2.7037 | lr 5.42e-06 | 1.55 it/s
+step 10900/12000 | loss 2.6881 | lr 4.56e-06 | 1.55 it/s
+step 11000/12000 | loss 2.8109 | lr 3.77e-06 | 1.55 it/s
+[val] step 11000: mode-A 51.72 | mode-C 51.37 | gain C +0.35   (REAL novel subjects, fold 2)
+step 11100/12000 | loss 2.6803 | lr 3.06e-06 | 1.55 it/s
