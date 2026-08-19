@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:54:39+08:00
+# heartbeat 2026-08-19T15:55:22+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 1369 MiB, 24576 MiB, 30 %
+1, 1369 MiB, 24576 MiB, 0 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 1369 MiB, 24576 MiB, 12 %
+3, 1369 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -2354,15 +2354,14 @@ step 1000/40000 | loss 3.4651 | lr 1.50e-04 | 449 win/s
 step 1200/40000 | loss 3.4378 | lr 1.80e-04 | 453 win/s
 step 1400/40000 | loss 3.3565 | lr 2.10e-04 | 458 win/s
 step 1600/40000 | loss 3.3047 | lr 2.40e-04 | 463 win/s
+step 1800/40000 | loss 3.2487 | lr 2.70e-04 | 462 win/s
+step 2000/40000 | loss 3.2194 | lr 3.00e-04 | 466 win/s
+[val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
+[val] new best 100.00 -> best.pt
 ```
 
 ### tf_ref.log
 ```
-[data] monitor sets: 160 test windows, 0 fold-heldout windows
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
-[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 step 200/40000 | loss 15.9860 | lr 3.00e-05 | 619 win/s
 step 400/40000 | loss 4.1166 | lr 6.00e-05 | 685 win/s
@@ -2383,6 +2382,11 @@ step 2800/40000 | loss 3.0774 | lr 3.00e-04 | 627 win/s
 step 3000/40000 | loss 3.0469 | lr 2.99e-04 | 613 win/s
 step 3200/40000 | loss 3.0115 | lr 2.99e-04 | 603 win/s
 step 3400/40000 | loss 2.9829 | lr 2.99e-04 | 593 win/s
+step 3600/40000 | loss 2.9581 | lr 2.99e-04 | 586 win/s
+step 3800/40000 | loss 2.9303 | lr 2.98e-04 | 580 win/s
+step 4000/40000 | loss 2.9071 | lr 2.98e-04 | 578 win/s
+[val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[val] new best 94.53 -> best.pt
 ```
 
 ### v31_train.log
