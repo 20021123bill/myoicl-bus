@@ -3,3 +3,4 @@ AST OK
 
 === waiting for GPUs (the v5 ladder is still running) ===
 launched tf_ref on GPU1 pid=2889785  (15:24)
+  (10) no free GPU: 0, 2411 MiB 1, 1369 MiB 2, 2807 MiB 3, 24117 MiB 
