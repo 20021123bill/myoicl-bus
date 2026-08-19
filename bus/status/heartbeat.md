@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T00:48:38+08:00
+# heartbeat 2026-08-20T00:49:21+08:00
 
 ## gpu
 ```
-0, 2987 MiB, 24576 MiB, 54 %
+0, 2987 MiB, 24576 MiB, 60 %
 1, 6096 MiB, 24576 MiB, 100 %
-2, 2985 MiB, 24576 MiB, 80 %
+2, 2985 MiB, 24576 MiB, 90 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2700,21 +2700,31 @@ close the rest); 45-60 partial; >80 re-implementation bug -> run fairemg
 
 ### 540_fullbudget_and_icl_dev.log
 ```
-=== deploy (fixed 10000-window monitor + step-0 audit) ===
-AST OK
-=== archive the 40k trunks (superseded for reporting, kept for ablation) ===
-0, 16 MiB
-1, 3169 MiB
-2, 12 MiB
-3, 12 MiB
+  fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
+  fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
+[split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 172708 training windows of 4.0s
+--- tf_fold1_full ---
+96 training users -> 4 folds
+  fold 0:  24 users,  213 sessions | e.g. ['11372316', '14312238', '2396581']
+  fold 1:  24 users,  206 sessions | e.g. ['11944098', '1438774', '25847138']
+  fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
+  fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
+[split] fold 1: train on 72 users (631 sessions); HELD OUT 24 users (206 sessions)
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 174323 training windows of 4.0s
+--- icl_dev_fold2 ---
+[cohort] fold 2: 24 users the backbone has never seen, 213 sessions
+[trunk] /data2/chenyuxiang/runs/tf_fold2/last.pt step 40000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/train_prefix_icl.py", line 445, in <module>
 
-=== track 1: full-budget trunks on GPU 0/1/2 ===
-launched tf_ref_full on GPU0 (continue from tf_ref_lr1e3) pid=3824858
-launched tf_fold0_full on GPU1 (continue from tf_fold0) pid=3826044
-launched tf_fold1_full on GPU2 (continue from tf_fold1) pid=3827383
-
-=== track 2: ICL dev on GPU3 (fold2@40k backbone) ===
-launched icl_dev_fold2 pid=3828713
+=== stream (16 h) ===
 ```
 
 ### 540_fullbudget.log
