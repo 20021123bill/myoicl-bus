@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:59:39+08:00
+# heartbeat 2026-08-19T16:00:22+08:00
 
 ## gpu
 ```
-0, 1371 MiB, 24576 MiB, 23 %
-1, 1369 MiB, 24576 MiB, 43 %
-2, 2807 MiB, 24576 MiB, 82 %
-3, 1369 MiB, 24576 MiB, 40 %
+0, 1371 MiB, 24576 MiB, 0 %
+1, 1369 MiB, 24576 MiB, 24 %
+2, 2807 MiB, 24576 MiB, 46 %
+3, 1369 MiB, 24576 MiB, 22 %
 ```
 
 ## jobs
@@ -2204,6 +2204,16 @@ SMOKE OK
 ```
 === launching tf_ref_lr1e3 on GPU0 at 15:58 ===
 pid=2942963
+[split] REFERENCE run: all 96 training users
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 183349 training windows of 5.0s
+[data] monitor sets: 160 test windows, 0 fold-heldout windows
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+
+=== compare the two learning rates every 10 min ===
 ```
 
 ### d3_train.log
@@ -2343,8 +2353,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-  fold 0:  24 users,  213 sessions | e.g. ['11372316', '14312238', '2396581']
-  fold 1:  24 users,  206 sessions | e.g. ['11944098', '1438774', '25847138']
   fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
   fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
 [split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
@@ -2368,13 +2376,12 @@ step 2000/40000 | loss 3.2194 | lr 3.00e-04 | 466 win/s
 [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 [val] new best 100.00 -> best.pt
 step 2200/40000 | loss 3.1720 | lr 3.00e-04 | 465 win/s
+step 2400/40000 | loss 3.1504 | lr 3.00e-04 | 468 win/s
+step 2600/40000 | loss 3.1161 | lr 3.00e-04 | 469 win/s
 ```
 
 ### tf_ref.log
 ```
-  return F.conv1d(input, weight, bias, self.stride,
-step 200/40000 | loss 15.9860 | lr 3.00e-05 | 619 win/s
-step 400/40000 | loss 4.1166 | lr 6.00e-05 | 685 win/s
 step 600/40000 | loss 3.6306 | lr 9.00e-05 | 714 win/s
 step 800/40000 | loss 3.5240 | lr 1.20e-04 | 729 win/s
 step 1000/40000 | loss 3.4617 | lr 1.50e-04 | 740 win/s
@@ -2397,6 +2404,22 @@ step 3800/40000 | loss 2.9303 | lr 2.98e-04 | 580 win/s
 step 4000/40000 | loss 2.9071 | lr 2.98e-04 | 578 win/s
 [val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [val] new best 94.53 -> best.pt
+step 4200/40000 | loss 2.8733 | lr 2.98e-04 | 573 win/s
+step 4400/40000 | loss 2.8545 | lr 2.97e-04 | 568 win/s
+step 4600/40000 | loss 2.8270 | lr 2.97e-04 | 562 win/s
+```
+
+### tf_ref_lr1e3.log
+```
+[split] REFERENCE run: all 96 training users
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 183349 training windows of 5.0s
+[data] monitor sets: 160 test windows, 0 fold-heldout windows
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
 ```
 
 ### v31_train.log

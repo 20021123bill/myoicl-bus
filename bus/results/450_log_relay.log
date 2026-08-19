@@ -9,3 +9,9 @@
 [tf_fold0] step 400/40000 | loss 4.1474 | lr 6.00e-05 | 433 win/s
 [tf_ref] [val] new best 100.00 -> best.pt
 
+--- 16:00 ---
+0, 1371 MiB, 0 %|1, 1369 MiB, 0 %|2, 2807 MiB, 0 %|3, 1369 MiB, 0 %|
+[tf_fold0] [val] new best 100.00 -> best.pt
+[tf_ref] [val] new best 94.53 -> best.pt
+[tf_ref_lr1e3] 
+
