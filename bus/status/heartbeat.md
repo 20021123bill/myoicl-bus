@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T13:35:32+08:00
+# heartbeat 2026-08-19T13:36:14+08:00
 
 ## gpu
 ```
-0, 6163 MiB, 24576 MiB, 3 %
+0, 4395 MiB, 24576 MiB, 13 %
 1, 3591 MiB, 24576 MiB, 13 %
-2, 3913 MiB, 24576 MiB, 6 %
-3, 3849 MiB, 24576 MiB, 11 %
+2, 3913 MiB, 24576 MiB, 13 %
+3, 3849 MiB, 24576 MiB, 13 %
 ```
 
 ## jobs
@@ -49,6 +49,7 @@
 350_samesession_diag                     DONE rc=127
 360_tokens_only_pilot                    DONE rc=127
 370_teacher_fleet                        DONE rc=127
+380_deploy_distill                       DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -1018,4 +1019,11 @@ AST OK
 96 training users; first 3: ['11372316', '11944098', '12565339']; sessions/user min=2 max=16
 === launch shards 0-2 on GPUs 1-3 (GPU0 busy with tokens-only pilot) ===
 === shard 3 waits for the pilot to release GPU0 ===
+```
+
+### 380_deploy_distill.log
+```
+=== deploy distill.py (code only; training starts when teachers exist) ===
+AST OK
+deployed
 ```
