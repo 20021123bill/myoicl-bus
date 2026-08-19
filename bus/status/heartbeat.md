@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T06:08:48+08:00
+# heartbeat 2026-08-20T06:09:31+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 17 %
-1, 3125 MiB, 24576 MiB, 64 %
-2, 2985 MiB, 24576 MiB, 31 %
-3, 2927 MiB, 24576 MiB, 25 %
+0, 3173 MiB, 24576 MiB, 0 %
+1, 3125 MiB, 24576 MiB, 91 %
+2, 2985 MiB, 24576 MiB, 0 %
+3, 2927 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -3068,6 +3068,7 @@ step 200/12000 | loss 5.2564 | lr 1.00e-04 | 1.60 it/s
 [05:54] [val] new best mode-C 75.59 -> best.pt
 [05:59] [val] new best mode-C 58.20 -> best.pt
 [06:04] [val] step 1500: mode-A 57.10 | mode-C 58.68 | gain C -1.58   (REAL novel subjects, fold 2)
+[06:09] [val] step 2000: mode-A 59.25 | mode-C 60.57 | gain C -1.32   (REAL novel subjects, fold 2)
 ```
 
 ### d3_train.log
@@ -3240,10 +3241,6 @@ step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
 
 ### icl_fusedb_fold2.log
 ```
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
-  return F.conv1d(input, weight, bias, self.stride,
-[audit] step 0: mode-A 62.91 | mode-C 100.00 (random prefix) | deployment reference ~43-58
-step 100/12000 | loss 8.1298 | lr 5.00e-05 | 1.62 it/s
 step 200/12000 | loss 5.2564 | lr 1.00e-04 | 1.60 it/s
 step 300/12000 | loss 3.3336 | lr 1.50e-04 | 1.52 it/s
 step 400/12000 | loss 3.0898 | lr 2.00e-04 | 1.43 it/s
@@ -3265,6 +3262,10 @@ step 1500/12000 | loss 2.5372 | lr 2.95e-04 | 1.46 it/s
 [val] step 1500: mode-A 57.10 | mode-C 58.68 | gain C -1.58   (REAL novel subjects, fold 2)
 step 1600/12000 | loss 2.6845 | lr 2.94e-04 | 1.42 it/s
 step 1700/12000 | loss 2.5618 | lr 2.93e-04 | 1.43 it/s
+step 1800/12000 | loss 2.6191 | lr 2.92e-04 | 1.44 it/s
+step 1900/12000 | loss 2.6154 | lr 2.90e-04 | 1.44 it/s
+step 2000/12000 | loss 2.6922 | lr 2.89e-04 | 1.45 it/s
+[val] step 2000: mode-A 59.25 | mode-C 60.57 | gain C -1.32   (REAL novel subjects, fold 2)
 ```
 
 ### icl_fused_fold2.log
@@ -3375,8 +3376,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### tf_fold0_full.log
 ```
-step 42800/103000 | loss 1.6087 | lr 4.54e-04 | 623 win/s
-step 43000/103000 | loss 1.5957 | lr 4.52e-04 | 624 win/s
 step 43200/103000 | loss 1.6005 | lr 4.50e-04 | 624 win/s
 step 43400/103000 | loss 1.6070 | lr 4.48e-04 | 624 win/s
 step 43600/103000 | loss 1.6203 | lr 4.46e-04 | 625 win/s
@@ -3400,6 +3399,8 @@ step 46800/103000 | loss 1.5792 | lr 4.12e-04 | 628 win/s
 step 47000/103000 | loss 1.5761 | lr 4.10e-04 | 628 win/s
 step 47200/103000 | loss 1.5613 | lr 4.08e-04 | 628 win/s
 step 47400/103000 | loss 1.5593 | lr 4.06e-04 | 629 win/s
+step 47600/103000 | loss 1.5647 | lr 4.03e-04 | 629 win/s
+step 47800/103000 | loss 1.5627 | lr 4.01e-04 | 629 win/s
 ```
 
 ### tf_fold0.log
@@ -3433,8 +3434,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-step 29400/103000 | loss 1.7400 | lr 5.81e-04 | 445 win/s
-step 29600/103000 | loss 1.7409 | lr 5.79e-04 | 446 win/s
 step 29800/103000 | loss 1.7342 | lr 5.77e-04 | 446 win/s
 step 30000/103000 | loss 1.7363 | lr 5.76e-04 | 447 win/s
 step 30200/103000 | loss 1.7309 | lr 5.74e-04 | 447 win/s
@@ -3458,6 +3457,8 @@ step 33200/103000 | loss 1.7091 | lr 5.48e-04 | 451 win/s
 step 33400/103000 | loss 1.6927 | lr 5.46e-04 | 451 win/s
 step 33600/103000 | loss 1.7044 | lr 5.44e-04 | 451 win/s
 step 33800/103000 | loss 1.7026 | lr 5.43e-04 | 451 win/s
+step 34000/103000 | loss 1.6928 | lr 5.41e-04 | 451 win/s
+step 34200/103000 | loss 1.6969 | lr 5.39e-04 | 450 win/s
 ```
 
 ### tf_fold1.log
@@ -3549,7 +3550,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-step 27800/103000 | loss 1.8342 | lr 5.94e-04 | 419 win/s
 step 28000/103000 | loss 1.8322 | lr 5.92e-04 | 419 win/s
 [val] step 28000: 8-test-user CER 46.58 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 step 28200/103000 | loss 1.8408 | lr 5.90e-04 | 420 win/s
@@ -3574,6 +3574,7 @@ step 31800/103000 | loss 1.7672 | lr 5.60e-04 | 427 win/s
 step 32000/103000 | loss 1.7773 | lr 5.59e-04 | 427 win/s
 [val] step 32000: 8-test-user CER 46.63 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 step 32200/103000 | loss 1.7869 | lr 5.57e-04 | 427 win/s
+step 32400/103000 | loss 1.7916 | lr 5.55e-04 | 427 win/s
 ```
 
 ### tf_ref.log
