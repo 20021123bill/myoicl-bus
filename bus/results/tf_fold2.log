@@ -64,3 +64,5 @@ step 8200/40000 | loss 2.1545 | lr 9.36e-04 | 623 win/s
 step 8400/40000 | loss 2.1771 | lr 9.32e-04 | 623 win/s
 step 8600/40000 | loss 2.1476 | lr 9.27e-04 | 623 win/s
 step 8800/40000 | loss 2.1604 | lr 9.23e-04 | 623 win/s
+step 9000/40000 | loss 2.1716 | lr 9.19e-04 | 623 win/s
+step 9200/40000 | loss 2.1472 | lr 9.14e-04 | 623 win/s
