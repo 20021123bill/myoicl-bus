@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T14:41:29+08:00
+# heartbeat 2026-08-19T14:42:11+08:00
 
 ## gpu
 ```
-0, 4805 MiB, 24576 MiB, 1 %
-1, 5375 MiB, 24576 MiB, 12 %
-2, 3929 MiB, 24576 MiB, 13 %
-3, 6673 MiB, 24576 MiB, 13 %
+0, 741 MiB, 24576 MiB, 0 %
+1, 12 MiB, 24576 MiB, 0 %
+2, 12 MiB, 24576 MiB, 0 %
+3, 12 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -1077,6 +1077,21 @@ deployed
 === phase 0: freeze the teacher-headroom diagnostic, stop the fleet ===
 33 /data2/chenyuxiang/runs/teacher_headroom.txt
 teacher fleet stopped
+0, 16 MiB, 0 %
+1, 12 MiB, 0 %
+2, 12 MiB, 0 %
+3, 12 MiB, 0 %
+
+=== phase 1: calibrate the gain-only synthetic subject (GPU0, ~15 min) ===
+--- gain_log_std 0.5 ---
+  (a) training users, NO synthetic shift      : CER  14.21
+  (b) training users, synthetic shift applied : CER  64.59
+  ratio = 1.22  (GOOD: comparable)
+--- gain_log_std 0.7 ---
+  (a) training users, NO synthetic shift      : CER  13.01
+  (b) training users, synthetic shift applied : CER  84.08
+  ratio = 1.68  (MISCALIBRATED: use --sweep)
+--- gain_log_std 0.9 ---
 ```
 
 ### teachers_shard0.log
