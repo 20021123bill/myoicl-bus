@@ -35,3 +35,4 @@ AST OK
 === progress reporter: copy shard logs + count artifacts every 10 min ===
 [fleet] 13:59 teachers done: 10/96
 [fleet] 14:09 teachers done: 16/96
+[fleet] 14:19 teachers done: 21/96
