@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T05:55:49+08:00
+# heartbeat 2026-08-20T05:56:33+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 17 %
-1, 3125 MiB, 24576 MiB, 38 %
-2, 2985 MiB, 24576 MiB, 33 %
-3, 2927 MiB, 24576 MiB, 36 %
+0, 3173 MiB, 24576 MiB, 62 %
+1, 3125 MiB, 24576 MiB, 36 %
+2, 2985 MiB, 24576 MiB, 56 %
+3, 2927 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -3369,7 +3369,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### tf_fold0_full.log
 ```
-step 41000/103000 | loss 1.6214 | lr 4.73e-04 | 622 win/s
 step 41200/103000 | loss 1.6146 | lr 4.71e-04 | 622 win/s
 step 41400/103000 | loss 1.6168 | lr 4.69e-04 | 622 win/s
 step 41600/103000 | loss 1.6414 | lr 4.67e-04 | 622 win/s
@@ -3394,6 +3393,7 @@ step 45000/103000 | loss 1.5936 | lr 4.31e-04 | 626 win/s
 step 45200/103000 | loss 1.5992 | lr 4.29e-04 | 626 win/s
 step 45400/103000 | loss 1.5926 | lr 4.27e-04 | 626 win/s
 step 45600/103000 | loss 1.5937 | lr 4.25e-04 | 627 win/s
+step 45800/103000 | loss 1.5880 | lr 4.23e-04 | 627 win/s
 ```
 
 ### tf_fold0.log
@@ -3543,7 +3543,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-step 26400/103000 | loss 1.8587 | lr 6.04e-04 | 416 win/s
 step 26600/103000 | loss 1.8331 | lr 6.03e-04 | 416 win/s
 step 26800/103000 | loss 1.8426 | lr 6.01e-04 | 417 win/s
 step 27000/103000 | loss 1.8604 | lr 6.00e-04 | 417 win/s
@@ -3568,6 +3567,7 @@ step 30400/103000 | loss 1.7963 | lr 5.72e-04 | 425 win/s
 step 30600/103000 | loss 1.7915 | lr 5.71e-04 | 425 win/s
 step 30800/103000 | loss 1.7696 | lr 5.69e-04 | 426 win/s
 step 31000/103000 | loss 1.7722 | lr 5.67e-04 | 426 win/s
+step 31200/103000 | loss 1.7899 | lr 5.66e-04 | 426 win/s
 ```
 
 ### tf_ref.log
