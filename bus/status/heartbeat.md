@@ -1,4 +1,4 @@
-# heartbeat 2026-08-19T15:18:38+08:00
+# heartbeat 2026-08-19T15:19:20+08:00
 
 ## gpu
 ```
@@ -1240,13 +1240,6 @@ SMOKE OK
 
 ### v5_a0_gain_affine.log
 ```
-step 1600/8000 | loss 1.3076 | lr 9.83e-04 | 1.65 it/s
-step 1700/8000 | loss 1.2782 | lr 9.77e-04 | 2.06 it/s
-step 1800/8000 | loss 1.2172 | lr 9.70e-04 | 2.22 it/s
-step 1900/8000 | loss 1.4435 | lr 9.62e-04 | 2.20 it/s
-step 2000/8000 | loss 1.2276 | lr 9.53e-04 | 1.91 it/s
-[val] step 2000: mode-C CER 83.29 | mode-B CER 71.19 | mode-A CER 68.50 | gain C -14.78 / B -2.69 | loss 6.6059
-step 2100/8000 | loss 1.3187 | lr 9.43e-04 | 1.68 it/s
 step 2200/8000 | loss 1.2548 | lr 9.33e-04 | 2.04 it/s
 step 2300/8000 | loss 1.2380 | lr 9.21e-04 | 2.12 it/s
 step 2400/8000 | loss 1.2524 | lr 9.09e-04 | 1.95 it/s
@@ -1265,6 +1258,13 @@ step 3400/8000 | loss 1.1175 | lr 7.50e-04 | 1.96 it/s
 step 3500/8000 | loss 1.1439 | lr 7.31e-04 | 2.07 it/s
 [val] step 3500: mode-C CER 55.41 | mode-B CER 72.59 | mode-A CER 68.51 | gain C +13.10 / B -4.08 | loss 2.9306
 step 3600/8000 | loss 1.0781 | lr 7.12e-04 | 1.70 it/s
+step 3700/8000 | loss 1.1304 | lr 6.92e-04 | 1.91 it/s
+step 3800/8000 | loss 1.2274 | lr 6.72e-04 | 1.88 it/s
+step 3900/8000 | loss 1.0508 | lr 6.51e-04 | 1.94 it/s
+step 4000/8000 | loss 1.0279 | lr 6.31e-04 | 1.83 it/s
+[val] step 4000: mode-C CER 82.24 | mode-B CER 70.00 | mode-A CER 69.06 | gain C -13.18 / B -0.94 | loss 6.3395
+step 4100/8000 | loss 1.1107 | lr 6.10e-04 | 1.63 it/s
+step 4200/8000 | loss 1.0300 | lr 5.89e-04 | 1.86 it/s
 ```
 
 ### v5_a1_gain_v31.log
@@ -1298,10 +1298,6 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
 
 ### v5_a2_realistic.log
 ```
-[model] v1 | 6.26M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
-[data] train sessions=837 val sessions=192
-[data] episodic users=86 train + 10 meta-val (held out from module training)
-[episodes] frozen backbone -> mode-A episodes carry no gradient and are skipped; mode_probs renormalized to [0.0, 0.294, 0.706]
 [optim] backbone 5.29M @ lr 1.0e-03 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
 [pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 104 context tensors keep their initialization
 [freeze] backbone 5.29M frozen | context modules 0.96M trainable (15.4% of total)
@@ -1323,6 +1319,10 @@ step 1100/8000 | loss 3.1185 | lr 1.00e-03 | 0.71 it/s
 step 1200/8000 | loss 2.9824 | lr 9.98e-04 | 0.87 it/s
 step 1300/8000 | loss 2.9539 | lr 9.96e-04 | 0.96 it/s
 step 1400/8000 | loss 2.8587 | lr 9.92e-04 | 0.79 it/s
+step 1500/8000 | loss 2.9836 | lr 9.88e-04 | 0.78 it/s
+[val] step 1500: mode-C CER 84.82 | mode-B CER 70.83 | mode-A CER 79.68 | gain C -5.13 / B +8.86 | loss 4.7072
+step 1600/8000 | loss 2.8126 | lr 9.83e-04 | 0.69 it/s
+step 1700/8000 | loss 2.8301 | lr 9.77e-04 | 0.83 it/s
 ```
 
 ### v5_zeroshot_scan.log
