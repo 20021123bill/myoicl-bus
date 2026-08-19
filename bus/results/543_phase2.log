@@ -11,3 +11,4 @@ phase 2 pid=4079332
 [03:38] [val] step 2500: mode-A 52.58 | mode-C 53.33 | gain C -0.75   (REAL novel subjects, fold 2)
 [03:43] [val] step 3000: mode-A 61.16 | mode-C 61.03 | gain C +0.12   (REAL novel subjects, fold 2)
 [03:48] [val] step 3500: mode-A 56.54 | mode-C 56.50 | gain C +0.05   (REAL novel subjects, fold 2)
+[03:53] [val] new best mode-C 45.37 -> best.pt
