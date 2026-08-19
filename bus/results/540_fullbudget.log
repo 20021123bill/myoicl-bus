@@ -610,3 +610,12 @@ Traceback (most recent call last):
         [val] new best 47.81 -> best.pt
 [icl_dev_fold2] step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
         [val] step 12000: mode-A 51.03 | mode-C 50.91 | gain C +0.12   (REAL novel subjects, fold 2)
+--- 06:14 ---
+[tf_ref_full] step 33000/103000 | loss 1.7657 | lr 5.50e-04 | 426 win/s
+        [val] step 32000: 8-test-user CER 46.63 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0_full] step 48600/103000 | loss 1.5443 | lr 3.93e-04 | 630 win/s
+        [val] step 48000: 8-test-user CER 46.85 | fold-heldout-user CER 56.78  (their Tiny reference: 35.9)
+[tf_fold1_full] step 34600/103000 | loss 1.7067 | lr 5.35e-04 | 449 win/s
+        [val] new best 47.81 -> best.pt
+[icl_dev_fold2] step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
+        [val] step 12000: mode-A 51.03 | mode-C 50.91 | gain C +0.12   (REAL novel subjects, fold 2)
