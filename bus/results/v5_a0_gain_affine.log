@@ -1,0 +1,17 @@
+[model] v1 | 6.26M params total (published backbone 5.29M + ICL module 0.96M) | device=cuda | phase=icl
+[data] train sessions=837 val sessions=192
+[data] episodic users=86 train + 10 meta-val (held out from module training)
+[episodes] frozen backbone -> mode-A episodes carry no gradient and are skipped; mode_probs renormalized to [0.0, 0.294, 0.706]
+[optim] backbone 5.29M @ lr 1.0e-03 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 104 context tensors keep their initialization
+[freeze] backbone 5.29M frozen | context modules 0.96M trainable (15.4% of total)
+[watchdog] armed
+step 100/8000 | loss 3.2626 | lr 1.01e-04 | 1.86 it/s
+step 200/8000 | loss 1.9270 | lr 2.01e-04 | 1.92 it/s
+step 300/8000 | loss 1.8282 | lr 3.01e-04 | 2.05 it/s
+step 400/8000 | loss 1.5304 | lr 4.01e-04 | 2.10 it/s
+step 500/8000 | loss 1.5080 | lr 5.01e-04 | 2.12 it/s
+[val] step 500: mode-C CER 70.64 | mode-B CER 41.67 | mode-A CER 68.22 | gain C -2.42 / B +26.55 | loss 3.8753
+[val] new best CER 70.64 -> saved best.pt
+step 600/8000 | loss 1.6368 | lr 6.01e-04 | 1.65 it/s
+step 700/8000 | loss 1.5064 | lr 7.01e-04 | 2.07 it/s

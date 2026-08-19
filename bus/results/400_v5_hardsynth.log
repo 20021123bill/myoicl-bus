@@ -43,3 +43,8 @@ launched v5_a2_realistic on GPU2 pid=2832409
 launched zero-shot scan on GPU3 pid=2833489
 
 === phase 4: stream progress (12 h) ===
+--- 14:48 ---
+[a0_gain_affine] [val] step 500: mode-C CER 70.64 | mode-B CER 41.67 | mode-A CER 68.22 | gain C -2.42 / B +26.55 | loss 3.8753
+[a1_gain_v31] [val] step 1000: mode-C CER 40.50 | mode-B CER 75.37 | mode-A CER 75.37 | gain C +34.86 / B +0.00 | loss 1.4733
+[a2_realistic] 
+[scan] [89/96] 9456349: held-out-session CER 7.59 (7 sessions)
