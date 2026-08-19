@@ -14,3 +14,6 @@
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
+step 200/103000 | loss 1.5741 | lr 6.80e-05 | 576 win/s
+step 400/103000 | loss 1.6060 | lr 1.36e-04 | 618 win/s
+step 600/103000 | loss 1.6411 | lr 2.04e-04 | 640 win/s
