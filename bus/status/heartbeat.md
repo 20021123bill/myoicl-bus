@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:37:57+08:00
+# heartbeat 2026-08-19T16:38:39+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 55 %
-1, 3169 MiB, 24576 MiB, 69 %
-2, 2985 MiB, 24576 MiB, 90 %
+0, 3173 MiB, 24576 MiB, 67 %
+1, 3169 MiB, 24576 MiB, 17 %
+2, 2985 MiB, 24576 MiB, 24 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2232,10 +2232,31 @@ SMOKE OK
 
 ### 471_prefix_stride_fix.log
 ```
-=== extract ===
-AST OK
-
 === prefix length budget ===
+encoder params 29.8k
+  {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
+  {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
+  {'k_windows': 18, 'seconds': 72, 'tokens_uncapped': 1710, 'tokens': 1710, 'capped': False}
+  {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
+  {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
+
+=== contamination guard must FIRE on a reference backbone ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[trunk] /data2/chenyuxiang/runs/tf_ref/last.pt step 2000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+[FATAL] backbone was trained with --fold -1 but the cohort is fold 0: it has SEEN these users, so the episodes would contain no adaptation headroom
+(expected: [FATAL] backbone was trained with --fold -1 ...)
+
+=== CPU smoke: one real episode end to end ===
+cohort 24 multi-session users of 24
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+episode user 89335547: support (11960, 6, 2, 16) query (11898, 2, 2, 16)
+prefix (1, 615, 128)  (615 tokens from 6 windows)
+mode A (593, 2, 99) vs mode C (593, 2, 99) | max|dlogit| 3.309
+ctc loss 235.4557 | prefix-encoder grad-sum 2.731e+04
+SMOKE OK
+=== 471 done: prefix ICL trainer deployed, waiting on tf_fold0 ===
 ```
 
 ### 480_lr_probe.log
@@ -2314,13 +2335,6 @@ pid=2942963
 
 ### 490_tf_100hz_relaunch.log
 ```
---- tf_fold0 ---
-[split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
-[split] official test users: 16 sessions (never trained on in either mode)
-[data] 172708 training windows of 4.0s
-[data] monitor sets: 160 test windows, 160 fold-heldout windows
-[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
-[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 --- tf_ref_lr1e3 ---
 [split] REFERENCE run: all 96 training users
 [split] official test users: 16 sessions (never trained on in either mode)
@@ -2339,6 +2353,13 @@ pid=2942963
         [val] new best 100.00 -> best.pt
 [tf_fold0] step 2000/40000 | loss 3.1303 | lr 3.00e-04 | 604 win/s
 [tf_ref_lr1e3] step 1800/40000 | loss 3.0091 | lr 9.00e-04 | 604 win/s
+--- 16:38 ---
+[tf_ref] step 3200/40000 | loss 2.8676 | lr 2.99e-04 | 707 win/s
+        [val] new best 100.00 -> best.pt
+[tf_fold0] step 2400/40000 | loss 3.0404 | lr 3.00e-04 | 587 win/s
+        [val] new best 100.00 -> best.pt
+[tf_ref_lr1e3] step 2400/40000 | loss 2.7516 | lr 1.00e-03 | 584 win/s
+        [val] new best 100.00 -> best.pt
 ```
 
 ### d3_train.log
