@@ -83,3 +83,4 @@ step 12000/40000 | loss 2.1227 | lr 8.39e-04 | 621 win/s
 [val] step 12000: 8-test-user CER 83.72 | fold-heldout-user CER 84.40  (their Tiny reference: 35.9)
 [val] new best 83.72 -> best.pt
 step 12200/40000 | loss 2.1448 | lr 8.33e-04 | 621 win/s
+step 12400/40000 | loss 2.1522 | lr 8.26e-04 | 621 win/s
