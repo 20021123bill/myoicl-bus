@@ -1,9 +1,9 @@
-# heartbeat 2026-08-20T00:43:40+08:00
+# heartbeat 2026-08-20T00:44:22+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
-1, 3169 MiB, 24576 MiB, 32 %
+0, 2987 MiB, 24576 MiB, 42 %
+1, 3436 MiB, 24576 MiB, 88 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -2710,6 +2710,7 @@ AST OK
 
 === track 1: full-budget trunks on GPU 0/1/2 ===
 launched tf_ref_full on GPU0 (continue from tf_ref_lr1e3) pid=3824858
+launched tf_fold0_full on GPU1 (continue from tf_fold0) pid=3826044
 ```
 
 ### d3_train.log

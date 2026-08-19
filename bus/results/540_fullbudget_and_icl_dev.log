@@ -9,3 +9,4 @@ AST OK
 === track 1: full-budget trunks on GPU 0/1/2 ===
 launched tf_ref_full on GPU0 (continue from tf_ref_lr1e3) pid=3824858
 launched tf_fold0_full on GPU1 (continue from tf_fold0) pid=3826044
+launched tf_fold1_full on GPU2 (continue from tf_fold1) pid=3827383
