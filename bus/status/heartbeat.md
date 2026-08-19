@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T01:11:00+08:00
+# heartbeat 2026-08-20T01:11:42+08:00
 
 ## gpu
 ```
-0, 3171 MiB, 24576 MiB, 48 %
-1, 6280 MiB, 24576 MiB, 100 %
+0, 3171 MiB, 24576 MiB, 42 %
+1, 6280 MiB, 24576 MiB, 95 %
 2, 2985 MiB, 24576 MiB, 62 %
-3, 1883 MiB, 24576 MiB, 7 %
+3, 1883 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -3030,7 +3030,6 @@ step 1300/12000 | loss 2.6679 | lr 2.97e-04 | 1.54 it/s
 
 ### tf_fold0_full.log
 ```
-[data] 172708 training windows of 4.0s
 [data] monitor sets: 512 test windows, 512 fold-heldout windows
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
@@ -3055,6 +3054,7 @@ step 2600/103000 | loss 1.9466 | lr 7.00e-04 | 537 win/s
 step 2800/103000 | loss 1.9575 | lr 7.00e-04 | 540 win/s
 step 3000/103000 | loss 1.9612 | lr 7.00e-04 | 542 win/s
 step 3200/103000 | loss 1.9807 | lr 7.00e-04 | 544 win/s
+step 3400/103000 | loss 2.0013 | lr 7.00e-04 | 546 win/s
 ```
 
 ### tf_fold0.log
