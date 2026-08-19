@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T05:58:42+08:00
+# heartbeat 2026-08-20T05:59:26+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 80 %
-1, 3125 MiB, 24576 MiB, 84 %
-2, 2985 MiB, 24576 MiB, 50 %
-3, 2927 MiB, 24576 MiB, 12 %
+0, 3173 MiB, 24576 MiB, 0 %
+1, 3125 MiB, 24576 MiB, 29 %
+2, 2985 MiB, 24576 MiB, 0 %
+3, 2927 MiB, 24576 MiB, 50 %
 ```
 
 ## jobs
@@ -3064,6 +3064,7 @@ launched icl_fusedb_fold2 pid=167606
 step 100/12000 | loss 8.1298 | lr 5.00e-05 | 1.62 it/s
 step 200/12000 | loss 5.2564 | lr 1.00e-04 | 1.60 it/s
 [05:54] [val] new best mode-C 75.59 -> best.pt
+[05:59] [val] new best mode-C 58.20 -> best.pt
 ```
 
 ### d3_train.log
@@ -3236,9 +3237,6 @@ step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
 
 ### icl_fusedb_fold2.log
 ```
-[cohort] fold 2: 24 users the backbone has never seen, 213 sessions
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [trunk] /data2/chenyuxiang/runs/tf_fold2/last.pt step 40000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 [prefix] FUSED mode: per-token (signal + soft-aligned char)
 [prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
@@ -3259,6 +3257,11 @@ step 500/12000 | loss 2.9712 | lr 2.50e-04 | 1.39 it/s
 step 600/12000 | loss 2.8059 | lr 3.00e-04 | 1.35 it/s
 step 700/12000 | loss 2.6422 | lr 3.00e-04 | 1.38 it/s
 step 800/12000 | loss 2.7266 | lr 3.00e-04 | 1.40 it/s
+step 900/12000 | loss 2.7509 | lr 2.99e-04 | 1.41 it/s
+step 1000/12000 | loss 2.7191 | lr 2.99e-04 | 1.43 it/s
+[val] step 1000: mode-A 55.21 | mode-C 58.20 | gain C -2.99   (REAL novel subjects, fold 2)
+[val] new best mode-C 58.20 -> best.pt
+step 1100/12000 | loss 2.6566 | lr 2.99e-04 | 1.41 it/s
 ```
 
 ### icl_fused_fold2.log
@@ -3369,8 +3372,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### tf_fold0_full.log
 ```
-step 41200/103000 | loss 1.6146 | lr 4.71e-04 | 622 win/s
-step 41400/103000 | loss 1.6168 | lr 4.69e-04 | 622 win/s
 step 41600/103000 | loss 1.6414 | lr 4.67e-04 | 622 win/s
 step 41800/103000 | loss 1.6189 | lr 4.65e-04 | 622 win/s
 step 42000/103000 | loss 1.6263 | lr 4.63e-04 | 623 win/s
@@ -3394,6 +3395,8 @@ step 45200/103000 | loss 1.5992 | lr 4.29e-04 | 626 win/s
 step 45400/103000 | loss 1.5926 | lr 4.27e-04 | 626 win/s
 step 45600/103000 | loss 1.5937 | lr 4.25e-04 | 627 win/s
 step 45800/103000 | loss 1.5880 | lr 4.23e-04 | 627 win/s
+step 46000/103000 | loss 1.5741 | lr 4.21e-04 | 627 win/s
+step 46200/103000 | loss 1.5673 | lr 4.19e-04 | 627 win/s
 ```
 
 ### tf_fold0.log
@@ -3427,8 +3430,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-step 28400/103000 | loss 1.7491 | lr 5.89e-04 | 444 win/s
-step 28600/103000 | loss 1.7462 | lr 5.87e-04 | 444 win/s
 step 28800/103000 | loss 1.7382 | lr 5.86e-04 | 444 win/s
 step 29000/103000 | loss 1.7380 | lr 5.84e-04 | 445 win/s
 step 29200/103000 | loss 1.7396 | lr 5.82e-04 | 445 win/s
@@ -3452,6 +3453,8 @@ step 32200/103000 | loss 1.6966 | lr 5.57e-04 | 450 win/s
 step 32400/103000 | loss 1.7046 | lr 5.55e-04 | 450 win/s
 step 32600/103000 | loss 1.6951 | lr 5.53e-04 | 450 win/s
 step 32800/103000 | loss 1.7218 | lr 5.52e-04 | 451 win/s
+step 33000/103000 | loss 1.7263 | lr 5.50e-04 | 451 win/s
+step 33200/103000 | loss 1.7091 | lr 5.48e-04 | 451 win/s
 ```
 
 ### tf_fold1.log
@@ -3543,7 +3546,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-step 26600/103000 | loss 1.8331 | lr 6.03e-04 | 416 win/s
 step 26800/103000 | loss 1.8426 | lr 6.01e-04 | 417 win/s
 step 27000/103000 | loss 1.8604 | lr 6.00e-04 | 417 win/s
 step 27200/103000 | loss 1.8502 | lr 5.98e-04 | 417 win/s
@@ -3568,6 +3570,7 @@ step 30600/103000 | loss 1.7915 | lr 5.71e-04 | 425 win/s
 step 30800/103000 | loss 1.7696 | lr 5.69e-04 | 426 win/s
 step 31000/103000 | loss 1.7722 | lr 5.67e-04 | 426 win/s
 step 31200/103000 | loss 1.7899 | lr 5.66e-04 | 426 win/s
+step 31400/103000 | loss 1.7821 | lr 5.64e-04 | 427 win/s
 ```
 
 ### tf_ref.log
