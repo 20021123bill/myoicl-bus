@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T18:23:15+08:00
+# heartbeat 2026-08-19T18:23:57+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 86 %
-1, 2985 MiB, 24576 MiB, 77 %
-2, 3169 MiB, 24576 MiB, 61 %
-3, 3169 MiB, 24576 MiB, 35 %
+0, 3173 MiB, 24576 MiB, 29 %
+1, 2985 MiB, 24576 MiB, 38 %
+2, 3169 MiB, 24576 MiB, 0 %
+3, 3169 MiB, 24576 MiB, 70 %
 ```
 
 ## jobs
@@ -2591,6 +2591,8 @@ checkpoint step 10000
 ### 526_blank_tracker.log
 ```
 --- 18:23 ---
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 ```
 
 ### d3_train.log
