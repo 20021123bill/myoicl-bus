@@ -286,3 +286,6 @@ step 50600/103000 | loss 1.5517 | lr 3.71e-04 | 631 win/s
 step 50800/103000 | loss 1.5492 | lr 3.69e-04 | 631 win/s
 step 51000/103000 | loss 1.5621 | lr 3.67e-04 | 632 win/s
 step 51200/103000 | loss 1.5469 | lr 3.64e-04 | 632 win/s
+step 51400/103000 | loss 1.5528 | lr 3.62e-04 | 632 win/s
+step 51600/103000 | loss 1.5404 | lr 3.60e-04 | 632 win/s
+step 51800/103000 | loss 1.5467 | lr 3.58e-04 | 632 win/s
