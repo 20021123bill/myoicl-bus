@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:00:42+08:00
+# heartbeat 2026-08-19T17:01:25+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 56 %
-1, 2985 MiB, 24576 MiB, 86 %
-2, 2985 MiB, 24576 MiB, 59 %
-3, 2983 MiB, 24576 MiB, 29 %
+0, 2989 MiB, 24576 MiB, 66 %
+1, 2985 MiB, 24576 MiB, 16 %
+2, 2985 MiB, 24576 MiB, 62 %
+3, 2983 MiB, 24576 MiB, 62 %
 ```
 
 ## jobs
@@ -2487,6 +2487,8 @@ killed 2976921 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/t
 launched tf_fold0 on GPU0 pid=3041555
 launched tf_fold1 on GPU1 pid=3043152
 launched tf_fold2 on GPU3 pid=3044556
+
+=== stream (14 h); launch fold3 when a slot frees ===
 ```
 
 ### d3_train.log
