@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T05:17:44+08:00
+# heartbeat 2026-08-20T05:18:27+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 56 %
-1, 3125 MiB, 24576 MiB, 58 %
-2, 2985 MiB, 24576 MiB, 59 %
-3, 12 MiB, 24576 MiB, 0 %
+0, 3173 MiB, 24576 MiB, 31 %
+1, 3125 MiB, 24576 MiB, 68 %
+2, 2985 MiB, 24576 MiB, 0 %
+3, 891 MiB, 24576 MiB, 17 %
 ```
 
 ## jobs
@@ -2931,6 +2931,16 @@ k= 12 ( 48s): mode-A  43.23 | mode-C  42.86 | gain  +0.37 (20 episodes)
 ```
 === wait for phase 2 to end ===
 === permuted probe on last.pt (mechanism) ===
+[ckpt] /data2/chenyuxiang/runs/icl_dev2_fold2/last.pt step 12000
+[permuted probe] derangement of 10 letters per episode -- mode A cannot know the mapping
+k= 12 ( 48s): mode-A  57.84 | mode-C  59.82 | gain  -1.98 (30 episodes)
+k= 45 (180s): mode-A  58.47 | mode-C  61.51 | gain  -3.04 (30 episodes)
+K-curve slope of gain: -0.0321 CER per support window
+verdict: positive gain AND positive slope -> the mechanism holds;
+flat gain==0 -> support is ignored; positive gain, zero slope -> 
+[saved] /data2/chenyuxiang/runs/final_perm_probe.json
+
+=== identity K-curve on last.pt (deployment) ===
 ```
 
 ### d3_train.log
@@ -3045,10 +3055,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_dev2_fold2.log
 ```
-step 9800/12000 | loss 2.5690 | lr 1.78e-05 | 1.55 it/s
-step 9900/12000 | loss 2.7179 | lr 1.63e-05 | 1.55 it/s
-step 10000/12000 | loss 2.6448 | lr 1.48e-05 | 1.55 it/s
-[val] step 10000: mode-A 50.11 | mode-C 50.08 | gain C +0.02   (REAL novel subjects, fold 2)
 step 10100/12000 | loss 2.6772 | lr 1.34e-05 | 1.55 it/s
 step 10200/12000 | loss 2.6768 | lr 1.21e-05 | 1.55 it/s
 step 10300/12000 | loss 2.6325 | lr 1.08e-05 | 1.55 it/s
@@ -3070,6 +3076,10 @@ step 11500/12000 | loss 2.6999 | lr 9.48e-07 | 1.55 it/s
 step 11600/12000 | loss 2.7648 | lr 6.07e-07 | 1.55 it/s
 step 11700/12000 | loss 2.7498 | lr 3.42e-07 | 1.56 it/s
 step 11800/12000 | loss 2.6527 | lr 1.52e-07 | 1.56 it/s
+step 11900/12000 | loss 2.7580 | lr 3.80e-08 | 1.56 it/s
+step 12000/12000 | loss 2.7608 | lr 0.00e+00 | 1.56 it/s
+[val] step 12000: mode-A 47.42 | mode-C 47.99 | gain C -0.56   (REAL novel subjects, fold 2)
+[done] best mode-C 45.37
 ```
 
 ### icl_dev_fold2.log
