@@ -44,3 +44,7 @@ launched tf_ref_lr1e3 on GPU2 lr=1e-3 fold=-1 pid=2978025
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 
 === stream (14 h) ===
+--- 16:28 ---
+[tf_ref] step 1600/40000 | loss 3.1925 | lr 2.40e-04 | 711 win/s
+[tf_fold0] step 1200/40000 | loss 3.3008 | lr 1.80e-04 | 653 win/s
+[tf_ref_lr1e3] step 1200/40000 | loss 3.1712 | lr 6.00e-04 | 636 win/s
