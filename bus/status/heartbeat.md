@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:28:01+08:00
+# heartbeat 2026-08-19T16:28:44+08:00
 
 ## gpu
 ```
-0, 3171 MiB, 24576 MiB, 81 %
-1, 3167 MiB, 24576 MiB, 6 %
-2, 2983 MiB, 24576 MiB, 5 %
+0, 3171 MiB, 24576 MiB, 64 %
+1, 3167 MiB, 24576 MiB, 89 %
+2, 2983 MiB, 24576 MiB, 70 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2290,10 +2290,6 @@ launched tf_ref_lr1e3 on GPU2 lr=1e-3 fold=-1 pid=2978025
 
 ### 490_tf_100hz_relaunch.log
 ```
-launched tf_ref_lr1e3 on GPU2 lr=1e-3 fold=-1 pid=2978025
-
---- tf_ref ---
-[split] REFERENCE run: all 96 training users
 [split] official test users: 16 sessions (never trained on in either mode)
 [data] 229266 training windows of 4.0s
 [data] monitor sets: 160 test windows, 0 fold-heldout windows
@@ -2315,6 +2311,10 @@ launched tf_ref_lr1e3 on GPU2 lr=1e-3 fold=-1 pid=2978025
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 
 === stream (14 h) ===
+--- 16:28 ---
+[tf_ref] step 1600/40000 | loss 3.1925 | lr 2.40e-04 | 711 win/s
+[tf_fold0] step 1200/40000 | loss 3.3008 | lr 1.80e-04 | 653 win/s
+[tf_ref_lr1e3] step 1200/40000 | loss 3.1712 | lr 6.00e-04 | 636 win/s
 ```
 
 ### d3_train.log
