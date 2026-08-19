@@ -12,3 +12,9 @@
   return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 62.58 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 step 100/12000 | loss 9.6123 | lr 1.67e-04 | 2.02 it/s
+step 200/12000 | loss 5.8096 | lr 3.33e-04 | 1.66 it/s
+step 300/12000 | loss 3.4108 | lr 5.00e-04 | 1.62 it/s
+step 400/12000 | loss 2.9958 | lr 6.67e-04 | 1.64 it/s
+step 500/12000 | loss 3.0010 | lr 8.33e-04 | 1.59 it/s
+[val] step 500: mode-A 64.54 | mode-C 72.48 | gain C -7.93   (REAL novel subjects, fold 2)
+[val] new best mode-C 72.48 -> best.pt
