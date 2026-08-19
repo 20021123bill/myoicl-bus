@@ -69,3 +69,5 @@ step 4400/12000 | loss 2.7407 | lr 1.50e-04 | 1.58 it/s
 step 4500/12000 | loss 2.7564 | lr 1.48e-04 | 1.59 it/s
 [val] step 4500: mode-A 50.06 | mode-C 50.49 | gain C -0.44   (REAL novel subjects, fold 2)
 step 4600/12000 | loss 2.7482 | lr 1.45e-04 | 1.58 it/s
+step 4700/12000 | loss 2.7771 | lr 1.43e-04 | 1.57 it/s
+step 4800/12000 | loss 2.7004 | lr 1.40e-04 | 1.58 it/s
