@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:31:16+08:00
+# heartbeat 2026-08-19T15:31:59+08:00
 
 ## gpu
 ```
-0, 2411 MiB, 24576 MiB, 25 %
-1, 1369 MiB, 24576 MiB, 42 %
+0, 2411 MiB, 24576 MiB, 0 %
+1, 1369 MiB, 24576 MiB, 22 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 24117 MiB, 24576 MiB, 0 %
+3, 5689 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -54,7 +54,9 @@
 410_deploy_remix                         DONE rc=127
 411_deploy_remix_fix                     DONE rc=127
 412_deploy_remix_v2                      DONE rc=127
+413_deploy_remix_v3                      DONE rc=127
 420_eval_v5a1_real_users                 DONE rc=127
+421_eval_v5a2_real_users                 DONE rc=127
 430_deploy_trunk_tf                      DONE rc=127
 440_train_trunk_tf                       DONE rc=127
 ```
@@ -1191,6 +1193,16 @@ SMOKE FAILED: ['every remix parameter gets gradient']
 SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_20260819_152746
 ```
 
+### 413_deploy_remix_v3.log
+```
+=== backup before overwriting shared modules ===
+rollback copy: /data2/chenyuxiang/runs/backup_myoicl_20260819_153159
+=== extract ===
+AST OK
+
+=== regression: the NO-remix path must be untouched ===
+```
+
 ### 420_eval_v5a1_real_users.log
 ```
 [B] user1: CER 59.90
@@ -1215,9 +1227,14 @@ SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_202
 [A] gap closed vs personalization ceiling: -0.0%
 [B] gap closed vs personalization ceiling: -0.0%
 [C] gap closed vs personalization ceiling: -3.2%
-[saved] /data2/chenyuxiang/runs/v5a1_real_k12.json
+[saved] /data2/chenyuxiang/runs/v5a1_real_k23.json
 
-############ k=23 windows (~92s of the user's own labelled data) ############
+############ k=45 windows (~180s of the user's own labelled data) ############
+```
+
+### 421_eval_v5a2_real_users.log
+```
+=== wait for job 420 to release GPU3 ===
 ```
 
 ### 430_deploy_trunk_tf.log
