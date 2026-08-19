@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T00:58:44+08:00
+# heartbeat 2026-08-20T00:59:27+08:00
 
 ## gpu
 ```
-0, 3171 MiB, 24576 MiB, 6 %
-1, 6096 MiB, 24576 MiB, 98 %
-2, 2985 MiB, 24576 MiB, 0 %
+0, 3171 MiB, 24576 MiB, 38 %
+1, 6096 MiB, 24576 MiB, 99 %
+2, 2985 MiB, 24576 MiB, 51 %
 3, 1883 MiB, 24576 MiB, 0 %
 ```
 
@@ -2893,6 +2893,9 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 63.00 | mode-C 100.00 (random prefix) | deployment reference ~43-58
+step 100/12000 | loss 8.1230 | lr 5.00e-05 | 1.74 it/s
+step 200/12000 | loss 4.7799 | lr 1.00e-04 | 1.72 it/s
+step 300/12000 | loss 3.3612 | lr 1.50e-04 | 1.63 it/s
 ```
 
 ### teachers_shard0.log
@@ -2997,6 +3000,8 @@ step 800/103000 | loss 1.6865 | lr 2.72e-04 | 490 win/s
 step 1000/103000 | loss 1.7365 | lr 3.40e-04 | 498 win/s
 step 1200/103000 | loss 1.7740 | lr 4.08e-04 | 506 win/s
 step 1400/103000 | loss 1.8062 | lr 4.76e-04 | 511 win/s
+step 1600/103000 | loss 1.8399 | lr 5.44e-04 | 516 win/s
+step 1800/103000 | loss 1.9035 | lr 6.12e-04 | 522 win/s
 ```
 
 ### tf_fold0.log
@@ -3053,6 +3058,8 @@ step 800/103000 | loss 1.7096 | lr 2.72e-04 | 647 win/s
 step 1000/103000 | loss 1.7334 | lr 3.40e-04 | 633 win/s
 step 1200/103000 | loss 1.7817 | lr 4.08e-04 | 607 win/s
 step 1400/103000 | loss 1.8191 | lr 4.76e-04 | 591 win/s
+step 1600/103000 | loss 1.9002 | lr 5.44e-04 | 573 win/s
+step 1800/103000 | loss 1.9016 | lr 6.12e-04 | 557 win/s
 ```
 
 ### tf_fold1.log
@@ -3163,6 +3170,8 @@ step 1000/103000 | loss 1.8158 | lr 3.40e-04 | 673 win/s
 step 1200/103000 | loss 1.8450 | lr 4.08e-04 | 658 win/s
 step 1400/103000 | loss 1.9162 | lr 4.76e-04 | 630 win/s
 step 1600/103000 | loss 1.9711 | lr 5.44e-04 | 613 win/s
+step 1800/103000 | loss 2.0262 | lr 6.12e-04 | 594 win/s
+step 2000/103000 | loss 2.0533 | lr 6.80e-04 | 575 win/s
 ```
 
 ### tf_ref.log
