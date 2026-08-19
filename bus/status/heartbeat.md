@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T05:44:19+08:00
+# heartbeat 2026-08-20T05:45:03+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 65 %
-1, 3125 MiB, 24576 MiB, 64 %
-2, 2985 MiB, 24576 MiB, 58 %
+0, 3173 MiB, 24576 MiB, 37 %
+1, 3125 MiB, 24576 MiB, 86 %
+2, 2985 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -79,6 +79,7 @@
 544_perm_probe_loop                      DONE rc=127
 545_final_night_verdict                  DONE rc=127
 550_fused_prefix_icl                     DONE rc=127
+551_fused_retry                          DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3019,6 +3020,13 @@ Traceback (most recent call last):
 [05:42] Traceback (most recent call last):
 fused run ended
 === 550 done ===
+```
+
+### 551_fused_retry.log
+```
+patch verified (fused x8)
+AST OK
+launched icl_fusedb_fold2 pid=167606
 ```
 
 ### d3_train.log
