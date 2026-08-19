@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T14:09:08+08:00
+# heartbeat 2026-08-19T14:09:50+08:00
 
 ## gpu
 ```
-0, 4025 MiB, 24576 MiB, 14 %
-1, 2427 MiB, 24576 MiB, 29 %
-2, 4035 MiB, 24576 MiB, 8 %
-3, 3497 MiB, 24576 MiB, 13 %
+0, 4025 MiB, 24576 MiB, 9 %
+1, 2427 MiB, 24576 MiB, 13 %
+2, 4035 MiB, 24576 MiB, 13 %
+3, 3497 MiB, 24576 MiB, 5 %
 ```
 
 ## jobs
@@ -1037,7 +1037,6 @@ the conditioning interface reaches 0% of the fine-tuning gap
 
 ### 370_teacher_fleet.log
 ```
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
 [1/24] 11372316: zero-shot 9.83 -> best 9.83 (gain +0.00)
 --- shard 1 ---
@@ -1062,6 +1061,7 @@ the conditioning interface reaches 0% of the fine-tuning gap
   return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
 === progress reporter: copy shard logs + count artifacts every 10 min ===
 [fleet] 13:59 teachers done: 10/96
+[fleet] 14:09 teachers done: 16/96
 ```
 
 ### 380_deploy_distill.log
@@ -1084,6 +1084,7 @@ deployed
 [2/24] 14312238: zero-shot 4.08 -> best 4.02 (gain +0.06)
 [3/24] 2396581: zero-shot 10.03 -> best 9.89 (gain +0.15)
 [4/24] 29502646: zero-shot 3.87 -> best 3.87 (gain +0.00)
+[5/24] 33505485: zero-shot 17.66 -> best 17.45 (gain +0.21)
 ```
 
 ### teachers_shard1.log
@@ -1098,6 +1099,8 @@ deployed
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [2/24] 1438774: zero-shot 11.89 -> best 11.89 (gain +0.00)
 [3/24] 25847138: zero-shot 14.82 -> best 14.82 (gain +0.00)
+[4/24] 30481951: zero-shot 9.43 -> best 9.43 (gain +0.00)
+[5/24] 3432025: zero-shot 3.58 -> best 3.54 (gain +0.05)
 ```
 
 ### teachers_shard2.log
@@ -1112,6 +1115,8 @@ deployed
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [2/24] 18200807: zero-shot 14.57 -> best 14.57 (gain +0.00)
 [3/24] 25915650: zero-shot 2.68 -> best 2.68 (gain +0.00)
+[4/24] 30807164: zero-shot 18.98 -> best 18.98 (gain +0.00)
+[5/24] 34527640: zero-shot 15.67 -> best 15.41 (gain +0.26)
 ```
 
 ### teachers_shard3.log
@@ -1121,4 +1126,7 @@ deployed
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[1/24] 13321435: zero-shot 15.67 -> best 15.67 (gain +0.00)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 ```

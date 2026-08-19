@@ -8,3 +8,5 @@
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [2/24] 18200807: zero-shot 14.57 -> best 14.57 (gain +0.00)
 [3/24] 25915650: zero-shot 2.68 -> best 2.68 (gain +0.00)
+[4/24] 30807164: zero-shot 18.98 -> best 18.98 (gain +0.00)
+[5/24] 34527640: zero-shot 15.67 -> best 15.41 (gain +0.26)
