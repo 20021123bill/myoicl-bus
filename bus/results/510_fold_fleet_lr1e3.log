@@ -14,3 +14,9 @@ launched tf_fold1 on GPU1 pid=3043152
 launched tf_fold2 on GPU3 pid=3044556
 
 === stream (14 h); launch fold3 when a slot frees ===
+--- 17:05 ---
+[tf_ref_lr1e3] step 5600/40000 | loss 2.3210 | lr 9.78e-04 | 521 win/s
+        [val] new best 78.64 -> best.pt
+[tf_fold0] step 600/40000 | loss 3.4617 | lr 3.00e-04 | 425 win/s
+[tf_fold1] step 800/40000 | loss 3.3023 | lr 4.00e-04 | 597 win/s
+[tf_fold2] step 600/40000 | loss 3.3959 | lr 3.00e-04 | 610 win/s

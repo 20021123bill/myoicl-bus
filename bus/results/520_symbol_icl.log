@@ -1,0 +1,8 @@
+=== extract ===
+AST OK
+
+=== smoke: the symbol map itself ===
+letters=26  example 8-cycle: abfhkmqz -> qzkbmafh
+fixed points and mapping application OK
+SMOKE OK
+=== 520 done: symbol-ICL trainer deployed, waiting on the fold fleet ===

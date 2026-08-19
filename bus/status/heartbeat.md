@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:04:59+08:00
+# heartbeat 2026-08-19T17:05:42+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 69 %
-1, 2985 MiB, 24576 MiB, 93 %
-2, 2985 MiB, 24576 MiB, 93 %
-3, 2983 MiB, 24576 MiB, 37 %
+0, 2989 MiB, 24576 MiB, 44 %
+1, 2985 MiB, 24576 MiB, 86 %
+2, 2985 MiB, 24576 MiB, 82 %
+3, 2983 MiB, 24576 MiB, 49 %
 ```
 
 ## jobs
@@ -2050,9 +2050,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 
 ### 440_trunk_train.log
 ```
-[tf_fold0] 
---- 16:24 ---
-[tf_ref] step 800/40000 | loss 3.4943 | lr 1.20e-04 | 698 win/s
 [tf_fold0] step 800/40000 | loss 3.4897 | lr 1.20e-04 | 683 win/s
 --- 16:29 ---
 [tf_ref] step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
@@ -2075,6 +2072,9 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 --- 16:59 ---
 [tf_ref] [val] step 6000: 8-test-user CER 83.37 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] 
+--- 17:04 ---
+[tf_ref] [val] step 6000: 8-test-user CER 83.37 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 400/40000 | loss 3.6596 | lr 2.00e-04 | 427 win/s
 ```
 
 ### 450_log_relay.log
@@ -2108,12 +2108,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 
 ### 450_relay.log
 ```
-=== log relay started 2026-08-19T15:35:31+08:00 ===
---- 15:35 ---
-0, 2411 MiB, 32 %|1, 1369 MiB, 0 %|2, 2807 MiB, 0 %|3, 8790 MiB, 4 %|
-[tf_fold0] 
-[tf_ref] step 1800/40000 | loss 3.2358 | lr 2.70e-04 | 763 win/s
-
 --- 15:40 ---
 0, 16 MiB, 0 %|1, 1369 MiB, 14 %|2, 2807 MiB, 0 %|3, 1369 MiB, 38 %|
 [tf_fold0] step 400/40000 | loss 4.1474 | lr 6.00e-05 | 433 win/s
@@ -2130,6 +2124,14 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 [tf_fold0] step 1600/40000 | loss 3.1930 | lr 2.40e-04 | 623 win/s
 [tf_ref] step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
 [tf_ref_lr1e3] step 1400/40000 | loss 3.1287 | lr 7.00e-04 | 625 win/s
+
+--- 17:00 ---
+0, 2989 MiB, 90 %|1, 2985 MiB, 11 %|2, 2985 MiB, 68 %|3, 805 MiB, 0 %|
+[tf_fold0] 
+[tf_fold1] 
+[tf_fold2] 
+[tf_ref] [val] new best 83.37 -> best.pt
+[tf_ref_lr1e3] [val] new best 78.64 -> best.pt
 
 ```
 
@@ -2340,12 +2342,6 @@ pid=2942963
 
 ### 490_tf_100hz.log
 ```
-[tf_fold0] step 3200/40000 | loss 2.8907 | lr 2.99e-04 | 566 win/s
-        [val] new best 100.00 -> best.pt
-[tf_ref_lr1e3] step 3000/40000 | loss 2.5095 | lr 9.98e-04 | 571 win/s
-        [val] new best 100.00 -> best.pt
---- 16:48 ---
-[tf_ref] step 4800/40000 | loss 2.5449 | lr 2.96e-04 | 702 win/s
         [val] new best 96.35 -> best.pt
 [tf_fold0] step 3800/40000 | loss 2.7759 | lr 2.98e-04 | 557 win/s
         [val] new best 100.00 -> best.pt
@@ -2364,6 +2360,12 @@ pid=2942963
 [tf_fold0] step 4800/40000 | loss 2.6088 | lr 2.96e-04 | 529 win/s
         [val] new best 99.61 -> best.pt
 [tf_ref_lr1e3] step 4800/40000 | loss 2.3765 | lr 9.87e-04 | 533 win/s
+        [val] new best 78.64 -> best.pt
+--- 17:03 ---
+[tf_ref] step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
+        [val] new best 83.37 -> best.pt
+[tf_fold0] step 400/40000 | loss 3.6596 | lr 2.00e-04 | 427 win/s
+[tf_ref_lr1e3] step 5200/40000 | loss 2.3498 | lr 9.83e-04 | 531 win/s
         [val] new best 78.64 -> best.pt
 ```
 
@@ -2470,6 +2472,8 @@ killed 2976921 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/t
 launched tf_fold0 on GPU0 pid=3041555
 launched tf_fold1 on GPU1 pid=3043152
 launched tf_fold2 on GPU3 pid=3044556
+
+=== stream (14 h); launch fold3 when a slot frees ===
 ```
 
 ### 510_fold_fleet_lr1e3.log
@@ -2493,6 +2497,18 @@ launched tf_fold2 on GPU3 pid=3044556
 ```
 
 ### 520_deploy_symbol_icl.log
+```
+=== extract ===
+AST OK
+
+=== smoke: the symbol map itself ===
+letters=26  example 8-cycle: abfhkmqz -> qzkbmafh
+fixed points and mapping application OK
+SMOKE OK
+=== 520 done: symbol-ICL trainer deployed, waiting on the fold fleet ===
+```
+
+### 520_symbol_icl.log
 ```
 === extract ===
 AST OK
@@ -2710,6 +2726,7 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
   return F.conv1d(input, weight, bias, self.stride,
 step 200/40000 | loss 43.9787 | lr 1.00e-04 | 428 win/s
 step 400/40000 | loss 3.6596 | lr 2.00e-04 | 427 win/s
+step 600/40000 | loss 3.4617 | lr 3.00e-04 | 425 win/s
 ```
 
 ### tf_fold1.log

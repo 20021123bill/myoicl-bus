@@ -15,3 +15,4 @@
   return F.conv1d(input, weight, bias, self.stride,
 step 200/40000 | loss 43.9787 | lr 1.00e-04 | 428 win/s
 step 400/40000 | loss 3.6596 | lr 2.00e-04 | 427 win/s
+step 600/40000 | loss 3.4617 | lr 3.00e-04 | 425 win/s
