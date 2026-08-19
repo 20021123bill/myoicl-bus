@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T16:15:15+08:00
+# heartbeat 2026-08-19T16:15:58+08:00
 
 ## gpu
 ```
-0, 1371 MiB, 24576 MiB, 26 %
+0, 1371 MiB, 24576 MiB, 6 %
 1, 1369 MiB, 24576 MiB, 0 %
 2, 2807 MiB, 24576 MiB, 0 %
 3, 1369 MiB, 24576 MiB, 0 %
@@ -1625,14 +1625,6 @@ deployed
 ### 400_v5.log
 ```
 [scan] === UNSEEN users (8 official test): 55.39 published ===
---- 15:58 ---
-[a0_gain_affine] [val] step 6500: mode-C CER 66.73 | mode-B CER 90.14 | mode-A CER 68.57 | gain C +1.83 / B -21.58 | loss 3.9261
-[a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
-    _error_if_any_worker_fails()
-RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
-  ^^ a1_gain_v31 LOOKS BROKEN
-[a2_realistic] [val] step 3500: mode-C CER 75.41 | mode-B CER 76.18 | mode-A CER 79.80 | gain C +4.38 / B +3.62 | loss 3.9540
-[scan] === UNSEEN users (8 official test): 55.39 published ===
 --- 16:03 ---
 [a0_gain_affine] [val] step 6500: mode-C CER 66.73 | mode-B CER 90.14 | mode-A CER 68.57 | gain C +1.83 / B -21.58 | loss 3.9261
 [a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
@@ -1642,6 +1634,14 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
 [a2_realistic] [val] step 3500: mode-C CER 75.41 | mode-B CER 76.18 | mode-A CER 79.80 | gain C +4.38 / B +3.62 | loss 3.9540
 [scan] === UNSEEN users (8 official test): 55.39 published ===
 --- 16:08 ---
+[a0_gain_affine] [val] step 6500: mode-C CER 66.73 | mode-B CER 90.14 | mode-A CER 68.57 | gain C +1.83 / B -21.58 | loss 3.9261
+[a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
+  ^^ a1_gain_v31 LOOKS BROKEN
+[a2_realistic] [val] step 4000: mode-C CER 68.16 | mode-B CER 76.63 | mode-A CER 79.45 | gain C +11.29 / B +2.83 | loss 3.2769
+[scan] === UNSEEN users (8 official test): 55.39 published ===
+--- 16:13 ---
 [a0_gain_affine] [val] step 6500: mode-C CER 66.73 | mode-B CER 90.14 | mode-A CER 68.57 | gain C +1.83 / B -21.58 | loss 3.9261
 [a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
     _error_if_any_worker_fails()
@@ -2045,9 +2045,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 
 ### 440_trunk_train.log
 ```
-  (10) no free GPU: 0, 2411 MiB 1, 1369 MiB 2, 2807 MiB 3, 24117 MiB 
-launched tf_fold0 on GPU3 pid=2905364  (15:34)
-
 === streaming (12 h) ===
 --- 15:39 ---
 [tf_ref] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
@@ -2070,6 +2067,9 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 --- 16:09 ---
 [tf_ref] [val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
+--- 16:14 ---
+[tf_ref] [val] step 6000: 8-test-user CER 90.24 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] [val] step 4000: 8-test-user CER 93.44 | fold-heldout-user CER 94.28  (their Tiny reference: 35.9)
 ```
 
 ### 450_log_relay.log
@@ -2391,7 +2391,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-step 200/40000 | loss 17.0279 | lr 3.00e-05 | 433 win/s
 step 400/40000 | loss 4.1474 | lr 6.00e-05 | 433 win/s
 step 600/40000 | loss 3.6532 | lr 9.00e-05 | 435 win/s
 step 800/40000 | loss 3.5339 | lr 1.20e-04 | 445 win/s
@@ -2416,6 +2415,7 @@ step 4000/40000 | loss 2.9077 | lr 2.98e-04 | 466 win/s
 [val] step 4000: 8-test-user CER 93.44 | fold-heldout-user CER 94.28  (their Tiny reference: 35.9)
 [val] new best 93.44 -> best.pt
 step 4200/40000 | loss 2.8745 | lr 2.98e-04 | 465 win/s
+step 4400/40000 | loss 2.8548 | lr 2.97e-04 | 466 win/s
 ```
 
 ### tf_ref.log
@@ -2670,7 +2670,6 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
 
 ### v5_a2_realistic.log
 ```
-step 2300/8000 | loss 2.7053 | lr 9.21e-04 | 0.84 it/s
 step 2400/8000 | loss 2.7740 | lr 9.09e-04 | 0.87 it/s
 step 2500/8000 | loss 2.7018 | lr 8.96e-04 | 0.84 it/s
 [val] step 2500: mode-C CER 86.37 | mode-B CER 72.80 | mode-A CER 80.42 | gain C -5.95 / B +7.62 | loss 6.0189
@@ -2695,6 +2694,7 @@ step 4000/8000 | loss 2.5845 | lr 6.31e-04 | 0.79 it/s
 step 4100/8000 | loss 2.6075 | lr 6.10e-04 | 0.61 it/s
 step 4200/8000 | loss 2.5191 | lr 5.89e-04 | 0.88 it/s
 step 4300/8000 | loss 2.5014 | lr 5.68e-04 | 0.83 it/s
+step 4400/8000 | loss 2.4864 | lr 5.46e-04 | 0.74 it/s
 ```
 
 ### v5_zeroshot_scan.log
