@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:20:46+08:00
+# heartbeat 2026-08-19T17:21:28+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 80 %
-1, 2985 MiB, 24576 MiB, 46 %
-2, 3169 MiB, 24576 MiB, 0 %
-3, 2985 MiB, 24576 MiB, 67 %
+0, 2989 MiB, 24576 MiB, 59 %
+1, 2985 MiB, 24576 MiB, 55 %
+2, 3169 MiB, 24576 MiB, 74 %
+3, 2985 MiB, 24576 MiB, 70 %
 ```
 
 ## jobs
@@ -2487,14 +2487,6 @@ launched tf_fold2 on GPU3 pid=3044556
 
 ### 510_fold_fleet_lr1e3.log
 ```
-launched tf_fold0 on GPU0 pid=3041555
-launched tf_fold1 on GPU1 pid=3043152
-launched tf_fold2 on GPU3 pid=3044556
-
-=== stream (14 h); launch fold3 when a slot frees ===
---- 17:05 ---
-[tf_ref_lr1e3] step 5600/40000 | loss 2.3210 | lr 9.78e-04 | 521 win/s
-        [val] new best 78.64 -> best.pt
 [tf_fold0] step 600/40000 | loss 3.4617 | lr 3.00e-04 | 425 win/s
 [tf_fold1] step 800/40000 | loss 3.3023 | lr 4.00e-04 | 597 win/s
 [tf_fold2] step 600/40000 | loss 3.3959 | lr 3.00e-04 | 610 win/s
@@ -2511,6 +2503,14 @@ launched tf_fold2 on GPU3 pid=3044556
 [tf_fold1] step 2200/40000 | loss 2.8231 | lr 1.00e-03 | 613 win/s
         [val] new best 100.00 -> best.pt
 [tf_fold2] step 2200/40000 | loss 2.7923 | lr 1.00e-03 | 623 win/s
+        [val] new best 100.00 -> best.pt
+--- 17:20 ---
+[tf_ref_lr1e3] step 6800/40000 | loss 2.2851 | lr 9.61e-04 | 485 win/s
+        [val] step 6000: 8-test-user CER 84.01 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 1800/40000 | loss 2.9799 | lr 9.00e-04 | 392 win/s
+[tf_fold1] step 3000/40000 | loss 2.4718 | lr 9.98e-04 | 619 win/s
+        [val] new best 100.00 -> best.pt
+[tf_fold2] step 3000/40000 | loss 2.4417 | lr 9.98e-04 | 626 win/s
         [val] new best 100.00 -> best.pt
 ```
 
@@ -2784,7 +2784,6 @@ step 3000/40000 | loss 2.4718 | lr 9.98e-04 | 619 win/s
 
 ### tf_fold2.log
 ```
-[split] official test users: 16 sessions (never trained on in either mode)
 [data] 168679 training windows of 4.0s
 [data] monitor sets: 160 test windows, 160 fold-heldout windows
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
@@ -2809,6 +2808,7 @@ step 2200/40000 | loss 2.7923 | lr 1.00e-03 | 623 win/s
 step 2400/40000 | loss 2.7022 | lr 1.00e-03 | 624 win/s
 step 2600/40000 | loss 2.6118 | lr 9.99e-04 | 625 win/s
 step 2800/40000 | loss 2.5361 | lr 9.99e-04 | 626 win/s
+step 3000/40000 | loss 2.4417 | lr 9.98e-04 | 626 win/s
 ```
 
 ### tf_ref.log
