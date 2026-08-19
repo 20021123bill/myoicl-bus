@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:27:03+08:00
+# heartbeat 2026-08-19T15:27:46+08:00
 
 ## gpu
 ```
 0, 2411 MiB, 24576 MiB, 0 %
-1, 1369 MiB, 24576 MiB, 22 %
+1, 1369 MiB, 24576 MiB, 36 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 5689 MiB, 24576 MiB, 0 %
+3, 7431 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -53,6 +53,7 @@
 400_v5_hardsynth                         DONE rc=127
 410_deploy_remix                         DONE rc=127
 411_deploy_remix_fix                     DONE rc=127
+412_deploy_remix_v2                      DONE rc=127
 420_eval_v5a1_real_users                 DONE rc=127
 430_deploy_trunk_tf                      DONE rc=127
 440_train_trunk_tf                       DONE rc=127
@@ -1162,6 +1163,16 @@ SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_202
     return F.conv2d(input, weight, bias, self.stride,
 RuntimeError: Calculated padded input size per channel: (32 x 9). Kernel size: (1 x 32). Kernel size can't be greater than actual input size
 SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_20260819_152415
+```
+
+### 412_deploy_remix_v2.log
+```
+=== backup before overwriting shared modules ===
+rollback copy: /data2/chenyuxiang/runs/backup_myoicl_20260819_152746
+=== extract ===
+AST OK
+
+=== regression: the NO-remix path must be untouched ===
 ```
 
 ### 420_eval_v5a1_real_users.log
