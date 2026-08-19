@@ -1,4 +1,4 @@
-# heartbeat 2026-08-19T13:25:46+08:00
+# heartbeat 2026-08-19T13:26:28+08:00
 
 ## gpu
 ```
@@ -47,6 +47,7 @@
 330_v32_filmonly                         DONE rc=127
 340_ctxsource_diag                       DONE rc=127
 350_samesession_diag                     DONE rc=127
+360_tokens_only_pilot                    DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -1001,4 +1002,9 @@ If SAME-session mode-C < mode-A (gain positive) while CROSS-session hurts,
 the universal negative is cross-session electrode staleness, not the method:
 in-context calibration works when calibration and use are the same session.
 === same-session diagnostic complete ===
+```
+
+### 360_tokens_only_pilot.log
+```
+=== tokens-only interface ceiling, users 0-2, unrestricted data ===
 ```
