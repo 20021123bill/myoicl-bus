@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:03:34+08:00
+# heartbeat 2026-08-19T17:04:17+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 0 %
-1, 2985 MiB, 24576 MiB, 46 %
-2, 2985 MiB, 24576 MiB, 0 %
-3, 2983 MiB, 24576 MiB, 71 %
+0, 2989 MiB, 24576 MiB, 76 %
+1, 2985 MiB, 24576 MiB, 75 %
+2, 2985 MiB, 24576 MiB, 23 %
+3, 2983 MiB, 24576 MiB, 65 %
 ```
 
 ## jobs
@@ -2498,6 +2498,10 @@ launched tf_fold2 on GPU3 pid=3044556
 AST OK
 
 === smoke: the symbol map itself ===
+letters=26  example 8-cycle: abfhkmqz -> qzkbmafh
+fixed points and mapping application OK
+SMOKE OK
+=== 520 done: symbol-ICL trainer deployed, waiting on the fold fleet ===
 ```
 
 ### d3_train.log
