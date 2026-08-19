@@ -60,3 +60,4 @@ step 9000/103000 | loss 2.0187 | lr 6.92e-04 | 402 win/s
 step 9200/103000 | loss 1.9871 | lr 6.91e-04 | 400 win/s
 step 9400/103000 | loss 2.0076 | lr 6.91e-04 | 398 win/s
 step 9600/103000 | loss 2.0085 | lr 6.90e-04 | 396 win/s
+step 9800/103000 | loss 2.0111 | lr 6.90e-04 | 395 win/s
