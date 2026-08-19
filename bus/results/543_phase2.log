@@ -1,2 +1,5 @@
 AST OK
 === wait for phase 1 to finish (or die) ===
+phase-1 best gain: 0.37
+=== phase 2: symbol-tuning emphasis, warm-started from /data2/chenyuxiang/runs/icl_dev_fold2/best.pt ===
+phase 2 pid=4079332
