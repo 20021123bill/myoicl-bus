@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T16:52:09+08:00
+# heartbeat 2026-08-19T16:52:52+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 72 %
-1, 3169 MiB, 24576 MiB, 27 %
-2, 2985 MiB, 24576 MiB, 17 %
-3, 9507 MiB, 24576 MiB, 0 %
+0, 3173 MiB, 24576 MiB, 51 %
+1, 3169 MiB, 24576 MiB, 0 %
+2, 2985 MiB, 24576 MiB, 0 %
+3, 12 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -2418,26 +2418,31 @@ rc=0  finished 16:49
 
 ### 500_eval_a2_retry.log
 ```
-=== was anything OOM-killed? ===
-(no OOM evidence readable, or dmesg not permitted)
-              总计         已用        空闲      共享    缓冲/缓存    可用
-内存：        2015          72         115           2        1827        1929
-
-0, 3173 MiB, 62 %
-1, 3169 MiB, 94 %
-2, 2985 MiB, 70 %
-3, 12 MiB, 0 %
-
-=== evaluating /data2/chenyuxiang/runs/v5_a2/best.pt sequentially on GPU3 ===
-
-############ k=12 (~48s) -- started 16:47 ############
-rc=0  finished 16:49
 [A] mean over users: 55.40
 [C] mean over users: 60.54
 [A] gap closed vs personalization ceiling: -0.0%
 [C] gap closed vs personalization ceiling: -11.7%
 
 ############ k=45 (~180s) -- started 16:49 ############
+rc=0  finished 16:52
+[A] mean over users: 55.40
+[C] mean over users: 60.60
+[A] gap closed vs personalization ceiling: -0.0%
+[C] gap closed vs personalization ceiling: -11.8%
+
+=== A2 vs A1 on the 8 real test users ===
+  ckpt    k  secs   mode A   mode C   gain C
+  v5a1    4    16    55.40    56.82    -1.43
+  v5a1   12    48    55.40    56.81    -1.42
+  v5a1   23    92    55.40    56.81    -1.42
+  v5a1   45   180    55.40    56.81    -1.42
+  v5a2   12    48    55.40    60.54    -5.14
+  v5a2   45   180    55.40    60.60    -5.20
+
+A1 trained on pure per-channel gain; A2 on the calibrated family with
+integer electrode rotation. mode A must sit at 55.39 in both (frozen
+backbone) -- if it does not, the eval is wrong, not the method.
+=== 500 done ===
 ```
 
 ### d3_train.log
