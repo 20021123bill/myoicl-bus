@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T19:00:34+08:00
+# heartbeat 2026-08-19T19:01:17+08:00
 
 ## gpu
 ```
 0, 3173 MiB, 24576 MiB, 0 %
-1, 2985 MiB, 24576 MiB, 65 %
-2, 3169 MiB, 24576 MiB, 14 %
-3, 3169 MiB, 24576 MiB, 41 %
+1, 2985 MiB, 24576 MiB, 71 %
+2, 3169 MiB, 24576 MiB, 0 %
+3, 3169 MiB, 24576 MiB, 63 %
 ```
 
 ## jobs
@@ -2810,7 +2810,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-step 5000/40000 | loss 2.3357 | lr 9.85e-04 | 360 win/s
 step 5200/40000 | loss 2.3332 | lr 9.83e-04 | 359 win/s
 step 5400/40000 | loss 2.3209 | lr 9.80e-04 | 359 win/s
 step 5600/40000 | loss 2.2974 | lr 9.78e-04 | 358 win/s
@@ -2835,6 +2834,7 @@ step 8800/40000 | loss 2.2531 | lr 9.23e-04 | 338 win/s
 step 9000/40000 | loss 2.2310 | lr 9.19e-04 | 338 win/s
 step 9200/40000 | loss 2.2385 | lr 9.14e-04 | 337 win/s
 step 9400/40000 | loss 2.2328 | lr 9.09e-04 | 337 win/s
+step 9600/40000 | loss 2.2417 | lr 9.05e-04 | 336 win/s
 ```
 
 ### tf_fold1.log
