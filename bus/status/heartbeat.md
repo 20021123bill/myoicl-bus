@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:05:42+08:00
+# heartbeat 2026-08-19T17:06:25+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 44 %
-1, 2985 MiB, 24576 MiB, 86 %
-2, 2985 MiB, 24576 MiB, 82 %
-3, 2983 MiB, 24576 MiB, 49 %
+0, 2989 MiB, 24576 MiB, 46 %
+1, 2985 MiB, 24576 MiB, 39 %
+2, 2985 MiB, 24576 MiB, 0 %
+3, 2983 MiB, 24576 MiB, 50 %
 ```
 
 ## jobs
@@ -2494,6 +2494,12 @@ launched tf_fold1 on GPU1 pid=3043152
 launched tf_fold2 on GPU3 pid=3044556
 
 === stream (14 h); launch fold3 when a slot frees ===
+--- 17:05 ---
+[tf_ref_lr1e3] step 5600/40000 | loss 2.3210 | lr 9.78e-04 | 521 win/s
+        [val] new best 78.64 -> best.pt
+[tf_fold0] step 600/40000 | loss 3.4617 | lr 3.00e-04 | 425 win/s
+[tf_fold1] step 800/40000 | loss 3.3023 | lr 4.00e-04 | 597 win/s
+[tf_fold2] step 600/40000 | loss 3.3959 | lr 3.00e-04 | 610 win/s
 ```
 
 ### 520_deploy_symbol_icl.log
@@ -2749,6 +2755,7 @@ step 600/40000 | loss 3.4617 | lr 3.00e-04 | 425 win/s
 step 200/40000 | loss 43.6187 | lr 1.00e-04 | 541 win/s
 step 400/40000 | loss 3.6463 | lr 2.00e-04 | 571 win/s
 step 600/40000 | loss 3.4346 | lr 3.00e-04 | 590 win/s
+step 800/40000 | loss 3.3023 | lr 4.00e-04 | 597 win/s
 ```
 
 ### tf_fold2.log
@@ -2804,7 +2811,6 @@ step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
 
 ### tf_ref_lr1e3.log
 ```
-step 1400/40000 | loss 3.1287 | lr 7.00e-04 | 625 win/s
 step 1600/40000 | loss 3.0640 | lr 8.00e-04 | 612 win/s
 step 1800/40000 | loss 3.0091 | lr 9.00e-04 | 604 win/s
 step 2000/40000 | loss 2.9135 | lr 1.00e-03 | 596 win/s
@@ -2829,6 +2835,7 @@ step 4800/40000 | loss 2.3765 | lr 9.87e-04 | 533 win/s
 step 5000/40000 | loss 2.3614 | lr 9.85e-04 | 536 win/s
 step 5200/40000 | loss 2.3498 | lr 9.83e-04 | 531 win/s
 step 5400/40000 | loss 2.3413 | lr 9.80e-04 | 526 win/s
+step 5600/40000 | loss 2.3210 | lr 9.78e-04 | 521 win/s
 ```
 
 ### v31_train.log
