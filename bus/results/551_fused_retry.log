@@ -16,3 +16,4 @@ step 200/12000 | loss 5.2564 | lr 1.00e-04 | 1.60 it/s
 [05:54] [val] new best mode-C 75.59 -> best.pt
 [05:59] [val] new best mode-C 58.20 -> best.pt
 [06:04] [val] step 1500: mode-A 57.10 | mode-C 58.68 | gain C -1.58   (REAL novel subjects, fold 2)
+[06:09] [val] step 2000: mode-A 59.25 | mode-C 60.57 | gain C -1.32   (REAL novel subjects, fold 2)
