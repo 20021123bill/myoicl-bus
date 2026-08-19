@@ -149,6 +149,54 @@ def _ids_from_targets(tg, tl):
     return [tg[: int(tl[n]), n] for n in range(tg.shape[1])]
 
 
+def letter_ids(cs):
+    """Class ids whose decoded text is a single lowercase letter, via the same
+    LabelData API the metrics use -- no reliance on charset internals."""
+    from emg2qwerty.data import LabelData
+
+    out = []
+    for i in range(cs.num_classes - 1):          # never the blank
+        try:
+            if LabelData.from_labels([i]).text in "abcdefghijklmnopqrstuvwxyz":
+                out.append(i)
+        except Exception:
+            pass
+    return out
+
+
+def sample_symbol_map(rng, letters, k, n_classes):
+    """Identity map with a random k-letter sub-permutation (no fixed point).
+
+    Applied to BOTH the support characters and the query CTC targets, so the
+    correct output symbol for a gesture is defined only through the support.
+    This is symbol tuning (Wei et al. 2023) transplanted to seq2seq: the model
+    cannot rely on the gesture->character prior in its weights and is forced
+    to read the input-label mapping from context.
+    """
+    import numpy as _np
+
+    k = int(min(k, len(letters)))
+    m = _np.arange(n_classes)
+    if k >= 2:
+        sub = rng.choice(len(letters), size=k, replace=False)
+        sub = _np.asarray([letters[i] for i in sub])
+        perm = sub.copy()
+        while True:                               # derangement of the subset
+            rng.shuffle(perm)
+            if not (perm == sub).any():
+                break
+        m[sub] = perm
+    return m
+
+
+def _apply_symbol_map(batch, m, device=None):
+    import torch as _t
+
+    mt = _t.as_tensor(m, dtype=batch["targets"].dtype)
+    batch["targets"] = mt[batch["targets"].long()]
+    return batch
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo-root", default="/data2/chenyuxiang/code/emg2qwerty")
@@ -184,6 +232,18 @@ def main():
     ap.add_argument("--val-every", type=int, default=500)
     ap.add_argument("--val-episodes", type=int, default=24)
     ap.add_argument("--bf16", action="store_true", default=True)
+    ap.add_argument("--p-permute", type=float, default=0.5,
+                    help="fraction of mode-C episodes whose LETTER label space "
+                         "is permuted episode-wide (seq2seq symbol tuning). "
+                         "The gesture->symbol mapping then exists ONLY in the "
+                         "support, so the episode is unsolvable without "
+                         "reading it -- BrainCoDec's iron law 1, manufactured "
+                         "for a seq2seq task -- and every permutation is a "
+                         "fresh task, which is how a 96-user dataset matches "
+                         "the task-count of 20k voxels/subject.")
+    ap.add_argument("--permute-k", type=int, nargs=2, default=[4, 12],
+                    help="curriculum range: permute a random subset of this "
+                         "many letters (uniform draw per episode)")
     ap.add_argument("--allow-contaminated", action="store_true",
                     help="run even when the backbone has seen the cohort. "
                          "SMOKE TESTS ONLY -- such a run cannot produce a "
@@ -261,8 +321,11 @@ def main():
     tr_ep = UserEpisodes(held_pairs, seed=args.seed)
     va_ep = UserEpisodes(held_pairs, seed=args.seed + 1000)
     rng = np.random.default_rng(args.seed)
+    LETTERS = letter_ids(cs)
+    print(f"[symbol] {len(LETTERS)} permutable letter classes | "
+          f"p_permute {args.p_permute} k {args.permute_k}")
 
-    def draw(ep_src, force_mode=None):
+    def draw(ep_src, force_mode=None, allow_permute=True):
         theta = None
         if rng.random() < args.p_synth:
             lo, hi = args.synth_strength
@@ -272,6 +335,14 @@ def main():
         k = int(rng.integers(args.k_support[0], args.k_support[1] + 1))
         u, sb, qb = ep_src.episode(k, args.n_query, theta)
         mode = force_mode or ("A" if rng.random() < args.p_modeA else "C")
+        # Symbol permutation only in mode C: without support the mapping is
+        # uninferable, so a permuted mode-A episode would just be label noise.
+        if (allow_permute and mode == "C" and LETTERS
+                and rng.random() < args.p_permute):
+            kk = int(rng.integers(args.permute_k[0], args.permute_k[1] + 1))
+            m = sample_symbol_map(rng, LETTERS, kk, cs.num_classes)
+            _apply_symbol_map(sb, m)
+            _apply_symbol_map(qb, m)
         return u, sb, qb, mode
 
     def run_episode(sb, qb, mode, train=True):
@@ -301,7 +372,11 @@ def main():
         trunk.eval(); enc.eval()
         accs = {"A": CERAccumulator(), "C": CERAccumulator()}
         for _ in range(args.val_episodes):
-            u, sb, qb, _ = draw(va_ep)
+            # No permutation in validation: the SAME episode is scored under
+            # mode A and mode C, and a permuted target set would penalise
+            # mode A for a mapping it cannot possibly know -- inflating the
+            # gain. Validation measures the real (identity-mapping) task.
+            u, sb, qb, _ = draw(va_ep, allow_permute=False)
             for mode in ("A", "C"):
                 _, em, in_len = run_episode(sb, qb, mode, train=False)
                 preds = greedy_ctc_decode(em.float(), in_len.cpu(),
