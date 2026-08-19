@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:57:52+08:00
+# heartbeat 2026-08-19T16:58:35+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 65 %
-1, 3169 MiB, 24576 MiB, 67 %
-2, 2985 MiB, 24576 MiB, 83 %
+0, 3173 MiB, 24576 MiB, 62 %
+1, 3169 MiB, 24576 MiB, 50 %
+2, 2985 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -66,6 +66,7 @@
 480_tf_lr_probe                          DONE rc=127
 490_tf_100hz_relaunch                    DONE rc=127
 500_eval_a2_retry                        DONE rc=127
+510_fold_fleet_lr1e3                     DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2448,6 +2449,15 @@ A1 trained on pure per-channel gain; A2 on the calibrated family with
 integer electrode rotation. mode A must sit at 55.39 in both (frozen
 backbone) -- if it does not, the eval is wrong, not the method.
 === 500 done ===
+```
+
+### 510_fold_fleet_lr1e3.log
+```
+=== stop tf_ref (3e-4) and tf_fold0 (3e-4) ===
+killed 2976588 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
+killed 2976795 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
+killed 2976858 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
+killed 2976921 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
 ```
 
 ### d3_train.log
