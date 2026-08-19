@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T14:40:47+08:00
+# heartbeat 2026-08-19T14:41:29+08:00
 
 ## gpu
 ```
-0, 4293 MiB, 24576 MiB, 13 %
-1, 5375 MiB, 24576 MiB, 13 %
+0, 4805 MiB, 24576 MiB, 1 %
+1, 5375 MiB, 24576 MiB, 12 %
 2, 3929 MiB, 24576 MiB, 13 %
-3, 6673 MiB, 24576 MiB, 1 %
+3, 6673 MiB, 24576 MiB, 13 %
 ```
 
 ## jobs
@@ -50,6 +50,7 @@
 360_tokens_only_pilot                    DONE rc=127
 370_teacher_fleet                        DONE rc=127
 380_deploy_distill                       DONE rc=127
+400_v5_hardsynth                         DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -1069,6 +1070,13 @@ the conditioning interface reaches 0% of the fine-tuning gap
 === deploy distill.py (code only; training starts when teachers exist) ===
 AST OK
 deployed
+```
+
+### 400_v5_hardsynth.log
+```
+=== phase 0: freeze the teacher-headroom diagnostic, stop the fleet ===
+33 /data2/chenyuxiang/runs/teacher_headroom.txt
+teacher fleet stopped
 ```
 
 ### teachers_shard0.log

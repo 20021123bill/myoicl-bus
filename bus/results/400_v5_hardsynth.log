@@ -1,0 +1,14 @@
+=== phase 0: freeze the teacher-headroom diagnostic, stop the fleet ===
+33 /data2/chenyuxiang/runs/teacher_headroom.txt
+teacher fleet stopped
+0, 16 MiB, 0 %
+1, 12 MiB, 0 %
+2, 12 MiB, 0 %
+3, 12 MiB, 0 %
+
+=== phase 1: calibrate the gain-only synthetic subject (GPU0, ~15 min) ===
+--- gain_log_std 0.5 ---
+  (a) training users, NO synthetic shift      : CER  14.21
+  (b) training users, synthetic shift applied : CER  64.59
+  ratio = 1.22  (GOOD: comparable)
+--- gain_log_std 0.7 ---
