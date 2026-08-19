@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:58:35+08:00
+# heartbeat 2026-08-19T16:59:18+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 62 %
-1, 3169 MiB, 24576 MiB, 50 %
-2, 2985 MiB, 24576 MiB, 0 %
+0, 2989 MiB, 24576 MiB, 81 %
+1, 12 MiB, 24576 MiB, 0 %
+2, 2985 MiB, 24576 MiB, 65 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2458,6 +2458,13 @@ killed 2976588 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/t
 killed 2976795 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
 killed 2976858 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
 killed 2976921 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
+0, 16 MiB
+1, 12 MiB
+2, 2985 MiB
+3, 12 MiB
+
+=== launch fold0/1/2 at lr 1e-3 on free GPUs ===
+launched tf_fold0 on GPU0 pid=3041555
 ```
 
 ### d3_train.log

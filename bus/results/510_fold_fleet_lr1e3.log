@@ -10,3 +10,4 @@ killed 2976921 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/t
 
 === launch fold0/1/2 at lr 1e-3 on free GPUs ===
 launched tf_fold0 on GPU0 pid=3041555
+launched tf_fold1 on GPU1 pid=3043152

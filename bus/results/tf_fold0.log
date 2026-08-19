@@ -13,29 +13,3 @@
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
-step 200/40000 | loss 104.1468 | lr 3.00e-05 | 639 win/s
-step 400/40000 | loss 5.1708 | lr 6.00e-05 | 671 win/s
-step 600/40000 | loss 3.6421 | lr 9.00e-05 | 685 win/s
-step 800/40000 | loss 3.4897 | lr 1.20e-04 | 683 win/s
-step 1000/40000 | loss 3.3800 | lr 1.50e-04 | 672 win/s
-step 1200/40000 | loss 3.3008 | lr 1.80e-04 | 653 win/s
-step 1400/40000 | loss 3.2304 | lr 2.10e-04 | 640 win/s
-step 1600/40000 | loss 3.1930 | lr 2.40e-04 | 623 win/s
-step 1800/40000 | loss 3.1578 | lr 2.70e-04 | 614 win/s
-step 2000/40000 | loss 3.1303 | lr 3.00e-04 | 604 win/s
-[val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
-[val] new best 100.00 -> best.pt
-step 2200/40000 | loss 3.0763 | lr 3.00e-04 | 593 win/s
-step 2400/40000 | loss 3.0404 | lr 3.00e-04 | 587 win/s
-step 2600/40000 | loss 3.0051 | lr 3.00e-04 | 577 win/s
-step 2800/40000 | loss 2.9634 | lr 3.00e-04 | 573 win/s
-step 3000/40000 | loss 2.9316 | lr 2.99e-04 | 570 win/s
-step 3200/40000 | loss 2.8907 | lr 2.99e-04 | 566 win/s
-step 3400/40000 | loss 2.8472 | lr 2.99e-04 | 563 win/s
-step 3600/40000 | loss 2.8100 | lr 2.99e-04 | 561 win/s
-step 3800/40000 | loss 2.7759 | lr 2.98e-04 | 557 win/s
-step 4000/40000 | loss 2.7398 | lr 2.98e-04 | 554 win/s
-[val] step 4000: 8-test-user CER 99.61 | fold-heldout-user CER 99.85  (their Tiny reference: 35.9)
-[val] new best 99.61 -> best.pt
-step 4200/40000 | loss 2.7054 | lr 2.98e-04 | 547 win/s
-step 4400/40000 | loss 2.6776 | lr 2.97e-04 | 539 win/s
