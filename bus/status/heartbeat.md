@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T01:56:26+08:00
+# heartbeat 2026-08-20T01:57:10+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 39 %
-1, 6280 MiB, 24576 MiB, 100 %
-2, 2985 MiB, 24576 MiB, 0 %
-3, 2099 MiB, 24576 MiB, 16 %
+0, 3173 MiB, 24576 MiB, 0 %
+1, 6280 MiB, 24576 MiB, 99 %
+2, 2985 MiB, 24576 MiB, 86 %
+3, 2099 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -2813,6 +2813,7 @@ step 400/12000 | loss 3.1112 | lr 2.00e-04 | 1.54 it/s
 ```
 AST OK
 === waiting for a worthwhile icl_dev checkpoint ===
+  waiting (12) step 5600/12000 | loss 2.4000 | lr 1.79e-04 | 1.55 it/s
 ```
 
 ### 542_kcurve.log
