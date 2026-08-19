@@ -13,3 +13,4 @@ launched icl_frozen_fold2 pid=248766
 [audit] step 0: mode-A 62.58 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 step 100/12000 | loss 9.6123 | lr 1.67e-04 | 2.02 it/s
 step 200/12000 | loss 5.8096 | lr 3.33e-04 | 1.66 it/s
+[06:38] [val] new best mode-C 72.48 -> best.pt

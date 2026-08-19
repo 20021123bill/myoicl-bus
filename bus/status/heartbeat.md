@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T06:37:29+08:00
+# heartbeat 2026-08-20T06:38:13+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 40 %
-1, 3125 MiB, 24576 MiB, 77 %
-2, 2985 MiB, 24576 MiB, 65 %
-3, 2735 MiB, 24576 MiB, 33 %
+0, 3173 MiB, 24576 MiB, 0 %
+1, 3125 MiB, 24576 MiB, 70 %
+2, 2985 MiB, 24576 MiB, 31 %
+3, 2735 MiB, 24576 MiB, 19 %
 ```
 
 ## jobs
@@ -3122,6 +3122,7 @@ launched icl_frozen_fold2 pid=248766
 [audit] step 0: mode-A 62.58 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 step 100/12000 | loss 9.6123 | lr 1.67e-04 | 2.02 it/s
 step 200/12000 | loss 5.8096 | lr 3.33e-04 | 1.66 it/s
+[06:38] [val] new best mode-C 72.48 -> best.pt
 ```
 
 ### d3_train.log
@@ -3314,6 +3315,9 @@ step 400/12000 | loss 2.9958 | lr 6.67e-04 | 1.64 it/s
 step 500/12000 | loss 3.0010 | lr 8.33e-04 | 1.59 it/s
 [val] step 500: mode-A 64.54 | mode-C 72.48 | gain C -7.93   (REAL novel subjects, fold 2)
 [val] new best mode-C 72.48 -> best.pt
+step 600/12000 | loss 2.9651 | lr 1.00e-03 | 1.51 it/s
+step 700/12000 | loss 2.8859 | lr 1.00e-03 | 1.57 it/s
+step 800/12000 | loss 2.9156 | lr 9.99e-04 | 1.58 it/s
 ```
 
 ### icl_fusedb_fold2.log
