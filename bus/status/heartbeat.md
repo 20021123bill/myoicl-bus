@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:34:05+08:00
+# heartbeat 2026-08-19T15:34:47+08:00
 
 ## gpu
 ```
-0, 2411 MiB, 24576 MiB, 18 %
-1, 1369 MiB, 24576 MiB, 42 %
+0, 2411 MiB, 24576 MiB, 0 %
+1, 1369 MiB, 24576 MiB, 36 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 24117 MiB, 24576 MiB, 0 %
+3, 12 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -1293,6 +1293,9 @@ AST OK
 === waiting for GPUs (the v5 ladder is still running) ===
 launched tf_ref on GPU1 pid=2889785  (15:24)
   (10) no free GPU: 0, 2411 MiB 1, 1369 MiB 2, 2807 MiB 3, 24117 MiB 
+launched tf_fold0 on GPU3 pid=2905364  (15:34)
+
+=== streaming (12 h) ===
 ```
 
 ### teachers_shard0.log
