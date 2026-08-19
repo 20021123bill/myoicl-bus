@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T05:17:01+08:00
+# heartbeat 2026-08-20T05:17:44+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 55 %
-1, 3125 MiB, 24576 MiB, 43 %
-2, 2985 MiB, 24576 MiB, 45 %
-3, 2099 MiB, 24576 MiB, 0 %
+0, 3173 MiB, 24576 MiB, 56 %
+1, 3125 MiB, 24576 MiB, 58 %
+2, 2985 MiB, 24576 MiB, 59 %
+3, 12 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -77,6 +77,7 @@
 542_kcurve_autotrigger                   DONE rc=127
 543_icl_phase2_conditional               DONE rc=127
 544_perm_probe_loop                      DONE rc=127
+545_final_night_verdict                  DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2924,6 +2925,12 @@ k= 12 ( 48s): mode-A  43.66 | mode-C  44.58 | gain  -0.92 (20 episodes)
 k= 12 ( 48s): mode-A  57.97 | mode-C  59.07 | gain  -1.10 (20 episodes)
 [saved] /data2/chenyuxiang/runs/perm_probe_latest.json
 k= 12 ( 48s): mode-A  43.23 | mode-C  42.86 | gain  +0.37 (20 episodes)
+```
+
+### 545_final_night_verdict.log
+```
+=== wait for phase 2 to end ===
+=== permuted probe on last.pt (mechanism) ===
 ```
 
 ### d3_train.log
