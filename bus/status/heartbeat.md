@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:30:09+08:00
+# heartbeat 2026-08-19T16:30:51+08:00
 
 ## gpu
 ```
-0, 3171 MiB, 24576 MiB, 49 %
-1, 3167 MiB, 24576 MiB, 11 %
-2, 2983 MiB, 24576 MiB, 69 %
+0, 3173 MiB, 24576 MiB, 76 %
+1, 3167 MiB, 24576 MiB, 71 %
+2, 2983 MiB, 24576 MiB, 17 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2046,9 +2046,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 
 ### 440_trunk_train.log
 ```
-[tf_fold0] step 1000/40000 | loss 3.4651 | lr 1.50e-04 | 449 win/s
---- 15:49 ---
-[tf_ref] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] step 1600/40000 | loss 3.3047 | lr 2.40e-04 | 463 win/s
 --- 15:54 ---
 [tf_ref] [val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
@@ -2071,6 +2068,9 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 --- 16:24 ---
 [tf_ref] step 800/40000 | loss 3.4943 | lr 1.20e-04 | 698 win/s
 [tf_fold0] step 800/40000 | loss 3.4897 | lr 1.20e-04 | 683 win/s
+--- 16:29 ---
+[tf_ref] step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
+[tf_fold0] step 1400/40000 | loss 3.2304 | lr 2.10e-04 | 640 win/s
 ```
 
 ### 450_log_relay.log
@@ -2091,6 +2091,12 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 [tf_fold0] [val] new best 100.00 -> best.pt
 [tf_ref] [val] new best 94.53 -> best.pt
 [tf_ref_lr1e3] 
+
+--- 16:30 ---
+0, 3171 MiB, 69 %|1, 3167 MiB, 68 %|2, 2983 MiB, 86 %|3, 12 MiB, 0 %|
+[tf_fold0] step 1600/40000 | loss 3.1930 | lr 2.40e-04 | 623 win/s
+[tf_ref] step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
+[tf_ref_lr1e3] step 1400/40000 | loss 3.1287 | lr 7.00e-04 | 625 win/s
 
 ```
 
@@ -2219,7 +2225,6 @@ SMOKE OK
 
 ### 480_lr_probe.log
 ```
-=== launching tf_ref_lr1e3 on GPU0 at 15:58 ===
 pid=2942963
 [split] REFERENCE run: all 96 training users
 [split] official test users: 16 sessions (never trained on in either mode)
@@ -2241,6 +2246,10 @@ pid=2942963
 [tf_ref] step 200/40000 | loss 84.3919 | lr 3.00e-05 | 617 win/s
 [tf_ref_lr1e3] no steps yet
 [tf_fold0] no steps yet
+--- 16:30 ---
+[tf_ref] step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
+[tf_ref_lr1e3] step 1400/40000 | loss 3.1287 | lr 7.00e-04 | 625 win/s
+[tf_fold0] step 1400/40000 | loss 3.2304 | lr 2.10e-04 | 640 win/s
 ```
 
 ### 480_tf_lr_probe.log
@@ -2261,10 +2270,6 @@ pid=2942963
 
 ### 490_tf_100hz.log
 ```
-launched tf_ref_lr1e3 on GPU2 lr=1e-3 fold=-1 pid=2978025
-
---- tf_ref ---
-[split] REFERENCE run: all 96 training users
 [split] official test users: 16 sessions (never trained on in either mode)
 [data] 229266 training windows of 4.0s
 [data] monitor sets: 160 test windows, 0 fold-heldout windows
@@ -2286,6 +2291,10 @@ launched tf_ref_lr1e3 on GPU2 lr=1e-3 fold=-1 pid=2978025
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 
 === stream (14 h) ===
+--- 16:28 ---
+[tf_ref] step 1600/40000 | loss 3.1925 | lr 2.40e-04 | 711 win/s
+[tf_fold0] step 1200/40000 | loss 3.3008 | lr 1.80e-04 | 653 win/s
+[tf_ref_lr1e3] step 1200/40000 | loss 3.1712 | lr 6.00e-04 | 636 win/s
 ```
 
 ### 490_tf_100hz_relaunch.log
@@ -2476,6 +2485,7 @@ step 800/40000 | loss 3.4897 | lr 1.20e-04 | 683 win/s
 step 1000/40000 | loss 3.3800 | lr 1.50e-04 | 672 win/s
 step 1200/40000 | loss 3.3008 | lr 1.80e-04 | 653 win/s
 step 1400/40000 | loss 3.2304 | lr 2.10e-04 | 640 win/s
+step 1600/40000 | loss 3.1930 | lr 2.40e-04 | 623 win/s
 ```
 
 ### tf_ref.log
