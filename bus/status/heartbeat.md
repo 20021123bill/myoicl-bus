@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T03:20:45+08:00
+# heartbeat 2026-08-20T03:21:28+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 0 %
-1, 3125 MiB, 24576 MiB, 51 %
-2, 2985 MiB, 24576 MiB, 0 %
-3, 1817 MiB, 24576 MiB, 32 %
+0, 3173 MiB, 24576 MiB, 55 %
+1, 3125 MiB, 24576 MiB, 69 %
+2, 2985 MiB, 24576 MiB, 78 %
+3, 1817 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -76,6 +76,7 @@
 541_icl_dev_relaunch                     DONE rc=127
 542_kcurve_autotrigger                   DONE rc=127
 543_icl_phase2_conditional               DONE rc=127
+544_perm_probe_loop                      DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2873,6 +2874,12 @@ phase 2 pid=4079332
 [03:18] [val] new best mode-C 53.38 -> best.pt
 ```
 
+### 544_perm_probe_loop.log
+```
+patch verified (permute_k x5)
+=== probe at 03:21 (ckpt 03:18) ===
+```
+
 ### d3_train.log
 ```
 [val] step 6000: mode-C CER 16.99 | mode-B CER 17.13 | mode-A CER 15.88 | gain C -1.11 / B -1.25 | loss 0.6158
@@ -3120,7 +3127,6 @@ step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
 
 ### tf_fold0_full.log
 ```
-step 16600/103000 | loss 1.8004 | lr 6.65e-04 | 576 win/s
 step 16800/103000 | loss 1.8009 | lr 6.64e-04 | 576 win/s
 step 17000/103000 | loss 1.8000 | lr 6.63e-04 | 575 win/s
 step 17200/103000 | loss 1.8291 | lr 6.62e-04 | 575 win/s
@@ -3145,6 +3151,7 @@ step 20400/103000 | loss 1.7823 | lr 6.45e-04 | 575 win/s
 step 20600/103000 | loss 1.7964 | lr 6.43e-04 | 575 win/s
 step 20800/103000 | loss 1.7737 | lr 6.42e-04 | 576 win/s
 step 21000/103000 | loss 1.7790 | lr 6.41e-04 | 577 win/s
+step 21200/103000 | loss 1.7630 | lr 6.40e-04 | 578 win/s
 ```
 
 ### tf_fold0.log
@@ -3178,7 +3185,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-step 11800/103000 | loss 1.8617 | lr 6.84e-04 | 419 win/s
 step 12000/103000 | loss 1.8613 | lr 6.83e-04 | 421 win/s
 [val] step 12000: 8-test-user CER 50.15 | fold-heldout-user CER 57.09  (their Tiny reference: 35.9)
 step 12200/103000 | loss 1.8629 | lr 6.83e-04 | 423 win/s
@@ -3203,6 +3209,7 @@ step 15800/103000 | loss 1.8178 | lr 6.68e-04 | 445 win/s
 step 16000/103000 | loss 1.8370 | lr 6.68e-04 | 447 win/s
 [val] step 16000: 8-test-user CER 49.87 | fold-heldout-user CER 56.79  (their Tiny reference: 35.9)
 step 16200/103000 | loss 1.8298 | lr 6.67e-04 | 448 win/s
+step 16400/103000 | loss 1.8081 | lr 6.66e-04 | 448 win/s
 ```
 
 ### tf_fold1.log
