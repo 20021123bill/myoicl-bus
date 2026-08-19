@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:32:59+08:00
+# heartbeat 2026-08-19T16:33:42+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 59 %
-1, 3167 MiB, 24576 MiB, 0 %
-2, 2983 MiB, 24576 MiB, 54 %
+0, 3173 MiB, 24576 MiB, 84 %
+1, 3169 MiB, 24576 MiB, 40 %
+2, 2983 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2299,11 +2299,6 @@ pid=2942963
 
 ### 490_tf_100hz_relaunch.log
 ```
-[split] official test users: 16 sessions (never trained on in either mode)
-[data] 229266 training windows of 4.0s
-[data] monitor sets: 160 test windows, 0 fold-heldout windows
-[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
-[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 --- tf_fold0 ---
 [split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
 [split] official test users: 16 sessions (never trained on in either mode)
@@ -2324,6 +2319,11 @@ pid=2942963
 [tf_ref] step 1600/40000 | loss 3.1925 | lr 2.40e-04 | 711 win/s
 [tf_fold0] step 1200/40000 | loss 3.3008 | lr 1.80e-04 | 653 win/s
 [tf_ref_lr1e3] step 1200/40000 | loss 3.1712 | lr 6.00e-04 | 636 win/s
+--- 16:33 ---
+[tf_ref] step 2400/40000 | loss 3.0256 | lr 3.00e-04 | 711 win/s
+        [val] new best 100.00 -> best.pt
+[tf_fold0] step 2000/40000 | loss 3.1303 | lr 3.00e-04 | 604 win/s
+[tf_ref_lr1e3] step 1800/40000 | loss 3.0091 | lr 9.00e-04 | 604 win/s
 ```
 
 ### d3_train.log
