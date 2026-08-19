@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T21:59:35+08:00
+# heartbeat 2026-08-19T22:00:18+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 49 %
-1, 2985 MiB, 24576 MiB, 90 %
-2, 3169 MiB, 24576 MiB, 27 %
+0, 3173 MiB, 24576 MiB, 0 %
+1, 2985 MiB, 24576 MiB, 81 %
+2, 3169 MiB, 24576 MiB, 13 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2822,8 +2822,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-step 18400/40000 | loss 2.0024 | lr 6.07e-04 | 322 win/s
-step 18600/40000 | loss 1.9945 | lr 5.99e-04 | 322 win/s
 step 18800/40000 | loss 1.9794 | lr 5.90e-04 | 322 win/s
 step 19000/40000 | loss 1.9852 | lr 5.82e-04 | 321 win/s
 step 19200/40000 | loss 1.9790 | lr 5.74e-04 | 321 win/s
@@ -2847,6 +2845,8 @@ step 22200/40000 | loss 1.9084 | lr 4.50e-04 | 326 win/s
 step 22400/40000 | loss 1.9026 | lr 4.42e-04 | 327 win/s
 step 22600/40000 | loss 1.8840 | lr 4.34e-04 | 328 win/s
 step 22800/40000 | loss 1.8873 | lr 4.26e-04 | 329 win/s
+step 23000/40000 | loss 1.8887 | lr 4.18e-04 | 329 win/s
+step 23200/40000 | loss 1.8630 | lr 4.10e-04 | 330 win/s
 ```
 
 ### tf_fold1.log
@@ -2909,10 +2909,6 @@ step 40000/40000 | loss 1.5024 | lr 0.00e+00 | 618 win/s
 
 ### tf_fold3.log
 ```
-  fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
-  fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
-[split] fold 3: train on 72 users (632 sessions); HELD OUT 24 users (205 sessions)
-[split] official test users: 16 sessions (never trained on in either mode)
 [data] 172088 training windows of 4.0s
 [data] monitor sets: 160 test windows, 160 fold-heldout windows
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
@@ -2934,6 +2930,10 @@ step 2000/40000 | loss 2.8907 | lr 1.00e-03 | 689 win/s
 [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 [val] new best 100.00 -> best.pt
 step 2200/40000 | loss 2.8102 | lr 1.00e-03 | 689 win/s
+step 2400/40000 | loss 2.7229 | lr 1.00e-03 | 690 win/s
+step 2600/40000 | loss 2.6421 | lr 9.99e-04 | 691 win/s
+step 2800/40000 | loss 2.5435 | lr 9.99e-04 | 691 win/s
+step 3000/40000 | loss 2.4646 | lr 9.98e-04 | 692 win/s
 ```
 
 ### tf_ref.log
@@ -2967,9 +2967,6 @@ step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
 
 ### tf_ref_lr1e3.log
 ```
-step 23200/40000 | loss 1.9627 | lr 4.10e-04 | 349 win/s
-step 23400/40000 | loss 1.9503 | lr 4.01e-04 | 349 win/s
-step 23600/40000 | loss 1.9463 | lr 3.93e-04 | 348 win/s
 step 23800/40000 | loss 1.9438 | lr 3.85e-04 | 348 win/s
 step 24000/40000 | loss 1.9348 | lr 3.77e-04 | 348 win/s
 [val] step 24000: 8-test-user CER 86.47 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
@@ -2992,6 +2989,9 @@ step 27000/40000 | loss 1.8625 | lr 2.62e-04 | 349 win/s
 step 27200/40000 | loss 1.8514 | lr 2.55e-04 | 350 win/s
 step 27400/40000 | loss 1.8407 | lr 2.48e-04 | 350 win/s
 step 27600/40000 | loss 1.8284 | lr 2.41e-04 | 351 win/s
+step 27800/40000 | loss 1.8320 | lr 2.33e-04 | 351 win/s
+step 28000/40000 | loss 1.8346 | lr 2.27e-04 | 352 win/s
+[val] step 28000: 8-test-user CER 86.61 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 ```
 
 ### v31_train.log

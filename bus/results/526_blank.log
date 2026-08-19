@@ -54,3 +54,9 @@
   tf_fold2       step  38000 | argmax-blank  99.5% | p(blank) 0.993 | entropy 0.020
   tf_ref_lr1e3   step  24000 | argmax-blank  99.4% | p(blank) 0.984 | entropy 0.082
   (probe batch: 8 x 30s windows, 8/8 non-empty refs)
+--- 21:56 ---
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  tf_fold0       step  22000 | argmax-blank  99.4% | p(blank) 0.981 | entropy 0.092
+  tf_fold1       step  40000 | argmax-blank  99.5% | p(blank) 0.990 | entropy 0.045
+  tf_fold2       step  40000 | argmax-blank  99.5% | p(blank) 0.993 | entropy 0.020
