@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T14:42:53+08:00
+# heartbeat 2026-08-19T14:43:35+08:00
 
 ## gpu
 ```
-0, 2205 MiB, 24576 MiB, 0 %
-1, 295 MiB, 24576 MiB, 0 %
-2, 12 MiB, 24576 MiB, 0 %
+0, 2209 MiB, 24576 MiB, 0 %
+1, 3117 MiB, 24576 MiB, 0 %
+2, 295 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -1074,7 +1074,6 @@ deployed
 
 ### 400_v5_hardsynth.log
 ```
-  (b) training users, synthetic shift applied : CER  84.08
   ratio = 1.68  (MISCALIBRATED: use --sweep)
 --- gain_log_std 0.9 ---
   (a) training users, NO synthetic shift      : CER  13.72
@@ -1099,6 +1098,7 @@ CHOSEN 0.5
 === phase 3: launch A0/A1/A2 on GPU0/1/2 ===
 launched v5_a0_gain_affine on GPU0 pid=2830660
 launched v5_a1_gain_v31 on GPU1 pid=2831392
+launched v5_a2_realistic on GPU2 pid=2832409
 ```
 
 ### teachers_shard0.log

@@ -39,3 +39,7 @@ CHOSEN 0.5
 launched v5_a0_gain_affine on GPU0 pid=2830660
 launched v5_a1_gain_v31 on GPU1 pid=2831392
 launched v5_a2_realistic on GPU2 pid=2832409
+=== phase 3b: GPU3 -- zero-shot CER over all 96 training users ===
+launched zero-shot scan on GPU3 pid=2833489
+
+=== phase 4: stream progress (12 h) ===
