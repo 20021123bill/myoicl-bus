@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T00:59:27+08:00
+# heartbeat 2026-08-20T01:00:11+08:00
 
 ## gpu
 ```
-0, 3171 MiB, 24576 MiB, 38 %
-1, 6096 MiB, 24576 MiB, 99 %
-2, 2985 MiB, 24576 MiB, 51 %
+0, 3171 MiB, 24576 MiB, 85 %
+1, 6096 MiB, 24576 MiB, 100 %
+2, 2985 MiB, 24576 MiB, 58 %
 3, 1883 MiB, 24576 MiB, 0 %
 ```
 
@@ -2761,6 +2761,19 @@ Traceback (most recent call last):
 ```
 AST OK
 relaunched icl_dev_fold2 pid=3845713
+[cohort] fold 2: 24 users the backbone has never seen, 213 sessions
+[trunk] /data2/chenyuxiang/runs/tf_fold2/last.pt step 40000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
+[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
+[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
+[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
+[symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
+  return F.conv1d(input, weight, bias, self.stride,
+[audit] step 0: mode-A 63.00 | mode-C 100.00 (random prefix) | deployment reference ~43-58
+step 100/12000 | loss 8.1230 | lr 5.00e-05 | 1.74 it/s
+step 200/12000 | loss 4.7799 | lr 1.00e-04 | 1.72 it/s
+step 300/12000 | loss 3.3612 | lr 1.50e-04 | 1.63 it/s
+step 400/12000 | loss 3.1112 | lr 2.00e-04 | 1.54 it/s
 ```
 
 ### 541_icl_relaunch.log
@@ -2896,6 +2909,7 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 step 100/12000 | loss 8.1230 | lr 5.00e-05 | 1.74 it/s
 step 200/12000 | loss 4.7799 | lr 1.00e-04 | 1.72 it/s
 step 300/12000 | loss 3.3612 | lr 1.50e-04 | 1.63 it/s
+step 400/12000 | loss 3.1112 | lr 2.00e-04 | 1.54 it/s
 ```
 
 ### teachers_shard0.log
@@ -3122,7 +3136,6 @@ step 40000/40000 | loss 1.5024 | lr 0.00e+00 | 618 win/s
 
 ### tf_fold3.log
 ```
-step 25000/40000 | loss 1.7914 | lr 3.38e-04 | 647 win/s
 step 25200/40000 | loss 1.7843 | lr 3.30e-04 | 648 win/s
 step 25400/40000 | loss 1.7728 | lr 3.22e-04 | 648 win/s
 step 25600/40000 | loss 1.7654 | lr 3.14e-04 | 649 win/s
@@ -3147,6 +3160,7 @@ step 28800/40000 | loss 1.6865 | lr 1.99e-04 | 653 win/s
 step 29000/40000 | loss 1.6917 | lr 1.93e-04 | 651 win/s
 step 29200/40000 | loss 1.6690 | lr 1.86e-04 | 649 win/s
 step 29400/40000 | loss 1.6897 | lr 1.80e-04 | 646 win/s
+step 29600/40000 | loss 1.6818 | lr 1.74e-04 | 643 win/s
 ```
 
 ### tf_ref_full.log

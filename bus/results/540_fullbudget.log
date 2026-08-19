@@ -57,3 +57,9 @@ Traceback (most recent call last):
 [tf_fold0_full] step 1000/103000 | loss 1.7365 | lr 3.40e-04 | 498 win/s
 [tf_fold1_full] step 1200/103000 | loss 1.7817 | lr 4.08e-04 | 607 win/s
 [icl_dev_fold2] starting
+--- 00:59 ---
+[tf_ref_full] step 2000/103000 | loss 2.0533 | lr 6.80e-04 | 575 win/s
+[tf_fold0_full] step 1800/103000 | loss 1.9035 | lr 6.12e-04 | 522 win/s
+[tf_fold1_full] step 1800/103000 | loss 1.9016 | lr 6.12e-04 | 557 win/s
+[icl_dev_fold2] step 300/12000 | loss 3.3612 | lr 1.50e-04 | 1.63 it/s
+        [audit] step 0: mode-A 63.00 | mode-C 100.00 (random prefix) | deployment reference ~43-58
