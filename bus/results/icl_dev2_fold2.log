@@ -94,3 +94,6 @@ step 6500/12000 | loss 2.7521 | lr 9.45e-05 | 1.58 it/s
 [val] step 6500: mode-A 46.04 | mode-C 45.61 | gain C +0.43   (REAL novel subjects, fold 2)
 step 6600/12000 | loss 2.6837 | lr 9.17e-05 | 1.57 it/s
 step 6700/12000 | loss 2.7367 | lr 8.90e-05 | 1.58 it/s
+step 6800/12000 | loss 2.7041 | lr 8.63e-05 | 1.58 it/s
+step 6900/12000 | loss 2.7543 | lr 8.35e-05 | 1.57 it/s
+step 7000/12000 | loss 2.7034 | lr 8.08e-05 | 1.57 it/s
