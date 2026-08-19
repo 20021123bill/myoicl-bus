@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T06:28:08+08:00
+# heartbeat 2026-08-20T06:28:52+08:00
 
 ## gpu
 ```
 0, 3173 MiB, 24576 MiB, 0 %
-1, 3125 MiB, 24576 MiB, 54 %
-2, 2985 MiB, 24576 MiB, 0 %
-3, 2927 MiB, 24576 MiB, 0 %
+1, 3125 MiB, 24576 MiB, 92 %
+2, 2985 MiB, 24576 MiB, 57 %
+3, 2927 MiB, 24576 MiB, 5 %
 ```
 
 ## jobs
@@ -80,6 +80,7 @@
 545_final_night_verdict                  DONE rc=127
 550_fused_prefix_icl                     DONE rc=127
 551_fused_retry                          DONE rc=127
+552_fused_frozen                         DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3077,6 +3078,12 @@ step 200/12000 | loss 5.2564 | lr 1.00e-04 | 1.60 it/s
 [06:14] [val] step 2000: mode-A 59.25 | mode-C 60.57 | gain C -1.32   (REAL novel subjects, fold 2)
 [06:19] [val] new best mode-C 57.42 -> best.pt
 [06:24] [val] new best mode-C 56.67 -> best.pt
+```
+
+### 552_fused_frozen.log
+```
+=== stop the jointly-trained fused run (it is re-treading the zero-lock) ===
+stopped
 ```
 
 ### d3_train.log

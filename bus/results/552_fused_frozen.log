@@ -1,0 +1,3 @@
+=== stop the jointly-trained fused run (it is re-treading the zero-lock) ===
+stopped
+launched icl_frozen_fold2 pid=248766
