@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:28:28+08:00
+# heartbeat 2026-08-19T15:29:10+08:00
 
 ## gpu
 ```
-0, 2411 MiB, 24576 MiB, 49 %
-1, 1369 MiB, 24576 MiB, 12 %
+0, 2411 MiB, 24576 MiB, 0 %
+1, 1369 MiB, 24576 MiB, 22 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 7433 MiB, 24576 MiB, 0 %
+3, 24117 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -1337,12 +1337,6 @@ launched tf_ref on GPU1 pid=2889785  (15:24)
 
 ### v5_a0_gain_affine.log
 ```
-step 2800/8000 | loss 1.0801 | lr 8.53e-04 | 1.91 it/s
-step 2900/8000 | loss 1.1213 | lr 8.38e-04 | 2.05 it/s
-step 3000/8000 | loss 1.2554 | lr 8.21e-04 | 1.94 it/s
-[val] step 3000: mode-C CER 62.43 | mode-B CER 71.90 | mode-A CER 69.04 | gain C +6.61 / B -2.86 | loss 3.4234
-step 3100/8000 | loss 1.2300 | lr 8.04e-04 | 1.69 it/s
-step 3200/8000 | loss 1.1608 | lr 7.87e-04 | 2.13 it/s
 step 3300/8000 | loss 1.1628 | lr 7.69e-04 | 2.04 it/s
 step 3400/8000 | loss 1.1175 | lr 7.50e-04 | 1.96 it/s
 step 3500/8000 | loss 1.1439 | lr 7.31e-04 | 2.07 it/s
@@ -1362,6 +1356,12 @@ step 4500/8000 | loss 1.1004 | lr 5.25e-04 | 2.08 it/s
 step 4600/8000 | loss 1.0891 | lr 5.04e-04 | 1.74 it/s
 step 4700/8000 | loss 1.0494 | lr 4.82e-04 | 2.04 it/s
 step 4800/8000 | loss 1.0883 | lr 4.61e-04 | 2.10 it/s
+step 4900/8000 | loss 1.0449 | lr 4.40e-04 | 1.97 it/s
+step 5000/8000 | loss 1.1178 | lr 4.19e-04 | 2.05 it/s
+[val] step 5000: mode-C CER 65.36 | mode-B CER 79.88 | mode-A CER 69.15 | gain C +3.79 / B -10.73 | loss 3.8628
+step 5100/8000 | loss 0.9767 | lr 3.99e-04 | 1.58 it/s
+step 5200/8000 | loss 1.0737 | lr 3.78e-04 | 2.20 it/s
+step 5300/8000 | loss 0.9858 | lr 3.58e-04 | 2.04 it/s
 ```
 
 ### v5_a1_gain_v31.log
@@ -1395,9 +1395,6 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
 
 ### v5_a2_realistic.log
 ```
-[freeze] backbone 5.29M frozen | context modules 0.96M trainable (15.4% of total)
-[watchdog] armed
-step 100/8000 | loss 4.9355 | lr 1.01e-04 | 0.80 it/s
 step 200/8000 | loss 3.7268 | lr 2.01e-04 | 0.80 it/s
 step 300/8000 | loss 3.3812 | lr 3.01e-04 | 0.82 it/s
 step 400/8000 | loss 3.2773 | lr 4.01e-04 | 0.92 it/s
@@ -1420,6 +1417,9 @@ step 1600/8000 | loss 2.8126 | lr 9.83e-04 | 0.69 it/s
 step 1700/8000 | loss 2.8301 | lr 9.77e-04 | 0.83 it/s
 step 1800/8000 | loss 2.8126 | lr 9.70e-04 | 0.84 it/s
 step 1900/8000 | loss 2.8575 | lr 9.62e-04 | 0.80 it/s
+step 2000/8000 | loss 2.7120 | lr 9.53e-04 | 0.79 it/s
+[val] step 2000: mode-C CER 73.79 | mode-B CER 74.83 | mode-A CER 80.42 | gain C +6.64 / B +5.59 | loss 3.9042
+step 2100/8000 | loss 2.8414 | lr 9.43e-04 | 0.72 it/s
 ```
 
 ### v5_zeroshot_scan.log
