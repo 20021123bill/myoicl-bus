@@ -1,0 +1,29 @@
+=== extract ===
+AST OK
+
+=== prefix length budget ===
+encoder params 29.8k
+  {'k_windows': 4, 'seconds': 20, 'tokens_uncapped': 372, 'tokens': 372, 'capped': False}
+  {'k_windows': 12, 'seconds': 60, 'tokens_uncapped': 1116, 'tokens': 1116, 'capped': False}
+  {'k_windows': 18, 'seconds': 90, 'tokens_uncapped': 1674, 'tokens': 1674, 'capped': False}
+  {'k_windows': 23, 'seconds': 115, 'tokens_uncapped': 2139, 'tokens': 2139, 'capped': False}
+  {'k_windows': 45, 'seconds': 225, 'tokens_uncapped': 4185, 'tokens': 4096, 'capped': True}
+
+=== contamination guard must FIRE on a reference backbone ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[trunk] /data2/chenyuxiang/runs/tf_ref/last.pt step 2000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+[FATAL] backbone was trained with --fold -1 but the cohort is fold 0: it has SEEN these users, so the episodes would contain no adaptation headroom
+(expected: [FATAL] backbone was trained with --fold -1 ...)
+
+=== CPU smoke: one real episode end to end ===
+cohort 24 multi-session users of 24
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+episode user 89335547: support (11999, 6, 2, 16) query (11961, 2, 2, 16)
+prefix (1, 527, 128)  (527 tokens from 6 windows)
+mode A (120, 2, 99) vs mode C (120, 2, 99) | max|dlogit| 3.448
+ctc loss 25.3645 | prefix-encoder grad-sum 2.186e+03
+SMOKE OK
+修改尚未加入提交（使用 "git add" 和/或 "git commit -a"）
+=== 470 done: prefix ICL trainer deployed, waiting on tf_fold0 ===

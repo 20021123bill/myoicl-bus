@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:46:52+08:00
+# heartbeat 2026-08-19T15:47:35+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 1369 MiB, 24576 MiB, 35 %
+1, 1369 MiB, 24576 MiB, 13 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 1369 MiB, 24576 MiB, 26 %
+3, 1369 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -61,6 +61,7 @@
 440_train_trunk_tf                       DONE rc=127
 450_log_relay                            DONE rc=127
 460_free_capacity                        DONE rc=127
+470_deploy_prefix_icl                    DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2132,6 +2133,14 @@ A0 stopped
 3, 1369 MiB, 15 %
  15:40:45 up 113 days,  17:56,  21 users,  load average: 0.04, 0.02, 0.01
 === 460 done ===
+```
+
+### 470_deploy_prefix_icl.log
+```
+=== extract ===
+AST OK
+
+=== prefix length budget ===
 ```
 
 ### d3_train.log
