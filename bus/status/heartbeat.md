@@ -1,9 +1,9 @@
-# heartbeat 2026-08-19T23:54:24+08:00
+# heartbeat 2026-08-19T23:55:07+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 75 %
-1, 3169 MiB, 24576 MiB, 65 %
+0, 3173 MiB, 24576 MiB, 62 %
+1, 3169 MiB, 24576 MiB, 60 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -2822,9 +2822,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-step 32600/40000 | loss 1.6288 | lr 9.07e-05 | 367 win/s
-step 32800/40000 | loss 1.6207 | lr 8.60e-05 | 368 win/s
-step 33000/40000 | loss 1.6184 | lr 8.14e-05 | 369 win/s
 step 33200/40000 | loss 1.6171 | lr 7.70e-05 | 369 win/s
 step 33400/40000 | loss 1.6126 | lr 7.26e-05 | 370 win/s
 step 33600/40000 | loss 1.6069 | lr 6.84e-05 | 371 win/s
@@ -2847,6 +2844,9 @@ step 36400/40000 | loss 1.5664 | lr 2.20e-05 | 381 win/s
 step 36600/40000 | loss 1.5669 | lr 1.96e-05 | 382 win/s
 step 36800/40000 | loss 1.5662 | lr 1.74e-05 | 383 win/s
 step 37000/40000 | loss 1.5618 | lr 1.53e-05 | 384 win/s
+step 37200/40000 | loss 1.5597 | lr 1.33e-05 | 385 win/s
+step 37400/40000 | loss 1.5568 | lr 1.15e-05 | 386 win/s
+step 37600/40000 | loss 1.5608 | lr 9.81e-06 | 387 win/s
 ```
 
 ### tf_fold1.log
@@ -2909,9 +2909,6 @@ step 40000/40000 | loss 1.5024 | lr 0.00e+00 | 618 win/s
 
 ### tf_fold3.log
 ```
-step 14400/40000 | loss 2.1146 | lr 7.59e-04 | 640 win/s
-step 14600/40000 | loss 2.0904 | lr 7.52e-04 | 639 win/s
-step 14800/40000 | loss 2.0820 | lr 7.45e-04 | 637 win/s
 step 15000/40000 | loss 2.0620 | lr 7.38e-04 | 635 win/s
 step 15200/40000 | loss 2.0762 | lr 7.31e-04 | 634 win/s
 step 15400/40000 | loss 2.0742 | lr 7.23e-04 | 632 win/s
@@ -2934,6 +2931,9 @@ step 18200/40000 | loss 1.9906 | lr 6.15e-04 | 618 win/s
 step 18400/40000 | loss 2.0080 | lr 6.07e-04 | 619 win/s
 step 18600/40000 | loss 1.9711 | lr 5.99e-04 | 620 win/s
 step 18800/40000 | loss 1.9781 | lr 5.90e-04 | 621 win/s
+step 19000/40000 | loss 1.9647 | lr 5.82e-04 | 622 win/s
+step 19200/40000 | loss 1.9674 | lr 5.74e-04 | 623 win/s
+step 19400/40000 | loss 1.9658 | lr 5.66e-04 | 624 win/s
 ```
 
 ### tf_ref.log
