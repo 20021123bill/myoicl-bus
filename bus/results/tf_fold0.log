@@ -5,35 +5,11 @@
   fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
 [split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
 [split] official test users: 16 sessions (never trained on in either mode)
-[data] 138115 training windows of 5.0s
+[data] 172708 training windows of 4.0s
+[data] monitor sets: 160 test windows, 160 fold-heldout windows
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
-step 200/40000 | loss 17.0279 | lr 3.00e-05 | 433 win/s
-step 400/40000 | loss 4.1474 | lr 6.00e-05 | 433 win/s
-step 600/40000 | loss 3.6532 | lr 9.00e-05 | 435 win/s
-step 800/40000 | loss 3.5339 | lr 1.20e-04 | 445 win/s
-step 1000/40000 | loss 3.4651 | lr 1.50e-04 | 449 win/s
-step 1200/40000 | loss 3.4378 | lr 1.80e-04 | 453 win/s
-step 1400/40000 | loss 3.3565 | lr 2.10e-04 | 458 win/s
-step 1600/40000 | loss 3.3047 | lr 2.40e-04 | 463 win/s
-step 1800/40000 | loss 3.2487 | lr 2.70e-04 | 462 win/s
-step 2000/40000 | loss 3.2194 | lr 3.00e-04 | 466 win/s
-[val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
-[val] new best 100.00 -> best.pt
-step 2200/40000 | loss 3.1720 | lr 3.00e-04 | 465 win/s
-step 2400/40000 | loss 3.1504 | lr 3.00e-04 | 468 win/s
-step 2600/40000 | loss 3.1161 | lr 3.00e-04 | 469 win/s
-step 2800/40000 | loss 3.0868 | lr 3.00e-04 | 465 win/s
-step 3000/40000 | loss 3.0572 | lr 2.99e-04 | 461 win/s
-step 3200/40000 | loss 3.0273 | lr 2.99e-04 | 458 win/s
-step 3400/40000 | loss 2.9952 | lr 2.99e-04 | 461 win/s
-step 3600/40000 | loss 2.9728 | lr 2.99e-04 | 463 win/s
-step 3800/40000 | loss 2.9388 | lr 2.98e-04 | 464 win/s
-step 4000/40000 | loss 2.9077 | lr 2.98e-04 | 466 win/s
-[val] step 4000: 8-test-user CER 93.44 | fold-heldout-user CER 94.28  (their Tiny reference: 35.9)
-[val] new best 93.44 -> best.pt
-step 4200/40000 | loss 2.8745 | lr 2.98e-04 | 465 win/s
-step 4400/40000 | loss 2.8548 | lr 2.97e-04 | 466 win/s

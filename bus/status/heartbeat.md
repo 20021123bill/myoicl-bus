@@ -1,9 +1,9 @@
-# heartbeat 2026-08-19T16:18:49+08:00
+# heartbeat 2026-08-19T16:19:31+08:00
 
 ## gpu
 ```
-0, 2987 MiB, 24576 MiB, 0 %
-1, 12 MiB, 24576 MiB, 0 %
+0, 2987 MiB, 24576 MiB, 71 %
+1, 2983 MiB, 24576 MiB, 3 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -2277,6 +2277,7 @@ frame rate OK
 
 === relaunch: ref(3e-4) / fold0(3e-4) / ref(1e-3) ===
 launched tf_ref on GPU0 lr=3e-4 fold=-1 pid=2975197
+launched tf_fold0 on GPU1 lr=3e-4 fold=0 pid=2976588
 ```
 
 ### d3_train.log
