@@ -1,0 +1,15 @@
+=== deploy (fixed 10000-window monitor + step-0 audit) ===
+AST OK
+=== archive the 40k trunks (superseded for reporting, kept for ablation) ===
+0, 16 MiB
+1, 3169 MiB
+2, 12 MiB
+3, 12 MiB
+
+=== track 1: full-budget trunks on GPU 0/1/2 ===
+launched tf_ref_full on GPU0 (continue from tf_ref_lr1e3) pid=3824858
+launched tf_fold0_full on GPU1 (continue from tf_fold0) pid=3826044
+launched tf_fold1_full on GPU2 (continue from tf_fold1) pid=3827383
+
+=== track 2: ICL dev on GPU3 (fold2@40k backbone) ===
+launched icl_dev_fold2 pid=3828713
