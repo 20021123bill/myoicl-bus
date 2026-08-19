@@ -100,3 +100,5 @@ step 7000/12000 | loss 2.8672 | lr 4.04e-04 | 1.59 it/s
 [val] step 7000: mode-A 63.92 | mode-C 64.28 | gain C -0.36   (REAL novel subjects, fold 2)
 step 7100/12000 | loss 2.7817 | lr 3.91e-04 | 1.59 it/s
 step 7200/12000 | loss 2.8346 | lr 3.77e-04 | 1.59 it/s
+step 7300/12000 | loss 2.7136 | lr 3.64e-04 | 1.59 it/s
+step 7400/12000 | loss 2.6784 | lr 3.51e-04 | 1.59 it/s
