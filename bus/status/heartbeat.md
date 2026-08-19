@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:29:10+08:00
+# heartbeat 2026-08-19T15:29:52+08:00
 
 ## gpu
 ```
 0, 2411 MiB, 24576 MiB, 0 %
-1, 1369 MiB, 24576 MiB, 22 %
+1, 1369 MiB, 24576 MiB, 13 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 24117 MiB, 24576 MiB, 0 %
+3, 7431 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -1203,21 +1203,21 @@ SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_202
 [B] mean over users: 55.40
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv2d(input, weight, bias, self.stride,
-[C] user0: CER 63.20
-[C] user1: CER 60.24
-[C] user2: CER 50.14
-[C] user3: CER 57.75
-[C] user4: CER 61.43
-[C] user5: CER 55.11
-[C] user6: CER 54.07
-[C] user7: CER 52.64
-[C] mean over users: 56.82
+[C] user0: CER 63.25
+[C] user1: CER 60.19
+[C] user2: CER 50.12
+[C] user3: CER 57.74
+[C] user4: CER 61.51
+[C] user5: CER 55.07
+[C] user6: CER 54.08
+[C] user7: CER 52.54
+[C] mean over users: 56.81
 [A] gap closed vs personalization ceiling: -0.0%
 [B] gap closed vs personalization ceiling: -0.0%
 [C] gap closed vs personalization ceiling: -3.2%
-[saved] /data2/chenyuxiang/runs/v5a1_real_k4.json
+[saved] /data2/chenyuxiang/runs/v5a1_real_k12.json
 
-############ k=12 windows (~48s of the user's own labelled data) ############
+############ k=23 windows (~92s of the user's own labelled data) ############
 ```
 
 ### 430_deploy_trunk_tf.log
