@@ -1,4 +1,4 @@
-# heartbeat 2026-08-19T14:49:10+08:00
+# heartbeat 2026-08-19T14:49:53+08:00
 
 ## gpu
 ```
@@ -51,6 +51,7 @@
 370_teacher_fleet                        DONE rc=127
 380_deploy_distill                       DONE rc=127
 400_v5_hardsynth                         DONE rc=127
+410_deploy_remix                         DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -1038,9 +1039,6 @@ the conditioning interface reaches 0% of the fine-tuning gap
 
 ### 370_teacher_fleet.log
 ```
-[teachers] 24/96 training users in this shard | tokens_only=False | steps=1800
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
 [1/24] 11944098: zero-shot 3.47 -> best 3.38 (gain +0.09)
@@ -1063,6 +1061,9 @@ the conditioning interface reaches 0% of the fine-tuning gap
 [fleet] 14:19 teachers done: 21/96
 [fleet] 14:29 teachers done: 28/96
 [fleet] 14:39 teachers done: 33/96
+[fleet] 14:49 teachers done: 33/96
+[fleet] all shard processes ended
+=== teacher fleet job complete: 33 teachers ===
 ```
 
 ### 380_deploy_distill.log
@@ -1099,6 +1100,16 @@ launched zero-shot scan on GPU3 pid=2833489
 [a1_gain_v31] [val] step 1000: mode-C CER 40.50 | mode-B CER 75.37 | mode-A CER 75.37 | gain C +34.86 / B +0.00 | loss 1.4733
 [a2_realistic] 
 [scan] [89/96] 9456349: held-out-session CER 7.59 (7 sessions)
+```
+
+### 410_deploy_remix.log
+```
+=== backup before overwriting shared modules ===
+rollback copy: /data2/chenyuxiang/runs/backup_myoicl_20260819_144953
+=== extract ===
+AST OK
+
+=== regression: the NO-remix path must be untouched ===
 ```
 
 ### teachers_shard0.log
