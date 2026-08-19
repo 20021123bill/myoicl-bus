@@ -42,3 +42,12 @@ launched tf_fold2 on GPU3 pid=3044556
         [val] new best 100.00 -> best.pt
 [tf_fold2] step 3000/40000 | loss 2.4417 | lr 9.98e-04 | 626 win/s
         [val] new best 100.00 -> best.pt
+--- 17:25 ---
+[tf_ref_lr1e3] step 7200/40000 | loss 2.2681 | lr 9.55e-04 | 474 win/s
+        [val] step 6000: 8-test-user CER 84.01 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 2200/40000 | loss 2.8519 | lr 1.00e-03 | 381 win/s
+        [val] new best 100.00 -> best.pt
+[tf_fold1] step 3600/40000 | loss 2.3892 | lr 9.96e-04 | 620 win/s
+        [val] new best 100.00 -> best.pt
+[tf_fold2] step 3600/40000 | loss 2.3252 | lr 9.96e-04 | 627 win/s
+        [val] new best 100.00 -> best.pt
