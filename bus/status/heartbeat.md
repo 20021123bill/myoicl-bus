@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T15:04:37+08:00
+# heartbeat 2026-08-19T15:05:20+08:00
 
 ## gpu
 ```
-0, 2411 MiB, 24576 MiB, 0 %
+0, 2411 MiB, 24576 MiB, 16 %
 1, 4237 MiB, 24576 MiB, 0 %
 2, 2807 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -52,6 +52,7 @@
 380_deploy_distill                       DONE rc=127
 400_v5_hardsynth                         DONE rc=127
 410_deploy_remix                         DONE rc=127
+430_deploy_trunk_tf                      DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -1129,6 +1130,15 @@ launched zero-shot scan on GPU3 pid=2833489
     return F.conv2d(input, weight, bias, self.stride,
 RuntimeError: Calculated padded input size per channel: (32 x 9). Kernel size: (1 x 32). Kernel size can't be greater than actual input size
 SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_20260819_144953
+```
+
+### 430_deploy_trunk_tf.log
+```
+=== backup + extract ===
+rollback copy: /data2/chenyuxiang/runs/backup_myoicl_20260819_150520
+AST OK
+
+=== fold split (deterministic) ===
 ```
 
 ### teachers_shard0.log
