@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T18:13:10+08:00
+# heartbeat 2026-08-19T18:13:54+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 7 %
-1, 2985 MiB, 24576 MiB, 93 %
-2, 3169 MiB, 24576 MiB, 76 %
-3, 3169 MiB, 24576 MiB, 39 %
+0, 3173 MiB, 24576 MiB, 0 %
+1, 2985 MiB, 24576 MiB, 60 %
+2, 3169 MiB, 24576 MiB, 13 %
+3, 3169 MiB, 24576 MiB, 29 %
 ```
 
 ## jobs
@@ -2541,6 +2541,26 @@ SMOKE OK
 
 ### 525_trunk_diag.log
 ```
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+checkpoint step 10000
+
+1. INPUT SCALE: mean 0.0  std 13.6  absmax 924
+   post-conv1  std 21.520  absmax 1298.8
+   post-featurizer  std 0.174
+
+2. BLANK: argmax==blank on 99.2% of frames | mean p(blank) 0.991
+3. ENTROPY: 0.017 nats (uniform would be 4.595)
+
+[0] ref(0): ''
+    hyp(0): ''
+
+[1] ref(0): ''
+    hyp(0): ''
+
+[2] ref(0): ''
+    hyp(0): ''
+=== 525 done ===
 ```
 
 ### d3_train.log
