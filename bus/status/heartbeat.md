@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T05:32:51+08:00
+# heartbeat 2026-08-20T05:33:34+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 85 %
-1, 3125 MiB, 24576 MiB, 62 %
-2, 2985 MiB, 24576 MiB, 0 %
+0, 3173 MiB, 24576 MiB, 71 %
+1, 3125 MiB, 24576 MiB, 53 %
+2, 2985 MiB, 24576 MiB, 68 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -78,6 +78,7 @@
 543_icl_phase2_conditional               DONE rc=127
 544_perm_probe_loop                      DONE rc=127
 545_final_night_verdict                  DONE rc=127
+550_fused_prefix_icl                     DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2977,6 +2978,13 @@ K-curve slope of gain: -0.0054 CER per support window
 verdict: positive gain AND positive slope -> the mechanism holds;
 flat gain==0 -> support is ignored; positive gain, zero slope -> 
 === 545 done ===
+```
+
+### 550_fused_prefix_icl.log
+```
+patch verified (fused x8)
+AST OK
+launched icl_fused_fold2 pid=146692
 ```
 
 ### d3_train.log
