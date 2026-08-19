@@ -116,3 +116,6 @@ step 17800/40000 | loss 1.9961 | lr 6.31e-04 | 619 win/s
 step 18000/40000 | loss 2.0009 | lr 6.23e-04 | 618 win/s
 [val] step 18000: 8-test-user CER 84.41 | fold-heldout-user CER 85.11  (their Tiny reference: 35.9)
 step 18200/40000 | loss 2.0072 | lr 6.15e-04 | 618 win/s
+step 18400/40000 | loss 1.9956 | lr 6.07e-04 | 618 win/s
+step 18600/40000 | loss 1.9885 | lr 5.99e-04 | 619 win/s
+step 18800/40000 | loss 1.9706 | lr 5.90e-04 | 619 win/s
