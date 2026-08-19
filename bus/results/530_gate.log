@@ -3,3 +3,17 @@
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 [tf_fold0] step 10000 | 8-test-user 5s-window CER 53.13 (72176 chars) | fold-heldout 63.10
+[tf_fold1] step 12000 | 8-test-user 5s-window CER 53.57 (72176 chars) | fold-heldout 57.78
+[tf_fold2] step 14000 | 8-test-user 5s-window CER 52.01 (72176 chars) | fold-heldout 57.58
+[tf_fold3] step 4000 | 8-test-user 5s-window CER 56.14 (72176 chars) | fold-heldout 66.02
+[tf_ref_lr1e3] step 4000 | 8-test-user 5s-window CER 55.39 (72176 chars)
+
+=== window-length sweep on tf_ref_lr1e3 (quantify the monitor bias) ===
+  window    5s: CER  58.98  (18307 chars)
+  window   10s: CER  62.34  (18244 chars)
+  window   20s: CER  72.95  (18128 chars)
+  window   30s: CER  79.34  (17962 chars)
+
+reference: paper Tiny 35.9 (4 s windows, same 8 test users)
+verdict guide: <=45 -> reproduction roughly holds, monitor was the artifact; 60-75 -> partial, dig into encoder internals; >80 -> re-implementation genuinely fails, switch to running fairemg itself.
+=== 530 done ===
