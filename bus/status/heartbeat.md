@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:58:13+08:00
+# heartbeat 2026-08-19T15:58:56+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
-1, 1369 MiB, 24576 MiB, 0 %
+0, 1371 MiB, 24576 MiB, 0 %
+1, 1369 MiB, 24576 MiB, 13 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 1369 MiB, 24576 MiB, 2 %
+3, 1369 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -2604,9 +2604,6 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
 
 ### v5_a2_realistic.log
 ```
-step 1400/8000 | loss 2.8587 | lr 9.92e-04 | 0.79 it/s
-step 1500/8000 | loss 2.9836 | lr 9.88e-04 | 0.78 it/s
-[val] step 1500: mode-C CER 84.82 | mode-B CER 70.83 | mode-A CER 79.68 | gain C -5.13 / B +8.86 | loss 4.7072
 step 1600/8000 | loss 2.8126 | lr 9.83e-04 | 0.69 it/s
 step 1700/8000 | loss 2.8301 | lr 9.77e-04 | 0.83 it/s
 step 1800/8000 | loss 2.8126 | lr 9.70e-04 | 0.84 it/s
@@ -2629,6 +2626,9 @@ step 3100/8000 | loss 2.7093 | lr 8.04e-04 | 0.62 it/s
 step 3200/8000 | loss 2.6670 | lr 7.87e-04 | 0.82 it/s
 step 3300/8000 | loss 2.6182 | lr 7.69e-04 | 0.96 it/s
 step 3400/8000 | loss 2.5552 | lr 7.50e-04 | 0.80 it/s
+step 3500/8000 | loss 2.5870 | lr 7.31e-04 | 0.81 it/s
+[val] step 3500: mode-C CER 75.41 | mode-B CER 76.18 | mode-A CER 79.80 | gain C +4.38 / B +3.62 | loss 3.9540
+step 3600/8000 | loss 2.4266 | lr 7.12e-04 | 0.70 it/s
 ```
 
 ### v5_zeroshot_scan.log
