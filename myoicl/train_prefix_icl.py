@@ -289,8 +289,16 @@ def main():
             raise SystemExit("[FATAL] " + msg)
         print(f"[WARNING] {msg} -- proceeding because --allow-contaminated "
               f"was passed. Any number from this run is a smoke test only.")
-    overlap = set(ck.get("held_users") or []) & set(held_users)
-    assert not overlap, f"cohort/backbone contamination: {sorted(overlap)[:5]}"
+    # Second guard, direction fixed 2026-08-20: the checkpoint's held_users
+    # are the users the backbone did NOT see -- the cohort must be a SUBSET of
+    # them. (The first version asserted disjointness and fired on a correct
+    # configuration; it failed closed, which is the right failure mode, but
+    # the assertion itself was inverted.)
+    held_by_backbone = set(ck.get("held_users") or [])
+    not_held = set(held_users) - held_by_backbone
+    assert not not_held, (
+        f"cohort users the backbone has SEEN (not in its held-out set): "
+        f"{sorted(not_held)[:5]}")
 
     enc = PrefixContextEncoder(trunk.d_model, cs.num_classes,
                                sig_stride=args.sig_stride,
