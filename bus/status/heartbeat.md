@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:00:00+08:00
+# heartbeat 2026-08-19T17:00:42+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 74 %
-1, 2983 MiB, 24576 MiB, 6 %
-2, 2985 MiB, 24576 MiB, 88 %
-3, 12 MiB, 24576 MiB, 0 %
+0, 2989 MiB, 24576 MiB, 56 %
+1, 2985 MiB, 24576 MiB, 86 %
+2, 2985 MiB, 24576 MiB, 59 %
+3, 2983 MiB, 24576 MiB, 29 %
 ```
 
 ## jobs
@@ -2049,9 +2049,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 
 ### 440_trunk_train.log
 ```
-[tf_fold0] [val] step 4000: 8-test-user CER 93.44 | fold-heldout-user CER 94.28  (their Tiny reference: 35.9)
---- 16:19 ---
-[tf_ref] 
 [tf_fold0] 
 --- 16:24 ---
 [tf_ref] step 800/40000 | loss 3.4943 | lr 1.20e-04 | 698 win/s
@@ -2074,16 +2071,13 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 --- 16:54 ---
 [tf_ref] [val] step 4000: 8-test-user CER 96.35 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 4000: 8-test-user CER 99.61 | fold-heldout-user CER 99.85  (their Tiny reference: 35.9)
+--- 16:59 ---
+[tf_ref] [val] step 6000: 8-test-user CER 83.37 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] 
 ```
 
 ### 450_log_relay.log
 ```
-=== log relay started 2026-08-19T15:35:31+08:00 ===
---- 15:35 ---
-0, 2411 MiB, 32 %|1, 1369 MiB, 0 %|2, 2807 MiB, 0 %|3, 8790 MiB, 4 %|
-[tf_fold0] 
-[tf_ref] step 1800/40000 | loss 3.2358 | lr 2.70e-04 | 763 win/s
-
 --- 15:40 ---
 0, 16 MiB, 0 %|1, 1369 MiB, 14 %|2, 2807 MiB, 0 %|3, 1369 MiB, 38 %|
 [tf_fold0] step 400/40000 | loss 4.1474 | lr 6.00e-05 | 433 win/s
@@ -2100,6 +2094,14 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 [tf_fold0] step 1600/40000 | loss 3.1930 | lr 2.40e-04 | 623 win/s
 [tf_ref] step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
 [tf_ref_lr1e3] step 1400/40000 | loss 3.1287 | lr 7.00e-04 | 625 win/s
+
+--- 17:00 ---
+0, 2989 MiB, 90 %|1, 2985 MiB, 11 %|2, 2985 MiB, 68 %|3, 805 MiB, 0 %|
+[tf_fold0] 
+[tf_fold1] 
+[tf_fold2] 
+[tf_ref] [val] new best 83.37 -> best.pt
+[tf_ref_lr1e3] [val] new best 78.64 -> best.pt
 
 ```
 
@@ -2292,12 +2294,6 @@ SMOKE OK
 
 ### 480_lr_probe.log
 ```
-[tf_ref_lr1e3] step 600/40000 | loss 3.4864 | lr 3.00e-04 | 259 win/s
-[tf_fold0] step 3800/40000 | loss 2.9388 | lr 2.98e-04 | 464 win/s
-         [val] new best 100.00 -> best.pt
---- 16:20 ---
-[tf_ref] step 200/40000 | loss 84.3919 | lr 3.00e-05 | 617 win/s
-[tf_ref_lr1e3] no steps yet
 [tf_fold0] no steps yet
 --- 16:30 ---
 [tf_ref] step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
@@ -2317,6 +2313,12 @@ SMOKE OK
          [val] new best 100.00 -> best.pt
 [tf_fold0] step 4000/40000 | loss 2.7398 | lr 2.98e-04 | 554 win/s
          [val] new best 99.61 -> best.pt
+--- 17:00 ---
+[tf_ref] step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
+         [val] new best 83.37 -> best.pt
+[tf_ref_lr1e3] step 5000/40000 | loss 2.3614 | lr 9.85e-04 | 536 win/s
+         [val] new best 78.64 -> best.pt
+[tf_fold0] no steps yet
 ```
 
 ### 480_tf_lr_probe.log
@@ -2337,13 +2339,6 @@ pid=2942963
 
 ### 490_tf_100hz.log
 ```
-[tf_fold0] step 2400/40000 | loss 3.0404 | lr 3.00e-04 | 587 win/s
-        [val] new best 100.00 -> best.pt
-[tf_ref_lr1e3] step 2400/40000 | loss 2.7516 | lr 1.00e-03 | 584 win/s
-        [val] new best 100.00 -> best.pt
---- 16:43 ---
-[tf_ref] step 4000/40000 | loss 2.7171 | lr 2.98e-04 | 705 win/s
-        [val] new best 96.35 -> best.pt
 [tf_fold0] step 3200/40000 | loss 2.8907 | lr 2.99e-04 | 566 win/s
         [val] new best 100.00 -> best.pt
 [tf_ref_lr1e3] step 3000/40000 | loss 2.5095 | lr 9.98e-04 | 571 win/s
@@ -2361,6 +2356,13 @@ pid=2942963
 [tf_fold0] step 4200/40000 | loss 2.7054 | lr 2.98e-04 | 547 win/s
         [val] new best 99.61 -> best.pt
 [tf_ref_lr1e3] step 4200/40000 | loss 2.3668 | lr 9.92e-04 | 551 win/s
+        [val] new best 78.64 -> best.pt
+--- 16:58 ---
+[tf_ref] step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
+        [val] new best 83.37 -> best.pt
+[tf_fold0] step 4800/40000 | loss 2.6088 | lr 2.96e-04 | 529 win/s
+        [val] new best 99.61 -> best.pt
+[tf_ref_lr1e3] step 4800/40000 | loss 2.3765 | lr 9.87e-04 | 533 win/s
         [val] new best 78.64 -> best.pt
 ```
 
@@ -2451,6 +2453,24 @@ backbone) -- if it does not, the eval is wrong, not the method.
 === 500 done ===
 ```
 
+### 510_fold_fleet.log
+```
+=== stop tf_ref (3e-4) and tf_fold0 (3e-4) ===
+killed 2976588 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
+killed 2976795 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
+killed 2976858 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
+killed 2976921 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/tf_fold0 --fold 0 --size tiny --max-steps 40000 --batch 64 --accum 4 --lr 3e-4 --window-length 8000 --conv-strides 5 2 2 --num-workers 3 --eval-every 2000 --seed 2)
+0, 16 MiB
+1, 12 MiB
+2, 2985 MiB
+3, 12 MiB
+
+=== launch fold0/1/2 at lr 1e-3 on free GPUs ===
+launched tf_fold0 on GPU0 pid=3041555
+launched tf_fold1 on GPU1 pid=3043152
+launched tf_fold2 on GPU3 pid=3044556
+```
+
 ### 510_fold_fleet_lr1e3.log
 ```
 === stop tf_ref (3e-4) and tf_fold0 (3e-4) ===
@@ -2466,6 +2486,7 @@ killed 2976921 (python -m myoicl.train_trunk --out-dir /data2/chenyuxiang/runs/t
 === launch fold0/1/2 at lr 1e-3 on free GPUs ===
 launched tf_fold0 on GPU0 pid=3041555
 launched tf_fold1 on GPU1 pid=3043152
+launched tf_fold2 on GPU3 pid=3044556
 ```
 
 ### d3_train.log
@@ -2684,6 +2705,32 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 [split] fold 1: train on 72 users (631 sessions); HELD OUT 24 users (206 sessions)
 [split] official test users: 16 sessions (never trained on in either mode)
 [data] 174323 training windows of 4.0s
+[data] monitor sets: 160 test windows, 160 fold-heldout windows
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+```
+
+### tf_fold2.log
+```
+96 training users -> 4 folds
+  fold 0:  24 users,  213 sessions | e.g. ['11372316', '14312238', '2396581']
+  fold 1:  24 users,  206 sessions | e.g. ['11944098', '1438774', '25847138']
+  fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
+  fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
+[split] fold 2: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 168679 training windows of 4.0s
+[data] monitor sets: 160 test windows, 160 fold-heldout windows
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
 ```
 
 ### tf_ref.log
