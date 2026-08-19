@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T03:12:53+08:00
+# heartbeat 2026-08-20T03:13:36+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 93 %
-1, 3125 MiB, 24576 MiB, 78 %
-2, 2985 MiB, 24576 MiB, 56 %
+0, 3173 MiB, 24576 MiB, 15 %
+1, 3125 MiB, 24576 MiB, 51 %
+2, 2985 MiB, 24576 MiB, 0 %
 3, 1815 MiB, 24576 MiB, 0 %
 ```
 
@@ -2997,6 +2997,9 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
   return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 52.05 | mode-C 52.05 (random prefix) | deployment reference ~43-58
 step 100/12000 | loss 2.7802 | lr 3.33e-05 | 1.87 it/s
+step 200/12000 | loss 2.9011 | lr 6.67e-05 | 1.71 it/s
+step 300/12000 | loss 2.8589 | lr 1.00e-04 | 1.74 it/s
+step 400/12000 | loss 2.7646 | lr 1.33e-04 | 1.75 it/s
 ```
 
 ### icl_dev_fold2.log

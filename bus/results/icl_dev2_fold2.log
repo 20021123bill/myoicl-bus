@@ -12,3 +12,6 @@
   return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 52.05 | mode-C 52.05 (random prefix) | deployment reference ~43-58
 step 100/12000 | loss 2.7802 | lr 3.33e-05 | 1.87 it/s
+step 200/12000 | loss 2.9011 | lr 6.67e-05 | 1.71 it/s
+step 300/12000 | loss 2.8589 | lr 1.00e-04 | 1.74 it/s
+step 400/12000 | loss 2.7646 | lr 1.33e-04 | 1.75 it/s
