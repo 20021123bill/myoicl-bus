@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T01:08:50+08:00
+# heartbeat 2026-08-20T01:09:33+08:00
 
 ## gpu
 ```
-0, 3171 MiB, 24576 MiB, 20 %
-1, 6280 MiB, 24576 MiB, 96 %
-2, 2985 MiB, 24576 MiB, 0 %
-3, 1883 MiB, 24576 MiB, 7 %
+0, 3171 MiB, 24576 MiB, 0 %
+1, 6280 MiB, 24576 MiB, 91 %
+2, 2985 MiB, 24576 MiB, 3 %
+3, 1883 MiB, 24576 MiB, 15 %
 ```
 
 ## jobs
@@ -2922,9 +2922,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_dev_fold2.log
 ```
-[cohort] fold 2: 24 users the backbone has never seen, 213 sessions
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [trunk] /data2/chenyuxiang/runs/tf_fold2/last.pt step 40000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 [prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
 [prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
@@ -2945,6 +2942,11 @@ step 600/12000 | loss 2.8246 | lr 3.00e-04 | 1.46 it/s
 step 700/12000 | loss 2.6339 | lr 3.00e-04 | 1.48 it/s
 step 800/12000 | loss 2.7212 | lr 3.00e-04 | 1.49 it/s
 step 900/12000 | loss 2.7704 | lr 2.99e-04 | 1.50 it/s
+step 1000/12000 | loss 2.6758 | lr 2.99e-04 | 1.54 it/s
+[val] step 1000: mode-A 53.22 | mode-C 56.03 | gain C -2.81   (REAL novel subjects, fold 2)
+[val] new best mode-C 56.03 -> best.pt
+step 1100/12000 | loss 2.6515 | lr 2.99e-04 | 1.51 it/s
+step 1200/12000 | loss 2.7337 | lr 2.98e-04 | 1.52 it/s
 ```
 
 ### teachers_shard0.log
@@ -3026,8 +3028,6 @@ step 900/12000 | loss 2.7704 | lr 2.99e-04 | 1.50 it/s
 
 ### tf_fold0_full.log
 ```
-  fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
-[split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
 [split] official test users: 16 sessions (never trained on in either mode)
 [data] 172708 training windows of 4.0s
 [data] monitor sets: 512 test windows, 512 fold-heldout windows
@@ -3051,6 +3051,8 @@ step 2000/103000 | loss 1.9528 | lr 6.80e-04 | 526 win/s
 step 2200/103000 | loss 1.9883 | lr 7.00e-04 | 530 win/s
 step 2400/103000 | loss 1.9792 | lr 7.00e-04 | 534 win/s
 step 2600/103000 | loss 1.9466 | lr 7.00e-04 | 537 win/s
+step 2800/103000 | loss 1.9575 | lr 7.00e-04 | 540 win/s
+step 3000/103000 | loss 1.9612 | lr 7.00e-04 | 542 win/s
 ```
 
 ### tf_fold0.log
@@ -3084,8 +3086,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-  fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
-  fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
 [split] fold 1: train on 72 users (631 sessions); HELD OUT 24 users (206 sessions)
 [split] official test users: 16 sessions (never trained on in either mode)
 [data] 174323 training windows of 4.0s
@@ -3109,6 +3109,8 @@ step 1800/103000 | loss 1.9016 | lr 6.12e-04 | 557 win/s
 step 2000/103000 | loss 1.9603 | lr 6.80e-04 | 539 win/s
 step 2200/103000 | loss 1.9532 | lr 7.00e-04 | 526 win/s
 step 2400/103000 | loss 1.9701 | lr 7.00e-04 | 512 win/s
+step 2600/103000 | loss 1.9800 | lr 7.00e-04 | 502 win/s
+step 2800/103000 | loss 1.9853 | lr 7.00e-04 | 493 win/s
 ```
 
 ### tf_fold1.log
@@ -3200,7 +3202,6 @@ step 30200/40000 | loss 1.6861 | lr 1.55e-04 | 633 win/s
 
 ### tf_ref_full.log
 ```
-[split] REFERENCE run: all 96 training users
 [split] official test users: 16 sessions (never trained on in either mode)
 [data] 229266 training windows of 4.0s
 [data] monitor sets: 512 test windows, 0 fold-heldout windows
@@ -3224,6 +3225,8 @@ step 2000/103000 | loss 2.0533 | lr 6.80e-04 | 575 win/s
 step 2200/103000 | loss 2.0594 | lr 7.00e-04 | 556 win/s
 step 2400/103000 | loss 2.0231 | lr 7.00e-04 | 543 win/s
 step 2600/103000 | loss 2.0333 | lr 7.00e-04 | 527 win/s
+step 2800/103000 | loss 2.0461 | lr 7.00e-04 | 516 win/s
+step 3000/103000 | loss 2.0189 | lr 7.00e-04 | 506 win/s
 ```
 
 ### tf_ref.log
