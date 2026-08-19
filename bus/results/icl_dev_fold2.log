@@ -19,3 +19,5 @@ step 500/12000 | loss 2.9615 | lr 2.50e-04 | 1.49 it/s
 [val] new best mode-C 75.06 -> best.pt
 step 600/12000 | loss 2.8246 | lr 3.00e-04 | 1.46 it/s
 step 700/12000 | loss 2.6339 | lr 3.00e-04 | 1.48 it/s
+step 800/12000 | loss 2.7212 | lr 3.00e-04 | 1.49 it/s
+step 900/12000 | loss 2.7704 | lr 2.99e-04 | 1.50 it/s
