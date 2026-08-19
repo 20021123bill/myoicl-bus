@@ -26,3 +26,4 @@ step 400/12000 | loss 3.1112 | lr 2.00e-04 | 1.54 it/s
 [01:55] [val] step 5500: mode-A 53.06 | mode-C 52.86 | gain C +0.19   (REAL novel subjects, fold 2)
 [02:00] [val] step 5500: mode-A 53.06 | mode-C 52.86 | gain C +0.19   (REAL novel subjects, fold 2)
 [02:05] [val] step 6000: mode-A 51.51 | mode-C 51.94 | gain C -0.43   (REAL novel subjects, fold 2)
+[02:10] [val] step 6500: mode-A 51.30 | mode-C 51.25 | gain C +0.05   (REAL novel subjects, fold 2)
