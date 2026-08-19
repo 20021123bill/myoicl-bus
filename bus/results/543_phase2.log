@@ -4,3 +4,4 @@ phase-1 best gain: 0.37
 === phase 2: symbol-tuning emphasis, warm-started from /data2/chenyuxiang/runs/icl_dev_fold2/best.pt ===
 phase 2 pid=4079332
 [03:13] running
+[03:18] [val] new best mode-C 53.38 -> best.pt
