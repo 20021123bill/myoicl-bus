@@ -232,3 +232,5 @@
   tf_fold0_full  step  44000 | argmax-blank  99.5% | p(blank) 0.992 | entropy 0.029
   tf_fold1       step  40000 | argmax-blank  99.5% | p(blank) 0.990 | entropy 0.045
   tf_fold1_40k   step  40000 | argmax-blank  99.5% | p(blank) 0.990 | entropy 0.045
+  tf_fold1_full  step  32000 | argmax-blank  99.4% | p(blank) 0.989 | entropy 0.040
+  tf_fold2       step  40000 | argmax-blank  99.5% | p(blank) 0.993 | entropy 0.020
