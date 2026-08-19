@@ -120,3 +120,5 @@ step 8600/12000 | loss 2.6828 | lr 4.08e-05 | 1.57 it/s
 step 8700/12000 | loss 2.7575 | lr 3.86e-05 | 1.57 it/s
 step 8800/12000 | loss 2.7155 | lr 3.64e-05 | 1.57 it/s
 step 8900/12000 | loss 2.7470 | lr 3.43e-05 | 1.57 it/s
+step 9000/12000 | loss 2.7399 | lr 3.23e-05 | 1.57 it/s
+[val] step 9000: mode-A 53.15 | mode-C 52.17 | gain C +0.98   (REAL novel subjects, fold 2)
