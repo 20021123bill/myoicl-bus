@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T22:26:03+08:00
+# heartbeat 2026-08-19T22:26:46+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 83 %
-1, 3169 MiB, 24576 MiB, 64 %
-2, 3169 MiB, 24576 MiB, 91 %
+0, 3173 MiB, 24576 MiB, 24 %
+1, 3169 MiB, 24576 MiB, 53 %
+2, 3169 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2822,8 +2822,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-step 21400/40000 | loss 1.9134 | lr 4.83e-04 | 323 win/s
-step 21600/40000 | loss 1.9142 | lr 4.75e-04 | 324 win/s
 step 21800/40000 | loss 1.9170 | lr 4.67e-04 | 325 win/s
 step 22000/40000 | loss 1.9012 | lr 4.59e-04 | 325 win/s
 [val] step 22000: 8-test-user CER 85.04 | fold-heldout-user CER 86.39  (their Tiny reference: 35.9)
@@ -2847,6 +2845,8 @@ step 25200/40000 | loss 1.8073 | lr 3.30e-04 | 337 win/s
 step 25400/40000 | loss 1.8044 | lr 3.22e-04 | 338 win/s
 step 25600/40000 | loss 1.7988 | lr 3.14e-04 | 338 win/s
 step 25800/40000 | loss 1.7959 | lr 3.07e-04 | 339 win/s
+step 26000/40000 | loss 1.7868 | lr 2.99e-04 | 339 win/s
+[val] step 26000: 8-test-user CER 87.05 | fold-heldout-user CER 88.12  (their Tiny reference: 35.9)
 ```
 
 ### tf_fold1.log
