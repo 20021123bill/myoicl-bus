@@ -341,3 +341,6 @@ step 61000/103000 | loss 1.4697 | lr 2.59e-04 | 639 win/s
 step 61200/103000 | loss 1.4713 | lr 2.57e-04 | 639 win/s
 step 61400/103000 | loss 1.4745 | lr 2.55e-04 | 640 win/s
 step 61600/103000 | loss 1.4774 | lr 2.53e-04 | 640 win/s
+step 61800/103000 | loss 1.4659 | lr 2.50e-04 | 640 win/s
+step 62000/103000 | loss 1.4641 | lr 2.48e-04 | 640 win/s
+step 62200/103000 | loss 1.4537 | lr 2.46e-04 | 640 win/s
