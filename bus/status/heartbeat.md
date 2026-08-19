@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T06:32:27+08:00
+# heartbeat 2026-08-20T06:33:10+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 0 %
-1, 3125 MiB, 24576 MiB, 74 %
-2, 2985 MiB, 24576 MiB, 45 %
-3, 2735 MiB, 24576 MiB, 0 %
+0, 3173 MiB, 24576 MiB, 64 %
+1, 3125 MiB, 24576 MiB, 51 %
+2, 2985 MiB, 24576 MiB, 65 %
+3, 2735 MiB, 24576 MiB, 48 %
 ```
 
 ## jobs
@@ -3098,6 +3098,18 @@ launched icl_frozen_fold2 pid=248766
 === stop the jointly-trained fused run (it is re-treading the zero-lock) ===
 stopped
 launched icl_frozen_fold2 pid=248766
+[cohort] fold 2: 24 users the backbone has never seen, 213 sessions
+[trunk] /data2/chenyuxiang/runs/tf_fold2/last.pt step 40000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+[prefix] FUSED mode: per-token (signal + soft-aligned char)
+[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
+[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
+[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
+[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
+[symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
+  return F.conv1d(input, weight, bias, self.stride,
+[audit] step 0: mode-A 62.58 | mode-C 100.00 (random prefix) | deployment reference ~43-58
+step 100/12000 | loss 9.6123 | lr 1.67e-04 | 2.02 it/s
+step 200/12000 | loss 5.8096 | lr 3.33e-04 | 1.66 it/s
 ```
 
 ### d3_train.log
