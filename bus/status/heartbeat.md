@@ -1,4 +1,4 @@
-# heartbeat 2026-08-19T14:49:53+08:00
+# heartbeat 2026-08-19T14:50:35+08:00
 
 ## gpu
 ```
@@ -1104,12 +1104,31 @@ launched zero-shot scan on GPU3 pid=2833489
 
 ### 410_deploy_remix.log
 ```
-=== backup before overwriting shared modules ===
-rollback copy: /data2/chenyuxiang/runs/backup_myoicl_20260819_144953
-=== extract ===
-AST OK
-
-=== regression: the NO-remix path must be untouched ===
+    return forward_call(*args, **kwargs)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/tds.py", line 89, in forward
+    return self.tds_conv_blocks(inputs)  # (T, N, num_features)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/container.py", line 217, in forward
+    input = module(input)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/tds.py", line 37, in forward
+    x = self.conv2d(x)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 460, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 456, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Calculated padded input size per channel: (32 x 9). Kernel size: (1 x 32). Kernel size can't be greater than actual input size
+SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_20260819_144953
 ```
 
 ### teachers_shard0.log
