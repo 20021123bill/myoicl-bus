@@ -52,3 +52,5 @@
   tf_fold0       step  20000 | argmax-blank  99.4% | p(blank) 0.985 | entropy 0.073
   tf_fold1       step  38000 | argmax-blank  99.5% | p(blank) 0.990 | entropy 0.043
   tf_fold2       step  38000 | argmax-blank  99.5% | p(blank) 0.993 | entropy 0.020
+  tf_ref_lr1e3   step  24000 | argmax-blank  99.4% | p(blank) 0.984 | entropy 0.082
+  (probe batch: 8 x 30s windows, 8/8 non-empty refs)
