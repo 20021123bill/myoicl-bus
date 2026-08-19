@@ -136,3 +136,4 @@ step 22400/40000 | loss 1.9766 | lr 4.42e-04 | 351 win/s
 step 22600/40000 | loss 1.9710 | lr 4.34e-04 | 350 win/s
 step 22800/40000 | loss 1.9726 | lr 4.26e-04 | 350 win/s
 step 23000/40000 | loss 1.9526 | lr 4.18e-04 | 349 win/s
+step 23200/40000 | loss 1.9627 | lr 4.10e-04 | 349 win/s
