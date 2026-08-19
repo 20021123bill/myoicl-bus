@@ -36,12 +36,16 @@ from torch import nn
 from torch.utils.data import DataLoader
 
 
-def build_eval_set(pairs, max_sessions=24, window_length=60000, seed=0):
+def build_eval_set(pairs, max_sessions=24, window_length=10000, seed=0):
     """One fixed evaluation window set, built ONCE.
 
     Rebuilding a ConcatDataset over 200+ sessions at every eval would reopen
     every HDF5 file and dominate the step budget, so the monitor uses a fixed
     subsample: at most one session per user, at most `max_sessions` of them.
+    WINDOW LENGTH MATCHES TRAINING (10000): the 2026-08-19 fleet was monitored
+    on 30 s windows -- a 6x length extrapolation for a model trained on ~500
+    frames -- which inflated CER from ~43 to ~87 and made best.pt lock onto a
+    step-4000 checkpoint. The paper evaluates on its own training windowing.
     Fixed across evals so the curve is comparable step to step; the final
     paper numbers come from the full-session evaluator, not from this."""
     from .episodes import build_windowed_dataset
@@ -61,7 +65,7 @@ def build_eval_set(pairs, max_sessions=24, window_length=60000, seed=0):
     if len(ds) == 0:
         return None
     rng = np.random.default_rng(seed)
-    idx = rng.permutation(len(ds))[:160]
+    idx = rng.permutation(len(ds))[:512]
     return [ds[int(i)] for i in idx]
 
 
@@ -126,6 +130,12 @@ def main():
     ap.add_argument("--log-every", type=int, default=200)
     ap.add_argument("--eval-every", type=int, default=2000)
     ap.add_argument("--bf16", action="store_true", default=True)
+    ap.add_argument("--init-from", default=None,
+                    help="checkpoint whose MODEL WEIGHTS seed this run "
+                         "(optimizer state starts fresh: cyclic-restart "
+                         "continuation). The fold id of the checkpoint must "
+                         "match --fold, or the split silently changes "
+                         "mid-training.")
     ap.add_argument("--seed", type=int, default=1)
     args = ap.parse_args()
 
@@ -181,6 +191,15 @@ def main():
                                    "conv_strides": args.conv_strides,
                                    "conv_kernels": args.conv_kernels}},
                         num_classes=cs.num_classes).to(device)
+    if args.init_from:
+        ck0 = torch.load(args.init_from, map_location="cpu")
+        f0 = ck0.get("args", {}).get("fold", None)
+        assert f0 == args.fold, (
+            f"--init-from was trained with fold {f0} but this run is fold "
+            f"{args.fold}: continuing would silently change the user split")
+        model.load_state_dict(ck0["model"])
+        print(f"[init] continued from {args.init_from} "
+              f"(step {ck0.get('step')}, fold {f0}); optimizer starts fresh")
     ds_rate = 2000 / float(np.prod(args.conv_strides))
     print(f"[model] featurizer {args.conv_kernels}/{args.conv_strides} -> "
           f"{ds_rate:.0f} Hz frames "

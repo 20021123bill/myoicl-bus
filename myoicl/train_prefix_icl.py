@@ -389,6 +389,21 @@ def main():
         trunk.train(); enc.train()
         return accs["A"].cer, accs["C"].cer
 
+    # STEP-0 DISTRIBUTION AUDIT -- the lesson of this project, made executable.
+    # Before any training, measure the zero-context difficulty of the episode
+    # distribution. If the cohort is not genuinely novel to this backbone the
+    # mode-A CER collapses toward ~10 and every downstream gain is fiction;
+    # abort rather than train on a broken distribution.
+    a0, c0 = validate()
+    print(f"[audit] step 0: mode-A {a0:.2f} | mode-C {c0:.2f} (random prefix)"
+          f" | deployment reference ~43-58", flush=True)
+    if not (20.0 <= a0 <= 75.0):
+        raise SystemExit(
+            f"[FATAL] zero-context episode difficulty {a0:.2f} is outside "
+            f"[20, 75]: the training distribution does not match deployment "
+            f"(seen-user contamination gives ~10; a broken pipeline gives "
+            f"~100). Refusing to meta-train on it.")
+
     best, hist, run, t0 = float("inf"), [], [], time.time()
     trunk.train(); enc.train()
     for step in range(args.max_steps):
