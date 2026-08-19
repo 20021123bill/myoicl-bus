@@ -39,3 +39,19 @@ step 2500/8000 | loss 1.4493 | lr 2.79e-05 | 4.80 it/s
 step 2600/8000 | loss 1.4415 | lr 2.76e-05 | 3.72 it/s
 step 2700/8000 | loss 1.5468 | lr 2.73e-05 | 4.82 it/s
 step 2800/8000 | loss 1.4330 | lr 2.70e-05 | 4.90 it/s
+step 3000/8000 | loss 1.3357 | lr 2.63e-05 | 2.43 it/s
+[val] step 3000: mode-C CER 37.07 | mode-B CER 75.16 | mode-A CER 75.16 | gain C +38.08 / B +0.00 | loss 1.2965
+[val] new best CER 37.07 -> saved best.pt
+step 3100/8000 | loss 1.5474 | lr 2.60e-05 | 3.72 it/s
+step 3300/8000 | loss 1.4212 | lr 2.53e-05 | 2.46 it/s
+step 3400/8000 | loss 1.4289 | lr 2.49e-05 | 4.69 it/s
+step 3500/8000 | loss 1.4570 | lr 2.45e-05 | 4.87 it/s
+[val] step 3500: mode-C CER 36.60 | mode-B CER 74.97 | mode-A CER 74.97 | gain C +38.37 / B +0.00 | loss 1.2618
+[val] new best CER 36.60 -> saved best.pt
+step 3600/8000 | loss 1.5061 | lr 2.40e-05 | 3.65 it/s
+step 3700/8000 | loss 1.3803 | lr 2.36e-05 | 4.94 it/s
+step 3800/8000 | loss 1.3862 | lr 2.32e-05 | 4.93 it/s
+step 4000/8000 | loss 1.3894 | lr 2.23e-05 | 2.47 it/s
+[val] step 4000: mode-C CER 34.94 | mode-B CER 75.56 | mode-A CER 75.56 | gain C +40.62 / B +0.00 | loss 1.2116
+[val] new best CER 34.94 -> saved best.pt
+step 4100/8000 | loss 1.2831 | lr 2.19e-05 | 3.74 it/s

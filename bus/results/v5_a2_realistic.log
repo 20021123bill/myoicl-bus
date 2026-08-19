@@ -11,3 +11,7 @@ step 200/8000 | loss 3.7268 | lr 2.01e-04 | 0.80 it/s
 step 300/8000 | loss 3.3812 | lr 3.01e-04 | 0.82 it/s
 step 400/8000 | loss 3.2773 | lr 4.01e-04 | 0.92 it/s
 step 500/8000 | loss 3.1125 | lr 5.01e-04 | 0.81 it/s
+[val] step 500: mode-C CER 66.18 | mode-B CER 68.33 | mode-A CER 79.82 | gain C +13.65 / B +11.49 | loss 2.7225
+[val] new best CER 66.18 -> saved best.pt
+step 600/8000 | loss 3.1748 | lr 6.01e-04 | 0.76 it/s
+step 700/8000 | loss 3.1977 | lr 7.01e-04 | 0.77 it/s

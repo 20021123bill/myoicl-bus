@@ -53,3 +53,8 @@ launched zero-shot scan on GPU3 pid=2833489
 [a1_gain_v31] [val] step 2500: mode-C CER 38.06 | mode-B CER 75.39 | mode-A CER 75.39 | gain C +37.33 / B +0.00 | loss 1.3286
 [a2_realistic] 
 [scan] === UNSEEN users (8 official test): 55.39 published ===
+--- 14:58 ---
+[a0_gain_affine] [val] step 1500: mode-C CER 71.44 | mode-B CER 59.87 | mode-A CER 69.22 | gain C -2.22 / B +9.35 | loss 4.4178
+[a1_gain_v31] [val] step 4000: mode-C CER 34.94 | mode-B CER 75.56 | mode-A CER 75.56 | gain C +40.62 / B +0.00 | loss 1.2116
+[a2_realistic] [val] step 500: mode-C CER 66.18 | mode-B CER 68.33 | mode-A CER 79.82 | gain C +13.65 / B +11.49 | loss 2.7225
+[scan] === UNSEEN users (8 official test): 55.39 published ===
