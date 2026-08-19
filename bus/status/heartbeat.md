@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T01:13:53+08:00
+# heartbeat 2026-08-20T01:14:36+08:00
 
 ## gpu
 ```
-0, 3171 MiB, 24576 MiB, 41 %
-1, 6280 MiB, 24576 MiB, 65 %
-2, 2985 MiB, 24576 MiB, 0 %
+0, 3171 MiB, 24576 MiB, 89 %
+1, 6280 MiB, 24576 MiB, 100 %
+2, 2985 MiB, 24576 MiB, 51 %
 3, 1883 MiB, 24576 MiB, 0 %
 ```
 
@@ -2924,10 +2924,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_dev_fold2.log
 ```
-[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
-[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
-[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
-[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
 [symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
@@ -2949,6 +2945,10 @@ step 1000/12000 | loss 2.6758 | lr 2.99e-04 | 1.54 it/s
 step 1100/12000 | loss 2.6515 | lr 2.99e-04 | 1.51 it/s
 step 1200/12000 | loss 2.7337 | lr 2.98e-04 | 1.52 it/s
 step 1300/12000 | loss 2.6679 | lr 2.97e-04 | 1.54 it/s
+step 1400/12000 | loss 2.7059 | lr 2.96e-04 | 1.55 it/s
+step 1500/12000 | loss 2.5826 | lr 2.95e-04 | 1.56 it/s
+[val] step 1500: mode-A 58.10 | mode-C 59.18 | gain C -1.08   (REAL novel subjects, fold 2)
+step 1600/12000 | loss 2.6526 | lr 2.94e-04 | 1.52 it/s
 ```
 
 ### teachers_shard0.log
@@ -3030,8 +3030,6 @@ step 1300/12000 | loss 2.6679 | lr 2.97e-04 | 1.54 it/s
 
 ### tf_fold0_full.log
 ```
-[data] monitor sets: 512 test windows, 512 fold-heldout windows
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [init] continued from /data2/chenyuxiang/runs/tf_fold0/last.pt (step 40000, fold 0); optimizer starts fresh
 [model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
@@ -3055,6 +3053,8 @@ step 2800/103000 | loss 1.9575 | lr 7.00e-04 | 540 win/s
 step 3000/103000 | loss 1.9612 | lr 7.00e-04 | 542 win/s
 step 3200/103000 | loss 1.9807 | lr 7.00e-04 | 544 win/s
 step 3400/103000 | loss 2.0013 | lr 7.00e-04 | 546 win/s
+step 3600/103000 | loss 1.9708 | lr 7.00e-04 | 548 win/s
+step 3800/103000 | loss 2.0064 | lr 6.99e-04 | 550 win/s
 ```
 
 ### tf_fold0.log
@@ -3088,8 +3088,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-[split] fold 1: train on 72 users (631 sessions); HELD OUT 24 users (206 sessions)
-[split] official test users: 16 sessions (never trained on in either mode)
 [data] 174323 training windows of 4.0s
 [data] monitor sets: 512 test windows, 512 fold-heldout windows
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
@@ -3113,6 +3111,8 @@ step 2200/103000 | loss 1.9532 | lr 7.00e-04 | 526 win/s
 step 2400/103000 | loss 1.9701 | lr 7.00e-04 | 512 win/s
 step 2600/103000 | loss 1.9800 | lr 7.00e-04 | 502 win/s
 step 2800/103000 | loss 1.9853 | lr 7.00e-04 | 493 win/s
+step 3000/103000 | loss 1.9775 | lr 7.00e-04 | 485 win/s
+step 3200/103000 | loss 1.9954 | lr 7.00e-04 | 477 win/s
 ```
 
 ### tf_fold1.log
@@ -3204,8 +3204,6 @@ step 30600/40000 | loss 1.6617 | lr 1.44e-04 | 627 win/s
 
 ### tf_ref_full.log
 ```
-[split] official test users: 16 sessions (never trained on in either mode)
-[data] 229266 training windows of 4.0s
 [data] monitor sets: 512 test windows, 0 fold-heldout windows
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
@@ -3229,6 +3227,8 @@ step 2400/103000 | loss 2.0231 | lr 7.00e-04 | 543 win/s
 step 2600/103000 | loss 2.0333 | lr 7.00e-04 | 527 win/s
 step 2800/103000 | loss 2.0461 | lr 7.00e-04 | 516 win/s
 step 3000/103000 | loss 2.0189 | lr 7.00e-04 | 506 win/s
+step 3200/103000 | loss 2.0054 | lr 7.00e-04 | 496 win/s
+step 3400/103000 | loss 2.0263 | lr 7.00e-04 | 488 win/s
 ```
 
 ### tf_ref.log
