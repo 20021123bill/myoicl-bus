@@ -244,6 +244,9 @@ def main():
     ap.add_argument("--permute-k", type=int, nargs=2, default=[4, 12],
                     help="curriculum range: permute a random subset of this "
                          "many letters (uniform draw per episode)")
+    ap.add_argument("--init-enc-from", default=None,
+                    help="warm-start the prefix encoder (and optionally the "
+                         "trunk) from a previous icl checkpoint")
     ap.add_argument("--allow-contaminated", action="store_true",
                     help="run even when the backbone has seen the cohort. "
                          "SMOKE TESTS ONLY -- such a run cannot produce a "
@@ -303,6 +306,13 @@ def main():
     enc = PrefixContextEncoder(trunk.d_model, cs.num_classes,
                                sig_stride=args.sig_stride,
                                max_prefix=args.max_prefix).to(dev)
+    if args.init_enc_from:
+        prev = torch.load(args.init_enc_from, map_location="cpu")
+        enc.load_state_dict(prev["enc"])
+        if "trunk" in prev:
+            trunk.load_state_dict(prev["trunk"])
+        print(f"[init] warm-started enc+trunk from {args.init_enc_from} "
+              f"(step {prev.get('step')})")
     for k in (4, 12, 23, 45):
         print(f"[prefix] {prefix_report(enc, k)}")
 
