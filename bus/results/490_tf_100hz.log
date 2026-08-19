@@ -20,3 +20,27 @@ frame rate OK
 launched tf_ref on GPU0 lr=3e-4 fold=-1 pid=2975197
 launched tf_fold0 on GPU1 lr=3e-4 fold=0 pid=2976588
 launched tf_ref_lr1e3 on GPU2 lr=1e-3 fold=-1 pid=2978025
+
+--- tf_ref ---
+[split] REFERENCE run: all 96 training users
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 229266 training windows of 4.0s
+[data] monitor sets: 160 test windows, 0 fold-heldout windows
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+--- tf_fold0 ---
+[split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 172708 training windows of 4.0s
+[data] monitor sets: 160 test windows, 160 fold-heldout windows
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+--- tf_ref_lr1e3 ---
+[split] REFERENCE run: all 96 training users
+[split] official test users: 16 sessions (never trained on in either mode)
+[data] 229266 training windows of 4.0s
+[data] monitor sets: 160 test windows, 0 fold-heldout windows
+[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
+[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+
+=== stream (14 h) ===

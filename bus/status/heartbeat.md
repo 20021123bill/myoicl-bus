@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:24:29+08:00
+# heartbeat 2026-08-19T16:25:11+08:00
 
 ## gpu
 ```
-0, 3171 MiB, 24576 MiB, 73 %
-1, 3167 MiB, 24576 MiB, 87 %
-2, 2983 MiB, 24576 MiB, 65 %
+0, 3171 MiB, 24576 MiB, 83 %
+1, 3167 MiB, 24576 MiB, 84 %
+2, 2983 MiB, 24576 MiB, 55 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2466,6 +2466,10 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
+step 200/40000 | loss 104.1468 | lr 3.00e-05 | 639 win/s
+step 400/40000 | loss 5.1708 | lr 6.00e-05 | 671 win/s
+step 600/40000 | loss 3.6421 | lr 9.00e-05 | 685 win/s
+step 800/40000 | loss 3.4897 | lr 1.20e-04 | 683 win/s
 ```
 
 ### tf_ref.log
@@ -2481,6 +2485,9 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 step 200/40000 | loss 84.3919 | lr 3.00e-05 | 617 win/s
+step 400/40000 | loss 5.7650 | lr 6.00e-05 | 670 win/s
+step 600/40000 | loss 3.6732 | lr 9.00e-05 | 686 win/s
+step 800/40000 | loss 3.4943 | lr 1.20e-04 | 698 win/s
 ```
 
 ### tf_ref_lr1e3.log
@@ -2495,6 +2502,9 @@ step 200/40000 | loss 84.3919 | lr 3.00e-05 | 617 win/s
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
+step 200/40000 | loss 70.1729 | lr 1.00e-04 | 607 win/s
+step 400/40000 | loss 3.7546 | lr 2.00e-04 | 660 win/s
+step 600/40000 | loss 3.4485 | lr 3.00e-04 | 678 win/s
 ```
 
 ### v31_train.log
