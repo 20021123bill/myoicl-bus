@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T18:32:35+08:00
+# heartbeat 2026-08-19T18:33:18+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 0 %
-1, 2985 MiB, 24576 MiB, 44 %
-2, 3169 MiB, 24576 MiB, 0 %
-3, 3169 MiB, 24576 MiB, 79 %
+0, 3173 MiB, 24576 MiB, 91 %
+1, 2985 MiB, 24576 MiB, 49 %
+2, 3169 MiB, 24576 MiB, 84 %
+3, 3169 MiB, 24576 MiB, 65 %
 ```
 
 ## jobs
@@ -2604,6 +2604,7 @@ checkpoint step 10000
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
   tf_fold0       step   6000 | argmax-blank  99.3% | p(blank) 0.982 | entropy 0.072
   tf_fold1       step  12000 | argmax-blank  99.3% | p(blank) 0.978 | entropy 0.100
+  tf_fold2       step  12000 | argmax-blank  99.3% | p(blank) 0.981 | entropy 0.081
 ```
 
 ### d3_train.log
