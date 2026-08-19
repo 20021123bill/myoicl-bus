@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T05:26:23+08:00
+# heartbeat 2026-08-20T05:27:07+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 14 %
-1, 3125 MiB, 24576 MiB, 44 %
-2, 2985 MiB, 24576 MiB, 31 %
+0, 3173 MiB, 24576 MiB, 75 %
+1, 3125 MiB, 24576 MiB, 47 %
+2, 2985 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2925,6 +2925,7 @@ k= 12 ( 48s): mode-A  43.66 | mode-C  44.58 | gain  -0.92 (20 episodes)
 k= 12 ( 48s): mode-A  57.97 | mode-C  59.07 | gain  -1.10 (20 episodes)
 [saved] /data2/chenyuxiang/runs/perm_probe_latest.json
 k= 12 ( 48s): mode-A  43.23 | mode-C  42.86 | gain  +0.37 (20 episodes)
+phase 2 ended -- final probe follows
 ```
 
 ### 545_final_night_verdict.log
