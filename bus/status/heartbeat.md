@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T18:36:10+08:00
+# heartbeat 2026-08-19T18:36:53+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 66 %
-1, 2985 MiB, 24576 MiB, 62 %
-2, 3169 MiB, 24576 MiB, 71 %
-3, 3169 MiB, 24576 MiB, 49 %
+0, 3173 MiB, 24576 MiB, 52 %
+1, 2985 MiB, 24576 MiB, 52 %
+2, 3169 MiB, 24576 MiB, 77 %
+3, 3169 MiB, 24576 MiB, 56 %
 ```
 
 ## jobs
@@ -2606,6 +2606,8 @@ checkpoint step 10000
   tf_fold0       step   6000 | argmax-blank  99.3% | p(blank) 0.982 | entropy 0.072
   tf_fold1       step  12000 | argmax-blank  99.3% | p(blank) 0.978 | entropy 0.100
   tf_fold2       step  12000 | argmax-blank  99.3% | p(blank) 0.981 | entropy 0.081
+  tf_ref_lr1e3   step  12000 | argmax-blank  99.3% | p(blank) 0.981 | entropy 0.087
+  (probe batch: 8 x 30s windows, 8/8 non-empty refs)
 ```
 
 ### d3_train.log
