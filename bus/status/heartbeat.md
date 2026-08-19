@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T03:21:28+08:00
+# heartbeat 2026-08-20T03:22:11+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 55 %
-1, 3125 MiB, 24576 MiB, 69 %
-2, 2985 MiB, 24576 MiB, 78 %
-3, 1817 MiB, 24576 MiB, 0 %
+0, 3173 MiB, 24576 MiB, 70 %
+1, 3125 MiB, 24576 MiB, 59 %
+2, 2985 MiB, 24576 MiB, 48 %
+3, 1817 MiB, 24576 MiB, 23 %
 ```
 
 ## jobs
@@ -2878,6 +2878,11 @@ phase 2 pid=4079332
 ```
 patch verified (permute_k x5)
 === probe at 03:21 (ckpt 03:18) ===
+[ckpt] /data2/chenyuxiang/runs/icl_dev2_fold2/best.pt step 1000
+[permuted probe] derangement of 10 letters per episode -- mode A cannot know the mapping
+k= 12 ( 48s): mode-A  59.91 | mode-C  63.39 | gain  -3.47 (20 episodes)
+[saved] /data2/chenyuxiang/runs/perm_probe_latest.json
+k= 12 ( 48s): mode-A  43.66 | mode-C  44.58 | gain  -0.92 (20 episodes)
 ```
 
 ### d3_train.log
