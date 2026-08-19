@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T03:27:54+08:00
+# heartbeat 2026-08-20T03:28:37+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 47 %
-1, 3125 MiB, 24576 MiB, 53 %
-2, 2985 MiB, 24576 MiB, 19 %
-3, 1817 MiB, 24576 MiB, 21 %
+0, 3173 MiB, 24576 MiB, 93 %
+1, 3125 MiB, 24576 MiB, 40 %
+2, 2985 MiB, 24576 MiB, 67 %
+3, 1817 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -3009,9 +3009,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_dev2_fold2.log
 ```
-[symbol] 26 permutable letter classes | p_permute 0.85 k [4, 26]
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
-  return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 52.05 | mode-C 52.05 (random prefix) | deployment reference ~43-58
 step 100/12000 | loss 2.7802 | lr 3.33e-05 | 1.87 it/s
 step 200/12000 | loss 2.9011 | lr 6.67e-05 | 1.71 it/s
@@ -3034,6 +3031,9 @@ step 1400/12000 | loss 2.7787 | lr 1.98e-04 | 1.69 it/s
 step 1500/12000 | loss 2.6832 | lr 1.97e-04 | 1.68 it/s
 [val] step 1500: mode-A 50.66 | mode-C 50.24 | gain C +0.43   (REAL novel subjects, fold 2)
 step 1600/12000 | loss 2.8848 | lr 1.96e-04 | 1.64 it/s
+step 1700/12000 | loss 2.7365 | lr 1.95e-04 | 1.65 it/s
+step 1800/12000 | loss 2.8470 | lr 1.95e-04 | 1.66 it/s
+step 1900/12000 | loss 2.8366 | lr 1.94e-04 | 1.66 it/s
 ```
 
 ### icl_dev_fold2.log
