@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T13:32:44+08:00
+# heartbeat 2026-08-19T13:33:26+08:00
 
 ## gpu
 ```
-0, 6163 MiB, 24576 MiB, 15 %
-1, 3229 MiB, 24576 MiB, 13 %
-2, 3513 MiB, 24576 MiB, 11 %
+0, 6163 MiB, 24576 MiB, 13 %
+1, 3591 MiB, 24576 MiB, 13 %
+2, 3513 MiB, 24576 MiB, 13 %
 3, 3457 MiB, 24576 MiB, 13 %
 ```
 
@@ -1017,4 +1017,5 @@ AST OK
 === quick sanity: list training users ===
 96 training users; first 3: ['11372316', '11944098', '12565339']; sessions/user min=2 max=16
 === launch shards 0-2 on GPUs 1-3 (GPU0 busy with tokens-only pilot) ===
+=== shard 3 waits for the pilot to release GPU0 ===
 ```
