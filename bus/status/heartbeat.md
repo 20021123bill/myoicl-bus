@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T15:23:32+08:00
+# heartbeat 2026-08-19T15:24:15+08:00
 
 ## gpu
 ```
-0, 2411 MiB, 24576 MiB, 48 %
+0, 2411 MiB, 24576 MiB, 62 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 2807 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -52,7 +52,10 @@
 380_deploy_distill                       DONE rc=127
 400_v5_hardsynth                         DONE rc=127
 410_deploy_remix                         DONE rc=127
+411_deploy_remix_fix                     DONE rc=127
+420_eval_v5a1_real_users                 DONE rc=127
 430_deploy_trunk_tf                      DONE rc=127
+440_train_trunk_tf                       DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -1132,6 +1135,25 @@ RuntimeError: Calculated padded input size per channel: (32 x 9). Kernel size: (
 SMOKE FAILED (rc=1) -- rolling back to /data2/chenyuxiang/runs/backup_myoicl_20260819_144953
 ```
 
+### 411_deploy_remix_fix.log
+```
+=== backup before overwriting shared modules ===
+rollback copy: /data2/chenyuxiang/runs/backup_myoicl_20260819_152415
+=== extract ===
+AST OK
+
+=== regression: the NO-remix path must be untouched ===
+```
+
+### 420_eval_v5a1_real_users.log
+```
+=== wait for GPU3 (96-user zero-shot scan) to finish ===
+scan status: === SEEN users (n=96): median 8.11 p10 3.32 p90 15.67 === === UNSEEN users (8 official test): 55.39 published === 
+=== evaluating /data2/chenyuxiang/runs/v5_a1/best.pt  (14:57) ===
+
+############ k=4 windows (~16s of the user's own labelled data) ############
+```
+
 ### 430_deploy_trunk_tf.log
 ```
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
@@ -1159,6 +1181,15 @@ fold 0: train 624 sessions | heldout 213 sessions, 24 users
   prefix hook OK: 37 prefix tokens leave emissions at (121, 4, 99)
 SMOKE OK
 === 430 done: trunk deployed and verified, nothing launched ===
+```
+
+### 440_train_trunk_tf.log
+```
+=== redeploy train_trunk (cached eval sets) ===
+AST OK
+
+=== waiting for GPUs (the v5 ladder is still running) ===
+launched tf_ref on GPU1 pid=2889785  (15:24)
 ```
 
 ### teachers_shard0.log
@@ -1240,13 +1271,6 @@ SMOKE OK
 
 ### v5_a0_gain_affine.log
 ```
-step 2200/8000 | loss 1.2548 | lr 9.33e-04 | 2.04 it/s
-step 2300/8000 | loss 1.2380 | lr 9.21e-04 | 2.12 it/s
-step 2400/8000 | loss 1.2524 | lr 9.09e-04 | 1.95 it/s
-step 2500/8000 | loss 1.2445 | lr 8.96e-04 | 2.01 it/s
-[val] step 2500: mode-C CER 82.54 | mode-B CER 58.20 | mode-A CER 68.65 | gain C -13.89 / B +10.45 | loss 6.9085
-step 2600/8000 | loss 1.1384 | lr 8.83e-04 | 1.68 it/s
-step 2700/8000 | loss 1.1826 | lr 8.68e-04 | 2.12 it/s
 step 2800/8000 | loss 1.0801 | lr 8.53e-04 | 1.91 it/s
 step 2900/8000 | loss 1.1213 | lr 8.38e-04 | 2.05 it/s
 step 3000/8000 | loss 1.2554 | lr 8.21e-04 | 1.94 it/s
@@ -1265,6 +1289,13 @@ step 4000/8000 | loss 1.0279 | lr 6.31e-04 | 1.83 it/s
 [val] step 4000: mode-C CER 82.24 | mode-B CER 70.00 | mode-A CER 69.06 | gain C -13.18 / B -0.94 | loss 6.3395
 step 4100/8000 | loss 1.1107 | lr 6.10e-04 | 1.63 it/s
 step 4200/8000 | loss 1.0300 | lr 5.89e-04 | 1.86 it/s
+step 4300/8000 | loss 1.0184 | lr 5.68e-04 | 2.06 it/s
+step 4400/8000 | loss 1.1252 | lr 5.46e-04 | 2.02 it/s
+step 4500/8000 | loss 1.1004 | lr 5.25e-04 | 2.08 it/s
+[val] step 4500: mode-C CER 79.88 | mode-B CER 88.66 | mode-A CER 68.78 | gain C -11.10 / B -19.88 | loss 6.8433
+step 4600/8000 | loss 1.0891 | lr 5.04e-04 | 1.74 it/s
+step 4700/8000 | loss 1.0494 | lr 4.82e-04 | 2.04 it/s
+step 4800/8000 | loss 1.0883 | lr 4.61e-04 | 2.10 it/s
 ```
 
 ### v5_a1_gain_v31.log
@@ -1298,8 +1329,6 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
 
 ### v5_a2_realistic.log
 ```
-[optim] backbone 5.29M @ lr 1.0e-03 | context 0.96M @ lr 1.0e-03 | 2 params exempt from weight decay
-[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 104 context tensors keep their initialization
 [freeze] backbone 5.29M frozen | context modules 0.96M trainable (15.4% of total)
 [watchdog] armed
 step 100/8000 | loss 4.9355 | lr 1.01e-04 | 0.80 it/s
@@ -1323,6 +1352,8 @@ step 1500/8000 | loss 2.9836 | lr 9.88e-04 | 0.78 it/s
 [val] step 1500: mode-C CER 84.82 | mode-B CER 70.83 | mode-A CER 79.68 | gain C -5.13 / B +8.86 | loss 4.7072
 step 1600/8000 | loss 2.8126 | lr 9.83e-04 | 0.69 it/s
 step 1700/8000 | loss 2.8301 | lr 9.77e-04 | 0.83 it/s
+step 1800/8000 | loss 2.8126 | lr 9.70e-04 | 0.84 it/s
+step 1900/8000 | loss 2.8575 | lr 9.62e-04 | 0.80 it/s
 ```
 
 ### v5_zeroshot_scan.log

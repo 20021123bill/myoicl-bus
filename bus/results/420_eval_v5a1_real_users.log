@@ -1,0 +1,5 @@
+=== wait for GPU3 (96-user zero-shot scan) to finish ===
+scan status: === SEEN users (n=96): median 8.11 p10 3.32 p90 15.67 === === UNSEEN users (8 official test): 55.39 published === 
+=== evaluating /data2/chenyuxiang/runs/v5_a1/best.pt  (14:57) ===
+
+############ k=4 windows (~16s of the user's own labelled data) ############

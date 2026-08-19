@@ -1,0 +1,5 @@
+=== redeploy train_trunk (cached eval sets) ===
+AST OK
+
+=== waiting for GPUs (the v5 ladder is still running) ===
+launched tf_ref on GPU1 pid=2889785  (15:24)
