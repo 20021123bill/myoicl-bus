@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:43:20+08:00
+# heartbeat 2026-08-19T15:44:02+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 1369 MiB, 24576 MiB, 42 %
+1, 1369 MiB, 24576 MiB, 11 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 1369 MiB, 24576 MiB, 21 %
+3, 1369 MiB, 24576 MiB, 23 %
 ```
 
 ## jobs
@@ -2446,8 +2446,6 @@ step 12000/12000 | loss 0.8709 | lr 1.50e-06 | 2.82 it/s
 
 ### v5_a0_gain_affine.log
 ```
-[val] step 4500: mode-C CER 79.88 | mode-B CER 88.66 | mode-A CER 68.78 | gain C -11.10 / B -19.88 | loss 6.8433
-step 4600/8000 | loss 1.0891 | lr 5.04e-04 | 1.74 it/s
 step 4700/8000 | loss 1.0494 | lr 4.82e-04 | 2.04 it/s
 step 4800/8000 | loss 1.0883 | lr 4.61e-04 | 2.10 it/s
 step 4900/8000 | loss 1.0449 | lr 4.40e-04 | 1.97 it/s
@@ -2471,6 +2469,8 @@ step 6300/8000 | loss 0.9744 | lr 1.82e-04 | 1.22 it/s
 step 6400/8000 | loss 0.9717 | lr 1.67e-04 | 1.41 it/s
 step 6500/8000 | loss 0.9083 | lr 1.54e-04 | 1.19 it/s
 [val] step 6500: mode-C CER 66.73 | mode-B CER 90.14 | mode-A CER 68.57 | gain C +1.83 / B -21.58 | loss 3.9261
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 20 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
 ```
 
 ### v5_a1_gain_v31.log
@@ -2504,8 +2504,6 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
 
 ### v5_a2_realistic.log
 ```
-step 700/8000 | loss 3.1977 | lr 7.01e-04 | 0.77 it/s
-step 800/8000 | loss 3.1203 | lr 8.01e-04 | 0.92 it/s
 step 900/8000 | loss 2.9018 | lr 9.01e-04 | 0.74 it/s
 step 1000/8000 | loss 3.1137 | lr 1.00e-03 | 0.97 it/s
 [val] step 1000: mode-C CER 66.35 | mode-B CER 69.46 | mode-A CER 79.79 | gain C +13.45 / B +10.33 | loss 2.9385
@@ -2529,6 +2527,8 @@ step 2500/8000 | loss 2.7018 | lr 8.96e-04 | 0.84 it/s
 [val] step 2500: mode-C CER 86.37 | mode-B CER 72.80 | mode-A CER 80.42 | gain C -5.95 / B +7.62 | loss 6.0189
 step 2600/8000 | loss 2.6746 | lr 8.83e-04 | 0.67 it/s
 step 2700/8000 | loss 2.6537 | lr 8.68e-04 | 0.77 it/s
+step 2800/8000 | loss 2.6598 | lr 8.53e-04 | 0.86 it/s
+step 2900/8000 | loss 2.7604 | lr 8.38e-04 | 0.80 it/s
 ```
 
 ### v5_zeroshot_scan.log
