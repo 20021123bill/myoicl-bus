@@ -1,9 +1,9 @@
-# heartbeat 2026-08-20T00:29:19+08:00
+# heartbeat 2026-08-20T00:30:01+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
-1, 3169 MiB, 24576 MiB, 92 %
+0, 491 MiB, 24576 MiB, 0 %
+1, 3169 MiB, 24576 MiB, 87 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -2670,6 +2670,22 @@ verdict guide: <=45 -> reproduction roughly holds, monitor was the artifact; 60-
 
 ### 531_gate_final.log
 ```
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+[ref_last40k] step 40000 | 8-test 5s CER 42.83
+  (rc=0 for ref_last40k)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+[fold0_last] step 40000 | 8-test 5s CER 43.53 | fold-heldout 58.45
+  (rc=0 for fold0_last)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
 ```
 
 ### d3_train.log
@@ -2948,10 +2964,6 @@ step 40000/40000 | loss 1.5024 | lr 0.00e+00 | 618 win/s
 
 ### tf_fold3.log
 ```
-step 20400/40000 | loss 1.9312 | lr 5.25e-04 | 629 win/s
-step 20600/40000 | loss 1.9267 | lr 5.17e-04 | 630 win/s
-step 20800/40000 | loss 1.9476 | lr 5.08e-04 | 630 win/s
-step 21000/40000 | loss 1.9316 | lr 5.00e-04 | 631 win/s
 step 21200/40000 | loss 1.9194 | lr 4.92e-04 | 632 win/s
 step 21400/40000 | loss 1.9279 | lr 4.83e-04 | 633 win/s
 step 21600/40000 | loss 1.8997 | lr 4.75e-04 | 634 win/s
@@ -2973,6 +2985,10 @@ step 24200/40000 | loss 1.8202 | lr 3.69e-04 | 644 win/s
 step 24400/40000 | loss 1.8156 | lr 3.61e-04 | 645 win/s
 step 24600/40000 | loss 1.8328 | lr 3.53e-04 | 645 win/s
 step 24800/40000 | loss 1.8112 | lr 3.45e-04 | 646 win/s
+step 25000/40000 | loss 1.7914 | lr 3.38e-04 | 647 win/s
+step 25200/40000 | loss 1.7843 | lr 3.30e-04 | 648 win/s
+step 25400/40000 | loss 1.7728 | lr 3.22e-04 | 648 win/s
+step 25600/40000 | loss 1.7654 | lr 3.14e-04 | 649 win/s
 ```
 
 ### tf_ref.log
