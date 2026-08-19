@@ -83,3 +83,36 @@ step 6600/8000 | loss 1.1923 | lr 9.49e-06 | 3.72 it/s
 step 6700/8000 | loss 1.3493 | lr 9.05e-06 | 4.80 it/s
 step 6800/8000 | loss 1.3275 | lr 8.66e-06 | 4.88 it/s
 step 6900/8000 | loss 1.3875 | lr 8.20e-06 | 4.89 it/s
+step 7000/8000 | loss 1.2488 | lr 7.75e-06 | 4.51 it/s
+[val] step 7000: mode-C CER 36.52 | mode-B CER 75.00 | mode-A CER 75.00 | gain C +38.48 / B +0.00 | loss 1.2407
+step 7100/8000 | loss 1.2731 | lr 7.34e-06 | 3.76 it/s
+step 7200/8000 | loss 1.3036 | lr 6.94e-06 | 4.79 it/s
+step 7300/8000 | loss 1.2988 | lr 6.51e-06 | 4.58 it/s
+step 7400/8000 | loss 1.1722 | lr 6.13e-06 | 4.81 it/s
+step 7500/8000 | loss 1.2931 | lr 5.80e-06 | 4.55 it/s
+[val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
+step 7700/8000 | loss 1.2638 | lr 5.09e-06 | 2.07 it/s
+step 7800/8000 | loss 1.2359 | lr 4.74e-06 | 4.85 it/s
+step 7900/8000 | loss 1.2135 | lr 4.43e-06 | 4.57 it/s
+[done] {'best_val_cer': 34.94402985074627, 'steps': 8000, 'phase': 'icl'}
+terminate called without an active exception
+terminate called without an active exception
+terminate called without an active exception
+terminate called without an active exception
+Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x7f04b5440160>
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1479, in __del__
+    self._shutdown_workers()
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1443, in _shutdown_workers
+    w.join(timeout=_utils.MP_STATUS_CHECK_INTERVAL)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/multiprocessing/process.py", line 149, in join
+    res = self._popen.wait(timeout)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/multiprocessing/popen_fork.py", line 40, in wait
+    if not wait([self.sentinel], timeout):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/utils/data/_utils/signal_handling.py", line 66, in handler
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 

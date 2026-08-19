@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T15:13:02+08:00
+# heartbeat 2026-08-19T15:13:44+08:00
 
 ## gpu
 ```
-0, 2411 MiB, 24576 MiB, 62 %
+0, 2411 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 2807 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -1240,13 +1240,6 @@ SMOKE OK
 
 ### v5_a0_gain_affine.log
 ```
-[val] new best CER 46.97 -> saved best.pt
-step 1100/8000 | loss 1.3393 | lr 1.00e-03 | 1.62 it/s
-step 1200/8000 | loss 1.2984 | lr 9.98e-04 | 2.05 it/s
-step 1300/8000 | loss 1.2774 | lr 9.96e-04 | 2.16 it/s
-step 1400/8000 | loss 1.3459 | lr 9.92e-04 | 2.15 it/s
-step 1500/8000 | loss 1.3209 | lr 9.88e-04 | 2.12 it/s
-[val] step 1500: mode-C CER 71.44 | mode-B CER 59.87 | mode-A CER 69.22 | gain C -2.22 / B +9.35 | loss 4.4178
 step 1600/8000 | loss 1.3076 | lr 9.83e-04 | 1.65 it/s
 step 1700/8000 | loss 1.2782 | lr 9.77e-04 | 2.06 it/s
 step 1800/8000 | loss 1.2172 | lr 9.70e-04 | 2.22 it/s
@@ -1265,35 +1258,42 @@ step 2800/8000 | loss 1.0801 | lr 8.53e-04 | 1.91 it/s
 step 2900/8000 | loss 1.1213 | lr 8.38e-04 | 2.05 it/s
 step 3000/8000 | loss 1.2554 | lr 8.21e-04 | 1.94 it/s
 [val] step 3000: mode-C CER 62.43 | mode-B CER 71.90 | mode-A CER 69.04 | gain C +6.61 / B -2.86 | loss 3.4234
+step 3100/8000 | loss 1.2300 | lr 8.04e-04 | 1.69 it/s
+step 3200/8000 | loss 1.1608 | lr 7.87e-04 | 2.13 it/s
+step 3300/8000 | loss 1.1628 | lr 7.69e-04 | 2.04 it/s
+step 3400/8000 | loss 1.1175 | lr 7.50e-04 | 1.96 it/s
+step 3500/8000 | loss 1.1439 | lr 7.31e-04 | 2.07 it/s
+[val] step 3500: mode-C CER 55.41 | mode-B CER 72.59 | mode-A CER 68.51 | gain C +13.10 / B -4.08 | loss 2.9306
+step 3600/8000 | loss 1.0781 | lr 7.12e-04 | 1.70 it/s
 ```
 
 ### v5_a1_gain_v31.log
 ```
-[val] step 4500: mode-C CER 36.83 | mode-B CER 74.24 | mode-A CER 74.24 | gain C +37.41 / B +0.00 | loss 1.2671
-step 4600/8000 | loss 1.4054 | lr 1.95e-05 | 3.76 it/s
-step 4700/8000 | loss 1.4566 | lr 1.90e-05 | 4.88 it/s
-step 4800/8000 | loss 1.2629 | lr 1.85e-05 | 4.72 it/s
-step 4900/8000 | loss 1.3211 | lr 1.80e-05 | 4.81 it/s
-step 5000/8000 | loss 1.4086 | lr 1.75e-05 | 4.70 it/s
-[val] step 5000: mode-C CER 36.99 | mode-B CER 75.01 | mode-A CER 75.01 | gain C +38.02 / B +0.00 | loss 1.2423
-step 5100/8000 | loss 1.2449 | lr 1.69e-05 | 3.74 it/s
-step 5200/8000 | loss 1.3550 | lr 1.64e-05 | 4.71 it/s
-step 5300/8000 | loss 1.2322 | lr 1.59e-05 | 4.75 it/s
-step 5600/8000 | loss 1.2359 | lr 1.44e-05 | 1.59 it/s
-step 5700/8000 | loss 1.2497 | lr 1.40e-05 | 4.73 it/s
-step 5800/8000 | loss 1.3323 | lr 1.34e-05 | 4.91 it/s
-step 6000/8000 | loss 1.2909 | lr 1.24e-05 | 2.31 it/s
-[val] step 6000: mode-C CER 35.03 | mode-B CER 75.49 | mode-A CER 75.49 | gain C +40.46 / B +0.00 | loss 1.2003
-step 6100/8000 | loss 1.3183 | lr 1.19e-05 | 3.76 it/s
-step 6200/8000 | loss 1.3371 | lr 1.14e-05 | 4.63 it/s
-step 6300/8000 | loss 1.3537 | lr 1.09e-05 | 4.70 it/s
-step 6400/8000 | loss 1.2804 | lr 1.04e-05 | 4.79 it/s
-step 6500/8000 | loss 1.3065 | lr 9.96e-06 | 4.63 it/s
-[val] step 6500: mode-C CER 36.91 | mode-B CER 75.17 | mode-A CER 75.17 | gain C +38.26 / B +0.00 | loss 1.2732
-step 6600/8000 | loss 1.1923 | lr 9.49e-06 | 3.72 it/s
-step 6700/8000 | loss 1.3493 | lr 9.05e-06 | 4.80 it/s
-step 6800/8000 | loss 1.3275 | lr 8.66e-06 | 4.88 it/s
-step 6900/8000 | loss 1.3875 | lr 8.20e-06 | 4.89 it/s
+step 7700/8000 | loss 1.2638 | lr 5.09e-06 | 2.07 it/s
+step 7800/8000 | loss 1.2359 | lr 4.74e-06 | 4.85 it/s
+step 7900/8000 | loss 1.2135 | lr 4.43e-06 | 4.57 it/s
+[done] {'best_val_cer': 34.94402985074627, 'steps': 8000, 'phase': 'icl'}
+terminate called without an active exception
+terminate called without an active exception
+terminate called without an active exception
+terminate called without an active exception
+Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x7f04b5440160>
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1479, in __del__
+    self._shutdown_workers()
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1443, in _shutdown_workers
+    w.join(timeout=_utils.MP_STATUS_CHECK_INTERVAL)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/multiprocessing/process.py", line 149, in join
+    res = self._popen.wait(timeout)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/multiprocessing/popen_fork.py", line 40, in wait
+    if not wait([self.sentinel], timeout):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/utils/data/_utils/signal_handling.py", line 66, in handler
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
 ```
 
 ### v5_a2_realistic.log
@@ -1321,6 +1321,8 @@ step 1000/8000 | loss 3.1137 | lr 1.00e-03 | 0.97 it/s
 [val] step 1000: mode-C CER 66.35 | mode-B CER 69.46 | mode-A CER 79.79 | gain C +13.45 / B +10.33 | loss 2.9385
 step 1100/8000 | loss 3.1185 | lr 1.00e-03 | 0.71 it/s
 step 1200/8000 | loss 2.9824 | lr 9.98e-04 | 0.87 it/s
+step 1300/8000 | loss 2.9539 | lr 9.96e-04 | 0.96 it/s
+step 1400/8000 | loss 2.8587 | lr 9.92e-04 | 0.79 it/s
 ```
 
 ### v5_zeroshot_scan.log
