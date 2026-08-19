@@ -51,3 +51,10 @@ step 3400/8000 | loss 1.1175 | lr 7.50e-04 | 1.96 it/s
 step 3500/8000 | loss 1.1439 | lr 7.31e-04 | 2.07 it/s
 [val] step 3500: mode-C CER 55.41 | mode-B CER 72.59 | mode-A CER 68.51 | gain C +13.10 / B -4.08 | loss 2.9306
 step 3600/8000 | loss 1.0781 | lr 7.12e-04 | 1.70 it/s
+step 3700/8000 | loss 1.1304 | lr 6.92e-04 | 1.91 it/s
+step 3800/8000 | loss 1.2274 | lr 6.72e-04 | 1.88 it/s
+step 3900/8000 | loss 1.0508 | lr 6.51e-04 | 1.94 it/s
+step 4000/8000 | loss 1.0279 | lr 6.31e-04 | 1.83 it/s
+[val] step 4000: mode-C CER 82.24 | mode-B CER 70.00 | mode-A CER 69.06 | gain C -13.18 / B -0.94 | loss 6.3395
+step 4100/8000 | loss 1.1107 | lr 6.10e-04 | 1.63 it/s
+step 4200/8000 | loss 1.0300 | lr 5.89e-04 | 1.86 it/s
