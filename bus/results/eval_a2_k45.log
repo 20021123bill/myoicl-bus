@@ -2,3 +2,21 @@
 [A] user0: CER 61.45
 [A] user1: CER 59.90
 [A] user2: CER 48.06
+[A] user3: CER 54.69
+[A] user4: CER 58.28
+[A] user5: CER 53.90
+[A] user6: CER 54.63
+[A] user7: CER 52.25
+[A] mean over users: 55.40
+[C] user0: CER 63.52
+[C] user1: CER 67.26
+[C] user2: CER 53.68
+[C] user3: CER 63.90
+[C] user4: CER 63.32
+[C] user5: CER 58.87
+[C] user6: CER 59.23
+[C] user7: CER 55.00
+[C] mean over users: 60.60
+[A] gap closed vs personalization ceiling: -0.0%
+[C] gap closed vs personalization ceiling: -11.8%
+[saved] /data2/chenyuxiang/runs/v5a2_real_k45.json

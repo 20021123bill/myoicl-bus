@@ -74,3 +74,10 @@ launched tf_ref_lr1e3 on GPU2 lr=1e-3 fold=-1 pid=2978025
         [val] new best 100.00 -> best.pt
 [tf_ref_lr1e3] step 3600/40000 | loss 2.4140 | lr 9.96e-04 | 562 win/s
         [val] new best 100.00 -> best.pt
+--- 16:53 ---
+[tf_ref] step 5600/40000 | loss 2.4213 | lr 2.93e-04 | 701 win/s
+        [val] new best 96.35 -> best.pt
+[tf_fold0] step 4200/40000 | loss 2.7054 | lr 2.98e-04 | 547 win/s
+        [val] new best 99.61 -> best.pt
+[tf_ref_lr1e3] step 4200/40000 | loss 2.3668 | lr 9.92e-04 | 551 win/s
+        [val] new best 78.64 -> best.pt

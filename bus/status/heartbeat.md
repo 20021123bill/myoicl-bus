@@ -1,10 +1,10 @@
-# heartbeat 2026-08-19T16:55:00+08:00
+# heartbeat 2026-08-19T16:55:44+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 54 %
-1, 3169 MiB, 24576 MiB, 38 %
-2, 2985 MiB, 24576 MiB, 62 %
+0, 3173 MiB, 24576 MiB, 68 %
+1, 3169 MiB, 24576 MiB, 51 %
+2, 2985 MiB, 24576 MiB, 77 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2048,9 +2048,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 
 ### 440_trunk_train.log
 ```
-[tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
---- 16:14 ---
-[tf_ref] [val] step 6000: 8-test-user CER 90.24 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 4000: 8-test-user CER 93.44 | fold-heldout-user CER 94.28  (their Tiny reference: 35.9)
 --- 16:19 ---
 [tf_ref] 
@@ -2073,6 +2070,9 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 --- 16:49 ---
 [tf_ref] [val] step 4000: 8-test-user CER 96.35 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
+--- 16:54 ---
+[tf_ref] [val] step 4000: 8-test-user CER 96.35 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] [val] step 4000: 8-test-user CER 99.61 | fold-heldout-user CER 99.85  (their Tiny reference: 35.9)
 ```
 
 ### 450_log_relay.log
@@ -2336,13 +2336,6 @@ pid=2942963
 
 ### 490_tf_100hz.log
 ```
-[tf_ref] step 2400/40000 | loss 3.0256 | lr 3.00e-04 | 711 win/s
-        [val] new best 100.00 -> best.pt
-[tf_fold0] step 2000/40000 | loss 3.1303 | lr 3.00e-04 | 604 win/s
-[tf_ref_lr1e3] step 1800/40000 | loss 3.0091 | lr 9.00e-04 | 604 win/s
---- 16:38 ---
-[tf_ref] step 3200/40000 | loss 2.8676 | lr 2.99e-04 | 707 win/s
-        [val] new best 100.00 -> best.pt
 [tf_fold0] step 2400/40000 | loss 3.0404 | lr 3.00e-04 | 587 win/s
         [val] new best 100.00 -> best.pt
 [tf_ref_lr1e3] step 2400/40000 | loss 2.7516 | lr 1.00e-03 | 584 win/s
@@ -2361,6 +2354,13 @@ pid=2942963
         [val] new best 100.00 -> best.pt
 [tf_ref_lr1e3] step 3600/40000 | loss 2.4140 | lr 9.96e-04 | 562 win/s
         [val] new best 100.00 -> best.pt
+--- 16:53 ---
+[tf_ref] step 5600/40000 | loss 2.4213 | lr 2.93e-04 | 701 win/s
+        [val] new best 96.35 -> best.pt
+[tf_fold0] step 4200/40000 | loss 2.7054 | lr 2.98e-04 | 547 win/s
+        [val] new best 99.61 -> best.pt
+[tf_ref_lr1e3] step 4200/40000 | loss 2.3668 | lr 9.92e-04 | 551 win/s
+        [val] new best 78.64 -> best.pt
 ```
 
 ### 490_tf_100hz_relaunch.log
@@ -2394,26 +2394,31 @@ pid=2942963
 
 ### 500_eval_a2.log
 ```
-=== was anything OOM-killed? ===
-(no OOM evidence readable, or dmesg not permitted)
-              总计         已用        空闲      共享    缓冲/缓存    可用
-内存：        2015          72         115           2        1827        1929
-
-0, 3173 MiB, 62 %
-1, 3169 MiB, 94 %
-2, 2985 MiB, 70 %
-3, 12 MiB, 0 %
-
-=== evaluating /data2/chenyuxiang/runs/v5_a2/best.pt sequentially on GPU3 ===
-
-############ k=12 (~48s) -- started 16:47 ############
-rc=0  finished 16:49
 [A] mean over users: 55.40
 [C] mean over users: 60.54
 [A] gap closed vs personalization ceiling: -0.0%
 [C] gap closed vs personalization ceiling: -11.7%
 
 ############ k=45 (~180s) -- started 16:49 ############
+rc=0  finished 16:52
+[A] mean over users: 55.40
+[C] mean over users: 60.60
+[A] gap closed vs personalization ceiling: -0.0%
+[C] gap closed vs personalization ceiling: -11.8%
+
+=== A2 vs A1 on the 8 real test users ===
+  ckpt    k  secs   mode A   mode C   gain C
+  v5a1    4    16    55.40    56.82    -1.43
+  v5a1   12    48    55.40    56.81    -1.42
+  v5a1   23    92    55.40    56.81    -1.42
+  v5a1   45   180    55.40    56.81    -1.42
+  v5a2   12    48    55.40    60.54    -5.14
+  v5a2   45   180    55.40    60.60    -5.20
+
+A1 trained on pure per-channel gain; A2 on the calibrated family with
+integer electrode rotation. mode A must sit at 55.39 in both (frozen
+backbone) -- if it does not, the eval is wrong, not the method.
+=== 500 done ===
 ```
 
 ### 500_eval_a2_retry.log
@@ -2535,6 +2540,24 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 [A] user0: CER 61.45
 [A] user1: CER 59.90
 [A] user2: CER 48.06
+[A] user3: CER 54.69
+[A] user4: CER 58.28
+[A] user5: CER 53.90
+[A] user6: CER 54.63
+[A] user7: CER 52.25
+[A] mean over users: 55.40
+[C] user0: CER 63.52
+[C] user1: CER 67.26
+[C] user2: CER 53.68
+[C] user3: CER 63.90
+[C] user4: CER 63.32
+[C] user5: CER 58.87
+[C] user6: CER 59.23
+[C] user7: CER 55.00
+[C] mean over users: 60.60
+[A] gap closed vs personalization ceiling: -0.0%
+[C] gap closed vs personalization ceiling: -11.8%
+[saved] /data2/chenyuxiang/runs/v5a2_real_k45.json
 ```
 
 ### teachers_shard0.log
@@ -2645,9 +2668,6 @@ step 4400/40000 | loss 2.6776 | lr 2.97e-04 | 539 win/s
 
 ### tf_ref.log
 ```
-step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
-step 2000/40000 | loss 3.1196 | lr 3.00e-04 | 713 win/s
-[val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [val] new best 100.00 -> best.pt
 step 2200/40000 | loss 3.0739 | lr 3.00e-04 | 711 win/s
 step 2400/40000 | loss 3.0256 | lr 3.00e-04 | 711 win/s
@@ -2670,6 +2690,9 @@ step 5200/40000 | loss 2.4724 | lr 2.95e-04 | 701 win/s
 step 5400/40000 | loss 2.4455 | lr 2.94e-04 | 701 win/s
 step 5600/40000 | loss 2.4213 | lr 2.93e-04 | 701 win/s
 step 5800/40000 | loss 2.3891 | lr 2.93e-04 | 701 win/s
+step 6000/40000 | loss 2.3726 | lr 2.92e-04 | 702 win/s
+[val] step 6000: 8-test-user CER 83.37 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[val] new best 83.37 -> best.pt
 ```
 
 ### tf_ref_lr1e3.log
