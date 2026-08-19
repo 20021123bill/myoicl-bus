@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:39:04+08:00
+# heartbeat 2026-08-19T15:39:46+08:00
 
 ## gpu
 ```
 0, 2411 MiB, 24576 MiB, 0 %
 1, 1369 MiB, 24576 MiB, 0 %
-2, 2807 MiB, 24576 MiB, 62 %
-3, 10864 MiB, 24576 MiB, 42 %
+2, 2807 MiB, 24576 MiB, 0 %
+3, 10864 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -2197,6 +2197,8 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
+step 200/40000 | loss 17.0279 | lr 3.00e-05 | 433 win/s
+step 400/40000 | loss 4.1474 | lr 6.00e-05 | 433 win/s
 ```
 
 ### tf_ref.log
@@ -2219,6 +2221,10 @@ step 1200/40000 | loss 3.4053 | lr 1.80e-04 | 747 win/s
 step 1400/40000 | loss 3.3407 | lr 2.10e-04 | 751 win/s
 step 1600/40000 | loss 3.2931 | lr 2.40e-04 | 757 win/s
 step 1800/40000 | loss 3.2358 | lr 2.70e-04 | 763 win/s
+step 2000/40000 | loss 3.2045 | lr 3.00e-04 | 745 win/s
+[val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[val] new best 100.00 -> best.pt
+step 2200/40000 | loss 3.1655 | lr 3.00e-04 | 702 win/s
 ```
 
 ### v31_train.log
