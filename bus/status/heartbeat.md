@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T01:37:39+08:00
+# heartbeat 2026-08-20T01:38:23+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 23 %
-1, 6280 MiB, 24576 MiB, 74 %
-2, 2985 MiB, 24576 MiB, 0 %
-3, 1883 MiB, 24576 MiB, 21 %
+0, 3173 MiB, 24576 MiB, 63 %
+1, 6280 MiB, 24576 MiB, 94 %
+2, 2985 MiB, 24576 MiB, 8 %
+3, 1883 MiB, 24576 MiB, 34 %
 ```
 
 ## jobs
@@ -75,6 +75,7 @@
 540_fullbudget_and_icl_dev               DONE rc=127
 541_icl_dev_relaunch                     DONE rc=127
 542_kcurve_autotrigger                   DONE rc=127
+543_icl_phase2_conditional               DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2815,6 +2816,12 @@ AST OK
 ```
 AST OK
 === waiting for a worthwhile icl_dev checkpoint ===
+```
+
+### 543_icl_phase2_conditional.log
+```
+AST OK
+=== wait for phase 1 to finish (or die) ===
 ```
 
 ### d3_train.log
