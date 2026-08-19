@@ -231,3 +231,4 @@ step 38400/40000 | loss 1.5051 | lr 4.37e-06 | 618 win/s
 step 38600/40000 | loss 1.5002 | lr 3.35e-06 | 618 win/s
 step 38800/40000 | loss 1.5018 | lr 2.46e-06 | 619 win/s
 step 39000/40000 | loss 1.5066 | lr 1.71e-06 | 618 win/s
+step 39200/40000 | loss 1.5035 | lr 1.09e-06 | 618 win/s
