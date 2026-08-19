@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T16:10:17+08:00
+# heartbeat 2026-08-19T16:11:00+08:00
 
 ## gpu
 ```
-0, 1371 MiB, 24576 MiB, 16 %
-1, 1369 MiB, 24576 MiB, 41 %
+0, 1371 MiB, 24576 MiB, 11 %
+1, 1369 MiB, 24576 MiB, 31 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 1369 MiB, 24576 MiB, 50 %
+3, 1369 MiB, 24576 MiB, 11 %
 ```
 
 ## jobs
@@ -1625,14 +1625,6 @@ deployed
 ### 400_v5.log
 ```
 [scan] === UNSEEN users (8 official test): 55.39 published ===
---- 15:53 ---
-[a0_gain_affine] [val] step 6500: mode-C CER 66.73 | mode-B CER 90.14 | mode-A CER 68.57 | gain C +1.83 / B -21.58 | loss 3.9261
-[a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
-    _error_if_any_worker_fails()
-RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
-  ^^ a1_gain_v31 LOOKS BROKEN
-[a2_realistic] [val] step 3000: mode-C CER 96.69 | mode-B CER 85.01 | mode-A CER 79.77 | gain C -16.91 / B -5.23 | loss 9.8119
-[scan] === UNSEEN users (8 official test): 55.39 published ===
 --- 15:58 ---
 [a0_gain_affine] [val] step 6500: mode-C CER 66.73 | mode-B CER 90.14 | mode-A CER 68.57 | gain C +1.83 / B -21.58 | loss 3.9261
 [a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
@@ -1648,6 +1640,14 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
 RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
   ^^ a1_gain_v31 LOOKS BROKEN
 [a2_realistic] [val] step 3500: mode-C CER 75.41 | mode-B CER 76.18 | mode-A CER 79.80 | gain C +4.38 / B +3.62 | loss 3.9540
+[scan] === UNSEEN users (8 official test): 55.39 published ===
+--- 16:08 ---
+[a0_gain_affine] [val] step 6500: mode-C CER 66.73 | mode-B CER 90.14 | mode-A CER 68.57 | gain C +1.83 / B -21.58 | loss 3.9261
+[a1_gain_v31] [val] step 7500: mode-C CER 36.95 | mode-B CER 75.68 | mode-A CER 75.68 | gain C +38.73 / B +0.00 | loss 1.3050
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted. 
+  ^^ a1_gain_v31 LOOKS BROKEN
+[a2_realistic] [val] step 4000: mode-C CER 68.16 | mode-B CER 76.63 | mode-A CER 79.45 | gain C +11.29 / B +2.83 | loss 3.2769
 [scan] === UNSEEN users (8 official test): 55.39 published ===
 ```
 
@@ -2045,9 +2045,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 
 ### 440_trunk_train.log
 ```
-
-=== waiting for GPUs (the v5 ladder is still running) ===
-launched tf_ref on GPU1 pid=2889785  (15:24)
   (10) no free GPU: 0, 2411 MiB 1, 1369 MiB 2, 2807 MiB 3, 24117 MiB 
 launched tf_fold0 on GPU3 pid=2905364  (15:34)
 
@@ -2068,6 +2065,9 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 [tf_ref] [val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 --- 16:04 ---
+[tf_ref] [val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
+--- 16:09 ---
 [tf_ref] [val] step 4000: 8-test-user CER 94.53 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 ```
@@ -2230,6 +2230,12 @@ pid=2942963
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
 
 === compare the two learning rates every 10 min ===
+--- 16:10 ---
+[tf_ref] step 5600/40000 | loss 2.6972 | lr 2.93e-04 | 538 win/s
+         [val] new best 94.53 -> best.pt
+[tf_ref_lr1e3] step 600/40000 | loss 3.4864 | lr 3.00e-04 | 259 win/s
+[tf_fold0] step 3800/40000 | loss 2.9388 | lr 2.98e-04 | 464 win/s
+         [val] new best 100.00 -> best.pt
 ```
 
 ### 480_tf_lr_probe.log
@@ -2385,7 +2391,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
@@ -2410,6 +2415,7 @@ step 3000/40000 | loss 3.0572 | lr 2.99e-04 | 461 win/s
 step 3200/40000 | loss 3.0273 | lr 2.99e-04 | 458 win/s
 step 3400/40000 | loss 2.9952 | lr 2.99e-04 | 461 win/s
 step 3600/40000 | loss 2.9728 | lr 2.99e-04 | 463 win/s
+step 3800/40000 | loss 2.9388 | lr 2.98e-04 | 464 win/s
 ```
 
 ### tf_ref.log
@@ -2662,7 +2668,6 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
 
 ### v5_a2_realistic.log
 ```
-[val] step 2000: mode-C CER 73.79 | mode-B CER 74.83 | mode-A CER 80.42 | gain C +6.64 / B +5.59 | loss 3.9042
 step 2100/8000 | loss 2.8414 | lr 9.43e-04 | 0.72 it/s
 step 2200/8000 | loss 2.8185 | lr 9.33e-04 | 0.87 it/s
 step 2300/8000 | loss 2.7053 | lr 9.21e-04 | 0.84 it/s
@@ -2687,6 +2692,7 @@ step 3800/8000 | loss 2.6359 | lr 6.72e-04 | 0.96 it/s
 step 3900/8000 | loss 2.6126 | lr 6.51e-04 | 0.84 it/s
 step 4000/8000 | loss 2.5845 | lr 6.31e-04 | 0.79 it/s
 [val] step 4000: mode-C CER 68.16 | mode-B CER 76.63 | mode-A CER 79.45 | gain C +11.29 / B +2.83 | loss 3.2769
+step 4100/8000 | loss 2.6075 | lr 6.10e-04 | 0.61 it/s
 ```
 
 ### v5_zeroshot_scan.log
