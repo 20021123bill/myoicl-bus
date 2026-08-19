@@ -1,0 +1,103 @@
+# DIAGNOSTIC (v5.3): can the architecture use context AT ALL?
+#
+# WHY THIS RUN EXISTS
+# -------------------
+# 2026-08-18 morning: both overnight joint runs produced ZERO conditioning
+# gain. On user0, E2 gave mode-A 61.69 and mode-C 61.80 -- context is wired
+# (the outputs differ) but worthless. Two explanations are still alive:
+#
+#   (H1) the architecture cannot route context into the decoder at all --
+#        a wiring/capacity/optimization bug;
+#   (H2) the architecture is fine, but during training the model was never
+#        FORCED to read context, so the zero-initialized gates never opened.
+#        Real cross-user structure is subtle; a shared backbone trained on 86
+#        users can absorb most of the loss without ever consulting context,
+#        and at t=0 d(output)/d(context) is exactly 0, so the context pathway
+#        starts with no gradient and no incentive.
+#
+# This run separates them. p_synth 0.85 means 85% of episodes apply a random
+# per-episode synthetic user transform CONSISTENTLY to the context AND the
+# queries. In those episodes the context PROVABLY determines the transform:
+# a model that ignores context cannot invert it, and one that reads context
+# can. If the gain is still ~0 here, H1 is true and we debug the module. If
+# the gain is large here, H2 is true and the fix is curriculum (anneal
+# p_synth down), not architecture.
+#
+# It is deliberately SHORT (8000 steps, ~45 min) and validates every 1000
+# steps, because it only has to answer a yes/no question.
+phase: icl
+out_dir: /data2/chenyuxiang/runs/myoicl_d2_forcectx
+seed: 1503
+amp: bf16
+
+repo_root: /data2/chenyuxiang/code/emg2qwerty
+user_config: generic
+
+init_backbone_from: /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt
+freeze_backbone: false
+
+model:
+  version: 1
+  official_mlp_features: [384]
+  freq_bins: 33
+  num_bands: 2
+  channels_per_band: 16
+  d_model: 768
+  tds_block_channels: [24, 24, 24, 24]
+  tds_kernel_width: 32
+  conditioning: deep
+  ctx_version: 2
+  d_ctx: 128
+  d_bneck: 128
+  film_rank: 32
+  d_omega: 64
+  n_latents: 32
+  unit_sample: 256
+  ctx_heads: 4
+  cross_heads: 8
+  ref_context_size: 32
+  dropout: 0.1
+  # Identity-at-init now lives in the zero-initialized o_proj
+  # matrix, so the gate can start open and the context encoder
+  # receives gradient from step 1. Set 0.0 to reproduce the
+  # pre-2026-08-18 deadlock (ablation row).
+  gate_init: 1.0
+
+data:
+  window_length: 8000
+  padding: [1800, 200]
+  val_batch_size: 16
+  num_workers: 6
+
+episodes:
+  queries: 24
+  ctx_segments: 30
+  ctx_segments_range: [4, 90]
+  ctx_segment_len: 2000
+  # Almost everything is mode C: we are measuring the labelled-context gain,
+  # not regularizing for deployment.
+  mode_probs: [0.05, 0.15, 0.80]
+  k_shot_range: [32, 256]
+  k_shot_window: 2000
+  cross_session_ctx: true
+  meta_val_users: 10
+  # THE DIAGNOSTIC KNOB. 0.15 -> 0.85, and the transform is made strong.
+  p_synth: 0.85
+  synth_strength: [0.35, 0.90]
+  specaug: true
+
+train:
+  # Split learning rates: barely move the backbone, train the randomly
+  # initialized context module fast. A shared 2e-4 was wrong in both
+  # directions at once (backbone lost 6.3 CER, module learned nothing).
+  lr: 3.0e-5                    # backbone
+  ctx_lr: 1.0e-3                # context module
+  weight_decay: 0.01
+  betas: [0.9, 0.98]
+  max_steps: 8000
+  warmup_steps: 300
+  grad_clip: 1.0
+  log_every: 100
+  val_every: 1000
+  val_batches: 40
+  save_every: 2000

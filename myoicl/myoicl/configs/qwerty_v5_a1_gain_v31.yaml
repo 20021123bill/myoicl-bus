@@ -1,0 +1,85 @@
+# v3.1: v3 + key/value split. Key = support signal feature (match by signal
+# similarity), value = character embedding (retrieve label). Addresses v3's
+# 'gate opens then decays' -- the fused single token left the attention to
+# disentangle signal from label; this gives it the split as inductive bias.
+# mechanism). Replaces the per-unit encoder-inversion (ctx_version 2) that
+# failed cleanly on 2026-08-18 (see ARCH_v2_design.md).
+#
+# What changed vs D1/D3: the context is no longer marginal per-unit statistics.
+# Each labelled support window is run through the shared backbone; every
+# support FRAME becomes a key/value token carrying [backbone feature ;
+# soft-aligned character embedding]. The trunk's existing cross_pre/cross_post
+# attend to these -- biasing per-frame CTC posteriors, leaving alignment to
+# CTC's blank-collapse. This is the first version whose mechanism is built for
+# a sequence task rather than transplanted from a static image task.
+#
+# Keeps every correct finding from today: unfrozen backbone, matrix-zero gate
+# (gate_init 1.0), split backbone/module LR, synthetic-user augmentation.
+phase: icl
+out_dir: /data2/chenyuxiang/runs/v5_a1
+seed: 5102
+amp: bf16
+
+repo_root: /data2/chenyuxiang/code/emg2qwerty
+user_config: generic
+
+init_backbone_from: /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt
+freeze_backbone: true
+
+model:
+  version: 1
+  official_mlp_features: [384]
+  freq_bins: 33
+  num_bands: 2
+  channels_per_band: 16
+  d_model: 768
+  tds_block_channels: [24, 24, 24, 24]
+  tds_kernel_width: 32
+  conditioning: deep            # uses film + cross_pre (early) + cross_post (late)
+  ctx_version: 3                # frame-level contextual biasing
+  ctx_kv_split: true            # key=signal feature, value=char (Matching-Networks form)
+  d_ctx: 128
+  d_bneck: 128
+  film_rank: 32
+  cross_heads: 8
+  ref_context_size: 256         # ~ typical support-token count; sets attn temperature
+  ctx_max_tokens: 512           # cap on support key/value tokens (V2 -> Perceiver)
+  gate_init: 1.0                # identity from zero-init o_proj matrix, gate open
+  dropout: 0.1
+
+data:
+  window_length: 8000
+  padding: [1800, 200]
+  val_batch_size: 16
+  num_workers: 4
+
+episodes:
+  queries: 24
+  ctx_segments: 30
+  ctx_segments_range: [4, 90]
+  ctx_segment_len: 2000
+  mode_probs: [0.15, 0.15, 0.70]
+  k_shot_max: 12                # full-length labelled windows per episode
+  k_shot_window: 2000
+  cross_session_ctx: true
+  meta_val_users: 10
+  p_synth: 1.0
+  synth:
+    rotation_choices: [0]
+    gain_log_std: 0.5
+    p_noise: 0.0
+    p_mix: 0.0
+  specaug: true
+
+train:
+  lr: 3.0e-5                    # backbone (pretrained; move gently)
+  ctx_lr: 1.0e-3               # context module (random init; move fast)
+  weight_decay: 0.01
+  betas: [0.9, 0.98]
+  max_steps: 8000
+  warmup_steps: 800
+  grad_clip: 1.0
+  log_every: 100
+  val_every: 500
+  val_batches: 60
+  save_every: 500

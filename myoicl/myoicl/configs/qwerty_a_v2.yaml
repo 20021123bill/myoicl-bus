@@ -1,0 +1,45 @@
+# Backbone 2 (mainline), phase A: the PUBLISHED fairemg transformer,
+# unchanged, Tiny size. Config values are taken from their released sweep
+# figure_3_supervised/hps.json + default_hps/qwerty.json.
+# Goal = G1: zero-shot test CER ~= their Tiny 35.9 +- 2.
+phase: a
+out_dir: /data2/chenyuxiang/runs/myoicl_qwerty_a_v2
+seed: 1501
+amp: bf16
+
+repo_root: /data2/chenyuxiang/code/emg2qwerty
+user_config: generic
+
+model:
+  version: 2
+  size: tiny                 # d_model 128 x 10 layers (~2.1M backbone)
+  num_bands: 2
+  channels_per_band: 16
+  feat_dims: [128, 64, 64]   # fairemg featurizer, verbatim
+  feat_kernels: [11, 3, 3]
+  feat_strides: [11, 3, 3]   # x99 downsample -> ~20 Hz frames
+  trunk_heads: 16
+  trunk_ff_mult: 4
+  dropout: 0.2
+  mask_time_prob: 0.3
+  mask_time_length: 15
+  d_ctx: 128                 # ICL module (our only addition)
+
+data:
+  window_length: 8000        # 4 s + 0.9/0.1 s padding = 5 s span (both papers)
+  padding: [1800, 200]
+  batch_size: 40             # fairemg per-device batch
+  val_batch_size: 16
+  num_workers: 6
+
+train:
+  lr: 3.0e-4                 # fairemg default
+  weight_decay: 0.2          # fairemg
+  betas: [0.9, 0.98]
+  max_steps: 150000
+  warmup_steps: 7500         # 5% (fairemg warmup_ratio)
+  grad_clip: 0.1             # fairemg max_grad_norm
+  log_every: 50
+  val_every: 2000
+  val_batches: 60
+  save_every: 2000

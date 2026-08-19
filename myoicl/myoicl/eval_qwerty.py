@@ -151,7 +151,7 @@ def eval_user(
     acc = CERAccumulator()
     for tp in test_paths:
         # ---- context ----
-        ctx_tokens = ctx_pooled = ctx_affine = ctx_remix = None
+        ctx_tokens = ctx_pooled = ctx_affine = None
         if mode in ("B", "C"):
             if args.ctx_source == "cross":
                 ctx_raw = build_context(train_paths, args.ctx_seconds, args.seg_len)
@@ -212,8 +212,6 @@ def eval_user(
                     ctx_unit_mu=u_mu, ctx_unit_sd=u_sd, ctx_unit_desc=u_desc,
                     return_affine=True,
                 )
-            if lab_spec is not None and lab_ids is not None:
-                ctx_remix = model.compute_remix(lab_spec, lab_ids, lab_lens)
 
         # ---- full-session decode (official style) ----
         ds = WindowedEMGDataset(
@@ -239,7 +237,6 @@ def eval_user(
                     inputs, ctx_tokens, ctx_pooled,
                     frontend_chunk=args.frontend_chunk,
                     ctx_affine=ctx_affine,
-                    ctx_remix=ctx_remix,
                 )
         lengths = torch.tensor([emissions.shape[0]])
         preds = greedy_ctc_decode(emissions.float(), lengths, blank=cs.null_class)

@@ -146,7 +146,7 @@ def episode_forward(model, batch, device, autocast_dtype):
     input_lengths = batch["input_lengths"]
     target_lengths = batch["target_lengths"]
 
-    ctx_tokens = ctx_pooled = ctx_affine = ctx_remix = None
+    ctx_tokens = ctx_pooled = ctx_affine = None
     with torch.autocast(device_type=device.type, dtype=autocast_dtype,
                         enabled=autocast_dtype is not None):
         ctx_raw = batch.get("ctx_raw")
@@ -171,14 +171,9 @@ def episode_forward(model, batch, device, autocast_dtype):
                 ctx_unit_desc=batch.get("ctx_unit_desc"),
                 return_affine=True,
             )
-            ctx_remix = model.compute_remix(
-                batch.get("ctx_labeled_spec"), lab_ids,
-                batch.get("ctx_labeled_lens"),
-            )
 
         emissions = model(inputs, ctx_tokens, ctx_pooled,
-                          ctx_affine=ctx_affine,
-                          ctx_remix=ctx_remix)  # (T', N, K)
+                          ctx_affine=ctx_affine)  # (T', N, K)
 
     if hasattr(model, "featurizer"):  # v2: strided conv downsampling
         emission_lengths = model.featurizer.output_length(

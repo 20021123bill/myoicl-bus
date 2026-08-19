@@ -54,8 +54,7 @@ def load_official_backbone(model, ckpt_path: str, verbose: bool = True) -> dict:
     missing, unexpected = model.load_state_dict(mapped, strict=False)
 
     # Everything we failed to load that is NOT a context module is a bug.
-    ctx_prefixes = ("ctx_encoder.", "film.", "cross_pre.", "cross_post.",
-                    "remix.")
+    ctx_prefixes = ("ctx_encoder.", "film.", "cross_pre.", "cross_post.")
     unloaded_backbone = [
         k for k in missing if not k.startswith(ctx_prefixes)
     ]
@@ -84,8 +83,7 @@ def freeze_backbone(model, verbose: bool = True) -> tuple[int, int]:
     parameter counts. Note the backbone also goes to eval() at train time via
     ``backbone_eval_mode`` below so its BatchNorm statistics stay frozen too --
     otherwise the released model would silently drift."""
-    ctx_prefixes = ("ctx_encoder.", "film.", "cross_pre.", "cross_post.",
-                    "remix.")
+    ctx_prefixes = ("ctx_encoder.", "film.", "cross_pre.", "cross_post.")
     frozen = trainable = 0
     for name, p in model.named_parameters():
         if name.startswith(ctx_prefixes):
@@ -104,7 +102,7 @@ def freeze_backbone(model, verbose: bool = True) -> tuple[int, int]:
 def backbone_eval_mode(model) -> None:
     """Keep frozen normalization layers in eval mode during training so the
     released model's BatchNorm running statistics are never updated."""
-    ctx_names = {"ctx_encoder", "film", "cross_pre", "cross_post", "remix"}
+    ctx_names = {"ctx_encoder", "film", "cross_pre", "cross_post"}
     for name, module in model.named_children():
         if name not in ctx_names:
             module.eval()

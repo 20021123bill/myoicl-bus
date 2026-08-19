@@ -1,0 +1,56 @@
+# STEP 1 of the split-cohort design: train the backbone on HALF the users.
+#
+# Why: the released checkpoint saw all 100 training users, which left us with
+# no user on which it fails like it fails on strangers -- so the context module
+# had to be meta-trained on synthetic shift and learned to invert the simulator
+# (+0.33 CER on real unseen users). The oracle probe reached +8.57 when trained
+# on real shift, so the mechanism is fine and the cohort must be split.
+#
+# Architecture and recipe are the published emg2qwerty ones, unmodified; only
+# the training cohort is halved. Expect a somewhat worse zero-shot number than
+# the released 55.39 (half the data) -- that is fine, it is our own reference
+# row, and mode A vs mode B remains a same-parameter comparison.
+phase: a
+out_dir: /data2/chenyuxiang/runs/myoicl_bb50
+seed: 1501
+amp: bf16
+
+repo_root: /data2/chenyuxiang/code/emg2qwerty
+user_config: generic
+
+user_split:
+  backbone_frac: 0.5     # 50 users train the backbone; the other 50 are
+  seed: 0                # reserved for module meta-training (never seen here)
+
+model:
+  version: 1
+  official_mlp_features: [384]
+  freq_bins: 33
+  num_bands: 2
+  channels_per_band: 16
+  d_model: 768
+  tds_block_channels: [24, 24, 24, 24]
+  tds_kernel_width: 32
+  d_ctx: 128
+  d_bneck: 128
+  film_rank: 32
+  dropout: 0.1
+
+data:
+  window_length: 8000
+  padding: [1800, 200]
+  batch_size: 32
+  val_batch_size: 16
+  num_workers: 6
+
+train:
+  lr: 1.0e-3             # official emg2qwerty Adam lr
+  weight_decay: 0.0
+  betas: [0.9, 0.98]
+  max_steps: 120000
+  warmup_steps: 4000
+  grad_clip: 1.0
+  log_every: 50
+  val_every: 4000
+  val_batches: 60
+  save_every: 4000

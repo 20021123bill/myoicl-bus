@@ -74,9 +74,6 @@ class MyoICLModel(nn.Module):
         ctx_max_tokens: int = 512,
         ctx_kv_split: bool = False,
         ctx_film_only: bool = False,
-        ctx_remix: str | None = None,
-        remix_freq_basis: int = 4,
-        remix_ridge: float = 1e-2,
     ) -> None:
         super().__init__()
         self.num_bands = num_bands
@@ -155,23 +152,6 @@ class MyoICLModel(nn.Module):
             )
             self.use_residual_context = use_residual_context
         self.blank_id = num_classes - 1
-        # V5 (2026-08-19): label-conditioned channel remix. The dominant real
-        # cross-subject nuisance in a 16-electrode ring is WHERE IT SITS -- an
-        # integer channel offset, i.e. a PERMUTATION of the input channels.
-        # FiLM is diagonal, cross-attention is additive on trunk features, and
-        # icl2.UnitAffineHead is diagonal: none of them can express a
-        # permutation, so no amount of meta-training could ever have found it.
-        # This head can, and it is the part that genuinely needs LABELS
-        # (unlabelled channel statistics are near permutation-invariant).
-        self.remix = None
-        if ctx_remix:
-            from .remix import LabelConditionedRemix
-
-            self.remix = LabelConditionedRemix(
-                num_bands=num_bands, channels=channels_per_band,
-                num_classes=num_classes, n_freq_basis=remix_freq_basis,
-                mode=ctx_remix, ridge=remix_ridge,
-            )
         self.film = FiLMConditioner(d_model, d_ctx, rank=film_rank)
         self.cross_pre = LogitScaledCrossAttention(
             d_model, d_ctx, n_heads=cross_heads,
@@ -228,27 +208,6 @@ class MyoICLModel(nn.Module):
         return torch.stack(out)
 
     # ------------------------------------------------------------------
-    def compute_remix(
-        self,
-        ctx_labeled_spec: torch.Tensor | None,
-        ctx_labeled_ids=None,
-        ctx_labeled_lens: torch.Tensor | None = None,
-    ):
-        """Labelled support -> per-band channel remix M (B, C, C), or None.
-
-        Kept separate from encode_context so that adding it does not have to
-        touch that method's several early-return paths (one of which was the
-        2026-08-18 'v3 branch placed after the stats block' bug).
-        """
-        if self.remix is None or ctx_labeled_spec is None:
-            return None
-        if ctx_labeled_ids is None:
-            return None
-        S = self.remix.estimate_profile(
-            ctx_labeled_spec, ctx_labeled_ids, spec_lens=ctx_labeled_lens
-        )
-        return self.remix(S)
-
     def encode_context(
         self,
         ctx_raw: torch.Tensor | None,
@@ -320,7 +279,6 @@ class MyoICLModel(nn.Module):
         ctx_pooled: torch.Tensor | None = None,
         frontend_chunk: int = 0,
         ctx_affine: torch.Tensor | None = None,
-        ctx_remix: torch.Tensor | None = None,
     ) -> torch.Tensor:
         """inputs (T, N, B, C, F) -> log-probs (T', N, num_classes).
 
@@ -328,12 +286,6 @@ class MyoICLModel(nn.Module):
         of that many frames to bound memory on full-session evaluation; the
         temporal TDS trunk always sees the full sequence.
         """
-        if ctx_remix is not None:
-            # Channel reassignment first, then the diagonal gain/offset: the
-            # inverse of the physical order (worn offset, then impedance).
-            from .remix import LabelConditionedRemix
-
-            inputs = LabelConditionedRemix.apply_remix(inputs, ctx_remix)
         if ctx_affine is not None:
             # Per-unit renormalization BEFORE the spatial frontend mixes
             # channels. ctx_affine is (J, 2) = (log_gamma, beta) over units
@@ -440,11 +392,6 @@ def build_model(cfg: dict, num_classes: int) -> MyoICLModel:
         ctx_max_tokens=int(m.get("ctx_max_tokens", 512)),
         ctx_kv_split=bool(m.get("ctx_kv_split", False)),
         ctx_film_only=bool(m.get("ctx_film_only", False)),
-        # None | "residual" (identity at init, most expressive) | "assign"
-        # (Sinkhorn soft permutation, interpretable -- use for the figure).
-        ctx_remix=m.get("ctx_remix", None),
-        remix_freq_basis=int(m.get("remix_freq_basis", 4)),
-        remix_ridge=float(m.get("remix_ridge", 1e-2)),
         # 1.0 = post-2026-08-18 default (identity comes from zero-init o_proj,
         # not from a shut gate). Set 0.0 to reproduce the deadlock for the
         # ablation row.
