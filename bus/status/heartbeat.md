@@ -1,9 +1,9 @@
-# heartbeat 2026-08-20T00:19:24+08:00
+# heartbeat 2026-08-20T00:20:06+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 3169 MiB, 24576 MiB, 88 %
+1, 3169 MiB, 24576 MiB, 81 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -70,6 +70,7 @@
 520_deploy_symbol_icl                    DONE rc=127
 525_trunk_diag                           DONE rc=127
 526_blank_tracker                        DONE rc=127
+530_gate_5s_eval                         DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2633,6 +2634,10 @@ checkpoint step 10000
   tf_fold0       step   8000 | argmax-blank  99.3% | p(blank) 0.980 | entropy 0.084
 ```
 
+### 530_gate_5s_eval.log
+```
+```
+
 ### d3_train.log
 ```
 [val] step 6000: mode-C CER 16.99 | mode-B CER 17.13 | mode-A CER 15.88 | gain C -1.11 / B -1.25 | loss 0.6158
@@ -2909,9 +2914,6 @@ step 40000/40000 | loss 1.5024 | lr 0.00e+00 | 618 win/s
 
 ### tf_fold3.log
 ```
-step 18800/40000 | loss 1.9781 | lr 5.90e-04 | 621 win/s
-step 19000/40000 | loss 1.9647 | lr 5.82e-04 | 622 win/s
-step 19200/40000 | loss 1.9674 | lr 5.74e-04 | 623 win/s
 step 19400/40000 | loss 1.9658 | lr 5.66e-04 | 624 win/s
 step 19600/40000 | loss 1.9563 | lr 5.58e-04 | 625 win/s
 step 19800/40000 | loss 1.9566 | lr 5.50e-04 | 626 win/s
@@ -2934,6 +2936,9 @@ step 22600/40000 | loss 1.8717 | lr 4.34e-04 | 638 win/s
 step 22800/40000 | loss 1.8552 | lr 4.26e-04 | 639 win/s
 step 23000/40000 | loss 1.8468 | lr 4.18e-04 | 640 win/s
 step 23200/40000 | loss 1.8514 | lr 4.10e-04 | 640 win/s
+step 23400/40000 | loss 1.8474 | lr 4.01e-04 | 641 win/s
+step 23600/40000 | loss 1.8360 | lr 3.93e-04 | 642 win/s
+step 23800/40000 | loss 1.8163 | lr 3.85e-04 | 643 win/s
 ```
 
 ### tf_ref.log
