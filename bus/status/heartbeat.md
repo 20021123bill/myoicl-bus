@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T05:35:43+08:00
+# heartbeat 2026-08-20T05:36:26+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 18 %
-1, 3125 MiB, 24576 MiB, 51 %
-2, 2985 MiB, 24576 MiB, 31 %
+0, 3173 MiB, 24576 MiB, 17 %
+1, 3125 MiB, 24576 MiB, 47 %
+2, 2985 MiB, 24576 MiB, 38 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2980,6 +2980,13 @@ flat gain==0 -> support is ignored; positive gain, zero slope ->
 === 545 done ===
 ```
 
+### 550_fused.log
+```
+patch verified (fused x8)
+AST OK
+launched icl_fused_fold2 pid=146692
+```
+
 ### 550_fused_prefix_icl.log
 ```
 patch verified (fused x8)
@@ -3155,6 +3162,35 @@ step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
 [done] best mode-C 45.71
 ```
 
+### icl_fused_fold2.log
+```
+[prefix] FUSED mode: per-token (signal + soft-aligned char)
+[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
+[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
+[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
+[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
+[symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+[audit] step 0: mode-A 62.63 | mode-C 100.00 (random prefix) | deployment reference ~43-58
+Traceback (most recent call last):
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data2/chenyuxiang/code/myoicl/myoicl/train_prefix_icl.py", line 471, in <module>
+    main()
+  File "/data2/chenyuxiang/code/myoicl/myoicl/train_prefix_icl.py", line 439, in main
+    loss.backward()
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/_tensor.py", line 525, in backward
+    torch.autograd.backward(
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/autograd/__init__.py", line 267, in backward
+    _engine_run_backward(
+  File "/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/autograd/graph.py", line 744, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [11, 598, 99]], which is output 0 of ExpBackward0, is at version 1; expected version 0 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+```
+
 ### teachers_shard0.log
 ```
 [teachers] 24/96 training users in this shard | tokens_only=False | steps=1800
@@ -3234,7 +3270,6 @@ step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
 
 ### tf_fold0_full.log
 ```
-step 37800/103000 | loss 1.6601 | lr 5.05e-04 | 617 win/s
 step 38000/103000 | loss 1.6412 | lr 5.03e-04 | 617 win/s
 step 38200/103000 | loss 1.6491 | lr 5.01e-04 | 618 win/s
 step 38400/103000 | loss 1.6690 | lr 4.99e-04 | 618 win/s
@@ -3259,6 +3294,7 @@ step 41800/103000 | loss 1.6189 | lr 4.65e-04 | 622 win/s
 step 42000/103000 | loss 1.6263 | lr 4.63e-04 | 623 win/s
 step 42200/103000 | loss 1.6011 | lr 4.61e-04 | 623 win/s
 step 42400/103000 | loss 1.6128 | lr 4.59e-04 | 623 win/s
+step 42600/103000 | loss 1.6178 | lr 4.56e-04 | 623 win/s
 ```
 
 ### tf_fold0.log
