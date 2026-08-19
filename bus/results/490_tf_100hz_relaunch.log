@@ -18,3 +18,4 @@ frame rate OK
 
 === relaunch: ref(3e-4) / fold0(3e-4) / ref(1e-3) ===
 launched tf_ref on GPU0 lr=3e-4 fold=-1 pid=2975197
+launched tf_fold0 on GPU1 lr=3e-4 fold=0 pid=2976588

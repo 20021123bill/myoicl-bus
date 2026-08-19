@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T16:18:06+08:00
+# heartbeat 2026-08-19T16:18:49+08:00
 
 ## gpu
 ```
-0, 1371 MiB, 24576 MiB, 15 %
-1, 1369 MiB, 24576 MiB, 24 %
-2, 2807 MiB, 24576 MiB, 0 %
-3, 1369 MiB, 24576 MiB, 30 %
+0, 2987 MiB, 24576 MiB, 0 %
+1, 12 MiB, 24576 MiB, 0 %
+2, 12 MiB, 24576 MiB, 0 %
+3, 12 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -2260,6 +2260,23 @@ pid=2942963
 === stop the mis-specified runs ===
 trunk runs stopped
 A2 stopped
+0, 16 MiB
+1, 12 MiB
+2, 12 MiB
+3, 12 MiB
+
+=== deploy the corrected trunk ===
+AST OK
+
+=== sanity: frame rate and sequence length ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+raw (2, 32, 10000) -> emissions (498, 2, 99) = 100 Hz  (target 100 Hz)
+frame rate OK
+
+=== relaunch: ref(3e-4) / fold0(3e-4) / ref(1e-3) ===
+launched tf_ref on GPU0 lr=3e-4 fold=-1 pid=2975197
 ```
 
 ### d3_train.log
@@ -2678,10 +2695,6 @@ RuntimeError: DataLoader worker (pid 2831817) is killed by signal: Aborted.
 
 ### v5_a2_realistic.log
 ```
-step 2400/8000 | loss 2.7740 | lr 9.09e-04 | 0.87 it/s
-step 2500/8000 | loss 2.7018 | lr 8.96e-04 | 0.84 it/s
-[val] step 2500: mode-C CER 86.37 | mode-B CER 72.80 | mode-A CER 80.42 | gain C -5.95 / B +7.62 | loss 6.0189
-step 2600/8000 | loss 2.6746 | lr 8.83e-04 | 0.67 it/s
 step 2700/8000 | loss 2.6537 | lr 8.68e-04 | 0.77 it/s
 step 2800/8000 | loss 2.6598 | lr 8.53e-04 | 0.86 it/s
 step 2900/8000 | loss 2.7604 | lr 8.38e-04 | 0.80 it/s
@@ -2703,6 +2716,10 @@ step 4100/8000 | loss 2.6075 | lr 6.10e-04 | 0.61 it/s
 step 4200/8000 | loss 2.5191 | lr 5.89e-04 | 0.88 it/s
 step 4300/8000 | loss 2.5014 | lr 5.68e-04 | 0.83 it/s
 step 4400/8000 | loss 2.4864 | lr 5.46e-04 | 0.74 it/s
+step 4500/8000 | loss 2.5935 | lr 5.25e-04 | 0.88 it/s
+[val] step 4500: mode-C CER 77.72 | mode-B CER 87.09 | mode-A CER 79.78 | gain C +2.06 / B -7.31 | loss 4.2851
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 20 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
 ```
 
 ### v5_zeroshot_scan.log

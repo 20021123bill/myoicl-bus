@@ -59,3 +59,7 @@ step 4100/8000 | loss 2.6075 | lr 6.10e-04 | 0.61 it/s
 step 4200/8000 | loss 2.5191 | lr 5.89e-04 | 0.88 it/s
 step 4300/8000 | loss 2.5014 | lr 5.68e-04 | 0.83 it/s
 step 4400/8000 | loss 2.4864 | lr 5.46e-04 | 0.74 it/s
+step 4500/8000 | loss 2.5935 | lr 5.25e-04 | 0.88 it/s
+[val] step 4500: mode-C CER 77.72 | mode-B CER 87.09 | mode-A CER 79.78 | gain C +2.06 / B -7.31 | loss 4.2851
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 20 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
