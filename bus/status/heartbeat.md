@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T02:08:42+08:00
+# heartbeat 2026-08-20T02:09:25+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 89 %
-1, 6280 MiB, 24576 MiB, 100 %
-2, 2985 MiB, 24576 MiB, 36 %
-3, 2099 MiB, 24576 MiB, 18 %
+0, 3173 MiB, 24576 MiB, 0 %
+1, 6280 MiB, 24576 MiB, 95 %
+2, 2985 MiB, 24576 MiB, 57 %
+3, 2099 MiB, 24576 MiB, 30 %
 ```
 
 ## jobs
@@ -2947,9 +2947,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_dev_fold2.log
 ```
-step 4500/12000 | loss 2.5639 | lr 2.21e-04 | 1.56 it/s
-[val] step 4500: mode-A 55.46 | mode-C 55.64 | gain C -0.18   (REAL novel subjects, fold 2)
-step 4600/12000 | loss 2.4678 | lr 2.18e-04 | 1.55 it/s
 step 4700/12000 | loss 2.5026 | lr 2.14e-04 | 1.56 it/s
 step 4800/12000 | loss 2.4344 | lr 2.10e-04 | 1.56 it/s
 step 4900/12000 | loss 2.5966 | lr 2.06e-04 | 1.57 it/s
@@ -2972,6 +2969,9 @@ step 6200/12000 | loss 2.4266 | lr 1.54e-04 | 1.55 it/s
 step 6300/12000 | loss 2.5214 | lr 1.50e-04 | 1.55 it/s
 step 6400/12000 | loss 2.4946 | lr 1.46e-04 | 1.55 it/s
 step 6500/12000 | loss 2.5076 | lr 1.42e-04 | 1.55 it/s
+[val] step 6500: mode-A 51.30 | mode-C 51.25 | gain C +0.05   (REAL novel subjects, fold 2)
+step 6600/12000 | loss 2.4867 | lr 1.38e-04 | 1.54 it/s
+step 6700/12000 | loss 2.4383 | lr 1.33e-04 | 1.54 it/s
 ```
 
 ### teachers_shard0.log
@@ -3053,8 +3053,6 @@ step 6500/12000 | loss 2.5076 | lr 1.42e-04 | 1.55 it/s
 
 ### tf_fold0_full.log
 ```
-step 6400/103000 | loss 1.9275 | lr 6.97e-04 | 562 win/s
-step 6600/103000 | loss 1.9293 | lr 6.97e-04 | 562 win/s
 step 6800/103000 | loss 1.9206 | lr 6.96e-04 | 563 win/s
 step 7000/103000 | loss 1.9176 | lr 6.96e-04 | 564 win/s
 step 7200/103000 | loss 1.9058 | lr 6.96e-04 | 565 win/s
@@ -3078,6 +3076,8 @@ step 10200/103000 | loss 1.8826 | lr 6.89e-04 | 571 win/s
 step 10400/103000 | loss 1.8894 | lr 6.88e-04 | 571 win/s
 step 10600/103000 | loss 1.8815 | lr 6.88e-04 | 571 win/s
 step 10800/103000 | loss 1.8811 | lr 6.87e-04 | 572 win/s
+step 11000/103000 | loss 1.8669 | lr 6.87e-04 | 572 win/s
+step 11200/103000 | loss 1.8975 | lr 6.86e-04 | 573 win/s
 ```
 
 ### tf_fold0.log
@@ -3111,9 +3111,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-step 3400/103000 | loss 1.9994 | lr 7.00e-04 | 472 win/s
-step 3600/103000 | loss 1.9824 | lr 7.00e-04 | 464 win/s
-step 3800/103000 | loss 1.9604 | lr 6.99e-04 | 460 win/s
 step 4000/103000 | loss 1.9437 | lr 6.99e-04 | 456 win/s
 [val] step 4000: 8-test-user CER 51.33 | fold-heldout-user CER 57.28  (their Tiny reference: 35.9)
 [val] new best 51.33 -> best.pt
@@ -3136,6 +3133,9 @@ step 7200/103000 | loss 1.9270 | lr 6.96e-04 | 414 win/s
 step 7400/103000 | loss 1.9083 | lr 6.95e-04 | 413 win/s
 step 7600/103000 | loss 1.9079 | lr 6.95e-04 | 412 win/s
 step 7800/103000 | loss 1.9219 | lr 6.94e-04 | 409 win/s
+step 8000/103000 | loss 1.9372 | lr 6.94e-04 | 407 win/s
+[val] step 8000: 8-test-user CER 48.65 | fold-heldout-user CER 55.97  (their Tiny reference: 35.9)
+[val] new best 48.65 -> best.pt
 ```
 
 ### tf_fold1.log
@@ -3227,7 +3227,6 @@ step 35000/40000 | loss 1.5630 | lr 4.21e-05 | 565 win/s
 
 ### tf_ref_full.log
 ```
-step 3800/103000 | loss 2.0308 | lr 6.99e-04 | 475 win/s
 step 4000/103000 | loss 2.0321 | lr 6.99e-04 | 470 win/s
 [val] step 4000: 8-test-user CER 46.84 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [val] new best 46.84 -> best.pt
@@ -3252,6 +3251,7 @@ step 7600/103000 | loss 2.0231 | lr 6.95e-04 | 419 win/s
 step 7800/103000 | loss 2.0546 | lr 6.94e-04 | 417 win/s
 step 8000/103000 | loss 2.0661 | lr 6.94e-04 | 415 win/s
 [val] step 8000: 8-test-user CER 48.77 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+step 8200/103000 | loss 2.0304 | lr 6.94e-04 | 412 win/s
 ```
 
 ### tf_ref.log
