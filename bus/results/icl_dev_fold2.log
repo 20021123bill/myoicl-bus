@@ -51,3 +51,7 @@ step 3000/12000 | loss 2.5874 | lr 2.68e-04 | 1.54 it/s
 [val] new best mode-C 55.67 -> best.pt
 step 3100/12000 | loss 2.5037 | lr 2.66e-04 | 1.54 it/s
 step 3200/12000 | loss 2.5240 | lr 2.63e-04 | 1.55 it/s
+step 3300/12000 | loss 2.4886 | lr 2.60e-04 | 1.56 it/s
+step 3400/12000 | loss 2.5267 | lr 2.58e-04 | 1.56 it/s
+step 3500/12000 | loss 2.5689 | lr 2.55e-04 | 1.56 it/s
+[val] step 3500: mode-A 54.20 | mode-C 56.13 | gain C -1.93   (REAL novel subjects, fold 2)
