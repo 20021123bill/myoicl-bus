@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:25:04+08:00
+# heartbeat 2026-08-19T17:25:47+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 0 %
-1, 2985 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 0 %
-3, 2985 MiB, 24576 MiB, 0 %
+0, 2989 MiB, 24576 MiB, 45 %
+1, 2985 MiB, 24576 MiB, 40 %
+2, 3169 MiB, 24576 MiB, 76 %
+3, 2985 MiB, 24576 MiB, 66 %
 ```
 
 ## jobs
@@ -2051,9 +2051,6 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 ### 440_trunk_train.log
 ```
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
---- 16:44 ---
-[tf_ref] [val] step 4000: 8-test-user CER 96.35 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 --- 16:49 ---
 [tf_ref] [val] step 4000: 8-test-user CER 96.35 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
@@ -2075,6 +2072,9 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 --- 17:19 ---
 [tf_ref] [val] step 6000: 8-test-user CER 83.37 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] step 1800/40000 | loss 2.9799 | lr 9.00e-04 | 392 win/s
+--- 17:24 ---
+[tf_ref] [val] step 6000: 8-test-user CER 83.37 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 ```
 
 ### 450_log_relay.log
@@ -2342,13 +2342,6 @@ pid=2942963
 
 ### 490_tf_100hz.log
 ```
-        [val] new best 78.64 -> best.pt
---- 17:03 ---
-[tf_ref] step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
-        [val] new best 83.37 -> best.pt
-[tf_fold0] step 400/40000 | loss 3.6596 | lr 2.00e-04 | 427 win/s
-[tf_ref_lr1e3] step 5200/40000 | loss 2.3498 | lr 9.83e-04 | 531 win/s
-        [val] new best 78.64 -> best.pt
 --- 17:08 ---
 [tf_ref] step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
         [val] new best 83.37 -> best.pt
@@ -2366,6 +2359,13 @@ pid=2942963
         [val] new best 83.37 -> best.pt
 [tf_fold0] step 1600/40000 | loss 3.0458 | lr 8.00e-04 | 395 win/s
 [tf_ref_lr1e3] step 6600/40000 | loss 2.2975 | lr 9.64e-04 | 490 win/s
+        [val] step 6000: 8-test-user CER 84.01 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+--- 17:23 ---
+[tf_ref] step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
+        [val] new best 83.37 -> best.pt
+[tf_fold0] step 2000/40000 | loss 2.9238 | lr 1.00e-03 | 387 win/s
+        [val] new best 100.00 -> best.pt
+[tf_ref_lr1e3] step 7000/40000 | loss 2.2745 | lr 9.58e-04 | 479 win/s
         [val] step 6000: 8-test-user CER 84.01 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 ```
 
@@ -2458,14 +2458,6 @@ backbone) -- if it does not, the eval is wrong, not the method.
 
 ### 510_fold_fleet.log
 ```
-launched tf_fold0 on GPU0 pid=3041555
-launched tf_fold1 on GPU1 pid=3043152
-launched tf_fold2 on GPU3 pid=3044556
-
-=== stream (14 h); launch fold3 when a slot frees ===
---- 17:05 ---
-[tf_ref_lr1e3] step 5600/40000 | loss 2.3210 | lr 9.78e-04 | 521 win/s
-        [val] new best 78.64 -> best.pt
 [tf_fold0] step 600/40000 | loss 3.4617 | lr 3.00e-04 | 425 win/s
 [tf_fold1] step 800/40000 | loss 3.3023 | lr 4.00e-04 | 597 win/s
 [tf_fold2] step 600/40000 | loss 3.3959 | lr 3.00e-04 | 610 win/s
@@ -2482,6 +2474,14 @@ launched tf_fold2 on GPU3 pid=3044556
 [tf_fold1] step 2200/40000 | loss 2.8231 | lr 1.00e-03 | 613 win/s
         [val] new best 100.00 -> best.pt
 [tf_fold2] step 2200/40000 | loss 2.7923 | lr 1.00e-03 | 623 win/s
+        [val] new best 100.00 -> best.pt
+--- 17:20 ---
+[tf_ref_lr1e3] step 6800/40000 | loss 2.2851 | lr 9.61e-04 | 485 win/s
+        [val] step 6000: 8-test-user CER 84.01 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 1800/40000 | loss 2.9799 | lr 9.00e-04 | 392 win/s
+[tf_fold1] step 3000/40000 | loss 2.4718 | lr 9.98e-04 | 619 win/s
+        [val] new best 100.00 -> best.pt
+[tf_fold2] step 3000/40000 | loss 2.4417 | lr 9.98e-04 | 626 win/s
         [val] new best 100.00 -> best.pt
 ```
 
@@ -2785,7 +2785,6 @@ step 3600/40000 | loss 2.3892 | lr 9.96e-04 | 620 win/s
 
 ### tf_fold2.log
 ```
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
@@ -2810,6 +2809,7 @@ step 2800/40000 | loss 2.5361 | lr 9.99e-04 | 626 win/s
 step 3000/40000 | loss 2.4417 | lr 9.98e-04 | 626 win/s
 step 3200/40000 | loss 2.3872 | lr 9.98e-04 | 626 win/s
 step 3400/40000 | loss 2.3519 | lr 9.97e-04 | 626 win/s
+step 3600/40000 | loss 2.3252 | lr 9.96e-04 | 627 win/s
 ```
 
 ### tf_ref.log
@@ -2843,7 +2843,6 @@ step 6400/40000 | loss 2.3342 | lr 2.90e-04 | 702 win/s
 
 ### tf_ref_lr1e3.log
 ```
-step 2800/40000 | loss 2.5873 | lr 9.99e-04 | 573 win/s
 step 3000/40000 | loss 2.5095 | lr 9.98e-04 | 571 win/s
 step 3200/40000 | loss 2.4602 | lr 9.98e-04 | 567 win/s
 step 3400/40000 | loss 2.4238 | lr 9.97e-04 | 564 win/s
@@ -2868,6 +2867,7 @@ step 6400/40000 | loss 2.3045 | lr 9.67e-04 | 496 win/s
 step 6600/40000 | loss 2.2975 | lr 9.64e-04 | 490 win/s
 step 6800/40000 | loss 2.2851 | lr 9.61e-04 | 485 win/s
 step 7000/40000 | loss 2.2745 | lr 9.58e-04 | 479 win/s
+step 7200/40000 | loss 2.2681 | lr 9.55e-04 | 474 win/s
 ```
 
 ### v31_train.log
