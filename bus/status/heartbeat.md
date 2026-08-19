@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T18:12:27+08:00
+# heartbeat 2026-08-19T18:13:10+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 6 %
-1, 2985 MiB, 24576 MiB, 81 %
-2, 3169 MiB, 24576 MiB, 89 %
-3, 3169 MiB, 24576 MiB, 80 %
+0, 3173 MiB, 24576 MiB, 7 %
+1, 2985 MiB, 24576 MiB, 93 %
+2, 3169 MiB, 24576 MiB, 76 %
+3, 3169 MiB, 24576 MiB, 39 %
 ```
 
 ## jobs
@@ -68,6 +68,7 @@
 500_eval_a2_retry                        DONE rc=127
 510_fold_fleet_lr1e3                     DONE rc=127
 520_deploy_symbol_icl                    DONE rc=127
+525_trunk_diag                           DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2536,6 +2537,10 @@ letters=26  example 8-cycle: abfhkmqz -> qzkbmafh
 fixed points and mapping application OK
 SMOKE OK
 === 520 done: symbol-ICL trainer deployed, waiting on the fold fleet ===
+```
+
+### 525_trunk_diag.log
+```
 ```
 
 ### d3_train.log
