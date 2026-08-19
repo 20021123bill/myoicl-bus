@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T01:39:50+08:00
+# heartbeat 2026-08-20T01:40:34+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 45 %
-1, 6280 MiB, 24576 MiB, 98 %
-2, 2985 MiB, 24576 MiB, 0 %
-3, 1883 MiB, 24576 MiB, 0 %
+0, 3173 MiB, 24576 MiB, 78 %
+1, 6280 MiB, 24576 MiB, 95 %
+2, 2985 MiB, 24576 MiB, 52 %
+3, 1883 MiB, 24576 MiB, 15 %
 ```
 
 ## jobs
@@ -2936,7 +2936,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_dev_fold2.log
 ```
-step 2200/12000 | loss 2.5468 | lr 2.86e-04 | 1.54 it/s
 step 2300/12000 | loss 2.5356 | lr 2.84e-04 | 1.54 it/s
 step 2400/12000 | loss 2.5188 | lr 2.82e-04 | 1.55 it/s
 step 2500/12000 | loss 2.5864 | lr 2.80e-04 | 1.56 it/s
@@ -2961,6 +2960,7 @@ step 3900/12000 | loss 2.4669 | lr 2.42e-04 | 1.56 it/s
 step 4000/12000 | loss 2.5359 | lr 2.39e-04 | 1.56 it/s
 [val] step 4000: mode-A 50.06 | mode-C 50.66 | gain C -0.60   (REAL novel subjects, fold 2)
 [val] new best mode-C 50.66 -> best.pt
+step 4100/12000 | loss 2.4628 | lr 2.35e-04 | 1.55 it/s
 ```
 
 ### teachers_shard0.log
@@ -3187,8 +3187,6 @@ step 40000/40000 | loss 1.5024 | lr 0.00e+00 | 618 win/s
 
 ### tf_fold3.log
 ```
-step 28200/40000 | loss 1.6984 | lr 2.20e-04 | 657 win/s
-step 28400/40000 | loss 1.6884 | lr 2.13e-04 | 656 win/s
 step 28600/40000 | loss 1.6853 | lr 2.06e-04 | 654 win/s
 step 28800/40000 | loss 1.6865 | lr 1.99e-04 | 653 win/s
 step 29000/40000 | loss 1.6917 | lr 1.93e-04 | 651 win/s
@@ -3212,6 +3210,8 @@ step 32000/40000 | loss 1.6241 | lr 1.05e-04 | 605 win/s
 step 32200/40000 | loss 1.6216 | lr 1.00e-04 | 602 win/s
 step 32400/40000 | loss 1.6135 | lr 9.55e-05 | 599 win/s
 step 32600/40000 | loss 1.6005 | lr 9.07e-05 | 596 win/s
+step 32800/40000 | loss 1.6027 | lr 8.60e-05 | 593 win/s
+step 33000/40000 | loss 1.5954 | lr 8.14e-05 | 591 win/s
 ```
 
 ### tf_ref_full.log
