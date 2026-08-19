@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T05:09:07+08:00
+# heartbeat 2026-08-20T05:09:49+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 79 %
-1, 3125 MiB, 24576 MiB, 78 %
-2, 2985 MiB, 24576 MiB, 68 %
+0, 3173 MiB, 24576 MiB, 62 %
+1, 3125 MiB, 24576 MiB, 77 %
+2, 2985 MiB, 24576 MiB, 86 %
 3, 2099 MiB, 24576 MiB, 0 %
 ```
 
@@ -3173,8 +3173,6 @@ step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
 
 ### tf_fold0_full.log
 ```
-step 33200/103000 | loss 1.6538 | lr 5.48e-04 | 609 win/s
-step 33400/103000 | loss 1.6462 | lr 5.46e-04 | 610 win/s
 step 33600/103000 | loss 1.6734 | lr 5.44e-04 | 610 win/s
 step 33800/103000 | loss 1.6838 | lr 5.43e-04 | 610 win/s
 step 34000/103000 | loss 1.6878 | lr 5.41e-04 | 611 win/s
@@ -3198,6 +3196,8 @@ step 37200/103000 | loss 1.6623 | lr 5.11e-04 | 616 win/s
 step 37400/103000 | loss 1.6597 | lr 5.09e-04 | 616 win/s
 step 37600/103000 | loss 1.6736 | lr 5.07e-04 | 617 win/s
 step 37800/103000 | loss 1.6601 | lr 5.05e-04 | 617 win/s
+step 38000/103000 | loss 1.6412 | lr 5.03e-04 | 617 win/s
+step 38200/103000 | loss 1.6491 | lr 5.01e-04 | 618 win/s
 ```
 
 ### tf_fold0.log
@@ -3231,8 +3231,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-step 22400/103000 | loss 1.7714 | lr 6.32e-04 | 451 win/s
-step 22600/103000 | loss 1.7665 | lr 6.31e-04 | 451 win/s
 step 22800/103000 | loss 1.7796 | lr 6.30e-04 | 451 win/s
 step 23000/103000 | loss 1.7601 | lr 6.28e-04 | 451 win/s
 step 23200/103000 | loss 1.7614 | lr 6.27e-04 | 451 win/s
@@ -3256,6 +3254,8 @@ step 26400/103000 | loss 1.7572 | lr 6.04e-04 | 444 win/s
 step 26600/103000 | loss 1.7626 | lr 6.03e-04 | 444 win/s
 step 26800/103000 | loss 1.7627 | lr 6.01e-04 | 443 win/s
 step 27000/103000 | loss 1.7962 | lr 6.00e-04 | 443 win/s
+step 27200/103000 | loss 1.7675 | lr 5.98e-04 | 443 win/s
+step 27400/103000 | loss 1.7545 | lr 5.97e-04 | 443 win/s
 ```
 
 ### tf_fold1.log
@@ -3347,8 +3347,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-step 20800/103000 | loss 1.8950 | lr 6.42e-04 | 416 win/s
-step 21000/103000 | loss 1.9175 | lr 6.41e-04 | 416 win/s
 step 21200/103000 | loss 1.8932 | lr 6.40e-04 | 416 win/s
 step 21400/103000 | loss 1.8791 | lr 6.38e-04 | 417 win/s
 step 21600/103000 | loss 1.8875 | lr 6.37e-04 | 417 win/s
@@ -3372,6 +3370,8 @@ step 24800/103000 | loss 1.8521 | lr 6.16e-04 | 414 win/s
 step 25000/103000 | loss 1.8529 | lr 6.15e-04 | 414 win/s
 step 25200/103000 | loss 1.8465 | lr 6.13e-04 | 414 win/s
 step 25400/103000 | loss 1.8293 | lr 6.12e-04 | 414 win/s
+step 25600/103000 | loss 1.8313 | lr 6.10e-04 | 414 win/s
+step 25800/103000 | loss 1.8325 | lr 6.09e-04 | 415 win/s
 ```
 
 ### tf_ref.log
