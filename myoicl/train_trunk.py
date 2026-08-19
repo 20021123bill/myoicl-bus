@@ -107,7 +107,14 @@ def main():
                          "0..n_folds-1 = hold that fold out")
     ap.add_argument("--n-folds", type=int, default=4)
     ap.add_argument("--size", default="tiny", choices=["tiny", "small", "large"])
-    ap.add_argument("--window-length", type=int, default=10000)  # 5 s @ 2 kHz
+    # 4 s window + 900 ms past + 100 ms future context, verbatim from
+    # their section 3.1 ("4 second samples, padded with an additional
+    # 900 ms of past context and 100 ms of future context").
+    ap.add_argument("--window-length", type=int, default=8000)
+    ap.add_argument("--conv-strides", type=int, nargs=3,
+                    default=[5, 2, 2])
+    ap.add_argument("--conv-kernels", type=int, nargs=3,
+                    default=[11, 3, 3])
     ap.add_argument("--batch", type=int, default=64)
     ap.add_argument("--accum", type=int, default=4)              # eff. 256
     ap.add_argument("--lr", type=float, default=3e-4)
@@ -170,8 +177,14 @@ def main():
     print(f"[data] monitor sets: {len(eval_test or [])} test windows, "
           f"{len(eval_held or [])} fold-heldout windows")
 
-    model = build_trunk({"model": {"tf_size": args.size}},
+    model = build_trunk({"model": {"tf_size": args.size,
+                                   "conv_strides": args.conv_strides,
+                                   "conv_kernels": args.conv_kernels}},
                         num_classes=cs.num_classes).to(device)
+    ds_rate = 2000 / float(np.prod(args.conv_strides))
+    print(f"[model] featurizer {args.conv_kernels}/{args.conv_strides} -> "
+          f"{ds_rate:.0f} Hz frames "
+          f"({args.window_length / 2000 * ds_rate:.0f} per window)")
     print(f"[model] {args.size}: {param_report(model)}")
 
     decay, no_decay = [], []

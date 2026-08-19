@@ -18,12 +18,12 @@ own -- it can only help by changing what the query frames attend to.
 
 WHY THIS IS NOW POSSIBLE
 ------------------------
-The conv featurizer downsamples 2 kHz by 99x, so a 5 s window is ~101 frames.
-Three minutes of support is ~36 windows, and with signal frames strided by 2
-plus their character tokens that is ~3.3k prefix tokens -- a length a small
-causal transformer handles fine (the trunk takes the fused SDPA path). On the
-TDS trunk this was structurally impossible, which is why v3 had to bolt
-cross-attention onto the side.
+The conv featurizer downsamples 2 kHz to 100 Hz, so a 4 s window (plus 1 s of
+context) is ~498 frames. Three minutes of support is 45 windows, and with
+signal frames strided by 8 plus their character tokens that is ~4.1k prefix
+tokens -- a length a small causal transformer handles fine on the fused SDPA
+path. On the TDS trunk this was structurally impossible, which is why v3 had
+to bolt cross-attention onto the side.
 
 WHY THE LABELS GO IN AS TOKENS
 ------------------------------
@@ -54,7 +54,11 @@ class PrefixContextEncoder(nn.Module):
     ----------
     d_model      trunk width; prefix tokens live in the trunk's own space.
     num_classes  charset size including CTC blank.
-    sig_stride   keep every n-th support signal frame (length control).
+    sig_stride   keep every n-th support signal frame (length control). At
+                 the corrected 100 Hz frame rate a 4 s window is ~498 frames,
+                 so stride 8 gives ~62 signal tokens + ~30 character tokens per
+                 window: 45 windows (3 min) lands near the 4096 cap instead of
+                 5x past it.
     max_prefix   hard cap on prefix length; support is subsampled uniformly
                  across windows if it would be exceeded, so a longer
                  calibration never silently truncates to "the first minute".
@@ -64,7 +68,7 @@ class PrefixContextEncoder(nn.Module):
         self,
         d_model: int,
         num_classes: int,
-        sig_stride: int = 2,
+        sig_stride: int = 8,
         max_prefix: int = 4096,
         dropout: float = 0.1,
     ) -> None:
@@ -146,11 +150,11 @@ class _null:
 
 
 def prefix_report(enc: PrefixContextEncoder, k_windows: int,
-                  frames_per_window: int = 101, chars_per_window: int = 40):
+                  frames_per_window: int = 498, chars_per_window: int = 30):
     """Predicted prefix length, for planning the K-curve budget."""
     per = -(-frames_per_window // enc.sig_stride) + chars_per_window + 2
     raw = k_windows * per
-    return {"k_windows": k_windows, "seconds": k_windows * 5,
+    return {"k_windows": k_windows, "seconds": k_windows * 4,
             "tokens_uncapped": raw,
             "tokens": min(raw, enc.max_prefix),
             "capped": raw > enc.max_prefix}

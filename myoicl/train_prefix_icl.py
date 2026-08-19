@@ -163,7 +163,7 @@ def main():
                     help="support windows per episode, sampled uniformly; "
                          "18 windows = 90 s. Evaluation extrapolates to 45.")
     ap.add_argument("--n-query", type=int, default=8)
-    ap.add_argument("--sig-stride", type=int, default=2)
+    ap.add_argument("--sig-stride", type=int, default=8)
     ap.add_argument("--max-prefix", type=int, default=4096)
     ap.add_argument("--p-synth", type=float, default=0.5,
                     help="fraction of episodes that ALSO get a synthetic "

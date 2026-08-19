@@ -36,9 +36,17 @@ ourselves against, and any discrepancy is reported as ours, not theirs.
 
 ARCHITECTURE (their figure_3_supervised sweep, verbatim)
     featurizer  Conv1d stack over 32 raw channels (2 bands x 16 electrodes)
-                dims [128, 64, 64], kernels [11, 3, 3], strides [11, 3, 3]
-                -> 99x downsample: 2 kHz -> ~20 Hz
-                GroupNorm after the first conv (feat_extract_norm="group")
+                dims [128, 64, 64], kernels [11, 3, 3], strides [5, 2, 2]
+                -> 20x downsample: 2 kHz -> 100 Hz, which is what the paper's
+                section 3.2 states verbatim. (Their figure_3_supervised sweep
+                file lists strides [11, 3, 3] = 99x -> 20 Hz; the prose and the
+                table_4_transformer sweep both say [5, 2, 2]. We follow the
+                prose. Frame rate matters here: at 20 Hz a 4 s window is ~80
+                frames for 25-40 typed characters, so CTC has almost no room
+                for the blanks it needs between repeats -- the first thing we
+                saw with 99x was CER stuck at 90+ after 6k steps.)
+                GroupNorm(d, d) after the first conv == instance norm along
+                time, which is what they describe.
     encoder     wav2vec2-style: LayerNorm + linear projection to d_model,
                 convolutional positional embedding, N pre-LN transformer
                 blocks with CAUSAL attention, ff = 4 * d_model, 16 heads,
@@ -63,7 +71,7 @@ class ConvFeaturizer(nn.Module):
         in_channels: int = 32,
         dims=(128, 64, 64),
         kernels=(11, 3, 3),
-        strides=(11, 3, 3),
+        strides=(5, 2, 2),
         norm: str = "group",
     ) -> None:
         super().__init__()
@@ -146,7 +154,7 @@ class CausalTransformerTrunk(nn.Module):
         in_channels: int = 32,
         conv_dims=(128, 64, 64),
         conv_kernels=(11, 3, 3),
-        conv_strides=(11, 3, 3),
+        conv_strides=(5, 2, 2),
         d_model: int = 128,
         n_layers: int = 10,
         n_heads: int = 16,
@@ -245,7 +253,7 @@ def build_trunk(cfg: dict, num_classes: int) -> CausalTransformerTrunk:
         in_channels=int(m.get("num_bands", 2)) * int(m.get("channels_per_band", 16)),
         conv_dims=tuple(m.get("conv_dims", [128, 64, 64])),
         conv_kernels=tuple(m.get("conv_kernels", [11, 3, 3])),
-        conv_strides=tuple(m.get("conv_strides", [11, 3, 3])),
+        conv_strides=tuple(m.get("conv_strides", [5, 2, 2])),
         d_model=int(m.get("d_model", d_model)),
         n_layers=int(m.get("tf_layers", n_layers)),
         n_heads=int(m.get("tf_heads", 16)),
