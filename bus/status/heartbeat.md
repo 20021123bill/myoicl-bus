@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T03:09:16+08:00
+# heartbeat 2026-08-20T03:09:59+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 0 %
-1, 6280 MiB, 24576 MiB, 86 %
+0, 3173 MiB, 24576 MiB, 43 %
+1, 6280 MiB, 24576 MiB, 87 %
 2, 2985 MiB, 24576 MiB, 0 %
-3, 2694 MiB, 24576 MiB, 0 %
+3, 1815 MiB, 24576 MiB, 7 %
 ```
 
 ## jobs
@@ -2815,6 +2815,20 @@ AST OK
 === waiting for a worthwhile icl_dev checkpoint ===
   waiting (12) step 5600/12000 | loss 2.4000 | lr 1.79e-04 | 1.55 it/s
 using GPU3
+[ckpt] /data2/chenyuxiang/runs/icl_dev_fold2/best.pt step 7500
+[cohort] fold 2: 24 real novel users
+  return F.conv1d(input, weight, bias, self.stride,
+k=  4 ( 16s): mode-A  44.91 | mode-C  45.62 | gain  -0.71 (30 episodes)
+k= 12 ( 48s): mode-A  45.30 | mode-C  44.90 | gain  +0.41 (30 episodes)
+k= 23 ( 92s): mode-A  44.16 | mode-C  44.08 | gain  +0.08 (30 episodes)
+k= 45 (180s): mode-A  44.51 | mode-C  44.90 | gain  -0.38 (30 episodes)
+
+K-curve slope of gain: -0.0006 CER per support window
+verdict: positive gain AND positive slope -> the mechanism holds;
+flat gain==0 -> support is ignored; positive gain, zero slope -> 
+a constant bias, not in-context learning.
+[saved] /data2/chenyuxiang/runs/icl_kcurve_fold2.json
+=== 542 done ===
 ```
 
 ### 542_kcurve.log
@@ -3202,8 +3216,6 @@ step 40000/40000 | loss 1.5024 | lr 0.00e+00 | 618 win/s
 
 ### tf_fold3.log
 ```
-step 35000/40000 | loss 1.5630 | lr 4.21e-05 | 565 win/s
-step 35200/40000 | loss 1.5600 | lr 3.89e-05 | 562 win/s
 step 35400/40000 | loss 1.5565 | lr 3.57e-05 | 560 win/s
 step 35600/40000 | loss 1.5581 | lr 3.27e-05 | 557 win/s
 step 35800/40000 | loss 1.5515 | lr 2.98e-05 | 554 win/s
@@ -3227,6 +3239,8 @@ step 38800/40000 | loss 1.5321 | lr 2.46e-06 | 525 win/s
 step 39000/40000 | loss 1.5349 | lr 1.71e-06 | 523 win/s
 step 39200/40000 | loss 1.5349 | lr 1.09e-06 | 522 win/s
 step 39400/40000 | loss 1.5344 | lr 6.15e-07 | 521 win/s
+step 39600/40000 | loss 1.5314 | lr 2.73e-07 | 519 win/s
+step 39800/40000 | loss 1.5343 | lr 6.83e-08 | 518 win/s
 ```
 
 ### tf_ref_full.log
