@@ -1,8 +1,8 @@
-# heartbeat 2026-08-19T13:31:20+08:00
+# heartbeat 2026-08-19T13:32:02+08:00
 
 ## gpu
 ```
-0, 6161 MiB, 24576 MiB, 16 %
+0, 6163 MiB, 24576 MiB, 22 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -48,6 +48,7 @@
 340_ctxsource_diag                       DONE rc=127
 350_samesession_diag                     DONE rc=127
 360_tokens_only_pilot                    DONE rc=127
+370_teacher_fleet                        DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -1007,4 +1008,11 @@ in-context calibration works when calibration and use are the same session.
 ### 360_tokens_only_pilot.log
 ```
 === tokens-only interface ceiling, users 0-2, unrestricted data ===
+```
+
+### 370_teacher_fleet.log
+```
+=== deploy teachers.py ===
+AST OK
+=== quick sanity: list training users ===
 ```
