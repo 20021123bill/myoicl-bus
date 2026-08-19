@@ -1,0 +1,21 @@
+=== wait for phase 2 to end ===
+=== permuted probe on last.pt (mechanism) ===
+[ckpt] /data2/chenyuxiang/runs/icl_dev2_fold2/last.pt step 12000
+[permuted probe] derangement of 10 letters per episode -- mode A cannot know the mapping
+k= 12 ( 48s): mode-A  57.84 | mode-C  59.82 | gain  -1.98 (30 episodes)
+k= 45 (180s): mode-A  58.47 | mode-C  61.51 | gain  -3.04 (30 episodes)
+K-curve slope of gain: -0.0321 CER per support window
+verdict: positive gain AND positive slope -> the mechanism holds;
+flat gain==0 -> support is ignored; positive gain, zero slope -> 
+[saved] /data2/chenyuxiang/runs/final_perm_probe.json
+
+=== identity K-curve on last.pt (deployment) ===
+[ckpt] /data2/chenyuxiang/runs/icl_dev2_fold2/last.pt step 12000
+k=  4 ( 16s): mode-A  42.82 | mode-C  42.80 | gain  +0.02 (30 episodes)
+k= 12 ( 48s): mode-A  42.66 | mode-C  42.73 | gain  -0.08 (30 episodes)
+k= 23 ( 92s): mode-A  43.12 | mode-C  44.03 | gain  -0.90 (30 episodes)
+k= 45 (180s): mode-A  43.32 | mode-C  43.48 | gain  -0.16 (30 episodes)
+K-curve slope of gain: -0.0054 CER per support window
+verdict: positive gain AND positive slope -> the mechanism holds;
+flat gain==0 -> support is ignored; positive gain, zero slope -> 
+=== 545 done ===
