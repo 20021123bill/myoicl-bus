@@ -1,9 +1,9 @@
-# heartbeat 2026-08-19T15:08:08+08:00
+# heartbeat 2026-08-19T15:08:50+08:00
 
 ## gpu
 ```
 0, 2411 MiB, 24576 MiB, 0 %
-1, 4237 MiB, 24576 MiB, 0 %
+1, 4237 MiB, 24576 MiB, 8 %
 2, 2807 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -1076,11 +1076,6 @@ deployed
 
 ### 400_v5_hardsynth.log
 ```
-launched v5_a2_realistic on GPU2 pid=2832409
-=== phase 3b: GPU3 -- zero-shot CER over all 96 training users ===
-launched zero-shot scan on GPU3 pid=2833489
-
-=== phase 4: stream progress (12 h) ===
 --- 14:48 ---
 [a0_gain_affine] [val] step 500: mode-C CER 70.64 | mode-B CER 41.67 | mode-A CER 68.22 | gain C -2.42 / B +26.55 | loss 3.8753
 [a1_gain_v31] [val] step 1000: mode-C CER 40.50 | mode-B CER 75.37 | mode-A CER 75.37 | gain C +34.86 / B +0.00 | loss 1.4733
@@ -1100,6 +1095,11 @@ launched zero-shot scan on GPU3 pid=2833489
 [a0_gain_affine] [val] step 2000: mode-C CER 83.29 | mode-B CER 71.19 | mode-A CER 68.50 | gain C -14.78 / B -2.69 | loss 6.6059
 [a1_gain_v31] [val] step 5000: mode-C CER 36.99 | mode-B CER 75.01 | mode-A CER 75.01 | gain C +38.02 / B +0.00 | loss 1.2423
 [a2_realistic] [val] step 500: mode-C CER 66.18 | mode-B CER 68.33 | mode-A CER 79.82 | gain C +13.65 / B +11.49 | loss 2.7225
+[scan] === UNSEEN users (8 official test): 55.39 published ===
+--- 15:08 ---
+[a0_gain_affine] [val] step 3000: mode-C CER 62.43 | mode-B CER 71.90 | mode-A CER 69.04 | gain C +6.61 / B -2.86 | loss 3.4234
+[a1_gain_v31] [val] step 6500: mode-C CER 36.91 | mode-B CER 75.17 | mode-A CER 75.17 | gain C +38.26 / B +0.00 | loss 1.2732
+[a2_realistic] [val] step 1000: mode-C CER 66.35 | mode-B CER 69.46 | mode-A CER 79.79 | gain C +13.45 / B +10.33 | loss 2.9385
 [scan] === UNSEEN users (8 official test): 55.39 published ===
 ```
 
@@ -1240,13 +1240,6 @@ SMOKE OK
 
 ### v5_a0_gain_affine.log
 ```
-[val] new best CER 70.64 -> saved best.pt
-step 600/8000 | loss 1.6368 | lr 6.01e-04 | 1.65 it/s
-step 700/8000 | loss 1.5064 | lr 7.01e-04 | 2.07 it/s
-step 800/8000 | loss 1.5377 | lr 8.01e-04 | 2.16 it/s
-step 900/8000 | loss 1.4997 | lr 9.01e-04 | 2.11 it/s
-step 1000/8000 | loss 1.5867 | lr 1.00e-03 | 2.05 it/s
-[val] step 1000: mode-C CER 46.97 | mode-B CER 55.64 | mode-A CER 69.04 | gain C +22.06 / B +13.39 | loss 2.0425
 [val] new best CER 46.97 -> saved best.pt
 step 1100/8000 | loss 1.3393 | lr 1.00e-03 | 1.62 it/s
 step 1200/8000 | loss 1.2984 | lr 9.98e-04 | 2.05 it/s
@@ -1265,25 +1258,17 @@ step 2200/8000 | loss 1.2548 | lr 9.33e-04 | 2.04 it/s
 step 2300/8000 | loss 1.2380 | lr 9.21e-04 | 2.12 it/s
 step 2400/8000 | loss 1.2524 | lr 9.09e-04 | 1.95 it/s
 step 2500/8000 | loss 1.2445 | lr 8.96e-04 | 2.01 it/s
+[val] step 2500: mode-C CER 82.54 | mode-B CER 58.20 | mode-A CER 68.65 | gain C -13.89 / B +10.45 | loss 6.9085
+step 2600/8000 | loss 1.1384 | lr 8.83e-04 | 1.68 it/s
+step 2700/8000 | loss 1.1826 | lr 8.68e-04 | 2.12 it/s
+step 2800/8000 | loss 1.0801 | lr 8.53e-04 | 1.91 it/s
+step 2900/8000 | loss 1.1213 | lr 8.38e-04 | 2.05 it/s
+step 3000/8000 | loss 1.2554 | lr 8.21e-04 | 1.94 it/s
+[val] step 3000: mode-C CER 62.43 | mode-B CER 71.90 | mode-A CER 69.04 | gain C +6.61 / B -2.86 | loss 3.4234
 ```
 
 ### v5_a1_gain_v31.log
 ```
-step 3300/8000 | loss 1.4212 | lr 2.53e-05 | 2.46 it/s
-step 3400/8000 | loss 1.4289 | lr 2.49e-05 | 4.69 it/s
-step 3500/8000 | loss 1.4570 | lr 2.45e-05 | 4.87 it/s
-[val] step 3500: mode-C CER 36.60 | mode-B CER 74.97 | mode-A CER 74.97 | gain C +38.37 / B +0.00 | loss 1.2618
-[val] new best CER 36.60 -> saved best.pt
-step 3600/8000 | loss 1.5061 | lr 2.40e-05 | 3.65 it/s
-step 3700/8000 | loss 1.3803 | lr 2.36e-05 | 4.94 it/s
-step 3800/8000 | loss 1.3862 | lr 2.32e-05 | 4.93 it/s
-step 4000/8000 | loss 1.3894 | lr 2.23e-05 | 2.47 it/s
-[val] step 4000: mode-C CER 34.94 | mode-B CER 75.56 | mode-A CER 75.56 | gain C +40.62 / B +0.00 | loss 1.2116
-[val] new best CER 34.94 -> saved best.pt
-step 4100/8000 | loss 1.2831 | lr 2.19e-05 | 3.74 it/s
-step 4200/8000 | loss 1.3054 | lr 2.14e-05 | 4.66 it/s
-step 4400/8000 | loss 1.3709 | lr 2.05e-05 | 2.35 it/s
-step 4500/8000 | loss 1.2857 | lr 2.00e-05 | 4.77 it/s
 [val] step 4500: mode-C CER 36.83 | mode-B CER 74.24 | mode-A CER 74.24 | gain C +37.41 / B +0.00 | loss 1.2671
 step 4600/8000 | loss 1.4054 | lr 1.95e-05 | 3.76 it/s
 step 4700/8000 | loss 1.4566 | lr 1.90e-05 | 4.88 it/s
@@ -1294,6 +1279,21 @@ step 5000/8000 | loss 1.4086 | lr 1.75e-05 | 4.70 it/s
 step 5100/8000 | loss 1.2449 | lr 1.69e-05 | 3.74 it/s
 step 5200/8000 | loss 1.3550 | lr 1.64e-05 | 4.71 it/s
 step 5300/8000 | loss 1.2322 | lr 1.59e-05 | 4.75 it/s
+step 5600/8000 | loss 1.2359 | lr 1.44e-05 | 1.59 it/s
+step 5700/8000 | loss 1.2497 | lr 1.40e-05 | 4.73 it/s
+step 5800/8000 | loss 1.3323 | lr 1.34e-05 | 4.91 it/s
+step 6000/8000 | loss 1.2909 | lr 1.24e-05 | 2.31 it/s
+[val] step 6000: mode-C CER 35.03 | mode-B CER 75.49 | mode-A CER 75.49 | gain C +40.46 / B +0.00 | loss 1.2003
+step 6100/8000 | loss 1.3183 | lr 1.19e-05 | 3.76 it/s
+step 6200/8000 | loss 1.3371 | lr 1.14e-05 | 4.63 it/s
+step 6300/8000 | loss 1.3537 | lr 1.09e-05 | 4.70 it/s
+step 6400/8000 | loss 1.2804 | lr 1.04e-05 | 4.79 it/s
+step 6500/8000 | loss 1.3065 | lr 9.96e-06 | 4.63 it/s
+[val] step 6500: mode-C CER 36.91 | mode-B CER 75.17 | mode-A CER 75.17 | gain C +38.26 / B +0.00 | loss 1.2732
+step 6600/8000 | loss 1.1923 | lr 9.49e-06 | 3.72 it/s
+step 6700/8000 | loss 1.3493 | lr 9.05e-06 | 4.80 it/s
+step 6800/8000 | loss 1.3275 | lr 8.66e-06 | 4.88 it/s
+step 6900/8000 | loss 1.3875 | lr 8.20e-06 | 4.89 it/s
 ```
 
 ### v5_a2_realistic.log
@@ -1318,6 +1318,9 @@ step 700/8000 | loss 3.1977 | lr 7.01e-04 | 0.77 it/s
 step 800/8000 | loss 3.1203 | lr 8.01e-04 | 0.92 it/s
 step 900/8000 | loss 2.9018 | lr 9.01e-04 | 0.74 it/s
 step 1000/8000 | loss 3.1137 | lr 1.00e-03 | 0.97 it/s
+[val] step 1000: mode-C CER 66.35 | mode-B CER 69.46 | mode-A CER 79.79 | gain C +13.45 / B +10.33 | loss 2.9385
+step 1100/8000 | loss 3.1185 | lr 1.00e-03 | 0.71 it/s
+step 1200/8000 | loss 2.9824 | lr 9.98e-04 | 0.87 it/s
 ```
 
 ### v5_zeroshot_scan.log

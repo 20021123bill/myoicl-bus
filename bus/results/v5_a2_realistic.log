@@ -18,3 +18,6 @@ step 700/8000 | loss 3.1977 | lr 7.01e-04 | 0.77 it/s
 step 800/8000 | loss 3.1203 | lr 8.01e-04 | 0.92 it/s
 step 900/8000 | loss 2.9018 | lr 9.01e-04 | 0.74 it/s
 step 1000/8000 | loss 3.1137 | lr 1.00e-03 | 0.97 it/s
+[val] step 1000: mode-C CER 66.35 | mode-B CER 69.46 | mode-A CER 79.79 | gain C +13.45 / B +10.33 | loss 2.9385
+step 1100/8000 | loss 3.1185 | lr 1.00e-03 | 0.71 it/s
+step 1200/8000 | loss 2.9824 | lr 9.98e-04 | 0.87 it/s
