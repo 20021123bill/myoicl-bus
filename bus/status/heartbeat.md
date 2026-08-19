@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:39:46+08:00
+# heartbeat 2026-08-19T15:40:30+08:00
 
 ## gpu
 ```
-0, 2411 MiB, 24576 MiB, 0 %
-1, 1369 MiB, 24576 MiB, 0 %
+0, 2411 MiB, 24576 MiB, 28 %
+1, 1369 MiB, 24576 MiB, 46 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 10864 MiB, 24576 MiB, 0 %
+3, 1369 MiB, 24576 MiB, 23 %
 ```
 
 ## jobs
@@ -60,6 +60,7 @@
 430_deploy_trunk_tf                      DONE rc=127
 440_train_trunk_tf                       DONE rc=127
 450_log_relay                            DONE rc=127
+460_free_capacity                        DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2045,6 +2046,20 @@ launched tf_fold0 on GPU3 pid=2905364  (15:34)
 ### 450_relay.log
 ```
 === log relay started 2026-08-19T15:35:31+08:00 ===
+```
+
+### 460_free_capacity.log
+```
+=== before ===
+0, 2411 MiB, 28 %
+1, 1369 MiB, 46 %
+2, 2807 MiB, 0 %
+3, 1369 MiB, 23 %
+python procs: 12
+ 15:40:30 up 113 days,  17:56,  21 users,  load average: 0.04, 0.01, 0.00
+
+=== stop the diverged A0 arm only ===
+A0 stopped
 ```
 
 ### d3_train.log

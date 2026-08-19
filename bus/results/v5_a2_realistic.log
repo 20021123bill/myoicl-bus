@@ -38,3 +38,4 @@ step 2400/8000 | loss 2.7740 | lr 9.09e-04 | 0.87 it/s
 step 2500/8000 | loss 2.7018 | lr 8.96e-04 | 0.84 it/s
 [val] step 2500: mode-C CER 86.37 | mode-B CER 72.80 | mode-A CER 80.42 | gain C -5.95 / B +7.62 | loss 6.0189
 step 2600/8000 | loss 2.6746 | lr 8.83e-04 | 0.67 it/s
+step 2700/8000 | loss 2.6537 | lr 8.68e-04 | 0.77 it/s

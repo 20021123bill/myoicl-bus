@@ -2,3 +2,65 @@
 === evaluating /data2/chenyuxiang/runs/v5_a2/best.pt  (14:54) ===
 
 ############ k=12 windows (~48s of the user's own labelled data) ############
+[A] user6: CER 54.63
+[A] user7: CER 52.25
+[A] mean over users: 55.40
+[B] user0: CER 66.82
+[B] user1: CER 70.07
+[B] user2: CER 55.41
+[B] user3: CER 63.34
+[B] user4: CER 64.49
+[B] user5: CER 57.58
+[B] user6: CER 62.41
+[B] user7: CER 60.77
+[B] mean over users: 62.61
+[C] user0: CER 63.22
+[C] user1: CER 68.07
+[C] user2: CER 53.68
+[C] user3: CER 64.79
+[C] user4: CER 63.14
+[C] user5: CER 57.49
+[C] user6: CER 59.19
+[C] user7: CER 54.70
+[C] mean over users: 60.54
+[A] gap closed vs personalization ceiling: -0.0%
+[B] gap closed vs personalization ceiling: -16.4%
+[C] gap closed vs personalization ceiling: -11.7%
+[saved] /data2/chenyuxiang/runs/v5a2_real_k12.json
+
+############ k=45 windows (~180s of the user's own labelled data) ############
+[A] user6: CER 54.63
+[A] user7: CER 52.25
+[A] mean over users: 55.40
+[B] user0: CER 66.97
+[B] user1: CER 69.93
+[B] user2: CER 55.49
+[B] user3: CER 63.17
+[B] user4: CER 64.39
+[B] user5: CER 57.50
+[B] user6: CER 62.50
+[B] user7: CER 60.63
+[B] mean over users: 62.57
+[C] user0: CER 63.52
+[C] user1: CER 67.26
+[C] user2: CER 53.68
+[C] user3: CER 63.90
+[C] user4: CER 63.32
+[C] user5: CER 58.87
+[C] user6: CER 59.23
+[C] user7: CER 55.00
+[C] mean over users: 60.60
+[A] gap closed vs personalization ceiling: -0.0%
+[B] gap closed vs personalization ceiling: -16.3%
+[C] gap closed vs personalization ceiling: -11.8%
+[saved] /data2/chenyuxiang/runs/v5a2_real_k45.json
+
+=== K-CURVE SUMMARY (8 official test users) ===
+   k  secs   mode A   mode B   mode C   gain C   gain B
+  12    48    55.40    62.61    60.54    -5.14    -7.22
+  45   180    55.40    62.57    60.60    -5.20    -7.18
+
+reference: published zero-shot 55.39 | published per-user finetune 11.28
+mode A should sit at ~55.39 (frozen backbone). If it does not, the
+eval is wrong and no mode-C number here means anything.
+=== 420 done ===

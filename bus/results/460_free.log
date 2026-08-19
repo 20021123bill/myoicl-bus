@@ -1,0 +1,10 @@
+=== before ===
+0, 2411 MiB, 28 %
+1, 1369 MiB, 46 %
+2, 2807 MiB, 0 %
+3, 1369 MiB, 23 %
+python procs: 12
+ 15:40:30 up 113 days,  17:56,  21 users,  load average: 0.04, 0.01, 0.00
+
+=== stop the diverged A0 arm only ===
+A0 stopped

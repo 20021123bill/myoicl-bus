@@ -7,3 +7,6 @@ launched tf_ref on GPU1 pid=2889785  (15:24)
 launched tf_fold0 on GPU3 pid=2905364  (15:34)
 
 === streaming (12 h) ===
+--- 15:39 ---
+[tf_ref] [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 400/40000 | loss 4.1474 | lr 6.00e-05 | 433 win/s
