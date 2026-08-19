@@ -26,3 +26,6 @@ step 2000/40000 | loss 2.9231 | lr 1.00e-03 | 616 win/s
 [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER 100.00  (their Tiny reference: 35.9)
 [val] new best 100.00 -> best.pt
 step 2200/40000 | loss 2.8231 | lr 1.00e-03 | 613 win/s
+step 2400/40000 | loss 2.7362 | lr 1.00e-03 | 615 win/s
+step 2600/40000 | loss 2.6490 | lr 9.99e-04 | 616 win/s
+step 2800/40000 | loss 2.5403 | lr 9.99e-04 | 618 win/s
