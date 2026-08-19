@@ -8,3 +8,11 @@ python procs: 12
 
 === stop the diverged A0 arm only ===
 A0 stopped
+
+=== after ===
+0, 16 MiB, 0 %
+1, 1369 MiB, 15 %
+2, 2807 MiB, 0 %
+3, 1369 MiB, 15 %
+ 15:40:45 up 113 days,  17:56,  21 users,  load average: 0.04, 0.02, 0.01
+=== 460 done ===

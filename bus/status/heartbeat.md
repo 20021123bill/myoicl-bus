@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T15:44:45+08:00
+# heartbeat 2026-08-19T15:45:27+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 1369 MiB, 24576 MiB, 5 %
+1, 1369 MiB, 24576 MiB, 8 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 1369 MiB, 24576 MiB, 0 %
+3, 1369 MiB, 24576 MiB, 21 %
 ```
 
 ## jobs
@@ -2270,6 +2270,9 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
   return F.conv1d(input, weight, bias, self.stride,
 step 200/40000 | loss 17.0279 | lr 3.00e-05 | 433 win/s
 step 400/40000 | loss 4.1474 | lr 6.00e-05 | 433 win/s
+step 600/40000 | loss 3.6532 | lr 9.00e-05 | 435 win/s
+step 800/40000 | loss 3.5339 | lr 1.20e-04 | 445 win/s
+step 1000/40000 | loss 3.4651 | lr 1.50e-04 | 449 win/s
 ```
 
 ### tf_ref.log
@@ -2297,6 +2300,8 @@ step 2000/40000 | loss 3.2045 | lr 3.00e-04 | 745 win/s
 [val] new best 100.00 -> best.pt
 step 2200/40000 | loss 3.1655 | lr 3.00e-04 | 702 win/s
 step 2400/40000 | loss 3.1317 | lr 3.00e-04 | 664 win/s
+step 2600/40000 | loss 3.1030 | lr 3.00e-04 | 643 win/s
+step 2800/40000 | loss 3.0774 | lr 3.00e-04 | 627 win/s
 ```
 
 ### v31_train.log
