@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T16:17:23+08:00
+# heartbeat 2026-08-19T16:18:06+08:00
 
 ## gpu
 ```
-0, 1371 MiB, 24576 MiB, 23 %
-1, 1369 MiB, 24576 MiB, 43 %
+0, 1371 MiB, 24576 MiB, 15 %
+1, 1369 MiB, 24576 MiB, 24 %
 2, 2807 MiB, 24576 MiB, 0 %
-3, 1369 MiB, 24576 MiB, 0 %
+3, 1369 MiB, 24576 MiB, 30 %
 ```
 
 ## jobs
@@ -63,6 +63,7 @@
 460_free_capacity                        DONE rc=127
 470_deploy_prefix_icl                    DONE rc=127
 480_tf_lr_probe                          DONE rc=127
+490_tf_100hz_relaunch                    DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2252,6 +2253,13 @@ pid=2942963
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
 
 === compare the two learning rates every 10 min ===
+```
+
+### 490_tf_100hz_relaunch.log
+```
+=== stop the mis-specified runs ===
+trunk runs stopped
+A2 stopped
 ```
 
 ### d3_train.log
