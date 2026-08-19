@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T17:30:49+08:00
+# heartbeat 2026-08-19T17:31:32+08:00
 
 ## gpu
 ```
-0, 2989 MiB, 24576 MiB, 20 %
-1, 2985 MiB, 24576 MiB, 62 %
-2, 3169 MiB, 24576 MiB, 39 %
-3, 3169 MiB, 24576 MiB, 69 %
+0, 2989 MiB, 24576 MiB, 88 %
+1, 2985 MiB, 24576 MiB, 29 %
+2, 3169 MiB, 24576 MiB, 0 %
+3, 3169 MiB, 24576 MiB, 54 %
 ```
 
 ## jobs
@@ -2487,15 +2487,6 @@ backbone) -- if it does not, the eval is wrong, not the method.
 
 ### 510_fold_fleet_lr1e3.log
 ```
---- 17:15 ---
-[tf_ref_lr1e3] step 6400/40000 | loss 2.3045 | lr 9.67e-04 | 496 win/s
-        [val] step 6000: 8-test-user CER 84.01 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[tf_fold0] step 1400/40000 | loss 3.1061 | lr 7.00e-04 | 401 win/s
-[tf_fold1] step 2200/40000 | loss 2.8231 | lr 1.00e-03 | 613 win/s
-        [val] new best 100.00 -> best.pt
-[tf_fold2] step 2200/40000 | loss 2.7923 | lr 1.00e-03 | 623 win/s
-        [val] new best 100.00 -> best.pt
---- 17:20 ---
 [tf_ref_lr1e3] step 6800/40000 | loss 2.2851 | lr 9.61e-04 | 485 win/s
         [val] step 6000: 8-test-user CER 84.01 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0] step 1800/40000 | loss 2.9799 | lr 9.00e-04 | 392 win/s
@@ -2512,6 +2503,15 @@ backbone) -- if it does not, the eval is wrong, not the method.
         [val] new best 100.00 -> best.pt
 [tf_fold2] step 3600/40000 | loss 2.3252 | lr 9.96e-04 | 627 win/s
         [val] new best 100.00 -> best.pt
+--- 17:30 ---
+[tf_ref_lr1e3] step 7600/40000 | loss 2.2791 | lr 9.47e-04 | 464 win/s
+        [val] step 6000: 8-test-user CER 84.01 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0] step 2600/40000 | loss 2.6798 | lr 9.99e-04 | 374 win/s
+        [val] new best 100.00 -> best.pt
+[tf_fold1] step 4400/40000 | loss 2.3338 | lr 9.90e-04 | 619 win/s
+        [val] new best 83.88 -> best.pt
+[tf_fold2] step 4400/40000 | loss 2.3074 | lr 9.90e-04 | 625 win/s
+        [val] new best 84.75 -> best.pt
 ```
 
 ### 520_deploy_symbol_icl.log
