@@ -6,3 +6,4 @@ phase 2 pid=4079332
 [03:13] running
 [03:18] [val] new best mode-C 53.38 -> best.pt
 [03:23] [val] new best mode-C 49.42 -> best.pt
+[03:28] [val] step 1500: mode-A 50.66 | mode-C 50.24 | gain C +0.43   (REAL novel subjects, fold 2)

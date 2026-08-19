@@ -35,3 +35,6 @@ step 1600/12000 | loss 2.8848 | lr 1.96e-04 | 1.64 it/s
 step 1700/12000 | loss 2.7365 | lr 1.95e-04 | 1.65 it/s
 step 1800/12000 | loss 2.8470 | lr 1.95e-04 | 1.66 it/s
 step 1900/12000 | loss 2.8366 | lr 1.94e-04 | 1.66 it/s
+step 2000/12000 | loss 2.7819 | lr 1.93e-04 | 1.66 it/s
+[val] step 2000: mode-A 53.05 | mode-C 53.20 | gain C -0.16   (REAL novel subjects, fold 2)
+step 2100/12000 | loss 2.7303 | lr 1.92e-04 | 1.65 it/s
