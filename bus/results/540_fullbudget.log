@@ -52,3 +52,8 @@ Traceback (most recent call last):
   File "/data2/chenyuxiang/code/myoicl/myoicl/train_prefix_icl.py", line 445, in <module>
 
 === stream (16 h) ===
+--- 00:54 ---
+[tf_ref_full] step 1400/103000 | loss 1.9162 | lr 4.76e-04 | 630 win/s
+[tf_fold0_full] step 1000/103000 | loss 1.7365 | lr 3.40e-04 | 498 win/s
+[tf_fold1_full] step 1200/103000 | loss 1.7817 | lr 4.08e-04 | 607 win/s
+[icl_dev_fold2] starting

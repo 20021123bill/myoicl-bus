@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T00:54:26+08:00
+# heartbeat 2026-08-20T00:55:09+08:00
 
 ## gpu
 ```
-0, 2987 MiB, 24576 MiB, 60 %
-1, 6096 MiB, 24576 MiB, 99 %
-2, 2985 MiB, 24576 MiB, 52 %
+0, 3171 MiB, 24576 MiB, 0 %
+1, 6096 MiB, 24576 MiB, 61 %
+2, 2985 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -73,6 +73,7 @@
 530_gate_5s_eval                         DONE rc=127
 531_gate_final                           DONE rc=127
 540_fullbudget_and_icl_dev               DONE rc=127
+541_icl_dev_relaunch                     DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -2756,6 +2757,12 @@ Traceback (most recent call last):
 === stream (16 h) ===
 ```
 
+### 541_icl_dev_relaunch.log
+```
+AST OK
+relaunched icl_dev_fold2 pid=3845713
+```
+
 ### d3_train.log
 ```
 [val] step 6000: mode-C CER 16.99 | mode-B CER 17.13 | mode-A CER 15.88 | gain C -1.11 / B -1.25 | loss 0.6158
@@ -2984,6 +2991,7 @@ step 400/103000 | loss 1.5894 | lr 1.36e-04 | 479 win/s
 step 600/103000 | loss 1.6305 | lr 2.04e-04 | 483 win/s
 step 800/103000 | loss 1.6865 | lr 2.72e-04 | 490 win/s
 step 1000/103000 | loss 1.7365 | lr 3.40e-04 | 498 win/s
+step 1200/103000 | loss 1.7740 | lr 4.08e-04 | 506 win/s
 ```
 
 ### tf_fold0.log
@@ -3101,8 +3109,6 @@ step 40000/40000 | loss 1.5024 | lr 0.00e+00 | 618 win/s
 
 ### tf_fold3.log
 ```
-step 24400/40000 | loss 1.8156 | lr 3.61e-04 | 645 win/s
-step 24600/40000 | loss 1.8328 | lr 3.53e-04 | 645 win/s
 step 24800/40000 | loss 1.8112 | lr 3.45e-04 | 646 win/s
 step 25000/40000 | loss 1.7914 | lr 3.38e-04 | 647 win/s
 step 25200/40000 | loss 1.7843 | lr 3.30e-04 | 648 win/s
@@ -3126,6 +3132,8 @@ step 28200/40000 | loss 1.6984 | lr 2.20e-04 | 657 win/s
 step 28400/40000 | loss 1.6884 | lr 2.13e-04 | 656 win/s
 step 28600/40000 | loss 1.6853 | lr 2.06e-04 | 654 win/s
 step 28800/40000 | loss 1.6865 | lr 1.99e-04 | 653 win/s
+step 29000/40000 | loss 1.6917 | lr 1.93e-04 | 651 win/s
+step 29200/40000 | loss 1.6690 | lr 1.86e-04 | 649 win/s
 ```
 
 ### tf_ref_full.log
