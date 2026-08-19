@@ -19,3 +19,4 @@
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
   tf_fold0       step  10000 | argmax-blank  99.1% | p(blank) 0.981 | entropy 0.068
   tf_fold1       step  20000 | argmax-blank  99.2% | p(blank) 0.979 | entropy 0.096
+  tf_fold2       step  20000 | argmax-blank  99.3% | p(blank) 0.981 | entropy 0.087
