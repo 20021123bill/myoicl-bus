@@ -1,9 +1,9 @@
-# heartbeat 2026-08-19T16:54:17+08:00
+# heartbeat 2026-08-19T16:55:00+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 59 %
-1, 3169 MiB, 24576 MiB, 68 %
+0, 3173 MiB, 24576 MiB, 54 %
+1, 3169 MiB, 24576 MiB, 38 %
 2, 2985 MiB, 24576 MiB, 62 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -2616,8 +2616,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-  return F.conv1d(input, weight, bias, self.stride,
-step 200/40000 | loss 104.1468 | lr 3.00e-05 | 639 win/s
 step 400/40000 | loss 5.1708 | lr 6.00e-05 | 671 win/s
 step 600/40000 | loss 3.6421 | lr 9.00e-05 | 685 win/s
 step 800/40000 | loss 3.4897 | lr 1.20e-04 | 683 win/s
@@ -2641,13 +2639,12 @@ step 3800/40000 | loss 2.7759 | lr 2.98e-04 | 557 win/s
 step 4000/40000 | loss 2.7398 | lr 2.98e-04 | 554 win/s
 [val] step 4000: 8-test-user CER 99.61 | fold-heldout-user CER 99.85  (their Tiny reference: 35.9)
 [val] new best 99.61 -> best.pt
+step 4200/40000 | loss 2.7054 | lr 2.98e-04 | 547 win/s
+step 4400/40000 | loss 2.6776 | lr 2.97e-04 | 539 win/s
 ```
 
 ### tf_ref.log
 ```
-step 1200/40000 | loss 3.2873 | lr 1.80e-04 | 706 win/s
-step 1400/40000 | loss 3.2406 | lr 2.10e-04 | 709 win/s
-step 1600/40000 | loss 3.1925 | lr 2.40e-04 | 711 win/s
 step 1800/40000 | loss 3.1541 | lr 2.70e-04 | 712 win/s
 step 2000/40000 | loss 3.1196 | lr 3.00e-04 | 713 win/s
 [val] step 2000: 8-test-user CER 100.00 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
@@ -2670,15 +2667,13 @@ step 4600/40000 | loss 2.5931 | lr 2.97e-04 | 702 win/s
 step 4800/40000 | loss 2.5449 | lr 2.96e-04 | 702 win/s
 step 5000/40000 | loss 2.5132 | lr 2.95e-04 | 701 win/s
 step 5200/40000 | loss 2.4724 | lr 2.95e-04 | 701 win/s
+step 5400/40000 | loss 2.4455 | lr 2.94e-04 | 701 win/s
+step 5600/40000 | loss 2.4213 | lr 2.93e-04 | 701 win/s
+step 5800/40000 | loss 2.3891 | lr 2.93e-04 | 701 win/s
 ```
 
 ### tf_ref_lr1e3.log
 ```
-[model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
-[model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
-  return F.conv1d(input, weight, bias, self.stride,
-step 200/40000 | loss 70.1729 | lr 1.00e-04 | 607 win/s
 step 400/40000 | loss 3.7546 | lr 2.00e-04 | 660 win/s
 step 600/40000 | loss 3.4485 | lr 3.00e-04 | 678 win/s
 step 800/40000 | loss 3.3188 | lr 4.00e-04 | 665 win/s
@@ -2699,6 +2694,11 @@ step 3200/40000 | loss 2.4602 | lr 9.98e-04 | 567 win/s
 step 3400/40000 | loss 2.4238 | lr 9.97e-04 | 564 win/s
 step 3600/40000 | loss 2.4140 | lr 9.96e-04 | 562 win/s
 step 3800/40000 | loss 2.3929 | lr 9.94e-04 | 560 win/s
+step 4000/40000 | loss 2.3720 | lr 9.93e-04 | 557 win/s
+[val] step 4000: 8-test-user CER 78.64 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[val] new best 78.64 -> best.pt
+step 4200/40000 | loss 2.3668 | lr 9.92e-04 | 551 win/s
+step 4400/40000 | loss 2.3658 | lr 9.90e-04 | 542 win/s
 ```
 
 ### v31_train.log
