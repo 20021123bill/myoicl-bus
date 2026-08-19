@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T16:04:37+08:00
+# heartbeat 2026-08-19T16:05:20+08:00
 
 ## gpu
 ```
-0, 1371 MiB, 24576 MiB, 0 %
-1, 1369 MiB, 24576 MiB, 0 %
-2, 2807 MiB, 24576 MiB, 0 %
-3, 1369 MiB, 24576 MiB, 0 %
+0, 1371 MiB, 24576 MiB, 23 %
+1, 1369 MiB, 24576 MiB, 14 %
+2, 2807 MiB, 24576 MiB, 7 %
+3, 1369 MiB, 24576 MiB, 30 %
 ```
 
 ## jobs
@@ -2378,9 +2378,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### tf_fold0.log
 ```
-  fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
-  fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
-[split] fold 0: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
 [split] official test users: 16 sessions (never trained on in either mode)
 [data] 138115 training windows of 5.0s
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
@@ -2403,12 +2400,13 @@ step 2000/40000 | loss 3.2194 | lr 3.00e-04 | 466 win/s
 step 2200/40000 | loss 3.1720 | lr 3.00e-04 | 465 win/s
 step 2400/40000 | loss 3.1504 | lr 3.00e-04 | 468 win/s
 step 2600/40000 | loss 3.1161 | lr 3.00e-04 | 469 win/s
+step 2800/40000 | loss 3.0868 | lr 3.00e-04 | 465 win/s
+step 3000/40000 | loss 3.0572 | lr 2.99e-04 | 461 win/s
+step 3200/40000 | loss 3.0273 | lr 2.99e-04 | 458 win/s
 ```
 
 ### tf_ref.log
 ```
-step 600/40000 | loss 3.6306 | lr 9.00e-05 | 714 win/s
-step 800/40000 | loss 3.5240 | lr 1.20e-04 | 729 win/s
 step 1000/40000 | loss 3.4617 | lr 1.50e-04 | 740 win/s
 step 1200/40000 | loss 3.4053 | lr 1.80e-04 | 747 win/s
 step 1400/40000 | loss 3.3407 | lr 2.10e-04 | 751 win/s
@@ -2432,6 +2430,8 @@ step 4000/40000 | loss 2.9071 | lr 2.98e-04 | 578 win/s
 step 4200/40000 | loss 2.8733 | lr 2.98e-04 | 573 win/s
 step 4400/40000 | loss 2.8545 | lr 2.97e-04 | 568 win/s
 step 4600/40000 | loss 2.8270 | lr 2.97e-04 | 562 win/s
+step 4800/40000 | loss 2.7896 | lr 2.96e-04 | 555 win/s
+step 5000/40000 | loss 2.7656 | lr 2.95e-04 | 547 win/s
 ```
 
 ### tf_ref_lr1e3.log
@@ -2445,6 +2445,7 @@ step 4600/40000 | loss 2.8270 | lr 2.97e-04 | 562 win/s
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
+step 200/40000 | loss 13.5320 | lr 1.00e-04 | 192 win/s
 ```
 
 ### v31_train.log
