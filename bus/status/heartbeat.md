@@ -1,11 +1,11 @@
-# heartbeat 2026-08-19T13:32:02+08:00
+# heartbeat 2026-08-19T13:32:44+08:00
 
 ## gpu
 ```
-0, 6163 MiB, 24576 MiB, 22 %
-1, 12 MiB, 24576 MiB, 0 %
-2, 12 MiB, 24576 MiB, 0 %
-3, 12 MiB, 24576 MiB, 0 %
+0, 6163 MiB, 24576 MiB, 15 %
+1, 3229 MiB, 24576 MiB, 13 %
+2, 3513 MiB, 24576 MiB, 11 %
+3, 3457 MiB, 24576 MiB, 13 %
 ```
 
 ## jobs
@@ -1015,4 +1015,6 @@ in-context calibration works when calibration and use are the same session.
 === deploy teachers.py ===
 AST OK
 === quick sanity: list training users ===
+96 training users; first 3: ['11372316', '11944098', '12565339']; sessions/user min=2 max=16
+=== launch shards 0-2 on GPUs 1-3 (GPU0 busy with tokens-only pilot) ===
 ```
