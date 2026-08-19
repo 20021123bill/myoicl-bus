@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T01:29:00+08:00
+# heartbeat 2026-08-20T01:29:43+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 0 %
-1, 6280 MiB, 24576 MiB, 62 %
+0, 3173 MiB, 24576 MiB, 48 %
+1, 6280 MiB, 24576 MiB, 96 %
 2, 2985 MiB, 24576 MiB, 0 %
-3, 1883 MiB, 24576 MiB, 0 %
+3, 1883 MiB, 24576 MiB, 21 %
 ```
 
 ## jobs
@@ -2927,12 +2927,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_dev_fold2.log
 ```
-step 800/12000 | loss 2.7212 | lr 3.00e-04 | 1.49 it/s
-step 900/12000 | loss 2.7704 | lr 2.99e-04 | 1.50 it/s
-step 1000/12000 | loss 2.6758 | lr 2.99e-04 | 1.54 it/s
-[val] step 1000: mode-A 53.22 | mode-C 56.03 | gain C -2.81   (REAL novel subjects, fold 2)
-[val] new best mode-C 56.03 -> best.pt
-step 1100/12000 | loss 2.6515 | lr 2.99e-04 | 1.51 it/s
 step 1200/12000 | loss 2.7337 | lr 2.98e-04 | 1.52 it/s
 step 1300/12000 | loss 2.6679 | lr 2.97e-04 | 1.54 it/s
 step 1400/12000 | loss 2.7059 | lr 2.96e-04 | 1.55 it/s
@@ -2952,6 +2946,12 @@ step 2500/12000 | loss 2.5864 | lr 2.80e-04 | 1.56 it/s
 [val] step 2500: mode-A 58.83 | mode-C 59.59 | gain C -0.76   (REAL novel subjects, fold 2)
 step 2600/12000 | loss 2.5148 | lr 2.78e-04 | 1.54 it/s
 step 2700/12000 | loss 2.5705 | lr 2.76e-04 | 1.54 it/s
+step 2800/12000 | loss 2.4552 | lr 2.73e-04 | 1.55 it/s
+step 2900/12000 | loss 2.5555 | lr 2.71e-04 | 1.54 it/s
+step 3000/12000 | loss 2.5874 | lr 2.68e-04 | 1.54 it/s
+[val] step 3000: mode-A 55.25 | mode-C 55.67 | gain C -0.42   (REAL novel subjects, fold 2)
+[val] new best mode-C 55.67 -> best.pt
+step 3100/12000 | loss 2.5037 | lr 2.66e-04 | 1.54 it/s
 ```
 
 ### teachers_shard0.log
@@ -3033,8 +3033,6 @@ step 2700/12000 | loss 2.5705 | lr 2.76e-04 | 1.54 it/s
 
 ### tf_fold0_full.log
 ```
-step 1000/103000 | loss 1.7365 | lr 3.40e-04 | 498 win/s
-step 1200/103000 | loss 1.7740 | lr 4.08e-04 | 506 win/s
 step 1400/103000 | loss 1.8062 | lr 4.76e-04 | 511 win/s
 step 1600/103000 | loss 1.8399 | lr 5.44e-04 | 516 win/s
 step 1800/103000 | loss 1.9035 | lr 6.12e-04 | 522 win/s
@@ -3058,6 +3056,8 @@ step 4800/103000 | loss 1.9575 | lr 6.99e-04 | 555 win/s
 step 5000/103000 | loss 1.9961 | lr 6.99e-04 | 556 win/s
 step 5200/103000 | loss 1.9579 | lr 6.98e-04 | 557 win/s
 step 5400/103000 | loss 1.9888 | lr 6.98e-04 | 558 win/s
+step 5600/103000 | loss 1.9698 | lr 6.98e-04 | 559 win/s
+step 5800/103000 | loss 1.9604 | lr 6.98e-04 | 560 win/s
 ```
 
 ### tf_fold0.log
@@ -3091,7 +3091,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 step 200/103000 | loss 1.5741 | lr 6.80e-05 | 576 win/s
 step 400/103000 | loss 1.6060 | lr 1.36e-04 | 618 win/s
@@ -3116,6 +3115,7 @@ step 4000/103000 | loss 1.9437 | lr 6.99e-04 | 456 win/s
 [val] step 4000: 8-test-user CER 51.33 | fold-heldout-user CER 57.28  (their Tiny reference: 35.9)
 [val] new best 51.33 -> best.pt
 step 4200/103000 | loss 1.9495 | lr 6.99e-04 | 451 win/s
+step 4400/103000 | loss 1.9796 | lr 6.99e-04 | 447 win/s
 ```
 
 ### tf_fold1.log
@@ -3207,7 +3207,6 @@ step 31800/40000 | loss 1.6270 | lr 1.11e-04 | 608 win/s
 
 ### tf_ref_full.log
 ```
-  return F.conv1d(input, weight, bias, self.stride,
 step 200/103000 | loss 1.6695 | lr 6.80e-05 | 604 win/s
 step 400/103000 | loss 1.6913 | lr 1.36e-04 | 646 win/s
 step 600/103000 | loss 1.7357 | lr 2.04e-04 | 663 win/s
@@ -3232,6 +3231,7 @@ step 4000/103000 | loss 2.0321 | lr 6.99e-04 | 470 win/s
 [val] new best 46.84 -> best.pt
 step 4200/103000 | loss 2.0293 | lr 6.99e-04 | 464 win/s
 step 4400/103000 | loss 2.0179 | lr 6.99e-04 | 460 win/s
+step 4600/103000 | loss 2.0012 | lr 6.99e-04 | 455 win/s
 ```
 
 ### tf_ref.log

@@ -38,3 +38,4 @@ step 4000/103000 | loss 1.9437 | lr 6.99e-04 | 456 win/s
 [val] new best 51.33 -> best.pt
 step 4200/103000 | loss 1.9495 | lr 6.99e-04 | 451 win/s
 step 4400/103000 | loss 1.9796 | lr 6.99e-04 | 447 win/s
+step 4600/103000 | loss 1.9970 | lr 6.99e-04 | 443 win/s
