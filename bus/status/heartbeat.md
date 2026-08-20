@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T13:45:49+08:00
+# heartbeat 2026-08-20T13:46:32+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 70 %
+0, 3173 MiB, 24576 MiB, 83 %
 1, 12 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 90 %
-3, 2731 MiB, 24576 MiB, 44 %
+2, 2985 MiB, 24576 MiB, 84 %
+3, 2731 MiB, 24576 MiB, 43 %
 ```
 
 ## jobs
@@ -2741,15 +2741,6 @@ Traceback (most recent call last):
         [val] step 84000: 8-test-user CER 47.32 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0_full] step 103000/103000 | loss 1.2038 | lr 0.00e+00 | 660 win/s
         [val] step 103000: 8-test-user CER 45.88 | fold-heldout-user CER 53.87  (their Tiny reference: 35.9)
-[tf_fold1_full] step 87000/103000 | loss 1.2837 | lr 4.25e-05 | 486 win/s
-        [val] step 84000: 8-test-user CER 47.30 | fold-heldout-user CER 54.26  (their Tiny reference: 35.9)
-[icl_dev_fold2] step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
-        [val] step 12000: mode-A 51.03 | mode-C 50.91 | gain C +0.12   (REAL novel subjects, fold 2)
---- 13:34 ---
-[tf_ref_full] step 86800/103000 | loss 1.3292 | lr 4.36e-05 | 481 win/s
-        [val] step 84000: 8-test-user CER 47.32 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[tf_fold0_full] step 103000/103000 | loss 1.2038 | lr 0.00e+00 | 660 win/s
-        [val] step 103000: 8-test-user CER 45.88 | fold-heldout-user CER 53.87  (their Tiny reference: 35.9)
 [tf_fold1_full] step 88000/103000 | loss 1.2748 | lr 3.75e-05 | 488 win/s
         [val] step 88000: 8-test-user CER 46.49 | fold-heldout-user CER 53.51  (their Tiny reference: 35.9)
 [icl_dev_fold2] step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
@@ -2760,6 +2751,15 @@ Traceback (most recent call last):
 [tf_fold0_full] step 103000/103000 | loss 1.2038 | lr 0.00e+00 | 660 win/s
         [val] step 103000: 8-test-user CER 45.88 | fold-heldout-user CER 53.87  (their Tiny reference: 35.9)
 [tf_fold1_full] step 88800/103000 | loss 1.2658 | lr 3.36e-05 | 490 win/s
+        [val] step 88000: 8-test-user CER 46.49 | fold-heldout-user CER 53.51  (their Tiny reference: 35.9)
+[icl_dev_fold2] step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
+        [val] step 12000: mode-A 51.03 | mode-C 50.91 | gain C +0.12   (REAL novel subjects, fold 2)
+--- 13:44 ---
+[tf_ref_full] step 88600/103000 | loss 1.3136 | lr 3.46e-05 | 484 win/s
+        [val] step 88000: 8-test-user CER 46.77 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0_full] step 103000/103000 | loss 1.2038 | lr 0.00e+00 | 660 win/s
+        [val] step 103000: 8-test-user CER 45.88 | fold-heldout-user CER 53.87  (their Tiny reference: 35.9)
+[tf_fold1_full] step 89800/103000 | loss 1.2627 | lr 2.91e-05 | 492 win/s
         [val] step 88000: 8-test-user CER 46.49 | fold-heldout-user CER 53.51  (their Tiny reference: 35.9)
 [icl_dev_fold2] step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
         [val] step 12000: mode-A 51.03 | mode-C 50.91 | gain C +0.12   (REAL novel subjects, fold 2)
@@ -3146,6 +3146,13 @@ step 200/12000 | loss 5.8096 | lr 3.33e-04 | 1.66 it/s
 [06:43] [val] new best mode-C 61.12 -> best.pt
 ```
 
+### 553_aux.log
+```
+AST OK
+patch verified
+launched icl_aux_fold2 pid=1055332
+```
+
 ### 553_aux_supervised.log
 ```
 AST OK
@@ -3261,6 +3268,23 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 [A] gap closed vs personalization ceiling: -0.0%
 [C] gap closed vs personalization ceiling: -11.8%
 [saved] /data2/chenyuxiang/runs/v5a2_real_k45.json
+```
+
+### icl_aux_fold2.log
+```
+[cohort] fold 2: 24 users the backbone has never seen, 213 sessions
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[trunk] /data2/chenyuxiang/runs/tf_fold2/last.pt step 40000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+[prefix] FUSED mode: per-token (signal + soft-aligned char)
+[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
+[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
+[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
+[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
+[symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+[audit] step 0: mode-A 63.10 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 ```
 
 ### icl_dev2_fold2.log
@@ -3545,7 +3569,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-step 85200/103000 | loss 1.2933 | lr 5.23e-05 | 483 win/s
 step 85400/103000 | loss 1.2940 | lr 5.12e-05 | 483 win/s
 step 85600/103000 | loss 1.2953 | lr 5.01e-05 | 483 win/s
 step 85800/103000 | loss 1.2897 | lr 4.90e-05 | 484 win/s
@@ -3570,6 +3593,7 @@ step 89200/103000 | loss 1.2672 | lr 3.18e-05 | 491 win/s
 step 89400/103000 | loss 1.2632 | lr 3.09e-05 | 491 win/s
 step 89600/103000 | loss 1.2671 | lr 3.00e-05 | 491 win/s
 step 89800/103000 | loss 1.2627 | lr 2.91e-05 | 492 win/s
+step 90000/103000 | loss 1.2593 | lr 2.83e-05 | 492 win/s
 ```
 
 ### tf_fold1.log
@@ -3661,7 +3685,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-[val] step 84000: 8-test-user CER 47.32 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 step 84200/103000 | loss 1.3424 | lr 5.82e-05 | 476 win/s
 step 84400/103000 | loss 1.3477 | lr 5.70e-05 | 476 win/s
 step 84600/103000 | loss 1.3412 | lr 5.58e-05 | 476 win/s
@@ -3686,6 +3709,7 @@ step 88000/103000 | loss 1.3172 | lr 3.75e-05 | 483 win/s
 step 88200/103000 | loss 1.3196 | lr 3.65e-05 | 484 win/s
 step 88400/103000 | loss 1.3128 | lr 3.55e-05 | 484 win/s
 step 88600/103000 | loss 1.3136 | lr 3.46e-05 | 484 win/s
+step 88800/103000 | loss 1.3094 | lr 3.36e-05 | 485 win/s
 ```
 
 ### tf_ref.log
