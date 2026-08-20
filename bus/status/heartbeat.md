@@ -1,9 +1,9 @@
-# heartbeat 2026-08-20T15:49:09+08:00
+# heartbeat 2026-08-20T15:49:52+08:00
 
 ## gpu
 ```
-0, 3159 MiB, 24576 MiB, 34 %
-1, 3155 MiB, 24576 MiB, 0 %
+0, 3159 MiB, 24576 MiB, 0 %
+1, 3155 MiB, 24576 MiB, 19 %
 2, 3169 MiB, 24576 MiB, 78 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -3335,6 +3335,8 @@ launched icl_joint_fold1 pid=1211048
         [val] new best mode-C 55.21 -> best.pt
 [15:44] step 1800/20000 | loss 4.8824 | aux rot 1.874 (chance 2.83) | aux perm 1.835 (chance 3.26) | lr 4.98
         [val] new best mode-C 55.21 -> best.pt
+[15:49] step 2000/20000 | loss 5.0532 | aux rot 1.734 (chance 2.83) | aux perm 1.662 (chance 3.26) | lr 4.97
+        [val] new best mode-C 47.72 -> best.pt
 ```
 
 ### 557_zeroshot.log
@@ -3556,6 +3558,12 @@ has no signal on sEMG and paper 1 needs a different response variable.
 
 ### 562_keystroke_foundation.log
 ```
+building population tuning from 12 other users...
+Traceback (most recent call last):
+  File "<stdin>", line 71, in <module>
+  File "<stdin>", line 37, in extract
+RuntimeError: shape '[2, 16, 6, 5]' is invalid for input of size 1056
+=== 562 done ===
 ```
 
 ### d3_train.log
@@ -4211,11 +4219,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-step 97800/103000 | loss 1.2671 | lr 4.57e-06 | 487 win/s
-step 98000/103000 | loss 1.2633 | lr 4.23e-06 | 488 win/s
-step 98200/103000 | loss 1.2656 | lr 3.90e-06 | 488 win/s
-step 98400/103000 | loss 1.2678 | lr 3.58e-06 | 488 win/s
-step 98600/103000 | loss 1.2699 | lr 3.28e-06 | 488 win/s
 step 98800/103000 | loss 1.2646 | lr 2.99e-06 | 488 win/s
 step 99000/103000 | loss 1.2630 | lr 2.71e-06 | 488 win/s
 step 99200/103000 | loss 1.2600 | lr 2.44e-06 | 488 win/s
@@ -4236,6 +4239,11 @@ step 101800/103000 | loss 1.2635 | lr 2.44e-07 | 486 win/s
 step 102000/103000 | loss 1.2607 | lr 1.70e-07 | 486 win/s
 step 102200/103000 | loss 1.2624 | lr 1.08e-07 | 486 win/s
 step 102400/103000 | loss 1.2561 | lr 6.10e-08 | 486 win/s
+step 102600/103000 | loss 1.2656 | lr 2.71e-08 | 486 win/s
+step 102800/103000 | loss 1.2638 | lr 6.78e-09 | 486 win/s
+step 103000/103000 | loss 1.2614 | lr 0.00e+00 | 486 win/s
+[val] step 103000: 8-test-user CER 46.23 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[done] best 8-test-user CER 44.99
 ```
 
 ### tf_ref.log
