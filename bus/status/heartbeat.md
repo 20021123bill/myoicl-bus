@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:13:10+08:00
+# heartbeat 2026-08-20T15:13:53+08:00
 
 ## gpu
 ```
-0, 6311 MiB, 24576 MiB, 91 %
-1, 3155 MiB, 24576 MiB, 45 %
-2, 2983 MiB, 24576 MiB, 85 %
+0, 6311 MiB, 24576 MiB, 15 %
+1, 3155 MiB, 24576 MiB, 0 %
+2, 2983 MiB, 24576 MiB, 87 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3398,6 +3398,10 @@ launched icl_joint_fold0 pid=1169828
 --- 15:08 ---
 [icl_joint_fold0] step 900/30000 | loss 5.1509 | aux rot 2.147 (chance 2.83) | aux perm 1.755 (chance 3.26) | lr 3
 [icl_joint_fold1] step 100/20000 | loss 8.2409 | aux rot 2.789 (chance 2.83) | aux perm 3.260 (chance 3.26) | lr 5
+--- 15:13 ---
+[icl_joint_fold0] step 1100/30000 | loss 5.1774 | aux rot 2.116 (chance 2.83) | aux perm 1.561 (chance 3.26) | lr 
+        [val] new best mode-C 47.71 -> best.pt
+[icl_joint_fold1] step 400/20000 | loss 6.2978 | aux rot 2.187 (chance 2.83) | aux perm 2.488 (chance 3.26) | lr 2
 ```
 
 ### 558_mainline.log
@@ -3779,7 +3783,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-[cohort] fold 0: 24 users the backbone has never seen, 213 sessions
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [trunk] /data2/chenyuxiang/runs/tf_fold0_full/last.pt step 103000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
@@ -3804,6 +3807,7 @@ step 900/30000 | loss 5.1509 | aux rot 2.147 (chance 2.83) | aux perm 1.755 (cha
 step 1000/30000 | loss 5.0165 | aux rot 2.102 (chance 2.83) | aux perm 1.578 (chance 3.26) | lr 3.33e-04 | 0.86 it/s
 [val] step 1000: mode-A 43.53 | mode-C 47.71 | gain C -4.18   (REAL novel subjects, fold 0)
 [val] new best mode-C 47.71 -> best.pt
+step 1100/30000 | loss 5.1774 | aux rot 2.116 (chance 2.83) | aux perm 1.561 (chance 3.26) | lr 3.67e-04 | 0.87 it/s
 ```
 
 ### icl_joint_fold1.log
@@ -3824,6 +3828,7 @@ step 1000/30000 | loss 5.0165 | aux rot 2.102 (chance 2.83) | aux perm 1.578 (ch
 step 100/20000 | loss 8.2409 | aux rot 2.789 (chance 2.83) | aux perm 3.260 (chance 3.26) | lr 5.00e-05 | 0.81 it/s
 step 200/20000 | loss 7.0014 | aux rot 2.560 (chance 2.83) | aux perm 3.132 (chance 3.26) | lr 1.00e-04 | 0.80 it/s
 step 300/20000 | loss 6.4499 | aux rot 2.333 (chance 2.83) | aux perm 2.917 (chance 3.26) | lr 1.50e-04 | 0.82 it/s
+step 400/20000 | loss 6.2978 | aux rot 2.187 (chance 2.83) | aux perm 2.488 (chance 3.26) | lr 2.00e-04 | 0.81 it/s
 ```
 
 ### teachers_shard0.log
@@ -4042,6 +4047,8 @@ step 400/103000 | loss 1.5324 | lr 1.36e-04 | 673 win/s
 step 600/103000 | loss 1.5727 | lr 2.04e-04 | 688 win/s
 step 800/103000 | loss 1.6238 | lr 2.72e-04 | 690 win/s
 step 1000/103000 | loss 1.6869 | lr 3.40e-04 | 694 win/s
+step 1200/103000 | loss 1.7181 | lr 4.08e-04 | 696 win/s
+step 1400/103000 | loss 1.7647 | lr 4.76e-04 | 696 win/s
 ```
 
 ### tf_fold2.log
