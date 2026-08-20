@@ -56,3 +56,5 @@ step 3600/20000 | loss 4.5182 | aux rot 1.559 (chance 2.83) | aux perm 1.744 (ch
 step 3700/20000 | loss 4.0705 | aux rot 1.500 (chance 2.83) | aux perm 1.558 (chance 3.26) | lr 4.75e-04 | 0.88 it/s
 step 3800/20000 | loss 4.4389 | aux rot 1.515 (chance 2.83) | aux perm 1.578 (chance 3.26) | lr 4.74e-04 | 0.89 it/s
 step 3900/20000 | loss 4.4485 | aux rot 1.441 (chance 2.83) | aux perm 1.692 (chance 3.26) | lr 4.72e-04 | 0.89 it/s
+step 4000/20000 | loss 4.5672 | aux rot 1.540 (chance 2.83) | aux perm 1.728 (chance 3.26) | lr 4.70e-04 | 0.90 it/s
+[val] step 4000: mode-A 47.23 | mode-C 46.75 | gain C +0.48   (REAL novel subjects, fold 1)

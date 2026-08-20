@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T16:18:28+08:00
+# heartbeat 2026-08-20T16:19:11+08:00
 
 ## gpu
 ```
 0, 3159 MiB, 24576 MiB, 0 %
-1, 3155 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 36 %
+1, 3155 MiB, 24576 MiB, 26 %
+2, 3169 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3586,7 +3586,6 @@ population tuning built from 12 users
 
 ### 564_keystroke_diag2.log
 ```
-building population tuning from 12 other users...
 population tuning built from 12 users
 
       user     N |    K  within-EV  shrunk-EV   pop-EV
@@ -3611,6 +3610,7 @@ building population tuning from 12 other users...
     [extract] 2021-07-06-1625597882-keystrokes-dca-stu: 500 usable of 500 keystrokes
     [extract] 2021-05-28-1622177569-keystrokes-dca-stu: 500 usable of 500 keystrokes
     [extract] 2021-05-06-1620327471-keystrokes-dca-stu: 500 usable of 500 keystrokes
+    [extract] 2021-03-22-1616452683-keystrokes-dca-stu: 500 usable of 500 keystrokes
 ```
 
 ### d3_train.log
@@ -4179,11 +4179,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-step 7200/103000 | loss 1.8649 | lr 6.96e-04 | 689 win/s
-step 7400/103000 | loss 1.8423 | lr 6.95e-04 | 690 win/s
-step 7600/103000 | loss 1.8742 | lr 6.95e-04 | 691 win/s
-step 7800/103000 | loss 1.8495 | lr 6.94e-04 | 692 win/s
-step 8000/103000 | loss 1.8417 | lr 6.94e-04 | 693 win/s
 [val] step 8000: 8-test-user CER 48.65 | fold-heldout-user CER 57.63  (their Tiny reference: 35.9)
 [val] new best 48.65 -> best.pt
 step 8200/103000 | loss 1.8367 | lr 6.94e-04 | 694 win/s
@@ -4204,6 +4199,11 @@ step 11000/103000 | loss 1.8184 | lr 6.87e-04 | 706 win/s
 step 11200/103000 | loss 1.8203 | lr 6.86e-04 | 706 win/s
 step 11400/103000 | loss 1.8318 | lr 6.85e-04 | 707 win/s
 step 11600/103000 | loss 1.8305 | lr 6.85e-04 | 708 win/s
+step 11800/103000 | loss 1.8242 | lr 6.84e-04 | 708 win/s
+step 12000/103000 | loss 1.7907 | lr 6.83e-04 | 708 win/s
+[val] step 12000: 8-test-user CER 49.70 | fold-heldout-user CER 57.65  (their Tiny reference: 35.9)
+step 12200/103000 | loss 1.7727 | lr 6.83e-04 | 708 win/s
+step 12400/103000 | loss 1.7706 | lr 6.82e-04 | 709 win/s
 ```
 
 ### tf_fold2.log
