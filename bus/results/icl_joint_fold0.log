@@ -77,3 +77,4 @@ step 5400/30000 | loss 4.3041 | aux rot 1.504 (chance 2.83) | aux perm 1.619 (ch
 step 5500/30000 | loss 4.2741 | aux rot 1.462 (chance 2.83) | aux perm 1.705 (chance 3.26) | lr 4.76e-04 | 0.92 it/s
 step 5600/30000 | loss 4.1456 | aux rot 1.436 (chance 2.83) | aux perm 1.595 (chance 3.26) | lr 4.75e-04 | 0.93 it/s
 step 5700/30000 | loss 4.5944 | aux rot 1.519 (chance 2.83) | aux perm 1.707 (chance 3.26) | lr 4.74e-04 | 0.93 it/s
+step 5800/30000 | loss 4.2937 | aux rot 1.471 (chance 2.83) | aux perm 1.672 (chance 3.26) | lr 4.72e-04 | 0.93 it/s
