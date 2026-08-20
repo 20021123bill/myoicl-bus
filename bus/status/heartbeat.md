@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:25:24+08:00
+# heartbeat 2026-08-20T15:26:07+08:00
 
 ## gpu
 ```
-0, 6313 MiB, 24576 MiB, 50 %
-1, 3155 MiB, 24576 MiB, 0 %
-2, 3167 MiB, 24576 MiB, 69 %
+0, 6313 MiB, 24576 MiB, 0 %
+1, 3155 MiB, 24576 MiB, 11 %
+2, 3167 MiB, 24576 MiB, 73 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2608,7 +2608,6 @@ checkpoint step 10000
 
 ### 526_blank.log
 ```
-  tf_fold3_40k   step  40000 | argmax-blank  99.5% | p(blank) 0.990 | entropy 0.048
   tf_ref_full    step  92000 | argmax-blank  99.5% | p(blank) 0.994 | entropy 0.008
   tf_ref_lr1e3   step  40000 | argmax-blank  99.5% | p(blank) 0.991 | entropy 0.039
   tf_ref_lr1e3_40k step  40000 | argmax-blank  99.5% | p(blank) 0.991 | entropy 0.039
@@ -2633,6 +2632,7 @@ checkpoint step 10000
 --- 15:20 ---
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  tf_fold0       step  40000 | argmax-blank  99.4% | p(blank) 0.991 | entropy 0.029
 ```
 
 ### 526_blank_tracker.log
@@ -2751,17 +2751,17 @@ Traceback (most recent call last):
         [val] step 103000: 8-test-user CER 46.82 | fold-heldout-user CER 54.28  (their Tiny reference: 35.9)
 [icl_dev_fold2] step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
         [val] step 12000: mode-A 51.03 | mode-C 50.91 | gain C +0.12   (REAL novel subjects, fold 2)
---- 15:14 ---
-[tf_ref_full] step 99600/103000 | loss 1.2678 | lr 1.96e-06 | 488 win/s
-        [val] step 96000: 8-test-user CER 46.19 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+--- 15:19 ---
+[tf_ref_full] step 100000/103000 | loss 1.2678 | lr 1.52e-06 | 488 win/s
+        [val] step 100000: 8-test-user CER 46.21 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0_full] step 103000/103000 | loss 1.2038 | lr 0.00e+00 | 660 win/s
         [val] step 103000: 8-test-user CER 45.88 | fold-heldout-user CER 53.87  (their Tiny reference: 35.9)
 [tf_fold1_full] step 103000/103000 | loss 1.2239 | lr 0.00e+00 | 512 win/s
         [val] step 103000: 8-test-user CER 46.82 | fold-heldout-user CER 54.28  (their Tiny reference: 35.9)
 [icl_dev_fold2] step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
         [val] step 12000: mode-A 51.03 | mode-C 50.91 | gain C +0.12   (REAL novel subjects, fold 2)
---- 15:19 ---
-[tf_ref_full] step 100000/103000 | loss 1.2678 | lr 1.52e-06 | 488 win/s
+--- 15:24 ---
+[tf_ref_full] step 100600/103000 | loss 1.2611 | lr 9.76e-07 | 488 win/s
         [val] step 100000: 8-test-user CER 46.21 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0_full] step 103000/103000 | loss 1.2038 | lr 0.00e+00 | 660 win/s
         [val] step 103000: 8-test-user CER 45.88 | fold-heldout-user CER 53.87  (their Tiny reference: 35.9)
@@ -3265,14 +3265,6 @@ k= 12 ( 48s): mode-A  66.50 | mode-C  66.31 | gain  +0.19 (24 episodes)
 
 ### 554_sprint.log
 ```
-launched tf_fold2_full on GPU2 pid=1209352
---- 15:08 ---
-[icl_aux_fold2] step 4200/20000 | loss 4.7833 | aux rot 1.720 (chance 2.83) | aux perm 1.730 (chance 3.26) | lr 9.32
-        [val] step 4000: mode-A 65.84 | mode-C 67.90 | gain C -2.06   (REAL novel subjects, fold 2)
-[icl_aux_fold0] step 3000/20000 | loss 5.0045 | aux rot 1.955 (chance 2.83) | aux perm 1.760 (chance 3.26) | lr 9.73
-        [val] step 3000: mode-A 58.67 | mode-C 61.45 | gain C -2.78   (REAL novel subjects, fold 0)
-k= 12 ( 48s): mode-A  55.40 | mode-C  53.98 | gain  +1.41 (24 episodes)
-k= 45 (180s): mode-A  55.82 | mode-C  64.02 | gain  -8.20 (24 episodes)
 k= 12 ( 48s): mode-A  67.17 | mode-C  66.45 | gain  +0.72 (24 episodes)
 --- 15:13 ---
 [icl_aux_fold2] step 4200/20000 | loss 4.7833 | aux rot 1.720 (chance 2.83) | aux perm 1.730 (chance 3.26) | lr 9.32
@@ -3290,6 +3282,14 @@ k= 12 ( 48s): mode-A  67.17 | mode-C  66.45 | gain  +0.72 (24 episodes)
 k= 12 ( 48s): mode-A  55.40 | mode-C  53.98 | gain  +1.41 (24 episodes)
 k= 45 (180s): mode-A  55.82 | mode-C  64.02 | gain  -8.20 (24 episodes)
 k= 12 ( 48s): mode-A  67.17 | mode-C  66.45 | gain  +0.72 (24 episodes)
+--- 15:23 ---
+[icl_aux_fold2] step 4200/20000 | loss 4.7833 | aux rot 1.720 (chance 2.83) | aux perm 1.730 (chance 3.26) | lr 9.32
+        [val] step 4000: mode-A 65.84 | mode-C 67.90 | gain C -2.06   (REAL novel subjects, fold 2)
+[icl_aux_fold0] step 3000/20000 | loss 5.0045 | aux rot 1.955 (chance 2.83) | aux perm 1.760 (chance 3.26) | lr 9.73
+        [val] step 3000: mode-A 58.67 | mode-C 61.45 | gain C -2.78   (REAL novel subjects, fold 0)
+k= 12 ( 48s): mode-A  55.14 | mode-C  53.79 | gain  +1.35 (24 episodes)
+k= 45 (180s): mode-A  55.68 | mode-C  63.62 | gain  -7.94 (24 episodes)
+k= 12 ( 48s): mode-A  66.50 | mode-C  66.31 | gain  +0.19 (24 episodes)
 ```
 
 ### 555_gate_full_eval.log
@@ -3310,6 +3310,7 @@ launched icl_joint_fold1 pid=1211048
 [15:09] step 200/20000 | loss 7.0014 | aux rot 2.560 (chance 2.83) | aux perm 3.132 (chance 3.26) | lr 1.00e
 [15:14] step 400/20000 | loss 6.2978 | aux rot 2.187 (chance 2.83) | aux perm 2.488 (chance 3.26) | lr 2.00e
 [15:19] step 700/20000 | loss 5.0362 | aux rot 2.080 (chance 2.83) | aux perm 1.784 (chance 3.26) | lr 3.50e
+[15:24] step 900/20000 | loss 4.9979 | aux rot 2.124 (chance 2.83) | aux perm 1.754 (chance 3.26) | lr 4.50e
 ```
 
 ### 556_joint_synth_aux.log
@@ -3412,10 +3413,6 @@ explicit correction k=45     :  69.65  (gain -22.02)
 
 ### 558_mainline.log
 ```
-launched icl_joint_fold0 pid=1169828
-=== stream both joint runs (16 h) ===
---- 14:48 ---
-[icl_joint_fold0] step 200/30000 | loss 6.7254 | aux rot 2.736 (chance 2.83) | aux perm 3.197 (chance 3.26) | lr 6
 [icl_joint_fold1] waiting
 --- 14:53 ---
 [icl_joint_fold0] step 100/30000 | loss 9.9521 | aux rot 2.875 (chance 2.83) | aux perm 3.271 (chance 3.26) | lr 3
@@ -3437,13 +3434,14 @@ launched icl_joint_fold0 pid=1169828
 [icl_joint_fold0] step 1400/30000 | loss 4.8974 | aux rot 2.092 (chance 2.83) | aux perm 1.600 (chance 3.26) | lr 
         [val] new best mode-C 47.71 -> best.pt
 [icl_joint_fold1] step 600/20000 | loss 5.2351 | aux rot 2.131 (chance 2.83) | aux perm 1.787 (chance 3.26) | lr 3
+--- 15:23 ---
+[icl_joint_fold0] step 1600/30000 | loss 4.9454 | aux rot 1.993 (chance 2.83) | aux perm 1.673 (chance 3.26) | lr 
+        [val] new best mode-C 47.71 -> best.pt
+[icl_joint_fold1] step 800/20000 | loss 4.6822 | aux rot 2.074 (chance 2.83) | aux perm 1.681 (chance 3.26) | lr 4
 ```
 
 ### 559_valfix.log
 ```
-AST OK
-joint_fold0 restarting with fix
-relaunched icl_joint_fold0 pid=1183670
 --- 14:55 ---
 [icl_joint_fold0] step 200/30000 | loss 7.2901 | aux rot 2.751 (chance 2.83) | aux perm 3.190 (chance 3.26) 
 [icl_joint_fold1] waiting
@@ -3465,13 +3463,14 @@ relaunched icl_joint_fold0 pid=1183670
 [icl_joint_fold0] step 1500/30000 | loss 5.2012 | aux rot 2.043 (chance 2.83) | aux perm 1.789 (chance 3.26)
         [val] new best mode-C 47.71 -> best.pt
 [icl_joint_fold1] step 700/20000 | loss 5.0362 | aux rot 2.080 (chance 2.83) | aux perm 1.784 (chance 3.26) 
+--- 15:25 ---
+[icl_joint_fold0] step 1700/30000 | loss 5.1740 | aux rot 2.054 (chance 2.83) | aux perm 1.705 (chance 3.26)
+        [val] new best mode-C 47.71 -> best.pt
+[icl_joint_fold1] step 900/20000 | loss 4.9979 | aux rot 2.124 (chance 2.83) | aux perm 1.754 (chance 3.26) 
 ```
 
 ### 559_val_realonly.log
 ```
-AST OK
-joint_fold0 restarting with fix
-relaunched icl_joint_fold0 pid=1183670
 --- 14:55 ---
 [icl_joint_fold0] step 200/30000 | loss 7.2901 | aux rot 2.751 (chance 2.83) | aux perm 3.190 (chance 3.26) 
 [icl_joint_fold1] waiting
@@ -3493,6 +3492,10 @@ relaunched icl_joint_fold0 pid=1183670
 [icl_joint_fold0] step 1500/30000 | loss 5.2012 | aux rot 2.043 (chance 2.83) | aux perm 1.789 (chance 3.26)
         [val] new best mode-C 47.71 -> best.pt
 [icl_joint_fold1] step 700/20000 | loss 5.0362 | aux rot 2.080 (chance 2.83) | aux perm 1.784 (chance 3.26) 
+--- 15:25 ---
+[icl_joint_fold0] step 1700/30000 | loss 5.1740 | aux rot 2.054 (chance 2.83) | aux perm 1.705 (chance 3.26)
+        [val] new best mode-C 47.71 -> best.pt
+[icl_joint_fold1] step 900/20000 | loss 4.9979 | aux rot 2.124 (chance 2.83) | aux perm 1.754 (chance 3.26) 
 ```
 
 ### d3_train.log
@@ -3810,8 +3813,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
-[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
 [prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
 [symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
@@ -3835,6 +3836,8 @@ step 1300/30000 | loss 4.9723 | aux rot 2.072 (chance 2.83) | aux perm 1.674 (ch
 step 1400/30000 | loss 4.8974 | aux rot 2.092 (chance 2.83) | aux perm 1.600 (chance 3.26) | lr 4.67e-04 | 0.86 it/s
 step 1500/30000 | loss 5.2012 | aux rot 2.043 (chance 2.83) | aux perm 1.789 (chance 3.26) | lr 5.00e-04 | 0.86 it/s
 step 1600/30000 | loss 4.9454 | aux rot 1.993 (chance 2.83) | aux perm 1.673 (chance 3.26) | lr 5.00e-04 | 0.86 it/s
+step 1700/30000 | loss 5.1740 | aux rot 2.054 (chance 2.83) | aux perm 1.705 (chance 3.26) | lr 5.00e-04 | 0.85 it/s
+step 1800/30000 | loss 4.9706 | aux rot 2.002 (chance 2.83) | aux perm 1.844 (chance 3.26) | lr 5.00e-04 | 0.85 it/s
 ```
 
 ### icl_joint_fold1.log
@@ -3861,6 +3864,9 @@ step 600/20000 | loss 5.2351 | aux rot 2.131 (chance 2.83) | aux perm 1.787 (cha
 step 700/20000 | loss 5.0362 | aux rot 2.080 (chance 2.83) | aux perm 1.784 (chance 3.26) | lr 3.50e-04 | 0.80 it/s
 step 800/20000 | loss 4.6822 | aux rot 2.074 (chance 2.83) | aux perm 1.681 (chance 3.26) | lr 4.00e-04 | 0.81 it/s
 step 900/20000 | loss 4.9979 | aux rot 2.124 (chance 2.83) | aux perm 1.754 (chance 3.26) | lr 4.50e-04 | 0.79 it/s
+step 1000/20000 | loss 4.9507 | aux rot 2.057 (chance 2.83) | aux perm 1.585 (chance 3.26) | lr 5.00e-04 | 0.79 it/s
+[val] step 1000: mode-A 51.35 | mode-C 55.21 | gain C -3.86   (REAL novel subjects, fold 1)
+[val] new best mode-C 55.21 -> best.pt
 ```
 
 ### teachers_shard0.log
@@ -4058,7 +4064,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-[data] 168679 training windows of 4.0s
 [data] monitor sets: 512 test windows, 512 fold-heldout windows
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
@@ -4083,6 +4088,7 @@ step 2600/103000 | loss 1.9050 | lr 7.00e-04 | 695 win/s
 step 2800/103000 | loss 1.8994 | lr 7.00e-04 | 695 win/s
 step 3000/103000 | loss 1.8967 | lr 7.00e-04 | 694 win/s
 step 3200/103000 | loss 1.8818 | lr 7.00e-04 | 690 win/s
+step 3400/103000 | loss 1.8751 | lr 7.00e-04 | 690 win/s
 ```
 
 ### tf_fold2.log
