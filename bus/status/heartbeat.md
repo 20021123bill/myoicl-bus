@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:32:35+08:00
+# heartbeat 2026-08-20T15:33:18+08:00
 
 ## gpu
 ```
-0, 6313 MiB, 24576 MiB, 64 %
-1, 3155 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 60 %
+0, 6313 MiB, 24576 MiB, 57 %
+1, 3155 MiB, 24576 MiB, 50 %
+2, 3169 MiB, 24576 MiB, 76 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3389,11 +3389,6 @@ explicit correction k=45     :  69.65  (gain -22.02)
 
 ### 558_joint_is_mainline.log
 ```
-[icl_joint_fold0] step 300/30000 | loss 6.4928 | aux rot 2.489 (chance 2.83) | aux perm 3.008 (chance 3.26) | lr 1
-[icl_joint_fold1] waiting
---- 15:03 ---
-[icl_joint_fold0] step 600/30000 | loss 5.3970 | aux rot 2.163 (chance 2.83) | aux perm 2.046 (chance 3.26) | lr 2
-[icl_joint_fold1] waiting
 --- 15:08 ---
 [icl_joint_fold0] step 900/30000 | loss 5.1509 | aux rot 2.147 (chance 2.83) | aux perm 1.755 (chance 3.26) | lr 3
 [icl_joint_fold1] step 100/20000 | loss 8.2409 | aux rot 2.789 (chance 2.83) | aux perm 3.260 (chance 3.26) | lr 5
@@ -3413,6 +3408,11 @@ explicit correction k=45     :  69.65  (gain -22.02)
 [icl_joint_fold0] step 1900/30000 | loss 4.9759 | aux rot 1.983 (chance 2.83) | aux perm 1.835 (chance 3.26) | lr 
         [val] new best mode-C 47.71 -> best.pt
 [icl_joint_fold1] step 1100/20000 | loss 5.0751 | aux rot 2.073 (chance 2.83) | aux perm 1.565 (chance 3.26) | lr 
+        [val] new best mode-C 55.21 -> best.pt
+--- 15:33 ---
+[icl_joint_fold0] step 2100/30000 | loss 4.6140 | aux rot 1.894 (chance 2.83) | aux perm 1.564 (chance 3.26) | lr 
+        [val] new best mode-C 47.40 -> best.pt
+[icl_joint_fold1] step 1300/20000 | loss 4.8615 | aux rot 1.967 (chance 2.83) | aux perm 1.675 (chance 3.26) | lr 
         [val] new best mode-C 55.21 -> best.pt
 ```
 
@@ -3842,7 +3842,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-[audit] step 0: mode-A 53.72 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 step 100/30000 | loss 9.9521 | aux rot 2.875 (chance 2.83) | aux perm 3.271 (chance 3.26) | lr 3.33e-05 | 0.81 it/s
 step 200/30000 | loss 7.2901 | aux rot 2.751 (chance 2.83) | aux perm 3.190 (chance 3.26) | lr 6.67e-05 | 0.83 it/s
 step 300/30000 | loss 6.4928 | aux rot 2.489 (chance 2.83) | aux perm 3.008 (chance 3.26) | lr 1.00e-04 | 0.83 it/s
@@ -3867,11 +3866,11 @@ step 1900/30000 | loss 4.9759 | aux rot 1.983 (chance 2.83) | aux perm 1.835 (ch
 step 2000/30000 | loss 5.1927 | aux rot 1.890 (chance 2.83) | aux perm 1.657 (chance 3.26) | lr 5.00e-04 | 0.85 it/s
 [val] step 2000: mode-A 46.10 | mode-C 47.40 | gain C -1.30   (REAL novel subjects, fold 0)
 [val] new best mode-C 47.40 -> best.pt
+step 2100/30000 | loss 4.6140 | aux rot 1.894 (chance 2.83) | aux perm 1.564 (chance 3.26) | lr 4.99e-04 | 0.84 it/s
 ```
 
 ### icl_joint_fold1.log
 ```
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [trunk] /data2/chenyuxiang/runs/tf_fold1_full/last.pt step 103000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 [prefix] FUSED mode: per-token (signal + soft-aligned char)
 [prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
@@ -3896,6 +3895,7 @@ step 1000/20000 | loss 4.9507 | aux rot 2.057 (chance 2.83) | aux perm 1.585 (ch
 [val] new best mode-C 55.21 -> best.pt
 step 1100/20000 | loss 5.0751 | aux rot 2.073 (chance 2.83) | aux perm 1.565 (chance 3.26) | lr 5.00e-04 | 0.79 it/s
 step 1200/20000 | loss 5.0613 | aux rot 2.000 (chance 2.83) | aux perm 1.750 (chance 3.26) | lr 5.00e-04 | 0.78 it/s
+step 1300/20000 | loss 4.8615 | aux rot 1.967 (chance 2.83) | aux perm 1.675 (chance 3.26) | lr 5.00e-04 | 0.78 it/s
 ```
 
 ### teachers_shard0.log
