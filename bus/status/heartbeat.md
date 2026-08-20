@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T14:15:05+08:00
+# heartbeat 2026-08-20T14:15:48+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 90 %
+0, 3173 MiB, 24576 MiB, 73 %
 1, 2731 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 70 %
-3, 2731 MiB, 24576 MiB, 45 %
+2, 2985 MiB, 24576 MiB, 65 %
+3, 2731 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -3179,7 +3179,6 @@ step 400/20000 | loss 5.6576 | aux rot 2.159 (chance 2.83) | aux perm 2.008 (cha
 
 ### 553_aux_supervised.log
 ```
-AST OK
 patch verified
 launched icl_aux_fold2 pid=1055332
 [cohort] fold 2: 24 users the backbone has never seen, 213 sessions
@@ -3202,6 +3201,8 @@ step 400/20000 | loss 5.6576 | aux rot 2.159 (chance 2.83) | aux perm 2.008 (cha
 [14:05] step 1800/20000 | loss 5.0060 | aux rot 1.987 (chance 2.83) | aux perm 1.606 (chance 3.26) | lr 9.96e-04 | 1.57 it/s
         [val] new best mode-C 70.59 -> best.pt
 [14:10] step 2200/20000 | loss 5.1382 | aux rot 2.023 (chance 2.83) | aux perm 1.765 (chance 3.26) | lr 9.90e-04 | 1.52 it/s
+        [val] new best mode-C 64.40 -> best.pt
+[14:15] step 2600/20000 | loss 4.8422 | aux rot 1.933 (chance 2.83) | aux perm 1.739 (chance 3.26) | lr 9.83e-04 | 1.50 it/s
         [val] new best mode-C 64.40 -> best.pt
 ```
 
@@ -3402,7 +3403,6 @@ step 700/20000 | loss 5.2765 | aux rot 2.074 (chance 2.83) | aux perm 1.661 (cha
 
 ### icl_aux_fold2.log
 ```
-step 500/20000 | loss 5.6931 | aux rot 2.206 (chance 2.83) | aux perm 1.655 (chance 3.26) | lr 5.00e-04 | 1.53 it/s
 step 600/20000 | loss 5.3155 | aux rot 2.030 (chance 2.83) | aux perm 1.650 (chance 3.26) | lr 6.00e-04 | 1.51 it/s
 step 700/20000 | loss 5.3360 | aux rot 2.076 (chance 2.83) | aux perm 1.661 (chance 3.26) | lr 7.00e-04 | 1.55 it/s
 step 800/20000 | loss 5.0267 | aux rot 2.039 (chance 2.83) | aux perm 1.763 (chance 3.26) | lr 8.00e-04 | 1.57 it/s
@@ -3427,6 +3427,7 @@ step 2200/20000 | loss 5.1382 | aux rot 2.023 (chance 2.83) | aux perm 1.765 (ch
 step 2300/20000 | loss 4.9387 | aux rot 1.968 (chance 2.83) | aux perm 1.747 (chance 3.26) | lr 9.88e-04 | 1.51 it/s
 step 2400/20000 | loss 4.6101 | aux rot 1.892 (chance 2.83) | aux perm 1.747 (chance 3.26) | lr 9.87e-04 | 1.52 it/s
 step 2500/20000 | loss 4.9932 | aux rot 1.980 (chance 2.83) | aux perm 1.589 (chance 3.26) | lr 9.85e-04 | 1.51 it/s
+step 2600/20000 | loss 4.8422 | aux rot 1.933 (chance 2.83) | aux perm 1.739 (chance 3.26) | lr 9.83e-04 | 1.50 it/s
 ```
 
 ### icl_dev2_fold2.log
