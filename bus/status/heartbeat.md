@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:04:15+08:00
+# heartbeat 2026-08-20T17:04:58+08:00
 
 ## gpu
 ```
-0, 6275 MiB, 24576 MiB, 30 %
-1, 6809 MiB, 24576 MiB, 20 %
-2, 3169 MiB, 24576 MiB, 68 %
+0, 6275 MiB, 24576 MiB, 52 %
+1, 6058 MiB, 24576 MiB, 0 %
+2, 3169 MiB, 24576 MiB, 90 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3325,8 +3325,6 @@ launched icl_joint_fold1 pid=1211048
 
 ### 556_joint_synth_aux.log
 ```
-        [val] new best mode-C 47.72 -> best.pt
-[16:04] step 3000/20000 | loss 4.7925 | aux rot 1.586 (chance 2.83) | aux perm 1.806 (chance 3.26) | lr 4.86
         [val] new best mode-C 44.45 -> best.pt
 [16:09] step 3300/20000 | loss 4.6303 | aux rot 1.567 (chance 2.83) | aux perm 1.717 (chance 3.26) | lr 4.82
         [val] new best mode-C 44.45 -> best.pt
@@ -3349,6 +3347,8 @@ launched icl_joint_fold1 pid=1211048
 [16:54] step 6200/20000 | loss 4.3861 | aux rot 1.322 (chance 2.83) | aux perm 1.725 (chance 3.26) | lr 4.13
         [val] step 6000: mode-A 41.87 | mode-C 43.37 | gain C -1.50   (REAL novel subjects, fold 1)
 [16:59] step 6500/20000 | loss 4.1344 | aux rot 1.332 (chance 2.83) | aux perm 1.660 (chance 3.26) | lr 4.04
+        [val] step 6000: mode-A 41.87 | mode-C 43.37 | gain C -1.50   (REAL novel subjects, fold 1)
+[17:04] step 6800/20000 | loss 4.2060 | aux rot 1.382 (chance 2.83) | aux perm 1.648 (chance 3.26) | lr 3.94
         [val] step 6000: mode-A 41.87 | mode-C 43.37 | gain C -1.50   (REAL novel subjects, fold 1)
 ```
 
@@ -4023,7 +4023,6 @@ step 7500/30000 | loss 4.0652 | aux rot 1.440 (chance 2.83) | aux perm 1.524 (ch
 
 ### icl_joint_fold1.log
 ```
-step 4600/20000 | loss 4.6108 | aux rot 1.501 (chance 2.83) | aux perm 1.636 (chance 3.26) | lr 4.57e-04 | 0.91 it/s
 step 4700/20000 | loss 4.3908 | aux rot 1.453 (chance 2.83) | aux perm 1.651 (chance 3.26) | lr 4.55e-04 | 0.92 it/s
 step 4800/20000 | loss 4.1560 | aux rot 1.367 (chance 2.83) | aux perm 1.657 (chance 3.26) | lr 4.52e-04 | 0.92 it/s
 step 4900/20000 | loss 4.1456 | aux rot 1.387 (chance 2.83) | aux perm 1.696 (chance 3.26) | lr 4.50e-04 | 0.92 it/s
@@ -4048,6 +4047,7 @@ step 6400/20000 | loss 4.2902 | aux rot 1.392 (chance 2.83) | aux perm 1.610 (ch
 step 6500/20000 | loss 4.1344 | aux rot 1.332 (chance 2.83) | aux perm 1.660 (chance 3.26) | lr 4.04e-04 | 0.95 it/s
 step 6600/20000 | loss 3.9101 | aux rot 1.355 (chance 2.83) | aux perm 1.642 (chance 3.26) | lr 4.00e-04 | 0.95 it/s
 step 6700/20000 | loss 4.0458 | aux rot 1.382 (chance 2.83) | aux perm 1.705 (chance 3.26) | lr 3.97e-04 | 0.95 it/s
+step 6800/20000 | loss 4.2060 | aux rot 1.382 (chance 2.83) | aux perm 1.648 (chance 3.26) | lr 3.94e-04 | 0.95 it/s
 ```
 
 ### icl_split_fold0.log
