@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:17:53+08:00
+# heartbeat 2026-08-20T17:18:36+08:00
 
 ## gpu
 ```
-0, 6275 MiB, 24576 MiB, 0 %
-1, 6120 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 79 %
+0, 16 MiB, 24576 MiB, 0 %
+1, 12 MiB, 24576 MiB, 0 %
+2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3696,10 +3696,31 @@ SyntaxError: invalid syntax
 
 ### 569_full_stop.log
 ```
-########## 1. STOP EVERYTHING ##########
-  killed: myoicl.train_prefix_icl
-  killed: myoicl.train_trunk
-  killed: myoicl-log-streamer
+
+=== E. TOTAL ON DISK ===
+  2.8G	/data2/chenyuxiang/runs
+  30M	/data2/chenyuxiang/code/myoicl
+
+=== F. IF YOU DECIDE TO DELETE -- run these YOURSELF ===
+  # experiment outputs only, keeps trunks + code + data:
+  rm -rf /data2/chenyuxiang/runs/icl_* /data2/chenyuxiang/runs/myocorl* /data2/chenyuxiang/runs/keystroke_cache /data2/chenyuxiang/runs/remix*
+
+  # also the trained trunks (irreversible: ~4 GPU-days to rebuild):
+  rm -rf /data2/chenyuxiang/runs/tf_ref_full /data2/chenyuxiang/runs/tf_fold0_full /data2/chenyuxiang/runs/tf_fold1_full \
+         /data2/chenyuxiang/runs/tf_fold2_full /data2/chenyuxiang/runs/tf_fold3_full
+
+  # also all our code (the official emg2qwerty repo and the dataset
+  # are NOT touched by this):
+  rm -rf /data2/chenyuxiang/code/myoicl/myoicl
+
+  # stop the bus runner entirely:
+  touch /data2/chenyuxiang/code/myoicl/bus/jobs/STOP
+
+  The dataset lives at /data2/chenyuxiang/code/emg2qwerty/data and is
+  not referenced by any command above.
+
+=== manifest written to bus/results/569_MANIFEST.txt ===
+=== 569 done: all compute stopped, nothing deleted ===
 ```
 
 ### d3_train.log
@@ -4017,7 +4038,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-step 6200/30000 | loss 4.5625 | aux rot 1.473 (chance 2.83) | aux perm 1.708 (chance 3.26) | lr 4.67e-04 | 0.93 it/s
 step 6300/30000 | loss 4.6280 | aux rot 1.417 (chance 2.83) | aux perm 1.688 (chance 3.26) | lr 4.66e-04 | 0.93 it/s
 step 6400/30000 | loss 4.3103 | aux rot 1.425 (chance 2.83) | aux perm 1.602 (chance 3.26) | lr 4.64e-04 | 0.94 it/s
 step 6500/30000 | loss 4.2663 | aux rot 1.485 (chance 2.83) | aux perm 1.673 (chance 3.26) | lr 4.63e-04 | 0.94 it/s
@@ -4042,12 +4062,11 @@ step 8000/30000 | loss 4.2378 | aux rot 1.322 (chance 2.83) | aux perm 1.748 (ch
 [val] new best mode-C 40.68 -> best.pt
 step 8100/30000 | loss 4.3292 | aux rot 1.372 (chance 2.83) | aux perm 1.705 (chance 3.26) | lr 4.37e-04 | 0.95 it/s
 step 8200/30000 | loss 4.1166 | aux rot 1.389 (chance 2.83) | aux perm 1.664 (chance 3.26) | lr 4.35e-04 | 0.95 it/s
+step 8300/30000 | loss 4.4400 | aux rot 1.403 (chance 2.83) | aux perm 1.648 (chance 3.26) | lr 4.33e-04 | 0.95 it/s
 ```
 
 ### icl_joint_fold1.log
 ```
-step 5200/20000 | loss 4.6045 | aux rot 1.470 (chance 2.83) | aux perm 1.687 (chance 3.26) | lr 4.42e-04 | 0.93 it/s
-step 5300/20000 | loss 4.3116 | aux rot 1.362 (chance 2.83) | aux perm 1.491 (chance 3.26) | lr 4.39e-04 | 0.93 it/s
 step 5400/20000 | loss 4.1782 | aux rot 1.400 (chance 2.83) | aux perm 1.614 (chance 3.26) | lr 4.37e-04 | 0.93 it/s
 step 5500/20000 | loss 4.0854 | aux rot 1.426 (chance 2.83) | aux perm 1.701 (chance 3.26) | lr 4.34e-04 | 0.94 it/s
 step 5600/20000 | loss 4.1729 | aux rot 1.413 (chance 2.83) | aux perm 1.594 (chance 3.26) | lr 4.31e-04 | 0.94 it/s
@@ -4071,6 +4090,8 @@ step 7100/20000 | loss 4.0573 | aux rot 1.400 (chance 2.83) | aux perm 1.579 (ch
 step 7200/20000 | loss 3.7937 | aux rot 1.308 (chance 2.83) | aux perm 1.557 (chance 3.26) | lr 3.80e-04 | 0.95 it/s
 step 7300/20000 | loss 4.3631 | aux rot 1.308 (chance 2.83) | aux perm 1.617 (chance 3.26) | lr 3.76e-04 | 0.95 it/s
 step 7400/20000 | loss 4.0348 | aux rot 1.309 (chance 2.83) | aux perm 1.675 (chance 3.26) | lr 3.73e-04 | 0.95 it/s
+step 7500/20000 | loss 4.0723 | aux rot 1.418 (chance 2.83) | aux perm 1.527 (chance 3.26) | lr 3.69e-04 | 0.95 it/s
+step 7600/20000 | loss 4.2307 | aux rot 1.275 (chance 2.83) | aux perm 1.524 (chance 3.26) | lr 3.65e-04 | 0.95 it/s
 ```
 
 ### icl_split_fold0.log
