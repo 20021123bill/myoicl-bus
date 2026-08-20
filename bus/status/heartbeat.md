@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:12:51+08:00
+# heartbeat 2026-08-20T17:13:34+08:00
 
 ## gpu
 ```
-0, 6275 MiB, 24576 MiB, 0 %
-1, 6058 MiB, 24576 MiB, 12 %
-2, 3169 MiB, 24576 MiB, 44 %
+0, 6750 MiB, 24576 MiB, 36 %
+1, 6058 MiB, 24576 MiB, 0 %
+2, 3169 MiB, 24576 MiB, 48 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3994,10 +3994,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-step 5900/30000 | loss 4.5340 | aux rot 1.429 (chance 2.83) | aux perm 1.582 (chance 3.26) | lr 4.71e-04 | 0.93 it/s
-step 6000/30000 | loss 4.4302 | aux rot 1.479 (chance 2.83) | aux perm 1.616 (chance 3.26) | lr 4.70e-04 | 0.93 it/s
-[val] step 6000: mode-A 43.14 | mode-C 43.43 | gain C -0.28   (REAL novel subjects, fold 0)
-[val] new best mode-C 43.43 -> best.pt
 step 6100/30000 | loss 4.5824 | aux rot 1.525 (chance 2.83) | aux perm 1.670 (chance 3.26) | lr 4.69e-04 | 0.93 it/s
 step 6200/30000 | loss 4.5625 | aux rot 1.473 (chance 2.83) | aux perm 1.708 (chance 3.26) | lr 4.67e-04 | 0.93 it/s
 step 6300/30000 | loss 4.6280 | aux rot 1.417 (chance 2.83) | aux perm 1.688 (chance 3.26) | lr 4.66e-04 | 0.93 it/s
@@ -4019,12 +4015,14 @@ step 7600/30000 | loss 4.1967 | aux rot 1.333 (chance 2.83) | aux perm 1.530 (ch
 step 7700/30000 | loss 4.0748 | aux rot 1.371 (chance 2.83) | aux perm 1.682 (chance 3.26) | lr 4.44e-04 | 0.95 it/s
 step 7800/30000 | loss 4.0010 | aux rot 1.325 (chance 2.83) | aux perm 1.726 (chance 3.26) | lr 4.42e-04 | 0.95 it/s
 step 7900/30000 | loss 4.3426 | aux rot 1.300 (chance 2.83) | aux perm 1.647 (chance 3.26) | lr 4.40e-04 | 0.95 it/s
+step 8000/30000 | loss 4.2378 | aux rot 1.322 (chance 2.83) | aux perm 1.748 (chance 3.26) | lr 4.39e-04 | 0.95 it/s
+[val] step 8000: mode-A 40.52 | mode-C 40.68 | gain C -0.16   (REAL novel subjects, fold 0)
+[val] new best mode-C 40.68 -> best.pt
+step 8100/30000 | loss 4.3292 | aux rot 1.372 (chance 2.83) | aux perm 1.705 (chance 3.26) | lr 4.37e-04 | 0.95 it/s
 ```
 
 ### icl_joint_fold1.log
 ```
-[val] step 5000: mode-A 40.20 | mode-C 40.65 | gain C -0.45   (REAL novel subjects, fold 1)
-[val] new best mode-C 40.65 -> best.pt
 step 5100/20000 | loss 4.2892 | aux rot 1.379 (chance 2.83) | aux perm 1.545 (chance 3.26) | lr 4.45e-04 | 0.93 it/s
 step 5200/20000 | loss 4.6045 | aux rot 1.470 (chance 2.83) | aux perm 1.687 (chance 3.26) | lr 4.42e-04 | 0.93 it/s
 step 5300/20000 | loss 4.3116 | aux rot 1.362 (chance 2.83) | aux perm 1.491 (chance 3.26) | lr 4.39e-04 | 0.93 it/s
@@ -4048,11 +4046,12 @@ step 6900/20000 | loss 4.0872 | aux rot 1.289 (chance 2.83) | aux perm 1.680 (ch
 step 7000/20000 | loss 4.5028 | aux rot 1.392 (chance 2.83) | aux perm 1.684 (chance 3.26) | lr 3.87e-04 | 0.95 it/s
 [val] step 7000: mode-A 43.49 | mode-C 45.47 | gain C -1.98   (REAL novel subjects, fold 1)
 step 7100/20000 | loss 4.0573 | aux rot 1.400 (chance 2.83) | aux perm 1.579 (chance 3.26) | lr 3.83e-04 | 0.95 it/s
+step 7200/20000 | loss 3.7937 | aux rot 1.308 (chance 2.83) | aux perm 1.557 (chance 3.26) | lr 3.80e-04 | 0.95 it/s
+step 7300/20000 | loss 4.3631 | aux rot 1.308 (chance 2.83) | aux perm 1.617 (chance 3.26) | lr 3.76e-04 | 0.95 it/s
 ```
 
 ### icl_split_fold0.log
 ```
-[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
 [prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
 [meta-split] meta-train 16 users / 137 sessions | meta-test 8 users / 76 sessions (disjoint, both unseen by the backbone)
 [symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
@@ -4077,11 +4076,11 @@ step 1100/20000 | loss 3.8112 | aux rot 2.130 (chance 2.83) | aux perm 1.650 (ch
 step 1200/20000 | loss 3.9258 | aux rot 2.109 (chance 2.83) | aux perm 1.766 (chance 3.26) | lr 3.00e-04 | 1.73 it/s
 step 1300/20000 | loss 4.0147 | aux rot 2.110 (chance 2.83) | aux perm 1.697 (chance 3.26) | lr 3.00e-04 | 1.75 it/s
 step 1400/20000 | loss 4.0839 | aux rot 2.245 (chance 2.83) | aux perm 1.608 (chance 3.26) | lr 3.00e-04 | 1.76 it/s
+step 1500/20000 | loss 3.9426 | aux rot 2.077 (chance 2.83) | aux perm 1.599 (chance 3.26) | lr 2.99e-04 | 1.74 it/s
 ```
 
 ### icl_split_fold1.log
 ```
-[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
 [prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
 [prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
 [meta-split] meta-train 16 users / 146 sessions | meta-test 8 users / 60 sessions (disjoint, both unseen by the backbone)
@@ -4106,6 +4105,7 @@ step 1000/20000 | loss 3.6488 | aux rot 2.153 (chance 2.83) | aux perm 1.504 (ch
 step 1100/20000 | loss 3.7616 | aux rot 2.087 (chance 2.83) | aux perm 1.650 (chance 3.26) | lr 3.00e-04 | 1.70 it/s
 step 1200/20000 | loss 3.8112 | aux rot 2.147 (chance 2.83) | aux perm 1.758 (chance 3.26) | lr 3.00e-04 | 1.70 it/s
 step 1300/20000 | loss 3.9420 | aux rot 2.057 (chance 2.83) | aux perm 1.678 (chance 3.26) | lr 3.00e-04 | 1.73 it/s
+step 1400/20000 | loss 3.9821 | aux rot 2.199 (chance 2.83) | aux perm 1.609 (chance 3.26) | lr 3.00e-04 | 1.73 it/s
 ```
 
 ### teachers_shard0.log

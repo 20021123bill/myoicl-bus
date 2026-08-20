@@ -127,3 +127,8 @@ step 20400/103000 | loss 1.7228 | lr 6.45e-04 | 723 win/s
 step 20600/103000 | loss 1.6940 | lr 6.43e-04 | 723 win/s
 step 20800/103000 | loss 1.7032 | lr 6.42e-04 | 723 win/s
 step 21000/103000 | loss 1.7006 | lr 6.41e-04 | 723 win/s
+step 21200/103000 | loss 1.7225 | lr 6.40e-04 | 723 win/s
+step 21400/103000 | loss 1.7005 | lr 6.38e-04 | 723 win/s
+step 21600/103000 | loss 1.6851 | lr 6.37e-04 | 723 win/s
+step 21800/103000 | loss 1.6965 | lr 6.36e-04 | 723 win/s
+step 22000/103000 | loss 1.6956 | lr 6.35e-04 | 723 win/s
