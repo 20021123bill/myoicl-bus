@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T14:34:27+08:00
+# heartbeat 2026-08-20T14:35:11+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 12 %
-1, 2731 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 61 %
+0, 3173 MiB, 24576 MiB, 10 %
+1, 2731 MiB, 24576 MiB, 23 %
+2, 2985 MiB, 24576 MiB, 70 %
 3, 2731 MiB, 24576 MiB, 0 %
 ```
 
@@ -85,6 +85,7 @@
 554_allgpu_sprint                        DONE rc=127
 555_gate_full_eval                       DONE rc=127
 556_joint_synth_aux                      DONE rc=127
+557_zeroshot_today                       DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3180,8 +3181,6 @@ step 400/20000 | loss 5.6576 | aux rot 2.159 (chance 2.83) | aux perm 2.008 (cha
 
 ### 553_aux_supervised.log
 ```
-[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
-[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
 [prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
 [symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
   return F.conv1d(input, weight, bias, self.stride,
@@ -3205,6 +3204,8 @@ step 400/20000 | loss 5.6576 | aux rot 2.159 (chance 2.83) | aux perm 2.008 (cha
         [val] new best mode-C 64.18 -> best.pt
 [14:30] step 3800/20000 | loss 4.6989 | aux rot 1.769 (chance 2.83) | aux perm 1.645 (chance 3.26) | lr 9.47e-04 | 1.45 it/s
         [val] new best mode-C 64.18 -> best.pt
+[14:35] step 4200/20000 | loss 4.7833 | aux rot 1.720 (chance 2.83) | aux perm 1.730 (chance 3.26) | lr 9.32e-04 | 1.41 it/s
+        [val] step 4000: mode-A 65.84 | mode-C 67.90 | gain C -2.06   (REAL novel subjects, fold 2)
 ```
 
 ### 554_allgpu_sprint.log
@@ -3298,6 +3299,11 @@ k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
 ### 556_joint_synth_aux.log
 ```
 === wait for tf_fold1_full to finish ===
+```
+
+### 557_zeroshot_today.log
+```
+frozen fold2 twin stopped (kept as ablation)
 ```
 
 ### d3_train.log
@@ -3441,7 +3447,6 @@ step 2300/20000 | loss 4.8654 | aux rot 1.966 (chance 2.83) | aux perm 1.729 (ch
 
 ### icl_aux_fold2.log
 ```
-[val] new best mode-C 64.40 -> best.pt
 step 2100/20000 | loss 4.7245 | aux rot 2.011 (chance 2.83) | aux perm 1.707 (chance 3.26) | lr 9.92e-04 | 1.54 it/s
 step 2200/20000 | loss 5.1382 | aux rot 2.023 (chance 2.83) | aux perm 1.765 (chance 3.26) | lr 9.90e-04 | 1.52 it/s
 step 2300/20000 | loss 4.9387 | aux rot 1.968 (chance 2.83) | aux perm 1.747 (chance 3.26) | lr 9.88e-04 | 1.51 it/s
@@ -3466,6 +3471,7 @@ step 3900/20000 | loss 4.7141 | aux rot 1.797 (chance 2.83) | aux perm 1.668 (ch
 step 4000/20000 | loss 4.7677 | aux rot 1.901 (chance 2.83) | aux perm 1.630 (chance 3.26) | lr 9.40e-04 | 1.44 it/s
 [val] step 4000: mode-A 65.84 | mode-C 67.90 | gain C -2.06   (REAL novel subjects, fold 2)
 step 4100/20000 | loss 4.7910 | aux rot 1.762 (chance 2.83) | aux perm 1.660 (chance 3.26) | lr 9.36e-04 | 1.42 it/s
+step 4200/20000 | loss 4.7833 | aux rot 1.720 (chance 2.83) | aux perm 1.730 (chance 3.26) | lr 9.32e-04 | 1.41 it/s
 ```
 
 ### icl_dev2_fold2.log
