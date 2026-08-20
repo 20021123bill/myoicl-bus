@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:33:18+08:00
+# heartbeat 2026-08-20T15:34:01+08:00
 
 ## gpu
 ```
-0, 6313 MiB, 24576 MiB, 57 %
-1, 3155 MiB, 24576 MiB, 50 %
-2, 3169 MiB, 24576 MiB, 76 %
+0, 6313 MiB, 24576 MiB, 72 %
+1, 3155 MiB, 24576 MiB, 0 %
+2, 3169 MiB, 24576 MiB, 91 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -4093,9 +4093,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
-  return F.conv1d(input, weight, bias, self.stride,
-step 200/103000 | loss 1.5046 | lr 6.80e-05 | 632 win/s
 step 400/103000 | loss 1.5324 | lr 1.36e-04 | 673 win/s
 step 600/103000 | loss 1.5727 | lr 2.04e-04 | 688 win/s
 step 800/103000 | loss 1.6238 | lr 2.72e-04 | 690 win/s
@@ -4118,6 +4115,9 @@ step 4000/103000 | loss 1.8665 | lr 6.99e-04 | 688 win/s
 [val] step 4000: 8-test-user CER 48.72 | fold-heldout-user CER 56.24  (their Tiny reference: 35.9)
 [val] new best 48.72 -> best.pt
 step 4200/103000 | loss 1.8763 | lr 6.99e-04 | 687 win/s
+step 4400/103000 | loss 1.8813 | lr 6.99e-04 | 687 win/s
+step 4600/103000 | loss 1.8806 | lr 6.99e-04 | 688 win/s
+step 4800/103000 | loss 1.8993 | lr 6.99e-04 | 688 win/s
 ```
 
 ### tf_fold2.log
