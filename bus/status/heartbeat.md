@@ -1,4 +1,4 @@
-# heartbeat 2026-08-20T17:19:19+08:00
+# heartbeat 2026-08-20T17:20:02+08:00
 
 ## gpu
 ```
@@ -3327,10 +3327,6 @@ launched icl_joint_fold1 pid=1211048
 
 ### 556_joint_synth_aux.log
 ```
-        [val] new best mode-C 44.45 -> best.pt
-[16:19] step 4000/20000 | loss 4.5672 | aux rot 1.540 (chance 2.83) | aux perm 1.728 (chance 3.26) | lr 4.70
-        [val] step 4000: mode-A 47.23 | mode-C 46.75 | gain C +0.48   (REAL novel subjects, fold 1)
-[16:24] step 4300/20000 | loss 4.2733 | aux rot 1.425 (chance 2.83) | aux perm 1.701 (chance 3.26) | lr 4.64
         [val] step 4000: mode-A 47.23 | mode-C 46.75 | gain C +0.48   (REAL novel subjects, fold 1)
 [16:29] step 4600/20000 | loss 4.6108 | aux rot 1.501 (chance 2.83) | aux perm 1.636 (chance 3.26) | lr 4.57
         [val] step 4000: mode-A 47.23 | mode-C 46.75 | gain C +0.48   (REAL novel subjects, fold 1)
@@ -3352,6 +3348,10 @@ launched icl_joint_fold1 pid=1211048
         [val] step 7000: mode-A 43.49 | mode-C 45.47 | gain C -1.98   (REAL novel subjects, fold 1)
 [17:14] step 7400/20000 | loss 4.0348 | aux rot 1.309 (chance 2.83) | aux perm 1.675 (chance 3.26) | lr 3.73
         [val] step 7000: mode-A 43.49 | mode-C 45.47 | gain C -1.98   (REAL novel subjects, fold 1)
+[17:19] step 7600/20000 | loss 4.2307 | aux rot 1.275 (chance 2.83) | aux perm 1.524 (chance 3.26) | lr 3.65
+        [val] step 7000: mode-A 43.49 | mode-C 45.47 | gain C -1.98   (REAL novel subjects, fold 1)
+joint run ended
+=== 556 done ===
 ```
 
 ### 557_zeroshot.log
