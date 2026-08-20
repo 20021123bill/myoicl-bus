@@ -544,3 +544,7 @@ step 99200/103000 | loss 1.2024 | lr 2.44e-06 | 659 win/s
 step 99400/103000 | loss 1.2040 | lr 2.19e-06 | 659 win/s
 step 99600/103000 | loss 1.2052 | lr 1.96e-06 | 659 win/s
 step 99800/103000 | loss 1.1988 | lr 1.73e-06 | 659 win/s
+step 100000/103000 | loss 1.2035 | lr 1.52e-06 | 659 win/s
+[val] step 100000: 8-test-user CER 46.03 | fold-heldout-user CER 53.67  (their Tiny reference: 35.9)
+step 100200/103000 | loss 1.2077 | lr 1.33e-06 | 659 win/s
+step 100400/103000 | loss 1.2027 | lr 1.15e-06 | 659 win/s
