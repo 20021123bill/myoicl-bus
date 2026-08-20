@@ -91,3 +91,6 @@ step 6600/30000 | loss 4.0294 | aux rot 1.440 (chance 2.83) | aux perm 1.642 (ch
 step 6700/30000 | loss 4.0256 | aux rot 1.378 (chance 2.83) | aux perm 1.714 (chance 3.26) | lr 4.60e-04 | 0.94 it/s
 step 6800/30000 | loss 4.2466 | aux rot 1.406 (chance 2.83) | aux perm 1.648 (chance 3.26) | lr 4.59e-04 | 0.94 it/s
 step 6900/30000 | loss 4.2368 | aux rot 1.406 (chance 2.83) | aux perm 1.683 (chance 3.26) | lr 4.57e-04 | 0.94 it/s
+step 7000/30000 | loss 4.5734 | aux rot 1.428 (chance 2.83) | aux perm 1.685 (chance 3.26) | lr 4.55e-04 | 0.94 it/s
+[val] step 7000: mode-A 42.27 | mode-C 42.38 | gain C -0.12   (REAL novel subjects, fold 0)
+[val] new best mode-C 42.38 -> best.pt
