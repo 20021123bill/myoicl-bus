@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:08:53+08:00
+# heartbeat 2026-08-20T15:09:36+08:00
 
 ## gpu
 ```
-0, 6311 MiB, 24576 MiB, 70 %
-1, 3155 MiB, 24576 MiB, 34 %
-2, 2983 MiB, 24576 MiB, 93 %
+0, 6311 MiB, 24576 MiB, 97 %
+1, 3155 MiB, 24576 MiB, 2 %
+2, 2983 MiB, 24576 MiB, 63 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3314,6 +3314,7 @@ launched icl_joint_fold1 pid=1211048
 === wait for tf_fold1_full to finish ===
 using GPU0
 launched icl_joint_fold1 pid=1211048
+[15:09] step 200/20000 | loss 7.0014 | aux rot 2.560 (chance 2.83) | aux perm 3.132 (chance 3.26) | lr 1.00e
 ```
 
 ### 557_zeroshot.log
@@ -3806,6 +3807,7 @@ step 900/30000 | loss 5.1509 | aux rot 2.147 (chance 2.83) | aux perm 1.755 (cha
   return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 51.83 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 step 100/20000 | loss 8.2409 | aux rot 2.789 (chance 2.83) | aux perm 3.260 (chance 3.26) | lr 5.00e-05 | 0.81 it/s
+step 200/20000 | loss 7.0014 | aux rot 2.560 (chance 2.83) | aux perm 3.132 (chance 3.26) | lr 1.00e-04 | 0.80 it/s
 ```
 
 ### teachers_shard0.log
@@ -4022,6 +4024,7 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 step 200/103000 | loss 1.5046 | lr 6.80e-05 | 632 win/s
 step 400/103000 | loss 1.5324 | lr 1.36e-04 | 673 win/s
 step 600/103000 | loss 1.5727 | lr 2.04e-04 | 688 win/s
+step 800/103000 | loss 1.6238 | lr 2.72e-04 | 690 win/s
 ```
 
 ### tf_fold2.log
@@ -4084,8 +4087,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-step 94000/103000 | loss 1.2848 | lr 1.36e-05 | 491 win/s
-step 94200/103000 | loss 1.2815 | lr 1.30e-05 | 491 win/s
 step 94400/103000 | loss 1.2786 | lr 1.25e-05 | 491 win/s
 step 94600/103000 | loss 1.2772 | lr 1.19e-05 | 491 win/s
 step 94800/103000 | loss 1.2751 | lr 1.13e-05 | 491 win/s
@@ -4109,6 +4110,8 @@ step 98000/103000 | loss 1.2633 | lr 4.23e-06 | 488 win/s
 step 98200/103000 | loss 1.2656 | lr 3.90e-06 | 488 win/s
 step 98400/103000 | loss 1.2678 | lr 3.58e-06 | 488 win/s
 step 98600/103000 | loss 1.2699 | lr 3.28e-06 | 488 win/s
+step 98800/103000 | loss 1.2646 | lr 2.99e-06 | 488 win/s
+step 99000/103000 | loss 1.2630 | lr 2.71e-06 | 488 win/s
 ```
 
 ### tf_ref.log
