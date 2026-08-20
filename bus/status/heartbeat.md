@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:08:10+08:00
+# heartbeat 2026-08-20T15:08:53+08:00
 
 ## gpu
 ```
-0, 6133 MiB, 24576 MiB, 81 %
-1, 3155 MiB, 24576 MiB, 0 %
-2, 2983 MiB, 24576 MiB, 72 %
+0, 6311 MiB, 24576 MiB, 70 %
+1, 3155 MiB, 24576 MiB, 34 %
+2, 2983 MiB, 24576 MiB, 93 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3393,6 +3393,9 @@ launched icl_joint_fold0 pid=1169828
 --- 15:03 ---
 [icl_joint_fold0] step 600/30000 | loss 5.3970 | aux rot 2.163 (chance 2.83) | aux perm 2.046 (chance 3.26) | lr 2
 [icl_joint_fold1] waiting
+--- 15:08 ---
+[icl_joint_fold0] step 900/30000 | loss 5.1509 | aux rot 2.147 (chance 2.83) | aux perm 1.755 (chance 3.26) | lr 3
+[icl_joint_fold1] step 100/20000 | loss 8.2409 | aux rot 2.789 (chance 2.83) | aux perm 3.260 (chance 3.26) | lr 5
 ```
 
 ### 558_mainline.log
@@ -3783,6 +3786,8 @@ step 400/30000 | loss 6.5187 | aux rot 2.304 (chance 2.83) | aux perm 2.730 (cha
 step 500/30000 | loss 5.7252 | aux rot 2.179 (chance 2.83) | aux perm 2.377 (chance 3.26) | lr 1.67e-04 | 0.82 it/s
 step 600/30000 | loss 5.3970 | aux rot 2.163 (chance 2.83) | aux perm 2.046 (chance 3.26) | lr 2.00e-04 | 0.84 it/s
 step 700/30000 | loss 5.1462 | aux rot 2.103 (chance 2.83) | aux perm 1.889 (chance 3.26) | lr 2.33e-04 | 0.85 it/s
+step 800/30000 | loss 4.7212 | aux rot 2.095 (chance 2.83) | aux perm 1.719 (chance 3.26) | lr 2.67e-04 | 0.87 it/s
+step 900/30000 | loss 5.1509 | aux rot 2.147 (chance 2.83) | aux perm 1.755 (chance 3.26) | lr 3.00e-04 | 0.86 it/s
 ```
 
 ### icl_joint_fold1.log
@@ -3800,6 +3805,7 @@ step 700/30000 | loss 5.1462 | aux rot 2.103 (chance 2.83) | aux perm 1.889 (cha
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 51.83 | mode-C 100.00 (random prefix) | deployment reference ~43-58
+step 100/20000 | loss 8.2409 | aux rot 2.789 (chance 2.83) | aux perm 3.260 (chance 3.26) | lr 5.00e-05 | 0.81 it/s
 ```
 
 ### teachers_shard0.log
@@ -4014,6 +4020,8 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 step 200/103000 | loss 1.5046 | lr 6.80e-05 | 632 win/s
+step 400/103000 | loss 1.5324 | lr 1.36e-04 | 673 win/s
+step 600/103000 | loss 1.5727 | lr 2.04e-04 | 688 win/s
 ```
 
 ### tf_fold2.log
