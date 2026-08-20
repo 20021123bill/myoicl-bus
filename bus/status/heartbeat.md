@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T13:49:23+08:00
+# heartbeat 2026-08-20T13:50:06+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 47 %
+0, 3173 MiB, 24576 MiB, 89 %
 1, 12 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 92 %
+2, 2985 MiB, 24576 MiB, 76 %
 3, 2731 MiB, 24576 MiB, 0 %
 ```
 
@@ -3158,6 +3158,20 @@ launched icl_aux_fold2 pid=1055332
 AST OK
 patch verified
 launched icl_aux_fold2 pid=1055332
+[cohort] fold 2: 24 users the backbone has never seen, 213 sessions
+[trunk] /data2/chenyuxiang/runs/tf_fold2/last.pt step 40000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+[prefix] FUSED mode: per-token (signal + soft-aligned char)
+[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
+[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
+[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
+[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
+[symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
+  return F.conv1d(input, weight, bias, self.stride,
+[audit] step 0: mode-A 63.10 | mode-C 100.00 (random prefix) | deployment reference ~43-58
+step 100/20000 | loss 13.0578 | aux rot 2.769 (chance 2.83) | aux perm 3.278 (chance 3.26) | lr 1.00e-04 | 1.59 it/s
+step 200/20000 | loss 12.5117 | aux rot 2.420 (chance 2.83) | aux perm 2.978 (chance 3.26) | lr 2.00e-04 | 1.53 it/s
+step 300/20000 | loss 10.4381 | aux rot 2.204 (chance 2.83) | aux perm 2.433 (chance 3.26) | lr 3.00e-04 | 1.55 it/s
+step 400/20000 | loss 5.6576 | aux rot 2.159 (chance 2.83) | aux perm 2.008 (chance 3.26) | lr 4.00e-04 | 1.54 it/s
 ```
 
 ### d3_train.log
@@ -3569,9 +3583,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-step 85400/103000 | loss 1.2940 | lr 5.12e-05 | 483 win/s
-step 85600/103000 | loss 1.2953 | lr 5.01e-05 | 483 win/s
-step 85800/103000 | loss 1.2897 | lr 4.90e-05 | 484 win/s
 step 86000/103000 | loss 1.2967 | lr 4.79e-05 | 484 win/s
 step 86200/103000 | loss 1.2897 | lr 4.68e-05 | 485 win/s
 step 86400/103000 | loss 1.2910 | lr 4.57e-05 | 485 win/s
@@ -3594,6 +3605,9 @@ step 89400/103000 | loss 1.2632 | lr 3.09e-05 | 491 win/s
 step 89600/103000 | loss 1.2671 | lr 3.00e-05 | 491 win/s
 step 89800/103000 | loss 1.2627 | lr 2.91e-05 | 492 win/s
 step 90000/103000 | loss 1.2593 | lr 2.83e-05 | 492 win/s
+step 90200/103000 | loss 1.2604 | lr 2.74e-05 | 492 win/s
+step 90400/103000 | loss 1.2602 | lr 2.66e-05 | 493 win/s
+step 90600/103000 | loss 1.2554 | lr 2.57e-05 | 493 win/s
 ```
 
 ### tf_fold1.log
@@ -3685,9 +3699,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-step 84200/103000 | loss 1.3424 | lr 5.82e-05 | 476 win/s
-step 84400/103000 | loss 1.3477 | lr 5.70e-05 | 476 win/s
-step 84600/103000 | loss 1.3412 | lr 5.58e-05 | 476 win/s
 step 84800/103000 | loss 1.3454 | lr 5.47e-05 | 477 win/s
 step 85000/103000 | loss 1.3405 | lr 5.35e-05 | 477 win/s
 step 85200/103000 | loss 1.3399 | lr 5.23e-05 | 478 win/s
@@ -3710,6 +3721,9 @@ step 88200/103000 | loss 1.3196 | lr 3.65e-05 | 484 win/s
 step 88400/103000 | loss 1.3128 | lr 3.55e-05 | 484 win/s
 step 88600/103000 | loss 1.3136 | lr 3.46e-05 | 484 win/s
 step 88800/103000 | loss 1.3094 | lr 3.36e-05 | 485 win/s
+step 89000/103000 | loss 1.3095 | lr 3.27e-05 | 485 win/s
+step 89200/103000 | loss 1.3089 | lr 3.18e-05 | 486 win/s
+step 89400/103000 | loss 1.3038 | lr 3.09e-05 | 486 win/s
 ```
 
 ### tf_ref.log
