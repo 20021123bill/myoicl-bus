@@ -1,3 +1,6 @@
 AST OK
 joint_fold0 restarting with fix
 relaunched icl_joint_fold0 pid=1183670
+--- 14:55 ---
+[icl_joint_fold0] step 200/30000 | loss 7.2901 | aux rot 2.751 (chance 2.83) | aux perm 3.190 (chance 3.26) 
+[icl_joint_fold1] waiting
