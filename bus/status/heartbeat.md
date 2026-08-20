@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:59:09+08:00
+# heartbeat 2026-08-20T15:59:52+08:00
 
 ## gpu
 ```
 0, 3159 MiB, 24576 MiB, 0 %
 1, 3155 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 82 %
+2, 3169 MiB, 24576 MiB, 83 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3340,6 +3340,8 @@ launched icl_joint_fold1 pid=1211048
         [val] new best mode-C 47.72 -> best.pt
 [15:54] step 2400/20000 | loss 4.6533 | aux rot 1.697 (chance 2.83) | aux perm 1.647 (chance 3.26) | lr 4.93
         [val] new best mode-C 47.72 -> best.pt
+[15:59] step 2700/20000 | loss 4.6886 | aux rot 1.631 (chance 2.83) | aux perm 1.710 (chance 3.26) | lr 4.90
+        [val] new best mode-C 47.72 -> best.pt
 ```
 
 ### 557_zeroshot.log
@@ -3571,6 +3573,7 @@ RuntimeError: shape '[2, 16, 6, 5]' is invalid for input of size 1056
 
 ### 563_keystroke_retry.log
 ```
+building population tuning from 12 other users...
 ```
 
 ### d3_train.log
@@ -3917,7 +3920,6 @@ step 3500/30000 | loss 4.5392 | aux rot 1.635 (chance 2.83) | aux perm 1.568 (ch
 
 ### icl_joint_fold1.log
 ```
-step 600/20000 | loss 5.2351 | aux rot 2.131 (chance 2.83) | aux perm 1.787 (chance 3.26) | lr 3.00e-04 | 0.81 it/s
 step 700/20000 | loss 5.0362 | aux rot 2.080 (chance 2.83) | aux perm 1.784 (chance 3.26) | lr 3.50e-04 | 0.80 it/s
 step 800/20000 | loss 4.6822 | aux rot 2.074 (chance 2.83) | aux perm 1.681 (chance 3.26) | lr 4.00e-04 | 0.81 it/s
 step 900/20000 | loss 4.9979 | aux rot 2.124 (chance 2.83) | aux perm 1.754 (chance 3.26) | lr 4.50e-04 | 0.79 it/s
@@ -3942,6 +3944,7 @@ step 2300/20000 | loss 4.4559 | aux rot 1.691 (chance 2.83) | aux perm 1.677 (ch
 step 2400/20000 | loss 4.6533 | aux rot 1.697 (chance 2.83) | aux perm 1.647 (chance 3.26) | lr 4.93e-04 | 0.81 it/s
 step 2500/20000 | loss 4.5418 | aux rot 1.633 (chance 2.83) | aux perm 1.685 (chance 3.26) | lr 4.92e-04 | 0.82 it/s
 step 2600/20000 | loss 4.7442 | aux rot 1.664 (chance 2.83) | aux perm 1.673 (chance 3.26) | lr 4.91e-04 | 0.82 it/s
+step 2700/20000 | loss 4.6886 | aux rot 1.631 (chance 2.83) | aux perm 1.710 (chance 3.26) | lr 4.90e-04 | 0.83 it/s
 ```
 
 ### teachers_shard0.log
@@ -4139,7 +4142,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-step 4400/103000 | loss 1.8813 | lr 6.99e-04 | 687 win/s
 step 4600/103000 | loss 1.8806 | lr 6.99e-04 | 688 win/s
 step 4800/103000 | loss 1.8993 | lr 6.99e-04 | 688 win/s
 step 5000/103000 | loss 1.8769 | lr 6.99e-04 | 688 win/s
@@ -4164,6 +4166,7 @@ step 8200/103000 | loss 1.8367 | lr 6.94e-04 | 694 win/s
 step 8400/103000 | loss 1.8330 | lr 6.93e-04 | 695 win/s
 step 8600/103000 | loss 1.8384 | lr 6.93e-04 | 696 win/s
 step 8800/103000 | loss 1.8327 | lr 6.92e-04 | 697 win/s
+step 9000/103000 | loss 1.8384 | lr 6.92e-04 | 698 win/s
 ```
 
 ### tf_fold2.log
