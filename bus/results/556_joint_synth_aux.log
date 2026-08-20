@@ -1,1 +1,3 @@
 === wait for tf_fold1_full to finish ===
+using GPU0
+launched icl_joint_fold1 pid=1211048

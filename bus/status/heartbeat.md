@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:03:10+08:00
+# heartbeat 2026-08-20T15:03:53+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 80 %
+0, 3173 MiB, 24576 MiB, 74 %
 1, 3153 MiB, 24576 MiB, 0 %
-2, 12 MiB, 24576 MiB, 0 %
+2, 757 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3386,6 +3386,9 @@ launched icl_joint_fold0 pid=1169828
 --- 14:58 ---
 [icl_joint_fold0] step 300/30000 | loss 6.4928 | aux rot 2.489 (chance 2.83) | aux perm 3.008 (chance 3.26) | lr 1
 [icl_joint_fold1] waiting
+--- 15:03 ---
+[icl_joint_fold0] step 600/30000 | loss 5.3970 | aux rot 2.163 (chance 2.83) | aux perm 2.046 (chance 3.26) | lr 2
+[icl_joint_fold1] waiting
 ```
 
 ### 558_mainline.log
@@ -3765,6 +3768,7 @@ step 200/30000 | loss 7.2901 | aux rot 2.751 (chance 2.83) | aux perm 3.190 (cha
 step 300/30000 | loss 6.4928 | aux rot 2.489 (chance 2.83) | aux perm 3.008 (chance 3.26) | lr 1.00e-04 | 0.83 it/s
 step 400/30000 | loss 6.5187 | aux rot 2.304 (chance 2.83) | aux perm 2.730 (chance 3.26) | lr 1.33e-04 | 0.82 it/s
 step 500/30000 | loss 5.7252 | aux rot 2.179 (chance 2.83) | aux perm 2.377 (chance 3.26) | lr 1.67e-04 | 0.82 it/s
+step 600/30000 | loss 5.3970 | aux rot 2.163 (chance 2.83) | aux perm 2.046 (chance 3.26) | lr 2.00e-04 | 0.84 it/s
 ```
 
 ### teachers_shard0.log
