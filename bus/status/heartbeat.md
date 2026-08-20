@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T14:38:03+08:00
+# heartbeat 2026-08-20T14:38:46+08:00
 
 ## gpu
 ```
 0, 3173 MiB, 24576 MiB, 0 %
 1, 2731 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 78 %
-3, 487 MiB, 24576 MiB, 0 %
+2, 2985 MiB, 24576 MiB, 58 %
+3, 12 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -3310,9 +3310,31 @@ AST OK
 
 ### 557_zeroshot_today.log
 ```
-frozen fold2 twin stopped (kept as ablation)
-AST OK
-=== running on /data2/chenyuxiang/runs/tf_ref_full/last.pt ===
+[canon] canonical profile from 24 training users
+  return F.conv1d(input, weight, bias, self.stride,
+[user0] base  48.24 | k=12 corrected  71.47 (gain -23.23) rolls=[5, 13] margin=0.04/0.01
+[user0] base  48.24 | k=45 corrected  81.89 (gain -33.65) rolls=[12, 4] margin=0.01/0.04
+[user1] base  45.13 | k=12 corrected  69.29 (gain -24.16) rolls=[8, 1] margin=0.01/0.00
+[user1] base  45.13 | k=45 corrected  68.52 (gain -23.39) rolls=[9, 0] margin=0.00/0.01
+[user2] base  40.50 | k=12 corrected  40.34 (gain +0.16) rolls=[0, 0] margin=0.02/0.01
+[user2] base  40.50 | k=45 corrected  75.82 (gain -35.32) rolls=[2, 4] margin=0.01/0.00
+[user3] base  52.14 | k=12 corrected  79.12 (gain -26.98) rolls=[12, 10] margin=0.01/0.03
+[user3] base  52.14 | k=45 corrected  79.45 (gain -27.31) rolls=[6, 0] margin=0.01/0.02
+[user4] base  57.71 | k=12 corrected  58.63 (gain -0.91) rolls=[1, 14] margin=0.03/0.00
+[user4] base  57.71 | k=45 corrected  77.25 (gain -19.53) rolls=[14, 7] margin=0.03/0.00
+[user5] base  38.82 | k=12 corrected  78.65 (gain -39.83) rolls=[11, 3] margin=0.01/0.00
+[user5] base  38.82 | k=45 corrected  41.44 (gain -2.63) rolls=[1, 15] margin=0.00/0.02
+[user6] base  54.48 | k=12 corrected  60.99 (gain -6.52) rolls=[15, 1] margin=0.02/0.03
+[user6] base  54.48 | k=45 corrected  62.68 (gain -8.20) rolls=[1, 14] margin=0.04/0.11
+[user7] base  44.01 | k=12 corrected  53.44 (gain -9.43) rolls=[1, 13] margin=0.01/0.00
+[user7] base  44.01 | k=45 corrected  70.12 (gain -26.10) rolls=[15, 4] margin=0.01/0.01
+
+=== TRAINING-FREE EXPLICIT ADAPTATION -- 8 real unseen users ===
+mode A (no calibration)      :  47.63
+explicit correction k=12     :  63.99  (gain -16.36)
+explicit correction k=45     :  69.65  (gain -22.02)
+[saved] /data2/chenyuxiang/runs/remix_zeroshot.json
+=== 557 done ===
 ```
 
 ### d3_train.log
@@ -3427,7 +3449,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_aux_fold0.log
 ```
-step 500/20000 | loss 5.4676 | aux rot 2.210 (chance 2.83) | aux perm 1.639 (chance 3.26) | lr 5.00e-04 | 1.34 it/s
 step 600/20000 | loss 5.1117 | aux rot 2.040 (chance 2.83) | aux perm 1.660 (chance 3.26) | lr 6.00e-04 | 1.32 it/s
 step 700/20000 | loss 5.2765 | aux rot 2.074 (chance 2.83) | aux perm 1.661 (chance 3.26) | lr 7.00e-04 | 1.35 it/s
 step 800/20000 | loss 4.9588 | aux rot 2.050 (chance 2.83) | aux perm 1.750 (chance 3.26) | lr 8.00e-04 | 1.38 it/s
@@ -3452,6 +3473,7 @@ step 2200/20000 | loss 5.0857 | aux rot 2.010 (chance 2.83) | aux perm 1.760 (ch
 step 2300/20000 | loss 4.8654 | aux rot 1.966 (chance 2.83) | aux perm 1.729 (chance 3.26) | lr 9.88e-04 | 1.32 it/s
 step 2400/20000 | loss 4.5350 | aux rot 1.811 (chance 2.83) | aux perm 1.742 (chance 3.26) | lr 9.87e-04 | 1.32 it/s
 step 2500/20000 | loss 4.9696 | aux rot 1.938 (chance 2.83) | aux perm 1.592 (chance 3.26) | lr 9.85e-04 | 1.31 it/s
+step 2600/20000 | loss 4.7692 | aux rot 1.888 (chance 2.83) | aux perm 1.744 (chance 3.26) | lr 9.83e-04 | 1.30 it/s
 ```
 
 ### icl_aux_fold2.log
