@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T14:42:21+08:00
+# heartbeat 2026-08-20T14:43:05+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 36 %
+0, 3173 MiB, 24576 MiB, 43 %
 1, 2731 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 71 %
+2, 2985 MiB, 24576 MiB, 81 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -86,6 +86,7 @@
 555_gate_full_eval                       DONE rc=127
 556_joint_synth_aux                      DONE rc=127
 557_zeroshot_today                       DONE rc=127
+558_joint_is_mainline                    DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3357,6 +3358,12 @@ explicit correction k=12     :  63.99  (gain -16.36)
 explicit correction k=45     :  69.65  (gain -22.02)
 [saved] /data2/chenyuxiang/runs/remix_zeroshot.json
 === 557 done ===
+```
+
+### 558_joint_is_mainline.log
+```
+=== stop the frozen fold0 twin (kept as the ablation row) ===
+stopped
 ```
 
 ### d3_train.log

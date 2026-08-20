@@ -1,0 +1,5 @@
+=== stop the frozen fold0 twin (kept as the ablation row) ===
+stopped
+=== launch joint main-line on fold0_full (GPU freed by the twin) ===
+launched icl_joint_fold0 pid=1169828
+=== stream both joint runs (16 h) ===
