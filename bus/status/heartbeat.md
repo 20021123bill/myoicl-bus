@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:23:14+08:00
+# heartbeat 2026-08-20T15:23:57+08:00
 
 ## gpu
 ```
-0, 6313 MiB, 24576 MiB, 0 %
+0, 6313 MiB, 24576 MiB, 85 %
 1, 3155 MiB, 24576 MiB, 0 %
-2, 3167 MiB, 24576 MiB, 69 %
+2, 3167 MiB, 24576 MiB, 70 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3236,16 +3236,6 @@ k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
 
 ### 554_probes.log
 ```
---- 14:03 icl_aux_fold2 ---
-[ckpt] /data2/chenyuxiang/runs/icl_aux_fold2/best.pt step 1000
-k= 12 ( 48s): mode-A  53.24 | mode-C  57.82 | gain  -4.58 (24 episodes)
-k= 45 (180s): mode-A  53.24 | mode-C  59.84 | gain  -6.60 (24 episodes)
-k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
---- 14:29 icl_aux_fold2 ---
-[ckpt] /data2/chenyuxiang/runs/icl_aux_fold2/best.pt step 3000
-k= 12 ( 48s): mode-A  54.48 | mode-C  58.87 | gain  -4.39 (24 episodes)
-k= 45 (180s): mode-A  54.10 | mode-C  56.75 | gain  -2.65 (24 episodes)
-k= 12 ( 48s): mode-A  64.02 | mode-C  67.17 | gain  -3.16 (24 episodes)
 --- 14:29 icl_aux_fold0 ---
 [ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
 k= 12 ( 48s): mode-A  57.56 | mode-C  54.39 | gain  +3.17 (24 episodes)
@@ -3261,6 +3251,16 @@ k= 12 ( 48s): mode-A  64.77 | mode-C  68.06 | gain  -3.28 (24 episodes)
 k= 12 ( 48s): mode-A  55.40 | mode-C  53.98 | gain  +1.41 (24 episodes)
 k= 45 (180s): mode-A  55.82 | mode-C  64.02 | gain  -8.20 (24 episodes)
 k= 12 ( 48s): mode-A  67.17 | mode-C  66.45 | gain  +0.72 (24 episodes)
+--- 15:20 icl_aux_fold2 ---
+[ckpt] /data2/chenyuxiang/runs/icl_aux_fold2/best.pt step 3000
+k= 12 ( 48s): mode-A  53.38 | mode-C  58.30 | gain  -4.92 (24 episodes)
+k= 45 (180s): mode-A  53.12 | mode-C  56.73 | gain  -3.62 (24 episodes)
+k= 12 ( 48s): mode-A  64.96 | mode-C  67.00 | gain  -2.03 (24 episodes)
+--- 15:21 icl_aux_fold0 ---
+[ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
+k= 12 ( 48s): mode-A  55.14 | mode-C  53.79 | gain  +1.35 (24 episodes)
+k= 45 (180s): mode-A  55.68 | mode-C  63.62 | gain  -7.94 (24 episodes)
+k= 12 ( 48s): mode-A  66.50 | mode-C  66.31 | gain  +0.19 (24 episodes)
 ```
 
 ### 554_sprint.log
@@ -3382,10 +3382,6 @@ explicit correction k=45     :  69.65  (gain -22.02)
 
 ### 558_joint_is_mainline.log
 ```
-launched icl_joint_fold0 pid=1169828
-=== stream both joint runs (16 h) ===
---- 14:48 ---
-[icl_joint_fold0] step 200/30000 | loss 6.7254 | aux rot 2.736 (chance 2.83) | aux perm 3.197 (chance 3.26) | lr 6
 [icl_joint_fold1] waiting
 --- 14:53 ---
 [icl_joint_fold0] step 100/30000 | loss 9.9521 | aux rot 2.875 (chance 2.83) | aux perm 3.271 (chance 3.26) | lr 3
@@ -3407,6 +3403,10 @@ launched icl_joint_fold0 pid=1169828
 [icl_joint_fold0] step 1400/30000 | loss 4.8974 | aux rot 2.092 (chance 2.83) | aux perm 1.600 (chance 3.26) | lr 
         [val] new best mode-C 47.71 -> best.pt
 [icl_joint_fold1] step 600/20000 | loss 5.2351 | aux rot 2.131 (chance 2.83) | aux perm 1.787 (chance 3.26) | lr 3
+--- 15:23 ---
+[icl_joint_fold0] step 1600/30000 | loss 4.9454 | aux rot 1.993 (chance 2.83) | aux perm 1.673 (chance 3.26) | lr 
+        [val] new best mode-C 47.71 -> best.pt
+[icl_joint_fold1] step 800/20000 | loss 4.6822 | aux rot 2.074 (chance 2.83) | aux perm 1.681 (chance 3.26) | lr 4
 ```
 
 ### 558_mainline.log
@@ -3809,7 +3809,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
 [prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
 [prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
 [prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
@@ -3834,6 +3833,7 @@ step 1200/30000 | loss 5.1696 | aux rot 2.065 (chance 2.83) | aux perm 1.758 (ch
 step 1300/30000 | loss 4.9723 | aux rot 2.072 (chance 2.83) | aux perm 1.674 (chance 3.26) | lr 4.33e-04 | 0.86 it/s
 step 1400/30000 | loss 4.8974 | aux rot 2.092 (chance 2.83) | aux perm 1.600 (chance 3.26) | lr 4.67e-04 | 0.86 it/s
 step 1500/30000 | loss 5.2012 | aux rot 2.043 (chance 2.83) | aux perm 1.789 (chance 3.26) | lr 5.00e-04 | 0.86 it/s
+step 1600/30000 | loss 4.9454 | aux rot 1.993 (chance 2.83) | aux perm 1.673 (chance 3.26) | lr 5.00e-04 | 0.86 it/s
 ```
 
 ### icl_joint_fold1.log
@@ -3858,6 +3858,7 @@ step 400/20000 | loss 6.2978 | aux rot 2.187 (chance 2.83) | aux perm 2.488 (cha
 step 500/20000 | loss 5.6428 | aux rot 2.157 (chance 2.83) | aux perm 2.027 (chance 3.26) | lr 2.50e-04 | 0.80 it/s
 step 600/20000 | loss 5.2351 | aux rot 2.131 (chance 2.83) | aux perm 1.787 (chance 3.26) | lr 3.00e-04 | 0.81 it/s
 step 700/20000 | loss 5.0362 | aux rot 2.080 (chance 2.83) | aux perm 1.784 (chance 3.26) | lr 3.50e-04 | 0.80 it/s
+step 800/20000 | loss 4.6822 | aux rot 2.074 (chance 2.83) | aux perm 1.681 (chance 3.26) | lr 4.00e-04 | 0.81 it/s
 ```
 
 ### teachers_shard0.log
@@ -4055,9 +4056,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-  fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
-[split] fold 2: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
-[split] official test users: 16 sessions (never trained on in either mode)
 [data] 168679 training windows of 4.0s
 [data] monitor sets: 512 test windows, 512 fold-heldout windows
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
@@ -4080,6 +4078,9 @@ step 2000/103000 | loss 1.8585 | lr 6.80e-04 | 695 win/s
 step 2200/103000 | loss 1.8944 | lr 7.00e-04 | 695 win/s
 step 2400/103000 | loss 1.8904 | lr 7.00e-04 | 695 win/s
 step 2600/103000 | loss 1.9050 | lr 7.00e-04 | 695 win/s
+step 2800/103000 | loss 1.8994 | lr 7.00e-04 | 695 win/s
+step 3000/103000 | loss 1.8967 | lr 7.00e-04 | 694 win/s
+step 3200/103000 | loss 1.8818 | lr 7.00e-04 | 690 win/s
 ```
 
 ### tf_fold2.log
