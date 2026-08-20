@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T10:29:08+08:00
+# heartbeat 2026-08-20T10:29:51+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 58 %
-1, 3125 MiB, 24576 MiB, 72 %
-2, 2985 MiB, 24576 MiB, 20 %
+0, 3173 MiB, 24576 MiB, 68 %
+1, 3125 MiB, 24576 MiB, 67 %
+2, 2985 MiB, 24576 MiB, 49 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3479,9 +3479,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### tf_fold0_full.log
 ```
-step 84600/103000 | loss 1.2765 | lr 5.58e-05 | 653 win/s
-step 84800/103000 | loss 1.2847 | lr 5.47e-05 | 653 win/s
-step 85000/103000 | loss 1.2776 | lr 5.35e-05 | 653 win/s
 step 85200/103000 | loss 1.2790 | lr 5.23e-05 | 653 win/s
 step 85400/103000 | loss 1.2783 | lr 5.12e-05 | 654 win/s
 step 85600/103000 | loss 1.2715 | lr 5.01e-05 | 654 win/s
@@ -3504,6 +3501,9 @@ step 88600/103000 | loss 1.2526 | lr 3.46e-05 | 655 win/s
 step 88800/103000 | loss 1.2540 | lr 3.36e-05 | 655 win/s
 step 89000/103000 | loss 1.2456 | lr 3.27e-05 | 655 win/s
 step 89200/103000 | loss 1.2521 | lr 3.18e-05 | 655 win/s
+step 89400/103000 | loss 1.2435 | lr 3.09e-05 | 655 win/s
+step 89600/103000 | loss 1.2437 | lr 3.00e-05 | 655 win/s
+step 89800/103000 | loss 1.2477 | lr 2.91e-05 | 655 win/s
 ```
 
 ### tf_fold0.log
@@ -3537,8 +3537,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-[val] step 56000: 8-test-user CER 47.87 | fold-heldout-user CER 54.96  (their Tiny reference: 35.9)
-step 56200/103000 | loss 1.5523 | lr 3.10e-04 | 443 win/s
 step 56400/103000 | loss 1.5454 | lr 3.08e-04 | 443 win/s
 step 56600/103000 | loss 1.5519 | lr 3.06e-04 | 443 win/s
 step 56800/103000 | loss 1.5506 | lr 3.04e-04 | 444 win/s
@@ -3562,6 +3560,8 @@ step 60000/103000 | loss 1.5123 | lr 2.69e-04 | 445 win/s
 step 60200/103000 | loss 1.5150 | lr 2.67e-04 | 445 win/s
 step 60400/103000 | loss 1.5120 | lr 2.65e-04 | 445 win/s
 step 60600/103000 | loss 1.5098 | lr 2.63e-04 | 445 win/s
+step 60800/103000 | loss 1.5092 | lr 2.61e-04 | 445 win/s
+step 61000/103000 | loss 1.5070 | lr 2.59e-04 | 446 win/s
 ```
 
 ### tf_fold1.log
@@ -3653,8 +3653,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-step 54200/103000 | loss 1.5904 | lr 3.32e-04 | 428 win/s
-step 54400/103000 | loss 1.6018 | lr 3.30e-04 | 428 win/s
 step 54600/103000 | loss 1.6071 | lr 3.27e-04 | 429 win/s
 step 54800/103000 | loss 1.6062 | lr 3.25e-04 | 429 win/s
 step 55000/103000 | loss 1.5947 | lr 3.23e-04 | 429 win/s
@@ -3678,6 +3676,8 @@ step 58200/103000 | loss 1.5799 | lr 2.89e-04 | 431 win/s
 step 58400/103000 | loss 1.5668 | lr 2.86e-04 | 431 win/s
 step 58600/103000 | loss 1.5891 | lr 2.84e-04 | 431 win/s
 step 58800/103000 | loss 1.5660 | lr 2.82e-04 | 432 win/s
+step 59000/103000 | loss 1.5682 | lr 2.80e-04 | 432 win/s
+step 59200/103000 | loss 1.5648 | lr 2.78e-04 | 432 win/s
 ```
 
 ### tf_ref.log
