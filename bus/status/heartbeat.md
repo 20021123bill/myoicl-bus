@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:11:25+08:00
+# heartbeat 2026-08-20T17:12:08+08:00
 
 ## gpu
 ```
-0, 6275 MiB, 24576 MiB, 64 %
-1, 6058 MiB, 24576 MiB, 57 %
-2, 3169 MiB, 24576 MiB, 66 %
+0, 6275 MiB, 24576 MiB, 0 %
+1, 6058 MiB, 24576 MiB, 0 %
+2, 3169 MiB, 24576 MiB, 53 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -4052,7 +4052,6 @@ step 7100/20000 | loss 4.0573 | aux rot 1.400 (chance 2.83) | aux perm 1.579 (ch
 
 ### icl_split_fold0.log
 ```
-[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
 [prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
 [prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
 [meta-split] meta-train 16 users / 137 sessions | meta-test 8 users / 76 sessions (disjoint, both unseen by the backbone)
@@ -4077,11 +4076,11 @@ step 1000/20000 | loss 3.6733 | aux rot 2.178 (chance 2.83) | aux perm 1.506 (ch
 step 1100/20000 | loss 3.8112 | aux rot 2.130 (chance 2.83) | aux perm 1.650 (chance 3.26) | lr 3.00e-04 | 1.73 it/s
 step 1200/20000 | loss 3.9258 | aux rot 2.109 (chance 2.83) | aux perm 1.766 (chance 3.26) | lr 3.00e-04 | 1.73 it/s
 step 1300/20000 | loss 4.0147 | aux rot 2.110 (chance 2.83) | aux perm 1.697 (chance 3.26) | lr 3.00e-04 | 1.75 it/s
+step 1400/20000 | loss 4.0839 | aux rot 2.245 (chance 2.83) | aux perm 1.608 (chance 3.26) | lr 3.00e-04 | 1.76 it/s
 ```
 
 ### icl_split_fold1.log
 ```
-[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
 [prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
 [prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
 [prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
@@ -4106,6 +4105,7 @@ step 1000/20000 | loss 3.6488 | aux rot 2.153 (chance 2.83) | aux perm 1.504 (ch
 [val] new best mode-C 58.91 -> best.pt
 step 1100/20000 | loss 3.7616 | aux rot 2.087 (chance 2.83) | aux perm 1.650 (chance 3.26) | lr 3.00e-04 | 1.70 it/s
 step 1200/20000 | loss 3.8112 | aux rot 2.147 (chance 2.83) | aux perm 1.758 (chance 3.26) | lr 3.00e-04 | 1.70 it/s
+step 1300/20000 | loss 3.9420 | aux rot 2.057 (chance 2.83) | aux perm 1.678 (chance 3.26) | lr 3.00e-04 | 1.73 it/s
 ```
 
 ### teachers_shard0.log
