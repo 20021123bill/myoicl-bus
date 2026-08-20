@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:15:01+08:00
+# heartbeat 2026-08-20T17:15:44+08:00
 
 ## gpu
 ```
-0, 6275 MiB, 24576 MiB, 22 %
-1, 6120 MiB, 24576 MiB, 26 %
-2, 3169 MiB, 24576 MiB, 61 %
+0, 6275 MiB, 24576 MiB, 0 %
+1, 6120 MiB, 24576 MiB, 30 %
+2, 3169 MiB, 24576 MiB, 85 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -4008,7 +4008,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-step 6100/30000 | loss 4.5824 | aux rot 1.525 (chance 2.83) | aux perm 1.670 (chance 3.26) | lr 4.69e-04 | 0.93 it/s
 step 6200/30000 | loss 4.5625 | aux rot 1.473 (chance 2.83) | aux perm 1.708 (chance 3.26) | lr 4.67e-04 | 0.93 it/s
 step 6300/30000 | loss 4.6280 | aux rot 1.417 (chance 2.83) | aux perm 1.688 (chance 3.26) | lr 4.66e-04 | 0.93 it/s
 step 6400/30000 | loss 4.3103 | aux rot 1.425 (chance 2.83) | aux perm 1.602 (chance 3.26) | lr 4.64e-04 | 0.94 it/s
@@ -4033,6 +4032,7 @@ step 8000/30000 | loss 4.2378 | aux rot 1.322 (chance 2.83) | aux perm 1.748 (ch
 [val] step 8000: mode-A 40.52 | mode-C 40.68 | gain C -0.16   (REAL novel subjects, fold 0)
 [val] new best mode-C 40.68 -> best.pt
 step 8100/30000 | loss 4.3292 | aux rot 1.372 (chance 2.83) | aux perm 1.705 (chance 3.26) | lr 4.37e-04 | 0.95 it/s
+step 8200/30000 | loss 4.1166 | aux rot 1.389 (chance 2.83) | aux perm 1.664 (chance 3.26) | lr 4.35e-04 | 0.95 it/s
 ```
 
 ### icl_joint_fold1.log
@@ -4066,7 +4066,6 @@ step 7400/20000 | loss 4.0348 | aux rot 1.309 (chance 2.83) | aux perm 1.675 (ch
 
 ### icl_split_fold0.log
 ```
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 50.89 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 step 100/20000 | loss 8.5527 | aux rot 2.860 (chance 2.83) | aux perm 3.278 (chance 3.26) | lr 3.00e-05 | 1.88 it/s
@@ -4091,11 +4090,11 @@ step 1500/20000 | loss 3.9426 | aux rot 2.077 (chance 2.83) | aux perm 1.599 (ch
 [val] step 1500: IDENTITY A 48.18 C 50.79 gain -2.61 | PERMUTED A 62.54 C 64.00 gain -1.46 | mem-gauge(meta-train A) 45.06   (meta-test users, fold 0)
 [val] new best mode-C 50.79 -> best.pt
 step 1600/20000 | loss 3.4373 | aux rot 2.035 (chance 2.83) | aux perm 1.673 (chance 3.26) | lr 2.99e-04 | 1.74 it/s
+step 1700/20000 | loss 3.8778 | aux rot 2.028 (chance 2.83) | aux perm 1.588 (chance 3.26) | lr 2.99e-04 | 1.75 it/s
 ```
 
 ### icl_split_fold1.log
 ```
-[meta-split] meta-train 16 users / 146 sessions | meta-test 8 users / 60 sessions (disjoint, both unseen by the backbone)
 [symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
@@ -4120,6 +4119,7 @@ step 1300/20000 | loss 3.9420 | aux rot 2.057 (chance 2.83) | aux perm 1.678 (ch
 step 1400/20000 | loss 3.9821 | aux rot 2.199 (chance 2.83) | aux perm 1.609 (chance 3.26) | lr 3.00e-04 | 1.73 it/s
 step 1500/20000 | loss 3.9224 | aux rot 2.066 (chance 2.83) | aux perm 1.592 (chance 3.26) | lr 2.99e-04 | 1.71 it/s
 [val] step 1500: IDENTITY A 57.12 C 59.58 gain -2.47 | PERMUTED A 68.48 C 70.32 gain -1.84 | mem-gauge(meta-train A) 37.18   (meta-test users, fold 1)
+step 1600/20000 | loss 3.3163 | aux rot 1.986 (chance 2.83) | aux perm 1.672 (chance 3.26) | lr 2.99e-04 | 1.72 it/s
 ```
 
 ### teachers_shard0.log
