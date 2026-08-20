@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:28:16+08:00
+# heartbeat 2026-08-20T15:28:59+08:00
 
 ## gpu
 ```
-0, 6313 MiB, 24576 MiB, 63 %
-1, 3155 MiB, 24576 MiB, 0 %
-2, 3167 MiB, 24576 MiB, 26 %
+0, 6313 MiB, 24576 MiB, 67 %
+1, 3155 MiB, 24576 MiB, 22 %
+2, 3169 MiB, 24576 MiB, 69 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -4064,9 +4064,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-[data] monitor sets: 512 test windows, 512 fold-heldout windows
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [init] continued from /data2/chenyuxiang/runs/tf_fold2/last.pt (step 40000, fold 2); optimizer starts fresh
 [model] featurizer [11, 3, 3]/[5, 2, 2] -> 100 Hz frames (400 per window)
 [model] tiny: 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
@@ -4089,6 +4086,9 @@ step 2800/103000 | loss 1.8994 | lr 7.00e-04 | 695 win/s
 step 3000/103000 | loss 1.8967 | lr 7.00e-04 | 694 win/s
 step 3200/103000 | loss 1.8818 | lr 7.00e-04 | 690 win/s
 step 3400/103000 | loss 1.8751 | lr 7.00e-04 | 690 win/s
+step 3600/103000 | loss 1.8700 | lr 7.00e-04 | 689 win/s
+step 3800/103000 | loss 1.8937 | lr 6.99e-04 | 688 win/s
+step 4000/103000 | loss 1.8665 | lr 6.99e-04 | 688 win/s
 ```
 
 ### tf_fold2.log
