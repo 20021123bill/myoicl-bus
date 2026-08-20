@@ -88,3 +88,4 @@ step 6300/30000 | loss 4.6280 | aux rot 1.417 (chance 2.83) | aux perm 1.688 (ch
 step 6400/30000 | loss 4.3103 | aux rot 1.425 (chance 2.83) | aux perm 1.602 (chance 3.26) | lr 4.64e-04 | 0.94 it/s
 step 6500/30000 | loss 4.2663 | aux rot 1.485 (chance 2.83) | aux perm 1.673 (chance 3.26) | lr 4.63e-04 | 0.94 it/s
 step 6600/30000 | loss 4.0294 | aux rot 1.440 (chance 2.83) | aux perm 1.642 (chance 3.26) | lr 4.62e-04 | 0.94 it/s
+step 6700/30000 | loss 4.0256 | aux rot 1.378 (chance 2.83) | aux perm 1.714 (chance 3.26) | lr 4.60e-04 | 0.94 it/s
