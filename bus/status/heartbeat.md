@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:58:26+08:00
+# heartbeat 2026-08-20T15:59:09+08:00
 
 ## gpu
 ```
 0, 3159 MiB, 24576 MiB, 0 %
 1, 3155 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 49 %
+2, 3169 MiB, 24576 MiB, 82 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -91,6 +91,7 @@
 560_myocorl_launch                       DONE rc=127
 561_encoding_signal_diag                 DONE rc=127
 562_keystroke_foundation                 DONE rc=127
+563_keystroke_retry                      DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3568,6 +3569,10 @@ RuntimeError: shape '[2, 16, 6, 5]' is invalid for input of size 1056
 === 562 done ===
 ```
 
+### 563_keystroke_retry.log
+```
+```
+
 ### d3_train.log
 ```
 [val] step 6000: mode-C CER 16.99 | mode-B CER 17.13 | mode-A CER 15.88 | gain C -1.11 / B -1.25 | loss 0.6158
@@ -4134,9 +4139,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-[val] step 4000: 8-test-user CER 48.72 | fold-heldout-user CER 56.24  (their Tiny reference: 35.9)
-[val] new best 48.72 -> best.pt
-step 4200/103000 | loss 1.8763 | lr 6.99e-04 | 687 win/s
 step 4400/103000 | loss 1.8813 | lr 6.99e-04 | 687 win/s
 step 4600/103000 | loss 1.8806 | lr 6.99e-04 | 688 win/s
 step 4800/103000 | loss 1.8993 | lr 6.99e-04 | 688 win/s
@@ -4159,6 +4161,9 @@ step 8000/103000 | loss 1.8417 | lr 6.94e-04 | 693 win/s
 [val] step 8000: 8-test-user CER 48.65 | fold-heldout-user CER 57.63  (their Tiny reference: 35.9)
 [val] new best 48.65 -> best.pt
 step 8200/103000 | loss 1.8367 | lr 6.94e-04 | 694 win/s
+step 8400/103000 | loss 1.8330 | lr 6.93e-04 | 695 win/s
+step 8600/103000 | loss 1.8384 | lr 6.93e-04 | 696 win/s
+step 8800/103000 | loss 1.8327 | lr 6.92e-04 | 697 win/s
 ```
 
 ### tf_fold2.log
