@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T14:12:13+08:00
+# heartbeat 2026-08-20T14:12:56+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 10 %
-1, 2731 MiB, 24576 MiB, 35 %
-2, 2985 MiB, 24576 MiB, 62 %
-3, 2731 MiB, 24576 MiB, 0 %
+0, 3173 MiB, 24576 MiB, 43 %
+1, 2731 MiB, 24576 MiB, 32 %
+2, 2985 MiB, 24576 MiB, 93 %
+3, 2731 MiB, 24576 MiB, 10 %
 ```
 
 ## jobs
@@ -83,6 +83,7 @@
 552_fused_frozen                         DONE rc=127
 553_aux_supervised                       DONE rc=127
 554_allgpu_sprint                        DONE rc=127
+555_gate_full_eval                       DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3245,6 +3246,11 @@ probe watcher pid=1090251
 k= 12 ( 48s): mode-A  53.24 | mode-C  57.82 | gain  -4.58 (24 episodes)
 k= 45 (180s): mode-A  53.24 | mode-C  59.84 | gain  -6.60 (24 episodes)
 k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
+```
+
+### 555_gate_full_eval.log
+```
+=== wait for ref_full / fold1_full to finish ===
 ```
 
 ### d3_train.log
