@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T16:43:30+08:00
+# heartbeat 2026-08-20T16:44:13+08:00
 
 ## gpu
 ```
-0, 3159 MiB, 24576 MiB, 7 %
-1, 3155 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 56 %
+0, 3159 MiB, 24576 MiB, 0 %
+1, 3155 MiB, 24576 MiB, 37 %
+2, 3169 MiB, 24576 MiB, 68 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3241,15 +3241,6 @@ k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
 
 ### 554_probes.log
 ```
-[ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
-k= 12 ( 48s): mode-A  55.14 | mode-C  53.79 | gain  +1.35 (24 episodes)
-k= 45 (180s): mode-A  55.68 | mode-C  63.62 | gain  -7.94 (24 episodes)
-k= 12 ( 48s): mode-A  66.50 | mode-C  66.31 | gain  +0.19 (24 episodes)
---- 15:46 icl_aux_fold2 ---
-[ckpt] /data2/chenyuxiang/runs/icl_aux_fold2/best.pt step 3000
-k= 12 ( 48s): mode-A  54.00 | mode-C  58.17 | gain  -4.17 (24 episodes)
-k= 45 (180s): mode-A  53.61 | mode-C  56.11 | gain  -2.50 (24 episodes)
-k= 12 ( 48s): mode-A  63.26 | mode-C  67.03 | gain  -3.77 (24 episodes)
 --- 15:47 icl_aux_fold0 ---
 [ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
 k= 12 ( 48s): mode-A  54.93 | mode-C  53.80 | gain  +1.14 (24 episodes)
@@ -3266,6 +3257,15 @@ k= 12 ( 48s): mode-A  54.73 | mode-C  54.21 | gain  +0.52 (24 episodes)
 k= 45 (180s): mode-A  55.86 | mode-C  62.14 | gain  -6.28 (24 episodes)
 k= 12 ( 48s): mode-A  65.48 | mode-C  66.52 | gain  -1.04 (24 episodes)
 --- 16:38 icl_aux_fold2 ---
+[ckpt] /data2/chenyuxiang/runs/icl_aux_fold2/best.pt step 3000
+k= 12 ( 48s): mode-A  52.89 | mode-C  57.21 | gain  -4.32 (24 episodes)
+k= 45 (180s): mode-A  54.01 | mode-C  56.87 | gain  -2.86 (24 episodes)
+k= 12 ( 48s): mode-A  64.27 | mode-C  67.52 | gain  -3.25 (24 episodes)
+--- 16:38 icl_aux_fold0 ---
+[ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
+k= 12 ( 48s): mode-A  55.66 | mode-C  54.33 | gain  +1.33 (24 episodes)
+k= 45 (180s): mode-A  55.57 | mode-C  62.59 | gain  -7.02 (24 episodes)
+k= 12 ( 48s): mode-A  66.53 | mode-C  65.97 | gain  +0.56 (24 episodes)
 ```
 
 ### 554_sprint.log
@@ -4179,9 +4179,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-step 11600/103000 | loss 1.8305 | lr 6.85e-04 | 708 win/s
-step 11800/103000 | loss 1.8242 | lr 6.84e-04 | 708 win/s
-step 12000/103000 | loss 1.7907 | lr 6.83e-04 | 708 win/s
 [val] step 12000: 8-test-user CER 49.70 | fold-heldout-user CER 57.65  (their Tiny reference: 35.9)
 step 12200/103000 | loss 1.7727 | lr 6.83e-04 | 708 win/s
 step 12400/103000 | loss 1.7706 | lr 6.82e-04 | 709 win/s
@@ -4204,6 +4201,9 @@ step 15600/103000 | loss 1.7606 | lr 6.69e-04 | 716 win/s
 step 15800/103000 | loss 1.7422 | lr 6.68e-04 | 716 win/s
 step 16000/103000 | loss 1.7255 | lr 6.68e-04 | 716 win/s
 [val] step 16000: 8-test-user CER 49.66 | fold-heldout-user CER 57.32  (their Tiny reference: 35.9)
+step 16200/103000 | loss 1.7566 | lr 6.67e-04 | 716 win/s
+step 16400/103000 | loss 1.7396 | lr 6.66e-04 | 717 win/s
+step 16600/103000 | loss 1.7514 | lr 6.65e-04 | 717 win/s
 ```
 
 ### tf_fold2.log
