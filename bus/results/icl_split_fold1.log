@@ -16,3 +16,6 @@ step 100/20000 | loss 7.0961 | aux rot 2.808 (chance 2.83) | aux perm 3.273 (cha
 step 200/20000 | loss 5.8444 | aux rot 2.723 (chance 2.83) | aux perm 3.204 (chance 3.26) | lr 6.00e-05 | 1.78 it/s
 step 300/20000 | loss 4.9437 | aux rot 2.620 (chance 2.83) | aux perm 3.074 (chance 3.26) | lr 9.00e-05 | 1.88 it/s
 step 400/20000 | loss 5.3398 | aux rot 2.482 (chance 2.83) | aux perm 2.940 (chance 3.26) | lr 1.20e-04 | 1.75 it/s
+step 500/20000 | loss 4.6027 | aux rot 2.414 (chance 2.83) | aux perm 2.645 (chance 3.26) | lr 1.50e-04 | 1.77 it/s
+[val] step 500: IDENTITY A 55.82 C 75.80 gain -19.98 | PERMUTED A 67.62 C 81.28 gain -13.66 | mem-gauge(meta-train A) 44.68   (meta-test users, fold 1)
+[val] new best mode-C 75.80 -> best.pt

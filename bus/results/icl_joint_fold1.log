@@ -88,3 +88,4 @@ step 6400/20000 | loss 4.2902 | aux rot 1.392 (chance 2.83) | aux perm 1.610 (ch
 step 6500/20000 | loss 4.1344 | aux rot 1.332 (chance 2.83) | aux perm 1.660 (chance 3.26) | lr 4.04e-04 | 0.95 it/s
 step 6600/20000 | loss 3.9101 | aux rot 1.355 (chance 2.83) | aux perm 1.642 (chance 3.26) | lr 4.00e-04 | 0.95 it/s
 step 6700/20000 | loss 4.0458 | aux rot 1.382 (chance 2.83) | aux perm 1.705 (chance 3.26) | lr 3.97e-04 | 0.95 it/s
+step 6800/20000 | loss 4.2060 | aux rot 1.382 (chance 2.83) | aux perm 1.648 (chance 3.26) | lr 3.94e-04 | 0.95 it/s

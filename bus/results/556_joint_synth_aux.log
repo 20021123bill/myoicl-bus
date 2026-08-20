@@ -43,3 +43,5 @@ launched icl_joint_fold1 pid=1211048
         [val] step 6000: mode-A 41.87 | mode-C 43.37 | gain C -1.50   (REAL novel subjects, fold 1)
 [16:59] step 6500/20000 | loss 4.1344 | aux rot 1.332 (chance 2.83) | aux perm 1.660 (chance 3.26) | lr 4.04
         [val] step 6000: mode-A 41.87 | mode-C 43.37 | gain C -1.50   (REAL novel subjects, fold 1)
+[17:04] step 6800/20000 | loss 4.2060 | aux rot 1.382 (chance 2.83) | aux perm 1.648 (chance 3.26) | lr 3.94
+        [val] step 6000: mode-A 41.87 | mode-C 43.37 | gain C -1.50   (REAL novel subjects, fold 1)
