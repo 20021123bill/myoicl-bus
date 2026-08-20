@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T16:09:11+08:00
+# heartbeat 2026-08-20T16:09:53+08:00
 
 ## gpu
 ```
 0, 3159 MiB, 24576 MiB, 0 %
-1, 3155 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 74 %
+1, 3155 MiB, 24576 MiB, 1 %
+2, 3169 MiB, 24576 MiB, 59 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3344,6 +3344,8 @@ launched icl_joint_fold1 pid=1211048
         [val] new best mode-C 47.72 -> best.pt
 [16:04] step 3000/20000 | loss 4.7925 | aux rot 1.586 (chance 2.83) | aux perm 1.806 (chance 3.26) | lr 4.86
         [val] new best mode-C 44.45 -> best.pt
+[16:09] step 3300/20000 | loss 4.6303 | aux rot 1.567 (chance 2.83) | aux perm 1.717 (chance 3.26) | lr 4.82
+        [val] new best mode-C 44.45 -> best.pt
 ```
 
 ### 557_zeroshot.log
@@ -3925,7 +3927,6 @@ step 4100/30000 | loss 4.3809 | aux rot 1.525 (chance 2.83) | aux perm 1.589 (ch
 
 ### icl_joint_fold1.log
 ```
-step 1200/20000 | loss 5.0613 | aux rot 2.000 (chance 2.83) | aux perm 1.750 (chance 3.26) | lr 5.00e-04 | 0.78 it/s
 step 1300/20000 | loss 4.8615 | aux rot 1.967 (chance 2.83) | aux perm 1.675 (chance 3.26) | lr 5.00e-04 | 0.78 it/s
 step 1400/20000 | loss 4.8311 | aux rot 1.996 (chance 2.83) | aux perm 1.603 (chance 3.26) | lr 4.99e-04 | 0.78 it/s
 step 1500/20000 | loss 5.1511 | aux rot 1.905 (chance 2.83) | aux perm 1.784 (chance 3.26) | lr 4.99e-04 | 0.78 it/s
@@ -3950,6 +3951,7 @@ step 3000/20000 | loss 4.7925 | aux rot 1.586 (chance 2.83) | aux perm 1.806 (ch
 [val] new best mode-C 44.45 -> best.pt
 step 3100/20000 | loss 4.7087 | aux rot 1.594 (chance 2.83) | aux perm 1.658 (chance 3.26) | lr 4.85e-04 | 0.85 it/s
 step 3200/20000 | loss 4.6718 | aux rot 1.606 (chance 2.83) | aux perm 1.632 (chance 3.26) | lr 4.84e-04 | 0.86 it/s
+step 3300/20000 | loss 4.6303 | aux rot 1.567 (chance 2.83) | aux perm 1.717 (chance 3.26) | lr 4.82e-04 | 0.86 it/s
 ```
 
 ### teachers_shard0.log
@@ -4147,7 +4149,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-step 6200/103000 | loss 1.8584 | lr 6.97e-04 | 689 win/s
 step 6400/103000 | loss 1.8437 | lr 6.97e-04 | 689 win/s
 step 6600/103000 | loss 1.8604 | lr 6.97e-04 | 689 win/s
 step 6800/103000 | loss 1.8509 | lr 6.96e-04 | 689 win/s
@@ -4172,6 +4173,7 @@ step 10000/103000 | loss 1.8375 | lr 6.89e-04 | 702 win/s
 step 10200/103000 | loss 1.8309 | lr 6.89e-04 | 703 win/s
 step 10400/103000 | loss 1.8242 | lr 6.88e-04 | 704 win/s
 step 10600/103000 | loss 1.8363 | lr 6.88e-04 | 705 win/s
+step 10800/103000 | loss 1.8069 | lr 6.87e-04 | 705 win/s
 ```
 
 ### tf_fold2.log
