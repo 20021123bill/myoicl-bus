@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T14:43:05+08:00
+# heartbeat 2026-08-20T14:43:48+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 43 %
-1, 2731 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 81 %
+0, 3173 MiB, 24576 MiB, 8 %
+1, 3233 MiB, 24576 MiB, 39 %
+2, 2985 MiB, 24576 MiB, 74 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3364,6 +3364,9 @@ explicit correction k=45     :  69.65  (gain -22.02)
 ```
 === stop the frozen fold0 twin (kept as the ablation row) ===
 stopped
+=== launch joint main-line on fold0_full (GPU freed by the twin) ===
+launched icl_joint_fold0 pid=1169828
+=== stream both joint runs (16 h) ===
 ```
 
 ### d3_train.log
@@ -3478,9 +3481,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_aux_fold0.log
 ```
-step 800/20000 | loss 4.9588 | aux rot 2.050 (chance 2.83) | aux perm 1.750 (chance 3.26) | lr 8.00e-04 | 1.38 it/s
-step 900/20000 | loss 5.3051 | aux rot 2.224 (chance 2.83) | aux perm 1.767 (chance 3.26) | lr 9.00e-04 | 1.38 it/s
-step 1000/20000 | loss 5.2109 | aux rot 2.218 (chance 2.83) | aux perm 1.626 (chance 3.26) | lr 1.00e-03 | 1.38 it/s
 [val] step 1000: mode-A 60.88 | mode-C 63.87 | gain C -2.99   (REAL novel subjects, fold 0)
 [val] new best mode-C 63.87 -> best.pt
 step 1100/20000 | loss 5.0098 | aux rot 2.092 (chance 2.83) | aux perm 1.624 (chance 3.26) | lr 1.00e-03 | 1.35 it/s
@@ -3503,6 +3503,9 @@ step 2500/20000 | loss 4.9696 | aux rot 1.938 (chance 2.83) | aux perm 1.592 (ch
 step 2600/20000 | loss 4.7692 | aux rot 1.888 (chance 2.83) | aux perm 1.744 (chance 3.26) | lr 9.83e-04 | 1.30 it/s
 step 2700/20000 | loss 5.1111 | aux rot 1.919 (chance 2.83) | aux perm 1.742 (chance 3.26) | lr 9.80e-04 | 1.29 it/s
 step 2800/20000 | loss 4.5304 | aux rot 1.813 (chance 2.83) | aux perm 1.671 (chance 3.26) | lr 9.78e-04 | 1.30 it/s
+step 2900/20000 | loss 4.5663 | aux rot 1.831 (chance 2.83) | aux perm 1.641 (chance 3.26) | lr 9.76e-04 | 1.30 it/s
+step 3000/20000 | loss 5.0045 | aux rot 1.955 (chance 2.83) | aux perm 1.760 (chance 3.26) | lr 9.73e-04 | 1.30 it/s
+[val] step 3000: mode-A 58.67 | mode-C 61.45 | gain C -2.78   (REAL novel subjects, fold 0)
 ```
 
 ### icl_aux_fold2.log
