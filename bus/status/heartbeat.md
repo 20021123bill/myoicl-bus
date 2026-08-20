@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:17:09+08:00
+# heartbeat 2026-08-20T17:17:53+08:00
 
 ## gpu
 ```
-0, 6275 MiB, 24576 MiB, 15 %
-1, 6120 MiB, 24576 MiB, 27 %
-2, 3169 MiB, 24576 MiB, 84 %
+0, 6275 MiB, 24576 MiB, 0 %
+1, 6120 MiB, 24576 MiB, 0 %
+2, 3169 MiB, 24576 MiB, 79 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -97,6 +97,7 @@
 566_keystroke_incremental                DONE rc=127
 567_stream_and_probe                     DONE rc=127
 568_budget_curve                         DONE rc=127
+569_full_stop                            DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3691,6 +3692,14 @@ Traceback (most recent call last):
     print(f"[skip] {key} already in {args.out}")
                                               ^
 SyntaxError: invalid syntax
+```
+
+### 569_full_stop.log
+```
+########## 1. STOP EVERYTHING ##########
+  killed: myoicl.train_prefix_icl
+  killed: myoicl.train_trunk
+  killed: myoicl-log-streamer
 ```
 
 ### d3_train.log

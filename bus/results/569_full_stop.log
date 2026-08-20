@@ -1,0 +1,119 @@
+########## 1. STOP EVERYTHING ##########
+  killed: myoicl.train_prefix_icl
+  killed: myoicl.train_trunk
+  killed: myoicl-log-streamer
+
+--- anything of ours left running? ---
+  nothing. clean.
+
+--- GPU state ---
+  gpu 0, 16 MiB, 0 %
+  gpu 1, 12 MiB, 0 %
+  gpu 2, 12 MiB, 0 %
+  gpu 3, 12 MiB, 0 %
+
+########## 2. INVENTORY (nothing is deleted) ##########
+MyoICL disk manifest -- generated 2026-08-20T17:17:59+08:00
+NOTHING IN THIS LIST HAS BEEN DELETED.
+
+=== A. DATASET (the user asked to keep this) ===
+0	/data2/chenyuxiang/code/emg2qwerty/data
+lrwxrwxrwx 1 chenyuxiang chenyuxiang 51 8月  14 23:20 /data2/chenyuxiang/code/emg2qwerty/data -> /data2/chenyuxiang/datasets/emg2qwerty-data-2021-08
+
+=== B. TRAINED CHECKPOINTS -- the only expensive artefacts ===
+    (each *_full trunk = ~103k steps, roughly a day of one GPU)
+  tf_ref_full  [17M]
+  tf_fold0_full  [17M]
+  tf_fold1_full  [17M]
+  tf_fold2_full  [17M]
+
+=== C. ICL / EXPERIMENT OUTPUTS -- cheap to discard ===
+  18M  icl_aux_fold0
+  4.0K  icl_aux_fold0_ident.json
+  4.0K  icl_aux_fold0_perm.json
+  18M  icl_aux_fold2
+  4.0K  icl_aux_fold2_ident.json
+  4.0K  icl_aux_fold2_perm.json
+  80K  icl_b1.log
+  17M  icl_dev2_fold2
+  17M  icl_dev_fold2
+  17M  icl_frozen_fold2
+  17M  icl_fusedb_fold2
+  4.0K  icl_fused_fold2
+  18M  icl_joint_fold0
+  18M  icl_joint_fold1
+  4.0K  icl_kcurve_fold2.json
+  18M  icl_split_fold0
+  18M  icl_split_fold1
+  6.7M  keystroke_cache
+  4.0K  remix_zeroshot.json
+
+=== D. CODE ===
+  30M  myoicl (our code + bus)
+  2.2G  emg2qwerty (official repo + data symlink)
+  our python modules:
+      align.py
+      budget_curve.py
+      budget_report.py
+      ceiling_probe.py
+      context.py
+      ctx_frame.py
+      diagnose_signal.py
+      diagnose_units.py
+      distill.py
+      episodes.py
+      eval_ea_official.py
+      eval_prefix_k.py
+      eval_qwerty.py
+      featurizer.py
+      folds.py
+      gate_report.py
+      icl2.py
+      __init__.py
+      loso.py
+      metrics.py
+      model.py
+      model_v2.py
+      myocorl.py
+      oracle_probe.py
+      prefix_ctx.py
+      pretrained.py
+      pretrain_units.py
+      qwerty_data.py
+      remix.py
+      remix_zeroshot.py
+      smoke_remix.py
+      smoke_test.py
+      smoke_v3.py
+      synth.py
+      tds.py
+      teachers.py
+      train_prefix_icl.py
+      train_qwerty.py
+      train_trunk.py
+      trunk_tf.py
+
+=== E. TOTAL ON DISK ===
+  2.8G	/data2/chenyuxiang/runs
+  30M	/data2/chenyuxiang/code/myoicl
+
+=== F. IF YOU DECIDE TO DELETE -- run these YOURSELF ===
+  # experiment outputs only, keeps trunks + code + data:
+  rm -rf /data2/chenyuxiang/runs/icl_* /data2/chenyuxiang/runs/myocorl* /data2/chenyuxiang/runs/keystroke_cache /data2/chenyuxiang/runs/remix*
+
+  # also the trained trunks (irreversible: ~4 GPU-days to rebuild):
+  rm -rf /data2/chenyuxiang/runs/tf_ref_full /data2/chenyuxiang/runs/tf_fold0_full /data2/chenyuxiang/runs/tf_fold1_full \
+         /data2/chenyuxiang/runs/tf_fold2_full /data2/chenyuxiang/runs/tf_fold3_full
+
+  # also all our code (the official emg2qwerty repo and the dataset
+  # are NOT touched by this):
+  rm -rf /data2/chenyuxiang/code/myoicl/myoicl
+
+  # stop the bus runner entirely:
+  touch /data2/chenyuxiang/code/myoicl/bus/jobs/STOP
+
+  The dataset lives at /data2/chenyuxiang/code/emg2qwerty/data and is
+  not referenced by any command above.
+
+=== manifest written to bus/results/569_MANIFEST.txt ===
+=== 569 done: all compute stopped, nothing deleted ===
