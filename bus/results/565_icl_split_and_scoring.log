@@ -1,0 +1,12 @@
+[patched] myoicl/train_prefix_icl.py -- 6 anchors replaced
+=== grep verification (unverified patch = no patch) ===
+413:    print(f"[meta-split] meta-train {len(meta_tr)} users / {len(tr_pairs)} "
+418:    mem_ep = UserEpisodes(tr_pairs, seed=args.seed + 2000)
+516:            u, sb, qb, _, _, _ = draw(mem_ep, allow_permute=False,
+578:                  f"gain {a - c:+.2f} | PERMUTED A {ap:.2f} C {cp:.2f} "
+583:                         "Ap": ap, "Cp": cp, "gain_perm": ap - cp,
+[syntax] OK
+
+=== relaunch: fold 0 and fold 1, correct split + both tasks scored ===
+launched fold 0 on GPU 0 -> /data2/chenyuxiang/runs/icl_split_fold0/train.log
+launched fold 1 on GPU 1 -> /data2/chenyuxiang/runs/icl_split_fold1/train.log
