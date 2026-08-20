@@ -1,0 +1,6 @@
+=== GPU1: twin aux run on the full-budget fold0 backbone ===
+launched icl_aux_fold0 pid=1090250
+=== GPU0: probe loop when ref_full finishes ===
+probe watcher pid=1090251
+=== GPU2: fold2_full continuation when fold1_full finishes ===
+=== stream (14 h) ===

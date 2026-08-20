@@ -1,0 +1,6 @@
+probe loop on GPU1
+--- 14:03 icl_aux_fold2 ---
+[ckpt] /data2/chenyuxiang/runs/icl_aux_fold2/best.pt step 1000
+k= 12 ( 48s): mode-A  53.24 | mode-C  57.82 | gain  -4.58 (24 episodes)
+k= 45 (180s): mode-A  53.24 | mode-C  59.84 | gain  -6.60 (24 episodes)
+k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)

@@ -495,3 +495,4 @@ step 91600/103000 | loss 1.2933 | lr 2.18e-05 | 490 win/s
 step 91800/103000 | loss 1.2930 | lr 2.10e-05 | 490 win/s
 step 92000/103000 | loss 1.2912 | lr 2.03e-05 | 491 win/s
 [val] step 92000: 8-test-user CER 46.59 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+step 92200/103000 | loss 1.2904 | lr 1.96e-05 | 491 win/s
