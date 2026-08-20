@@ -23,3 +23,4 @@ step 900/20000 | loss 4.9979 | aux rot 2.124 (chance 2.83) | aux perm 1.754 (cha
 step 1000/20000 | loss 4.9507 | aux rot 2.057 (chance 2.83) | aux perm 1.585 (chance 3.26) | lr 5.00e-04 | 0.79 it/s
 [val] step 1000: mode-A 51.35 | mode-C 55.21 | gain C -3.86   (REAL novel subjects, fold 1)
 [val] new best mode-C 55.21 -> best.pt
+step 1100/20000 | loss 5.0751 | aux rot 2.073 (chance 2.83) | aux perm 1.565 (chance 3.26) | lr 5.00e-04 | 0.79 it/s

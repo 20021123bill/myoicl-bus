@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:27:33+08:00
+# heartbeat 2026-08-20T15:28:16+08:00
 
 ## gpu
 ```
-0, 6313 MiB, 24576 MiB, 31 %
-1, 3155 MiB, 24576 MiB, 69 %
-2, 3167 MiB, 24576 MiB, 95 %
+0, 6313 MiB, 24576 MiB, 63 %
+1, 3155 MiB, 24576 MiB, 0 %
+2, 3167 MiB, 24576 MiB, 26 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3384,11 +3384,6 @@ explicit correction k=45     :  69.65  (gain -22.02)
 
 ### 558_joint_is_mainline.log
 ```
-[icl_joint_fold1] waiting
---- 14:53 ---
-[icl_joint_fold0] step 100/30000 | loss 9.9521 | aux rot 2.875 (chance 2.83) | aux perm 3.271 (chance 3.26) | lr 3
-[icl_joint_fold1] waiting
---- 14:58 ---
 [icl_joint_fold0] step 300/30000 | loss 6.4928 | aux rot 2.489 (chance 2.83) | aux perm 3.008 (chance 3.26) | lr 1
 [icl_joint_fold1] waiting
 --- 15:03 ---
@@ -3409,6 +3404,11 @@ explicit correction k=45     :  69.65  (gain -22.02)
 [icl_joint_fold0] step 1600/30000 | loss 4.9454 | aux rot 1.993 (chance 2.83) | aux perm 1.673 (chance 3.26) | lr 
         [val] new best mode-C 47.71 -> best.pt
 [icl_joint_fold1] step 800/20000 | loss 4.6822 | aux rot 2.074 (chance 2.83) | aux perm 1.681 (chance 3.26) | lr 4
+--- 15:28 ---
+[icl_joint_fold0] step 1900/30000 | loss 4.9759 | aux rot 1.983 (chance 2.83) | aux perm 1.835 (chance 3.26) | lr 
+        [val] new best mode-C 47.71 -> best.pt
+[icl_joint_fold1] step 1100/20000 | loss 5.0751 | aux rot 2.073 (chance 2.83) | aux perm 1.565 (chance 3.26) | lr 
+        [val] new best mode-C 55.21 -> best.pt
 ```
 
 ### 558_mainline.log
@@ -3813,7 +3813,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
 [symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
@@ -3838,11 +3837,11 @@ step 1500/30000 | loss 5.2012 | aux rot 2.043 (chance 2.83) | aux perm 1.789 (ch
 step 1600/30000 | loss 4.9454 | aux rot 1.993 (chance 2.83) | aux perm 1.673 (chance 3.26) | lr 5.00e-04 | 0.86 it/s
 step 1700/30000 | loss 5.1740 | aux rot 2.054 (chance 2.83) | aux perm 1.705 (chance 3.26) | lr 5.00e-04 | 0.85 it/s
 step 1800/30000 | loss 4.9706 | aux rot 2.002 (chance 2.83) | aux perm 1.844 (chance 3.26) | lr 5.00e-04 | 0.85 it/s
+step 1900/30000 | loss 4.9759 | aux rot 1.983 (chance 2.83) | aux perm 1.835 (chance 3.26) | lr 5.00e-04 | 0.85 it/s
 ```
 
 ### icl_joint_fold1.log
 ```
-[cohort] fold 1: 24 users the backbone has never seen, 206 sessions
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [trunk] /data2/chenyuxiang/runs/tf_fold1_full/last.pt step 103000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
@@ -3867,6 +3866,7 @@ step 900/20000 | loss 4.9979 | aux rot 2.124 (chance 2.83) | aux perm 1.754 (cha
 step 1000/20000 | loss 4.9507 | aux rot 2.057 (chance 2.83) | aux perm 1.585 (chance 3.26) | lr 5.00e-04 | 0.79 it/s
 [val] step 1000: mode-A 51.35 | mode-C 55.21 | gain C -3.86   (REAL novel subjects, fold 1)
 [val] new best mode-C 55.21 -> best.pt
+step 1100/20000 | loss 5.0751 | aux rot 2.073 (chance 2.83) | aux perm 1.565 (chance 3.26) | lr 5.00e-04 | 0.79 it/s
 ```
 
 ### teachers_shard0.log
