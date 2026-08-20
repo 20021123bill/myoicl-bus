@@ -549,3 +549,8 @@ step 101800/103000 | loss 1.2635 | lr 2.44e-07 | 486 win/s
 step 102000/103000 | loss 1.2607 | lr 1.70e-07 | 486 win/s
 step 102200/103000 | loss 1.2624 | lr 1.08e-07 | 486 win/s
 step 102400/103000 | loss 1.2561 | lr 6.10e-08 | 486 win/s
+step 102600/103000 | loss 1.2656 | lr 2.71e-08 | 486 win/s
+step 102800/103000 | loss 1.2638 | lr 6.78e-09 | 486 win/s
+step 103000/103000 | loss 1.2614 | lr 0.00e+00 | 486 win/s
+[val] step 103000: 8-test-user CER 46.23 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[done] best 8-test-user CER 44.99

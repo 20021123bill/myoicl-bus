@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:48:25+08:00
+# heartbeat 2026-08-20T15:49:09+08:00
 
 ## gpu
 ```
-0, 6313 MiB, 24576 MiB, 33 %
+0, 3159 MiB, 24576 MiB, 34 %
 1, 3155 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 90 %
+2, 3169 MiB, 24576 MiB, 78 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -90,6 +90,7 @@
 559_val_realonly                         DONE rc=127
 560_myocorl_launch                       DONE rc=127
 561_encoding_signal_diag                 DONE rc=127
+562_keystroke_foundation                 DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3238,16 +3239,6 @@ k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
 
 ### 554_probes.log
 ```
---- 14:29 icl_aux_fold0 ---
-[ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
-k= 12 ( 48s): mode-A  57.56 | mode-C  54.39 | gain  +3.17 (24 episodes)
-k= 45 (180s): mode-A  56.33 | mode-C  62.90 | gain  -6.56 (24 episodes)
-k= 12 ( 48s): mode-A  67.27 | mode-C  66.46 | gain  +0.80 (24 episodes)
---- 14:55 icl_aux_fold2 ---
-[ckpt] /data2/chenyuxiang/runs/icl_aux_fold2/best.pt step 3000
-k= 12 ( 48s): mode-A  54.75 | mode-C  57.68 | gain  -2.93 (24 episodes)
-k= 45 (180s): mode-A  53.53 | mode-C  57.08 | gain  -3.55 (24 episodes)
-k= 12 ( 48s): mode-A  64.77 | mode-C  68.06 | gain  -3.28 (24 episodes)
 --- 14:55 icl_aux_fold0 ---
 [ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
 k= 12 ( 48s): mode-A  55.40 | mode-C  53.98 | gain  +1.41 (24 episodes)
@@ -3263,6 +3254,16 @@ k= 12 ( 48s): mode-A  64.96 | mode-C  67.00 | gain  -2.03 (24 episodes)
 k= 12 ( 48s): mode-A  55.14 | mode-C  53.79 | gain  +1.35 (24 episodes)
 k= 45 (180s): mode-A  55.68 | mode-C  63.62 | gain  -7.94 (24 episodes)
 k= 12 ( 48s): mode-A  66.50 | mode-C  66.31 | gain  +0.19 (24 episodes)
+--- 15:46 icl_aux_fold2 ---
+[ckpt] /data2/chenyuxiang/runs/icl_aux_fold2/best.pt step 3000
+k= 12 ( 48s): mode-A  54.00 | mode-C  58.17 | gain  -4.17 (24 episodes)
+k= 45 (180s): mode-A  53.61 | mode-C  56.11 | gain  -2.50 (24 episodes)
+k= 12 ( 48s): mode-A  63.26 | mode-C  67.03 | gain  -3.77 (24 episodes)
+--- 15:47 icl_aux_fold0 ---
+[ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
+k= 12 ( 48s): mode-A  54.93 | mode-C  53.80 | gain  +1.14 (24 episodes)
+k= 45 (180s): mode-A  55.86 | mode-C  63.78 | gain  -7.92 (24 episodes)
+k= 12 ( 48s): mode-A  67.37 | mode-C  67.09 | gain  +0.28 (24 episodes)
 ```
 
 ### 554_sprint.log
@@ -3551,6 +3552,10 @@ verdict: K=90 EV > 0.05 -> foundation stands, rebuild MyoCoRL on the
 winning definition; all <= 0 -> per-unit window-level linear encoding
 has no signal on sEMG and paper 1 needs a different response variable.
 === 561 done ===
+```
+
+### 562_keystroke_foundation.log
+```
 ```
 
 ### d3_train.log
@@ -4119,10 +4124,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-step 2000/103000 | loss 1.8585 | lr 6.80e-04 | 695 win/s
-step 2200/103000 | loss 1.8944 | lr 7.00e-04 | 695 win/s
-step 2400/103000 | loss 1.8904 | lr 7.00e-04 | 695 win/s
-step 2600/103000 | loss 1.9050 | lr 7.00e-04 | 695 win/s
 step 2800/103000 | loss 1.8994 | lr 7.00e-04 | 695 win/s
 step 3000/103000 | loss 1.8967 | lr 7.00e-04 | 694 win/s
 step 3200/103000 | loss 1.8818 | lr 7.00e-04 | 690 win/s
@@ -4144,6 +4145,10 @@ step 5800/103000 | loss 1.8628 | lr 6.98e-04 | 689 win/s
 step 6000/103000 | loss 1.8523 | lr 6.97e-04 | 689 win/s
 step 6200/103000 | loss 1.8584 | lr 6.97e-04 | 689 win/s
 step 6400/103000 | loss 1.8437 | lr 6.97e-04 | 689 win/s
+step 6600/103000 | loss 1.8604 | lr 6.97e-04 | 689 win/s
+step 6800/103000 | loss 1.8509 | lr 6.96e-04 | 689 win/s
+step 7000/103000 | loss 1.8559 | lr 6.96e-04 | 689 win/s
+step 7200/103000 | loss 1.8649 | lr 6.96e-04 | 689 win/s
 ```
 
 ### tf_fold2.log
