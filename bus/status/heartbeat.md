@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:16:27+08:00
+# heartbeat 2026-08-20T17:17:09+08:00
 
 ## gpu
 ```
-0, 6275 MiB, 24576 MiB, 0 %
-1, 6120 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 88 %
+0, 6275 MiB, 24576 MiB, 15 %
+1, 6120 MiB, 24576 MiB, 27 %
+2, 3169 MiB, 24576 MiB, 84 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -4066,7 +4066,6 @@ step 7400/20000 | loss 4.0348 | aux rot 1.309 (chance 2.83) | aux perm 1.675 (ch
 
 ### icl_split_fold0.log
 ```
-[audit] step 0: mode-A 50.89 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 step 100/20000 | loss 8.5527 | aux rot 2.860 (chance 2.83) | aux perm 3.278 (chance 3.26) | lr 3.00e-05 | 1.88 it/s
 step 200/20000 | loss 6.2540 | aux rot 2.816 (chance 2.83) | aux perm 3.202 (chance 3.26) | lr 6.00e-05 | 1.79 it/s
 step 300/20000 | loss 5.0300 | aux rot 2.677 (chance 2.83) | aux perm 3.070 (chance 3.26) | lr 9.00e-05 | 1.91 it/s
@@ -4091,11 +4090,11 @@ step 1500/20000 | loss 3.9426 | aux rot 2.077 (chance 2.83) | aux perm 1.599 (ch
 step 1600/20000 | loss 3.4373 | aux rot 2.035 (chance 2.83) | aux perm 1.673 (chance 3.26) | lr 2.99e-04 | 1.74 it/s
 step 1700/20000 | loss 3.8778 | aux rot 2.028 (chance 2.83) | aux perm 1.588 (chance 3.26) | lr 2.99e-04 | 1.75 it/s
 step 1800/20000 | loss 3.9130 | aux rot 2.066 (chance 2.83) | aux perm 1.589 (chance 3.26) | lr 2.99e-04 | 1.75 it/s
+step 1900/20000 | loss 3.4965 | aux rot 2.126 (chance 2.83) | aux perm 1.716 (chance 3.26) | lr 2.98e-04 | 1.74 it/s
 ```
 
 ### icl_split_fold1.log
 ```
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 62.84 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 step 100/20000 | loss 7.0961 | aux rot 2.808 (chance 2.83) | aux perm 3.273 (chance 3.26) | lr 3.00e-05 | 1.88 it/s
@@ -4120,6 +4119,7 @@ step 1500/20000 | loss 3.9224 | aux rot 2.066 (chance 2.83) | aux perm 1.592 (ch
 [val] step 1500: IDENTITY A 57.12 C 59.58 gain -2.47 | PERMUTED A 68.48 C 70.32 gain -1.84 | mem-gauge(meta-train A) 37.18   (meta-test users, fold 1)
 step 1600/20000 | loss 3.3163 | aux rot 1.986 (chance 2.83) | aux perm 1.672 (chance 3.26) | lr 2.99e-04 | 1.72 it/s
 step 1700/20000 | loss 3.7076 | aux rot 1.990 (chance 2.83) | aux perm 1.576 (chance 3.26) | lr 2.99e-04 | 1.73 it/s
+step 1800/20000 | loss 3.8425 | aux rot 2.033 (chance 2.83) | aux perm 1.603 (chance 3.26) | lr 2.99e-04 | 1.73 it/s
 ```
 
 ### teachers_shard0.log
