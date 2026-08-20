@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T14:49:31+08:00
+# heartbeat 2026-08-20T14:50:15+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 78 %
+0, 3173 MiB, 24576 MiB, 0 %
 1, 3239 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 73 %
+2, 2985 MiB, 24576 MiB, 77 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -87,6 +87,7 @@
 556_joint_synth_aux                      DONE rc=127
 557_zeroshot_today                       DONE rc=127
 558_joint_is_mainline                    DONE rc=127
+559_val_realonly                         DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3379,6 +3380,12 @@ stopped
 === launch joint main-line on fold0_full (GPU freed by the twin) ===
 launched icl_joint_fold0 pid=1169828
 === stream both joint runs (16 h) ===
+```
+
+### 559_val_realonly.log
+```
+AST OK
+joint_fold0 restarting with fix
 ```
 
 ### d3_train.log
