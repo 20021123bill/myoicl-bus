@@ -265,3 +265,5 @@ step 48000/103000 | loss 1.6588 | lr 3.99e-04 | 427 win/s
 [val] step 48000: 8-test-user CER 44.99 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [val] new best 44.99 -> best.pt
 step 48200/103000 | loss 1.6475 | lr 3.97e-04 | 427 win/s
+step 48400/103000 | loss 1.6384 | lr 3.95e-04 | 428 win/s
+step 48600/103000 | loss 1.6340 | lr 3.93e-04 | 428 win/s
