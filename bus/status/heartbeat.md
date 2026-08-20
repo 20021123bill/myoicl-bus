@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T14:17:57+08:00
+# heartbeat 2026-08-20T14:18:40+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 70 %
-1, 2731 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 75 %
+0, 3173 MiB, 24576 MiB, 82 %
+1, 2731 MiB, 24576 MiB, 23 %
+2, 2985 MiB, 24576 MiB, 56 %
 3, 2731 MiB, 24576 MiB, 0 %
 ```
 
@@ -3397,7 +3397,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_aux_fold0.log
 ```
-[cohort] fold 0: 24 users the backbone has never seen, 213 sessions
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [trunk] /data2/chenyuxiang/runs/tf_fold0_full/last.pt step 103000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
@@ -3419,12 +3418,14 @@ step 600/20000 | loss 5.1117 | aux rot 2.040 (chance 2.83) | aux perm 1.660 (cha
 step 700/20000 | loss 5.2765 | aux rot 2.074 (chance 2.83) | aux perm 1.661 (chance 3.26) | lr 7.00e-04 | 1.35 it/s
 step 800/20000 | loss 4.9588 | aux rot 2.050 (chance 2.83) | aux perm 1.750 (chance 3.26) | lr 8.00e-04 | 1.38 it/s
 step 900/20000 | loss 5.3051 | aux rot 2.224 (chance 2.83) | aux perm 1.767 (chance 3.26) | lr 9.00e-04 | 1.38 it/s
+step 1000/20000 | loss 5.2109 | aux rot 2.218 (chance 2.83) | aux perm 1.626 (chance 3.26) | lr 1.00e-03 | 1.38 it/s
+[val] step 1000: mode-A 60.88 | mode-C 63.87 | gain C -2.99   (REAL novel subjects, fold 0)
+[val] new best mode-C 63.87 -> best.pt
+step 1100/20000 | loss 5.0098 | aux rot 2.092 (chance 2.83) | aux perm 1.624 (chance 3.26) | lr 1.00e-03 | 1.35 it/s
 ```
 
 ### icl_aux_fold2.log
 ```
-step 700/20000 | loss 5.3360 | aux rot 2.076 (chance 2.83) | aux perm 1.661 (chance 3.26) | lr 7.00e-04 | 1.55 it/s
-step 800/20000 | loss 5.0267 | aux rot 2.039 (chance 2.83) | aux perm 1.763 (chance 3.26) | lr 8.00e-04 | 1.57 it/s
 step 900/20000 | loss 5.3208 | aux rot 2.211 (chance 2.83) | aux perm 1.779 (chance 3.26) | lr 9.00e-04 | 1.58 it/s
 step 1000/20000 | loss 5.2857 | aux rot 2.225 (chance 2.83) | aux perm 1.649 (chance 3.26) | lr 1.00e-03 | 1.58 it/s
 [val] step 1000: mode-A 63.59 | mode-C 70.59 | gain C -7.00   (REAL novel subjects, fold 2)
@@ -3448,6 +3449,8 @@ step 2400/20000 | loss 4.6101 | aux rot 1.892 (chance 2.83) | aux perm 1.747 (ch
 step 2500/20000 | loss 4.9932 | aux rot 1.980 (chance 2.83) | aux perm 1.589 (chance 3.26) | lr 9.85e-04 | 1.51 it/s
 step 2600/20000 | loss 4.8422 | aux rot 1.933 (chance 2.83) | aux perm 1.739 (chance 3.26) | lr 9.83e-04 | 1.50 it/s
 step 2700/20000 | loss 5.0515 | aux rot 1.932 (chance 2.83) | aux perm 1.738 (chance 3.26) | lr 9.80e-04 | 1.49 it/s
+step 2800/20000 | loss 4.6061 | aux rot 1.860 (chance 2.83) | aux perm 1.666 (chance 3.26) | lr 9.78e-04 | 1.49 it/s
+step 2900/20000 | loss 4.6595 | aux rot 1.931 (chance 2.83) | aux perm 1.631 (chance 3.26) | lr 9.76e-04 | 1.50 it/s
 ```
 
 ### icl_dev2_fold2.log
