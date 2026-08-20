@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:13:53+08:00
+# heartbeat 2026-08-20T15:14:37+08:00
 
 ## gpu
 ```
-0, 6311 MiB, 24576 MiB, 15 %
-1, 3155 MiB, 24576 MiB, 0 %
-2, 2983 MiB, 24576 MiB, 87 %
+0, 6311 MiB, 24576 MiB, 34 %
+1, 3155 MiB, 24576 MiB, 33 %
+2, 3167 MiB, 24576 MiB, 62 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3316,6 +3316,7 @@ launched icl_joint_fold1 pid=1211048
 using GPU0
 launched icl_joint_fold1 pid=1211048
 [15:09] step 200/20000 | loss 7.0014 | aux rot 2.560 (chance 2.83) | aux perm 3.132 (chance 3.26) | lr 1.00e
+[15:14] step 400/20000 | loss 6.2978 | aux rot 2.187 (chance 2.83) | aux perm 2.488 (chance 3.26) | lr 2.00e
 ```
 
 ### 557_zeroshot.log
@@ -4049,6 +4050,7 @@ step 800/103000 | loss 1.6238 | lr 2.72e-04 | 690 win/s
 step 1000/103000 | loss 1.6869 | lr 3.40e-04 | 694 win/s
 step 1200/103000 | loss 1.7181 | lr 4.08e-04 | 696 win/s
 step 1400/103000 | loss 1.7647 | lr 4.76e-04 | 696 win/s
+step 1600/103000 | loss 1.7929 | lr 5.44e-04 | 695 win/s
 ```
 
 ### tf_fold2.log
@@ -4111,8 +4113,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-step 94600/103000 | loss 1.2772 | lr 1.19e-05 | 491 win/s
-step 94800/103000 | loss 1.2751 | lr 1.13e-05 | 491 win/s
 step 95000/103000 | loss 1.2751 | lr 1.08e-05 | 491 win/s
 step 95200/103000 | loss 1.2792 | lr 1.03e-05 | 490 win/s
 step 95400/103000 | loss 1.2697 | lr 9.75e-06 | 490 win/s
@@ -4136,6 +4136,8 @@ step 98600/103000 | loss 1.2699 | lr 3.28e-06 | 488 win/s
 step 98800/103000 | loss 1.2646 | lr 2.99e-06 | 488 win/s
 step 99000/103000 | loss 1.2630 | lr 2.71e-06 | 488 win/s
 step 99200/103000 | loss 1.2600 | lr 2.44e-06 | 488 win/s
+step 99400/103000 | loss 1.2644 | lr 2.19e-06 | 488 win/s
+step 99600/103000 | loss 1.2678 | lr 1.96e-06 | 488 win/s
 ```
 
 ### tf_ref.log
