@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:52:44+08:00
+# heartbeat 2026-08-20T15:53:27+08:00
 
 ## gpu
 ```
-0, 3159 MiB, 24576 MiB, 0 %
-1, 3155 MiB, 24576 MiB, 32 %
-2, 3169 MiB, 24576 MiB, 48 %
+0, 3159 MiB, 24576 MiB, 33 %
+1, 3155 MiB, 24576 MiB, 0 %
+2, 3169 MiB, 24576 MiB, 68 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3881,10 +3881,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-step 900/30000 | loss 5.1509 | aux rot 2.147 (chance 2.83) | aux perm 1.755 (chance 3.26) | lr 3.00e-04 | 0.86 it/s
-step 1000/30000 | loss 5.0165 | aux rot 2.102 (chance 2.83) | aux perm 1.578 (chance 3.26) | lr 3.33e-04 | 0.86 it/s
-[val] step 1000: mode-A 43.53 | mode-C 47.71 | gain C -4.18   (REAL novel subjects, fold 0)
-[val] new best mode-C 47.71 -> best.pt
 step 1100/30000 | loss 5.1774 | aux rot 2.116 (chance 2.83) | aux perm 1.561 (chance 3.26) | lr 3.67e-04 | 0.87 it/s
 step 1200/30000 | loss 5.1696 | aux rot 2.065 (chance 2.83) | aux perm 1.758 (chance 3.26) | lr 4.00e-04 | 0.86 it/s
 step 1300/30000 | loss 4.9723 | aux rot 2.072 (chance 2.83) | aux perm 1.674 (chance 3.26) | lr 4.33e-04 | 0.86 it/s
@@ -3906,12 +3902,14 @@ step 2600/30000 | loss 4.9083 | aux rot 1.786 (chance 2.83) | aux perm 1.679 (ch
 step 2700/30000 | loss 4.7554 | aux rot 1.750 (chance 2.83) | aux perm 1.693 (chance 3.26) | lr 4.98e-04 | 0.83 it/s
 step 2800/30000 | loss 4.7303 | aux rot 1.744 (chance 2.83) | aux perm 1.700 (chance 3.26) | lr 4.97e-04 | 0.83 it/s
 step 2900/30000 | loss 4.5882 | aux rot 1.772 (chance 2.83) | aux perm 1.683 (chance 3.26) | lr 4.97e-04 | 0.83 it/s
+step 3000/30000 | loss 4.8860 | aux rot 1.710 (chance 2.83) | aux perm 1.802 (chance 3.26) | lr 4.97e-04 | 0.83 it/s
+[val] step 3000: mode-A 45.36 | mode-C 46.43 | gain C -1.07   (REAL novel subjects, fold 0)
+[val] new best mode-C 46.43 -> best.pt
+step 3100/30000 | loss 4.8039 | aux rot 1.693 (chance 2.83) | aux perm 1.662 (chance 3.26) | lr 4.96e-04 | 0.84 it/s
 ```
 
 ### icl_joint_fold1.log
 ```
-step 100/20000 | loss 8.2409 | aux rot 2.789 (chance 2.83) | aux perm 3.260 (chance 3.26) | lr 5.00e-05 | 0.81 it/s
-step 200/20000 | loss 7.0014 | aux rot 2.560 (chance 2.83) | aux perm 3.132 (chance 3.26) | lr 1.00e-04 | 0.80 it/s
 step 300/20000 | loss 6.4499 | aux rot 2.333 (chance 2.83) | aux perm 2.917 (chance 3.26) | lr 1.50e-04 | 0.82 it/s
 step 400/20000 | loss 6.2978 | aux rot 2.187 (chance 2.83) | aux perm 2.488 (chance 3.26) | lr 2.00e-04 | 0.81 it/s
 step 500/20000 | loss 5.6428 | aux rot 2.157 (chance 2.83) | aux perm 2.027 (chance 3.26) | lr 2.50e-04 | 0.80 it/s
@@ -3935,6 +3933,8 @@ step 2000/20000 | loss 5.0532 | aux rot 1.734 (chance 2.83) | aux perm 1.662 (ch
 [val] step 2000: mode-A 46.21 | mode-C 47.72 | gain C -1.51   (REAL novel subjects, fold 1)
 [val] new best mode-C 47.72 -> best.pt
 step 2100/20000 | loss 4.4080 | aux rot 1.706 (chance 2.83) | aux perm 1.551 (chance 3.26) | lr 4.96e-04 | 0.78 it/s
+step 2200/20000 | loss 4.5358 | aux rot 1.764 (chance 2.83) | aux perm 1.528 (chance 3.26) | lr 4.95e-04 | 0.79 it/s
+step 2300/20000 | loss 4.4559 | aux rot 1.691 (chance 2.83) | aux perm 1.677 (chance 3.26) | lr 4.94e-04 | 0.80 it/s
 ```
 
 ### teachers_shard0.log
