@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:10:42+08:00
+# heartbeat 2026-08-20T17:11:25+08:00
 
 ## gpu
 ```
-0, 6275 MiB, 24576 MiB, 38 %
-1, 6058 MiB, 24576 MiB, 22 %
-2, 3169 MiB, 24576 MiB, 56 %
+0, 6275 MiB, 24576 MiB, 64 %
+1, 6058 MiB, 24576 MiB, 57 %
+2, 3169 MiB, 24576 MiB, 66 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -4052,8 +4052,6 @@ step 7100/20000 | loss 4.0573 | aux rot 1.400 (chance 2.83) | aux perm 1.579 (ch
 
 ### icl_split_fold0.log
 ```
-[prefix] FUSED mode: per-token (signal + soft-aligned char)
-[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
 [prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
 [prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
 [prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
@@ -4077,11 +4075,12 @@ step 1000/20000 | loss 3.6733 | aux rot 2.178 (chance 2.83) | aux perm 1.506 (ch
 [val] step 1000: IDENTITY A 49.56 C 53.65 gain -4.08 | PERMUTED A 63.57 C 66.71 gain -3.14 | mem-gauge(meta-train A) 43.97   (meta-test users, fold 0)
 [val] new best mode-C 53.65 -> best.pt
 step 1100/20000 | loss 3.8112 | aux rot 2.130 (chance 2.83) | aux perm 1.650 (chance 3.26) | lr 3.00e-04 | 1.73 it/s
+step 1200/20000 | loss 3.9258 | aux rot 2.109 (chance 2.83) | aux perm 1.766 (chance 3.26) | lr 3.00e-04 | 1.73 it/s
+step 1300/20000 | loss 4.0147 | aux rot 2.110 (chance 2.83) | aux perm 1.697 (chance 3.26) | lr 3.00e-04 | 1.75 it/s
 ```
 
 ### icl_split_fold1.log
 ```
-[prefix] FUSED mode: per-token (signal + soft-aligned char)
 [prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
 [prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
 [prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
@@ -4106,6 +4105,7 @@ step 1000/20000 | loss 3.6488 | aux rot 2.153 (chance 2.83) | aux perm 1.504 (ch
 [val] step 1000: IDENTITY A 56.26 C 58.91 gain -2.65 | PERMUTED A 68.02 C 69.50 gain -1.48 | mem-gauge(meta-train A) 39.94   (meta-test users, fold 1)
 [val] new best mode-C 58.91 -> best.pt
 step 1100/20000 | loss 3.7616 | aux rot 2.087 (chance 2.83) | aux perm 1.650 (chance 3.26) | lr 3.00e-04 | 1.70 it/s
+step 1200/20000 | loss 3.8112 | aux rot 2.147 (chance 2.83) | aux perm 1.758 (chance 3.26) | lr 3.00e-04 | 1.70 it/s
 ```
 
 ### teachers_shard0.log
