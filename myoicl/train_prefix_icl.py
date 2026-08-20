@@ -407,9 +407,9 @@ def main():
 
     LETTER_POS = {c: i for i, c in enumerate(LETTERS)}
 
-    def draw(ep_src, force_mode=None, allow_permute=True):
+    def draw(ep_src, force_mode=None, allow_permute=True, allow_synth=True):
         theta = None
-        if rng.random() < args.p_synth:
+        if allow_synth and rng.random() < args.p_synth:
             lo, hi = args.synth_strength
             theta = EpisodeUserTransform.sample_calibrated(
                 rng, float(rng.uniform(lo, hi))
@@ -463,7 +463,12 @@ def main():
             # mode A and mode C, and a permuted target set would penalise
             # mode A for a mapping it cannot possibly know -- inflating the
             # gain. Validation measures the real (identity-mapping) task.
-            u, sb, qb, _, _, _ = draw(va_ep, allow_permute=False)
+            # REAL subjects only in validation: with p_synth = 1.0 every
+            # training episode is synthetically wrapped, and a validation that
+            # inherits that would measure synthetic adaptation again -- the A1
+            # trap. allow_synth=False pins the readout to real novel users.
+            u, sb, qb, _, _, _ = draw(va_ep, allow_permute=False,
+                                      allow_synth=False)
             for mode in ("A", "C"):
                 _, em, in_len, _ = run_episode(sb, qb, mode, train=False)
                 preds = greedy_ctc_decode(em.float(), in_len.cpu(),
