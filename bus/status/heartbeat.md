@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T14:48:06+08:00
+# heartbeat 2026-08-20T14:48:48+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 34 %
+0, 3173 MiB, 24576 MiB, 19 %
 1, 3239 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 88 %
+2, 2985 MiB, 24576 MiB, 73 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3367,6 +3367,9 @@ stopped
 === launch joint main-line on fold0_full (GPU freed by the twin) ===
 launched icl_joint_fold0 pid=1169828
 === stream both joint runs (16 h) ===
+--- 14:48 ---
+[icl_joint_fold0] step 200/30000 | loss 6.7254 | aux rot 2.736 (chance 2.83) | aux perm 3.197 (chance 3.26) | lr 6
+[icl_joint_fold1] waiting
 ```
 
 ### 558_mainline.log
@@ -3707,6 +3710,7 @@ RuntimeError: one of the variables needed for gradient computation has been modi
   return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 69.91 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 step 100/30000 | loss 10.2244 | aux rot 2.873 (chance 2.83) | aux perm 3.269 (chance 3.26) | lr 3.33e-05 | 0.90 it/s
+step 200/30000 | loss 6.7254 | aux rot 2.736 (chance 2.83) | aux perm 3.197 (chance 3.26) | lr 6.67e-05 | 0.86 it/s
 ```
 
 ### teachers_shard0.log
