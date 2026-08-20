@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:38:20+08:00
+# heartbeat 2026-08-20T15:39:04+08:00
 
 ## gpu
 ```
-0, 6313 MiB, 24576 MiB, 18 %
-1, 3155 MiB, 24576 MiB, 15 %
-2, 3169 MiB, 24576 MiB, 58 %
+0, 6313 MiB, 24576 MiB, 94 %
+1, 3155 MiB, 24576 MiB, 0 %
+2, 3169 MiB, 24576 MiB, 65 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3532,6 +3532,21 @@ SMOKE FAILED rc=1
 
 ### 561_encoding_signal_diag.log
 ```
+letter+space predictors: 27
+D98  n=raw  y=raw        -> K=24: +0.069  K=45: +0.114  K=90: +0.186
+D98  n=raw  y=offsetfree -> K=24: +0.121  K=45: +0.137  K=90: +0.236
+D98  n=prop y=raw        -> K=24: +0.061  K=45: +0.103  K=90: +0.140
+D98  n=prop y=offsetfree -> K=24: +0.112  K=45: +0.138  K=90: +0.200
+D28  n=raw  y=raw        -> K=24: +0.052  K=45: +0.088  K=90: +0.148
+D28  n=raw  y=offsetfree -> K=24: +0.067  K=45: +0.120  K=90: +0.172
+D28  n=prop y=raw        -> K=24: +0.034  K=45: +0.060  K=90: +0.086
+D28  n=prop y=offsetfree -> K=24: +0.060  K=45: +0.105  K=90: +0.136
+
+WINNER: ('D98', 'raw', 'offsetfree')  {24: 0.121, 45: 0.137, 90: 0.236}
+verdict: K=90 EV > 0.05 -> foundation stands, rebuild MyoCoRL on the
+winning definition; all <= 0 -> per-unit window-level linear encoding
+has no signal on sEMG and paper 1 needs a different response variable.
+=== 561 done ===
 ```
 
 ### d3_train.log
@@ -4100,10 +4115,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-step 400/103000 | loss 1.5324 | lr 1.36e-04 | 673 win/s
-step 600/103000 | loss 1.5727 | lr 2.04e-04 | 688 win/s
-step 800/103000 | loss 1.6238 | lr 2.72e-04 | 690 win/s
-step 1000/103000 | loss 1.6869 | lr 3.40e-04 | 694 win/s
 step 1200/103000 | loss 1.7181 | lr 4.08e-04 | 696 win/s
 step 1400/103000 | loss 1.7647 | lr 4.76e-04 | 696 win/s
 step 1600/103000 | loss 1.7929 | lr 5.44e-04 | 695 win/s
@@ -4125,6 +4136,10 @@ step 4200/103000 | loss 1.8763 | lr 6.99e-04 | 687 win/s
 step 4400/103000 | loss 1.8813 | lr 6.99e-04 | 687 win/s
 step 4600/103000 | loss 1.8806 | lr 6.99e-04 | 688 win/s
 step 4800/103000 | loss 1.8993 | lr 6.99e-04 | 688 win/s
+step 5000/103000 | loss 1.8769 | lr 6.99e-04 | 688 win/s
+step 5200/103000 | loss 1.8850 | lr 6.98e-04 | 689 win/s
+step 5400/103000 | loss 1.8526 | lr 6.98e-04 | 689 win/s
+step 5600/103000 | loss 1.8583 | lr 6.98e-04 | 689 win/s
 ```
 
 ### tf_fold2.log

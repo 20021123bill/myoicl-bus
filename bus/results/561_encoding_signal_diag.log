@@ -1,1 +1,15 @@
 letter+space predictors: 27
+D98  n=raw  y=raw        -> K=24: +0.069  K=45: +0.114  K=90: +0.186
+D98  n=raw  y=offsetfree -> K=24: +0.121  K=45: +0.137  K=90: +0.236
+D98  n=prop y=raw        -> K=24: +0.061  K=45: +0.103  K=90: +0.140
+D98  n=prop y=offsetfree -> K=24: +0.112  K=45: +0.138  K=90: +0.200
+D28  n=raw  y=raw        -> K=24: +0.052  K=45: +0.088  K=90: +0.148
+D28  n=raw  y=offsetfree -> K=24: +0.067  K=45: +0.120  K=90: +0.172
+D28  n=prop y=raw        -> K=24: +0.034  K=45: +0.060  K=90: +0.086
+D28  n=prop y=offsetfree -> K=24: +0.060  K=45: +0.105  K=90: +0.136
+
+WINNER: ('D98', 'raw', 'offsetfree')  {24: 0.121, 45: 0.137, 90: 0.236}
+verdict: K=90 EV > 0.05 -> foundation stands, rebuild MyoCoRL on the
+winning definition; all <= 0 -> per-unit window-level linear encoding
+has no signal on sEMG and paper 1 needs a different response variable.
+=== 561 done ===
