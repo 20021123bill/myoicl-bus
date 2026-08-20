@@ -533,3 +533,6 @@ step 97200/103000 | loss 1.2282 | lr 5.69e-06 | 505 win/s
 step 97400/103000 | loss 1.2269 | lr 5.30e-06 | 505 win/s
 step 97600/103000 | loss 1.2233 | lr 4.93e-06 | 505 win/s
 step 97800/103000 | loss 1.2288 | lr 4.57e-06 | 505 win/s
+step 98000/103000 | loss 1.2297 | lr 4.23e-06 | 506 win/s
+step 98200/103000 | loss 1.2260 | lr 3.90e-06 | 506 win/s
+step 98400/103000 | loss 1.2242 | lr 3.58e-06 | 506 win/s
