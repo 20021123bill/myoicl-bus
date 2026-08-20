@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T11:15:28+08:00
+# heartbeat 2026-08-20T11:16:12+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 82 %
-1, 3125 MiB, 24576 MiB, 91 %
-2, 2985 MiB, 24576 MiB, 35 %
+0, 3173 MiB, 24576 MiB, 16 %
+1, 3125 MiB, 24576 MiB, 80 %
+2, 2985 MiB, 24576 MiB, 9 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -2601,8 +2601,6 @@ checkpoint step 10000
 
 ### 526_blank.log
 ```
-  tf_ref_lr1e3   step  40000 | argmax-blank  99.5% | p(blank) 0.991 | entropy 0.039
-  tf_ref_lr1e3_40k step  40000 | argmax-blank  99.5% | p(blank) 0.991 | entropy 0.039
   (probe batch: 8 x 30s windows, 8/8 non-empty refs)
 --- 10:24 ---
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
@@ -2626,6 +2624,8 @@ checkpoint step 10000
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
   tf_fold0       step  40000 | argmax-blank  99.4% | p(blank) 0.991 | entropy 0.029
   tf_fold0_40k   step  40000 | argmax-blank  99.4% | p(blank) 0.991 | entropy 0.029
+  tf_fold0_full  step  96000 | argmax-blank  99.6% | p(blank) 0.995 | entropy 0.009
+  tf_fold1       step  40000 | argmax-blank  99.5% | p(blank) 0.990 | entropy 0.045
 ```
 
 ### 526_blank_tracker.log
@@ -2738,15 +2738,6 @@ Traceback (most recent call last):
 ### 540_fullbudget.log
 ```
         [val] step 60000: 8-test-user CER 45.71 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[tf_fold0_full] step 94600/103000 | loss 1.2150 | lr 1.19e-05 | 657 win/s
-        [val] step 92000: 8-test-user CER 46.75 | fold-heldout-user CER 54.13  (their Tiny reference: 35.9)
-[tf_fold1_full] step 64200/103000 | loss 1.4886 | lr 2.26e-04 | 446 win/s
-        [val] step 64000: 8-test-user CER 48.42 | fold-heldout-user CER 54.93  (their Tiny reference: 35.9)
-[icl_dev_fold2] step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
-        [val] step 12000: mode-A 51.03 | mode-C 50.91 | gain C +0.12   (REAL novel subjects, fold 2)
---- 11:04 ---
-[tf_ref_full] step 63000/103000 | loss 1.5429 | lr 2.38e-04 | 433 win/s
-        [val] step 60000: 8-test-user CER 45.71 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0_full] step 95400/103000 | loss 1.2111 | lr 9.75e-06 | 658 win/s
         [val] step 92000: 8-test-user CER 46.75 | fold-heldout-user CER 54.13  (their Tiny reference: 35.9)
 [tf_fold1_full] step 64800/103000 | loss 1.4849 | lr 2.20e-04 | 446 win/s
@@ -2759,6 +2750,15 @@ Traceback (most recent call last):
 [tf_fold0_full] step 96200/103000 | loss 1.2101 | lr 7.81e-06 | 658 win/s
         [val] step 96000: 8-test-user CER 45.52 | fold-heldout-user CER 53.59  (their Tiny reference: 35.9)
 [tf_fold1_full] step 65200/103000 | loss 1.4728 | lr 2.16e-04 | 446 win/s
+        [val] step 64000: 8-test-user CER 48.42 | fold-heldout-user CER 54.93  (their Tiny reference: 35.9)
+[icl_dev_fold2] step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
+        [val] step 12000: mode-A 51.03 | mode-C 50.91 | gain C +0.12   (REAL novel subjects, fold 2)
+--- 11:14 ---
+[tf_ref_full] step 63800/103000 | loss 1.5289 | lr 2.30e-04 | 433 win/s
+        [val] step 60000: 8-test-user CER 45.71 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0_full] step 97200/103000 | loss 1.2128 | lr 5.69e-06 | 658 win/s
+        [val] step 96000: 8-test-user CER 45.52 | fold-heldout-user CER 53.59  (their Tiny reference: 35.9)
+[tf_fold1_full] step 65600/103000 | loss 1.4709 | lr 2.12e-04 | 445 win/s
         [val] step 64000: 8-test-user CER 48.42 | fold-heldout-user CER 54.93  (their Tiny reference: 35.9)
 [icl_dev_fold2] step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
         [val] step 12000: mode-A 51.03 | mode-C 50.91 | gain C +0.12   (REAL novel subjects, fold 2)
@@ -3479,7 +3479,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### tf_fold0_full.log
 ```
-step 92600/103000 | loss 1.2296 | lr 1.82e-05 | 656 win/s
 step 92800/103000 | loss 1.2264 | lr 1.75e-05 | 656 win/s
 step 93000/103000 | loss 1.2259 | lr 1.68e-05 | 657 win/s
 step 93200/103000 | loss 1.2281 | lr 1.62e-05 | 657 win/s
@@ -3504,6 +3503,7 @@ step 96600/103000 | loss 1.2117 | lr 6.92e-06 | 658 win/s
 step 96800/103000 | loss 1.2110 | lr 6.50e-06 | 658 win/s
 step 97000/103000 | loss 1.2043 | lr 6.08e-06 | 658 win/s
 step 97200/103000 | loss 1.2128 | lr 5.69e-06 | 658 win/s
+step 97400/103000 | loss 1.2098 | lr 5.30e-06 | 658 win/s
 ```
 
 ### tf_fold0.log
@@ -3537,7 +3537,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-step 61000/103000 | loss 1.5070 | lr 2.59e-04 | 446 win/s
 step 61200/103000 | loss 1.5193 | lr 2.57e-04 | 446 win/s
 step 61400/103000 | loss 1.5205 | lr 2.55e-04 | 446 win/s
 step 61600/103000 | loss 1.5158 | lr 2.53e-04 | 446 win/s
@@ -3562,6 +3561,7 @@ step 65000/103000 | loss 1.4804 | lr 2.18e-04 | 446 win/s
 step 65200/103000 | loss 1.4728 | lr 2.16e-04 | 446 win/s
 step 65400/103000 | loss 1.4707 | lr 2.14e-04 | 446 win/s
 step 65600/103000 | loss 1.4709 | lr 2.12e-04 | 445 win/s
+step 65800/103000 | loss 1.4729 | lr 2.10e-04 | 445 win/s
 ```
 
 ### tf_fold1.log
@@ -3653,8 +3653,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-step 59200/103000 | loss 1.5648 | lr 2.78e-04 | 432 win/s
-step 59400/103000 | loss 1.5503 | lr 2.76e-04 | 432 win/s
 step 59600/103000 | loss 1.5463 | lr 2.74e-04 | 432 win/s
 step 59800/103000 | loss 1.5438 | lr 2.71e-04 | 432 win/s
 step 60000/103000 | loss 1.5377 | lr 2.69e-04 | 432 win/s
@@ -3678,6 +3676,8 @@ step 63200/103000 | loss 1.5325 | lr 2.36e-04 | 433 win/s
 step 63400/103000 | loss 1.5319 | lr 2.34e-04 | 433 win/s
 step 63600/103000 | loss 1.5225 | lr 2.32e-04 | 433 win/s
 step 63800/103000 | loss 1.5289 | lr 2.30e-04 | 433 win/s
+step 64000/103000 | loss 1.5071 | lr 2.28e-04 | 433 win/s
+[val] step 64000: 8-test-user CER 46.66 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 ```
 
 ### tf_ref.log
