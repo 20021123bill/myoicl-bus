@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T14:15:48+08:00
+# heartbeat 2026-08-20T14:16:31+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 73 %
+0, 3173 MiB, 24576 MiB, 72 %
 1, 2731 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 65 %
-3, 2731 MiB, 24576 MiB, 0 %
+2, 2985 MiB, 24576 MiB, 82 %
+3, 2731 MiB, 24576 MiB, 23 %
 ```
 
 ## jobs
@@ -2741,15 +2741,6 @@ Traceback (most recent call last):
 
 ### 540_fullbudget.log
 ```
-        [val] step 88000: 8-test-user CER 46.77 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
-[tf_fold0_full] step 103000/103000 | loss 1.2038 | lr 0.00e+00 | 660 win/s
-        [val] step 103000: 8-test-user CER 45.88 | fold-heldout-user CER 53.87  (their Tiny reference: 35.9)
-[tf_fold1_full] step 92400/103000 | loss 1.2459 | lr 1.89e-05 | 497 win/s
-        [val] step 92000: 8-test-user CER 46.66 | fold-heldout-user CER 53.71  (their Tiny reference: 35.9)
-[icl_dev_fold2] step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
-        [val] step 12000: mode-A 51.03 | mode-C 50.91 | gain C +0.12   (REAL novel subjects, fold 2)
---- 14:04 ---
-[tf_ref_full] step 92000/103000 | loss 1.2912 | lr 2.03e-05 | 491 win/s
         [val] step 92000: 8-test-user CER 46.59 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 [tf_fold0_full] step 103000/103000 | loss 1.2038 | lr 0.00e+00 | 660 win/s
         [val] step 103000: 8-test-user CER 45.88 | fold-heldout-user CER 53.87  (their Tiny reference: 35.9)
@@ -2763,6 +2754,15 @@ Traceback (most recent call last):
 [tf_fold0_full] step 103000/103000 | loss 1.2038 | lr 0.00e+00 | 660 win/s
         [val] step 103000: 8-test-user CER 45.88 | fold-heldout-user CER 53.87  (their Tiny reference: 35.9)
 [tf_fold1_full] step 94200/103000 | loss 1.2384 | lr 1.30e-05 | 500 win/s
+        [val] step 92000: 8-test-user CER 46.66 | fold-heldout-user CER 53.71  (their Tiny reference: 35.9)
+[icl_dev_fold2] step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
+        [val] step 12000: mode-A 51.03 | mode-C 50.91 | gain C +0.12   (REAL novel subjects, fold 2)
+--- 14:14 ---
+[tf_ref_full] step 93200/103000 | loss 1.2817 | lr 1.62e-05 | 491 win/s
+        [val] step 92000: 8-test-user CER 46.59 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
+[tf_fold0_full] step 103000/103000 | loss 1.2038 | lr 0.00e+00 | 660 win/s
+        [val] step 103000: 8-test-user CER 45.88 | fold-heldout-user CER 53.87  (their Tiny reference: 35.9)
+[tf_fold1_full] step 95000/103000 | loss 1.2330 | lr 1.08e-05 | 501 win/s
         [val] step 92000: 8-test-user CER 46.66 | fold-heldout-user CER 53.71  (their Tiny reference: 35.9)
 [icl_dev_fold2] step 12000/12000 | loss 2.4017 | lr 0.00e+00 | 1.51 it/s
         [val] step 12000: mode-A 51.03 | mode-C 50.91 | gain C +0.12   (REAL novel subjects, fold 2)
@@ -3151,7 +3151,6 @@ step 200/12000 | loss 5.8096 | lr 3.33e-04 | 1.66 it/s
 
 ### 553_aux.log
 ```
-AST OK
 patch verified
 launched icl_aux_fold2 pid=1055332
 [cohort] fold 2: 24 users the backbone has never seen, 213 sessions
@@ -3174,6 +3173,8 @@ step 400/20000 | loss 5.6576 | aux rot 2.159 (chance 2.83) | aux perm 2.008 (cha
 [14:05] step 1800/20000 | loss 5.0060 | aux rot 1.987 (chance 2.83) | aux perm 1.606 (chance 3.26) | lr 9.96e-04 | 1.57 it/s
         [val] new best mode-C 70.59 -> best.pt
 [14:10] step 2200/20000 | loss 5.1382 | aux rot 2.023 (chance 2.83) | aux perm 1.765 (chance 3.26) | lr 9.90e-04 | 1.52 it/s
+        [val] new best mode-C 64.40 -> best.pt
+[14:15] step 2600/20000 | loss 4.8422 | aux rot 1.933 (chance 2.83) | aux perm 1.739 (chance 3.26) | lr 9.83e-04 | 1.50 it/s
         [val] new best mode-C 64.40 -> best.pt
 ```
 
@@ -3255,11 +3256,28 @@ probe watcher pid=1090251
 k= 12 ( 48s): mode-A  53.24 | mode-C  57.82 | gain  -4.58 (24 episodes)
 k= 45 (180s): mode-A  53.24 | mode-C  59.84 | gain  -6.60 (24 episodes)
 k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
+--- 14:13 ---
+[icl_aux_fold2] step 2500/20000 | loss 4.9932 | aux rot 1.980 (chance 2.83) | aux perm 1.589 (chance 3.26) | lr 9.85
+        [val] new best mode-C 64.40 -> best.pt
+[icl_aux_fold0] step 700/20000 | loss 5.2765 | aux rot 2.074 (chance 2.83) | aux perm 1.661 (chance 3.26) | lr 7.00e
+k= 12 ( 48s): mode-A  53.24 | mode-C  57.82 | gain  -4.58 (24 episodes)
+k= 45 (180s): mode-A  53.24 | mode-C  59.84 | gain  -6.60 (24 episodes)
+k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
 ```
 
 ### 555_gate_full_eval.log
 ```
 === wait for ref_full / fold1_full to finish ===
+```
+
+### 555_gate_full.log
+```
+=== wait for ref_full / fold1_full to finish ===
+```
+
+### 556_joint.log
+```
+=== wait for tf_fold1_full to finish ===
 ```
 
 ### 556_joint_synth_aux.log
@@ -3399,11 +3417,12 @@ step 400/20000 | loss 5.3768 | aux rot 2.127 (chance 2.83) | aux perm 1.910 (cha
 step 500/20000 | loss 5.4676 | aux rot 2.210 (chance 2.83) | aux perm 1.639 (chance 3.26) | lr 5.00e-04 | 1.34 it/s
 step 600/20000 | loss 5.1117 | aux rot 2.040 (chance 2.83) | aux perm 1.660 (chance 3.26) | lr 6.00e-04 | 1.32 it/s
 step 700/20000 | loss 5.2765 | aux rot 2.074 (chance 2.83) | aux perm 1.661 (chance 3.26) | lr 7.00e-04 | 1.35 it/s
+step 800/20000 | loss 4.9588 | aux rot 2.050 (chance 2.83) | aux perm 1.750 (chance 3.26) | lr 8.00e-04 | 1.38 it/s
+step 900/20000 | loss 5.3051 | aux rot 2.224 (chance 2.83) | aux perm 1.767 (chance 3.26) | lr 9.00e-04 | 1.38 it/s
 ```
 
 ### icl_aux_fold2.log
 ```
-step 600/20000 | loss 5.3155 | aux rot 2.030 (chance 2.83) | aux perm 1.650 (chance 3.26) | lr 6.00e-04 | 1.51 it/s
 step 700/20000 | loss 5.3360 | aux rot 2.076 (chance 2.83) | aux perm 1.661 (chance 3.26) | lr 7.00e-04 | 1.55 it/s
 step 800/20000 | loss 5.0267 | aux rot 2.039 (chance 2.83) | aux perm 1.763 (chance 3.26) | lr 8.00e-04 | 1.57 it/s
 step 900/20000 | loss 5.3208 | aux rot 2.211 (chance 2.83) | aux perm 1.779 (chance 3.26) | lr 9.00e-04 | 1.58 it/s
@@ -3428,6 +3447,7 @@ step 2300/20000 | loss 4.9387 | aux rot 1.968 (chance 2.83) | aux perm 1.747 (ch
 step 2400/20000 | loss 4.6101 | aux rot 1.892 (chance 2.83) | aux perm 1.747 (chance 3.26) | lr 9.87e-04 | 1.52 it/s
 step 2500/20000 | loss 4.9932 | aux rot 1.980 (chance 2.83) | aux perm 1.589 (chance 3.26) | lr 9.85e-04 | 1.51 it/s
 step 2600/20000 | loss 4.8422 | aux rot 1.933 (chance 2.83) | aux perm 1.739 (chance 3.26) | lr 9.83e-04 | 1.50 it/s
+step 2700/20000 | loss 5.0515 | aux rot 1.932 (chance 2.83) | aux perm 1.738 (chance 3.26) | lr 9.80e-04 | 1.49 it/s
 ```
 
 ### icl_dev2_fold2.log
@@ -3712,7 +3732,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-step 90400/103000 | loss 1.2602 | lr 2.66e-05 | 493 win/s
 step 90600/103000 | loss 1.2554 | lr 2.57e-05 | 493 win/s
 step 90800/103000 | loss 1.2571 | lr 2.49e-05 | 494 win/s
 step 91000/103000 | loss 1.2540 | lr 2.41e-05 | 494 win/s
@@ -3737,6 +3756,7 @@ step 94400/103000 | loss 1.2337 | lr 1.25e-05 | 500 win/s
 step 94600/103000 | loss 1.2357 | lr 1.19e-05 | 500 win/s
 step 94800/103000 | loss 1.2340 | lr 1.13e-05 | 501 win/s
 step 95000/103000 | loss 1.2330 | lr 1.08e-05 | 501 win/s
+step 95200/103000 | loss 1.2302 | lr 1.03e-05 | 501 win/s
 ```
 
 ### tf_fold1.log
@@ -3828,7 +3848,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-step 88600/103000 | loss 1.3136 | lr 3.46e-05 | 484 win/s
 step 88800/103000 | loss 1.3094 | lr 3.36e-05 | 485 win/s
 step 89000/103000 | loss 1.3095 | lr 3.27e-05 | 485 win/s
 step 89200/103000 | loss 1.3089 | lr 3.18e-05 | 486 win/s
@@ -3853,6 +3872,7 @@ step 92600/103000 | loss 1.2921 | lr 1.82e-05 | 491 win/s
 step 92800/103000 | loss 1.2841 | lr 1.75e-05 | 491 win/s
 step 93000/103000 | loss 1.2831 | lr 1.68e-05 | 491 win/s
 step 93200/103000 | loss 1.2817 | lr 1.62e-05 | 491 win/s
+step 93400/103000 | loss 1.2823 | lr 1.55e-05 | 491 win/s
 ```
 
 ### tf_ref.log
