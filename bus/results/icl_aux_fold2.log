@@ -32,3 +32,7 @@ step 1600/20000 | loss 4.8578 | aux rot 2.049 (chance 2.83) | aux perm 1.739 (ch
 step 1700/20000 | loss 4.8765 | aux rot 2.104 (chance 2.83) | aux perm 1.647 (chance 3.26) | lr 9.97e-04 | 1.57 it/s
 step 1800/20000 | loss 5.0060 | aux rot 1.987 (chance 2.83) | aux perm 1.606 (chance 3.26) | lr 9.96e-04 | 1.57 it/s
 step 1900/20000 | loss 5.1146 | aux rot 2.028 (chance 2.83) | aux perm 1.602 (chance 3.26) | lr 9.94e-04 | 1.56 it/s
+step 2000/20000 | loss 5.1622 | aux rot 2.035 (chance 2.83) | aux perm 1.746 (chance 3.26) | lr 9.93e-04 | 1.55 it/s
+[val] step 2000: mode-A 59.74 | mode-C 64.40 | gain C -4.67   (REAL novel subjects, fold 2)
+[val] new best mode-C 64.40 -> best.pt
+step 2100/20000 | loss 4.7245 | aux rot 2.011 (chance 2.83) | aux perm 1.707 (chance 3.26) | lr 9.92e-04 | 1.54 it/s

@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T14:07:55+08:00
+# heartbeat 2026-08-20T14:08:39+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 36 %
-1, 2731 MiB, 24576 MiB, 45 %
-2, 2985 MiB, 24576 MiB, 71 %
+0, 3173 MiB, 24576 MiB, 75 %
+1, 2731 MiB, 24576 MiB, 0 %
+2, 2985 MiB, 24576 MiB, 66 %
 3, 2731 MiB, 24576 MiB, 0 %
 ```
 
@@ -3207,6 +3207,13 @@ launched icl_aux_fold0 pid=1090250
 probe watcher pid=1090251
 === GPU2: fold2_full continuation when fold1_full finishes ===
 === stream (14 h) ===
+--- 14:08 ---
+[icl_aux_fold2] step 2100/20000 | loss 4.7245 | aux rot 2.011 (chance 2.83) | aux perm 1.707 (chance 3.26) | lr 9.92
+        [val] new best mode-C 64.40 -> best.pt
+[icl_aux_fold0] step 300/20000 | loss 5.8680 | aux rot 2.281 (chance 2.83) | aux perm 2.463 (chance 3.26) | lr 3.00e
+k= 12 ( 48s): mode-A  53.24 | mode-C  57.82 | gain  -4.58 (24 episodes)
+k= 45 (180s): mode-A  53.24 | mode-C  59.84 | gain  -6.60 (24 episodes)
+k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
 ```
 
 ### 554_probes.log
@@ -3355,14 +3362,12 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
   return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 60.97 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 step 100/20000 | loss 10.7385 | aux rot 2.829 (chance 2.83) | aux perm 3.218 (chance 3.26) | lr 1.00e-04 | 1.45 it/s
+step 200/20000 | loss 7.5114 | aux rot 2.604 (chance 2.83) | aux perm 2.951 (chance 3.26) | lr 2.00e-04 | 1.36 it/s
+step 300/20000 | loss 5.8680 | aux rot 2.281 (chance 2.83) | aux perm 2.463 (chance 3.26) | lr 3.00e-04 | 1.37 it/s
 ```
 
 ### icl_aux_fold2.log
 ```
-[symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
-  return F.conv1d(input, weight, bias, self.stride,
-[audit] step 0: mode-A 63.10 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 step 100/20000 | loss 13.0578 | aux rot 2.769 (chance 2.83) | aux perm 3.278 (chance 3.26) | lr 1.00e-04 | 1.59 it/s
 step 200/20000 | loss 12.5117 | aux rot 2.420 (chance 2.83) | aux perm 2.978 (chance 3.26) | lr 2.00e-04 | 1.53 it/s
 step 300/20000 | loss 10.4381 | aux rot 2.204 (chance 2.83) | aux perm 2.433 (chance 3.26) | lr 3.00e-04 | 1.55 it/s
@@ -3384,6 +3389,10 @@ step 1600/20000 | loss 4.8578 | aux rot 2.049 (chance 2.83) | aux perm 1.739 (ch
 step 1700/20000 | loss 4.8765 | aux rot 2.104 (chance 2.83) | aux perm 1.647 (chance 3.26) | lr 9.97e-04 | 1.57 it/s
 step 1800/20000 | loss 5.0060 | aux rot 1.987 (chance 2.83) | aux perm 1.606 (chance 3.26) | lr 9.96e-04 | 1.57 it/s
 step 1900/20000 | loss 5.1146 | aux rot 2.028 (chance 2.83) | aux perm 1.602 (chance 3.26) | lr 9.94e-04 | 1.56 it/s
+step 2000/20000 | loss 5.1622 | aux rot 2.035 (chance 2.83) | aux perm 1.746 (chance 3.26) | lr 9.93e-04 | 1.55 it/s
+[val] step 2000: mode-A 59.74 | mode-C 64.40 | gain C -4.67   (REAL novel subjects, fold 2)
+[val] new best mode-C 64.40 -> best.pt
+step 2100/20000 | loss 4.7245 | aux rot 2.011 (chance 2.83) | aux perm 1.707 (chance 3.26) | lr 9.92e-04 | 1.54 it/s
 ```
 
 ### icl_dev2_fold2.log
