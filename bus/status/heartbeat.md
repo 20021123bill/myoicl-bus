@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T14:58:09+08:00
+# heartbeat 2026-08-20T14:58:52+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 0 %
+0, 3173 MiB, 24576 MiB, 44 %
 1, 3153 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 48 %
+2, 2985 MiB, 24576 MiB, 93 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3236,7 +3236,6 @@ k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
 
 ### 554_probes.log
 ```
-probe loop on GPU1
 --- 14:03 icl_aux_fold2 ---
 [ckpt] /data2/chenyuxiang/runs/icl_aux_fold2/best.pt step 1000
 k= 12 ( 48s): mode-A  53.24 | mode-C  57.82 | gain  -4.58 (24 episodes)
@@ -3261,6 +3260,7 @@ k= 12 ( 48s): mode-A  64.77 | mode-C  68.06 | gain  -3.28 (24 episodes)
 [ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
 k= 12 ( 48s): mode-A  55.40 | mode-C  53.98 | gain  +1.41 (24 episodes)
 k= 45 (180s): mode-A  55.82 | mode-C  64.02 | gain  -8.20 (24 episodes)
+k= 12 ( 48s): mode-A  67.17 | mode-C  66.45 | gain  +0.72 (24 episodes)
 ```
 
 ### 554_sprint.log
@@ -3382,6 +3382,9 @@ launched icl_joint_fold0 pid=1169828
 [icl_joint_fold1] waiting
 --- 14:53 ---
 [icl_joint_fold0] step 100/30000 | loss 9.9521 | aux rot 2.875 (chance 2.83) | aux perm 3.271 (chance 3.26) | lr 3
+[icl_joint_fold1] waiting
+--- 14:58 ---
+[icl_joint_fold0] step 300/30000 | loss 6.4928 | aux rot 2.489 (chance 2.83) | aux perm 3.008 (chance 3.26) | lr 1
 [icl_joint_fold1] waiting
 ```
 
@@ -3750,6 +3753,7 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 [audit] step 0: mode-A 53.72 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 step 100/30000 | loss 9.9521 | aux rot 2.875 (chance 2.83) | aux perm 3.271 (chance 3.26) | lr 3.33e-05 | 0.81 it/s
 step 200/30000 | loss 7.2901 | aux rot 2.751 (chance 2.83) | aux perm 3.190 (chance 3.26) | lr 6.67e-05 | 0.83 it/s
+step 300/30000 | loss 6.4928 | aux rot 2.489 (chance 2.83) | aux perm 3.008 (chance 3.26) | lr 1.00e-04 | 0.83 it/s
 ```
 
 ### teachers_shard0.log
