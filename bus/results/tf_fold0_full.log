@@ -560,3 +560,6 @@ step 102200/103000 | loss 1.2020 | lr 1.08e-07 | 660 win/s
 step 102400/103000 | loss 1.2006 | lr 6.10e-08 | 660 win/s
 step 102600/103000 | loss 1.2039 | lr 2.71e-08 | 660 win/s
 step 102800/103000 | loss 1.2012 | lr 6.78e-09 | 660 win/s
+step 103000/103000 | loss 1.2038 | lr 0.00e+00 | 660 win/s
+[val] step 103000: 8-test-user CER 45.88 | fold-heldout-user CER 53.87  (their Tiny reference: 35.9)
+[done] best 8-test-user CER 44.28
