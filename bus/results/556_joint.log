@@ -1,3 +1,4 @@
 === wait for tf_fold1_full to finish ===
 using GPU0
 launched icl_joint_fold1 pid=1211048
+[15:09] step 200/20000 | loss 7.0014 | aux rot 2.560 (chance 2.83) | aux perm 3.132 (chance 3.26) | lr 1.00e

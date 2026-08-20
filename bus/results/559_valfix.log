@@ -10,3 +10,7 @@ relaunched icl_joint_fold0 pid=1183670
 --- 15:05 ---
 [icl_joint_fold0] step 700/30000 | loss 5.1462 | aux rot 2.103 (chance 2.83) | aux perm 1.889 (chance 3.26) 
 [icl_joint_fold1] waiting
+--- 15:10 ---
+[icl_joint_fold0] step 1000/30000 | loss 5.0165 | aux rot 2.102 (chance 2.83) | aux perm 1.578 (chance 3.26)
+        [val] new best mode-C 47.71 -> best.pt
+[icl_joint_fold1] step 200/20000 | loss 7.0014 | aux rot 2.560 (chance 2.83) | aux perm 3.132 (chance 3.26) 
