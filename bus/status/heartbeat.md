@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:37:37+08:00
+# heartbeat 2026-08-20T15:38:20+08:00
 
 ## gpu
 ```
-0, 6313 MiB, 24576 MiB, 56 %
-1, 3155 MiB, 24576 MiB, 3 %
-2, 3169 MiB, 24576 MiB, 76 %
+0, 6313 MiB, 24576 MiB, 18 %
+1, 3155 MiB, 24576 MiB, 15 %
+2, 3169 MiB, 24576 MiB, 58 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -89,6 +89,7 @@
 558_joint_is_mainline                    DONE rc=127
 559_val_realonly                         DONE rc=127
 560_myocorl_launch                       DONE rc=127
+561_encoding_signal_diag                 DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3391,11 +3392,6 @@ explicit correction k=45     :  69.65  (gain -22.02)
 
 ### 558_joint_is_mainline.log
 ```
---- 15:08 ---
-[icl_joint_fold0] step 900/30000 | loss 5.1509 | aux rot 2.147 (chance 2.83) | aux perm 1.755 (chance 3.26) | lr 3
-[icl_joint_fold1] step 100/20000 | loss 8.2409 | aux rot 2.789 (chance 2.83) | aux perm 3.260 (chance 3.26) | lr 5
---- 15:13 ---
-[icl_joint_fold0] step 1100/30000 | loss 5.1774 | aux rot 2.116 (chance 2.83) | aux perm 1.561 (chance 3.26) | lr 
         [val] new best mode-C 47.71 -> best.pt
 [icl_joint_fold1] step 400/20000 | loss 6.2978 | aux rot 2.187 (chance 2.83) | aux perm 2.488 (chance 3.26) | lr 2
 --- 15:18 ---
@@ -3415,6 +3411,11 @@ explicit correction k=45     :  69.65  (gain -22.02)
 [icl_joint_fold0] step 2100/30000 | loss 4.6140 | aux rot 1.894 (chance 2.83) | aux perm 1.564 (chance 3.26) | lr 
         [val] new best mode-C 47.40 -> best.pt
 [icl_joint_fold1] step 1300/20000 | loss 4.8615 | aux rot 1.967 (chance 2.83) | aux perm 1.675 (chance 3.26) | lr 
+        [val] new best mode-C 55.21 -> best.pt
+--- 15:38 ---
+[icl_joint_fold0] step 2300/30000 | loss 4.6538 | aux rot 1.858 (chance 2.83) | aux perm 1.667 (chance 3.26) | lr 
+        [val] new best mode-C 47.40 -> best.pt
+[icl_joint_fold1] step 1500/20000 | loss 5.1511 | aux rot 1.905 (chance 2.83) | aux perm 1.784 (chance 3.26) | lr 
         [val] new best mode-C 55.21 -> best.pt
 ```
 
@@ -3527,6 +3528,10 @@ Traceback (most recent call last):
   File "<stdin>", line 20, in <module>
 AssertionError: ridge baseline broken -- unit responses carry no signal?
 SMOKE FAILED rc=1
+```
+
+### 561_encoding_signal_diag.log
+```
 ```
 
 ### d3_train.log
@@ -3844,7 +3849,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-step 200/30000 | loss 7.2901 | aux rot 2.751 (chance 2.83) | aux perm 3.190 (chance 3.26) | lr 6.67e-05 | 0.83 it/s
 step 300/30000 | loss 6.4928 | aux rot 2.489 (chance 2.83) | aux perm 3.008 (chance 3.26) | lr 1.00e-04 | 0.83 it/s
 step 400/30000 | loss 6.5187 | aux rot 2.304 (chance 2.83) | aux perm 2.730 (chance 3.26) | lr 1.33e-04 | 0.82 it/s
 step 500/30000 | loss 5.7252 | aux rot 2.179 (chance 2.83) | aux perm 2.377 (chance 3.26) | lr 1.67e-04 | 0.82 it/s
@@ -3869,11 +3873,11 @@ step 2000/30000 | loss 5.1927 | aux rot 1.890 (chance 2.83) | aux perm 1.657 (ch
 [val] new best mode-C 47.40 -> best.pt
 step 2100/30000 | loss 4.6140 | aux rot 1.894 (chance 2.83) | aux perm 1.564 (chance 3.26) | lr 4.99e-04 | 0.84 it/s
 step 2200/30000 | loss 4.6708 | aux rot 1.908 (chance 2.83) | aux perm 1.514 (chance 3.26) | lr 4.99e-04 | 0.84 it/s
+step 2300/30000 | loss 4.6538 | aux rot 1.858 (chance 2.83) | aux perm 1.667 (chance 3.26) | lr 4.99e-04 | 0.84 it/s
 ```
 
 ### icl_joint_fold1.log
 ```
-[prefix] FUSED mode: per-token (signal + soft-aligned char)
 [prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
 [prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
 [prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
@@ -3898,6 +3902,7 @@ step 1100/20000 | loss 5.0751 | aux rot 2.073 (chance 2.83) | aux perm 1.565 (ch
 step 1200/20000 | loss 5.0613 | aux rot 2.000 (chance 2.83) | aux perm 1.750 (chance 3.26) | lr 5.00e-04 | 0.78 it/s
 step 1300/20000 | loss 4.8615 | aux rot 1.967 (chance 2.83) | aux perm 1.675 (chance 3.26) | lr 5.00e-04 | 0.78 it/s
 step 1400/20000 | loss 4.8311 | aux rot 1.996 (chance 2.83) | aux perm 1.603 (chance 3.26) | lr 4.99e-04 | 0.78 it/s
+step 1500/20000 | loss 5.1511 | aux rot 1.905 (chance 2.83) | aux perm 1.784 (chance 3.26) | lr 4.99e-04 | 0.78 it/s
 ```
 
 ### teachers_shard0.log
