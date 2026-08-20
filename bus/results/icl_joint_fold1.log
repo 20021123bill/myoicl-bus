@@ -92,3 +92,4 @@ step 6800/20000 | loss 4.2060 | aux rot 1.382 (chance 2.83) | aux perm 1.648 (ch
 step 6900/20000 | loss 4.0872 | aux rot 1.289 (chance 2.83) | aux perm 1.680 (chance 3.26) | lr 3.90e-04 | 0.95 it/s
 step 7000/20000 | loss 4.5028 | aux rot 1.392 (chance 2.83) | aux perm 1.684 (chance 3.26) | lr 3.87e-04 | 0.95 it/s
 [val] step 7000: mode-A 43.49 | mode-C 45.47 | gain C -1.98   (REAL novel subjects, fold 1)
+step 7100/20000 | loss 4.0573 | aux rot 1.400 (chance 2.83) | aux perm 1.579 (chance 3.26) | lr 3.83e-04 | 0.95 it/s

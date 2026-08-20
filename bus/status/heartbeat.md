@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:08:33+08:00
+# heartbeat 2026-08-20T17:09:16+08:00
 
 ## gpu
 ```
-0, 6275 MiB, 24576 MiB, 0 %
-1, 6058 MiB, 24576 MiB, 66 %
-2, 3169 MiB, 24576 MiB, 62 %
+0, 6275 MiB, 24576 MiB, 34 %
+1, 6058 MiB, 24576 MiB, 60 %
+2, 3169 MiB, 24576 MiB, 49 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3244,16 +3244,6 @@ k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
 
 ### 554_probes.log
 ```
---- 15:47 icl_aux_fold0 ---
-[ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
-k= 12 ( 48s): mode-A  54.93 | mode-C  53.80 | gain  +1.14 (24 episodes)
-k= 45 (180s): mode-A  55.86 | mode-C  63.78 | gain  -7.92 (24 episodes)
-k= 12 ( 48s): mode-A  67.37 | mode-C  67.09 | gain  +0.28 (24 episodes)
---- 16:12 icl_aux_fold2 ---
-[ckpt] /data2/chenyuxiang/runs/icl_aux_fold2/best.pt step 3000
-k= 12 ( 48s): mode-A  53.46 | mode-C  58.32 | gain  -4.86 (24 episodes)
-k= 45 (180s): mode-A  54.06 | mode-C  56.18 | gain  -2.12 (24 episodes)
-k= 12 ( 48s): mode-A  64.95 | mode-C  67.95 | gain  -2.99 (24 episodes)
 --- 16:13 icl_aux_fold0 ---
 [ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
 k= 12 ( 48s): mode-A  54.73 | mode-C  54.21 | gain  +0.52 (24 episodes)
@@ -3269,6 +3259,16 @@ k= 12 ( 48s): mode-A  64.27 | mode-C  67.52 | gain  -3.25 (24 episodes)
 k= 12 ( 48s): mode-A  55.66 | mode-C  54.33 | gain  +1.33 (24 episodes)
 k= 45 (180s): mode-A  55.57 | mode-C  62.59 | gain  -7.02 (24 episodes)
 k= 12 ( 48s): mode-A  66.53 | mode-C  65.97 | gain  +0.56 (24 episodes)
+--- 17:04 icl_aux_fold2 ---
+[ckpt] /data2/chenyuxiang/runs/icl_aux_fold2/best.pt step 3000
+k= 12 ( 48s): mode-A  54.02 | mode-C  58.35 | gain  -4.33 (24 episodes)
+k= 45 (180s): mode-A  54.17 | mode-C  57.77 | gain  -3.60 (24 episodes)
+k= 12 ( 48s): mode-A  63.77 | mode-C  67.48 | gain  -3.71 (24 episodes)
+--- 17:04 icl_aux_fold0 ---
+[ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
+k= 12 ( 48s): mode-A  56.00 | mode-C  54.41 | gain  +1.60 (24 episodes)
+k= 45 (180s): mode-A  56.20 | mode-C  63.07 | gain  -6.86 (24 episodes)
+k= 12 ( 48s): mode-A  67.45 | mode-C  66.92 | gain  +0.53 (24 episodes)
 ```
 
 ### 554_sprint.log
@@ -4052,9 +4052,6 @@ step 7000/20000 | loss 4.5028 | aux rot 1.392 (chance 2.83) | aux perm 1.684 (ch
 
 ### icl_split_fold0.log
 ```
-[cohort] fold 0: 24 users the backbone has never seen, 213 sessions
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [trunk] /data2/chenyuxiang/runs/tf_fold0_full/last.pt step 103000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 [prefix] FUSED mode: per-token (signal + soft-aligned char)
 [prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
@@ -4077,13 +4074,13 @@ step 600/20000 | loss 4.6654 | aux rot 2.416 (chance 2.83) | aux perm 2.304 (cha
 step 700/20000 | loss 4.3376 | aux rot 2.306 (chance 2.83) | aux perm 2.026 (chance 3.26) | lr 2.10e-04 | 1.76 it/s
 step 800/20000 | loss 4.2150 | aux rot 2.235 (chance 2.83) | aux perm 1.831 (chance 3.26) | lr 2.40e-04 | 1.76 it/s
 step 900/20000 | loss 3.5987 | aux rot 2.192 (chance 2.83) | aux perm 1.667 (chance 3.26) | lr 2.70e-04 | 1.76 it/s
+step 1000/20000 | loss 3.6733 | aux rot 2.178 (chance 2.83) | aux perm 1.506 (chance 3.26) | lr 3.00e-04 | 1.73 it/s
+[val] step 1000: IDENTITY A 49.56 C 53.65 gain -4.08 | PERMUTED A 63.57 C 66.71 gain -3.14 | mem-gauge(meta-train A) 43.97   (meta-test users, fold 0)
+[val] new best mode-C 53.65 -> best.pt
 ```
 
 ### icl_split_fold1.log
 ```
-[cohort] fold 1: 24 users the backbone has never seen, 206 sessions
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [trunk] /data2/chenyuxiang/runs/tf_fold1_full/last.pt step 103000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 [prefix] FUSED mode: per-token (signal + soft-aligned char)
 [prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
@@ -4106,6 +4103,9 @@ step 600/20000 | loss 4.6691 | aux rot 2.348 (chance 2.83) | aux perm 2.360 (cha
 step 700/20000 | loss 4.2528 | aux rot 2.276 (chance 2.83) | aux perm 2.056 (chance 3.26) | lr 2.10e-04 | 1.71 it/s
 step 800/20000 | loss 4.1700 | aux rot 2.250 (chance 2.83) | aux perm 1.857 (chance 3.26) | lr 2.40e-04 | 1.71 it/s
 step 900/20000 | loss 3.5871 | aux rot 2.204 (chance 2.83) | aux perm 1.673 (chance 3.26) | lr 2.70e-04 | 1.73 it/s
+step 1000/20000 | loss 3.6488 | aux rot 2.153 (chance 2.83) | aux perm 1.504 (chance 3.26) | lr 3.00e-04 | 1.70 it/s
+[val] step 1000: IDENTITY A 56.26 C 58.91 gain -2.65 | PERMUTED A 68.02 C 69.50 gain -1.48 | mem-gauge(meta-train A) 39.94   (meta-test users, fold 1)
+[val] new best mode-C 58.91 -> best.pt
 ```
 
 ### teachers_shard0.log
@@ -4303,10 +4303,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-step 16000/103000 | loss 1.7255 | lr 6.68e-04 | 716 win/s
-[val] step 16000: 8-test-user CER 49.66 | fold-heldout-user CER 57.32  (their Tiny reference: 35.9)
-step 16200/103000 | loss 1.7566 | lr 6.67e-04 | 716 win/s
-step 16400/103000 | loss 1.7396 | lr 6.66e-04 | 717 win/s
 step 16600/103000 | loss 1.7514 | lr 6.65e-04 | 717 win/s
 step 16800/103000 | loss 1.7521 | lr 6.64e-04 | 717 win/s
 step 17000/103000 | loss 1.7806 | lr 6.63e-04 | 718 win/s
@@ -4328,6 +4324,10 @@ step 20000/103000 | loss 1.7322 | lr 6.47e-04 | 723 win/s
 [val] step 20000: 8-test-user CER 48.07 | fold-heldout-user CER 56.97  (their Tiny reference: 35.9)
 [val] new best 48.07 -> best.pt
 step 20200/103000 | loss 1.7459 | lr 6.46e-04 | 723 win/s
+step 20400/103000 | loss 1.7228 | lr 6.45e-04 | 723 win/s
+step 20600/103000 | loss 1.6940 | lr 6.43e-04 | 723 win/s
+step 20800/103000 | loss 1.7032 | lr 6.42e-04 | 723 win/s
+step 21000/103000 | loss 1.7006 | lr 6.41e-04 | 723 win/s
 ```
 
 ### tf_fold2.log
