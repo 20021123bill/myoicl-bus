@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:23:57+08:00
+# heartbeat 2026-08-20T15:24:41+08:00
 
 ## gpu
 ```
-0, 6313 MiB, 24576 MiB, 85 %
-1, 3155 MiB, 24576 MiB, 0 %
-2, 3167 MiB, 24576 MiB, 70 %
+0, 6313 MiB, 24576 MiB, 64 %
+1, 3155 MiB, 24576 MiB, 23 %
+2, 3167 MiB, 24576 MiB, 51 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3320,6 +3320,7 @@ launched icl_joint_fold1 pid=1211048
 [15:09] step 200/20000 | loss 7.0014 | aux rot 2.560 (chance 2.83) | aux perm 3.132 (chance 3.26) | lr 1.00e
 [15:14] step 400/20000 | loss 6.2978 | aux rot 2.187 (chance 2.83) | aux perm 2.488 (chance 3.26) | lr 2.00e
 [15:19] step 700/20000 | loss 5.0362 | aux rot 2.080 (chance 2.83) | aux perm 1.784 (chance 3.26) | lr 3.50e
+[15:24] step 900/20000 | loss 4.9979 | aux rot 2.124 (chance 2.83) | aux perm 1.754 (chance 3.26) | lr 4.50e
 ```
 
 ### 557_zeroshot.log
@@ -3859,6 +3860,7 @@ step 500/20000 | loss 5.6428 | aux rot 2.157 (chance 2.83) | aux perm 2.027 (cha
 step 600/20000 | loss 5.2351 | aux rot 2.131 (chance 2.83) | aux perm 1.787 (chance 3.26) | lr 3.00e-04 | 0.81 it/s
 step 700/20000 | loss 5.0362 | aux rot 2.080 (chance 2.83) | aux perm 1.784 (chance 3.26) | lr 3.50e-04 | 0.80 it/s
 step 800/20000 | loss 4.6822 | aux rot 2.074 (chance 2.83) | aux perm 1.681 (chance 3.26) | lr 4.00e-04 | 0.81 it/s
+step 900/20000 | loss 4.9979 | aux rot 2.124 (chance 2.83) | aux perm 1.754 (chance 3.26) | lr 4.50e-04 | 0.79 it/s
 ```
 
 ### teachers_shard0.log
@@ -4143,8 +4145,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-step 95800/103000 | loss 1.2771 | lr 8.75e-06 | 488 win/s
-step 96000/103000 | loss 1.2722 | lr 8.27e-06 | 488 win/s
 [val] step 96000: 8-test-user CER 46.19 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 step 96200/103000 | loss 1.2722 | lr 7.81e-06 | 488 win/s
 step 96400/103000 | loss 1.2764 | lr 7.36e-06 | 488 win/s
@@ -4168,6 +4168,8 @@ step 99800/103000 | loss 1.2590 | lr 1.73e-06 | 488 win/s
 step 100000/103000 | loss 1.2678 | lr 1.52e-06 | 488 win/s
 [val] step 100000: 8-test-user CER 46.21 | fold-heldout-user CER nan  (their Tiny reference: 35.9)
 step 100200/103000 | loss 1.2651 | lr 1.33e-06 | 488 win/s
+step 100400/103000 | loss 1.2617 | lr 1.15e-06 | 488 win/s
+step 100600/103000 | loss 1.2611 | lr 9.76e-07 | 488 win/s
 ```
 
 ### tf_ref.log
