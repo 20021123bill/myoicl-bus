@@ -441,3 +441,6 @@ step 80000/103000 | loss 1.3383 | lr 8.59e-05 | 472 win/s
 [val] new best 46.35 -> best.pt
 step 80200/103000 | loss 1.3286 | lr 8.45e-05 | 472 win/s
 step 80400/103000 | loss 1.3309 | lr 8.31e-05 | 473 win/s
+step 80600/103000 | loss 1.3262 | lr 8.17e-05 | 473 win/s
+step 80800/103000 | loss 1.3281 | lr 8.03e-05 | 473 win/s
+step 81000/103000 | loss 1.3311 | lr 7.89e-05 | 474 win/s
