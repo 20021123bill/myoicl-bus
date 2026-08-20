@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:34:45+08:00
+# heartbeat 2026-08-20T15:35:28+08:00
 
 ## gpu
 ```
-0, 6313 MiB, 24576 MiB, 3 %
+0, 6313 MiB, 24576 MiB, 58 %
 1, 3155 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 85 %
+2, 3169 MiB, 24576 MiB, 83 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3844,7 +3844,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-step 100/30000 | loss 9.9521 | aux rot 2.875 (chance 2.83) | aux perm 3.271 (chance 3.26) | lr 3.33e-05 | 0.81 it/s
 step 200/30000 | loss 7.2901 | aux rot 2.751 (chance 2.83) | aux perm 3.190 (chance 3.26) | lr 6.67e-05 | 0.83 it/s
 step 300/30000 | loss 6.4928 | aux rot 2.489 (chance 2.83) | aux perm 3.008 (chance 3.26) | lr 1.00e-04 | 0.83 it/s
 step 400/30000 | loss 6.5187 | aux rot 2.304 (chance 2.83) | aux perm 2.730 (chance 3.26) | lr 1.33e-04 | 0.82 it/s
@@ -3869,11 +3868,11 @@ step 2000/30000 | loss 5.1927 | aux rot 1.890 (chance 2.83) | aux perm 1.657 (ch
 [val] step 2000: mode-A 46.10 | mode-C 47.40 | gain C -1.30   (REAL novel subjects, fold 0)
 [val] new best mode-C 47.40 -> best.pt
 step 2100/30000 | loss 4.6140 | aux rot 1.894 (chance 2.83) | aux perm 1.564 (chance 3.26) | lr 4.99e-04 | 0.84 it/s
+step 2200/30000 | loss 4.6708 | aux rot 1.908 (chance 2.83) | aux perm 1.514 (chance 3.26) | lr 4.99e-04 | 0.84 it/s
 ```
 
 ### icl_joint_fold1.log
 ```
-[trunk] /data2/chenyuxiang/runs/tf_fold1_full/last.pt step 103000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 [prefix] FUSED mode: per-token (signal + soft-aligned char)
 [prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
 [prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
@@ -3898,6 +3897,7 @@ step 1000/20000 | loss 4.9507 | aux rot 2.057 (chance 2.83) | aux perm 1.585 (ch
 step 1100/20000 | loss 5.0751 | aux rot 2.073 (chance 2.83) | aux perm 1.565 (chance 3.26) | lr 5.00e-04 | 0.79 it/s
 step 1200/20000 | loss 5.0613 | aux rot 2.000 (chance 2.83) | aux perm 1.750 (chance 3.26) | lr 5.00e-04 | 0.78 it/s
 step 1300/20000 | loss 4.8615 | aux rot 1.967 (chance 2.83) | aux perm 1.675 (chance 3.26) | lr 5.00e-04 | 0.78 it/s
+step 1400/20000 | loss 4.8311 | aux rot 1.996 (chance 2.83) | aux perm 1.603 (chance 3.26) | lr 4.99e-04 | 0.78 it/s
 ```
 
 ### teachers_shard0.log
