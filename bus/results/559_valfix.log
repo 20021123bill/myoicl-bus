@@ -7,3 +7,6 @@ relaunched icl_joint_fold0 pid=1183670
 --- 15:00 ---
 [icl_joint_fold0] step 400/30000 | loss 6.5187 | aux rot 2.304 (chance 2.83) | aux perm 2.730 (chance 3.26) 
 [icl_joint_fold1] waiting
+--- 15:05 ---
+[icl_joint_fold0] step 700/30000 | loss 5.1462 | aux rot 2.103 (chance 2.83) | aux perm 1.889 (chance 3.26) 
+[icl_joint_fold1] waiting
