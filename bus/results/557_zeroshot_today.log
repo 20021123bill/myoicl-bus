@@ -1,3 +1,29 @@
 frozen fold2 twin stopped (kept as ablation)
 AST OK
 === running on /data2/chenyuxiang/runs/tf_ref_full/last.pt ===
+[trunk] /data2/chenyuxiang/runs/tf_ref_full/last.pt step 92000 fold -1
+[canon] canonical profile from 24 training users
+  return F.conv1d(input, weight, bias, self.stride,
+[user0] base  48.24 | k=12 corrected  71.47 (gain -23.23) rolls=[5, 13] margin=0.04/0.01
+[user0] base  48.24 | k=45 corrected  81.89 (gain -33.65) rolls=[12, 4] margin=0.01/0.04
+[user1] base  45.13 | k=12 corrected  69.29 (gain -24.16) rolls=[8, 1] margin=0.01/0.00
+[user1] base  45.13 | k=45 corrected  68.52 (gain -23.39) rolls=[9, 0] margin=0.00/0.01
+[user2] base  40.50 | k=12 corrected  40.34 (gain +0.16) rolls=[0, 0] margin=0.02/0.01
+[user2] base  40.50 | k=45 corrected  75.82 (gain -35.32) rolls=[2, 4] margin=0.01/0.00
+[user3] base  52.14 | k=12 corrected  79.12 (gain -26.98) rolls=[12, 10] margin=0.01/0.03
+[user3] base  52.14 | k=45 corrected  79.45 (gain -27.31) rolls=[6, 0] margin=0.01/0.02
+[user4] base  57.71 | k=12 corrected  58.63 (gain -0.91) rolls=[1, 14] margin=0.03/0.00
+[user4] base  57.71 | k=45 corrected  77.25 (gain -19.53) rolls=[14, 7] margin=0.03/0.00
+[user5] base  38.82 | k=12 corrected  78.65 (gain -39.83) rolls=[11, 3] margin=0.01/0.00
+[user5] base  38.82 | k=45 corrected  41.44 (gain -2.63) rolls=[1, 15] margin=0.00/0.02
+[user6] base  54.48 | k=12 corrected  60.99 (gain -6.52) rolls=[15, 1] margin=0.02/0.03
+[user6] base  54.48 | k=45 corrected  62.68 (gain -8.20) rolls=[1, 14] margin=0.04/0.11
+[user7] base  44.01 | k=12 corrected  53.44 (gain -9.43) rolls=[1, 13] margin=0.01/0.00
+[user7] base  44.01 | k=45 corrected  70.12 (gain -26.10) rolls=[15, 4] margin=0.01/0.01
+
+=== TRAINING-FREE EXPLICIT ADAPTATION -- 8 real unseen users ===
+mode A (no calibration)      :  47.63
+explicit correction k=12     :  63.99  (gain -16.36)
+explicit correction k=45     :  69.65  (gain -22.02)
+[saved] /data2/chenyuxiang/runs/remix_zeroshot.json
+=== 557 done ===
