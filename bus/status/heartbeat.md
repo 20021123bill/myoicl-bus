@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T16:24:11+08:00
+# heartbeat 2026-08-20T16:24:53+08:00
 
 ## gpu
 ```
 0, 3159 MiB, 24576 MiB, 0 %
 1, 3155 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 62 %
+2, 3169 MiB, 24576 MiB, 68 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3322,8 +3322,6 @@ launched icl_joint_fold1 pid=1211048
 
 ### 556_joint_synth_aux.log
 ```
-[15:14] step 400/20000 | loss 6.2978 | aux rot 2.187 (chance 2.83) | aux perm 2.488 (chance 3.26) | lr 2.00e
-[15:19] step 700/20000 | loss 5.0362 | aux rot 2.080 (chance 2.83) | aux perm 1.784 (chance 3.26) | lr 3.50e
 [15:24] step 900/20000 | loss 4.9979 | aux rot 2.124 (chance 2.83) | aux perm 1.754 (chance 3.26) | lr 4.50e
 [15:29] step 1100/20000 | loss 5.0751 | aux rot 2.073 (chance 2.83) | aux perm 1.565 (chance 3.26) | lr 5.00
         [val] new best mode-C 55.21 -> best.pt
@@ -3346,6 +3344,8 @@ launched icl_joint_fold1 pid=1211048
 [16:14] step 3700/20000 | loss 4.0705 | aux rot 1.500 (chance 2.83) | aux perm 1.558 (chance 3.26) | lr 4.75
         [val] new best mode-C 44.45 -> best.pt
 [16:19] step 4000/20000 | loss 4.5672 | aux rot 1.540 (chance 2.83) | aux perm 1.728 (chance 3.26) | lr 4.70
+        [val] step 4000: mode-A 47.23 | mode-C 46.75 | gain C +0.48   (REAL novel subjects, fold 1)
+[16:24] step 4300/20000 | loss 4.2733 | aux rot 1.425 (chance 2.83) | aux perm 1.701 (chance 3.26) | lr 4.64
         [val] step 4000: mode-A 47.23 | mode-C 46.75 | gain C +0.48   (REAL novel subjects, fold 1)
 ```
 
@@ -3957,7 +3957,6 @@ step 5000/30000 | loss 4.6176 | aux rot 1.580 (chance 2.83) | aux perm 1.742 (ch
 
 ### icl_joint_fold1.log
 ```
-step 2100/20000 | loss 4.4080 | aux rot 1.706 (chance 2.83) | aux perm 1.551 (chance 3.26) | lr 4.96e-04 | 0.78 it/s
 step 2200/20000 | loss 4.5358 | aux rot 1.764 (chance 2.83) | aux perm 1.528 (chance 3.26) | lr 4.95e-04 | 0.79 it/s
 step 2300/20000 | loss 4.4559 | aux rot 1.691 (chance 2.83) | aux perm 1.677 (chance 3.26) | lr 4.94e-04 | 0.80 it/s
 step 2400/20000 | loss 4.6533 | aux rot 1.697 (chance 2.83) | aux perm 1.647 (chance 3.26) | lr 4.93e-04 | 0.81 it/s
@@ -3982,6 +3981,7 @@ step 4000/20000 | loss 4.5672 | aux rot 1.540 (chance 2.83) | aux perm 1.728 (ch
 [val] step 4000: mode-A 47.23 | mode-C 46.75 | gain C +0.48   (REAL novel subjects, fold 1)
 step 4100/20000 | loss 4.3575 | aux rot 1.416 (chance 2.83) | aux perm 1.584 (chance 3.26) | lr 4.68e-04 | 0.90 it/s
 step 4200/20000 | loss 4.5546 | aux rot 1.498 (chance 2.83) | aux perm 1.607 (chance 3.26) | lr 4.66e-04 | 0.90 it/s
+step 4300/20000 | loss 4.2733 | aux rot 1.425 (chance 2.83) | aux perm 1.701 (chance 3.26) | lr 4.64e-04 | 0.91 it/s
 ```
 
 ### teachers_shard0.log
@@ -4179,7 +4179,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-step 8600/103000 | loss 1.8384 | lr 6.93e-04 | 696 win/s
 step 8800/103000 | loss 1.8327 | lr 6.92e-04 | 697 win/s
 step 9000/103000 | loss 1.8384 | lr 6.92e-04 | 698 win/s
 step 9200/103000 | loss 1.8299 | lr 6.91e-04 | 699 win/s
@@ -4204,6 +4203,7 @@ step 12600/103000 | loss 1.7625 | lr 6.81e-04 | 709 win/s
 step 12800/103000 | loss 1.7522 | lr 6.81e-04 | 710 win/s
 step 13000/103000 | loss 1.7706 | lr 6.80e-04 | 710 win/s
 step 13200/103000 | loss 1.7645 | lr 6.79e-04 | 710 win/s
+step 13400/103000 | loss 1.7543 | lr 6.78e-04 | 711 win/s
 ```
 
 ### tf_fold2.log
