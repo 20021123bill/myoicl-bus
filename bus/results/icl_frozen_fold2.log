@@ -126,3 +126,7 @@ step 9100/12000 | loss 2.6599 | lr 1.51e-04 | 1.60 it/s
 step 9200/12000 | loss 2.7262 | lr 1.42e-04 | 1.60 it/s
 step 9300/12000 | loss 2.6863 | lr 1.32e-04 | 1.60 it/s
 step 9400/12000 | loss 2.7014 | lr 1.23e-04 | 1.60 it/s
+step 9500/12000 | loss 2.7730 | lr 1.14e-04 | 1.60 it/s
+[val] step 9500: mode-A 62.58 | mode-C 64.11 | gain C -1.54   (REAL novel subjects, fold 2)
+step 9600/12000 | loss 2.7191 | lr 1.05e-04 | 1.60 it/s
+step 9700/12000 | loss 2.7772 | lr 9.71e-05 | 1.60 it/s
