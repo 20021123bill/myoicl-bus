@@ -33,3 +33,5 @@ launched icl_joint_fold1 pid=1211048
         [val] step 4000: mode-A 47.23 | mode-C 46.75 | gain C +0.48   (REAL novel subjects, fold 1)
 [16:34] step 4900/20000 | loss 4.1456 | aux rot 1.387 (chance 2.83) | aux perm 1.696 (chance 3.26) | lr 4.50
         [val] step 4000: mode-A 47.23 | mode-C 46.75 | gain C +0.48   (REAL novel subjects, fold 1)
+[16:39] step 5300/20000 | loss 4.3116 | aux rot 1.362 (chance 2.83) | aux perm 1.491 (chance 3.26) | lr 4.39
+        [val] new best mode-C 40.65 -> best.pt

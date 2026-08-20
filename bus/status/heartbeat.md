@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T16:38:29+08:00
+# heartbeat 2026-08-20T16:39:11+08:00
 
 ## gpu
 ```
 0, 3159 MiB, 24576 MiB, 0 %
-1, 3155 MiB, 24576 MiB, 10 %
-2, 3169 MiB, 24576 MiB, 68 %
+1, 3155 MiB, 24576 MiB, 0 %
+2, 3169 MiB, 24576 MiB, 22 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3241,7 +3241,6 @@ k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
 
 ### 554_probes.log
 ```
---- 15:21 icl_aux_fold0 ---
 [ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
 k= 12 ( 48s): mode-A  55.14 | mode-C  53.79 | gain  +1.35 (24 episodes)
 k= 45 (180s): mode-A  55.68 | mode-C  63.62 | gain  -7.94 (24 episodes)
@@ -3266,6 +3265,7 @@ k= 12 ( 48s): mode-A  64.95 | mode-C  67.95 | gain  -2.99 (24 episodes)
 k= 12 ( 48s): mode-A  54.73 | mode-C  54.21 | gain  +0.52 (24 episodes)
 k= 45 (180s): mode-A  55.86 | mode-C  62.14 | gain  -6.28 (24 episodes)
 k= 12 ( 48s): mode-A  65.48 | mode-C  66.52 | gain  -1.04 (24 episodes)
+--- 16:38 icl_aux_fold2 ---
 ```
 
 ### 554_sprint.log
@@ -4179,10 +4179,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-step 10400/103000 | loss 1.8242 | lr 6.88e-04 | 704 win/s
-step 10600/103000 | loss 1.8363 | lr 6.88e-04 | 705 win/s
-step 10800/103000 | loss 1.8069 | lr 6.87e-04 | 705 win/s
-step 11000/103000 | loss 1.8184 | lr 6.87e-04 | 706 win/s
 step 11200/103000 | loss 1.8203 | lr 6.86e-04 | 706 win/s
 step 11400/103000 | loss 1.8318 | lr 6.85e-04 | 707 win/s
 step 11600/103000 | loss 1.8305 | lr 6.85e-04 | 708 win/s
@@ -4204,6 +4200,10 @@ step 14400/103000 | loss 1.7596 | lr 6.75e-04 | 713 win/s
 step 14600/103000 | loss 1.7569 | lr 6.74e-04 | 713 win/s
 step 14800/103000 | loss 1.7559 | lr 6.73e-04 | 714 win/s
 step 15000/103000 | loss 1.7547 | lr 6.72e-04 | 714 win/s
+step 15200/103000 | loss 1.7513 | lr 6.71e-04 | 715 win/s
+step 15400/103000 | loss 1.7680 | lr 6.70e-04 | 715 win/s
+step 15600/103000 | loss 1.7606 | lr 6.69e-04 | 716 win/s
+step 15800/103000 | loss 1.7422 | lr 6.68e-04 | 716 win/s
 ```
 
 ### tf_fold2.log
