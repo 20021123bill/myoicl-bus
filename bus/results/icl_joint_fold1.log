@@ -48,3 +48,4 @@ step 3000/20000 | loss 4.7925 | aux rot 1.586 (chance 2.83) | aux perm 1.806 (ch
 [val] step 3000: mode-A 41.93 | mode-C 44.45 | gain C -2.52   (REAL novel subjects, fold 1)
 [val] new best mode-C 44.45 -> best.pt
 step 3100/20000 | loss 4.7087 | aux rot 1.594 (chance 2.83) | aux perm 1.658 (chance 3.26) | lr 4.85e-04 | 0.85 it/s
+step 3200/20000 | loss 4.6718 | aux rot 1.606 (chance 2.83) | aux perm 1.632 (chance 3.26) | lr 4.84e-04 | 0.86 it/s
