@@ -1,0 +1,8 @@
+AST OK
+=== CPU smoke: one real episode + ridge baseline ===
+episode: ctx (128, 24, 99) y_ctx (128, 24) queries (16, 99) y_q (16, 128)
+ridge-24 EV on held-out windows: -0.626  (must be > 0)
+Traceback (most recent call last):
+  File "<stdin>", line 20, in <module>
+AssertionError: ridge baseline broken -- unit responses carry no signal?
+SMOKE FAILED rc=1

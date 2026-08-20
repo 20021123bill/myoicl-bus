@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:29:42+08:00
+# heartbeat 2026-08-20T15:30:26+08:00
 
 ## gpu
 ```
-0, 6313 MiB, 24576 MiB, 45 %
+0, 6313 MiB, 24576 MiB, 95 %
 1, 3155 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 68 %
+2, 3169 MiB, 24576 MiB, 67 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -88,6 +88,7 @@
 557_zeroshot_today                       DONE rc=127
 558_joint_is_mainline                    DONE rc=127
 559_val_realonly                         DONE rc=127
+560_myocorl_launch                       DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3473,11 +3474,6 @@ explicit correction k=45     :  69.65  (gain -22.02)
 
 ### 559_val_realonly.log
 ```
---- 14:55 ---
-[icl_joint_fold0] step 200/30000 | loss 7.2901 | aux rot 2.751 (chance 2.83) | aux perm 3.190 (chance 3.26) 
-[icl_joint_fold1] waiting
---- 15:00 ---
-[icl_joint_fold0] step 400/30000 | loss 6.5187 | aux rot 2.304 (chance 2.83) | aux perm 2.730 (chance 3.26) 
 [icl_joint_fold1] waiting
 --- 15:05 ---
 [icl_joint_fold0] step 700/30000 | loss 5.1462 | aux rot 2.103 (chance 2.83) | aux perm 1.889 (chance 3.26) 
@@ -3498,6 +3494,17 @@ explicit correction k=45     :  69.65  (gain -22.02)
 [icl_joint_fold0] step 1700/30000 | loss 5.1740 | aux rot 2.054 (chance 2.83) | aux perm 1.705 (chance 3.26)
         [val] new best mode-C 47.71 -> best.pt
 [icl_joint_fold1] step 900/20000 | loss 4.9979 | aux rot 2.124 (chance 2.83) | aux perm 1.754 (chance 3.26) 
+--- 15:30 ---
+[icl_joint_fold0] step 2000/30000 | loss 5.1927 | aux rot 1.890 (chance 2.83) | aux perm 1.657 (chance 3.26)
+        [val] new best mode-C 47.40 -> best.pt
+[icl_joint_fold1] step 1200/20000 | loss 5.0613 | aux rot 2.000 (chance 2.83) | aux perm 1.750 (chance 3.26)
+        [val] new best mode-C 55.21 -> best.pt
+```
+
+### 560_myocorl_launch.log
+```
+AST OK
+=== CPU smoke: one real episode + ridge baseline ===
 ```
 
 ### d3_train.log
@@ -3815,9 +3822,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-[symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
-  return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 53.72 | mode-C 100.00 (random prefix) | deployment reference ~43-58
 step 100/30000 | loss 9.9521 | aux rot 2.875 (chance 2.83) | aux perm 3.271 (chance 3.26) | lr 3.33e-05 | 0.81 it/s
 step 200/30000 | loss 7.2901 | aux rot 2.751 (chance 2.83) | aux perm 3.190 (chance 3.26) | lr 6.67e-05 | 0.83 it/s
@@ -3840,11 +3844,13 @@ step 1600/30000 | loss 4.9454 | aux rot 1.993 (chance 2.83) | aux perm 1.673 (ch
 step 1700/30000 | loss 5.1740 | aux rot 2.054 (chance 2.83) | aux perm 1.705 (chance 3.26) | lr 5.00e-04 | 0.85 it/s
 step 1800/30000 | loss 4.9706 | aux rot 2.002 (chance 2.83) | aux perm 1.844 (chance 3.26) | lr 5.00e-04 | 0.85 it/s
 step 1900/30000 | loss 4.9759 | aux rot 1.983 (chance 2.83) | aux perm 1.835 (chance 3.26) | lr 5.00e-04 | 0.85 it/s
+step 2000/30000 | loss 5.1927 | aux rot 1.890 (chance 2.83) | aux perm 1.657 (chance 3.26) | lr 5.00e-04 | 0.85 it/s
+[val] step 2000: mode-A 46.10 | mode-C 47.40 | gain C -1.30   (REAL novel subjects, fold 0)
+[val] new best mode-C 47.40 -> best.pt
 ```
 
 ### icl_joint_fold1.log
 ```
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 [trunk] /data2/chenyuxiang/runs/tf_fold1_full/last.pt step 103000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 [prefix] FUSED mode: per-token (signal + soft-aligned char)
@@ -3869,6 +3875,7 @@ step 1000/20000 | loss 4.9507 | aux rot 2.057 (chance 2.83) | aux perm 1.585 (ch
 [val] step 1000: mode-A 51.35 | mode-C 55.21 | gain C -3.86   (REAL novel subjects, fold 1)
 [val] new best mode-C 55.21 -> best.pt
 step 1100/20000 | loss 5.0751 | aux rot 2.073 (chance 2.83) | aux perm 1.565 (chance 3.26) | lr 5.00e-04 | 0.79 it/s
+step 1200/20000 | loss 5.0613 | aux rot 2.000 (chance 2.83) | aux perm 1.750 (chance 3.26) | lr 5.00e-04 | 0.78 it/s
 ```
 
 ### teachers_shard0.log
