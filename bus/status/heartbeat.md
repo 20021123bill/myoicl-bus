@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T14:13:38+08:00
+# heartbeat 2026-08-20T14:14:22+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 47 %
-1, 2731 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 72 %
-3, 2731 MiB, 24576 MiB, 27 %
+0, 3173 MiB, 24576 MiB, 8 %
+1, 2731 MiB, 24576 MiB, 37 %
+2, 2985 MiB, 24576 MiB, 59 %
+3, 2731 MiB, 24576 MiB, 34 %
 ```
 
 ## jobs
@@ -84,6 +84,7 @@
 553_aux_supervised                       DONE rc=127
 554_allgpu_sprint                        DONE rc=127
 555_gate_full_eval                       DONE rc=127
+556_joint_synth_aux                      DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3258,6 +3259,11 @@ k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
 ### 555_gate_full_eval.log
 ```
 === wait for ref_full / fold1_full to finish ===
+```
+
+### 556_joint_synth_aux.log
+```
+=== wait for tf_fold1_full to finish ===
 ```
 
 ### d3_train.log
