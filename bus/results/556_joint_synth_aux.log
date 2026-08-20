@@ -37,3 +37,5 @@ launched icl_joint_fold1 pid=1211048
         [val] new best mode-C 40.65 -> best.pt
 [16:44] step 5600/20000 | loss 4.1729 | aux rot 1.413 (chance 2.83) | aux perm 1.594 (chance 3.26) | lr 4.31
         [val] new best mode-C 40.65 -> best.pt
+[16:49] step 5900/20000 | loss 4.4784 | aux rot 1.359 (chance 2.83) | aux perm 1.589 (chance 3.26) | lr 4.22
+        [val] new best mode-C 40.65 -> best.pt
