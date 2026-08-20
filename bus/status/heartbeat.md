@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T16:58:29+08:00
+# heartbeat 2026-08-20T16:59:12+08:00
 
 ## gpu
 ```
-0, 3159 MiB, 24576 MiB, 0 %
-1, 3155 MiB, 24576 MiB, 7 %
-2, 3169 MiB, 24576 MiB, 76 %
+0, 6273 MiB, 24576 MiB, 16 %
+1, 6056 MiB, 24576 MiB, 20 %
+2, 3169 MiB, 24576 MiB, 83 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3627,6 +3627,7 @@ building population tuning from 12 other users...
 
 === relaunch: fold 0 and fold 1, correct split + both tasks scored ===
 launched fold 0 on GPU 0 -> /data2/chenyuxiang/runs/icl_split_fold0/train.log
+launched fold 1 on GPU 1 -> /data2/chenyuxiang/runs/icl_split_fold1/train.log
 ```
 
 ### d3_train.log
@@ -4195,11 +4196,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-step 13800/103000 | loss 1.7675 | lr 6.77e-04 | 712 win/s
-step 14000/103000 | loss 1.7695 | lr 6.76e-04 | 712 win/s
-step 14200/103000 | loss 1.7621 | lr 6.75e-04 | 713 win/s
-step 14400/103000 | loss 1.7596 | lr 6.75e-04 | 713 win/s
-step 14600/103000 | loss 1.7569 | lr 6.74e-04 | 713 win/s
 step 14800/103000 | loss 1.7559 | lr 6.73e-04 | 714 win/s
 step 15000/103000 | loss 1.7547 | lr 6.72e-04 | 714 win/s
 step 15200/103000 | loss 1.7513 | lr 6.71e-04 | 715 win/s
@@ -4220,6 +4216,11 @@ step 17800/103000 | loss 1.7534 | lr 6.59e-04 | 720 win/s
 step 18000/103000 | loss 1.7327 | lr 6.58e-04 | 720 win/s
 step 18200/103000 | loss 1.7465 | lr 6.57e-04 | 720 win/s
 step 18400/103000 | loss 1.7297 | lr 6.56e-04 | 721 win/s
+step 18600/103000 | loss 1.7245 | lr 6.55e-04 | 721 win/s
+step 18800/103000 | loss 1.7490 | lr 6.54e-04 | 722 win/s
+step 19000/103000 | loss 1.7710 | lr 6.52e-04 | 722 win/s
+step 19200/103000 | loss 1.7501 | lr 6.51e-04 | 722 win/s
+step 19400/103000 | loss 1.7391 | lr 6.50e-04 | 722 win/s
 ```
 
 ### tf_fold2.log
