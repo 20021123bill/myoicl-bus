@@ -149,6 +149,54 @@ def _ids_from_targets(tg, tl):
     return [tg[: int(tl[n]), n] for n in range(tg.shape[1])]
 
 
+class AuxHeads(torch.nn.Module):
+    """Direct supervision for the in-context estimator (2026-08-20).
+
+    Three runs of end-task-only meta-training all converged to gain == 0: the
+    literature says why -- overriding weight-borne priors from context is an
+    EMERGENT ability (Wei et al. 2023: small models cannot flip labels;
+    Kirsch et al. 2022: ICL has phase transitions in model size / task count,
+    below which models learn to ignore context). At 2.12M parameters we are
+    orders of magnitude below emergence. BrainCoDec never relied on emergence:
+    its stage-1 estimator is trained by DIRECT regression (their Eq. 2).
+
+    These heads transplant that: for synthetic episodes the ground-truth
+    transform theta is known -- predict the per-band electrode rotation; for
+    permuted episodes the mapping pi is known -- predict, for each letter,
+    which letter it now maps to. Both read the pooled prefix. If these losses
+    fall, the encoder demonstrably extracts the subject/task variable and the
+    remaining gap is CTC usage; if they do not fall, the encoder itself is
+    the bottleneck. Either way the zero stops being silent.
+    """
+
+    def __init__(self, d_model: int, n_letters: int = 26, max_rot: int = 8,
+                 num_bands: int = 2) -> None:
+        super().__init__()
+        self.max_rot = int(max_rot)
+        self.num_bands = int(num_bands)
+        self.n_letters = int(n_letters)
+        self.rot = torch.nn.Linear(d_model, num_bands * (2 * max_rot + 1))
+        self.perm = torch.nn.Linear(d_model, n_letters * n_letters)
+
+    def losses(self, pooled, theta, perm_target):
+        """pooled (1, d) ; theta EpisodeUserTransform|None ;
+        perm_target (n_letters,) long|None -> (rot_loss, perm_loss)"""
+        zero = pooled.new_zeros(())
+        rot_l = perm_l = zero
+        if theta is not None:
+            lg = self.rot(pooled).view(self.num_bands, 2 * self.max_rot + 1)
+            tgt = torch.tensor(
+                [int(max(-self.max_rot, min(self.max_rot, r)))
+                 + self.max_rot for r in theta.rotation],
+                device=pooled.device)
+            rot_l = torch.nn.functional.cross_entropy(lg, tgt)
+        if perm_target is not None:
+            lg = self.perm(pooled).view(self.n_letters, self.n_letters)
+            perm_l = torch.nn.functional.cross_entropy(
+                lg, perm_target.to(pooled.device))
+        return rot_l, perm_l
+
+
 def letter_ids(cs):
     """Class ids whose decoded text is a single lowercase letter, via the same
     LabelData API the metrics use -- no reliance on charset internals."""
@@ -213,6 +261,9 @@ def main():
     ap.add_argument("--n-query", type=int, default=8)
     ap.add_argument("--sig-stride", type=int, default=8)
     ap.add_argument("--max-prefix", type=int, default=4096)
+    ap.add_argument("--w-aux", type=float, default=1.0,
+                    help="weight of the direct estimator supervision "
+                         "(rotation + permutation heads on the pooled prefix)")
     ap.add_argument("--fused-prefix", action="store_true",
                     help="bind (signal, soft-aligned char) inside each prefix "
                          "token via the trunk's own CTC posteriors -- the fix "
@@ -324,12 +375,15 @@ def main():
     for k in (4, 12, 23, 45):
         print(f"[prefix] {prefix_report(enc, k)}")
 
+    aux = AuxHeads(trunk.d_model, n_letters=26).to(dev)
     if args.freeze_trunk:
         for p in trunk.parameters():
             p.requires_grad_(False)
-        groups = [{"params": list(enc.parameters()), "lr": args.lr}]
+        groups = [{"params": list(enc.parameters()) + list(aux.parameters()),
+                   "lr": args.lr}]
     else:
-        groups = [{"params": list(enc.parameters()), "lr": args.lr},
+        groups = [{"params": list(enc.parameters()) + list(aux.parameters()),
+                   "lr": args.lr},
                   {"params": list(trunk.parameters()),
                    "lr": args.lr * args.trunk_lr_mult}]
     opt = torch.optim.AdamW(groups, weight_decay=args.weight_decay,
@@ -351,6 +405,8 @@ def main():
     print(f"[symbol] {len(LETTERS)} permutable letter classes | "
           f"p_permute {args.p_permute} k {args.permute_k}")
 
+    LETTER_POS = {c: i for i, c in enumerate(LETTERS)}
+
     def draw(ep_src, force_mode=None, allow_permute=True):
         theta = None
         if rng.random() < args.p_synth:
@@ -361,6 +417,7 @@ def main():
         k = int(rng.integers(args.k_support[0], args.k_support[1] + 1))
         u, sb, qb = ep_src.episode(k, args.n_query, theta)
         mode = force_mode or ("A" if rng.random() < args.p_modeA else "C")
+        perm_target = None
         # Symbol permutation only in mode C: without support the mapping is
         # uninferable, so a permuted mode-A episode would just be label noise.
         if (allow_permute and mode == "C" and LETTERS
@@ -369,16 +426,20 @@ def main():
             m = sample_symbol_map(rng, LETTERS, kk, cs.num_classes)
             _apply_symbol_map(sb, m)
             _apply_symbol_map(qb, m)
-        return u, sb, qb, mode
+            perm_target = torch.tensor(
+                [LETTER_POS[int(m[c])] for c in LETTERS], dtype=torch.long)
+        return u, sb, qb, mode, theta, perm_target
 
     def run_episode(sb, qb, mode, train=True):
         raw_q = _to_raw(qb["inputs"]).to(dev)
         prefix = None
+        pooled_pre = None
         if mode == "C":
             raw_s = _to_raw(sb["inputs"]).to(dev)
             ids = _ids_from_targets(sb["targets"], sb["target_lengths"])
             prefix = enc(trunk, raw_s, ids, sb["input_lengths"].to(dev))
             if prefix is not None:
+                pooled_pre = prefix.mean(dim=1)            # (1, d)
                 prefix = prefix.expand(raw_q.shape[0], -1, -1)
         with torch.autocast(device_type=dev.type, dtype=torch.bfloat16,
                             enabled=args.bf16):
@@ -389,7 +450,7 @@ def main():
             qb["target_lengths"].to(dev), blank=cs.null_class,
             zero_infinity=True,
         )
-        return loss, em, in_len
+        return loss, em, in_len, pooled_pre
 
     @torch.no_grad()
     def validate():
@@ -402,9 +463,9 @@ def main():
             # mode A and mode C, and a permuted target set would penalise
             # mode A for a mapping it cannot possibly know -- inflating the
             # gain. Validation measures the real (identity-mapping) task.
-            u, sb, qb, _ = draw(va_ep, allow_permute=False)
+            u, sb, qb, _, _, _ = draw(va_ep, allow_permute=False)
             for mode in ("A", "C"):
-                _, em, in_len = run_episode(sb, qb, mode, train=False)
+                _, em, in_len, _ = run_episode(sb, qb, mode, train=False)
                 preds = greedy_ctc_decode(em.float(), in_len.cpu(),
                                           blank=cs.null_class)
                 tg, tl = qb["targets"].numpy(), qb["target_lengths"].numpy()
@@ -432,9 +493,17 @@ def main():
 
     best, hist, run, t0 = float("inf"), [], [], time.time()
     trunk.train(); enc.train()
+    aux_run = {"rot": [], "perm": []}
     for step in range(args.max_steps):
-        u, sb, qb, mode = draw(tr_ep)
-        loss, _, _ = run_episode(sb, qb, mode)
+        u, sb, qb, mode, theta, perm_target = draw(tr_ep)
+        loss, _, _, pooled = run_episode(sb, qb, mode)
+        if pooled is not None and args.w_aux > 0:
+            rot_l, perm_l = aux.losses(pooled.float(), theta, perm_target)
+            if theta is not None:
+                aux_run["rot"].append(float(rot_l))
+            if perm_target is not None:
+                aux_run["perm"].append(float(perm_l))
+            loss = loss + args.w_aux * (rot_l + perm_l)
         opt.zero_grad(set_to_none=True)
         loss.backward()
         nn.utils.clip_grad_norm_(
@@ -442,10 +511,16 @@ def main():
         opt.step(); sched.step()
         run.append(float(loss))
         if (step + 1) % args.log_every == 0:
+            rot_m = np.mean(aux_run["rot"]) if aux_run["rot"] else float("nan")
+            perm_m = (np.mean(aux_run["perm"]) if aux_run["perm"]
+                      else float("nan"))
             print(f"step {step+1}/{args.max_steps} | loss {np.mean(run):.4f} "
+                  f"| aux rot {rot_m:.3f} (chance 2.83) "
+                  f"| aux perm {perm_m:.3f} (chance 3.26) "
                   f"| lr {sched.get_last_lr()[0]:.2e} | "
                   f"{(step+1)/(time.time()-t0):.2f} it/s", flush=True)
             run = []
+            aux_run = {"rot": [], "perm": []}
         if (step + 1) % args.val_every == 0:
             a, c = validate()
             print(f"[val] step {step+1}: mode-A {a:.2f} | mode-C {c:.2f} | "
@@ -457,6 +532,7 @@ def main():
                       open(os.path.join(args.out_dir, "hist.json"), "w"),
                       indent=1)
             state = {"enc": enc.state_dict(), "trunk": trunk.state_dict(),
+                     "aux": aux.state_dict(),
                      "step": step + 1, "args": vars(args)}
             torch.save(state, os.path.join(args.out_dir, "last.pt"))
             if c < best:
