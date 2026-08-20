@@ -1,0 +1,52 @@
+date: 2026-08-20T17:02:05+08:00
+PATH: /usr/bin:/bin:/usr/sbin:/sbin:/data2/chenyuxiang/conda_envs/qwerty/bin:/data2/chenyuxiang/conda_envs/qwerty/bin:/data3/DJD/miniconda/bin:/data2/chenyuxiang/conda_envs/qwerty/bin:/data2/chenyuxiang/anaconda3/condabin:/data3/DJD/miniconda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+--- command probe (the 127 hypothesis) ---
+  sleep    /usr/bin/sleep
+  tail     /usr/bin/tail
+  cp       /usr/bin/cp
+  ps       /usr/bin/ps
+  python   /usr/bin/python
+  nohup    /usr/bin/nohup
+  setsid   /usr/bin/setsid
+
+--- did the 565 training runs survive their parent? ---
+
+--- current tails ---
+### icl_split_fold0
+[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
+[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
+[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
+[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
+[meta-split] meta-train 16 users / 137 sessions | meta-test 8 users / 76 sessions (disjoint, both unseen by the backbone)
+[symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+[audit] step 0: mode-A 50.89 | mode-C 100.00 (random prefix) | deployment reference ~43-58
+step 100/20000 | loss 8.5527 | aux rot 2.860 (chance 2.83) | aux perm 3.278 (chance 3.26) | lr 3.00e-05 | 1.88 it/s
+step 200/20000 | loss 6.2540 | aux rot 2.816 (chance 2.83) | aux perm 3.202 (chance 3.26) | lr 6.00e-05 | 1.79 it/s
+step 300/20000 | loss 5.0300 | aux rot 2.677 (chance 2.83) | aux perm 3.070 (chance 3.26) | lr 9.00e-05 | 1.91 it/s
+### icl_split_fold1
+[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
+[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
+[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
+[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
+[meta-split] meta-train 16 users / 146 sessions | meta-test 8 users / 60 sessions (disjoint, both unseen by the backbone)
+[symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+[audit] step 0: mode-A 62.84 | mode-C 100.00 (random prefix) | deployment reference ~43-58
+step 100/20000 | loss 7.0961 | aux rot 2.808 (chance 2.83) | aux perm 3.273 (chance 3.26) | lr 3.00e-05 | 1.88 it/s
+step 200/20000 | loss 5.8444 | aux rot 2.723 (chance 2.83) | aux perm 3.204 (chance 3.26) | lr 6.00e-05 | 1.78 it/s
+step 300/20000 | loss 4.9437 | aux rot 2.620 (chance 2.83) | aux perm 3.074 (chance 3.26) | lr 9.00e-05 | 1.88 it/s
+
+--- start the detached log streamer (idempotent) ---
+  streamer launched (60 s period, tails last 200 kB of each run)
+icl_split_fold1.log
+icl_split_fold0.log
+567_stream_and_probe.log
+567_stream_and_probe.done
+567_stream_and_probe.started
+566_keystroke_incremental.done
+566_keystroke_incremental.log
+566_keystroke_incremental.started
+=== 567 done ===
