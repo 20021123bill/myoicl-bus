@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T14:27:59+08:00
+# heartbeat 2026-08-20T14:28:42+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 79 %
-1, 2731 MiB, 24576 MiB, 11 %
-2, 2985 MiB, 24576 MiB, 45 %
+0, 3173 MiB, 24576 MiB, 62 %
+1, 2731 MiB, 24576 MiB, 0 %
+2, 2985 MiB, 24576 MiB, 82 %
 3, 2731 MiB, 24576 MiB, 0 %
 ```
 
@@ -3402,9 +3402,6 @@ step 8000/8000 | loss 0.7358 | lr 1.50e-06 | 1.65 it/s
 
 ### icl_aux_fold0.log
 ```
-[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
-[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
-[symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 60.97 | mode-C 100.00 (random prefix) | deployment reference ~43-58
@@ -3427,12 +3424,13 @@ step 1400/20000 | loss 4.7274 | aux rot 2.118 (chance 2.83) | aux perm 1.620 (ch
 step 1500/20000 | loss 4.9879 | aux rot 2.030 (chance 2.83) | aux perm 1.724 (chance 3.26) | lr 9.98e-04 | 1.35 it/s
 step 1600/20000 | loss 4.7783 | aux rot 2.015 (chance 2.83) | aux perm 1.728 (chance 3.26) | lr 9.98e-04 | 1.36 it/s
 step 1700/20000 | loss 4.8300 | aux rot 2.095 (chance 2.83) | aux perm 1.650 (chance 3.26) | lr 9.97e-04 | 1.37 it/s
+step 1800/20000 | loss 4.9617 | aux rot 1.972 (chance 2.83) | aux perm 1.611 (chance 3.26) | lr 9.96e-04 | 1.37 it/s
+step 1900/20000 | loss 4.9612 | aux rot 1.993 (chance 2.83) | aux perm 1.604 (chance 3.26) | lr 9.94e-04 | 1.37 it/s
+step 2000/20000 | loss 4.9789 | aux rot 1.965 (chance 2.83) | aux perm 1.736 (chance 3.26) | lr 9.93e-04 | 1.36 it/s
 ```
 
 ### icl_aux_fold2.log
 ```
-step 1500/20000 | loss 4.9718 | aux rot 2.034 (chance 2.83) | aux perm 1.742 (chance 3.26) | lr 9.98e-04 | 1.55 it/s
-step 1600/20000 | loss 4.8578 | aux rot 2.049 (chance 2.83) | aux perm 1.739 (chance 3.26) | lr 9.98e-04 | 1.56 it/s
 step 1700/20000 | loss 4.8765 | aux rot 2.104 (chance 2.83) | aux perm 1.647 (chance 3.26) | lr 9.97e-04 | 1.57 it/s
 step 1800/20000 | loss 5.0060 | aux rot 1.987 (chance 2.83) | aux perm 1.606 (chance 3.26) | lr 9.96e-04 | 1.57 it/s
 step 1900/20000 | loss 5.1146 | aux rot 2.028 (chance 2.83) | aux perm 1.602 (chance 3.26) | lr 9.94e-04 | 1.56 it/s
@@ -3456,6 +3454,8 @@ step 3200/20000 | loss 4.7880 | aux rot 1.868 (chance 2.83) | aux perm 1.683 (ch
 step 3300/20000 | loss 5.0672 | aux rot 1.837 (chance 2.83) | aux perm 1.703 (chance 3.26) | lr 9.64e-04 | 1.47 it/s
 step 3400/20000 | loss 4.7852 | aux rot 1.947 (chance 2.83) | aux perm 1.710 (chance 3.26) | lr 9.61e-04 | 1.46 it/s
 step 3500/20000 | loss 4.9618 | aux rot 1.814 (chance 2.83) | aux perm 1.675 (chance 3.26) | lr 9.58e-04 | 1.46 it/s
+step 3600/20000 | loss 4.6364 | aux rot 1.834 (chance 2.83) | aux perm 1.700 (chance 3.26) | lr 9.55e-04 | 1.46 it/s
+step 3700/20000 | loss 4.7236 | aux rot 1.772 (chance 2.83) | aux perm 1.721 (chance 3.26) | lr 9.51e-04 | 1.46 it/s
 ```
 
 ### icl_dev2_fold2.log
