@@ -6,3 +6,6 @@ launched icl_joint_fold0 pid=1169828
 --- 14:48 ---
 [icl_joint_fold0] step 200/30000 | loss 6.7254 | aux rot 2.736 (chance 2.83) | aux perm 3.197 (chance 3.26) | lr 6
 [icl_joint_fold1] waiting
+--- 14:53 ---
+[icl_joint_fold0] step 100/30000 | loss 9.9521 | aux rot 2.875 (chance 2.83) | aux perm 3.271 (chance 3.26) | lr 3
+[icl_joint_fold1] waiting
