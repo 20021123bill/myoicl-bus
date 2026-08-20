@@ -1,8 +1,8 @@
-# heartbeat 2026-08-20T15:18:12+08:00
+# heartbeat 2026-08-20T15:18:55+08:00
 
 ## gpu
 ```
-0, 6311 MiB, 24576 MiB, 70 %
+0, 6313 MiB, 24576 MiB, 90 %
 1, 3155 MiB, 24576 MiB, 0 %
 2, 3167 MiB, 24576 MiB, 73 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -3380,9 +3380,6 @@ explicit correction k=45     :  69.65  (gain -22.02)
 
 ### 558_joint_is_mainline.log
 ```
-=== stop the frozen fold0 twin (kept as the ablation row) ===
-stopped
-=== launch joint main-line on fold0_full (GPU freed by the twin) ===
 launched icl_joint_fold0 pid=1169828
 === stream both joint runs (16 h) ===
 --- 14:48 ---
@@ -3404,6 +3401,10 @@ launched icl_joint_fold0 pid=1169828
 [icl_joint_fold0] step 1100/30000 | loss 5.1774 | aux rot 2.116 (chance 2.83) | aux perm 1.561 (chance 3.26) | lr 
         [val] new best mode-C 47.71 -> best.pt
 [icl_joint_fold1] step 400/20000 | loss 6.2978 | aux rot 2.187 (chance 2.83) | aux perm 2.488 (chance 3.26) | lr 2
+--- 15:18 ---
+[icl_joint_fold0] step 1400/30000 | loss 4.8974 | aux rot 2.092 (chance 2.83) | aux perm 1.600 (chance 3.26) | lr 
+        [val] new best mode-C 47.71 -> best.pt
+[icl_joint_fold1] step 600/20000 | loss 5.2351 | aux rot 2.131 (chance 2.83) | aux perm 1.787 (chance 3.26) | lr 3
 ```
 
 ### 558_mainline.log
@@ -3797,7 +3798,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-[trunk] /data2/chenyuxiang/runs/tf_fold0_full/last.pt step 103000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 [prefix] FUSED mode: per-token (signal + soft-aligned char)
 [prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
 [prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
@@ -3822,6 +3822,7 @@ step 1000/30000 | loss 5.0165 | aux rot 2.102 (chance 2.83) | aux perm 1.578 (ch
 step 1100/30000 | loss 5.1774 | aux rot 2.116 (chance 2.83) | aux perm 1.561 (chance 3.26) | lr 3.67e-04 | 0.87 it/s
 step 1200/30000 | loss 5.1696 | aux rot 2.065 (chance 2.83) | aux perm 1.758 (chance 3.26) | lr 4.00e-04 | 0.86 it/s
 step 1300/30000 | loss 4.9723 | aux rot 2.072 (chance 2.83) | aux perm 1.674 (chance 3.26) | lr 4.33e-04 | 0.86 it/s
+step 1400/30000 | loss 4.8974 | aux rot 2.092 (chance 2.83) | aux perm 1.600 (chance 3.26) | lr 4.67e-04 | 0.86 it/s
 ```
 
 ### icl_joint_fold1.log
@@ -3844,6 +3845,7 @@ step 200/20000 | loss 7.0014 | aux rot 2.560 (chance 2.83) | aux perm 3.132 (cha
 step 300/20000 | loss 6.4499 | aux rot 2.333 (chance 2.83) | aux perm 2.917 (chance 3.26) | lr 1.50e-04 | 0.82 it/s
 step 400/20000 | loss 6.2978 | aux rot 2.187 (chance 2.83) | aux perm 2.488 (chance 3.26) | lr 2.00e-04 | 0.81 it/s
 step 500/20000 | loss 5.6428 | aux rot 2.157 (chance 2.83) | aux perm 2.027 (chance 3.26) | lr 2.50e-04 | 0.80 it/s
+step 600/20000 | loss 5.2351 | aux rot 2.131 (chance 2.83) | aux perm 1.787 (chance 3.26) | lr 3.00e-04 | 0.81 it/s
 ```
 
 ### teachers_shard0.log
@@ -4041,9 +4043,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-96 training users -> 4 folds
-  fold 0:  24 users,  213 sessions | e.g. ['11372316', '14312238', '2396581']
-  fold 1:  24 users,  206 sessions | e.g. ['11944098', '1438774', '25847138']
   fold 2:  24 users,  213 sessions | e.g. ['12565339', '18200807', '25915650']
   fold 3:  24 users,  205 sessions | e.g. ['13321435', '20676876', '26940776']
 [split] fold 2: train on 72 users (624 sessions); HELD OUT 24 users (213 sessions)
@@ -4066,6 +4065,9 @@ step 1200/103000 | loss 1.7181 | lr 4.08e-04 | 696 win/s
 step 1400/103000 | loss 1.7647 | lr 4.76e-04 | 696 win/s
 step 1600/103000 | loss 1.7929 | lr 5.44e-04 | 695 win/s
 step 1800/103000 | loss 1.8334 | lr 6.12e-04 | 695 win/s
+step 2000/103000 | loss 1.8585 | lr 6.80e-04 | 695 win/s
+step 2200/103000 | loss 1.8944 | lr 7.00e-04 | 695 win/s
+step 2400/103000 | loss 1.8904 | lr 7.00e-04 | 695 win/s
 ```
 
 ### tf_fold2.log
