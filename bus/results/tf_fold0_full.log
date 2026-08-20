@@ -459,3 +459,6 @@ step 83000/103000 | loss 1.3004 | lr 6.56e-05 | 653 win/s
 step 83200/103000 | loss 1.2978 | lr 6.44e-05 | 653 win/s
 step 83400/103000 | loss 1.2937 | lr 6.31e-05 | 653 win/s
 step 83600/103000 | loss 1.2888 | lr 6.19e-05 | 653 win/s
+step 83800/103000 | loss 1.2907 | lr 6.07e-05 | 653 win/s
+step 84000/103000 | loss 1.2856 | lr 5.94e-05 | 653 win/s
+[val] step 84000: 8-test-user CER 45.26 | fold-heldout-user CER 53.50  (their Tiny reference: 35.9)
