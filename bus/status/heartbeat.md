@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T14:02:55+08:00
+# heartbeat 2026-08-20T14:03:38+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 80 %
+0, 3173 MiB, 24576 MiB, 81 %
 1, 12 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 68 %
-3, 2731 MiB, 24576 MiB, 0 %
+2, 2985 MiB, 24576 MiB, 63 %
+3, 2731 MiB, 24576 MiB, 47 %
 ```
 
 ## jobs
@@ -82,6 +82,7 @@
 551_fused_retry                          DONE rc=127
 552_fused_frozen                         DONE rc=127
 553_aux_supervised                       DONE rc=127
+554_allgpu_sprint                        DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3192,6 +3193,16 @@ step 400/20000 | loss 5.6576 | aux rot 2.159 (chance 2.83) | aux perm 2.008 (cha
 [13:55] step 900/20000 | loss 5.3208 | aux rot 2.211 (chance 2.83) | aux perm 1.779 (chance 3.26) | lr 9.00e-04 | 1.58 it/s
 [14:00] step 1300/20000 | loss 5.0901 | aux rot 2.041 (chance 2.83) | aux perm 1.672 (chance 3.26) | lr 9.99e-04 | 1.52 it/s
         [val] new best mode-C 70.59 -> best.pt
+```
+
+### 554_allgpu_sprint.log
+```
+=== GPU1: twin aux run on the full-budget fold0 backbone ===
+launched icl_aux_fold0 pid=1090250
+=== GPU0: probe loop when ref_full finishes ===
+probe watcher pid=1090251
+=== GPU2: fold2_full continuation when fold1_full finishes ===
+=== stream (14 h) ===
 ```
 
 ### d3_train.log
