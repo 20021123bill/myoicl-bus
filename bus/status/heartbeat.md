@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T16:19:53+08:00
+# heartbeat 2026-08-20T16:20:36+08:00
 
 ## gpu
 ```
-0, 3159 MiB, 24576 MiB, 0 %
-1, 3155 MiB, 24576 MiB, 6 %
-2, 3169 MiB, 24576 MiB, 63 %
+0, 3159 MiB, 24576 MiB, 43 %
+1, 3155 MiB, 24576 MiB, 0 %
+2, 3169 MiB, 24576 MiB, 53 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3928,8 +3928,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-step 2700/30000 | loss 4.7554 | aux rot 1.750 (chance 2.83) | aux perm 1.693 (chance 3.26) | lr 4.98e-04 | 0.83 it/s
-step 2800/30000 | loss 4.7303 | aux rot 1.744 (chance 2.83) | aux perm 1.700 (chance 3.26) | lr 4.97e-04 | 0.83 it/s
 step 2900/30000 | loss 4.5882 | aux rot 1.772 (chance 2.83) | aux perm 1.683 (chance 3.26) | lr 4.97e-04 | 0.83 it/s
 step 3000/30000 | loss 4.8860 | aux rot 1.710 (chance 2.83) | aux perm 1.802 (chance 3.26) | lr 4.97e-04 | 0.83 it/s
 [val] step 3000: mode-A 45.36 | mode-C 46.43 | gain C -1.07   (REAL novel subjects, fold 0)
@@ -3953,6 +3951,8 @@ step 4400/30000 | loss 4.4488 | aux rot 1.516 (chance 2.83) | aux perm 1.708 (ch
 step 4500/30000 | loss 4.5921 | aux rot 1.665 (chance 2.83) | aux perm 1.615 (chance 3.26) | lr 4.86e-04 | 0.90 it/s
 step 4600/30000 | loss 4.6829 | aux rot 1.616 (chance 2.83) | aux perm 1.647 (chance 3.26) | lr 4.86e-04 | 0.91 it/s
 step 4700/30000 | loss 4.5105 | aux rot 1.675 (chance 2.83) | aux perm 1.662 (chance 3.26) | lr 4.85e-04 | 0.91 it/s
+step 4800/30000 | loss 4.2602 | aux rot 1.579 (chance 2.83) | aux perm 1.647 (chance 3.26) | lr 4.84e-04 | 0.91 it/s
+step 4900/30000 | loss 4.2483 | aux rot 1.501 (chance 2.83) | aux perm 1.693 (chance 3.26) | lr 4.83e-04 | 0.91 it/s
 ```
 
 ### icl_joint_fold1.log
