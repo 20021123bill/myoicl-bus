@@ -100,3 +100,6 @@ step 15600/103000 | loss 1.7606 | lr 6.69e-04 | 716 win/s
 step 15800/103000 | loss 1.7422 | lr 6.68e-04 | 716 win/s
 step 16000/103000 | loss 1.7255 | lr 6.68e-04 | 716 win/s
 [val] step 16000: 8-test-user CER 49.66 | fold-heldout-user CER 57.32  (their Tiny reference: 35.9)
+step 16200/103000 | loss 1.7566 | lr 6.67e-04 | 716 win/s
+step 16400/103000 | loss 1.7396 | lr 6.66e-04 | 717 win/s
+step 16600/103000 | loss 1.7514 | lr 6.65e-04 | 717 win/s

@@ -55,3 +55,12 @@ k= 12 ( 48s): mode-A  54.73 | mode-C  54.21 | gain  +0.52 (24 episodes)
 k= 45 (180s): mode-A  55.86 | mode-C  62.14 | gain  -6.28 (24 episodes)
 k= 12 ( 48s): mode-A  65.48 | mode-C  66.52 | gain  -1.04 (24 episodes)
 --- 16:38 icl_aux_fold2 ---
+[ckpt] /data2/chenyuxiang/runs/icl_aux_fold2/best.pt step 3000
+k= 12 ( 48s): mode-A  52.89 | mode-C  57.21 | gain  -4.32 (24 episodes)
+k= 45 (180s): mode-A  54.01 | mode-C  56.87 | gain  -2.86 (24 episodes)
+k= 12 ( 48s): mode-A  64.27 | mode-C  67.52 | gain  -3.25 (24 episodes)
+--- 16:38 icl_aux_fold0 ---
+[ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
+k= 12 ( 48s): mode-A  55.66 | mode-C  54.33 | gain  +1.33 (24 episodes)
+k= 45 (180s): mode-A  55.57 | mode-C  62.59 | gain  -7.02 (24 episodes)
+k= 12 ( 48s): mode-A  66.53 | mode-C  65.97 | gain  +0.56 (24 episodes)
