@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T15:44:49+08:00
+# heartbeat 2026-08-20T15:45:32+08:00
 
 ## gpu
 ```
-0, 6313 MiB, 24576 MiB, 4 %
+0, 6313 MiB, 24576 MiB, 43 %
 1, 3155 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 64 %
+2, 3169 MiB, 24576 MiB, 91 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3868,7 +3868,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-step 600/30000 | loss 5.3970 | aux rot 2.163 (chance 2.83) | aux perm 2.046 (chance 3.26) | lr 2.00e-04 | 0.84 it/s
 step 700/30000 | loss 5.1462 | aux rot 2.103 (chance 2.83) | aux perm 1.889 (chance 3.26) | lr 2.33e-04 | 0.85 it/s
 step 800/30000 | loss 4.7212 | aux rot 2.095 (chance 2.83) | aux perm 1.719 (chance 3.26) | lr 2.67e-04 | 0.87 it/s
 step 900/30000 | loss 5.1509 | aux rot 2.147 (chance 2.83) | aux perm 1.755 (chance 3.26) | lr 3.00e-04 | 0.86 it/s
@@ -3893,11 +3892,11 @@ step 2300/30000 | loss 4.6538 | aux rot 1.858 (chance 2.83) | aux perm 1.667 (ch
 step 2400/30000 | loss 4.7834 | aux rot 1.855 (chance 2.83) | aux perm 1.645 (chance 3.26) | lr 4.99e-04 | 0.84 it/s
 step 2500/30000 | loss 4.7691 | aux rot 1.776 (chance 2.83) | aux perm 1.690 (chance 3.26) | lr 4.98e-04 | 0.84 it/s
 step 2600/30000 | loss 4.9083 | aux rot 1.786 (chance 2.83) | aux perm 1.679 (chance 3.26) | lr 4.98e-04 | 0.83 it/s
+step 2700/30000 | loss 4.7554 | aux rot 1.750 (chance 2.83) | aux perm 1.693 (chance 3.26) | lr 4.98e-04 | 0.83 it/s
 ```
 
 ### icl_joint_fold1.log
 ```
-[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
 [symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
@@ -3922,6 +3921,7 @@ step 1500/20000 | loss 5.1511 | aux rot 1.905 (chance 2.83) | aux perm 1.784 (ch
 step 1600/20000 | loss 4.7348 | aux rot 1.823 (chance 2.83) | aux perm 1.679 (chance 3.26) | lr 4.99e-04 | 0.77 it/s
 step 1700/20000 | loss 5.0181 | aux rot 1.923 (chance 2.83) | aux perm 1.707 (chance 3.26) | lr 4.98e-04 | 0.78 it/s
 step 1800/20000 | loss 4.8824 | aux rot 1.874 (chance 2.83) | aux perm 1.835 (chance 3.26) | lr 4.98e-04 | 0.78 it/s
+step 1900/20000 | loss 4.9219 | aux rot 1.813 (chance 2.83) | aux perm 1.839 (chance 3.26) | lr 4.97e-04 | 0.78 it/s
 ```
 
 ### teachers_shard0.log
