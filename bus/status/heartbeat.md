@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:09:59+08:00
+# heartbeat 2026-08-20T17:10:42+08:00
 
 ## gpu
 ```
-0, 6275 MiB, 24576 MiB, 49 %
-1, 6058 MiB, 24576 MiB, 25 %
-2, 3169 MiB, 24576 MiB, 75 %
+0, 6275 MiB, 24576 MiB, 38 %
+1, 6058 MiB, 24576 MiB, 22 %
+2, 3169 MiB, 24576 MiB, 56 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3994,7 +3994,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-step 5800/30000 | loss 4.2937 | aux rot 1.471 (chance 2.83) | aux perm 1.672 (chance 3.26) | lr 4.72e-04 | 0.93 it/s
 step 5900/30000 | loss 4.5340 | aux rot 1.429 (chance 2.83) | aux perm 1.582 (chance 3.26) | lr 4.71e-04 | 0.93 it/s
 step 6000/30000 | loss 4.4302 | aux rot 1.479 (chance 2.83) | aux perm 1.616 (chance 3.26) | lr 4.70e-04 | 0.93 it/s
 [val] step 6000: mode-A 43.14 | mode-C 43.43 | gain C -0.28   (REAL novel subjects, fold 0)
@@ -4019,6 +4018,7 @@ step 7500/30000 | loss 4.0652 | aux rot 1.440 (chance 2.83) | aux perm 1.524 (ch
 step 7600/30000 | loss 4.1967 | aux rot 1.333 (chance 2.83) | aux perm 1.530 (chance 3.26) | lr 4.46e-04 | 0.94 it/s
 step 7700/30000 | loss 4.0748 | aux rot 1.371 (chance 2.83) | aux perm 1.682 (chance 3.26) | lr 4.44e-04 | 0.95 it/s
 step 7800/30000 | loss 4.0010 | aux rot 1.325 (chance 2.83) | aux perm 1.726 (chance 3.26) | lr 4.42e-04 | 0.95 it/s
+step 7900/30000 | loss 4.3426 | aux rot 1.300 (chance 2.83) | aux perm 1.647 (chance 3.26) | lr 4.40e-04 | 0.95 it/s
 ```
 
 ### icl_joint_fold1.log
@@ -4052,7 +4052,6 @@ step 7100/20000 | loss 4.0573 | aux rot 1.400 (chance 2.83) | aux perm 1.579 (ch
 
 ### icl_split_fold0.log
 ```
-[trunk] /data2/chenyuxiang/runs/tf_fold0_full/last.pt step 103000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 [prefix] FUSED mode: per-token (signal + soft-aligned char)
 [prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
 [prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
@@ -4077,11 +4076,11 @@ step 900/20000 | loss 3.5987 | aux rot 2.192 (chance 2.83) | aux perm 1.667 (cha
 step 1000/20000 | loss 3.6733 | aux rot 2.178 (chance 2.83) | aux perm 1.506 (chance 3.26) | lr 3.00e-04 | 1.73 it/s
 [val] step 1000: IDENTITY A 49.56 C 53.65 gain -4.08 | PERMUTED A 63.57 C 66.71 gain -3.14 | mem-gauge(meta-train A) 43.97   (meta-test users, fold 0)
 [val] new best mode-C 53.65 -> best.pt
+step 1100/20000 | loss 3.8112 | aux rot 2.130 (chance 2.83) | aux perm 1.650 (chance 3.26) | lr 3.00e-04 | 1.73 it/s
 ```
 
 ### icl_split_fold1.log
 ```
-[trunk] /data2/chenyuxiang/runs/tf_fold1_full/last.pt step 103000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 [prefix] FUSED mode: per-token (signal + soft-aligned char)
 [prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
 [prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
@@ -4106,6 +4105,7 @@ step 900/20000 | loss 3.5871 | aux rot 2.204 (chance 2.83) | aux perm 1.673 (cha
 step 1000/20000 | loss 3.6488 | aux rot 2.153 (chance 2.83) | aux perm 1.504 (chance 3.26) | lr 3.00e-04 | 1.70 it/s
 [val] step 1000: IDENTITY A 56.26 C 58.91 gain -2.65 | PERMUTED A 68.02 C 69.50 gain -1.48 | mem-gauge(meta-train A) 39.94   (meta-test users, fold 1)
 [val] new best mode-C 58.91 -> best.pt
+step 1100/20000 | loss 3.7616 | aux rot 2.087 (chance 2.83) | aux perm 1.650 (chance 3.26) | lr 3.00e-04 | 1.70 it/s
 ```
 
 ### teachers_shard0.log
