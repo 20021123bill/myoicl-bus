@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:04:58+08:00
+# heartbeat 2026-08-20T17:05:41+08:00
 
 ## gpu
 ```
-0, 6275 MiB, 24576 MiB, 52 %
+0, 6275 MiB, 24576 MiB, 92 %
 1, 6058 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 90 %
+2, 3169 MiB, 24576 MiB, 62 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3994,7 +3994,6 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 
 ### icl_joint_fold0.log
 ```
-step 5500/30000 | loss 4.2741 | aux rot 1.462 (chance 2.83) | aux perm 1.705 (chance 3.26) | lr 4.76e-04 | 0.92 it/s
 step 5600/30000 | loss 4.1456 | aux rot 1.436 (chance 2.83) | aux perm 1.595 (chance 3.26) | lr 4.75e-04 | 0.93 it/s
 step 5700/30000 | loss 4.5944 | aux rot 1.519 (chance 2.83) | aux perm 1.707 (chance 3.26) | lr 4.74e-04 | 0.93 it/s
 step 5800/30000 | loss 4.2937 | aux rot 1.471 (chance 2.83) | aux perm 1.672 (chance 3.26) | lr 4.72e-04 | 0.93 it/s
@@ -4019,6 +4018,7 @@ step 7200/30000 | loss 3.8481 | aux rot 1.434 (chance 2.83) | aux perm 1.567 (ch
 step 7300/30000 | loss 4.4014 | aux rot 1.358 (chance 2.83) | aux perm 1.607 (chance 3.26) | lr 4.51e-04 | 0.94 it/s
 step 7400/30000 | loss 4.1602 | aux rot 1.390 (chance 2.83) | aux perm 1.681 (chance 3.26) | lr 4.49e-04 | 0.94 it/s
 step 7500/30000 | loss 4.0652 | aux rot 1.440 (chance 2.83) | aux perm 1.524 (chance 3.26) | lr 4.47e-04 | 0.94 it/s
+step 7600/30000 | loss 4.1967 | aux rot 1.333 (chance 2.83) | aux perm 1.530 (chance 3.26) | lr 4.46e-04 | 0.94 it/s
 ```
 
 ### icl_joint_fold1.log
@@ -4073,6 +4073,7 @@ step 400/20000 | loss 5.3473 | aux rot 2.542 (chance 2.83) | aux perm 2.897 (cha
 step 500/20000 | loss 4.6795 | aux rot 2.428 (chance 2.83) | aux perm 2.574 (chance 3.26) | lr 1.50e-04 | 1.81 it/s
 [val] step 500: IDENTITY A 45.02 C 68.06 gain -23.04 | PERMUTED A 61.34 C 77.21 gain -15.87 | mem-gauge(meta-train A) 51.55   (meta-test users, fold 0)
 [val] new best mode-C 68.06 -> best.pt
+step 600/20000 | loss 4.6654 | aux rot 2.416 (chance 2.83) | aux perm 2.304 (chance 3.26) | lr 1.80e-04 | 1.77 it/s
 ```
 
 ### icl_split_fold1.log
@@ -4098,6 +4099,7 @@ step 400/20000 | loss 5.3398 | aux rot 2.482 (chance 2.83) | aux perm 2.940 (cha
 step 500/20000 | loss 4.6027 | aux rot 2.414 (chance 2.83) | aux perm 2.645 (chance 3.26) | lr 1.50e-04 | 1.77 it/s
 [val] step 500: IDENTITY A 55.82 C 75.80 gain -19.98 | PERMUTED A 67.62 C 81.28 gain -13.66 | mem-gauge(meta-train A) 44.68   (meta-test users, fold 1)
 [val] new best mode-C 75.80 -> best.pt
+step 600/20000 | loss 4.6691 | aux rot 2.348 (chance 2.83) | aux perm 2.360 (chance 3.26) | lr 1.80e-04 | 1.72 it/s
 ```
 
 ### teachers_shard0.log
