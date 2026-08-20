@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:00:38+08:00
+# heartbeat 2026-08-20T17:01:22+08:00
 
 ## gpu
 ```
-0, 6273 MiB, 24576 MiB, 0 %
-1, 6056 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 66 %
+0, 6275 MiB, 24576 MiB, 0 %
+1, 6056 MiB, 24576 MiB, 57 %
+2, 3169 MiB, 24576 MiB, 82 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -94,6 +94,7 @@
 563_keystroke_retry                      DONE rc=127
 564_keystroke_diag2                      DONE rc=127
 565_icl_split_and_scoring                DONE rc=127
+566_keystroke_incremental                DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3628,6 +3629,11 @@ building population tuning from 12 other users...
 === relaunch: fold 0 and fold 1, correct split + both tasks scored ===
 launched fold 0 on GPU 0 -> /data2/chenyuxiang/runs/icl_split_fold0/train.log
 launched fold 1 on GPU 1 -> /data2/chenyuxiang/runs/icl_split_fold1/train.log
+```
+
+### 566_keystroke_incremental.log
+```
+=== phase 1/2: per-user extraction (one process each) ===
 ```
 
 ### d3_train.log
