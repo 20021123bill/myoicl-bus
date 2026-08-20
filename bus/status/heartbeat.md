@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T16:04:10+08:00
+# heartbeat 2026-08-20T16:04:53+08:00
 
 ## gpu
 ```
-0, 3159 MiB, 24576 MiB, 8 %
-1, 3155 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 62 %
+0, 3159 MiB, 24576 MiB, 0 %
+1, 3155 MiB, 24576 MiB, 40 %
+2, 3169 MiB, 24576 MiB, 68 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3342,6 +3342,8 @@ launched icl_joint_fold1 pid=1211048
         [val] new best mode-C 47.72 -> best.pt
 [15:59] step 2700/20000 | loss 4.6886 | aux rot 1.631 (chance 2.83) | aux perm 1.710 (chance 3.26) | lr 4.90
         [val] new best mode-C 47.72 -> best.pt
+[16:04] step 3000/20000 | loss 4.7925 | aux rot 1.586 (chance 2.83) | aux perm 1.806 (chance 3.26) | lr 4.86
+        [val] new best mode-C 44.45 -> best.pt
 ```
 
 ### 557_zeroshot.log
@@ -3920,9 +3922,6 @@ step 3800/30000 | loss 4.5718 | aux rot 1.600 (chance 2.83) | aux perm 1.582 (ch
 
 ### icl_joint_fold1.log
 ```
-step 900/20000 | loss 4.9979 | aux rot 2.124 (chance 2.83) | aux perm 1.754 (chance 3.26) | lr 4.50e-04 | 0.79 it/s
-step 1000/20000 | loss 4.9507 | aux rot 2.057 (chance 2.83) | aux perm 1.585 (chance 3.26) | lr 5.00e-04 | 0.79 it/s
-[val] step 1000: mode-A 51.35 | mode-C 55.21 | gain C -3.86   (REAL novel subjects, fold 1)
 [val] new best mode-C 55.21 -> best.pt
 step 1100/20000 | loss 5.0751 | aux rot 2.073 (chance 2.83) | aux perm 1.565 (chance 3.26) | lr 5.00e-04 | 0.79 it/s
 step 1200/20000 | loss 5.0613 | aux rot 2.000 (chance 2.83) | aux perm 1.750 (chance 3.26) | lr 5.00e-04 | 0.78 it/s
@@ -3945,6 +3944,9 @@ step 2600/20000 | loss 4.7442 | aux rot 1.664 (chance 2.83) | aux perm 1.673 (ch
 step 2700/20000 | loss 4.6886 | aux rot 1.631 (chance 2.83) | aux perm 1.710 (chance 3.26) | lr 4.90e-04 | 0.83 it/s
 step 2800/20000 | loss 4.6296 | aux rot 1.594 (chance 2.83) | aux perm 1.702 (chance 3.26) | lr 4.89e-04 | 0.84 it/s
 step 2900/20000 | loss 4.4268 | aux rot 1.586 (chance 2.83) | aux perm 1.681 (chance 3.26) | lr 4.88e-04 | 0.84 it/s
+step 3000/20000 | loss 4.7925 | aux rot 1.586 (chance 2.83) | aux perm 1.806 (chance 3.26) | lr 4.86e-04 | 0.85 it/s
+[val] step 3000: mode-A 41.93 | mode-C 44.45 | gain C -2.52   (REAL novel subjects, fold 1)
+[val] new best mode-C 44.45 -> best.pt
 ```
 
 ### teachers_shard0.log
