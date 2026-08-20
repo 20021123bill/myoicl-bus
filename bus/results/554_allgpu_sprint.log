@@ -11,3 +11,10 @@ probe watcher pid=1090251
 k= 12 ( 48s): mode-A  53.24 | mode-C  57.82 | gain  -4.58 (24 episodes)
 k= 45 (180s): mode-A  53.24 | mode-C  59.84 | gain  -6.60 (24 episodes)
 k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
+--- 14:13 ---
+[icl_aux_fold2] step 2500/20000 | loss 4.9932 | aux rot 1.980 (chance 2.83) | aux perm 1.589 (chance 3.26) | lr 9.85
+        [val] new best mode-C 64.40 -> best.pt
+[icl_aux_fold0] step 700/20000 | loss 5.2765 | aux rot 2.074 (chance 2.83) | aux perm 1.661 (chance 3.26) | lr 7.00e
+k= 12 ( 48s): mode-A  53.24 | mode-C  57.82 | gain  -4.58 (24 episodes)
+k= 45 (180s): mode-A  53.24 | mode-C  59.84 | gain  -6.60 (24 episodes)
+k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)

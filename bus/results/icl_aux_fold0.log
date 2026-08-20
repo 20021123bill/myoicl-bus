@@ -16,3 +16,5 @@ step 200/20000 | loss 7.5114 | aux rot 2.604 (chance 2.83) | aux perm 2.951 (cha
 step 300/20000 | loss 5.8680 | aux rot 2.281 (chance 2.83) | aux perm 2.463 (chance 3.26) | lr 3.00e-04 | 1.37 it/s
 step 400/20000 | loss 5.3768 | aux rot 2.127 (chance 2.83) | aux perm 1.910 (chance 3.26) | lr 4.00e-04 | 1.35 it/s
 step 500/20000 | loss 5.4676 | aux rot 2.210 (chance 2.83) | aux perm 1.639 (chance 3.26) | lr 5.00e-04 | 1.34 it/s
+step 600/20000 | loss 5.1117 | aux rot 2.040 (chance 2.83) | aux perm 1.660 (chance 3.26) | lr 6.00e-04 | 1.32 it/s
+step 700/20000 | loss 5.2765 | aux rot 2.074 (chance 2.83) | aux perm 1.661 (chance 3.26) | lr 7.00e-04 | 1.35 it/s
