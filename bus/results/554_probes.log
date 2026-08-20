@@ -23,3 +23,4 @@ k= 12 ( 48s): mode-A  64.77 | mode-C  68.06 | gain  -3.28 (24 episodes)
 [ckpt] /data2/chenyuxiang/runs/icl_aux_fold0/best.pt step 2000
 k= 12 ( 48s): mode-A  55.40 | mode-C  53.98 | gain  +1.41 (24 episodes)
 k= 45 (180s): mode-A  55.82 | mode-C  64.02 | gain  -8.20 (24 episodes)
+k= 12 ( 48s): mode-A  67.17 | mode-C  66.45 | gain  +0.72 (24 episodes)
