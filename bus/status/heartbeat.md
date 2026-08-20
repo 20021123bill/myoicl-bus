@@ -1,4 +1,4 @@
-# heartbeat 2026-08-20T17:32:13+08:00
+# heartbeat 2026-08-20T17:32:58+08:00
 
 ## gpu
 ```
@@ -98,6 +98,7 @@
 567_stream_and_probe                     DONE rc=127
 568_budget_curve                         DONE rc=127
 569_full_stop                            DONE rc=127
+570_icl_sanity                           DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3721,6 +3722,19 @@ SyntaxError: invalid syntax
 
 === manifest written to bus/results/569_MANIFEST.txt ===
 === 569 done: all compute stopped, nothing deleted ===
+```
+
+### 570_icl_sanity.log
+```
+=== unpack + verify ===
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/lib/python2.7/ast.py", line 37, in parse
+    return compile(source, filename, mode, PyCF_ONLY_AST)
+  File "<unknown>", line 47
+    def __init__(self, d_in: int, n_symbols: int, d_model: int = 128,
+                           ^
+SyntaxError: invalid syntax
 ```
 
 ### d3_train.log

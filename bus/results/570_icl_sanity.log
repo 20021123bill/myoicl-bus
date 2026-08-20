@@ -1,0 +1,9 @@
+=== unpack + verify ===
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/lib/python2.7/ast.py", line 37, in parse
+    return compile(source, filename, mode, PyCF_ONLY_AST)
+  File "<unknown>", line 47
+    def __init__(self, d_in: int, n_symbols: int, d_model: int = 128,
+                           ^
+SyntaxError: invalid syntax
