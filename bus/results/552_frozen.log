@@ -37,3 +37,6 @@ step 200/12000 | loss 5.8096 | lr 3.33e-04 | 1.66 it/s
 [08:23] [val] step 10500: mode-A 62.53 | mode-C 63.91 | gain C -1.37   (REAL novel subjects, fold 2)
 [08:28] [val] step 11000: mode-A 62.90 | mode-C 62.69 | gain C +0.22   (REAL novel subjects, fold 2)
 [08:33] [val] step 11500: mode-A 58.06 | mode-C 58.81 | gain C -0.75   (REAL novel subjects, fold 2)
+[08:38] [val] step 12000: mode-A 60.18 | mode-C 60.20 | gain C -0.02   (REAL novel subjects, fold 2)
+frozen run ended
+=== 552 done ===
