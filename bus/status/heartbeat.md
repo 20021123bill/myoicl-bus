@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T14:24:24+08:00
+# heartbeat 2026-08-20T14:25:07+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 21 %
+0, 3173 MiB, 24576 MiB, 47 %
 1, 2731 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 75 %
-3, 2731 MiB, 24576 MiB, 0 %
+2, 2985 MiB, 24576 MiB, 78 %
+3, 2731 MiB, 24576 MiB, 2 %
 ```
 
 ## jobs
@@ -3180,8 +3180,6 @@ step 400/20000 | loss 5.6576 | aux rot 2.159 (chance 2.83) | aux perm 2.008 (cha
 
 ### 553_aux_supervised.log
 ```
-[cohort] fold 2: 24 users the backbone has never seen, 213 sessions
-[trunk] /data2/chenyuxiang/runs/tf_fold2/last.pt step 40000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
 [prefix] FUSED mode: per-token (signal + soft-aligned char)
 [prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
 [prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
@@ -3204,6 +3202,8 @@ step 400/20000 | loss 5.6576 | aux rot 2.159 (chance 2.83) | aux perm 2.008 (cha
 [14:15] step 2600/20000 | loss 4.8422 | aux rot 1.933 (chance 2.83) | aux perm 1.739 (chance 3.26) | lr 9.83e-04 | 1.50 it/s
         [val] new best mode-C 64.40 -> best.pt
 [14:20] step 3000/20000 | loss 5.1406 | aux rot 2.037 (chance 2.83) | aux perm 1.765 (chance 3.26) | lr 9.73e-04 | 1.49 it/s
+        [val] new best mode-C 64.18 -> best.pt
+[14:25] step 3400/20000 | loss 4.7852 | aux rot 1.947 (chance 2.83) | aux perm 1.710 (chance 3.26) | lr 9.61e-04 | 1.46 it/s
         [val] new best mode-C 64.18 -> best.pt
 ```
 
@@ -3431,7 +3431,6 @@ step 1500/20000 | loss 4.9879 | aux rot 2.030 (chance 2.83) | aux perm 1.724 (ch
 
 ### icl_aux_fold2.log
 ```
-step 1300/20000 | loss 5.0901 | aux rot 2.041 (chance 2.83) | aux perm 1.672 (chance 3.26) | lr 9.99e-04 | 1.52 it/s
 step 1400/20000 | loss 4.8480 | aux rot 2.128 (chance 2.83) | aux perm 1.646 (chance 3.26) | lr 9.99e-04 | 1.53 it/s
 step 1500/20000 | loss 4.9718 | aux rot 2.034 (chance 2.83) | aux perm 1.742 (chance 3.26) | lr 9.98e-04 | 1.55 it/s
 step 1600/20000 | loss 4.8578 | aux rot 2.049 (chance 2.83) | aux perm 1.739 (chance 3.26) | lr 9.98e-04 | 1.56 it/s
@@ -3456,6 +3455,7 @@ step 3000/20000 | loss 5.1406 | aux rot 2.037 (chance 2.83) | aux perm 1.765 (ch
 step 3100/20000 | loss 4.8039 | aux rot 1.880 (chance 2.83) | aux perm 1.628 (chance 3.26) | lr 9.70e-04 | 1.48 it/s
 step 3200/20000 | loss 4.7880 | aux rot 1.868 (chance 2.83) | aux perm 1.683 (chance 3.26) | lr 9.67e-04 | 1.48 it/s
 step 3300/20000 | loss 5.0672 | aux rot 1.837 (chance 2.83) | aux perm 1.703 (chance 3.26) | lr 9.64e-04 | 1.47 it/s
+step 3400/20000 | loss 4.7852 | aux rot 1.947 (chance 2.83) | aux perm 1.710 (chance 3.26) | lr 9.61e-04 | 1.46 it/s
 ```
 
 ### icl_dev2_fold2.log
@@ -3740,8 +3740,6 @@ step 40000/40000 | loss 1.5527 | lr 0.00e+00 | 398 win/s
 
 ### tf_fold1_full.log
 ```
-step 92000/103000 | loss 1.2455 | lr 2.03e-05 | 496 win/s
-[val] step 92000: 8-test-user CER 46.66 | fold-heldout-user CER 53.71  (their Tiny reference: 35.9)
 step 92200/103000 | loss 1.2476 | lr 1.96e-05 | 496 win/s
 step 92400/103000 | loss 1.2459 | lr 1.89e-05 | 497 win/s
 step 92600/103000 | loss 1.2464 | lr 1.82e-05 | 497 win/s
@@ -3765,6 +3763,8 @@ step 96000/103000 | loss 1.2297 | lr 8.27e-06 | 503 win/s
 [val] step 96000: 8-test-user CER 45.88 | fold-heldout-user CER 53.62  (their Tiny reference: 35.9)
 [val] new best 45.88 -> best.pt
 step 96200/103000 | loss 1.2316 | lr 7.81e-06 | 503 win/s
+step 96400/103000 | loss 1.2305 | lr 7.36e-06 | 503 win/s
+step 96600/103000 | loss 1.2236 | lr 6.92e-06 | 504 win/s
 ```
 
 ### tf_fold1.log
@@ -3856,8 +3856,6 @@ step 40000/40000 | loss 1.5302 | lr 0.00e+00 | 516 win/s
 
 ### tf_ref_full.log
 ```
-step 89400/103000 | loss 1.3038 | lr 3.09e-05 | 486 win/s
-step 89600/103000 | loss 1.3049 | lr 3.00e-05 | 486 win/s
 step 89800/103000 | loss 1.3016 | lr 2.91e-05 | 487 win/s
 step 90000/103000 | loss 1.2980 | lr 2.83e-05 | 487 win/s
 step 90200/103000 | loss 1.3099 | lr 2.74e-05 | 488 win/s
@@ -3881,6 +3879,8 @@ step 93400/103000 | loss 1.2823 | lr 1.55e-05 | 491 win/s
 step 93600/103000 | loss 1.2816 | lr 1.49e-05 | 491 win/s
 step 93800/103000 | loss 1.2764 | lr 1.43e-05 | 491 win/s
 step 94000/103000 | loss 1.2848 | lr 1.36e-05 | 491 win/s
+step 94200/103000 | loss 1.2815 | lr 1.30e-05 | 491 win/s
+step 94400/103000 | loss 1.2786 | lr 1.25e-05 | 491 win/s
 ```
 
 ### tf_ref.log

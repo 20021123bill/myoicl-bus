@@ -26,3 +26,5 @@ step 400/20000 | loss 5.6576 | aux rot 2.159 (chance 2.83) | aux perm 2.008 (cha
         [val] new best mode-C 64.40 -> best.pt
 [14:20] step 3000/20000 | loss 5.1406 | aux rot 2.037 (chance 2.83) | aux perm 1.765 (chance 3.26) | lr 9.73e-04 | 1.49 it/s
         [val] new best mode-C 64.18 -> best.pt
+[14:25] step 3400/20000 | loss 4.7852 | aux rot 1.947 (chance 2.83) | aux perm 1.710 (chance 3.26) | lr 9.61e-04 | 1.46 it/s
+        [val] new best mode-C 64.18 -> best.pt
