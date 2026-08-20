@@ -1,11 +1,11 @@
-# heartbeat 2026-08-20T14:10:04+08:00
+# heartbeat 2026-08-20T14:10:47+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 77 %
+0, 3173 MiB, 24576 MiB, 66 %
 1, 2731 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 74 %
-3, 2731 MiB, 24576 MiB, 47 %
+2, 2985 MiB, 24576 MiB, 88 %
+3, 2731 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -3197,6 +3197,8 @@ step 400/20000 | loss 5.6576 | aux rot 2.159 (chance 2.83) | aux perm 2.008 (cha
         [val] new best mode-C 70.59 -> best.pt
 [14:05] step 1800/20000 | loss 5.0060 | aux rot 1.987 (chance 2.83) | aux perm 1.606 (chance 3.26) | lr 9.96e-04 | 1.57 it/s
         [val] new best mode-C 70.59 -> best.pt
+[14:10] step 2200/20000 | loss 5.1382 | aux rot 2.023 (chance 2.83) | aux perm 1.765 (chance 3.26) | lr 9.90e-04 | 1.52 it/s
+        [val] new best mode-C 64.40 -> best.pt
 ```
 
 ### 554_allgpu_sprint.log
@@ -3368,7 +3370,6 @@ step 300/20000 | loss 5.8680 | aux rot 2.281 (chance 2.83) | aux perm 2.463 (cha
 
 ### icl_aux_fold2.log
 ```
-step 100/20000 | loss 13.0578 | aux rot 2.769 (chance 2.83) | aux perm 3.278 (chance 3.26) | lr 1.00e-04 | 1.59 it/s
 step 200/20000 | loss 12.5117 | aux rot 2.420 (chance 2.83) | aux perm 2.978 (chance 3.26) | lr 2.00e-04 | 1.53 it/s
 step 300/20000 | loss 10.4381 | aux rot 2.204 (chance 2.83) | aux perm 2.433 (chance 3.26) | lr 3.00e-04 | 1.55 it/s
 step 400/20000 | loss 5.6576 | aux rot 2.159 (chance 2.83) | aux perm 2.008 (chance 3.26) | lr 4.00e-04 | 1.54 it/s
@@ -3393,6 +3394,7 @@ step 2000/20000 | loss 5.1622 | aux rot 2.035 (chance 2.83) | aux perm 1.746 (ch
 [val] step 2000: mode-A 59.74 | mode-C 64.40 | gain C -4.67   (REAL novel subjects, fold 2)
 [val] new best mode-C 64.40 -> best.pt
 step 2100/20000 | loss 4.7245 | aux rot 2.011 (chance 2.83) | aux perm 1.707 (chance 3.26) | lr 9.92e-04 | 1.54 it/s
+step 2200/20000 | loss 5.1382 | aux rot 2.023 (chance 2.83) | aux perm 1.765 (chance 3.26) | lr 9.90e-04 | 1.52 it/s
 ```
 
 ### icl_dev2_fold2.log

@@ -4,3 +4,10 @@ launched icl_aux_fold0 pid=1090250
 probe watcher pid=1090251
 === GPU2: fold2_full continuation when fold1_full finishes ===
 === stream (14 h) ===
+--- 14:08 ---
+[icl_aux_fold2] step 2100/20000 | loss 4.7245 | aux rot 2.011 (chance 2.83) | aux perm 1.707 (chance 3.26) | lr 9.92
+        [val] new best mode-C 64.40 -> best.pt
+[icl_aux_fold0] step 300/20000 | loss 5.8680 | aux rot 2.281 (chance 2.83) | aux perm 2.463 (chance 3.26) | lr 3.00e
+k= 12 ( 48s): mode-A  53.24 | mode-C  57.82 | gain  -4.58 (24 episodes)
+k= 45 (180s): mode-A  53.24 | mode-C  59.84 | gain  -6.60 (24 episodes)
+k= 12 ( 48s): mode-A  64.69 | mode-C  67.42 | gain  -2.74 (24 episodes)
