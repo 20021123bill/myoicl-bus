@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T14:53:07+08:00
+# heartbeat 2026-08-20T14:53:50+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 73 %
+0, 3173 MiB, 24576 MiB, 81 %
 1, 3153 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 62 %
+2, 2985 MiB, 24576 MiB, 94 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3371,6 +3371,9 @@ launched icl_joint_fold0 pid=1169828
 --- 14:48 ---
 [icl_joint_fold0] step 200/30000 | loss 6.7254 | aux rot 2.736 (chance 2.83) | aux perm 3.197 (chance 3.26) | lr 6
 [icl_joint_fold1] waiting
+--- 14:53 ---
+[icl_joint_fold0] step 100/30000 | loss 9.9521 | aux rot 2.875 (chance 2.83) | aux perm 3.271 (chance 3.26) | lr 3
+[icl_joint_fold1] waiting
 ```
 
 ### 558_mainline.log
@@ -3727,6 +3730,7 @@ RuntimeError: one of the variables needed for gradient computation has been modi
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 53.72 | mode-C 100.00 (random prefix) | deployment reference ~43-58
+step 100/30000 | loss 9.9521 | aux rot 2.875 (chance 2.83) | aux perm 3.271 (chance 3.26) | lr 3.33e-05 | 0.81 it/s
 ```
 
 ### teachers_shard0.log
