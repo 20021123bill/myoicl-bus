@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:06:24+08:00
+# heartbeat 2026-08-20T17:07:07+08:00
 
 ## gpu
 ```
-0, 6275 MiB, 24576 MiB, 31 %
-1, 6058 MiB, 24576 MiB, 40 %
-2, 3169 MiB, 24576 MiB, 94 %
+0, 6275 MiB, 24576 MiB, 0 %
+1, 6058 MiB, 24576 MiB, 0 %
+2, 3169 MiB, 24576 MiB, 69 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -4075,6 +4075,7 @@ step 500/20000 | loss 4.6795 | aux rot 2.428 (chance 2.83) | aux perm 2.574 (cha
 [val] new best mode-C 68.06 -> best.pt
 step 600/20000 | loss 4.6654 | aux rot 2.416 (chance 2.83) | aux perm 2.304 (chance 3.26) | lr 1.80e-04 | 1.77 it/s
 step 700/20000 | loss 4.3376 | aux rot 2.306 (chance 2.83) | aux perm 2.026 (chance 3.26) | lr 2.10e-04 | 1.76 it/s
+step 800/20000 | loss 4.2150 | aux rot 2.235 (chance 2.83) | aux perm 1.831 (chance 3.26) | lr 2.40e-04 | 1.76 it/s
 ```
 
 ### icl_split_fold1.log
@@ -4102,6 +4103,7 @@ step 500/20000 | loss 4.6027 | aux rot 2.414 (chance 2.83) | aux perm 2.645 (cha
 [val] new best mode-C 75.80 -> best.pt
 step 600/20000 | loss 4.6691 | aux rot 2.348 (chance 2.83) | aux perm 2.360 (chance 3.26) | lr 1.80e-04 | 1.72 it/s
 step 700/20000 | loss 4.2528 | aux rot 2.276 (chance 2.83) | aux perm 2.056 (chance 3.26) | lr 2.10e-04 | 1.71 it/s
+step 800/20000 | loss 4.1700 | aux rot 2.250 (chance 2.83) | aux perm 1.857 (chance 3.26) | lr 2.40e-04 | 1.71 it/s
 ```
 
 ### teachers_shard0.log
