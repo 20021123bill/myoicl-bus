@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:13:34+08:00
+# heartbeat 2026-08-20T17:14:18+08:00
 
 ## gpu
 ```
-0, 6750 MiB, 24576 MiB, 36 %
-1, 6058 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 48 %
+0, 6750 MiB, 24576 MiB, 64 %
+1, 6058 MiB, 24576 MiB, 46 %
+2, 3169 MiB, 24576 MiB, 59 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -96,6 +96,7 @@
 565_icl_split_and_scoring                DONE rc=127
 566_keystroke_incremental                DONE rc=127
 567_stream_and_probe                     DONE rc=127
+568_budget_curve                         DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3679,6 +3680,19 @@ icl_split_fold0.log
 === 567 done ===
 ```
 
+### 568_budget_curve.log
+```
+=== unpack the two new modules ===
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/lib/python2.7/ast.py", line 37, in parse
+    return compile(source, filename, mode, PyCF_ONLY_AST)
+  File "<unknown>", line 137
+    print(f"[skip] {key} already in {args.out}")
+                                              ^
+SyntaxError: invalid syntax
+```
+
 ### d3_train.log
 ```
 [val] step 6000: mode-C CER 16.99 | mode-B CER 17.13 | mode-A CER 15.88 | gain C -1.11 / B -1.25 | loss 0.6158
@@ -4052,9 +4066,6 @@ step 7300/20000 | loss 4.3631 | aux rot 1.308 (chance 2.83) | aux perm 1.617 (ch
 
 ### icl_split_fold0.log
 ```
-[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
-[meta-split] meta-train 16 users / 137 sessions | meta-test 8 users / 76 sessions (disjoint, both unseen by the backbone)
-[symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
   return F.conv1d(input, weight, bias, self.stride,
 [audit] step 0: mode-A 50.89 | mode-C 100.00 (random prefix) | deployment reference ~43-58
@@ -4077,12 +4088,13 @@ step 1200/20000 | loss 3.9258 | aux rot 2.109 (chance 2.83) | aux perm 1.766 (ch
 step 1300/20000 | loss 4.0147 | aux rot 2.110 (chance 2.83) | aux perm 1.697 (chance 3.26) | lr 3.00e-04 | 1.75 it/s
 step 1400/20000 | loss 4.0839 | aux rot 2.245 (chance 2.83) | aux perm 1.608 (chance 3.26) | lr 3.00e-04 | 1.76 it/s
 step 1500/20000 | loss 3.9426 | aux rot 2.077 (chance 2.83) | aux perm 1.599 (chance 3.26) | lr 2.99e-04 | 1.74 it/s
+[val] step 1500: IDENTITY A 48.18 C 50.79 gain -2.61 | PERMUTED A 62.54 C 64.00 gain -1.46 | mem-gauge(meta-train A) 45.06   (meta-test users, fold 0)
+[val] new best mode-C 50.79 -> best.pt
+step 1600/20000 | loss 3.4373 | aux rot 2.035 (chance 2.83) | aux perm 1.673 (chance 3.26) | lr 2.99e-04 | 1.74 it/s
 ```
 
 ### icl_split_fold1.log
 ```
-[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
-[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
 [meta-split] meta-train 16 users / 146 sessions | meta-test 8 users / 60 sessions (disjoint, both unseen by the backbone)
 [symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
@@ -4106,6 +4118,8 @@ step 1100/20000 | loss 3.7616 | aux rot 2.087 (chance 2.83) | aux perm 1.650 (ch
 step 1200/20000 | loss 3.8112 | aux rot 2.147 (chance 2.83) | aux perm 1.758 (chance 3.26) | lr 3.00e-04 | 1.70 it/s
 step 1300/20000 | loss 3.9420 | aux rot 2.057 (chance 2.83) | aux perm 1.678 (chance 3.26) | lr 3.00e-04 | 1.73 it/s
 step 1400/20000 | loss 3.9821 | aux rot 2.199 (chance 2.83) | aux perm 1.609 (chance 3.26) | lr 3.00e-04 | 1.73 it/s
+step 1500/20000 | loss 3.9224 | aux rot 2.066 (chance 2.83) | aux perm 1.592 (chance 3.26) | lr 2.99e-04 | 1.71 it/s
+[val] step 1500: IDENTITY A 57.12 C 59.58 gain -2.47 | PERMUTED A 68.48 C 70.32 gain -1.84 | mem-gauge(meta-train A) 37.18   (meta-test users, fold 1)
 ```
 
 ### teachers_shard0.log
@@ -4303,11 +4317,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-step 16600/103000 | loss 1.7514 | lr 6.65e-04 | 717 win/s
-step 16800/103000 | loss 1.7521 | lr 6.64e-04 | 717 win/s
-step 17000/103000 | loss 1.7806 | lr 6.63e-04 | 718 win/s
-step 17200/103000 | loss 1.7667 | lr 6.62e-04 | 718 win/s
-step 17400/103000 | loss 1.7453 | lr 6.61e-04 | 719 win/s
 step 17600/103000 | loss 1.7469 | lr 6.60e-04 | 719 win/s
 step 17800/103000 | loss 1.7534 | lr 6.59e-04 | 720 win/s
 step 18000/103000 | loss 1.7327 | lr 6.58e-04 | 720 win/s
@@ -4328,6 +4337,11 @@ step 20400/103000 | loss 1.7228 | lr 6.45e-04 | 723 win/s
 step 20600/103000 | loss 1.6940 | lr 6.43e-04 | 723 win/s
 step 20800/103000 | loss 1.7032 | lr 6.42e-04 | 723 win/s
 step 21000/103000 | loss 1.7006 | lr 6.41e-04 | 723 win/s
+step 21200/103000 | loss 1.7225 | lr 6.40e-04 | 723 win/s
+step 21400/103000 | loss 1.7005 | lr 6.38e-04 | 723 win/s
+step 21600/103000 | loss 1.6851 | lr 6.37e-04 | 723 win/s
+step 21800/103000 | loss 1.6965 | lr 6.36e-04 | 723 win/s
+step 22000/103000 | loss 1.6956 | lr 6.35e-04 | 723 win/s
 ```
 
 ### tf_fold2.log
