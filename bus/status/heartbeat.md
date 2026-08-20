@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T17:02:05+08:00
+# heartbeat 2026-08-20T17:02:48+08:00
 
 ## gpu
 ```
-0, 6275 MiB, 24576 MiB, 0 %
+0, 6275 MiB, 24576 MiB, 62 %
 1, 6056 MiB, 24576 MiB, 0 %
-2, 3169 MiB, 24576 MiB, 74 %
+2, 3169 MiB, 24576 MiB, 70 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3618,18 +3618,31 @@ building population tuning from 12 other users...
 
 ### 565_icl_split_and_scoring.log
 ```
-[patched] myoicl/train_prefix_icl.py -- 6 anchors replaced
-=== grep verification (unverified patch = no patch) ===
-413:    print(f"[meta-split] meta-train {len(meta_tr)} users / {len(tr_pairs)} "
-418:    mem_ep = UserEpisodes(tr_pairs, seed=args.seed + 2000)
-516:            u, sb, qb, _, _, _ = draw(mem_ep, allow_permute=False,
-578:                  f"gain {a - c:+.2f} | PERMUTED A {ap:.2f} C {cp:.2f} "
-583:                         "Ap": ap, "Cp": cp, "gain_perm": ap - cp,
-[syntax] OK
-
-=== relaunch: fold 0 and fold 1, correct split + both tasks scored ===
-launched fold 0 on GPU 0 -> /data2/chenyuxiang/runs/icl_split_fold0/train.log
-launched fold 1 on GPU 1 -> /data2/chenyuxiang/runs/icl_split_fold1/train.log
+[audit] step 0: mode-A 50.89 | mode-C 100.00 (random prefix) | deployment reference ~43-58
+step 100/20000 | loss 8.5527 | aux rot 2.860 (chance 2.83) | aux perm 3.278 (chance 3.26) | lr 3.00e-05 | 1.88 it/s
+step 200/20000 | loss 6.2540 | aux rot 2.816 (chance 2.83) | aux perm 3.202 (chance 3.26) | lr 6.00e-05 | 1.79 it/s
+step 300/20000 | loss 5.0300 | aux rot 2.677 (chance 2.83) | aux perm 3.070 (chance 3.26) | lr 9.00e-05 | 1.91 it/s
+step 400/20000 | loss 5.3473 | aux rot 2.542 (chance 2.83) | aux perm 2.897 (chance 3.26) | lr 1.20e-04 | 1.78 it/s
+--- fold 1 ---
+[cohort] fold 1: 24 users the backbone has never seen, 206 sessions
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[trunk] /data2/chenyuxiang/runs/tf_fold1_full/last.pt step 103000 | 2.12M total  (featurizer 0.08M  encoder 1.98M  decoder 0.01M)
+[prefix] FUSED mode: per-token (signal + soft-aligned char)
+[prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
+[prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
+[prefix] {'k_windows': 23, 'seconds': 92, 'tokens_uncapped': 2185, 'tokens': 2185, 'capped': False}
+[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
+[meta-split] meta-train 16 users / 146 sessions | meta-test 8 users / 60 sessions (disjoint, both unseen by the backbone)
+[symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+[audit] step 0: mode-A 62.84 | mode-C 100.00 (random prefix) | deployment reference ~43-58
+step 100/20000 | loss 7.0961 | aux rot 2.808 (chance 2.83) | aux perm 3.273 (chance 3.26) | lr 3.00e-05 | 1.88 it/s
+step 200/20000 | loss 5.8444 | aux rot 2.723 (chance 2.83) | aux perm 3.204 (chance 3.26) | lr 6.00e-05 | 1.78 it/s
+step 300/20000 | loss 4.9437 | aux rot 2.620 (chance 2.83) | aux perm 3.074 (chance 3.26) | lr 9.00e-05 | 1.88 it/s
+step 400/20000 | loss 5.3398 | aux rot 2.482 (chance 2.83) | aux perm 2.940 (chance 3.26) | lr 1.20e-04 | 1.75 it/s
+=== 565 launched ===
 ```
 
 ### 566_keystroke_incremental.log
@@ -3639,15 +3652,6 @@ launched fold 1 on GPU 1 -> /data2/chenyuxiang/runs/icl_split_fold1/train.log
 
 ### 567_stream_and_probe.log
 ```
-[prefix] {'k_windows': 45, 'seconds': 180, 'tokens_uncapped': 4275, 'tokens': 4096, 'capped': True}
-[meta-split] meta-train 16 users / 137 sessions | meta-test 8 users / 76 sessions (disjoint, both unseen by the backbone)
-[symbol] 26 permutable letter classes | p_permute 0.5 k [4, 12]
-/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
-  return F.conv1d(input, weight, bias, self.stride,
-[audit] step 0: mode-A 50.89 | mode-C 100.00 (random prefix) | deployment reference ~43-58
-step 100/20000 | loss 8.5527 | aux rot 2.860 (chance 2.83) | aux perm 3.278 (chance 3.26) | lr 3.00e-05 | 1.88 it/s
-step 200/20000 | loss 6.2540 | aux rot 2.816 (chance 2.83) | aux perm 3.202 (chance 3.26) | lr 6.00e-05 | 1.79 it/s
-step 300/20000 | loss 5.0300 | aux rot 2.677 (chance 2.83) | aux perm 3.070 (chance 3.26) | lr 9.00e-05 | 1.91 it/s
 ### icl_split_fold1
 [prefix] {'k_windows': 4, 'seconds': 16, 'tokens_uncapped': 380, 'tokens': 380, 'capped': False}
 [prefix] {'k_windows': 12, 'seconds': 48, 'tokens_uncapped': 1140, 'tokens': 1140, 'capped': False}
@@ -3664,6 +3668,15 @@ step 300/20000 | loss 4.9437 | aux rot 2.620 (chance 2.83) | aux perm 3.074 (cha
 
 --- start the detached log streamer (idempotent) ---
   streamer launched (60 s period, tails last 200 kB of each run)
+icl_split_fold1.log
+icl_split_fold0.log
+567_stream_and_probe.log
+567_stream_and_probe.done
+567_stream_and_probe.started
+566_keystroke_incremental.done
+566_keystroke_incremental.log
+566_keystroke_incremental.started
+=== 567 done ===
 ```
 
 ### d3_train.log
