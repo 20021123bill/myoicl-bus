@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T13:55:05+08:00
+# heartbeat 2026-08-20T13:55:48+08:00
 
 ## gpu
 ```
-0, 3173 MiB, 24576 MiB, 93 %
+0, 3173 MiB, 24576 MiB, 70 %
 1, 12 MiB, 24576 MiB, 0 %
-2, 2985 MiB, 24576 MiB, 91 %
+2, 2985 MiB, 24576 MiB, 79 %
 3, 2731 MiB, 24576 MiB, 0 %
 ```
 
@@ -3186,6 +3186,7 @@ step 100/20000 | loss 13.0578 | aux rot 2.769 (chance 2.83) | aux perm 3.278 (ch
 step 200/20000 | loss 12.5117 | aux rot 2.420 (chance 2.83) | aux perm 2.978 (chance 3.26) | lr 2.00e-04 | 1.53 it/s
 step 300/20000 | loss 10.4381 | aux rot 2.204 (chance 2.83) | aux perm 2.433 (chance 3.26) | lr 3.00e-04 | 1.55 it/s
 step 400/20000 | loss 5.6576 | aux rot 2.159 (chance 2.83) | aux perm 2.008 (chance 3.26) | lr 4.00e-04 | 1.54 it/s
+[13:55] step 900/20000 | loss 5.3208 | aux rot 2.211 (chance 2.83) | aux perm 1.779 (chance 3.26) | lr 9.00e-04 | 1.58 it/s
 ```
 
 ### d3_train.log
@@ -3317,6 +3318,11 @@ step 100/20000 | loss 13.0578 | aux rot 2.769 (chance 2.83) | aux perm 3.278 (ch
 step 200/20000 | loss 12.5117 | aux rot 2.420 (chance 2.83) | aux perm 2.978 (chance 3.26) | lr 2.00e-04 | 1.53 it/s
 step 300/20000 | loss 10.4381 | aux rot 2.204 (chance 2.83) | aux perm 2.433 (chance 3.26) | lr 3.00e-04 | 1.55 it/s
 step 400/20000 | loss 5.6576 | aux rot 2.159 (chance 2.83) | aux perm 2.008 (chance 3.26) | lr 4.00e-04 | 1.54 it/s
+step 500/20000 | loss 5.6931 | aux rot 2.206 (chance 2.83) | aux perm 1.655 (chance 3.26) | lr 5.00e-04 | 1.53 it/s
+step 600/20000 | loss 5.3155 | aux rot 2.030 (chance 2.83) | aux perm 1.650 (chance 3.26) | lr 6.00e-04 | 1.51 it/s
+step 700/20000 | loss 5.3360 | aux rot 2.076 (chance 2.83) | aux perm 1.661 (chance 3.26) | lr 7.00e-04 | 1.55 it/s
+step 800/20000 | loss 5.0267 | aux rot 2.039 (chance 2.83) | aux perm 1.763 (chance 3.26) | lr 8.00e-04 | 1.57 it/s
+step 900/20000 | loss 5.3208 | aux rot 2.211 (chance 2.83) | aux perm 1.779 (chance 3.26) | lr 9.00e-04 | 1.58 it/s
 ```
 
 ### icl_dev2_fold2.log
