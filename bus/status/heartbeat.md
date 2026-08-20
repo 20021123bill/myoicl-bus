@@ -1,10 +1,10 @@
-# heartbeat 2026-08-20T16:08:27+08:00
+# heartbeat 2026-08-20T16:09:11+08:00
 
 ## gpu
 ```
-0, 3159 MiB, 24576 MiB, 16 %
-1, 3155 MiB, 24576 MiB, 5 %
-2, 3169 MiB, 24576 MiB, 91 %
+0, 3159 MiB, 24576 MiB, 0 %
+1, 3155 MiB, 24576 MiB, 0 %
+2, 3169 MiB, 24576 MiB, 74 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -3576,6 +3576,9 @@ RuntimeError: shape '[2, 16, 6, 5]' is invalid for input of size 1056
 ### 563_keystroke_retry.log
 ```
 building population tuning from 12 other users...
+population tuning built from 12 users
+
+      user     N |    K  within-EV  shrunk-EV   pop-EV
 ```
 
 ### d3_train.log
@@ -4144,10 +4147,6 @@ step 40000/40000 | loss 1.5735 | lr 0.00e+00 | 617 win/s
 
 ### tf_fold2_full.log
 ```
-step 5400/103000 | loss 1.8526 | lr 6.98e-04 | 689 win/s
-step 5600/103000 | loss 1.8583 | lr 6.98e-04 | 689 win/s
-step 5800/103000 | loss 1.8628 | lr 6.98e-04 | 689 win/s
-step 6000/103000 | loss 1.8523 | lr 6.97e-04 | 689 win/s
 step 6200/103000 | loss 1.8584 | lr 6.97e-04 | 689 win/s
 step 6400/103000 | loss 1.8437 | lr 6.97e-04 | 689 win/s
 step 6600/103000 | loss 1.8604 | lr 6.97e-04 | 689 win/s
@@ -4169,6 +4168,10 @@ step 9200/103000 | loss 1.8299 | lr 6.91e-04 | 699 win/s
 step 9400/103000 | loss 1.8243 | lr 6.91e-04 | 700 win/s
 step 9600/103000 | loss 1.8587 | lr 6.90e-04 | 701 win/s
 step 9800/103000 | loss 1.8314 | lr 6.90e-04 | 702 win/s
+step 10000/103000 | loss 1.8375 | lr 6.89e-04 | 702 win/s
+step 10200/103000 | loss 1.8309 | lr 6.89e-04 | 703 win/s
+step 10400/103000 | loss 1.8242 | lr 6.88e-04 | 704 win/s
+step 10600/103000 | loss 1.8363 | lr 6.88e-04 | 705 win/s
 ```
 
 ### tf_fold2.log
