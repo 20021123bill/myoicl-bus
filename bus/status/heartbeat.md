@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T04:26:43+08:00
+# heartbeat 2026-08-22T04:27:28+08:00
 
 ## gpu
 ```
@@ -115,6 +115,7 @@
 584_collect_final                        DONE rc=127
 585_honest_table                         DONE rc=127
 586_frame_level                          DONE rc=127
+587_frame_collect                        DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4171,6 +4172,35 @@ SEGMENT-LEVEL ADAPTATION (768-window pool) -- negative, and why
 
 workers: 4
 === 586 launched ===
+```
+
+### 587_frame_collect.log
+```
+  conf +3.88 vs random +3.70: NO confidence effect -- the gain, if any, is not from selecting good labels
+  shuffled +3.31: does NOT hurt -- the loss is not doing what it claims
+
+##################################################################
+###   FRAME-LEVEL PSEUDO-LABELS + CONTROLS -- the verdict       ##
+##################################################################
+
+      user    base |     conf    gain |   random    gain |  shuffled    gain |  frames
+     user0   61.51 |    62.06   -0.55 |    61.88   -0.37 |    59.85   +1.66 |     656
+     user1   59.96 |    60.97   -1.02 |    60.54   -0.58 |    61.47   -1.52 |    1190
+     user3   54.70 |    53.90   +0.80 |    53.34   +1.36 |    53.41   +1.29 |    1073
+     user5   53.85 |    49.97   +3.88 |    50.15   +3.70 |    50.54   +3.31 |    1150
+  --------------------------------------------------------------------------
+      MEAN   57.50 |            +0.78 |            +1.03 |            +1.19 |
+        conf: +0.78 +- 1.91  (2/4 users improved)
+      random: +1.03 +- 1.72  (2/4 users improved)
+    shuffled: +1.19 +- 1.74  (3/4 users improved)
+
+  PRE-REGISTERED VERDICT (rules fixed before the run):
+    conf +0.78 must exceed random +1.03 by 0.3 : FAIL -- selecting by confidence does nothing
+    shuffled +1.19 must be below -0.3           : FAIL -- the loss is not doing what it claims
+    conf gain +0.78 must exceed its own sd 1.91 : FAIL -- effect smaller than spread = noise
+
+  ==> NOT A RESULT -- report as noise, do not dress it up
+=== 587 done ===
 ```
 
 ### d3_train.log

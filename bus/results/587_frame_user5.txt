@@ -1,0 +1,14 @@
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+[user5] 384 windows cached
+[user5] unadapted 53.85
+[FRAME] user5     conf: 53.85 -> 49.97 (gain +3.88) on 1150 frames
+[FRAME] user5   random: 53.85 -> 50.15 (gain +3.70) on 1150 frames
+[FRAME] user5 shuffled: 53.85 -> 50.54 (gain +3.31) on 1150 frames
+
+  conf +3.88 vs random +3.70: NO confidence effect -- the gain, if any, is not from selecting good labels
+  shuffled +3.31: does NOT hurt -- the loss is not doing what it claims
+[saved] /data2/chenyuxiang/runs/frame/user5.json

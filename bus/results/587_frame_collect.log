@@ -1,0 +1,56 @@
+########## workers ##########
+0
+0
+
+########## raw per-user output ##########
+--- user0 ---
+[user0] unadapted 61.51
+[FRAME] user0     conf: 61.51 -> 62.06 (gain -0.55) on 656 frames
+[FRAME] user0   random: 61.51 -> 61.88 (gain -0.37) on 656 frames
+[FRAME] user0 shuffled: 61.51 -> 59.85 (gain +1.66) on 656 frames
+  conf -0.55 vs random -0.37: NO confidence effect -- the gain, if any, is not from selecting good labels
+  shuffled +1.66: does NOT hurt -- the loss is not doing what it claims
+--- user1 ---
+[user1] unadapted 59.96
+[FRAME] user1     conf: 59.96 -> 60.97 (gain -1.02) on 1190 frames
+[FRAME] user1   random: 59.96 -> 60.54 (gain -0.58) on 1190 frames
+[FRAME] user1 shuffled: 59.96 -> 61.47 (gain -1.52) on 1190 frames
+  conf -1.02 vs random -0.58: NO confidence effect -- the gain, if any, is not from selecting good labels
+  shuffled -1.52: hurts as it must
+--- user3 ---
+[user3] unadapted 54.70
+[FRAME] user3     conf: 54.70 -> 53.90 (gain +0.80) on 1073 frames
+[FRAME] user3   random: 54.70 -> 53.34 (gain +1.36) on 1073 frames
+[FRAME] user3 shuffled: 54.70 -> 53.41 (gain +1.29) on 1073 frames
+  conf +0.80 vs random +1.36: NO confidence effect -- the gain, if any, is not from selecting good labels
+  shuffled +1.29: does NOT hurt -- the loss is not doing what it claims
+--- user5 ---
+[user5] unadapted 53.85
+[FRAME] user5     conf: 53.85 -> 49.97 (gain +3.88) on 1150 frames
+[FRAME] user5   random: 53.85 -> 50.15 (gain +3.70) on 1150 frames
+[FRAME] user5 shuffled: 53.85 -> 50.54 (gain +3.31) on 1150 frames
+  conf +3.88 vs random +3.70: NO confidence effect -- the gain, if any, is not from selecting good labels
+  shuffled +3.31: does NOT hurt -- the loss is not doing what it claims
+
+##################################################################
+###   FRAME-LEVEL PSEUDO-LABELS + CONTROLS -- the verdict       ##
+##################################################################
+
+      user    base |     conf    gain |   random    gain |  shuffled    gain |  frames
+     user0   61.51 |    62.06   -0.55 |    61.88   -0.37 |    59.85   +1.66 |     656
+     user1   59.96 |    60.97   -1.02 |    60.54   -0.58 |    61.47   -1.52 |    1190
+     user3   54.70 |    53.90   +0.80 |    53.34   +1.36 |    53.41   +1.29 |    1073
+     user5   53.85 |    49.97   +3.88 |    50.15   +3.70 |    50.54   +3.31 |    1150
+  --------------------------------------------------------------------------
+      MEAN   57.50 |            +0.78 |            +1.03 |            +1.19 |
+        conf: +0.78 +- 1.91  (2/4 users improved)
+      random: +1.03 +- 1.72  (2/4 users improved)
+    shuffled: +1.19 +- 1.74  (3/4 users improved)
+
+  PRE-REGISTERED VERDICT (rules fixed before the run):
+    conf +0.78 must exceed random +1.03 by 0.3 : FAIL -- selecting by confidence does nothing
+    shuffled +1.19 must be below -0.3           : FAIL -- the loss is not doing what it claims
+    conf gain +0.78 must exceed its own sd 1.91 : FAIL -- effect smaller than spread = noise
+
+  ==> NOT A RESULT -- report as noise, do not dress it up
+=== 587 done ===
