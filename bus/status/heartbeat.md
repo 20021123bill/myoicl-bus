@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T03:56:58+08:00
+# heartbeat 2026-08-22T03:57:42+08:00
 
 ## gpu
 ```
@@ -111,6 +111,7 @@
 580_collect3                             DONE rc=127
 581_seg_gate                             DONE rc=127
 582_final8_and_collect                   DONE rc=127
+583_seg_adapt                            DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4065,6 +4066,35 @@ workers now: 4
 
 workers now: 8
 === 582 launched ===
+```
+
+### 583_seg_adapt.log
+```
+=== unpack + verify ===
+  ok (18448 bytes)
+
+=== final8 progress (582) ===
+8
+  gain  +3.32 | conf_nb>q90 lr=3e-05 steps=30 inputbn student (kept 20, pseudo-CER 40.7)
+  gain  -0.06 | conf_nb>q90 lr=3e-05 steps=30 inputbn ema (kept 20, pseudo-CER 40.7)
+[user6] unadapted test CER 54.66
+         conf_nb>q90 lr=3e-05   steps=30   inputbn student: CER  57.41  gain  -2.75
+         conf_nb>q90 lr=3e-05   steps=30   inputbn     ema: CER  54.61  gain  +0.05
+  gain  +0.05 | conf_nb>q90 lr=3e-05 steps=30 inputbn ema (kept 20, pseudo-CER 51.0)
+  gain  -2.75 | conf_nb>q90 lr=3e-05 steps=30 inputbn student (kept 20, pseudo-CER 51.0)
+[user7] unadapted test CER 52.17
+         conf_nb>q90 lr=3e-05   steps=30   inputbn student: CER  51.57  gain  +0.60
+         conf_nb>q90 lr=3e-05   steps=30   inputbn     ema: CER  52.19  gain  -0.02
+  gain  +0.60 | conf_nb>q90 lr=3e-05 steps=30 inputbn student (kept 20, pseudo-CER 43.0)
+  gain  -0.02 | conf_nb>q90 lr=3e-05 steps=30 inputbn ema (kept 20, pseudo-CER 43.0)
+
+=== launch segment-level adaptation, 768-window pool ===
+  launched user0 on gpu 0 (768 windows)
+  launched user1 on gpu 1 (768 windows)
+  launched user3 on gpu 2 (768 windows)
+
+workers now: 3
+=== 583 launched ===
 ```
 
 ### d3_train.log
