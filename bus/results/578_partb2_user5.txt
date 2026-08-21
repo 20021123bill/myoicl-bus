@@ -1,0 +1,24 @@
+[lm] /data2/chenyuxiang/code/emg2qwerty/models/lm/wikitext-103-6gram-charlm.bin
+[lm] FAILED: real -2.308 vs shuffled -1.933 -- tokenisation is probably wrong, LM filter disabled
+[beam] not attempted
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+
+[user5] 128 windows | raw CER 52.49
+            conf_nb>q50: keep 50.0%  pseudo-CER  49.58  (gain  +2.91)
+            conf_nb>q75: keep 25.0%  pseudo-CER  47.40  (gain  +5.09)
+            conf_nb>q90: keep 10.2%  pseudo-CER  46.11  (gain  +6.38)
+            path_lp>q50: keep 50.0%  pseudo-CER  50.06  (gain  +2.43)
+            path_lp>q75: keep 25.0%  pseudo-CER  46.89  (gain  +5.60)
+            path_lp>q90: keep 10.2%  pseudo-CER  45.71  (gain  +6.78)
+             consistent: keep 58.6%  pseudo-CER  51.97  (gain  +0.52)
+      consistent+conf75: keep 17.2%  pseudo-CER  48.77  (gain  +3.73)
+   -> adapting on 'path_lp>q90': 13 windows at 45.71 pseudo-CER
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+   [ADAPT] user5: 53.85 -> 96.56 (gain -42.72) with ZERO labels
+
+[saved] /data2/chenyuxiang/runs/partb2/user5.json

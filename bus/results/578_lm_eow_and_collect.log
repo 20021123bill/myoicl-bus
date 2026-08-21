@@ -1,0 +1,76 @@
+########## 1. LM word boundary = </s> ? ##########
+    boundary     OOV     real     shuf   margin
+        </s>   0.0%   -0.926   -1.830   +0.905
+   (dropped)   0.0%   -1.469   -1.811   +0.342
+         <s>   0.0%   -1.689   -1.772   +0.083
+        </w>  16.6%   -2.062   -1.739   -0.323
+       <unk>  16.6%   -2.062   -1.826   -0.236
+           |  16.6%   -2.062   -1.796   -0.266
+
+[WINNER] boundary '</s>', margin +0.905
+[spelling discrimination -- the test 576's winner FAILED]
+    -1.055 vs  -1.327  OK   'hello world how are you'
+    -0.893 vs  -1.242  OK   'the meeting is at three'
+    -0.693 vs  -1.229  OK   'machine learning'
+   -> 3/3 correct-spelling pairs ranked right
+[USABLE] this LM can score transcripts; set partb2.CharLM._tok to this scheme and enable the LM filter and the torchaudio beam decoder.
+
+########## 2. collect detached worker logs ##########
+--- partb_sweep ---
+总用量 52
+drwxrwxr-x  2 chenyuxiang chenyuxiang  4096 8月  22 03:10 .
+drwxrwxr-x 73 chenyuxiang chenyuxiang  4096 8月  22 03:00 ..
+-rw-rw-r--  1 chenyuxiang chenyuxiang  7235 8月  22 03:10 user0.log
+-rw-rw-r--  1 chenyuxiang chenyuxiang  7020 8月  22 03:10 user1.log
+-rw-rw-r--  1 chenyuxiang chenyuxiang 16939 8月  22 03:10 user3.json
+-rw-rw-r--  1 chenyuxiang chenyuxiang  7971 8月  22 03:10 user3.log
+  captured partb_sweep/user0 (83 lines)
+  captured partb_sweep/user1 (83 lines)
+  captured partb_sweep/user3 (99 lines)
+--- partb2 ---
+总用量 72
+drwxrwxr-x  2 chenyuxiang chenyuxiang 4096 8月  22 02:55 .
+drwxrwxr-x 73 chenyuxiang chenyuxiang 4096 8月  22 03:00 ..
+-rw-rw-r--  1 chenyuxiang chenyuxiang 1620 8月  22 02:55 user0.json
+-rw-rw-r--  1 chenyuxiang chenyuxiang 2234 8月  22 02:55 user0.log
+-rw-rw-r--  1 chenyuxiang chenyuxiang 1645 8月  22 02:55 user1.json
+-rw-rw-r--  1 chenyuxiang chenyuxiang 2234 8月  22 02:55 user1.log
+-rw-rw-r--  1 chenyuxiang chenyuxiang 1639 8月  22 02:55 user2.json
+-rw-rw-r--  1 chenyuxiang chenyuxiang 2234 8月  22 02:55 user2.log
+-rw-rw-r--  1 chenyuxiang chenyuxiang 1641 8月  22 02:55 user3.json
+-rw-rw-r--  1 chenyuxiang chenyuxiang 2234 8月  22 02:55 user3.log
+-rw-rw-r--  1 chenyuxiang chenyuxiang 1612 8月  22 02:55 user4.json
+  captured partb2/user0 (24 lines)
+  captured partb2/user1 (24 lines)
+  captured partb2/user2 (24 lines)
+  captured partb2/user3 (24 lines)
+  captured partb2/user4 (24 lines)
+  captured partb2/user5 (24 lines)
+  captured partb2/user6 (24 lines)
+  captured partb2/user7 (24 lines)
+--- partb ---
+总用量 72
+drwxrwxr-x  2 chenyuxiang chenyuxiang 4096 8月  22 02:50 .
+drwxrwxr-x 73 chenyuxiang chenyuxiang 4096 8月  22 03:00 ..
+-rw-rw-r--  1 chenyuxiang chenyuxiang  790 8月  22 02:50 user0.json
+-rw-rw-r--  1 chenyuxiang chenyuxiang 2251 8月  22 02:50 user0.log
+-rw-rw-r--  1 chenyuxiang chenyuxiang  795 8月  22 02:50 user1.json
+-rw-rw-r--  1 chenyuxiang chenyuxiang 2251 8月  22 02:50 user1.log
+-rw-rw-r--  1 chenyuxiang chenyuxiang  792 8月  22 02:50 user2.json
+-rw-rw-r--  1 chenyuxiang chenyuxiang 2251 8月  22 02:50 user2.log
+-rw-rw-r--  1 chenyuxiang chenyuxiang  794 8月  22 02:50 user3.json
+-rw-rw-r--  1 chenyuxiang chenyuxiang 2251 8月  22 02:50 user3.log
+-rw-rw-r--  1 chenyuxiang chenyuxiang  792 8月  22 02:50 user4.json
+  captured partb/user0 (26 lines)
+  captured partb/user1 (26 lines)
+  captured partb/user2 (26 lines)
+  captured partb/user3 (26 lines)
+  captured partb/user4 (26 lines)
+  captured partb/user5 (26 lines)
+  captured partb/user6 (26 lines)
+  captured partb/user7 (26 lines)
+
+--- still-running workers ---
+1493527 /data2/chenyuxiang/conda_envs/qwerty/bin/python -m myoicl.partb_sweep --user user0 --cal-windows 128 --filters conf_nb>q90 conf_nb>q75 consistent+conf75 --lrs 1e-5 3e-5 1e-4 --steps 30 100 --scopes all inputbn --out /data2/chenyuxiang/runs/partb_sweep/user0.json
+1494389 /data2/chenyuxiang/conda_envs/qwerty/bin/python -m myoicl.partb_sweep --user user1 --cal-windows 128 --filters conf_nb>q90 conf_nb>q75 consistent+conf75 --lrs 1e-5 3e-5 1e-4 --steps 30 100 --scopes all inputbn --out /data2/chenyuxiang/runs/partb_sweep/user1.json
+=== 578 done (short by design) ===

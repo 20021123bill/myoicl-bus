@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T03:09:53+08:00
+# heartbeat 2026-08-22T03:10:37+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 703 MiB, 24576 MiB, 0 %
-2, 4909 MiB, 24576 MiB, 0 %
-3, 5249 MiB, 24576 MiB, 0 %
+1, 4809 MiB, 24576 MiB, 0 %
+2, 703 MiB, 24576 MiB, 0 %
+3, 12 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -106,6 +106,7 @@
 575_partb_v2                             DONE rc=127
 576_lm_solve                             DONE rc=127
 577_partb_sweep                          DONE rc=127
+578_lm_eow_and_collect                   DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3933,6 +3934,35 @@ THE GATE -- pseudo-label quality on unseen users (means)
   [t=2m] 0/3 users
   [t=3m] 0/3 users
   [t=4m] 0/3 users
+```
+
+### 578_lm_eow_and_collect.log
+```
+总用量 72
+drwxrwxr-x  2 chenyuxiang chenyuxiang 4096 8月  22 02:50 .
+drwxrwxr-x 73 chenyuxiang chenyuxiang 4096 8月  22 03:00 ..
+-rw-rw-r--  1 chenyuxiang chenyuxiang  790 8月  22 02:50 user0.json
+-rw-rw-r--  1 chenyuxiang chenyuxiang 2251 8月  22 02:50 user0.log
+-rw-rw-r--  1 chenyuxiang chenyuxiang  795 8月  22 02:50 user1.json
+-rw-rw-r--  1 chenyuxiang chenyuxiang 2251 8月  22 02:50 user1.log
+-rw-rw-r--  1 chenyuxiang chenyuxiang  792 8月  22 02:50 user2.json
+-rw-rw-r--  1 chenyuxiang chenyuxiang 2251 8月  22 02:50 user2.log
+-rw-rw-r--  1 chenyuxiang chenyuxiang  794 8月  22 02:50 user3.json
+-rw-rw-r--  1 chenyuxiang chenyuxiang 2251 8月  22 02:50 user3.log
+-rw-rw-r--  1 chenyuxiang chenyuxiang  792 8月  22 02:50 user4.json
+  captured partb/user0 (26 lines)
+  captured partb/user1 (26 lines)
+  captured partb/user2 (26 lines)
+  captured partb/user3 (26 lines)
+  captured partb/user4 (26 lines)
+  captured partb/user5 (26 lines)
+  captured partb/user6 (26 lines)
+  captured partb/user7 (26 lines)
+
+--- still-running workers ---
+1493527 /data2/chenyuxiang/conda_envs/qwerty/bin/python -m myoicl.partb_sweep --user user0 --cal-windows 128 --filters conf_nb>q90 conf_nb>q75 consistent+conf75 --lrs 1e-5 3e-5 1e-4 --steps 30 100 --scopes all inputbn --out /data2/chenyuxiang/runs/partb_sweep/user0.json
+1494389 /data2/chenyuxiang/conda_envs/qwerty/bin/python -m myoicl.partb_sweep --user user1 --cal-windows 128 --filters conf_nb>q90 conf_nb>q75 consistent+conf75 --lrs 1e-5 3e-5 1e-4 --steps 30 100 --scopes all inputbn --out /data2/chenyuxiang/runs/partb_sweep/user1.json
+=== 578 done (short by design) ===
 ```
 
 ### d3_train.log

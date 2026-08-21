@@ -1,0 +1,60 @@
+         conf_nb>q75 lr=1e-05   steps=30       all student: CER  53.28  gain  +1.42
+         conf_nb>q75 lr=1e-05   steps=30       all     ema: CER  54.69  gain  +0.01
+         conf_nb>q75 lr=1e-05   steps=30   inputbn student: CER  53.67  gain  +1.03
+         conf_nb>q75 lr=1e-05   steps=30   inputbn     ema: CER  54.68  gain  +0.02
+         conf_nb>q75 lr=1e-05   steps=100      all student: CER  53.74  gain  +0.96
+         conf_nb>q75 lr=1e-05   steps=100      all     ema: CER  54.81  gain  -0.11
+         conf_nb>q75 lr=1e-05   steps=100  inputbn student: CER  53.67  gain  +1.03
+         conf_nb>q75 lr=1e-05   steps=100  inputbn     ema: CER  54.69  gain  +0.01
+         conf_nb>q75 lr=3e-05   steps=30       all student: CER  53.47  gain  +1.23
+         conf_nb>q75 lr=3e-05   steps=30       all     ema: CER  54.72  gain  -0.02
+         conf_nb>q75 lr=3e-05   steps=30   inputbn student: CER  53.45  gain  +1.25
+         conf_nb>q75 lr=3e-05   steps=30   inputbn     ema: CER  54.67  gain  +0.03
+         conf_nb>q75 lr=3e-05   steps=100      all student: CER  53.39  gain  +1.31
+         conf_nb>q75 lr=3e-05   steps=100      all     ema: CER  54.95  gain  -0.25
+         conf_nb>q75 lr=3e-05   steps=100  inputbn student: CER  53.45  gain  +1.25
+         conf_nb>q75 lr=3e-05   steps=100  inputbn     ema: CER  54.77  gain  -0.07
+         conf_nb>q75 lr=1e-04   steps=30       all student: CER  53.50  gain  +1.20
+         conf_nb>q75 lr=1e-04   steps=30       all     ema: CER  54.85  gain  -0.15
+         conf_nb>q75 lr=1e-04   steps=30   inputbn student: CER  53.41  gain  +1.29
+         conf_nb>q75 lr=1e-04   steps=30   inputbn     ema: CER  54.71  gain  -0.01
+         conf_nb>q75 lr=1e-04   steps=100      all student: CER  54.02  gain  +0.68
+         conf_nb>q75 lr=1e-04   steps=100      all     ema: CER  55.46  gain  -0.76
+         conf_nb>q75 lr=1e-04   steps=100  inputbn student: CER  53.38  gain  +1.32
+         conf_nb>q75 lr=1e-04   steps=100  inputbn     ema: CER  54.80  gain  -0.10
+   consistent+conf75 lr=1e-05   steps=30       all student: CER  53.50  gain  +1.20
+   consistent+conf75 lr=1e-05   steps=30       all     ema: CER  54.69  gain  +0.01
+   consistent+conf75 lr=1e-05   steps=30   inputbn student: CER  53.05  gain  +1.65
+   consistent+conf75 lr=1e-05   steps=30   inputbn     ema: CER  54.69  gain  +0.01
+   consistent+conf75 lr=1e-05   steps=100      all student: CER  53.37  gain  +1.33
+   consistent+conf75 lr=1e-05   steps=100      all     ema: CER  54.79  gain  -0.09
+   consistent+conf75 lr=1e-05   steps=100  inputbn student: CER  53.57  gain  +1.13
+   consistent+conf75 lr=1e-05   steps=100  inputbn     ema: CER  54.69  gain  +0.01
+   consistent+conf75 lr=3e-05   steps=30       all student: CER  53.34  gain  +1.36
+   consistent+conf75 lr=3e-05   steps=30       all     ema: CER  54.69  gain  +0.01
+   consistent+conf75 lr=3e-05   steps=30   inputbn student: CER  53.63  gain  +1.07
+   consistent+conf75 lr=3e-05   steps=30   inputbn     ema: CER  54.68  gain  +0.02
+   consistent+conf75 lr=3e-05   steps=100      all student: CER  53.44  gain  +1.26
+   consistent+conf75 lr=3e-05   steps=100      all     ema: CER  54.94  gain  -0.24
+   consistent+conf75 lr=3e-05   steps=100  inputbn student: CER  53.34  gain  +1.36
+   consistent+conf75 lr=3e-05   steps=100  inputbn     ema: CER  54.77  gain  -0.07
+   consistent+conf75 lr=1e-04   steps=30       all student: CER  53.67  gain  +1.03
+   consistent+conf75 lr=1e-04   steps=30       all     ema: CER  54.82  gain  -0.12
+   consistent+conf75 lr=1e-04   steps=30   inputbn student: CER  53.15  gain  +1.55
+   consistent+conf75 lr=1e-04   steps=30   inputbn     ema: CER  54.73  gain  -0.03
+   consistent+conf75 lr=1e-04   steps=100      all student: CER  53.93  gain  +0.77
+   consistent+conf75 lr=1e-04   steps=100      all     ema: CER  55.25  gain  -0.55
+   consistent+conf75 lr=1e-04   steps=100  inputbn student: CER  53.49  gain  +1.21
+   consistent+conf75 lr=1e-04   steps=100  inputbn     ema: CER  54.83  gain  -0.13
+
+=== TOP 5 ===
+  gain  +1.65 | consistent+conf75 lr=1e-05 steps=30 inputbn student (kept 21, pseudo-CER 53.6)
+  gain  +1.55 | consistent+conf75 lr=1e-04 steps=30 inputbn student (kept 21, pseudo-CER 53.6)
+  gain  +1.42 | conf_nb>q75 lr=1e-05 steps=30 all student (kept 32, pseudo-CER 52.9)
+  gain  +1.36 | consistent+conf75 lr=3e-05 steps=30 all student (kept 21, pseudo-CER 53.6)
+  gain  +1.36 | consistent+conf75 lr=3e-05 steps=100 inputbn student (kept 21, pseudo-CER 53.6)
+
+  51/72 cells have POSITIVE gain
+  BEST: 54.70 -> 53.05 (+1.65) with zero labels
+
+[saved] /data2/chenyuxiang/runs/partb_sweep/user3.json
