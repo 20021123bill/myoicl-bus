@@ -1,0 +1,97 @@
+########## workers still running ##########
+  none
+
+########## final8 ##########
+  json files: 8
+
+########## segadapt ##########
+  json files: 3
+
+########## seg ##########
+  json files: 4
+
+########## SEGMENT-LEVEL ADAPTATION (768-window pool) ##########
+[arch] receptive field 125 input frames per output frame span
+[seg] thr 0.99: 7 segments, 22 characters (0.3% of all predicted characters)
+[SEG-ADAPT] user0 thr 0.99: 61.51 -> 60.92 (gain +0.59) on 7 segments / 22 chars, ZERO labels
+[seg] thr 0.95: 43 segments, 138 characters (1.6% of all predicted characters)
+[SEG-ADAPT] user0 thr 0.95: 61.51 -> 61.73 (gain -0.22) on 43 segments / 138 chars, ZERO labels
+[arch] receptive field 125 input frames per output frame span
+[seg] thr 0.99: 26 segments, 80 characters (0.8% of all predicted characters)
+[SEG-ADAPT] user1 thr 0.99: 59.96 -> 61.65 (gain -1.69) on 26 segments / 80 chars, ZERO labels
+[seg] thr 0.95: 154 segments, 501 characters (4.9% of all predicted characters)
+[SEG-ADAPT] user1 thr 0.95: 59.96 -> 60.60 (gain -0.64) on 154 segments / 501 chars, ZERO labels
+[arch] receptive field 125 input frames per output frame span
+[seg] thr 0.99: 21 segments, 66 characters (0.6% of all predicted characters)
+[SEG-ADAPT] user3 thr 0.99: 54.70 -> 53.89 (gain +0.81) on 21 segments / 66 chars, ZERO labels
+[seg] thr 0.95: 112 segments, 374 characters (3.6% of all predicted characters)
+[SEG-ADAPT] user3 thr 0.95: 54.70 -> 54.01 (gain +0.69) on 112 segments / 374 chars, ZERO labels
+
+##################################################################
+###                THE MORNING TABLE                            ##
+##################################################################
+
+  A. PLATFORM CALIBRATION
+     8 official unseen users, unadapted, greedy      55.39
+     published emg2qwerty generic (their number)     55.38
+     personalised with labels (their number)         11.28
+     -> the evaluation path is the published one, so every number
+        below is comparable to the literature.
+
+  B. WHY FILTERING IS NOT OPTIONAL (ablation)
+     self-training on ALL pseudo-labels, lr 1e-3     55.39 -> 99.85
+     (56%-wrong transcripts; the model learns its own errors)
+
+  C. PSEUDO-LABEL QUALITY -- window level cannot work
+     raw greedy transcripts, 8 users                 56.32 CER
+     best window filter conf_nb>q90 (keeps 10.2%)    46.80 CER
+     LM-score window filter lm>q75 (keeps 25%)       54.28 CER
+     -> a 4 s window holds 20-30 characters at ~56 CER, so P(window
+        fully correct) ~ 0 and NO subset of windows is clean.
+
+  D. PSEUDO-LABEL QUALITY -- character level does work
+     characters with posterior > 0.99:  87.3% / 76.9% correct
+     -> 12.7 / 23.1 CER, the first pseudo-labels under the 25 gate
+     but only 4-8% of predicted characters survive at 128 windows,
+     which is why the pool was raised to 768.
+
+  E. ZERO-LABEL ADAPTATION -- main result
+     filter conf_nb>q90 | input-BN affine only | student | lr 3e-5
+         user   before    after     gain
+        user0    61.51    59.65    +1.86
+        user1    59.96    59.97    -0.01
+        user2    48.01    48.05    -0.04
+        user3    54.70    53.30    +1.40
+        user4    58.24    58.20    +0.03
+        user5    53.85    50.53    +3.32
+        user6    54.66    54.61    +0.05
+        user7    52.17    51.57    +0.60
+         MEAN    55.39    54.49    +0.90   (8/8 users)
+
+  F. SEGMENT-LEVEL ADAPTATION (768-window pool)
+     threshold 0.99
+           user   before    after     gain   chars
+          user0    61.51    60.92    +0.59      22
+          user1    59.96    61.65    -1.69      80
+          user3    54.70    53.89    +0.81      66
+           MEAN                      -0.10
+     threshold 0.95
+           user   before    after     gain   chars
+          user0    61.51    61.73    -0.22     138
+          user1    59.96    60.60    -0.64     501
+          user3    54.70    54.01    +0.69     374
+           MEAN                      -0.06
+
+  G. RULED OUT TONIGHT (so nobody repeats them)
+     flashlight-text absent -> official CTCBeamDecoder unusable, and
+       torchaudio's ctc_decoder needs it too
+     own pure-python prefix beam + kenlm: 82.57 vs greedy 69.43
+       (implementation bug, not tuning) -- disabled
+     LM validated (boundary </s>, OOV 0.0%, spelling 3/3) but LM-based
+       WINDOW filters were the weakest arm
+     EMA teacher gained ~0.00 at ema 0.99 and 0.9; the student is the
+       model to deploy here
+     path_lp (mean greedy path log-prob) is ANTI-correlated with
+       correctness: top decile was 4 CER WORSE than raw
+
+=== 584 done ===

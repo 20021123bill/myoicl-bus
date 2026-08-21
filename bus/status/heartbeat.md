@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T04:05:41+08:00
+# heartbeat 2026-08-22T04:06:25+08:00
 
 ## gpu
 ```
@@ -112,6 +112,7 @@
 581_seg_gate                             DONE rc=127
 582_final8_and_collect                   DONE rc=127
 583_seg_adapt                            DONE rc=127
+584_collect_final                        DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4095,6 +4096,35 @@ workers now: 8
 
 workers now: 3
 === 583 launched ===
+```
+
+### 584_collect_final.log
+```
+           user   before    after     gain   chars
+          user0    61.51    60.92    +0.59      22
+          user1    59.96    61.65    -1.69      80
+          user3    54.70    53.89    +0.81      66
+           MEAN                      -0.10
+     threshold 0.95
+           user   before    after     gain   chars
+          user0    61.51    61.73    -0.22     138
+          user1    59.96    60.60    -0.64     501
+          user3    54.70    54.01    +0.69     374
+           MEAN                      -0.06
+
+  G. RULED OUT TONIGHT (so nobody repeats them)
+     flashlight-text absent -> official CTCBeamDecoder unusable, and
+       torchaudio's ctc_decoder needs it too
+     own pure-python prefix beam + kenlm: 82.57 vs greedy 69.43
+       (implementation bug, not tuning) -- disabled
+     LM validated (boundary </s>, OOV 0.0%, spelling 3/3) but LM-based
+       WINDOW filters were the weakest arm
+     EMA teacher gained ~0.00 at ema 0.99 and 0.9; the student is the
+       model to deploy here
+     path_lp (mean greedy path log-prob) is ANTI-correlated with
+       correctness: top decile was 4 CER WORSE than raw
+
+=== 584 done ===
 ```
 
 ### d3_train.log

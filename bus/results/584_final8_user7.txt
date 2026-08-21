@@ -1,0 +1,26 @@
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+[user7] 192 windows | raw pseudo-CER 51.77
+            conf_nb>q50: n=96   keep=50.0% pseudo-CER  48.14
+            conf_nb>q75: n=48   keep=25.0% pseudo-CER  45.68
+            conf_nb>q90: n=20   keep=10.4% pseudo-CER  42.99
+             consistent: n=67   keep=34.9% pseudo-CER  49.15
+      consistent+conf75: n=21   keep=10.9% pseudo-CER  43.86
+[user7] unadapted test CER 52.17
+
+sweeping 1 cells (student and ema-teacher each)
+
+         conf_nb>q90 lr=3e-05   steps=30   inputbn student: CER  51.57  gain  +0.60
+         conf_nb>q90 lr=3e-05   steps=30   inputbn     ema: CER  52.19  gain  -0.02
+
+=== TOP 5 ===
+  gain  +0.60 | conf_nb>q90 lr=3e-05 steps=30 inputbn student (kept 20, pseudo-CER 43.0)
+  gain  -0.02 | conf_nb>q90 lr=3e-05 steps=30 inputbn ema (kept 20, pseudo-CER 43.0)
+
+  1/2 cells have POSITIVE gain
+  BEST: 52.17 -> 51.57 (+0.60) with zero labels
+
+[saved] /data2/chenyuxiang/runs/final8/user7.json
