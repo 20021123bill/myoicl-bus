@@ -1,8 +1,8 @@
-# heartbeat 2026-08-22T02:43:05+08:00
+# heartbeat 2026-08-22T02:43:49+08:00
 
 ## gpu
 ```
-0, 7457 MiB, 24576 MiB, 13 %
+0, 7479 MiB, 24576 MiB, 15 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -3741,9 +3741,6 @@ SyntaxError: invalid syntax
 
 ### 571_icl_sanity_fix.log
 ```
-
-  prefix arm 0.166 vs omega arm 0.180: both arms behave alike -- the architecture was NOT the whole story
-
   ==> NOT ALL CRITERIA PASS -- read the failing line above before doing anything else.
 
 [saved] /tmp/icl_sanity_smoke.json
@@ -3766,6 +3763,9 @@ PRE-REGISTERED CRITERIA (written before any training runs)
 /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
   [omega ] step   500 | loss 2.490 | acc@K64 0.081
+  [omega ] step  1000 | loss 2.454 | acc@K64 0.127
+  [omega ] step  1500 | loss 2.372 | acc@K64 0.193
+  [omega ] step  2000 | loss 2.497 | acc@K64 0.204
 ```
 
 ### 572_w1_tta_floor.log

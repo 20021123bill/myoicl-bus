@@ -79,3 +79,4 @@ PRE-REGISTERED CRITERIA (written before any training runs)
   [omega ] step   500 | loss 2.490 | acc@K64 0.081
   [omega ] step  1000 | loss 2.454 | acc@K64 0.127
   [omega ] step  1500 | loss 2.372 | acc@K64 0.193
+  [omega ] step  2000 | loss 2.497 | acc@K64 0.204
