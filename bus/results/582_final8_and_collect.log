@@ -1,0 +1,51 @@
+########## collect 581 (character-precision gate) ##########
+  captured seg/user0 (23 lines)
+  captured seg/user1 (23 lines)
+  captured seg/user3 (21 lines)
+  captured seg/user5 (21 lines)
+--- the gate, if any user finished ---
+=== THE GATE: character precision vs confidence (user0) ===
+      confidence    chars  precision  -> pseudo-CER
+    0.00-0.50        337     27.6%          72.4
+    0.50-0.70        364     43.1%          56.9
+    0.70-0.90        321     54.8%          45.2
+    0.90-0.95         90     58.9%          41.1
+    0.95-0.99        149     66.4%          33.6
+    0.99-1.00         79     87.3%          12.7
+             ALL     1340     48.3%
+
+[beam] prefix-beam+LM on 24 windows: greedy 69.43 vs beam 82.57 -> no better
+[seg] thr 0.9: 16 segments, 55 characters (4.1% of all predicted characters)
+[seg] thr 0.95: 9 segments, 28 characters (2.1% of all predicted characters)
+--
+=== THE GATE: character precision vs confidence (user1) ===
+      confidence    chars  precision  -> pseudo-CER
+    0.00-0.50        182     31.3%          68.7
+    0.50-0.70        373     44.5%          55.5
+    0.70-0.90        464     47.6%          52.4
+    0.90-0.95        178     59.6%          40.4
+    0.95-0.99        294     66.0%          34.0
+    0.99-1.00        247     76.9%          23.1
+             ALL     1738     53.7%
+
+[beam] prefix-beam+LM on 24 windows: greedy 52.74 vs beam 72.32 -> no better
+[seg] thr 0.9: 41 segments, 141 characters (8.1% of all predicted characters)
+[seg] thr 0.95: 28 segments, 87 characters (5.0% of all predicted characters)
+--
+=== THE GATE: character precision vs confidence (user3) ===
+      confidence    chars  precision  -> pseudo-CER
+[beam] prefix-beam+LM on 24 windows: greedy 69.43 vs beam 82.57 -> no better
+[beam] prefix-beam+LM on 24 windows: greedy 52.74 vs beam 72.32 -> no better
+
+########## launch final 8-user run, best known config ##########
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+workers now: 8
+=== 582 launched ===

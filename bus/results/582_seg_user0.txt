@@ -1,0 +1,23 @@
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+[arch] receptive field 125 input frames per output frame span
+[lm] kenlm loaded for shallow fusion
+
+=== THE GATE: character precision vs confidence (user0) ===
+      confidence    chars  precision  -> pseudo-CER
+    0.00-0.50        337     27.6%          72.4
+    0.50-0.70        364     43.1%          56.9
+    0.70-0.90        321     54.8%          45.2
+    0.90-0.95         90     58.9%          41.1
+    0.95-0.99        149     66.4%          33.6
+    0.99-1.00         79     87.3%          12.7
+             ALL     1340     48.3%
+
+[beam] prefix-beam+LM on 24 windows: greedy 69.43 vs beam 82.57 -> no better
+[seg] thr 0.9: 16 segments, 55 characters (4.1% of all predicted characters)
+[seg] thr 0.95: 9 segments, 28 characters (2.1% of all predicted characters)
+[seg] thr 0.99: 1 segments, 3 characters (0.2% of all predicted characters)
+[saved] /data2/chenyuxiang/runs/seg/user0.json

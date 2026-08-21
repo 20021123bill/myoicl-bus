@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T03:47:34+08:00
+# heartbeat 2026-08-22T03:48:18+08:00
 
 ## gpu
 ```
@@ -110,6 +110,7 @@
 579_lm_beam_audit                        DONE rc=127
 580_collect3                             DONE rc=127
 581_seg_gate                             DONE rc=127
+582_final8_and_collect                   DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4035,6 +4036,35 @@ running now:
 
 workers now: 4
 === 581 launched ===
+```
+
+### 582_final8_and_collect.log
+```
+    0.95-0.99        294     66.0%          34.0
+    0.99-1.00        247     76.9%          23.1
+             ALL     1738     53.7%
+
+[beam] prefix-beam+LM on 24 windows: greedy 52.74 vs beam 72.32 -> no better
+[seg] thr 0.9: 41 segments, 141 characters (8.1% of all predicted characters)
+[seg] thr 0.95: 28 segments, 87 characters (5.0% of all predicted characters)
+--
+=== THE GATE: character precision vs confidence (user3) ===
+      confidence    chars  precision  -> pseudo-CER
+[beam] prefix-beam+LM on 24 windows: greedy 69.43 vs beam 82.57 -> no better
+[beam] prefix-beam+LM on 24 windows: greedy 52.74 vs beam 72.32 -> no better
+
+########## launch final 8-user run, best known config ##########
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+workers now: 8
+=== 582 launched ===
 ```
 
 ### d3_train.log
