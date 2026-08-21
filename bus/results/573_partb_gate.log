@@ -1,0 +1,56 @@
+=== interpreter ===
+python 3.10.20 | torch 2.3.0+cu121 | cuda True
+
+=== unpack + verify ===
+  ok myoicl/partb.py (17760 bytes)
+  ok myoicl/tta_floor.py (12497 bytes)
+
+=== does the official beam decoder exist here? (hard dependency) ===
+总用量 8
+-rw-rw-r-- 1 chenyuxiang chenyuxiang 261 8月  14 15:19 ctc_beam.yaml
+-rw-rw-r-- 1 chenyuxiang chenyuxiang  77 8月  14 15:19 ctc_greedy.yaml
+  ctc_beam.yaml: {'decoder': {'_target_': 'emg2qwerty.decoder.CTCBeamDecoder', 'beam_size': 50, 'max_labels_per_timestep': 10, 'lm_path': '${hydra:runtime.cwd}/models/lm/wikitext-103-6gram-charlm.bin', 'lm_weight': 2.0, 'insertion_bonus': 2.0, 'delete_key': 'Key.backspace'}}
+  flashlight text bindings: MISSING -- No module named 'flashlight'
+  kenlm: PRESENT
+
+=== GATE on 2 users first (fast: is the filter any good?) ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+[decoder] NO BEAM DECODER: /data2/chenyuxiang/code/emg2qwerty/config/decoder/ctc_beam.yaml has no _target_
+[decoder] running with the confidence filter only. The 'agree' filter is the plan's main one, so this is a DEPENDENCY GAP to fix, not a result about the method.
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+
+[user0] 96 unlabelled windows
+     all_greedy: n=96   keep=100.0% pseudo-CER  67.77
+           conf: n=96   keep=100.0% pseudo-CER  67.77
+
+[user1] 96 unlabelled windows
+     all_greedy: n=96   keep=100.0% pseudo-CER  55.94
+           conf: n=96   keep=100.0% pseudo-CER  55.94
+
+==================================================================
+THE GATE -- pseudo-label quality on unseen users (means)
+    all_greedy: keep 100.0% | pseudo-CER  61.85
+          conf: keep 100.0% | pseudo-CER  61.85
+
+  raw decode 61.85 CER -> filter 'conf' keeps 100.0% at 61.85 CER
+  ==> GATE FAILS: self-training on these would reinforce errors. Fix the FILTER, not the training loop.
+
+[saved] /data2/chenyuxiang/runs/partb_gate2.json
+
+=== full Part B: gate + adaptation, all 8 users ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+[decoder] NO BEAM DECODER: /data2/chenyuxiang/code/emg2qwerty/config/decoder/ctc_beam.yaml has no _target_
+[decoder] running with the confidence filter only. The 'agree' filter is the plan's main one, so this is a DEPENDENCY GAP to fix, not a result about the method.
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+
+[user0] 96 unlabelled windows
+     all_greedy: n=96   keep=100.0% pseudo-CER  67.77
+           conf: n=96   keep=100.0% pseudo-CER  67.77
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,

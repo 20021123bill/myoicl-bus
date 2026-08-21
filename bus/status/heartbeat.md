@@ -1,8 +1,8 @@
-# heartbeat 2026-08-22T02:45:58+08:00
+# heartbeat 2026-08-22T02:46:42+08:00
 
 ## gpu
 ```
-0, 9563 MiB, 24576 MiB, 80 %
+0, 9563 MiB, 24576 MiB, 13 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -101,6 +101,7 @@
 570_icl_sanity                           DONE rc=127
 571_icl_sanity_fix                       DONE rc=127
 572_w1_tta_floor                         DONE rc=127
+573_partb_gate                           DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3795,6 +3796,12 @@ TEST-TIME ADAPTATION FLOOR -- 8 official unseen users, NO labels
   return F.conv2d(input, weight, bias, self.stride,
   [base] user0: CER 61.51
   [bn] recalibrated 1 BatchNorm layers
+```
+
+### 573_partb_gate.log
+```
+=== interpreter ===
+python 3.10.20 | torch 2.3.0+cu121 | cuda True
 ```
 
 ### d3_train.log
