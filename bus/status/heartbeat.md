@@ -1,8 +1,8 @@
-# heartbeat 2026-08-22T02:42:22+08:00
+# heartbeat 2026-08-22T02:43:05+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 7457 MiB, 24576 MiB, 13 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -3741,15 +3741,60 @@ SyntaxError: invalid syntax
 
 ### 571_icl_sanity_fix.log
 ```
-=== interpreter check ===
-python 3.10.20
-torch 2.3.0+cu121 | cuda True
+
+  prefix arm 0.166 vs omega arm 0.180: both arms behave alike -- the architecture was NOT the whole story
+
+  ==> NOT ALL CRITERIA PASS -- read the failing line above before doing anything else.
+
+[saved] /tmp/icl_sanity_smoke.json
+  smoke OK
+
+=== the real run (GPU 0) ===
+====================================================================
+PRE-REGISTERED CRITERIA (written before any training runs)
+  chance accuracy = 1/12 = 0.083
+  C1  static arm  <= 0.133   (task is honest: no
+      context-free solution exists, because pi is per-episode)
+  C2  omega  arm  >  0.700   at K=64        (in-context works)
+  C3  omega  acc increases with K           (it reads K examples)
+  C4  omega  wrong-subject <= 0.163  (it reads THIS
+      subject, not a marginal prior)  <-- the control the
+      emg2qwerty runs never had
+====================================================================
+
+--- arm: omega ---
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  [omega ] step   500 | loss 2.490 | acc@K64 0.081
 ```
 
 ### 572_w1_tta_floor.log
 ```
-=== interpreter ===
-python 3.10.20 | torch 2.3.0+cu121 | cuda True
+TEST-TIME ADAPTATION FLOOR -- 8 official unseen users, NO labels
+       arm  mean CER   vs base
+      base     61.51     +0.00
+        bn     60.64     +0.87
+
+[SANITY FAIL] unadapted mean 61.51 vs reproduction reference 55.39 (|d| = 6.12 > 1.0). Do NOT use the numbers above; fix the eval path first.
+
+[FLOOR] the best label-free generic recipe is 'bn' at 60.64 (+0.87 vs unadapted).
+        Part B (LM-as-Teacher) must beat 60.64, not 61.51, to claim anything.
+        Personalised-with-labels reference: 11.28 -- the gap still open after the floor is 49.36 CER.
+
+[saved] /data2/chenyuxiang/runs/tta_floor_smoke.json
+
+=== full run: 8 users x 4 arms ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+[arch] BatchNorm x1: ['frontend.0.batch_norm']
+[arch] LayerNorm x17 | other norm x0
+
+[user0] 64 unlabelled calibration windows (4.3 min)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+  [base] user0: CER 61.51
+  [bn] recalibrated 1 BatchNorm layers
 ```
 
 ### d3_train.log
