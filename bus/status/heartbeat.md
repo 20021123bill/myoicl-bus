@@ -1,9 +1,9 @@
-# heartbeat 2026-08-22T02:46:42+08:00
+# heartbeat 2026-08-22T02:47:26+08:00
 
 ## gpu
 ```
-0, 9563 MiB, 24576 MiB, 13 %
-1, 12 MiB, 24576 MiB, 0 %
+0, 519 MiB, 24576 MiB, 12 %
+1, 6921 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -3800,8 +3800,31 @@ TEST-TIME ADAPTATION FLOOR -- 8 official unseen users, NO labels
 
 ### 573_partb_gate.log
 ```
-=== interpreter ===
-python 3.10.20 | torch 2.3.0+cu121 | cuda True
+
+  raw decode 61.85 CER -> filter 'conf' keeps 100.0% at 61.85 CER
+  ==> GATE FAILS: self-training on these would reinforce errors. Fix the FILTER, not the training loop.
+
+[saved] /data2/chenyuxiang/runs/partb_gate2.json
+
+=== full Part B: gate + adaptation, all 8 users ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+[decoder] NO BEAM DECODER: /data2/chenyuxiang/code/emg2qwerty/config/decoder/ctc_beam.yaml has no _target_
+[decoder] running with the confidence filter only. The 'agree' filter is the plan's main one, so this is a DEPENDENCY GAP to fix, not a result about the method.
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+
+[user0] 96 unlabelled windows
+     all_greedy: n=96   keep=100.0% pseudo-CER  67.77
+           conf: n=96   keep=100.0% pseudo-CER  67.77
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+   [adapt] user0: 61.51 -> 99.99 (gain -38.48) on 96 pseudo-labelled windows
+
+[user1] 96 unlabelled windows
+     all_greedy: n=96   keep=100.0% pseudo-CER  55.94
+           conf: n=96   keep=100.0% pseudo-CER  55.94
 ```
 
 ### d3_train.log
