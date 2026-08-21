@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T03:46:50+08:00
+# heartbeat 2026-08-22T03:47:34+08:00
 
 ## gpu
 ```
@@ -109,6 +109,7 @@
 578_lm_eow_and_collect                   DONE rc=127
 579_lm_beam_audit                        DONE rc=127
 580_collect3                             DONE rc=127
+581_seg_gate                             DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4019,6 +4020,21 @@ running now:
 ########## SWEEP2 (ema 0.9, 192 windows, up to 300 steps) ##########
   no sweep2 json yet
 === 580 done ===
+```
+
+### 581_seg_gate.log
+```
+=== unpack + verify ===
+  ok (15156 bytes)
+
+=== detached: character-precision gate on 4 users, 2 with beam probe ===
+  launched user0 gpu 0 beam-probe=24
+  launched user1 gpu 1 beam-probe=24
+  launched user3 gpu 2 beam-probe=0
+  launched user5 gpu 3 beam-probe=0
+
+workers now: 4
+=== 581 launched ===
 ```
 
 ### d3_train.log

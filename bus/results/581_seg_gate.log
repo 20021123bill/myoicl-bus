@@ -1,0 +1,11 @@
+=== unpack + verify ===
+  ok (15156 bytes)
+
+=== detached: character-precision gate on 4 users, 2 with beam probe ===
+  launched user0 gpu 0 beam-probe=24
+  launched user1 gpu 1 beam-probe=24
+  launched user3 gpu 2 beam-probe=0
+  launched user5 gpu 3 beam-probe=0
+
+workers now: 4
+=== 581 launched ===
