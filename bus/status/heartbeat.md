@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T03:00:27+08:00
+# heartbeat 2026-08-22T03:01:11+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 12 MiB, 24576 MiB, 0 %
-2, 12 MiB, 24576 MiB, 0 %
-3, 12 MiB, 24576 MiB, 0 %
+1, 7029 MiB, 24576 MiB, 0 %
+2, 4913 MiB, 24576 MiB, 0 %
+3, 5253 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -3925,6 +3925,10 @@ THE GATE -- pseudo-label quality on unseen users (means)
 
 === detached sweep, one user per GPU ===
   launched user0 on gpu 1
+  launched user1 on gpu 2
+  launched user3 on gpu 3
+
+=== wait up to 45 min ===
 ```
 
 ### d3_train.log
