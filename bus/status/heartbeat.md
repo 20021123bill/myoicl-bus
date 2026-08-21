@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T02:53:56+08:00
+# heartbeat 2026-08-22T02:54:40+08:00
 
 ## gpu
 ```
@@ -103,6 +103,7 @@
 572_w1_tta_floor                         DONE rc=127
 573_partb_gate                           DONE rc=127
 574_partb_peruser                        DONE rc=127
+575_partb_v2                             DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3855,6 +3856,12 @@ THE GATE -- pseudo-label quality on unseen users (means)
 
   ADAPTATION over 8 users: 55.39 -> 99.85 (mean gain -44.47), zero labels
 === 574 done (any unfinished user resumes on re-run) ===
+```
+
+### 575_partb_v2.log
+```
+=== interpreter ===
+3.10.20 2.3.0+cu121
 ```
 
 ### d3_train.log
