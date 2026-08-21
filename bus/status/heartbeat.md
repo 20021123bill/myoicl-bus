@@ -1,9 +1,9 @@
-# heartbeat 2026-08-22T02:48:52+08:00
+# heartbeat 2026-08-22T02:49:36+08:00
 
 ## gpu
 ```
-0, 519 MiB, 24576 MiB, 10 %
-1, 8985 MiB, 24576 MiB, 96 %
+0, 519 MiB, 24576 MiB, 11 %
+1, 12 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -102,6 +102,7 @@
 571_icl_sanity_fix                       DONE rc=127
 572_w1_tta_floor                         DONE rc=127
 573_partb_gate                           DONE rc=127
+574_partb_peruser                        DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3825,6 +3826,12 @@ TEST-TIME ADAPTATION FLOOR -- 8 official unseen users, NO labels
 [user1] 96 unlabelled windows
      all_greedy: n=96   keep=100.0% pseudo-CER  55.94
            conf: n=96   keep=100.0% pseudo-CER  55.94
+```
+
+### 574_partb_peruser.log
+```
+=== interpreter + deps ===
+python 3.10.20 | torch 2.3.0+cu121 | cuda True
 ```
 
 ### d3_train.log
