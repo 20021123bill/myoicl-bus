@@ -1,10 +1,10 @@
-# heartbeat 2026-08-22T03:04:05+08:00
+# heartbeat 2026-08-22T03:04:48+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 703 MiB, 24576 MiB, 0 %
-2, 703 MiB, 24576 MiB, 0 %
+1, 703 MiB, 24576 MiB, 50 %
+2, 2861 MiB, 24576 MiB, 75 %
 3, 5249 MiB, 24576 MiB, 0 %
 ```
 
@@ -3932,6 +3932,7 @@ THE GATE -- pseudo-label quality on unseen users (means)
   [t=1m] 0/3 users
   [t=2m] 0/3 users
   [t=3m] 0/3 users
+  [t=4m] 0/3 users
 ```
 
 ### d3_train.log
