@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T02:50:19+08:00
+# heartbeat 2026-08-22T02:51:03+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 2945 MiB, 24576 MiB, 0 %
-2, 3761 MiB, 24576 MiB, 0 %
-3, 6685 MiB, 24576 MiB, 0 %
+1, 12 MiB, 24576 MiB, 0 %
+2, 12 MiB, 24576 MiB, 0 %
+3, 12 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -3830,31 +3830,31 @@ TEST-TIME ADAPTATION FLOOR -- 8 official unseen users, NO labels
 
 ### 574_partb_peruser.log
 ```
---- surviving python processes of ours ---
-1456127 /data2/chenyuxiang/conda_envs/qwerty/bin/python -m myoicl.icl_sanity --steps 4000 --batch 16 --t-query 64 --symbols 12 --channels 32 --d-model 128 --n-layers 4 --d-z 128 --k-train 8 96 --k-eval 4 8 16 32 64 128 --log-every 500 --out /data2/chenyuxiang/runs/icl_sanity.json
+           conf: n=96   keep=100.0% pseudo-CER  54.43
+   [adapt] user6: 54.66 -> 99.12 (gain -44.46) on 96 pseudo-labelled windows
+THE GATE -- pseudo-label quality on unseen users (means)
+  ==> GATE FAILS: self-training on these would reinforce errors. Fix the FILTER, not the training loop.
+--- user7 ---
+[decoder] NO BEAM DECODER: /data2/chenyuxiang/code/emg2qwerty/config/decoder/ctc_beam.yaml has no _target_
+[decoder] running with the confidence filter only. The 'agree' filter is the plan's main one, so this is a DEPENDENCY GAP to fix, not a result about the method.
+     all_greedy: n=96   keep=100.0% pseudo-CER  53.00
+           conf: n=96   keep=100.0% pseudo-CER  53.00
+   [adapt] user7: 52.17 -> 99.92 (gain -47.75) on 96 pseudo-labelled windows
+THE GATE -- pseudo-label quality on unseen users (means)
+  ==> GATE FAILS: self-training on these would reinforce errors. Fix the FILTER, not the training loop.
 
-=== unpack + verify ===
-  ok myoicl/partb.py (17760 bytes)
-  ok myoicl/tta_floor.py (12497 bytes)
+=== AGGREGATE ===
+  users with results: 8
 
-=== beam decoder available? (hard dependency of the plan's filter) ===
-  decoder configs: ['ctc_greedy.yaml', 'ctc_beam.yaml']
-  ctc_beam.yaml: {'decoder': {'_target_': 'emg2qwerty.decoder.CTCBeamDecoder', 'beam_size': 50, 'max_labels_per_timestep': 10, 'lm_path': '${hydra:runtime.cwd}/models/lm/wikitext-103-6gram-charlm.bin', 'lm_weight': 2.0, 'insertion_bonus': 2.0, 'delete_key': 'Key.backspace'}}
-  flashlight.lib.text: MISSING -- No module named 'flashlight'
-  kenlm: PRESENT
-  torchaudio: PRESENT
+        filter    keep  pseudo-CER
+    all_greedy 100.0%       56.34
+          conf 100.0%       56.34
 
-=== launch one detached process per user (GPUs 1-3, GPU0 left alone) ===
-  launched user0 on gpu 1 -> /data2/chenyuxiang/runs/partb/user0.log
-  launched user1 on gpu 2 -> /data2/chenyuxiang/runs/partb/user1.log
-  launched user2 on gpu 3 -> /data2/chenyuxiang/runs/partb/user2.log
-  launched user3 on gpu 1 -> /data2/chenyuxiang/runs/partb/user3.log
-  launched user4 on gpu 2 -> /data2/chenyuxiang/runs/partb/user4.log
-  launched user5 on gpu 3 -> /data2/chenyuxiang/runs/partb/user5.log
-  launched user6 on gpu 1 -> /data2/chenyuxiang/runs/partb/user6.log
-  launched user7 on gpu 2 -> /data2/chenyuxiang/runs/partb/user7.log
+  raw decode 56.34 -> filter 'conf' keeps 100.0% at 56.34 CER
+  ==> GATE FAILS -- self-training would reinforce errors; fix the FILTER
 
-=== wait up to 25 min, reporting as users land ===
+  ADAPTATION over 8 users: 55.39 -> 99.85 (mean gain -44.47), zero labels
+=== 574 done (any unfinished user resumes on re-run) ===
 ```
 
 ### d3_train.log

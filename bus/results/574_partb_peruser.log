@@ -33,3 +33,83 @@ python 3.10.20 | torch 2.3.0+cu121 | cuda True
   launched user7 on gpu 2 -> /data2/chenyuxiang/runs/partb/user7.log
 
 === wait up to 25 min, reporting as users land ===
+  [t=1m] 8/8 users done
+
+=== per-user logs (tails) ===
+--- user0 ---
+[decoder] NO BEAM DECODER: /data2/chenyuxiang/code/emg2qwerty/config/decoder/ctc_beam.yaml has no _target_
+[decoder] running with the confidence filter only. The 'agree' filter is the plan's main one, so this is a DEPENDENCY GAP to fix, not a result about the method.
+     all_greedy: n=96   keep=100.0% pseudo-CER  67.77
+           conf: n=96   keep=100.0% pseudo-CER  67.77
+   [adapt] user0: 61.51 -> 99.99 (gain -38.48) on 96 pseudo-labelled windows
+THE GATE -- pseudo-label quality on unseen users (means)
+  ==> GATE FAILS: self-training on these would reinforce errors. Fix the FILTER, not the training loop.
+--- user1 ---
+[decoder] NO BEAM DECODER: /data2/chenyuxiang/code/emg2qwerty/config/decoder/ctc_beam.yaml has no _target_
+[decoder] running with the confidence filter only. The 'agree' filter is the plan's main one, so this is a DEPENDENCY GAP to fix, not a result about the method.
+     all_greedy: n=96   keep=100.0% pseudo-CER  55.94
+           conf: n=96   keep=100.0% pseudo-CER  55.94
+   [adapt] user1: 59.96 -> 99.92 (gain -39.97) on 96 pseudo-labelled windows
+THE GATE -- pseudo-label quality on unseen users (means)
+  ==> GATE FAILS: self-training on these would reinforce errors. Fix the FILTER, not the training loop.
+--- user2 ---
+[decoder] NO BEAM DECODER: /data2/chenyuxiang/code/emg2qwerty/config/decoder/ctc_beam.yaml has no _target_
+[decoder] running with the confidence filter only. The 'agree' filter is the plan's main one, so this is a DEPENDENCY GAP to fix, not a result about the method.
+     all_greedy: n=96   keep=100.0% pseudo-CER  48.76
+           conf: n=96   keep=100.0% pseudo-CER  48.76
+   [adapt] user2: 48.01 -> 99.98 (gain -51.97) on 96 pseudo-labelled windows
+THE GATE -- pseudo-label quality on unseen users (means)
+  ==> GATE FAILS: self-training on these would reinforce errors. Fix the FILTER, not the training loop.
+--- user3 ---
+[decoder] NO BEAM DECODER: /data2/chenyuxiang/code/emg2qwerty/config/decoder/ctc_beam.yaml has no _target_
+[decoder] running with the confidence filter only. The 'agree' filter is the plan's main one, so this is a DEPENDENCY GAP to fix, not a result about the method.
+     all_greedy: n=96   keep=100.0% pseudo-CER  57.02
+           conf: n=96   keep=100.0% pseudo-CER  57.02
+   [adapt] user3: 54.70 -> 99.96 (gain -45.26) on 96 pseudo-labelled windows
+THE GATE -- pseudo-label quality on unseen users (means)
+  ==> GATE FAILS: self-training on these would reinforce errors. Fix the FILTER, not the training loop.
+--- user4 ---
+[decoder] NO BEAM DECODER: /data2/chenyuxiang/code/emg2qwerty/config/decoder/ctc_beam.yaml has no _target_
+[decoder] running with the confidence filter only. The 'agree' filter is the plan's main one, so this is a DEPENDENCY GAP to fix, not a result about the method.
+     all_greedy: n=96   keep=100.0% pseudo-CER  60.69
+           conf: n=96   keep=100.0% pseudo-CER  60.69
+   [adapt] user4: 58.24 -> 99.99 (gain -41.75) on 96 pseudo-labelled windows
+THE GATE -- pseudo-label quality on unseen users (means)
+  ==> GATE FAILS: self-training on these would reinforce errors. Fix the FILTER, not the training loop.
+--- user5 ---
+[decoder] NO BEAM DECODER: /data2/chenyuxiang/code/emg2qwerty/config/decoder/ctc_beam.yaml has no _target_
+[decoder] running with the confidence filter only. The 'agree' filter is the plan's main one, so this is a DEPENDENCY GAP to fix, not a result about the method.
+     all_greedy: n=96   keep=100.0% pseudo-CER  53.10
+           conf: n=96   keep=100.0% pseudo-CER  53.10
+   [adapt] user5: 53.85 -> 99.94 (gain -46.10) on 96 pseudo-labelled windows
+THE GATE -- pseudo-label quality on unseen users (means)
+  ==> GATE FAILS: self-training on these would reinforce errors. Fix the FILTER, not the training loop.
+--- user6 ---
+[decoder] NO BEAM DECODER: /data2/chenyuxiang/code/emg2qwerty/config/decoder/ctc_beam.yaml has no _target_
+[decoder] running with the confidence filter only. The 'agree' filter is the plan's main one, so this is a DEPENDENCY GAP to fix, not a result about the method.
+     all_greedy: n=96   keep=100.0% pseudo-CER  54.43
+           conf: n=96   keep=100.0% pseudo-CER  54.43
+   [adapt] user6: 54.66 -> 99.12 (gain -44.46) on 96 pseudo-labelled windows
+THE GATE -- pseudo-label quality on unseen users (means)
+  ==> GATE FAILS: self-training on these would reinforce errors. Fix the FILTER, not the training loop.
+--- user7 ---
+[decoder] NO BEAM DECODER: /data2/chenyuxiang/code/emg2qwerty/config/decoder/ctc_beam.yaml has no _target_
+[decoder] running with the confidence filter only. The 'agree' filter is the plan's main one, so this is a DEPENDENCY GAP to fix, not a result about the method.
+     all_greedy: n=96   keep=100.0% pseudo-CER  53.00
+           conf: n=96   keep=100.0% pseudo-CER  53.00
+   [adapt] user7: 52.17 -> 99.92 (gain -47.75) on 96 pseudo-labelled windows
+THE GATE -- pseudo-label quality on unseen users (means)
+  ==> GATE FAILS: self-training on these would reinforce errors. Fix the FILTER, not the training loop.
+
+=== AGGREGATE ===
+  users with results: 8
+
+        filter    keep  pseudo-CER
+    all_greedy 100.0%       56.34
+          conf 100.0%       56.34
+
+  raw decode 56.34 -> filter 'conf' keeps 100.0% at 56.34 CER
+  ==> GATE FAILS -- self-training would reinforce errors; fix the FILTER
+
+  ADAPTATION over 8 users: 55.39 -> 99.85 (mean gain -44.47), zero labels
+=== 574 done (any unfinished user resumes on re-run) ===
