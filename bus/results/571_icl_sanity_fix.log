@@ -1,0 +1,79 @@
+=== interpreter check ===
+python 3.10.20
+torch 2.3.0+cu121 | cuda True
+
+=== unpack + verify ===
+  ok myoicl/icl_core.py (7880 bytes)
+  ok myoicl/icl_sanity.py (10973 bytes)
+
+=== CPU smoke (shapes only, ~1 min; never spend GPU on broken code) ===
+====================================================================
+PRE-REGISTERED CRITERIA (written before any training runs)
+  chance accuracy = 1/6 = 0.167
+  C1  static arm  <= 0.217   (task is honest: no
+      context-free solution exists, because pi is per-episode)
+  C2  omega  arm  >  0.700   at K=64        (in-context works)
+  C3  omega  acc increases with K           (it reads K examples)
+  C4  omega  wrong-subject <= 0.247  (it reads THIS
+      subject, not a marginal prior)  <-- the control the
+      emg2qwerty runs never had
+====================================================================
+
+--- arm: omega ---
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  [omega ] step    10 | loss 1.873 | acc@K64 0.168
+  [omega ] step    20 | loss 1.816 | acc@K64 0.164
+
+--- arm: prefix ---
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  [prefix] step    10 | loss 1.900 | acc@K64 0.169
+  [prefix] step    20 | loss 1.828 | acc@K64 0.164
+
+--- arm: film ---
+  [film  ] step    10 | loss 1.921 | acc@K64 0.167
+  [film  ] step    20 | loss 1.866 | acc@K64 0.178
+
+--- arm: static ---
+  [static] step    10 | loss 1.915 | acc@K64 0.167
+  [static] step    20 | loss 1.842 | acc@K64 0.164
+
+====================================================================
+RESULTS  (accuracy on held-out frames of a NEW subject)
+  arm      params   K=4      K=8      wrong-subj
+  omega     0.08M  0.171    0.180    0.169
+  prefix    0.03M  0.172    0.166    0.177
+  film      0.08M  0.173    0.165    0.168
+  static    0.03M  0.170    0.159    0.165
+
+VERDICT
+  C1 static 0.159 <= 0.217 : PASS
+  C2 omega@K64 0.180 > 0.700 : FAIL
+  C3 omega K=4 0.171 -> K=8 0.180 : FAIL
+  C4 omega wrong-subject 0.169 <= 0.247 : PASS
+
+  prefix arm 0.166 vs omega arm 0.180: both arms behave alike -- the architecture was NOT the whole story
+
+  ==> NOT ALL CRITERIA PASS -- read the failing line above before doing anything else.
+
+[saved] /tmp/icl_sanity_smoke.json
+  smoke OK
+
+=== the real run (GPU 0) ===
+====================================================================
+PRE-REGISTERED CRITERIA (written before any training runs)
+  chance accuracy = 1/12 = 0.083
+  C1  static arm  <= 0.133   (task is honest: no
+      context-free solution exists, because pi is per-episode)
+  C2  omega  arm  >  0.700   at K=64        (in-context works)
+  C3  omega  acc increases with K           (it reads K examples)
+  C4  omega  wrong-subject <= 0.163  (it reads THIS
+      subject, not a marginal prior)  <-- the control the
+      emg2qwerty runs never had
+====================================================================
+
+--- arm: omega ---
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  [omega ] step   500 | loss 2.490 | acc@K64 0.081

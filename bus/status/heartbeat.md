@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T02:41:38+08:00
+# heartbeat 2026-08-22T02:42:22+08:00
 
 ## gpu
 ```
@@ -99,6 +99,8 @@
 568_budget_curve                         DONE rc=127
 569_full_stop                            DONE rc=127
 570_icl_sanity                           DONE rc=127
+571_icl_sanity_fix                       DONE rc=127
+572_w1_tta_floor                         DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3735,6 +3737,19 @@ Traceback (most recent call last):
     def __init__(self, d_in: int, n_symbols: int, d_model: int = 128,
                            ^
 SyntaxError: invalid syntax
+```
+
+### 571_icl_sanity_fix.log
+```
+=== interpreter check ===
+python 3.10.20
+torch 2.3.0+cu121 | cuda True
+```
+
+### 572_w1_tta_floor.log
+```
+=== interpreter ===
+python 3.10.20 | torch 2.3.0+cu121 | cuda True
 ```
 
 ### d3_train.log
