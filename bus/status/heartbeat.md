@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T02:59:44+08:00
+# heartbeat 2026-08-22T03:00:27+08:00
 
 ## gpu
 ```
@@ -104,6 +104,8 @@
 573_partb_gate                           DONE rc=127
 574_partb_peruser                        DONE rc=127
 575_partb_v2                             DONE rc=127
+576_lm_solve                             DONE rc=127
+577_partb_sweep                          DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3885,6 +3887,44 @@ THE GATE -- pseudo-label quality on unseen users (means)
   launched user5 on gpu 1
   launched user6 on gpu 2
   launched user7 on gpu 3
+```
+
+### 576_lm_solve.log
+```
+-rw-rw-r-- 1 chenyuxiang chenyuxiang 32545139 8月  14 15:19 /data2/chenyuxiang/code/emg2qwerty/models/lm/wikitext-103-6gram-charlm.bin
+[lm] order=6
+
+                tokenisation     OOV     real  shuffled   margin
+                    chars+|   15.3%   -2.026    -1.822   -0.204
+               chars+<space>  15.3%   -2.026    -1.777   -0.249
+                     chars+_  15.3%   -2.026    -1.809   -0.217
+                     chars+#  15.3%   -2.026    -1.831   -0.195
+        chars, space dropped   0.0%   -1.459    -1.857   +0.398
+   chars, literal space kept   0.0%   -1.459    -1.806   +0.347
+             CHARS+| (upper)  97.9%   -2.808    -2.827   +0.019
+ CHARS space dropped (upper)  97.5%   -2.827    -2.827   +0.000
+                   raw words  85.6%   -3.246    -5.237   +1.991
+           RAW WORDS (upper)  89.3%   -3.246    -5.237   +1.991
+
+[SOLVED] tokenisation 'chars, space dropped' -- OOV 0.0%, real beats shuffled by +0.398
+[SOLVED] partb2.CharLM._tok must be set to this scheme.
+
+[probe] scoring a few plausible typing strings under the best scheme (higher = more language-like):
+     -1.757  'hello world how are you'
+     -1.675  'helo wrld hw ar yu'
+     -1.999  'xkqj vzmw plfh brtn'
+     -1.367  'the meeting is at three'
+=== 576 done ===
+```
+
+### 577_partb_sweep.log
+```
+=== unpack + verify ===
+  ok myoicl/partb_sweep.py (10753 bytes)
+  ok myoicl/partb2.py (17052 bytes)
+
+=== detached sweep, one user per GPU ===
+  launched user0 on gpu 1
 ```
 
 ### d3_train.log

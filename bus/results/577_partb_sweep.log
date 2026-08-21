@@ -1,0 +1,10 @@
+=== unpack + verify ===
+  ok myoicl/partb_sweep.py (10753 bytes)
+  ok myoicl/partb2.py (17052 bytes)
+
+=== detached sweep, one user per GPU ===
+  launched user0 on gpu 1
+  launched user1 on gpu 2
+  launched user3 on gpu 3
+
+=== wait up to 45 min ===
