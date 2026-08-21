@@ -1,0 +1,11 @@
+=== unpack + verify ===
+  ok (9636 bytes)
+
+=== launch: 4 users x {conf, random, shuffled} ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user3 on gpu 2
+  launched user5 on gpu 3
+
+workers: 4
+=== 586 launched ===

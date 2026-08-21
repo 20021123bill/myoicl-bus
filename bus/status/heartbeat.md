@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T04:22:21+08:00
+# heartbeat 2026-08-22T04:23:05+08:00
 
 ## gpu
 ```
@@ -114,6 +114,7 @@
 583_seg_adapt                            DONE rc=127
 584_collect_final                        DONE rc=127
 585_honest_table                         DONE rc=127
+586_frame_level                          DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4155,6 +4156,21 @@ SEGMENT-LEVEL ADAPTATION (768-window pool) -- negative, and why
   The clean labels exist but they are SCATTERED, and CTC needs
   contiguous spans. That is the finding, not a tuning failure.
 === 585 done ===
+```
+
+### 586_frame_level.log
+```
+=== unpack + verify ===
+  ok (9636 bytes)
+
+=== launch: 4 users x {conf, random, shuffled} ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user3 on gpu 2
+  launched user5 on gpu 3
+
+workers: 4
+=== 586 launched ===
 ```
 
 ### d3_train.log
