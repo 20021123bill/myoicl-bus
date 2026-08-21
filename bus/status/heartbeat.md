@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T04:10:45+08:00
+# heartbeat 2026-08-22T04:11:29+08:00
 
 ## gpu
 ```
@@ -113,6 +113,7 @@
 582_final8_and_collect                   DONE rc=127
 583_seg_adapt                            DONE rc=127
 584_collect_final                        DONE rc=127
+585_honest_table                         DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4125,6 +4126,35 @@ workers now: 3
        correctness: top decile was 4 CER WORSE than raw
 
 === 584 done ===
+```
+
+### 585_honest_table.log
+```
+========================================================================
+SEGMENT-LEVEL ADAPTATION (768-window pool) -- negative, and why
+========================================================================
+
+  threshold 0.99
+       user0   61.51 ->   60.92   +0.59      22 chars (7 segments)
+       user1   59.96 ->   61.65   -1.69      80 chars (26 segments)
+       user3   54.70 ->   53.89   +0.81      66 chars (21 segments)
+        MEAN                      -0.10      56 chars
+
+  threshold 0.95
+       user0   61.51 ->   61.73   -0.22     138 chars (43 segments)
+       user1   59.96 ->   60.60   -0.64     501 chars (154 segments)
+       user3   54.70 ->   54.01   +0.69     374 chars (112 segments)
+        MEAN                      -0.06     338 chars
+
+  WHY THE YIELD COLLAPSED: the gate measured PER-CHARACTER precision
+  (87.3% / 76.9% above posterior 0.99), but segments require min-chars
+  CONSECUTIVE high-confidence characters. Isolated confident
+  characters are common; runs of three are rare -- 768 windows gave
+  only 22-80 characters at 0.99, i.e. 0.3-0.8% of all predictions,
+  about a tenth of what the per-character rate would suggest.
+  The clean labels exist but they are SCATTERED, and CTC needs
+  contiguous spans. That is the finding, not a tuning failure.
+=== 585 done ===
 ```
 
 ### d3_train.log

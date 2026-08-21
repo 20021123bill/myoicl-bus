@@ -1,0 +1,49 @@
+========================================================================
+ZERO-LABEL TEST-TIME ADAPTATION -- 8 official unseen users
+config fixed in advance: filter conf_nb>q90 | input-BN affine only
+                         | lr 3e-5 | 30 steps | ema 0.9
+both arms shown; NO per-user selection
+========================================================================
+    user  unadapted |   student    gain |       EMA    gain
+   user0      61.51 |     59.65   +1.86 |     61.53   -0.02
+   user1      59.96 |     60.71   -0.76 |     59.97   -0.01
+   user2      48.01 |     48.78   -0.77 |     48.05   -0.04
+   user3      54.70 |     53.30   +1.40 |     54.71   -0.01
+   user4      58.24 |     60.61   -2.37 |     58.20   +0.03
+   user5      53.85 |     50.53   +3.32 |     53.90   -0.06
+   user6      54.66 |     57.41   -2.75 |     54.61   +0.05
+   user7      52.17 |     51.57   +0.60 |     52.19   -0.02
+------------------------------------------------------------------------
+    MEAN      55.39 |     55.32   +0.07 |     55.40   -0.01
+
+  student: 4/8 users improved, per-user gain +0.07 +- 1.97 (worst -2.75, best +3.32)
+  EMA    : 2/8 users improved, per-user gain -0.01 +- 0.03 (worst -0.06, best +0.05)
+
+  Read the standard deviation next to the mean before believing the
+  mean: if it is larger than the effect, this is noise, not a method.
+
+========================================================================
+SEGMENT-LEVEL ADAPTATION (768-window pool) -- negative, and why
+========================================================================
+
+  threshold 0.99
+       user0   61.51 ->   60.92   +0.59      22 chars (7 segments)
+       user1   59.96 ->   61.65   -1.69      80 chars (26 segments)
+       user3   54.70 ->   53.89   +0.81      66 chars (21 segments)
+        MEAN                      -0.10      56 chars
+
+  threshold 0.95
+       user0   61.51 ->   61.73   -0.22     138 chars (43 segments)
+       user1   59.96 ->   60.60   -0.64     501 chars (154 segments)
+       user3   54.70 ->   54.01   +0.69     374 chars (112 segments)
+        MEAN                      -0.06     338 chars
+
+  WHY THE YIELD COLLAPSED: the gate measured PER-CHARACTER precision
+  (87.3% / 76.9% above posterior 0.99), but segments require min-chars
+  CONSECUTIVE high-confidence characters. Isolated confident
+  characters are common; runs of three are rare -- 768 windows gave
+  only 22-80 characters at 0.99, i.e. 0.3-0.8% of all predictions,
+  about a tenth of what the per-character rate would suggest.
+  The clean labels exist but they are SCATTERED, and CTC needs
+  contiguous spans. That is the finding, not a tuning failure.
+=== 585 done ===
