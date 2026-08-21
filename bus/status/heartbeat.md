@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T02:54:40+08:00
+# heartbeat 2026-08-22T02:55:24+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
-1, 12 MiB, 24576 MiB, 0 %
-2, 12 MiB, 24576 MiB, 0 %
-3, 12 MiB, 24576 MiB, 0 %
+0, 3391 MiB, 24576 MiB, 0 %
+1, 729 MiB, 24576 MiB, 30 %
+2, 7022 MiB, 24576 MiB, 100 %
+3, 5828 MiB, 24576 MiB, 3 %
 ```
 
 ## jobs
@@ -3860,8 +3860,31 @@ THE GATE -- pseudo-label quality on unseen users (means)
 
 ### 575_partb_v2.log
 ```
-=== interpreter ===
-3.10.20 2.3.0+cu121
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+
+[user0] 128 windows | raw CER 68.08
+            conf_nb>q50: keep 50.0%  pseudo-CER  62.38  (gain  +5.70)
+            conf_nb>q75: keep 25.0%  pseudo-CER  61.13  (gain  +6.95)
+            conf_nb>q90: keep 10.2%  pseudo-CER  52.88  (gain +15.20)
+            path_lp>q50: keep 50.0%  pseudo-CER  70.26  (gain  -2.17)
+            path_lp>q75: keep 25.0%  pseudo-CER  79.86  (gain -11.78)
+            path_lp>q90: keep 10.2%  pseudo-CER  83.15  (gain -15.06)
+             consistent: keep 42.2%  pseudo-CER  67.89  (gain  +0.20)
+      consistent+conf75: keep 17.2%  pseudo-CER  62.50  (gain  +5.58)
+
+[saved] /data2/chenyuxiang/runs/partb2_probe.json
+
+=== per-user detached: audit + adaptation ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
 ```
 
 ### d3_train.log
