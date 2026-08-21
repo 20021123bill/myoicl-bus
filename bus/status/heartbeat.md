@@ -1,9 +1,9 @@
-# heartbeat 2026-08-22T03:21:28+08:00
+# heartbeat 2026-08-22T03:22:12+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
-1, 12 MiB, 24576 MiB, 0 %
+1, 12 MiB, 24576 MiB, 1 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
@@ -107,6 +107,7 @@
 576_lm_solve                             DONE rc=127
 577_partb_sweep                          DONE rc=127
 578_lm_eow_and_collect                   DONE rc=127
+579_lm_beam_audit                        DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3963,6 +3964,31 @@ drwxrwxr-x 73 chenyuxiang chenyuxiang 4096 8月  22 03:00 ..
 1493527 /data2/chenyuxiang/conda_envs/qwerty/bin/python -m myoicl.partb_sweep --user user0 --cal-windows 128 --filters conf_nb>q90 conf_nb>q75 consistent+conf75 --lrs 1e-5 3e-5 1e-4 --steps 30 100 --scopes all inputbn --out /data2/chenyuxiang/runs/partb_sweep/user0.json
 1494389 /data2/chenyuxiang/conda_envs/qwerty/bin/python -m myoicl.partb_sweep --user user1 --cal-windows 128 --filters conf_nb>q90 conf_nb>q75 consistent+conf75 --lrs 1e-5 3e-5 1e-4 --steps 30 100 --scopes all inputbn --out /data2/chenyuxiang/runs/partb_sweep/user1.json
 === 578 done (short by design) ===
+```
+
+### 579_lm_beam_audit.log
+```
+=== unpack + verify ===
+  ok, LM fix + spelling test present
+
+=== launch detached per-user audits (LM + beam + all filters) ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+=== launch detached sweeps on the 3 probe users, ema 0.9 ===
+  launched sweep user0 on gpu 0
+  launched sweep user1 on gpu 1
+  launched sweep user3 on gpu 2
+
+running now:
+11
+=== 579 launched; a later short job collects the logs ===
 ```
 
 ### d3_train.log

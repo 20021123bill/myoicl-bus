@@ -1,0 +1,21 @@
+=== unpack + verify ===
+  ok, LM fix + spelling test present
+
+=== launch detached per-user audits (LM + beam + all filters) ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+=== launch detached sweeps on the 3 probe users, ema 0.9 ===
+  launched sweep user0 on gpu 0
+  launched sweep user1 on gpu 1
+  launched sweep user3 on gpu 2
+
+running now:
+11
+=== 579 launched; a later short job collects the logs ===
