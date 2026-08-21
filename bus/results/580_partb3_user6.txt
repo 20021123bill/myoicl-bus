@@ -1,0 +1,22 @@
+[lm] /data2/chenyuxiang/code/emg2qwerty/models/lm/wikitext-103-6gram-charlm.bin
+[lm] validated: real -1.060 > shuffled -1.933 (+0.873), spelling 3/3
+[beam] torchaudio ctc_decoder unavailable: CTC Decoder suit requires flashlight-text package and optionally KenLM. Please install them.
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+
+[user6] 128 windows | raw CER 54.51
+            conf_nb>q50: keep 50.0%  pseudo-CER  51.77  (gain  +2.74)
+            conf_nb>q75: keep 25.0%  pseudo-CER  51.37  (gain  +3.14)
+            conf_nb>q90: keep 10.2%  pseudo-CER  52.45  (gain  +2.06)
+            path_lp>q50: keep 50.0%  pseudo-CER  55.22  (gain  -0.71)
+            path_lp>q75: keep 25.0%  pseudo-CER  54.61  (gain  -0.10)
+            path_lp>q90: keep 10.2%  pseudo-CER  57.55  (gain  -3.04)
+             consistent: keep 32.0%  pseudo-CER  56.02  (gain  -1.50)
+      consistent+conf75: keep  8.6%  pseudo-CER  56.88  (gain  -2.37)
+                 lm>q75: keep 25.0%  pseudo-CER  51.98  (gain  +2.53)
+        consistent+lm75: keep  7.0%  pseudo-CER  56.90  (gain  -2.39)
+
+[saved] /data2/chenyuxiang/runs/partb3/user6.json

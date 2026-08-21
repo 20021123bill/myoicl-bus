@@ -1,0 +1,46 @@
+########## running workers ##########
+1539974 /data2/chenyuxiang/conda_envs/qwerty/bin/python -m myoicl.partb_sweep --user user0 --cal-windows 192 --filters conf_nb>q90 conf_nb>q75 consistent+conf75 --lrs 1e-5 3e-5 --steps 30 100 300 --scopes all inputbn --ema 0.9 --out /data2/chenyuxiang/runs/partb_sweep2/user0.json
+1539975 /data2/chenyuxiang/conda_envs/qwerty/bin/python -m myoicl.partb_sweep --user user1 --cal-windows 192 --filters conf_nb>q90 conf_nb>q75 consistent+conf75 --lrs 1e-5 3e-5 --steps 30 100 300 --scopes all inputbn --ema 0.9 --out /data2/chenyuxiang/runs/partb_sweep2/user1.json
+1539976 /data2/chenyuxiang/conda_envs/qwerty/bin/python -m myoicl.partb_sweep --user user3 --cal-windows 192 --filters conf_nb>q90 conf_nb>q75 consistent+conf75 --lrs 1e-5 3e-5 --steps 30 100 300 --scopes all inputbn --ema 0.9 --out /data2/chenyuxiang/runs/partb_sweep2/user3.json
+
+########## partb3 ##########
+  captured user0 (22 lines)
+  captured user1 (22 lines)
+  captured user2 (22 lines)
+  captured user3 (22 lines)
+  captured user4 (22 lines)
+  captured user5 (22 lines)
+  captured user6 (22 lines)
+  captured user7 (22 lines)
+
+########## partb_sweep2 ##########
+  captured user0 (30 lines)
+  captured user1 (31 lines)
+  captured user3 (31 lines)
+
+########## LM / BEAM VALIDATION (the gate for tonight) ##########
+[beam] torchaudio ctc_decoder unavailable: CTC Decoder suit requires flashlight-text package and optionally KenLM. Please install them.
+[lm] /data2/chenyuxiang/code/emg2qwerty/models/lm/wikitext-103-6gram-charlm.bin
+[lm] validated: real -1.060 > shuffled -1.933 (+0.873), spelling 3/3
+
+########## FILTER TABLE so far ##########
+
+  users 8 | raw greedy pseudo-CER 56.32
+                  filter    keep  pseudo-CER   vs raw
+             conf_nb>q50  50.0%       51.85    +4.48
+             conf_nb>q75  25.0%       49.94    +6.38
+             conf_nb>q90  10.2%       46.80    +9.52
+              consistent  42.6%       55.83    +0.49
+       consistent+conf75  13.9%       51.49    +4.84
+         consistent+lm75  10.4%       53.14    +3.19
+                  lm>q75  25.0%       54.28    +2.04
+             path_lp>q50  50.0%       55.10    +1.22
+             path_lp>q75  25.0%       57.42    -1.10
+             path_lp>q90  10.2%       60.45    -4.12
+
+  BEST 'conf_nb>q90': keeps 10.2% at 46.80 CER (+9.52)
+  ==> GATE STILL FAILS (>40): pseudo-labels are the bottleneck, not the optimiser
+
+########## SWEEP2 (ema 0.9, 192 windows, up to 300 steps) ##########
+  no sweep2 json yet
+=== 580 done ===

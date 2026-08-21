@@ -1,10 +1,10 @@
-# heartbeat 2026-08-22T03:24:21+08:00
+# heartbeat 2026-08-22T03:25:05+08:00
 
 ## gpu
 ```
-0, 707 MiB, 24576 MiB, 0 %
-1, 4909 MiB, 24576 MiB, 50 %
-2, 5249 MiB, 24576 MiB, 0 %
+0, 7029 MiB, 24576 MiB, 0 %
+1, 703 MiB, 24576 MiB, 0 %
+2, 4453 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
 ```
 
@@ -108,6 +108,7 @@
 577_partb_sweep                          DONE rc=127
 578_lm_eow_and_collect                   DONE rc=127
 579_lm_beam_audit                        DONE rc=127
+580_collect3                             DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -3989,6 +3990,35 @@ drwxrwxr-x 73 chenyuxiang chenyuxiang 4096 8月  22 03:00 ..
 running now:
 11
 === 579 launched; a later short job collects the logs ===
+```
+
+### 580_collect3.log
+```
+[beam] torchaudio ctc_decoder unavailable: CTC Decoder suit requires flashlight-text package and optionally KenLM. Please install them.
+[lm] /data2/chenyuxiang/code/emg2qwerty/models/lm/wikitext-103-6gram-charlm.bin
+[lm] validated: real -1.060 > shuffled -1.933 (+0.873), spelling 3/3
+
+########## FILTER TABLE so far ##########
+
+  users 8 | raw greedy pseudo-CER 56.32
+                  filter    keep  pseudo-CER   vs raw
+             conf_nb>q50  50.0%       51.85    +4.48
+             conf_nb>q75  25.0%       49.94    +6.38
+             conf_nb>q90  10.2%       46.80    +9.52
+              consistent  42.6%       55.83    +0.49
+       consistent+conf75  13.9%       51.49    +4.84
+         consistent+lm75  10.4%       53.14    +3.19
+                  lm>q75  25.0%       54.28    +2.04
+             path_lp>q50  50.0%       55.10    +1.22
+             path_lp>q75  25.0%       57.42    -1.10
+             path_lp>q90  10.2%       60.45    -4.12
+
+  BEST 'conf_nb>q90': keeps 10.2% at 46.80 CER (+9.52)
+  ==> GATE STILL FAILS (>40): pseudo-labels are the bottleneck, not the optimiser
+
+########## SWEEP2 (ema 0.9, 192 windows, up to 300 steps) ##########
+  no sweep2 json yet
+=== 580 done ===
 ```
 
 ### d3_train.log

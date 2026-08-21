@@ -1,0 +1,31 @@
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+[user1] 192 windows | raw pseudo-CER 55.77
+            conf_nb>q50: n=96   keep=50.0% pseudo-CER  50.19
+            conf_nb>q75: n=48   keep=25.0% pseudo-CER  47.20
+            conf_nb>q90: n=20   keep=10.4% pseudo-CER  40.62
+             consistent: n=95   keep=49.5% pseudo-CER  53.82
+      consistent+conf75: n=30   keep=15.6% pseudo-CER  46.37
+[user1] unadapted test CER 59.96
+
+sweeping 36 cells (student and ema-teacher each)
+
+         conf_nb>q90 lr=1e-05   steps=30       all student: CER  60.64  gain  -0.68
+         conf_nb>q90 lr=1e-05   steps=30       all     ema: CER  60.03  gain  -0.08
+         conf_nb>q90 lr=1e-05   steps=30   inputbn student: CER  60.75  gain  -0.79
+         conf_nb>q90 lr=1e-05   steps=30   inputbn     ema: CER  59.97  gain  -0.01
+         conf_nb>q90 lr=1e-05   steps=100      all student: CER  60.38  gain  -0.42
+         conf_nb>q90 lr=1e-05   steps=100      all     ema: CER  59.89  gain  +0.06
+         conf_nb>q90 lr=1e-05   steps=100  inputbn student: CER  60.37  gain  -0.41
+         conf_nb>q90 lr=1e-05   steps=100  inputbn     ema: CER  59.99  gain  -0.03
+         conf_nb>q90 lr=1e-05   steps=300      all student: CER  60.01  gain  -0.05
+         conf_nb>q90 lr=1e-05   steps=300      all     ema: CER  59.57  gain  +0.39
+         conf_nb>q90 lr=1e-05   steps=300  inputbn student: CER  60.41  gain  -0.45
+         conf_nb>q90 lr=1e-05   steps=300  inputbn     ema: CER  59.85  gain  +0.11
+         conf_nb>q90 lr=3e-05   steps=30       all student: CER  60.43  gain  -0.48
+         conf_nb>q90 lr=3e-05   steps=30       all     ema: CER  59.92  gain  +0.03
+         conf_nb>q90 lr=3e-05   steps=30   inputbn student: CER  60.65  gain  -0.69
+         conf_nb>q90 lr=3e-05   steps=30   inputbn     ema: CER  59.97  gain  -0.01
