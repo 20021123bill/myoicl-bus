@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T18:47:16+08:00
+# heartbeat 2026-08-22T18:47:59+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
-1, 12 MiB, 24576 MiB, 0 %
-2, 12 MiB, 24576 MiB, 0 %
-3, 12 MiB, 24576 MiB, 0 %
+0, 11993 MiB, 24576 MiB, 0 %
+1, 11610 MiB, 24576 MiB, 0 %
+2, 9390 MiB, 24576 MiB, 0 %
+3, 8966 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -4408,6 +4408,23 @@ workers: 8
 ```
 === stop v2 workers ===
   none
+
+=== patch ===
+[patched] 2 anchors
+  verified (17855 bytes)
+
+=== 8 users, per-window segment fallback ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+workers: 8
+=== 598 launched ===
 ```
 
 ### d3_train.log
