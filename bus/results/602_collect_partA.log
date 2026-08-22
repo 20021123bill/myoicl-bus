@@ -1,0 +1,70 @@
+########## workers ##########
+20
+  gpu 0, 1303 MiB, 2 %
+  gpu 1, 1617 MiB, 38 %
+  gpu 2, 1281 MiB, 18 %
+  gpu 3, 1411 MiB, 0 %
+
+########## smoke ##########
+=== 30-step smoke on the full recipe (shapes, loss finite) ===
+[split] 96 training users / 837 sessions | 16 official test sessions
+[model] official TDS, freq_bins=6, 7.52M params | RSG=6 RTN=1 ACM=1
+[data] 229266 training windows of 4.0s
+[data] 512 monitor windows on the 8 test users
+[sanity] step 0 test CER 2075.20 (untrained; should be ~100)
+step 10/30 | loss 300.9355 | lr 5.00e-06 | 6.21 it/s
+step 20/30 | loss 118.9674 | lr 1.00e-05 | 9.12 it/s
+step 30/30 | loss 196.6556 | lr 1.50e-05 | 10.74 it/s
+[val] step 30: 8-test-user CER 227.80   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 227.80 -> best.pt
+
+=== four arms, detached ===
+
+########## per-arm ##########
+--- full ---
+[val] step 4000: 8-test-user CER 96.80   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 96.80 -> best.pt
+[val] step 6000: 8-test-user CER 81.68   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 81.68 -> best.pt
+[val] step 8000: 8-test-user CER 77.09   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 77.09 -> best.pt
+--- plain ---
+[val] step 4000: 8-test-user CER 61.85   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 61.85 -> best.pt
+[val] step 6000: 8-test-user CER 59.31   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 59.31 -> best.pt
+[val] step 8000: 8-test-user CER 57.05   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 57.05 -> best.pt
+--- rsgonly ---
+[val] step 4000: 8-test-user CER 62.62   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 62.62 -> best.pt
+[val] step 6000: 8-test-user CER 60.39   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 60.39 -> best.pt
+[val] step 8000: 8-test-user CER 58.71   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 58.71 -> best.pt
+--- rtnonly ---
+[val] step 4000: 8-test-user CER 60.12   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 60.12 -> best.pt
+[val] step 6000: 8-test-user CER 55.34   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 55.34 -> best.pt
+[val] step 8000: 8-test-user CER 56.30   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 10000: 8-test-user CER 55.36   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+
+##################################################################
+###  PART A stage 0 -- normalisation recipe, same-budget arms   ##
+##################################################################
+
+        arm    step  CER now    best  SplashNet ref   delta
+      plain    8000    57.05   57.05          55.39   +1.66
+    rsgonly    8000    58.71   58.71          47.18  +11.53
+    rtnonly   10000    55.36   55.34          39.15  +16.19
+       full    8000    77.09   77.09          36.42  +40.67
+
+  full vs OUR OWN same-budget plain arm: 57.05 -> 77.09 (-20.04)
+  (the plain arm is trained by this same script with this same
+   budget, so the recipe is not confounded with training length)
+
+  reminder: this recipe is SplashNet's, i.e. the PLATFORM.
+  Stage A1 -- our contrastive alignment -- is measured on top of
+  whichever arm wins, and that is the row with our name on it.
+=== 602 done ===

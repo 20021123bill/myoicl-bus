@@ -1,10 +1,10 @@
-# heartbeat 2026-08-22T20:07:53+08:00
+# heartbeat 2026-08-22T20:08:38+08:00
 
 ## gpu
 ```
-0, 1303 MiB, 24576 MiB, 17 %
-1, 1617 MiB, 24576 MiB, 26 %
-2, 1281 MiB, 24576 MiB, 0 %
+0, 1303 MiB, 24576 MiB, 55 %
+1, 1617 MiB, 24576 MiB, 31 %
+2, 1281 MiB, 24576 MiB, 18 %
 3, 1411 MiB, 24576 MiB, 0 %
 ```
 
@@ -127,6 +127,7 @@
 599_collect_v3                           DONE rc=127
 600_partA_splash_probe                   DONE rc=127
 601_partA_train                          DONE rc=127
+602_collect_partA                        DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4514,6 +4515,35 @@ step 30/30 | loss 196.6556 | lr 1.50e-05 | 10.74 it/s
 
 workers: 4
 === 601 launched ===
+```
+
+### 602_collect_partA.log
+```
+[val] step 4000: 8-test-user CER 60.12   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 60.12 -> best.pt
+[val] step 6000: 8-test-user CER 55.34   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 55.34 -> best.pt
+[val] step 8000: 8-test-user CER 56.30   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 10000: 8-test-user CER 55.36   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+
+##################################################################
+###  PART A stage 0 -- normalisation recipe, same-budget arms   ##
+##################################################################
+
+        arm    step  CER now    best  SplashNet ref   delta
+      plain    8000    57.05   57.05          55.39   +1.66
+    rsgonly    8000    58.71   58.71          47.18  +11.53
+    rtnonly   10000    55.36   55.34          39.15  +16.19
+       full    8000    77.09   77.09          36.42  +40.67
+
+  full vs OUR OWN same-budget plain arm: 57.05 -> 77.09 (-20.04)
+  (the plain arm is trained by this same script with this same
+   budget, so the recipe is not confounded with training length)
+
+  reminder: this recipe is SplashNet's, i.e. the PLATFORM.
+  Stage A1 -- our contrastive alignment -- is measured on top of
+  whichever arm wins, and that is the row with our name on it.
+=== 602 done ===
 ```
 
 ### d3_train.log
