@@ -1,8 +1,8 @@
-# heartbeat 2026-08-22T17:01:48+08:00
+# heartbeat 2026-08-22T17:02:31+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
+0, 6773 MiB, 24576 MiB, 0 %
 1, 12 MiB, 24576 MiB, 0 %
 2, 12 MiB, 24576 MiB, 0 %
 3, 12 MiB, 24576 MiB, 0 %
@@ -4348,6 +4348,12 @@ workers: 8
 ```
 === stop the crashed/crashing workers ===
   none
+
+=== patch beam_with_times: reset() before every decode ===
+[patched] reset() inserted
+  verified (17304 bytes)
+
+=== probe on user5 ===
 ```
 
 ### d3_train.log
