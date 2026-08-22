@@ -1,0 +1,18 @@
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+[decoder] official CTCBeamDecoder(beam=50)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+[user4] unadapted 58.24 | receptive field 125 | gap 46.96
+[user4] scope=encoder: 5293251 trainable
+[user4] r1 decode: greedy 60.03 | beam 55.47 | drift(beam-vs-greedy) 41.18 | 342 segments | pseudo-CER 67.67
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[user4] r1 RESULT: 58.24 -> 58.53 (-0.30) = -0.6% of the gap
+[user4] r2 decode: greedy 59.36 | beam 54.00 | drift(beam-vs-greedy) 40.59 | 334 segments | pseudo-CER 65.59
+[user4] r2 RESULT: 58.24 -> 55.81 (+2.43) = 5.2% of the gap
+[user4] r3 decode: greedy 58.66 | beam 52.95 | drift(beam-vs-greedy) 40.49 | 337 segments | pseudo-CER 63.26
+[user4] r3 RESULT: 58.24 -> 54.78 (+3.45) = 7.4% of the gap
+
+[FINAL] user4: 58.24 -> 54.78 (+3.45) | gap eaten 7.4%

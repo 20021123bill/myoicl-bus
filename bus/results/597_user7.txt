@@ -1,0 +1,18 @@
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+[decoder] official CTCBeamDecoder(beam=50)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+[user7] unadapted 52.17 | receptive field 125 | gap 40.89
+[user7] scope=encoder: 5293251 trainable
+[user7] r1 decode: greedy 51.74 | beam 48.26 | drift(beam-vs-greedy) 32.89 | 411 segments | pseudo-CER 69.52
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[user7] r1 RESULT: 52.17 -> 49.87 (+2.30) = 5.6% of the gap
+[user7] r2 decode: greedy 51.13 | beam 47.67 | drift(beam-vs-greedy) 31.97 | 423 segments | pseudo-CER 67.41
+[user7] r2 RESULT: 52.17 -> 48.13 (+4.05) = 9.9% of the gap
+[user7] r3 decode: greedy 50.74 | beam 47.93 | drift(beam-vs-greedy) 30.57 | 437 segments | pseudo-CER 70.59
+[user7] r3 RESULT: 52.17 -> 48.14 (+4.03) = 9.9% of the gap
+
+[FINAL] user7: 52.17 -> 48.14 (+4.03) | gap eaten 9.9%

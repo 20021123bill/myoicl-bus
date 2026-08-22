@@ -1,0 +1,16 @@
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+[decoder] official CTCBeamDecoder(beam=50)
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+[user5] unadapted 53.85 | receptive field 125 | gap 42.57
+[user5] scope=encoder: 5293251 trainable
+[user5] r1 decode: greedy 51.93 | beam 48.73 | drift(beam-vs-greedy) 32.53 | 51 windows (pool 256) | pseudo-CER 37.34
+[user5] r1 RESULT: 53.85 -> 50.14 (+3.71) = 8.7% of the gap
+[user5] r2 decode: greedy 51.00 | beam 48.15 | drift(beam-vs-greedy) 31.61 | 51 windows (pool 256) | pseudo-CER 39.02
+[user5] r2 RESULT: 53.85 -> 52.02 (+1.83) = 4.3% of the gap
+[user5] r3 decode: greedy 51.05 | beam 47.93 | drift(beam-vs-greedy) 32.07 | 51 windows (pool 256) | pseudo-CER 39.68
+[user5] r3 RESULT: 53.85 -> 51.91 (+1.94) = 4.6% of the gap
+
+[FINAL] user5: 53.85 -> 51.91 (+1.94) | gap eaten 4.6%
