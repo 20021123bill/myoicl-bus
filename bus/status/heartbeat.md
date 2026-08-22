@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T16:56:00+08:00
+# heartbeat 2026-08-22T16:56:44+08:00
 
 ## gpu
 ```
@@ -120,6 +120,7 @@
 591_flashlight_install                   DONE rc=127
 592_official_decoder                     DONE rc=127
 593_decode_timestamps                    DONE rc=127
+595_partb_v2                             DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4315,6 +4316,14 @@ workers: 8
 
 workers: 8
 === 593 launched ===
+```
+
+### 595_partb_v2.log
+```
+=== install the module ===
+  ok (16933 bytes)
+
+=== probe on user5 (v1's best), segment granularity ===
 ```
 
 ### d3_train.log

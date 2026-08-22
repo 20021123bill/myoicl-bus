@@ -1,0 +1,21 @@
+=== install the module ===
+  ok (16933 bytes)
+
+=== probe on user5 (v1's best), segment granularity ===
+[decoder] official CTCBeamDecoder(beam=50)
+[user5] unadapted 53.85 | receptive field 125 | gap 42.57
+Traceback (most recent call last):
+AssertionError: Timestamps are not monotonic
+
+=== 8 users, segment granularity ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+workers: 8
+=== 595 launched ===
