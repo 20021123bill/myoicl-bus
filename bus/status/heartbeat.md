@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T16:56:44+08:00
+# heartbeat 2026-08-22T16:57:27+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
-1, 12 MiB, 24576 MiB, 0 %
-2, 12 MiB, 24576 MiB, 0 %
-3, 12 MiB, 24576 MiB, 0 %
+0, 6971 MiB, 24576 MiB, 0 %
+1, 11606 MiB, 24576 MiB, 0 %
+2, 6443 MiB, 24576 MiB, 0 %
+3, 5191 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -4324,6 +4324,23 @@ workers: 8
   ok (16933 bytes)
 
 === probe on user5 (v1's best), segment granularity ===
+[decoder] official CTCBeamDecoder(beam=50)
+[user5] unadapted 53.85 | receptive field 125 | gap 42.57
+Traceback (most recent call last):
+AssertionError: Timestamps are not monotonic
+
+=== 8 users, segment granularity ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+workers: 8
+=== 595 launched ===
 ```
 
 ### d3_train.log
