@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T14:51:52+08:00
+# heartbeat 2026-08-22T14:52:35+08:00
 
 ## gpu
 ```
-0, 12017 MiB, 24576 MiB, 5 %
-1, 4865 MiB, 24576 MiB, 2 %
-2, 9414 MiB, 24576 MiB, 0 %
-3, 8990 MiB, 24576 MiB, 2 %
+0, 6955 MiB, 24576 MiB, 2 %
+1, 12 MiB, 24576 MiB, 0 %
+2, 12 MiB, 24576 MiB, 0 %
+3, 12 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -4293,6 +4293,10 @@ workers: 8
 ```
 === stop 592 workers (fallback decoder) ===
   stopped
+=== unpack + verify ===
+  ok (18514 bytes)
+
+=== probe: does the OFFICIAL decoder now run, and beat greedy? ===
 ```
 
 ### d3_train.log
