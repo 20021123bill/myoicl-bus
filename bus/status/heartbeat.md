@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T14:51:08+08:00
+# heartbeat 2026-08-22T14:51:52+08:00
 
 ## gpu
 ```
-0, 12017 MiB, 24576 MiB, 0 %
-1, 11634 MiB, 24576 MiB, 38 %
+0, 12017 MiB, 24576 MiB, 5 %
+1, 4865 MiB, 24576 MiB, 2 %
 2, 9414 MiB, 24576 MiB, 0 %
-3, 8990 MiB, 24576 MiB, 5 %
+3, 8990 MiB, 24576 MiB, 2 %
 ```
 
 ## jobs
@@ -119,6 +119,7 @@
 590_partb_mainline                       DONE rc=127
 591_flashlight_install                   DONE rc=127
 592_official_decoder                     DONE rc=127
+593_decode_timestamps                    DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4286,6 +4287,12 @@ workers: 16
 
 workers: 8
 === 592 launched ===
+```
+
+### 593_decode_timestamps.log
+```
+=== stop 592 workers (fallback decoder) ===
+  stopped
 ```
 
 ### d3_train.log
