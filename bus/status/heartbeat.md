@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T22:24:53+08:00
+# heartbeat 2026-08-22T22:25:38+08:00
 
 ## gpu
 ```
 0, 1563 MiB, 24576 MiB, 0 %
-1, 1275 MiB, 24576 MiB, 47 %
-2, 1281 MiB, 24576 MiB, 0 %
-3, 1411 MiB, 24576 MiB, 0 %
+1, 1275 MiB, 24576 MiB, 9 %
+2, 2236 MiB, 24576 MiB, 35 %
+3, 1411 MiB, 24576 MiB, 6 %
 ```
 
 ## jobs
@@ -4635,6 +4635,10 @@ workers: 12
   ok myoicl/train_align.py (10368 bytes)
 
 === forced_align available? ===
+  torchaudio 2.3.0+cu121 | forced_align: True
+  smoke: alignment tokens present = [0, 1, 2, 3]
+
+=== 60-step smoke: does L_char produce segments and finite loss? ===
 ```
 
 ### d3_train.log
