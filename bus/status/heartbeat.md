@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T22:42:06+08:00
+# heartbeat 2026-08-22T22:42:50+08:00
 
 ## gpu
 ```
 0, 1563 MiB, 24576 MiB, 0 %
-1, 1275 MiB, 24576 MiB, 12 %
-2, 4117 MiB, 24576 MiB, 0 %
-3, 2830 MiB, 24576 MiB, 0 %
+1, 1275 MiB, 24576 MiB, 18 %
+2, 1281 MiB, 24576 MiB, 0 %
+3, 1411 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -4692,6 +4692,28 @@ workers: splash 20 | align 3
 ```
 === stop the three align arms (they are pure CTC right now) ===
   stopped
+
+=== patch: surface the exception instead of swallowing it ===
+[patched] align_char.py: exception surfaced
+  verified
+
+=== probe forced_align on ONE REAL batch, real shapes and dtypes ===
+  charset: num_classes=99 blank/null=98
+  inputs (621, 4, 2, 16, 33) targets (17, 4) torch.int32 lengths [0, 0, 0, 17]
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+  hidden (497, 4, 768) logprobs (497, 4, 99)
+  target ids min=0 max=96  (blank must NOT appear: 98)
+  utt 0: T=497 L=0 -> 0 segments | seg lengths min/median/max = -/-/-
+  utt 1: T=497 L=0 -> 0 segments | seg lengths min/median/max = -/-/-
+  utt 2: T=497 L=0 -> 0 segments | seg lengths min/median/max = -/-/-
+
+  if segment counts are non-zero here but min_len=2 drops them all,
+  the filter is the problem; if they are zero, the printed
+  forced_align error above names the real cause.
+=== 608 done -- arms stay stopped until the cause is named ===
 ```
 
 ### d3_train.log
