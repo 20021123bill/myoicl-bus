@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T22:27:09+08:00
+# heartbeat 2026-08-22T22:27:56+08:00
 
 ## gpu
 ```
 0, 1563 MiB, 24576 MiB, 0 %
-1, 1275 MiB, 24576 MiB, 23 %
-2, 4117 MiB, 24576 MiB, 0 %
-3, 2830 MiB, 24576 MiB, 59 %
+1, 1275 MiB, 24576 MiB, 0 %
+2, 4117 MiB, 24576 MiB, 23 %
+3, 2830 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -132,6 +132,7 @@
 604_collect_partA2                       DONE rc=127
 605_rtn_from_source                      DONE rc=127
 606_partA1_align                         DONE rc=127
+607_step_matched                         DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4655,6 +4656,35 @@ step 60/60 | loss 53.6660 | segs/step 0 | users/step 0.0 | lr 3.00e-05 | 3.96 it
 
 workers: splash 20 | align 3
 === 606 launched ===
+```
+
+### 607_step_matched.log
+```
+  === all arms at step 10000 ===
+          full    69.72   vs plain  -10.50
+     full_nobn    60.54   vs plain   -1.33
+       full_v2    56.09   vs plain   +3.12
+         plain    59.22   vs plain       -
+       rsgonly    56.30   vs plain   +2.92
+      rtn_nobn    55.30   vs plain   +3.92
+        rtn_v2    54.84   vs plain   +4.38
+       rtnonly    55.36   vs plain   +3.85
+
+  best non-plain arm at this step: rtn_v2 54.84 (+4.38 vs plain)
+
+  pairwise, deepest common step for each pair vs plain:
+          full @  14000:   69.11 vs plain   55.66  (-13.45)
+     full_nobn @  40000:   51.08 vs plain   50.91  (-0.17)
+       full_v2 @  34000:   50.34 vs plain   50.91  (+0.57)
+       rsgonly @  44000:   49.09 vs plain   50.36  (+1.27)
+      rtn_nobn @  16000:   52.67 vs plain   54.34  (+1.67)
+        rtn_v2 @  10000:   54.84 vs plain   59.22  (+4.38)
+       rtnonly @  26000:   50.69 vs plain   52.53  (+1.84)
+
+  absolute values sit well above SplashNet's references because
+  these arms have run a small fraction of a full training schedule;
+  only the step-matched vs-plain column carries information.
+=== 607 done ===
 ```
 
 ### d3_train.log

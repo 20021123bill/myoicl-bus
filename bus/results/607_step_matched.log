@@ -1,0 +1,87 @@
+########## workers ##########
+/data2/chenyuxiang/runs/partA/rsgonly --bands 6 --rtn 0 
+/data2/chenyuxiang/runs/partA/plain --bands 0 --rtn 0 --
+/data2/chenyuxiang/runs/partA/plain --bands 0 --rtn 0 --
+/data2/chenyuxiang/runs/partA/plain --bands 0 --rtn 0 --
+/data2/chenyuxiang/runs/partA/plain --bands 0 --rtn 0 --
+/data2/chenyuxiang/runs/partA/plain --bands 0 --rtn 0 --
+/data2/chenyuxiang/runs/partA/rsgonly --bands 6 --rtn 0 
+/data2/chenyuxiang/runs/partA/rsgonly --bands 6 --rtn 0 
+/data2/chenyuxiang/runs/partA/rsgonly --bands 6 --rtn 0 
+/data2/chenyuxiang/runs/partA/rsgonly --bands 6 --rtn 0 
+/data2/chenyuxiang/runs/partA/rtn_v2 --bands 0 --rtn 1 -
+/data2/chenyuxiang/runs/partA/full_v2 --bands 6 --rtn 1 
+/data2/chenyuxiang/runs/partA/full_v2 --bands 6 --rtn 1 
+/data2/chenyuxiang/runs/partA/full_v2 --bands 6 --rtn 1 
+/data2/chenyuxiang/runs/partA/full_v2 --bands 6 --rtn 1 
+/data2/chenyuxiang/runs/partA/full_v2 --bands 6 --rtn 1 
+/data2/chenyuxiang/runs/partA/rtn_v2 --bands 0 --rtn 1 -
+/data2/chenyuxiang/runs/partA/rtn_v2 --bands 0 --rtn 1 -
+/data2/chenyuxiang/runs/partA/rtn_v2 --bands 0 --rtn 1 -
+/data2/chenyuxiang/runs/partA/rtn_v2 --bands 0 --rtn 1 -
+/data2/chenyuxiang/runs/partA1/align --max-steps 60000 -
+/data2/chenyuxiang/runs/partA1/shuffle --max-steps 60000
+/data2/chenyuxiang/runs/partA1/ctconly --max-steps 60000
+/data2/chenyuxiang/runs/partA1/ctconly --max-steps 60000
+/data2/chenyuxiang/runs/partA1/ctconly --max-steps 60000
+/data2/chenyuxiang/runs/partA1/ctconly --max-steps 60000
+/data2/chenyuxiang/runs/partA1/align --max-steps 60000 -
+/data2/chenyuxiang/runs/partA1/align --max-steps 60000 -
+/data2/chenyuxiang/runs/partA1/align --max-steps 60000 -
+/data2/chenyuxiang/runs/partA1/shuffle --max-steps 60000
+/data2/chenyuxiang/runs/partA1/shuffle --max-steps 60000
+/data2/chenyuxiang/runs/partA1/shuffle --max-steps 60000
+
+##################################################################
+###  PART A -- STEP-MATCHED (arms started at different times)   ##
+##################################################################
+
+     step       full  full_nobn    full_v2      plain    rsgonly   rtn_nobn     rtn_v2    rtnonly
+     2000     100.00      96.80      75.27      98.02      92.09      67.38      72.18      65.06
+     4000      96.80      66.33      62.88      61.85      62.62      59.39      60.19      60.12
+     6000      81.68      64.35      57.95      59.31      60.39      57.79      56.40      55.34
+     8000      77.09      63.28      58.47      57.05      58.71      56.49      57.00      56.30
+    10000      69.72      60.54      56.09      59.22      56.30      55.30      54.84      55.36
+    12000      69.39      57.70      55.05      55.02      55.92      53.31          -      54.48
+    14000      69.11      58.47      55.78      55.66      55.98      52.78          -      54.00
+    16000          -      57.56      53.89      54.34      54.56      52.67          -      52.59
+    18000          -      57.13      54.62      53.80      54.97          -          -      52.51
+    20000          -      55.34      52.77      54.24      54.01          -          -      52.56
+    22000          -      55.77      52.76      53.19      52.68          -          -      50.99
+    24000          -      55.37      52.70      53.74      52.87          -          -      51.22
+    26000          -      54.05      51.97      52.53      52.42          -          -      50.69
+    28000          -      54.73      50.96      51.86      50.51          -          -          -
+    30000          -      53.31      50.71      51.69      51.88          -          -          -
+    32000          -      52.73      50.57      50.64      49.76          -          -          -
+    34000          -      53.07      50.34      50.91      50.92          -          -          -
+    36000          -      51.41          -      51.03      50.15          -          -          -
+    38000          -      51.38          -      50.38      50.24          -          -          -
+    40000          -      51.08          -      50.91      50.76          -          -          -
+    42000          -          -          -      50.57      49.81          -          -          -
+    44000          -          -          -      50.36      49.09          -          -          -
+
+  === all arms at step 10000 ===
+          full    69.72   vs plain  -10.50
+     full_nobn    60.54   vs plain   -1.33
+       full_v2    56.09   vs plain   +3.12
+         plain    59.22   vs plain       -
+       rsgonly    56.30   vs plain   +2.92
+      rtn_nobn    55.30   vs plain   +3.92
+        rtn_v2    54.84   vs plain   +4.38
+       rtnonly    55.36   vs plain   +3.85
+
+  best non-plain arm at this step: rtn_v2 54.84 (+4.38 vs plain)
+
+  pairwise, deepest common step for each pair vs plain:
+          full @  14000:   69.11 vs plain   55.66  (-13.45)
+     full_nobn @  40000:   51.08 vs plain   50.91  (-0.17)
+       full_v2 @  34000:   50.34 vs plain   50.91  (+0.57)
+       rsgonly @  44000:   49.09 vs plain   50.36  (+1.27)
+      rtn_nobn @  16000:   52.67 vs plain   54.34  (+1.67)
+        rtn_v2 @  10000:   54.84 vs plain   59.22  (+4.38)
+       rtnonly @  26000:   50.69 vs plain   52.53  (+1.84)
+
+  absolute values sit well above SplashNet's references because
+  these arms have run a small fraction of a full training schedule;
+  only the step-matched vs-plain column carries information.
+=== 607 done ===
