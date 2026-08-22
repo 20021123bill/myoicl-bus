@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T14:44:37+08:00
+# heartbeat 2026-08-22T14:45:20+08:00
 
 ## gpu
 ```
@@ -4211,15 +4211,51 @@ workers: 4
   ok (14705 bytes)
 
 === quick beam sanity on user0 (1 min, then the real runs launch) ===
+[user0] unadapted 61.51 | gap to personalised 50.23
+Traceback (most recent call last):
+ValueError: tuple.index(x): x not in tuple
+
+=== 8 users, main line, encoder updated ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+workers: 10
+=== 590 launched ===
 ```
 
 ### 591_flashlight_install.log
 ```
-=== which pip / env ===
-/data2/chenyuxiang/conda_envs/qwerty/bin/python
-pip 26.1.2 from /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/pip (python 3.10)
+  LexiconFreeDecoder OK
+  CTCBeamDecoder OK; signature:
+    (self, _charset: 'CharacterSet' = <factory>, beam_size: 'int' = 50, max_labels_per_timestep: 'int' = -1, lm_path: 'str | None' = None, lm_weight: 'float' = 2.0, insertion_bonus: 'float' = 2.0, delete_key: 'str | None' = 'Key.backspace') -> None
 
-=== pip install flashlight-text ===
+=== unpack the decoder-aware main line ===
+  ok (17680 bytes)
+
+=== probe: does the official decoder build, and does beam beat greedy? ===
+[decoder] CTCBeamDecoder construction failed: CTCBeamDecoder.__init__() got an unexpected keyword argument 'charset'  -> falling back to the in-repo prefix beam
+[user0] unadapted 61.51 | gap to personalised 50.23
+Traceback (most recent call last):
+ValueError: tuple.index(x): x not in tuple
+
+=== 8 users, main line ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+workers: 16
+=== 591 launched ===
 ```
 
 ### d3_train.log
