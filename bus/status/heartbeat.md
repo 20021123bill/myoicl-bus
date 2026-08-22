@@ -1,10 +1,10 @@
-# heartbeat 2026-08-22T19:38:26+08:00
+# heartbeat 2026-08-22T19:39:10+08:00
 
 ## gpu
 ```
 0, 16 MiB, 24576 MiB, 0 %
 1, 4905 MiB, 24576 MiB, 0 %
-2, 12 MiB, 24576 MiB, 1 %
+2, 12 MiB, 24576 MiB, 0 %
 3, 3841 MiB, 24576 MiB, 0 %
 ```
 
@@ -126,6 +126,7 @@
 598_per_window_fallback                  DONE rc=127
 599_collect_v3                           DONE rc=127
 600_partA_splash_probe                   DONE rc=127
+601_partA_train                          DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4485,6 +4486,15 @@ workers: 8
       retraining, not by a test-time transform.
 [saved] /data2/chenyuxiang/runs/splash_probe.json
 === 600 done ===
+```
+
+### 601_partA_train.log
+```
+=== unpack + verify ===
+  ok myoicl/train_splash.py (10228 bytes)
+  ok myoicl/splash.py (6685 bytes)
+
+=== 30-step smoke on the full recipe (shapes, loss finite) ===
 ```
 
 ### d3_train.log
