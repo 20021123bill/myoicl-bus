@@ -1,0 +1,34 @@
+=== stop the 591 workers (they are on the fallback decoder) ===
+  none running
+
+=== unpack + verify ===
+  ok (18256 bytes)
+
+=== probe: official decoder builds? beam beats greedy? ===
+[decoder] official CTCBeamDecoder(beam=25, lm_w=2.0, ins=2.0, default charset)
+[user0] unadapted 61.51 | gap to personalised 50.23
+[decoder] official failed at runtime, falling back: CTCBeamDecoder.decode() missing 1 required positional argument: 'timestamps'
+[decoder] official failed at runtime, falling back: CTCBeamDecoder.decode() missing 1 required positional argument: 'timestamps'
+[decoder] official failed at runtime, falling back: CTCBeamDecoder.decode() missing 1 required positional argument: 'timestamps'
+[decoder] official failed at runtime, falling back: CTCBeamDecoder.decode() missing 1 required positional argument: 'timestamps'
+[decoder] official failed at runtime, falling back: CTCBeamDecoder.decode() missing 1 required positional argument: 'timestamps'
+[decoder] official failed at runtime, falling back: CTCBeamDecoder.decode() missing 1 required positional argument: 'timestamps'
+[decoder] official failed at runtime, falling back: CTCBeamDecoder.decode() missing 1 required positional argument: 'timestamps'
+[decoder] official failed at runtime, falling back: CTCBeamDecoder.decode() missing 1 required positional argument: 'timestamps'
+[decoder] official failed at runtime, falling back: CTCBeamDecoder.decode() missing 1 required positional argument: 'timestamps'
+[decoder] official failed at runtime, falling back: CTCBeamDecoder.decode() missing 1 required positional argument: 'timestamps'
+[decoder] official failed at runtime, falling back: CTCBeamDecoder.decode() missing 1 required positional argument: 'timestamps'
+[decoder] official failed at runtime, falling back: CTCBeamDecoder.decode() missing 1 required positional argument: 'timestamps'
+
+=== 8 users, main line, official decoder ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+workers: 8
+=== 592 launched ===

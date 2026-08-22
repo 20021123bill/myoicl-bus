@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T14:48:14+08:00
+# heartbeat 2026-08-22T14:48:58+08:00
 
 ## gpu
 ```
@@ -118,6 +118,7 @@
 587_frame_collect                        DONE rc=127
 590_partb_mainline                       DONE rc=127
 591_flashlight_install                   DONE rc=127
+592_official_decoder                     DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4256,6 +4257,12 @@ ValueError: tuple.index(x): x not in tuple
 
 workers: 16
 === 591 launched ===
+```
+
+### 592_official_decoder.log
+```
+=== stop the 591 workers (they are on the fallback decoder) ===
+  none running
 ```
 
 ### d3_train.log
