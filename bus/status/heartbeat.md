@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T21:39:12+08:00
+# heartbeat 2026-08-22T21:39:56+08:00
 
 ## gpu
 ```
-0, 1591 MiB, 24576 MiB, 32 %
-1, 1275 MiB, 24576 MiB, 8 %
-2, 1281 MiB, 24576 MiB, 21 %
-3, 1411 MiB, 24576 MiB, 55 %
+0, 1519 MiB, 24576 MiB, 0 %
+1, 1275 MiB, 24576 MiB, 25 %
+2, 1281 MiB, 24576 MiB, 28 %
+3, 1411 MiB, 24576 MiB, 69 %
 ```
 
 ## jobs
@@ -4600,9 +4600,31 @@ workers: 12
 
 ### 605_rtn_from_source.log
 ```
-=== stop the two arms built on the wrong RTN/ACM ===
   stopped rtn_nobn
   stopped full_nobn
+  still running: 10
+
+=== patch splash.py: frozen-statistics warm-up, Tm=125 ===
+[patched] splash.py: Tm=125 frozen-statistics warm-up
+
+=== patch train_splash.py: ACM = SpecAugment(0 time, 2 freq @ 12) ===
+[patched] train_splash.py: ACM via SpecAugment, frontend ACM disabled
+  verified
+
+=== re-verify RTN numerically with the new warm-up ===
+  causality (frames 0..299): 0.000e+00
+  warm-up block 0..124 uses one shared statistic: True
+  late frames mean +0.0074 std 1.0108
+  finite: True
+
+=== relaunch the two arms, corrected ===
+  launched rtn_v2 on gpu 0 (bands=0 rtn=1 acm=0, RTN replaces BN)
+  launched full_v2 on gpu 1 (bands=6 rtn=1 acm=1, RTN replaces BN)
+
+workers: 12
+  (plain and rsgonly still running untouched as the budget-matched
+   references -- restarting them would break the comparison)
+=== 605 launched ===
 ```
 
 ### d3_train.log
