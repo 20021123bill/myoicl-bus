@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T20:36:03+08:00
+# heartbeat 2026-08-22T20:36:47+08:00
 
 ## gpu
 ```
-0, 1303 MiB, 24576 MiB, 0 %
-1, 1617 MiB, 24576 MiB, 18 %
-2, 1281 MiB, 24576 MiB, 48 %
-3, 1411 MiB, 24576 MiB, 15 %
+0, 1547 MiB, 24576 MiB, 29 %
+1, 1275 MiB, 24576 MiB, 0 %
+2, 1281 MiB, 24576 MiB, 0 %
+3, 1411 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -4552,6 +4552,19 @@ workers: 4
 === stop only the two arms being replaced ===
   stopped full
   stopped rtnonly
+  still running: 10
+
+=== patch: --no-specnorm replaces the frontend BatchNorm with Identity ===
+[patched] 2 anchors + sanity note
+  verified (11049 bytes)
+
+=== relaunch the two arms with RTN replacing BatchNorm ===
+  launched rtn_nobn on gpu 0 (bands=0 rtn=1 acm=0 p_ch=0.0, no specnorm)
+  launched full_nobn on gpu 1 (bands=6 rtn=1 acm=1 p_ch=0.30, no specnorm)
+
+workers: 12
+  (plain and rsgonly continue untouched as the same-budget references)
+=== 603 launched ===
 ```
 
 ### d3_train.log
