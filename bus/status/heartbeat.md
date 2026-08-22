@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T19:03:52+08:00
+# heartbeat 2026-08-22T19:04:35+08:00
 
 ## gpu
 ```
-0, 11993 MiB, 24576 MiB, 0 %
-1, 11610 MiB, 24576 MiB, 0 %
-2, 9390 MiB, 24576 MiB, 0 %
-3, 8966 MiB, 24576 MiB, 0 %
+0, 12099 MiB, 24576 MiB, 0 %
+1, 11662 MiB, 24576 MiB, 2 %
+2, 9496 MiB, 24576 MiB, 0 %
+3, 9018 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -124,6 +124,7 @@
 596_fix_reset                            DONE rc=127
 597_collect_v2                           DONE rc=127
 598_per_window_fallback                  DONE rc=127
+599_collect_v3                           DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4425,6 +4426,35 @@ workers: 8
 
 workers: 8
 === 598 launched ===
+```
+
+### 599_collect_v3.log
+```
+
+  per-user gain +1.86 +- 1.33 (4/5 improved, worst -0.30, best +3.45)
+
+  === three generations ===
+                         run  mean gain     sd  improved   worst    gap
+             v1 window-level      +1.72   3.36       4/8   -2.75   3.9%
+    v2 mixed (5/8 fell back)      +1.68   1.82       6/8   -0.99   3.8%
+        of which segment (3)      +3.81      -       3/3   +3.45      -
+      v3 per-window fallback      +1.86   1.33       4/5   -0.30   4.4%
+
+     user   r  greedy    beam   drift  items     CER
+    user2   1   49.90   44.16   34.52    248   45.47
+    user3   1   56.93   55.05   34.14    278   52.11
+    user4   1   60.03   55.47   41.18    342   58.53
+    user5   1   51.93   48.73   32.53    278   50.40
+    user6   1   54.34   51.42   35.33    434   53.62
+
+########## segment quality + timestamp coverage ##########
+      1 exact 36/160 (22%) | 2 win w/o timestamps
+      1 exact 50/278 (18%) | 0 win w/o timestamps
+      1 exact 67/278 (24%) | 3 win w/o timestamps
+      1 exact 77/248 (31%) | 4 win w/o timestamps
+      1 exact 83/342 (24%) | 0 win w/o timestamps
+      1 exact 90/434 (21%) | 1 win w/o timestamps
+=== 599 done ===
 ```
 
 ### d3_train.log

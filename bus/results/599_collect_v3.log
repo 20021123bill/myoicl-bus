@@ -1,0 +1,69 @@
+########## workers ##########
+8
+
+########## per-user ##########
+--- user0 ---
+[user0] unadapted 61.51 | receptive field 125 | gap 50.23
+[user0] r1 decode: greedy 68.72 | beam 66.80 | drift(beam-vs-greedy) 42.69 | 160 segments | exact 36/160 (22%) | 2 win w/o timestamps | pseudo-CER nan
+--- user1 ---
+[user1] unadapted 59.96 | receptive field 125 | gap 48.68
+--- user2 ---
+[user2] unadapted 48.01 | receptive field 125 | gap 36.73
+[user2] r1 decode: greedy 49.90 | beam 44.16 | drift(beam-vs-greedy) 34.52 | 248 segments | exact 77/248 (31%) | 4 win w/o timestamps | pseudo-CER nan
+[user2] r1 RESULT: 48.01 -> 45.47 (+2.54) = 6.9% of the gap
+--- user3 ---
+[user3] unadapted 54.70 | receptive field 125 | gap 43.42
+[user3] r1 decode: greedy 56.93 | beam 55.05 | drift(beam-vs-greedy) 34.14 | 278 segments | exact 50/278 (18%) | 0 win w/o timestamps | pseudo-CER nan
+[user3] r1 RESULT: 54.70 -> 52.11 (+2.59) = 6.0% of the gap
+--- user4 ---
+[user4] unadapted 58.24 | receptive field 125 | gap 46.96
+[user4] r1 decode: greedy 60.03 | beam 55.47 | drift(beam-vs-greedy) 41.18 | 342 segments | exact 83/342 (24%) | 0 win w/o timestamps | pseudo-CER nan
+[user4] r1 RESULT: 58.24 -> 58.53 (-0.30) = -0.6% of the gap
+--- user5 ---
+[user5] unadapted 53.85 | receptive field 125 | gap 42.57
+[user5] r1 decode: greedy 51.93 | beam 48.73 | drift(beam-vs-greedy) 32.53 | 278 segments | exact 67/278 (24%) | 3 win w/o timestamps | pseudo-CER nan
+[user5] r1 RESULT: 53.85 -> 50.40 (+3.45) = 8.1% of the gap
+--- user6 ---
+[user6] unadapted 54.66 | receptive field 125 | gap 43.38
+[user6] r1 decode: greedy 54.34 | beam 51.42 | drift(beam-vs-greedy) 35.33 | 434 segments | exact 90/434 (21%) | 1 win w/o timestamps | pseudo-CER nan
+[user6] r1 RESULT: 54.66 -> 53.62 (+1.04) = 2.4% of the gap
+--- user7 ---
+[user7] unadapted 52.17 | receptive field 125 | gap 40.89
+
+##################################################################
+###  PART B v3 -- per-window segment fallback                   ##
+##################################################################
+
+     user   before    after    gain  gap eaten  items(r1)
+    user2    48.01    45.47   +2.54       6.9%        248
+    user3    54.70    52.11   +2.59       6.0%        278
+    user4    58.24    58.53   -0.30      -0.6%        342
+    user5    53.85    50.40   +3.45       8.1%        278
+    user6    54.66    53.62   +1.04       2.4%        434
+  ----------------------------------------------------------
+     MEAN    53.89    52.03   +1.86       4.4%   (5/8)
+
+  per-user gain +1.86 +- 1.33 (4/5 improved, worst -0.30, best +3.45)
+
+  === three generations ===
+                         run  mean gain     sd  improved   worst    gap
+             v1 window-level      +1.72   3.36       4/8   -2.75   3.9%
+    v2 mixed (5/8 fell back)      +1.68   1.82       6/8   -0.99   3.8%
+        of which segment (3)      +3.81      -       3/3   +3.45      -
+      v3 per-window fallback      +1.86   1.33       4/5   -0.30   4.4%
+
+     user   r  greedy    beam   drift  items     CER
+    user2   1   49.90   44.16   34.52    248   45.47
+    user3   1   56.93   55.05   34.14    278   52.11
+    user4   1   60.03   55.47   41.18    342   58.53
+    user5   1   51.93   48.73   32.53    278   50.40
+    user6   1   54.34   51.42   35.33    434   53.62
+
+########## segment quality + timestamp coverage ##########
+      1 exact 36/160 (22%) | 2 win w/o timestamps
+      1 exact 50/278 (18%) | 0 win w/o timestamps
+      1 exact 67/278 (24%) | 3 win w/o timestamps
+      1 exact 77/248 (31%) | 4 win w/o timestamps
+      1 exact 83/342 (24%) | 0 win w/o timestamps
+      1 exact 90/434 (21%) | 1 win w/o timestamps
+=== 599 done ===
