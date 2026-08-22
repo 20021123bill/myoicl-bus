@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T19:39:10+08:00
+# heartbeat 2026-08-22T19:39:53+08:00
 
 ## gpu
 ```
-0, 16 MiB, 24576 MiB, 0 %
-1, 4905 MiB, 24576 MiB, 0 %
-2, 12 MiB, 24576 MiB, 0 %
-3, 3841 MiB, 24576 MiB, 0 %
+0, 1301 MiB, 24576 MiB, 0 %
+1, 6466 MiB, 24576 MiB, 0 %
+2, 1279 MiB, 24576 MiB, 13 %
+3, 5238 MiB, 24576 MiB, 14 %
 ```
 
 ## jobs
@@ -4495,6 +4495,25 @@ workers: 8
   ok myoicl/splash.py (6685 bytes)
 
 === 30-step smoke on the full recipe (shapes, loss finite) ===
+[split] 96 training users / 837 sessions | 16 official test sessions
+[model] official TDS, freq_bins=6, 7.52M params | RSG=6 RTN=1 ACM=1
+[data] 229266 training windows of 4.0s
+[data] 512 monitor windows on the 8 test users
+[sanity] step 0 test CER 2075.20 (untrained; should be ~100)
+step 10/30 | loss 300.9355 | lr 5.00e-06 | 6.21 it/s
+step 20/30 | loss 118.9674 | lr 1.00e-05 | 9.12 it/s
+step 30/30 | loss 196.6556 | lr 1.50e-05 | 10.74 it/s
+[val] step 30: 8-test-user CER 227.80   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 227.80 -> best.pt
+
+=== four arms, detached ===
+  launched full on gpu 0 (bands=6 rtn=1 acm=1)
+  launched rtnonly on gpu 1 (bands=0 rtn=1 acm=0)
+  launched rsgonly on gpu 2 (bands=6 rtn=0 acm=0)
+  launched plain on gpu 3 (bands=0 rtn=0 acm=0)
+
+workers: 4
+=== 601 launched ===
 ```
 
 ### d3_train.log
