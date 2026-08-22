@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T17:05:24+08:00
+# heartbeat 2026-08-22T17:06:07+08:00
 
 ## gpu
 ```
-0, 6773 MiB, 24576 MiB, 0 %
-1, 12 MiB, 24576 MiB, 0 %
-2, 12 MiB, 24576 MiB, 0 %
-3, 12 MiB, 24576 MiB, 0 %
+0, 11967 MiB, 24576 MiB, 20 %
+1, 11582 MiB, 24576 MiB, 0 %
+2, 9374 MiB, 24576 MiB, 0 %
+3, 8952 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -4346,7 +4346,6 @@ workers: 8
 
 ### 596_fix_reset.log
 ```
-=== stop the crashed/crashing workers ===
   none
 
 === patch beam_with_times: reset() before every decode ===
@@ -4354,6 +4353,24 @@ workers: 8
   verified (17304 bytes)
 
 === probe on user5 ===
+[decoder] official CTCBeamDecoder(beam=50)
+[user5] unadapted 53.85 | receptive field 125 | gap 42.57
+[user5] r1 decode: greedy 52.14 | beam 49.43 | drift(beam-vs-greedy) 33.13 | 73 segments | pseudo-CER 66.67
+[user5] r1 RESULT: 53.85 -> 50.31 (+3.54) = 8.3% of the gap
+[FINAL] user5: 53.85 -> 50.31 (+3.54) | gap eaten 8.3%
+
+=== 8 users ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+workers: 8
+=== 596 launched ===
 ```
 
 ### d3_train.log
