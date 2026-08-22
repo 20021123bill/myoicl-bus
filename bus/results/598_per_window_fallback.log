@@ -1,0 +1,19 @@
+=== stop v2 workers ===
+  none
+
+=== patch ===
+[patched] 2 anchors
+  verified (17855 bytes)
+
+=== 8 users, per-window segment fallback ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+workers: 8
+=== 598 launched ===

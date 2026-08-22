@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T18:46:32+08:00
+# heartbeat 2026-08-22T18:47:16+08:00
 
 ## gpu
 ```
@@ -123,6 +123,7 @@
 595_partb_v2                             DONE rc=127
 596_fix_reset                            DONE rc=127
 597_collect_v2                           DONE rc=127
+598_per_window_fallback                  DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4401,6 +4402,12 @@ workers: 8
     user7   2   51.13   47.67   31.97    423   48.13
     user7   3   50.74   47.93   30.57    437   48.14
 === 597 done ===
+```
+
+### 598_per_window_fallback.log
+```
+=== stop v2 workers ===
+  none
 ```
 
 ### d3_train.log
