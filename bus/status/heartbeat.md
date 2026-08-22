@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T21:38:28+08:00
+# heartbeat 2026-08-22T21:39:12+08:00
 
 ## gpu
 ```
-0, 1591 MiB, 24576 MiB, 0 %
-1, 1275 MiB, 24576 MiB, 46 %
-2, 1281 MiB, 24576 MiB, 0 %
-3, 1411 MiB, 24576 MiB, 0 %
+0, 1591 MiB, 24576 MiB, 32 %
+1, 1275 MiB, 24576 MiB, 8 %
+2, 1281 MiB, 24576 MiB, 21 %
+3, 1411 MiB, 24576 MiB, 55 %
 ```
 
 ## jobs
@@ -130,6 +130,7 @@
 602_collect_partA                        DONE rc=127
 603_rtn_replaces_bn                      DONE rc=127
 604_collect_partA2                       DONE rc=127
+605_rtn_from_source                      DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4595,6 +4596,13 @@ workers: 12
   absolute values sit above SplashNet's references because this
   budget is ~4.2 epochs; only the vs-plain column is meaningful.
 === 604 done ===
+```
+
+### 605_rtn_from_source.log
+```
+=== stop the two arms built on the wrong RTN/ACM ===
+  stopped rtn_nobn
+  stopped full_nobn
 ```
 
 ### d3_train.log
