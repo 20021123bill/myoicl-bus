@@ -1,0 +1,9 @@
+=== unpack + verify ===
+  ok myoicl/align_char.py (6712 bytes)
+  ok myoicl/train_align.py (10368 bytes)
+
+=== forced_align available? ===
+  torchaudio 2.3.0+cu121 | forced_align: True
+  smoke: alignment tokens present = [0, 1, 2, 3]
+
+=== 60-step smoke: does L_char produce segments and finite loss? ===

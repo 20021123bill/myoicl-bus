@@ -1,10 +1,10 @@
-# heartbeat 2026-08-22T22:24:08+08:00
+# heartbeat 2026-08-22T22:24:53+08:00
 
 ## gpu
 ```
 0, 1563 MiB, 24576 MiB, 0 %
-1, 1275 MiB, 24576 MiB, 28 %
-2, 1281 MiB, 24576 MiB, 50 %
+1, 1275 MiB, 24576 MiB, 47 %
+2, 1281 MiB, 24576 MiB, 0 %
 3, 1411 MiB, 24576 MiB, 0 %
 ```
 
@@ -131,6 +131,7 @@
 603_rtn_replaces_bn                      DONE rc=127
 604_collect_partA2                       DONE rc=127
 605_rtn_from_source                      DONE rc=127
+606_partA1_align                         DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4625,6 +4626,15 @@ workers: 12
   (plain and rsgonly still running untouched as the budget-matched
    references -- restarting them would break the comparison)
 === 605 launched ===
+```
+
+### 606_partA1_align.log
+```
+=== unpack + verify ===
+  ok myoicl/align_char.py (6712 bytes)
+  ok myoicl/train_align.py (10368 bytes)
+
+=== forced_align available? ===
 ```
 
 ### d3_train.log
