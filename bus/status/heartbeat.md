@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T14:52:35+08:00
+# heartbeat 2026-08-22T14:53:18+08:00
 
 ## gpu
 ```
-0, 6955 MiB, 24576 MiB, 2 %
-1, 12 MiB, 24576 MiB, 0 %
-2, 12 MiB, 24576 MiB, 0 %
-3, 12 MiB, 24576 MiB, 0 %
+0, 11953 MiB, 24576 MiB, 0 %
+1, 11570 MiB, 24576 MiB, 0 %
+2, 9350 MiB, 24576 MiB, 0 %
+3, 8926 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -4297,6 +4297,24 @@ workers: 8
   ok (18514 bytes)
 
 === probe: does the OFFICIAL decoder now run, and beat greedy? ===
+[decoder] official CTCBeamDecoder(beam=25, lm_w=2.0, ins=2.0, default charset)
+[user0] unadapted 61.51 | gap to personalised 50.23
+[user0] r1 decode: greedy 69.43 | beam 68.29 (beam better) | consistent 0/24 | kept 5 at pseudo-CER 67.61
+[user0] r1 RESULT: 61.51 -> 62.01 (-0.50) = -1.0% of the gap, ZERO labels
+[FINAL] user0: 61.51 -> 62.01 (-0.50) | gap eaten -1.0%
+
+=== 8 users, main line, official decoder ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+workers: 8
+=== 593 launched ===
 ```
 
 ### d3_train.log
