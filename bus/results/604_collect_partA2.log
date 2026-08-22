@@ -1,0 +1,83 @@
+########## workers ##########
+  /data2/chenyuxiang/runs/partA/rsgonly --bands 6 --rtn 0 --acm 0 --ma
+  /data2/chenyuxiang/runs/partA/plain --bands 0 --rtn 0 --acm 0 --max-
+  /data2/chenyuxiang/runs/partA/plain --bands 0 --rtn 0 --acm 0 --max-
+  /data2/chenyuxiang/runs/partA/plain --bands 0 --rtn 0 --acm 0 --max-
+  /data2/chenyuxiang/runs/partA/plain --bands 0 --rtn 0 --acm 0 --max-
+  /data2/chenyuxiang/runs/partA/plain --bands 0 --rtn 0 --acm 0 --max-
+  /data2/chenyuxiang/runs/partA/rsgonly --bands 6 --rtn 0 --acm 0 --ma
+  /data2/chenyuxiang/runs/partA/rsgonly --bands 6 --rtn 0 --acm 0 --ma
+  /data2/chenyuxiang/runs/partA/rsgonly --bands 6 --rtn 0 --acm 0 --ma
+  /data2/chenyuxiang/runs/partA/rsgonly --bands 6 --rtn 0 --acm 0 --ma
+  /data2/chenyuxiang/runs/partA/rtn_nobn --bands 0 --rtn 1 --acm 0 --p
+  /data2/chenyuxiang/runs/partA/full_nobn --bands 6 --rtn 1 --acm 1 --
+  /data2/chenyuxiang/runs/partA/full_nobn --bands 6 --rtn 1 --acm 1 --
+  /data2/chenyuxiang/runs/partA/full_nobn --bands 6 --rtn 1 --acm 1 --
+  /data2/chenyuxiang/runs/partA/full_nobn --bands 6 --rtn 1 --acm 1 --
+  /data2/chenyuxiang/runs/partA/full_nobn --bands 6 --rtn 1 --acm 1 --
+  /data2/chenyuxiang/runs/partA/rtn_nobn --bands 0 --rtn 1 --acm 0 --p
+  /data2/chenyuxiang/runs/partA/rtn_nobn --bands 0 --rtn 1 --acm 0 --p
+  /data2/chenyuxiang/runs/partA/rtn_nobn --bands 0 --rtn 1 --acm 0 --p
+  /data2/chenyuxiang/runs/partA/rtn_nobn --bands 0 --rtn 1 --acm 0 --p
+
+########## per-arm tail ##########
+--- full ---
+[val] step 8000: 8-test-user CER 77.09   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 10000: 8-test-user CER 69.72   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 12000: 8-test-user CER 69.39   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 14000: 8-test-user CER 69.11   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+--- full_nobn ---
+[val] step 12000: 8-test-user CER 57.70   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 14000: 8-test-user CER 58.47   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 16000: 8-test-user CER 57.56   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 18000: 8-test-user CER 57.13   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+--- plain ---
+[val] step 18000: 8-test-user CER 53.80   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 20000: 8-test-user CER 54.24   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 22000: 8-test-user CER 53.19   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 24000: 8-test-user CER 53.74   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+--- rsgonly ---
+[val] step 18000: 8-test-user CER 54.97   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 20000: 8-test-user CER 54.01   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 22000: 8-test-user CER 52.68   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 24000: 8-test-user CER 52.87   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+--- rtn_nobn ---
+[val] step 2000: 8-test-user CER 67.38   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 4000: 8-test-user CER 59.39   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 6000: 8-test-user CER 57.79   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 8000: 8-test-user CER 56.49   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+--- rtnonly ---
+[val] step 20000: 8-test-user CER 52.56   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 22000: 8-test-user CER 50.99   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 24000: 8-test-user CER 51.22   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] step 26000: 8-test-user CER 50.69   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+
+##################################################################
+###  PART A stage 0 -- same-budget arms                         ##
+##################################################################
+
+         arm    step  CER now    best     ref  vs plain
+       plain   24000    53.74   53.19   55.39         -
+     rsgonly   24000    52.87   52.68   47.18     +0.51
+     rtnonly   26000    50.69   50.69   39.15     +2.50
+        full   14000    69.11   69.11   36.42    -15.91
+    rtn_nobn    8000    56.49   56.49   39.15     -3.30
+   full_nobn   18000    57.13   57.13   36.42     -3.93
+
+  curves (last 4 evals each):
+         plain  18k:53.8 20k:54.2 22k:53.2 24k:53.7
+       rsgonly  18k:55.0 20k:54.0 22k:52.7 24k:52.9
+       rtnonly  20k:52.6 22k:51.0 24k:51.2 26k:50.7
+          full  8k:77.1 10k:69.7 12k:69.4 14k:69.1
+      rtn_nobn  2k:67.4 4k:59.4 6k:57.8 8k:56.5
+     full_nobn  12k:57.7 14k:58.5 16k:57.6 18k:57.1
+
+  ==> HYPOTHESIS REJECTED: RTN still loses to plain (53.19 vs 56.49).
+      Do NOT keep tuning the wiring. Next suspects, in order:
+      (a) RTN should act on a different quantity than the
+          log-spectrogram, (b) the warmup-frame handling,
+      (c) lr needs to change once the input scale changes.
+
+  absolute values sit above SplashNet's references because this
+  budget is ~4.2 epochs; only the vs-plain column is meaningful.
+=== 604 done ===

@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T21:05:44+08:00
+# heartbeat 2026-08-22T21:06:30+08:00
 
 ## gpu
 ```
-0, 1591 MiB, 24576 MiB, 21 %
-1, 1275 MiB, 24576 MiB, 36 %
-2, 1281 MiB, 24576 MiB, 13 %
-3, 1411 MiB, 24576 MiB, 0 %
+0, 1591 MiB, 24576 MiB, 0 %
+1, 1275 MiB, 24576 MiB, 47 %
+2, 1281 MiB, 24576 MiB, 16 %
+3, 1411 MiB, 24576 MiB, 40 %
 ```
 
 ## jobs
@@ -129,6 +129,7 @@
 601_partA_train                          DONE rc=127
 602_collect_partA                        DONE rc=127
 603_rtn_replaces_bn                      DONE rc=127
+604_collect_partA2                       DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4565,6 +4566,35 @@ workers: 4
 workers: 12
   (plain and rsgonly continue untouched as the same-budget references)
 === 603 launched ===
+```
+
+### 604_collect_partA2.log
+```
+         arm    step  CER now    best     ref  vs plain
+       plain   24000    53.74   53.19   55.39         -
+     rsgonly   24000    52.87   52.68   47.18     +0.51
+     rtnonly   26000    50.69   50.69   39.15     +2.50
+        full   14000    69.11   69.11   36.42    -15.91
+    rtn_nobn    8000    56.49   56.49   39.15     -3.30
+   full_nobn   18000    57.13   57.13   36.42     -3.93
+
+  curves (last 4 evals each):
+         plain  18k:53.8 20k:54.2 22k:53.2 24k:53.7
+       rsgonly  18k:55.0 20k:54.0 22k:52.7 24k:52.9
+       rtnonly  20k:52.6 22k:51.0 24k:51.2 26k:50.7
+          full  8k:77.1 10k:69.7 12k:69.4 14k:69.1
+      rtn_nobn  2k:67.4 4k:59.4 6k:57.8 8k:56.5
+     full_nobn  12k:57.7 14k:58.5 16k:57.6 18k:57.1
+
+  ==> HYPOTHESIS REJECTED: RTN still loses to plain (53.19 vs 56.49).
+      Do NOT keep tuning the wiring. Next suspects, in order:
+      (a) RTN should act on a different quantity than the
+          log-spectrogram, (b) the warmup-frame handling,
+      (c) lr needs to change once the input scale changes.
+
+  absolute values sit above SplashNet's references because this
+  budget is ~4.2 epochs; only the vs-plain column is meaningful.
+=== 604 done ===
 ```
 
 ### d3_train.log

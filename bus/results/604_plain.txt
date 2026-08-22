@@ -1,0 +1,30 @@
+step 19600/60000 | loss 2.0405 | lr 7.89e-04 | 4.78 it/s
+step 19800/60000 | loss 2.0712 | lr 7.85e-04 | 4.77 it/s
+step 20000/60000 | loss 2.0174 | lr 7.81e-04 | 4.77 it/s
+[val] step 20000: 8-test-user CER 54.24   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+step 20200/60000 | loss 2.0266 | lr 7.76e-04 | 4.77 it/s
+step 20400/60000 | loss 1.9815 | lr 7.72e-04 | 4.76 it/s
+step 20600/60000 | loss 2.0102 | lr 7.67e-04 | 4.76 it/s
+step 20800/60000 | loss 2.0039 | lr 7.62e-04 | 4.75 it/s
+step 21000/60000 | loss 1.9892 | lr 7.58e-04 | 4.75 it/s
+step 21200/60000 | loss 2.0197 | lr 7.53e-04 | 4.75 it/s
+step 21400/60000 | loss 1.9777 | lr 7.48e-04 | 4.75 it/s
+step 21600/60000 | loss 1.9883 | lr 7.44e-04 | 4.75 it/s
+step 21800/60000 | loss 1.9581 | lr 7.39e-04 | 4.76 it/s
+step 22000/60000 | loss 1.9841 | lr 7.34e-04 | 4.75 it/s
+[val] step 22000: 8-test-user CER 53.19   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+[val] new best 53.19 -> best.pt
+step 22200/60000 | loss 2.0081 | lr 7.29e-04 | 4.74 it/s
+step 22400/60000 | loss 1.9774 | lr 7.25e-04 | 4.74 it/s
+step 22600/60000 | loss 1.9663 | lr 7.20e-04 | 4.75 it/s
+step 22800/60000 | loss 1.9287 | lr 7.15e-04 | 4.75 it/s
+step 23000/60000 | loss 1.9639 | lr 7.10e-04 | 4.74 it/s
+step 23200/60000 | loss 1.9325 | lr 7.05e-04 | 4.74 it/s
+step 23400/60000 | loss 1.9764 | lr 7.00e-04 | 4.75 it/s
+step 23600/60000 | loss 1.9610 | lr 6.95e-04 | 4.74 it/s
+step 23800/60000 | loss 1.9461 | lr 6.90e-04 | 4.74 it/s
+step 24000/60000 | loss 1.9532 | lr 6.85e-04 | 4.74 it/s
+[val] step 24000: 8-test-user CER 53.74   (plain-baseline reproduction 55.39; SplashNet reports ~36 with this recipe)
+step 24200/60000 | loss 1.9254 | lr 6.80e-04 | 4.73 it/s
+step 24400/60000 | loss 1.9721 | lr 6.75e-04 | 4.73 it/s
+step 24600/60000 | loss 1.9226 | lr 6.70e-04 | 4.73 it/s
