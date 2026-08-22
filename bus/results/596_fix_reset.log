@@ -1,0 +1,8 @@
+=== stop the crashed/crashing workers ===
+  none
+
+=== patch beam_with_times: reset() before every decode ===
+[patched] reset() inserted
+  verified (17304 bytes)
+
+=== probe on user5 ===

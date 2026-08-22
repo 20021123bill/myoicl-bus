@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T17:01:04+08:00
+# heartbeat 2026-08-22T17:01:48+08:00
 
 ## gpu
 ```
@@ -121,6 +121,7 @@
 592_official_decoder                     DONE rc=127
 593_decode_timestamps                    DONE rc=127
 595_partb_v2                             DONE rc=127
+596_fix_reset                            DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4341,6 +4342,12 @@ AssertionError: Timestamps are not monotonic
 
 workers: 8
 === 595 launched ===
+```
+
+### 596_fix_reset.log
+```
+=== stop the crashed/crashing workers ===
+  none
 ```
 
 ### d3_train.log
