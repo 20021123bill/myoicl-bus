@@ -1,9 +1,9 @@
-# heartbeat 2026-08-22T22:41:18+08:00
+# heartbeat 2026-08-22T22:42:06+08:00
 
 ## gpu
 ```
 0, 1563 MiB, 24576 MiB, 0 %
-1, 1275 MiB, 24576 MiB, 47 %
+1, 1275 MiB, 24576 MiB, 12 %
 2, 4117 MiB, 24576 MiB, 0 %
 3, 2830 MiB, 24576 MiB, 0 %
 ```
@@ -133,6 +133,7 @@
 605_rtn_from_source                      DONE rc=127
 606_partA1_align                         DONE rc=127
 607_step_matched                         DONE rc=127
+608_fix_align_silent                     DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4685,6 +4686,12 @@ workers: splash 20 | align 3
   these arms have run a small fraction of a full training schedule;
   only the step-matched vs-plain column carries information.
 === 607 done ===
+```
+
+### 608_fix_align_silent.log
+```
+=== stop the three align arms (they are pure CTC right now) ===
+  stopped
 ```
 
 ### d3_train.log
