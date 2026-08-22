@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T19:29:04+08:00
+# heartbeat 2026-08-22T19:29:48+08:00
 
 ## gpu
 ```
@@ -125,6 +125,7 @@
 597_collect_v2                           DONE rc=127
 598_per_window_fallback                  DONE rc=127
 599_collect_v3                           DONE rc=127
+600_partA_splash_probe                   DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4455,6 +4456,14 @@ workers: 8
       1 exact 83/342 (24%) | 0 win w/o timestamps
       1 exact 90/434 (21%) | 1 win w/o timestamps
 === 599 done ===
+```
+
+### 600_partA_splash_probe.log
+```
+=== unpack + verify ===
+  ok myoicl/splash.py (6685 bytes)
+  ok myoicl/splash_probe.py (5897 bytes)
+
 ```
 
 ### d3_train.log

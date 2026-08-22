@@ -1,0 +1,29 @@
+=== unpack + verify ===
+  ok myoicl/splash.py (6685 bytes)
+  ok myoicl/splash_probe.py (5897 bytes)
+
+=== numerical checks ===
+  causality: max |delta| on frames 0..24 after perturbing 25.. = 0.000e+00  OK
+  RSG: (200, 2, 2, 16, 33) -> (200, 2, 2, 16, 6)
+  RTN: mean +0.0039 std 0.9847 (late frames should be ~0/1) | finite=True
+  RTN late frames: mean +0.0057 std 0.9959
+  ACM: zeroed fraction 0.72 (train) | eval passthrough True
+
+=== NEGATIVE CONTROL: retrofit onto the FROZEN official model ===
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/transformer.py:306: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[pretrained] loaded 51 backbone tensors from /data2/chenyuxiang/code/emg2qwerty/models/generic.ckpt; 67 context tensors keep their initialization
+/data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+  [user0] unmodified 61.51
+  [user1] unmodified 59.96
+  [user0] + RTN retrofit 93.98 (-32.47)
+  [user1] + RTN retrofit 95.79 (-35.83)
+
+  mean 60.73 -> 94.89 (-34.15)
+  ==> AS EXPECTED: retrofitting normalisation onto a model that
+      was trained without it is destructive. SplashNet's -12.6
+      is a TRAINING-time result and must be reproduced by
+      retraining, not by a test-time transform.
+[saved] /data2/chenyuxiang/runs/splash_probe.json
+=== 600 done ===
