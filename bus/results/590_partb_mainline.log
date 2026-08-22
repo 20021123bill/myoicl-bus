@@ -1,0 +1,20 @@
+=== unpack ===
+  ok (14705 bytes)
+
+=== quick beam sanity on user0 (1 min, then the real runs launch) ===
+[user0] unadapted 61.51 | gap to personalised 50.23
+Traceback (most recent call last):
+ValueError: tuple.index(x): x not in tuple
+
+=== 8 users, main line, encoder updated ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+workers: 10
+=== 590 launched ===

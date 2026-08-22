@@ -1,4 +1,4 @@
-# heartbeat 2026-08-22T14:43:50+08:00
+# heartbeat 2026-08-22T14:44:37+08:00
 
 ## gpu
 ```
@@ -116,6 +116,8 @@
 585_honest_table                         DONE rc=127
 586_frame_level                          DONE rc=127
 587_frame_collect                        DONE rc=127
+590_partb_mainline                       DONE rc=127
+591_flashlight_install                   DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4201,6 +4203,23 @@ workers: 4
 
   ==> NOT A RESULT -- report as noise, do not dress it up
 === 587 done ===
+```
+
+### 590_partb_mainline.log
+```
+=== unpack ===
+  ok (14705 bytes)
+
+=== quick beam sanity on user0 (1 min, then the real runs launch) ===
+```
+
+### 591_flashlight_install.log
+```
+=== which pip / env ===
+/data2/chenyuxiang/conda_envs/qwerty/bin/python
+pip 26.1.2 from /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/pip (python 3.10)
+
+=== pip install flashlight-text ===
 ```
 
 ### d3_train.log

@@ -1,0 +1,39 @@
+=== which pip / env ===
+/data2/chenyuxiang/conda_envs/qwerty/bin/python
+pip 26.1.2 from /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/pip (python 3.10)
+
+=== pip install flashlight-text ===
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting flashlight-text
+  Downloading flashlight_text-0.0.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 8.8 MB/s  0:00:00
+Installing collected packages: flashlight-text
+Successfully installed flashlight-text-0.0.7
+
+=== import check ===
+  flashlight.lib.text OK: /data2/chenyuxiang/conda_envs/qwerty/lib/python3.10/site-packages/flashlight/lib/text/__init__.py
+  LexiconFreeDecoder OK
+  CTCBeamDecoder OK; signature:
+    (self, _charset: 'CharacterSet' = <factory>, beam_size: 'int' = 50, max_labels_per_timestep: 'int' = -1, lm_path: 'str | None' = None, lm_weight: 'float' = 2.0, insertion_bonus: 'float' = 2.0, delete_key: 'str | None' = 'Key.backspace') -> None
+
+=== unpack the decoder-aware main line ===
+  ok (17680 bytes)
+
+=== probe: does the official decoder build, and does beam beat greedy? ===
+[decoder] CTCBeamDecoder construction failed: CTCBeamDecoder.__init__() got an unexpected keyword argument 'charset'  -> falling back to the in-repo prefix beam
+[user0] unadapted 61.51 | gap to personalised 50.23
+Traceback (most recent call last):
+ValueError: tuple.index(x): x not in tuple
+
+=== 8 users, main line ===
+  launched user0 on gpu 0
+  launched user1 on gpu 1
+  launched user2 on gpu 2
+  launched user3 on gpu 3
+  launched user4 on gpu 0
+  launched user5 on gpu 1
+  launched user6 on gpu 2
+  launched user7 on gpu 3
+
+workers: 16
+=== 591 launched ===
