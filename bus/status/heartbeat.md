@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T22:25:38+08:00
+# heartbeat 2026-08-22T22:26:23+08:00
 
 ## gpu
 ```
 0, 1563 MiB, 24576 MiB, 0 %
-1, 1275 MiB, 24576 MiB, 9 %
-2, 2236 MiB, 24576 MiB, 35 %
-3, 1411 MiB, 24576 MiB, 6 %
+1, 1275 MiB, 24576 MiB, 12 %
+2, 4115 MiB, 24576 MiB, 69 %
+3, 2830 MiB, 24576 MiB, 0 %
 ```
 
 ## jobs
@@ -4639,6 +4639,22 @@ workers: 12
   smoke: alignment tokens present = [0, 1, 2, 3]
 
 === 60-step smoke: does L_char produce segments and finite loss? ===
+[split] 96 training users | 16 official test sessions
+[model] TDS 7.85M | proj 0.69M | w_char=0.2 tau=0.1 warmup=20 cross_user_only=1 shuffle_users=False
+[data] 229266 windows over 837 sessions
+step 20/60 | loss 212.6834 | segs/step 0 | users/step 0.0 | lr 1.00e-05 | 2.38 it/s
+step 40/60 | loss 126.3637 | segs/step 0 | users/step 0.0 | lr 2.00e-05 | 3.37 it/s
+step 60/60 | loss 53.6660 | segs/step 0 | users/step 0.0 | lr 3.00e-05 | 3.96 it/s
+[val] step 60: 8-test-user CER 100.00
+[val] new best 100.00
+
+=== three arms (gpu2 shared; gpu3 keeps rsgonly) ===
+  launched align on gpu 2 (--w-char 0.2 --char-warmup 8000)
+  launched shuffle on gpu 2 (--w-char 0.2 --char-warmup 8000 --shuffle-users)
+  launched ctconly on gpu 3 (--w-char 0)
+
+workers: splash 20 | align 3
+=== 606 launched ===
 ```
 
 ### d3_train.log
