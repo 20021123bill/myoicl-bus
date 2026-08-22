@@ -1,11 +1,11 @@
-# heartbeat 2026-08-22T20:35:18+08:00
+# heartbeat 2026-08-22T20:36:03+08:00
 
 ## gpu
 ```
-0, 1303 MiB, 24576 MiB, 9 %
-1, 1617 MiB, 24576 MiB, 27 %
-2, 1281 MiB, 24576 MiB, 22 %
-3, 1411 MiB, 24576 MiB, 23 %
+0, 1303 MiB, 24576 MiB, 0 %
+1, 1617 MiB, 24576 MiB, 18 %
+2, 1281 MiB, 24576 MiB, 48 %
+3, 1411 MiB, 24576 MiB, 15 %
 ```
 
 ## jobs
@@ -128,6 +128,7 @@
 600_partA_splash_probe                   DONE rc=127
 601_partA_train                          DONE rc=127
 602_collect_partA                        DONE rc=127
+603_rtn_replaces_bn                      DONE rc=127
 ```
 
 ## tail of each log (last 25 lines)
@@ -4544,6 +4545,13 @@ workers: 4
   Stage A1 -- our contrastive alignment -- is measured on top of
   whichever arm wins, and that is the row with our name on it.
 === 602 done ===
+```
+
+### 603_rtn_replaces_bn.log
+```
+=== stop only the two arms being replaced ===
+  stopped full
+  stopped rtnonly
 ```
 
 ### d3_train.log
